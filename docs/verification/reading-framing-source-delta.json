@@ -1,0 +1,49 @@
+{
+  "generatedAt": "2026-11-06T06:36:53.995Z",
+  "baseline": "previous-reading-framing-base-20261106.json",
+  "changed": [
+    {
+      "path": "src/textbook-book.ts",
+      "before": "5c9266aeeefd8e405c1320a520cf2bcc86d0beff32cfb28bdc6090b6af62288c",
+      "after": "5c1b1245f83dce4e900ce27d8906ed584c3dd63b72a6d830786534306db80cb5"
+    },
+    {
+      "path": "src/textbook-framing.ts",
+      "before": null,
+      "after": "e0512b5dd807de3037505ec99bedb94a2d626695a6c63c12cb4fefdd029ef185"
+    },
+    {
+      "path": "src/textbook-main.ts",
+      "before": "f25e9f9e9039f9d07d1d50d5ef751d9664877f94868c4fc12746514ae80513d7",
+      "after": "1a049ec2bbad9ff159a426e9d45679b180300ea2123fbaf5e638e7a62a4da096"
+    },
+    {
+      "path": "src/textbook-models-land-extra.ts",
+      "before": "36d0a587ffb17fb48e49b5366972e9b6bfad2627db91bfba83e9aba3db43ede3",
+      "after": "3b6f4e6e5e11b9e3be2b80283189cc39c5ddc30d1dad331e707f0a9f85b2e875"
+    },
+    {
+      "path": "src/textbook-remote-world.ts",
+      "before": "2fd2eb5137e386145b2736919c55881b64e47d880e9d1b20b63f5bfddf3948a7",
+      "after": "18fa0652d0263043a0b88dc553a906ce3a5aa0605fcc72fc754b52ea1ee734eb"
+    },
+    {
+      "path": "src/textbook-style.css",
+      "before": "27bfb0bf377f08e1b98d19267c2d1a60b45539cd42acb21211ec52bb1b99ba85",
+      "after": "c63523e3aea929375e35388b86662b7c4957adf4705bb3ea6457e936fd7be642"
+    },
+    {
+      "path": "src/textbook-urban-water-world.ts",
+      "before": "7651325217eeb93c7a855cfb2199f7b57f89fed2d82271745914994fdae44930",
+      "after": "2a7fd8b82b95d3e2705dc48e96ff49dca5ecff1e3ce97e7af52871fa87df7ab2"
+    },
+    {
+      "path": "src/textbook-workbench.css",
+      "before": "8b38564e95e29f0fdbda082e41d00f11efce457ec4d0c72eedc4fc5c3fe4560b",
+      "after": "11470e8eefdda06a473c30b1a9b727e0fd51a8fcafc035d90887fa491627ed1d"
+    }
+  ],
+  "removed": [],
+  "unchanged": 125,
+  "scope": "Exact source hashes relative to D4LALJeW/CfTBMr01. Five agreed interaction/reading refinements; no change to pure scientific model rules. Prior reports keep their original fingerprints."
+}

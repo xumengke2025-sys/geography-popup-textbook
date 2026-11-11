@@ -1,0 +1,109 @@
+{
+  "generatedAt": "2026-11-06T05:35:48.238Z",
+  "baseline": "previous-all-review-base-20261106.json",
+  "changed": [
+    {
+      "path": "src/textbook-astronomy-model.ts",
+      "before": "1e27156bd90d7c6d55fcb36727bb9133725d721d62d983eaa7deb1aa2e596878",
+      "after": "fa77446a8db9f14a18635f7d64df2b43a60bb9a54072ba8e3a92f7e6e499e2fa"
+    },
+    {
+      "path": "src/textbook-flat-model.ts",
+      "before": "568ef9175c9b149caf344b8e9c47d331c547d732ead8ad32fb9c62ec7b7f2356",
+      "after": "6787d5119e9f8e41f3fff240a78966e7e82ba9993dca6dfaf6b24ed421b95398"
+    },
+    {
+      "path": "src/textbook-gnss-model.ts",
+      "before": "7656dd6531a2e6f9bd4329793d216b22c340a3c5be141dba4e3d7028c13854c2",
+      "after": "9c35ff4e618ebfbd130c116047335fc6905054dcafc3f3ff7d65772d84f2e623"
+    },
+    {
+      "path": "src/textbook-gnss-world.ts",
+      "before": "a37c3212a5fb4bfb8c72bac10a4374bd98b2c4315e3e99d1485fd47886f15ab8",
+      "after": "472700729eddfb8732ba5a0ec16c0b535ae66ef5cf68ccac1342de34f1461cf7"
+    },
+    {
+      "path": "src/textbook-inspection.ts",
+      "before": "3fa077567f9e2e3625fbb516f25f5a9544c50e59e66c31198616be2c81d42148",
+      "after": "fa41e416483c24c19c398a69eb0135cd2e45ebe3809b67dcbcbfd1d121b7238c"
+    },
+    {
+      "path": "src/textbook-main.ts",
+      "before": "fe477f26d1aff972b29887e2fc608b4393c9e1e8af9ad8b05fe6b7fbffafd2d5",
+      "after": "f25e9f9e9039f9d07d1d50d5ef751d9664877f94868c4fc12746514ae80513d7"
+    },
+    {
+      "path": "src/textbook-models-astronomy.ts",
+      "before": "5ead259ee5f124b12b16a40d74019045ed11456d02c0c06f272430ccfcd70f6a",
+      "after": "6f0dc9e308926d8b5521ee4f18a75db9f75c793d567feb90f86f965bb0a66726"
+    },
+    {
+      "path": "src/textbook-models-land-extra.ts",
+      "before": "b57847ffd247ad85acd8042227f012eb4d82ee55a76720ca2642ac66e41b1733",
+      "after": "36d0a587ffb17fb48e49b5366972e9b6bfad2627db91bfba83e9aba3db43ede3"
+    },
+    {
+      "path": "src/textbook-natural-form-geometry.ts",
+      "before": null,
+      "after": "bf51e874f801cbe13c0365106ba540b12d4f14449bfc1ac45a70c3da04afd6db"
+    },
+    {
+      "path": "src/textbook-playback-rhythm.ts",
+      "before": "2e0d7bbdbdc71624d491d890cace2e54085501aec98a963c755fcc2b119ae524",
+      "after": "b6d5ac4a0b1e4bfd07dfcdfcf639a354f18d49cac85234895c1d4e4e867b4ad4"
+    },
+    {
+      "path": "src/textbook-remote-world.ts",
+      "before": "781b39fdd7b649e0644e09d887fb24f41ee489c3d85b22eff1491e869e689d71",
+      "after": "2fd2eb5137e386145b2736919c55881b64e47d880e9d1b20b63f5bfddf3948a7"
+    },
+    {
+      "path": "src/textbook-soil-profile-model.ts",
+      "before": "f5e38a06ac30934a8f54653b63f8180eb0f763b60505fd8fd62820e747a8061a",
+      "after": "97da1a04567b110ce8e0dacabc3940e658de4efc19e2ae1d0d859705f15cae7c"
+    },
+    {
+      "path": "src/textbook-soil-profile-world.ts",
+      "before": "b8c43a99ecd8c3304e23d15b947ad4679d6487ced6839812353ddc1211730dbe",
+      "after": "60dbc74cfc7df30b06f805a4435394b10aa2debdd4a5ce06bed5c0fca94f02c2"
+    },
+    {
+      "path": "src/textbook-temperature-model.ts",
+      "before": "1fafd4553c123172e8c1845770916426b96f8a430fafdc935cc60b1667fd2897",
+      "after": "3b31cd564a88fb03bd40a0fef7b111baccf52e3a5043db30319d758635261c0b"
+    },
+    {
+      "path": "src/textbook-temperature-world.ts",
+      "before": "11afb62ea43f133aed4c2e7fce10ffa161184393ba5c7e590287cf00707152d0",
+      "after": "66d9990c42d628eef1af97f36a4867d925d8fcee81b4bb6b2d3656abd87d985f"
+    },
+    {
+      "path": "src/textbook-timeline.css",
+      "before": "cbe2a5b05136e7144132419b048e236f638a8755cc60ad6e984122353cf8a83a",
+      "after": "85600cdfae410d845f7ab55a428ec350a3ec0c08c90232b9a18e40aac891b434"
+    },
+    {
+      "path": "src/textbook-typhoon-world.ts",
+      "before": "b19ee97c369de3afa740a8f86903416eff00d47af7988bbec9440ff1a23a436b",
+      "after": "e2f409b443907e3fd804ec27bf9b21c574e192e2944adffffcbc0c64a45f3762"
+    },
+    {
+      "path": "src/textbook-urban-water-world.ts",
+      "before": "2887951eb8aae1b6891a14d21a89edf93936b705b5d2d55d10354e64ae21783f",
+      "after": "7651325217eeb93c7a855cfb2199f7b57f89fed2d82271745914994fdae44930"
+    },
+    {
+      "path": "src/textbook-wave-model.ts",
+      "before": "02f2b9a1b7db70d64fa0216ec0db370088ad5a51c9254f392367d16fb378cb55",
+      "after": "5d1740e555d5df7b30dbbb7ff0b34cf6d678a1e8ac72a5074119399a33fb83bf"
+    },
+    {
+      "path": "src/textbook-wave-world.ts",
+      "before": "212edebcb566d5d0b4d0b895eaba33b6189ff6e1c74ae7228e3a9eebb78552e6",
+      "after": "e898c52a04a62f305f35fdf2c7e13e026870a916596fa87a5f92fb1f705930d6"
+    }
+  ],
+  "removed": [],
+  "unchanged": 112,
+  "scope": "Exact source hashes relative to SsFpYqVD. Earlier visual/test reports retain their own build identity."
+}

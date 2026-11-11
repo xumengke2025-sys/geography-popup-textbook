@@ -1,0 +1,648 @@
+{
+  "base": "http://127.0.0.1:4175",
+  "errors": [],
+  "checks": [
+    "cover rendered",
+    "reading rendered",
+    "breeze rendered",
+    "tablet rendered",
+    "preview rendered",
+    "phone rendered"
+  ],
+  "states": [
+    {
+      "name": "cover",
+      "width": 1366,
+      "height": 900,
+      "spread": 0,
+      "active": null,
+      "render": {
+        "position": 0,
+        "spread": null,
+        "busy": false,
+        "figure": null,
+        "modelState": null,
+        "geometry": null,
+        "view": "book",
+        "labels": [],
+        "models": 0,
+        "images": 3,
+        "triangles": 8289,
+        "calls": 23,
+        "geometries": 11,
+        "textures": 31,
+        "hiRes": 4,
+        "engine": "Every Joule 48591dd"
+      }
+    },
+    {
+      "name": "reading",
+      "width": 1366,
+      "height": 900,
+      "spread": 22,
+      "active": null,
+      "render": {
+        "position": 22,
+        "spread": 22,
+        "busy": false,
+        "figure": null,
+        "modelState": null,
+        "geometry": null,
+        "view": "book",
+        "labels": [],
+        "models": 0,
+        "images": 6,
+        "triangles": 12681,
+        "calls": 29,
+        "geometries": 23,
+        "textures": 203,
+        "hiRes": 6,
+        "engine": "Every Joule 48591dd"
+      }
+    },
+    {
+      "name": "breeze",
+      "width": 1366,
+      "height": 900,
+      "spread": 22,
+      "active": "breeze",
+      "render": {
+        "position": 22,
+        "spread": 22,
+        "busy": false,
+        "figure": "breeze",
+        "modelState": "live",
+        "geometry": {
+          "architecture": "three-dimensional-geometry",
+          "bitmapSurfaces": 0,
+          "solids": 41,
+          "labels": 18,
+          "meshes": 69,
+          "imageMappedMeshes": 0,
+          "extent": [
+            143.64340209960938,
+            127.69898733177706,
+            96.24107653375516
+          ],
+          "sceneElevation": 61.76666105897719,
+          "unfoldProgress": 1,
+          "originalPagePreserved": true,
+          "phase": 0.5,
+          "selection": 0,
+          "kind": "sea-breeze",
+          "layout": "land-left-sea-right",
+          "scene": "coastal-paper-world",
+          "selected": "day",
+          "groundX": -1,
+          "upperX": 1,
+          "strength": 0.9401870664873426,
+          "pressure": {
+            "seaGround": "相对高压",
+            "landGround": "相对低压",
+            "seaUpper": "相对低压",
+            "landUpper": "相对高压"
+          },
+          "continuousDayNight": true,
+          "flowPhase": 0,
+          "flowRate": 0.09401870664873427,
+          "flagArea": 49.70212706976835,
+          "panels": 1,
+          "sameHeightGuides": 2,
+          "elevatedAbovePage": 61.76666105897719,
+          "sourceFootprint": [
+            115.84144984804425,
+            31.25
+          ],
+          "sceneDepth": 90.49534062129217,
+          "directInteraction": "drag-daylight-handle",
+          "daylightControlIsSchematic": true
+        },
+        "view": "detail",
+        "labels": [
+          {
+            "text": "低压",
+            "left": 549.3542731020674,
+            "top": 489.23922733492157,
+            "right": 618.3050260743851,
+            "bottom": 518.5432973481564,
+            "fontPx": 20.201103583591703
+          },
+          {
+            "text": "高压",
+            "left": 755.2141098605405,
+            "top": 504.34170024364784,
+            "right": 825.2353737380171,
+            "bottom": 534.1007373915755,
+            "fontPx": 20.51474050197569
+          },
+          {
+            "text": "高压",
+            "left": 547.3995324288202,
+            "top": 385.0208187142407,
+            "right": 619.1259813493207,
+            "bottom": 415.5045595054533,
+            "fontPx": 21.014323439048685
+          },
+          {
+            "text": "低压",
+            "left": 752.5836236524884,
+            "top": 398.46294299171876,
+            "right": 825.4201863793475,
+            "bottom": 429.4184821506338,
+            "fontPx": 21.339563164869084
+          },
+          {
+            "text": "陆地 · 较暖",
+            "left": 488.0061427500642,
+            "top": 636.9986151963827,
+            "right": 623.5553448080685,
+            "bottom": 666.7319885510417,
+            "fontPx": 20.497048865764903
+          },
+          {
+            "text": "海洋 · 较冷",
+            "left": 717.9832468915522,
+            "top": 661.3714084603688,
+            "right": 855.6219567909465,
+            "bottom": 691.5631254705586,
+            "fontPx": 20.813013428301048
+          }
+        ],
+        "models": 1,
+        "images": 6,
+        "triangles": 32175,
+        "calls": 127,
+        "geometries": 81,
+        "textures": 209,
+        "hiRes": 6,
+        "engine": "Every Joule 48591dd"
+      }
+    },
+    {
+      "name": "tablet",
+      "width": 1024,
+      "height": 768,
+      "spread": 31,
+      "active": "waves",
+      "render": {
+        "position": 31,
+        "spread": 31,
+        "busy": false,
+        "figure": "waves",
+        "modelState": "live",
+        "geometry": {
+          "architecture": "three-dimensional-geometry",
+          "bitmapSurfaces": 0,
+          "solids": 4,
+          "labels": 2,
+          "meshes": 6,
+          "imageMappedMeshes": 0,
+          "extent": [
+            174.1186065673828,
+            72.08510477895771,
+            83.45504978590148
+          ],
+          "sceneElevation": 56,
+          "unfoldProgress": 1,
+          "originalPagePreserved": true,
+          "phase": 0,
+          "selection": 0,
+          "kind": "surface-wave",
+          "reference": {
+            "textbookPage": 57,
+            "pdfPage": 62,
+            "figure": "3.20",
+            "quantities": "schematic",
+            "model": "ideal-periodic-deep-water",
+            "includesCurrent": false,
+            "includesBreaking": false,
+            "includesStokesDrift": false,
+            "markerIsRealBuoy": false
+          },
+          "cyclePhase": 0,
+          "caption": "波形向前传播；橙点表示同一水质点。",
+          "wavePropagates": true,
+          "propagationDirection": "right",
+          "particleAdvection": false,
+          "particleMotion": "closed-orbit",
+          "particle": {
+            "restX": 57,
+            "x": 51.64149871143454,
+            "height": 21.219563907717525
+          },
+          "waveHeight": 11.6,
+          "amplitude": 5.8,
+          "wavelength": 48,
+          "closedVolume": true,
+          "fixedBuffers": true,
+          "surfaceEquation": "monotone-gerstner-inverse",
+          "heightProbes": [
+            {
+              "x": 0,
+              "height": 24.8
+            },
+            {
+              "x": 25,
+              "height": 13.21606132731916
+            },
+            {
+              "x": 50,
+              "height": 22.9841853110861
+            },
+            {
+              "x": 75,
+              "height": 13.344942104756525
+            },
+            {
+              "x": 100,
+              "height": 20.871774874978335
+            }
+          ],
+          "trackedSurfaceError": 2.1600499167107046e-12,
+          "controls": [
+            "particle",
+            "phase-track"
+          ]
+        },
+        "view": "detail",
+        "labels": [
+          {
+            "text": "波向前传播",
+            "left": 246.2325503136238,
+            "top": 132.16068585074896,
+            "right": 450.465598461118,
+            "bottom": 178.4535100975143,
+            "fontPx": 31.836468604793012
+          },
+          {
+            "text": "水质点",
+            "left": 662.5673495457145,
+            "top": 152.40251519112323,
+            "right": 817.465731572695,
+            "bottom": 200.28019690855365,
+            "fontPx": 32.92640567233811
+          }
+        ],
+        "models": 1,
+        "images": 6,
+        "triangles": 22801,
+        "calls": 33,
+        "geometries": 33,
+        "textures": 277,
+        "hiRes": 6,
+        "engine": "Every Joule 48591dd"
+      }
+    },
+    {
+      "name": "preview",
+      "width": 713,
+      "height": 818,
+      "spread": 32,
+      "active": "tides",
+      "render": {
+        "position": 32,
+        "spread": 32,
+        "busy": false,
+        "figure": "tides",
+        "modelState": "live",
+        "geometry": {
+          "architecture": "three-dimensional-geometry",
+          "bitmapSurfaces": 0,
+          "solids": 17,
+          "labels": 3,
+          "meshes": 22,
+          "imageMappedMeshes": 0,
+          "extent": [
+            81.25119209289551,
+            40.625596356406376,
+            48.732862458930924
+          ],
+          "sceneElevation": 41.07203158766197,
+          "unfoldProgress": 1,
+          "originalPagePreserved": true,
+          "phase": 0,
+          "selection": 0,
+          "kind": "tide",
+          "fraction": 0,
+          "waterLevel": 7.8,
+          "stage": "low",
+          "caption": "低潮",
+          "direction": 0,
+          "shoreline": [
+            [
+              46.25,
+              7.8,
+              6
+            ],
+            [
+              45.81225246757325,
+              7.8,
+              7.225
+            ],
+            [
+              45.38684854669096,
+              7.8,
+              8.45
+            ],
+            [
+              44.985592820673496,
+              7.8,
+              9.675
+            ],
+            [
+              44.61923987502485,
+              7.8,
+              10.9
+            ],
+            [
+              44.29703791545223,
+              7.8,
+              12.125
+            ],
+            [
+              44.026350527450965,
+              7.8,
+              13.35
+            ],
+            [
+              43.812375874906024,
+              7.8,
+              14.575
+            ],
+            [
+              43.65797733165392,
+              7.8,
+              15.8
+            ],
+            [
+              43.56363348153146,
+              7.8,
+              17.025
+            ],
+            [
+              43.527508942698496,
+              7.8,
+              18.25
+            ],
+            [
+              43.54564092762417,
+              7.8,
+              19.475
+            ],
+            [
+              43.612230201115956,
+              7.8,
+              20.7
+            ],
+            [
+              43.720019488699116,
+              7.8,
+              21.925
+            ],
+            [
+              43.860737724613834,
+              7.8,
+              23.15
+            ],
+            [
+              44.02558506832274,
+              7.8,
+              24.375
+            ],
+            [
+              44.20573154978301,
+              7.8,
+              25.6
+            ],
+            [
+              44.3928016389242,
+              7.8,
+              26.825
+            ],
+            [
+              44.579318002721905,
+              7.8,
+              28.05
+            ],
+            [
+              44.7590801581829,
+              7.8,
+              29.275
+            ],
+            [
+              44.92745751406263,
+              7.8,
+              30.5
+            ],
+            [
+              45.08158120683185,
+              7.8,
+              31.725
+            ],
+            [
+              45.22042490362273,
+              7.8,
+              32.95
+            ],
+            [
+              45.344771045811825,
+              7.8,
+              34.175
+            ],
+            [
+              45.45706549135044,
+              7.8,
+              35.4
+            ],
+            [
+              45.56116982174284,
+              7.8,
+              36.625
+            ],
+            [
+              45.66202636043009,
+              7.8,
+              37.85
+            ],
+            [
+              45.76525588229198,
+              7.8,
+              39.075
+            ],
+            [
+              45.876711805114255,
+              7.8,
+              40.3
+            ],
+            [
+              46.00201713147294,
+              7.8,
+              41.525
+            ],
+            [
+              46.146111415769994,
+              7.8,
+              42.75
+            ],
+            [
+              46.31283450986557,
+              7.8,
+              43.975
+            ],
+            [
+              46.50457182030509,
+              7.8,
+              45.2
+            ],
+            [
+              46.72198240203824,
+              7.8,
+              46.425
+            ],
+            [
+              46.96382660621373,
+              7.8,
+              47.65
+            ],
+            [
+              47.22690444806756,
+              7.8,
+              48.875
+            ],
+            [
+              47.506109672491064,
+              7.8,
+              50.1
+            ],
+            [
+              47.7945980123866,
+              7.8,
+              51.325
+            ],
+            [
+              48.08406171769218,
+              7.8,
+              52.55
+            ],
+            [
+              48.36509643688948,
+              7.8,
+              53.775
+            ],
+            [
+              48.627641290737884,
+              7.8,
+              55
+            ]
+          ],
+          "shorelineFront": 48.627641290737884,
+          "intertidal": {
+            "lowEdge": 48.627641290737884,
+            "highEdge": 81.12764129073788,
+            "exposedFraction": 1
+          },
+          "boat": {
+            "x": 21.5,
+            "z": 28,
+            "waterline": 7.8,
+            "keel": 6.65,
+            "freeboard": 0.95,
+            "draft": 1.15
+          },
+          "gauge": {
+            "x": 33,
+            "z": 47,
+            "bottom": 2.6,
+            "top": 24,
+            "waterMark": 7.8
+          },
+          "units": "schematic-cycle",
+          "locationSpecific": false,
+          "tideCurrentCalculated": false,
+          "referencePage": 59,
+          "realShoreIntersection": true,
+          "waterVolumeFollowsSeabed": true,
+          "boatDraftFixed": true,
+          "gaugeStationary": true,
+          "shoreSurface": "fixed-sloping-coast",
+          "measuredTideHeight": false,
+          "localTideTimes": false,
+          "arrowsForLocalCurrent": false,
+          "tideDial": {
+            "center": [
+              78.57258216770116,
+              27.143255657933125,
+              -150.65278488565832
+            ],
+            "radiusX": 6.428665813721003,
+            "radiusY": 6.785813914483281
+          },
+          "fixedWaterVertices": 3526,
+          "fixedShorelineVertices": 82,
+          "buffersStable": true
+        },
+        "view": "detail",
+        "labels": [
+          {
+            "text": "低潮",
+            "left": 451.78743232667625,
+            "top": 258.2643865507384,
+            "right": 516.7729997267019,
+            "bottom": 293.25661515075217,
+            "fontPx": 24.10060777749294
+          },
+          {
+            "text": "固定潮尺",
+            "left": 254.123180882401,
+            "top": 407.26568413185026,
+            "right": 384.1724160816577,
+            "bottom": 441.94548018498546,
+            "fontPx": 23.873772645274226
+          },
+          {
+            "text": "潮间带",
+            "left": 406.7989263497815,
+            "top": 390.49175678083543,
+            "right": 521.5805381972557,
+            "bottom": 427.2218725720272,
+            "fontPx": 25.285224638863912
+          }
+        ],
+        "models": 1,
+        "images": 8,
+        "triangles": 35805,
+        "calls": 62,
+        "geometries": 49,
+        "textures": 286,
+        "hiRes": 6,
+        "engine": "Every Joule 48591dd"
+      }
+    },
+    {
+      "name": "phone",
+      "width": 390,
+      "height": 844,
+      "spread": 32,
+      "active": "tides",
+      "render": null
+    }
+  ],
+  "limits": [
+    "Viewport emulation, not physical touchscreen acceptance.",
+    "Screenshots are visual evidence, not evidence of user approval."
+  ],
+  "reviewedEntry": {
+    "path": "/assets/index-DeWBg8MI.js",
+    "sha256": "ec96f82b826571539b4f96947cd63429a09bd620f1962d495fa6f718172b7d32"
+  },
+  "reviewedStyles": [
+    {
+      "path": "/assets/index-BNlCIg7W.css",
+      "sha256": "7dc46979023abf69bb0739abccbdf5b37c1e2a4684645382e091631cf47753e2"
+    }
+  ],
+  "reviewedAt": "2026-11-05T18:53:49.981Z",
+  "browser": "156.0.8078.80",
+  "externalRequests": [],
+  "requestFailures": []
+}

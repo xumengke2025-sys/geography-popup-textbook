@@ -1,0 +1,1858 @@
+{
+  "checks": [
+    "Fresh session defaults to 2×",
+    "Final build opens physical plant inspection",
+    "Escape closes part menu, retains model and returns focus",
+    "Outside click closes part menu",
+    "Navigating starts the next model in its own overview",
+    "GIS inspection changes the actual scene and pauses playback",
+    "GIS observation preserves progress",
+    "Final native SVG exposes selected plant part",
+    "Final keyboard focus retained",
+    "Phone has no document horizontal overflow",
+    "No runtime exceptions"
+  ],
+  "failures": [],
+  "errors": [],
+  "states": [
+    {
+      "name": "soil-climate",
+      "state": {
+        "ready": true,
+        "twoD": false,
+        "spread": 48,
+        "turning": false,
+        "figureBusy": false,
+        "active": "soil-factors",
+        "playing": false,
+        "playbackSpeed": 2,
+        "teacher": false,
+        "stored": true,
+        "state": {
+          "phase": 1,
+          "selection": 2,
+          "routes": [],
+          "rings": [],
+          "focus": null,
+          "caption": "气候作用"
+        },
+        "process": null,
+        "render": {
+          "position": 48,
+          "spread": 48,
+          "busy": false,
+          "figure": "soil-factors",
+          "modelState": "live",
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 109,
+            "labels": 15,
+            "meshes": 127,
+            "imageMappedMeshes": 0,
+            "extent": [
+              150.82556725834363,
+              72.3447415213236,
+              152.0725730680183
+            ],
+            "sceneElevation": 56,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 1,
+            "selection": 2,
+            "kind": "soil-forming-factors",
+            "factor": "climate",
+            "provenance": {
+              "phase": 1,
+              "factor": 2,
+              "particles": [
+                {
+                  "id": 0,
+                  "source": {
+                    "u": 0.19,
+                    "v": 0.94,
+                    "h": 18.5
+                  },
+                  "contact": {
+                    "u": 0.178,
+                    "v": 0.94,
+                    "h": 12.7
+                  },
+                  "target": {
+                    "u": 0.178,
+                    "v": 0.94,
+                    "h": 10
+                  },
+                  "u": 0.178,
+                  "v": 0.94,
+                  "h": 10,
+                  "releaseAt": 0.22,
+                  "contactAt": 0.51,
+                  "settledAt": 0.79,
+                  "travel": 1,
+                  "incorporation": 1,
+                  "retained": true,
+                  "arrived": true,
+                  "sourcePresent": false,
+                  "stage": "retained"
+                },
+                {
+                  "id": 1,
+                  "source": {
+                    "u": 0.31,
+                    "v": 0.94,
+                    "h": 18.5
+                  },
+                  "contact": {
+                    "u": 0.298,
+                    "v": 0.94,
+                    "h": 12.7
+                  },
+                  "target": {
+                    "u": 0.298,
+                    "v": 0.94,
+                    "h": 10
+                  },
+                  "u": 0.298,
+                  "v": 0.94,
+                  "h": 10,
+                  "releaseAt": 0.265,
+                  "contactAt": 0.5650000000000001,
+                  "settledAt": 0.8300000000000001,
+                  "travel": 1,
+                  "incorporation": 1,
+                  "retained": true,
+                  "arrived": true,
+                  "sourcePresent": false,
+                  "stage": "retained"
+                },
+                {
+                  "id": 2,
+                  "source": {
+                    "u": 0.43,
+                    "v": 0.94,
+                    "h": 18.5
+                  },
+                  "contact": {
+                    "u": 0.418,
+                    "v": 0.94,
+                    "h": 12.7
+                  },
+                  "target": {
+                    "u": 0.418,
+                    "v": 0.94,
+                    "h": 10
+                  },
+                  "u": 0.418,
+                  "v": 0.94,
+                  "h": 10,
+                  "releaseAt": 0.31,
+                  "contactAt": 0.62,
+                  "settledAt": 0.87,
+                  "travel": 1,
+                  "incorporation": 1,
+                  "retained": true,
+                  "arrived": true,
+                  "sourcePresent": false,
+                  "stage": "retained"
+                },
+                {
+                  "id": 3,
+                  "source": {
+                    "u": 0.55,
+                    "v": 0.94,
+                    "h": 18.5
+                  },
+                  "contact": {
+                    "u": 0.538,
+                    "v": 0.94,
+                    "h": 12.7
+                  },
+                  "target": {
+                    "u": 0.538,
+                    "v": 0.94,
+                    "h": 10
+                  },
+                  "u": 0.538,
+                  "v": 0.94,
+                  "h": 10,
+                  "releaseAt": 0.355,
+                  "contactAt": 0.51,
+                  "settledAt": 0.91,
+                  "travel": 1,
+                  "incorporation": 1,
+                  "retained": true,
+                  "arrived": true,
+                  "sourcePresent": false,
+                  "stage": "retained"
+                },
+                {
+                  "id": 4,
+                  "source": {
+                    "u": 0.6699999999999999,
+                    "v": 0.94,
+                    "h": 18.5
+                  },
+                  "contact": {
+                    "u": 0.6579999999999999,
+                    "v": 0.94,
+                    "h": 12.7
+                  },
+                  "target": {
+                    "u": 0.6579999999999999,
+                    "v": 0.94,
+                    "h": 10
+                  },
+                  "u": 0.6579999999999999,
+                  "v": 0.94,
+                  "h": 10,
+                  "releaseAt": 0.22,
+                  "contactAt": 0.5650000000000001,
+                  "settledAt": 0.79,
+                  "travel": 1,
+                  "incorporation": 1,
+                  "retained": true,
+                  "arrived": true,
+                  "sourcePresent": false,
+                  "stage": "retained"
+                },
+                {
+                  "id": 5,
+                  "source": {
+                    "u": 0.79,
+                    "v": 0.94,
+                    "h": 18.5
+                  },
+                  "contact": {
+                    "u": 0.778,
+                    "v": 0.94,
+                    "h": 12.7
+                  },
+                  "target": {
+                    "u": 0.778,
+                    "v": 0.94,
+                    "h": 10
+                  },
+                  "u": 0.778,
+                  "v": 0.94,
+                  "h": 10,
+                  "releaseAt": 0.265,
+                  "contactAt": 0.62,
+                  "settledAt": 0.8300000000000001,
+                  "travel": 1,
+                  "incorporation": 1,
+                  "retained": true,
+                  "arrived": true,
+                  "sourcePresent": false,
+                  "stage": "retained"
+                },
+                {
+                  "id": 6,
+                  "source": {
+                    "u": 0.19,
+                    "v": 0.94,
+                    "h": 19
+                  },
+                  "contact": {
+                    "u": 0.202,
+                    "v": 0.94,
+                    "h": 13.1
+                  },
+                  "target": {
+                    "u": 0.202,
+                    "v": 0.94,
+                    "h": 11.25
+                  },
+                  "u": 0.202,
+                  "v": 0.94,
+                  "h": 11.25,
+                  "releaseAt": 0.31,
+                  "contactAt": 0.51,
+                  "settledAt": 0.87,
+                  "travel": 1,
+                  "incorporation": 1,
+                  "retained": true,
+                  "arrived": true,
+                  "sourcePresent": false,
+                  "stage": "retained"
+                },
+                {
+                  "id": 7,
+                  "source": {
+                    "u": 0.31,
+                    "v": 0.94,
+                    "h": 19
+                  },
+                  "contact": {
+                    "u": 0.322,
+                    "v": 0.94,
+                    "h": 13.1
+                  },
+                  "target": {
+                    "u": 0.322,
+                    "v": 0.94,
+                    "h": 11.25
+                  },
+                  "u": 0.322,
+                  "v": 0.94,
+                  "h": 11.25,
+                  "releaseAt": 0.355,
+                  "contactAt": 0.5650000000000001,
+                  "settledAt": 0.91,
+                  "travel": 1,
+                  "incorporation": 1,
+                  "retained": true,
+                  "arrived": true,
+                  "sourcePresent": false,
+                  "stage": "retained"
+                },
+                {
+                  "id": 8,
+                  "source": {
+                    "u": 0.43,
+                    "v": 0.94,
+                    "h": 19
+                  },
+                  "contact": {
+                    "u": 0.442,
+                    "v": 0.94,
+                    "h": 13.1
+                  },
+                  "target": {
+                    "u": 0.442,
+                    "v": 0.94,
+                    "h": 11.25
+                  },
+                  "u": 0.442,
+                  "v": 0.94,
+                  "h": 11.25,
+                  "releaseAt": 0.22,
+                  "contactAt": 0.62,
+                  "settledAt": 0.79,
+                  "travel": 1,
+                  "incorporation": 1,
+                  "retained": true,
+                  "arrived": true,
+                  "sourcePresent": false,
+                  "stage": "retained"
+                },
+                {
+                  "id": 9,
+                  "source": {
+                    "u": 0.55,
+                    "v": 0.94,
+                    "h": 19
+                  },
+                  "contact": {
+                    "u": 0.562,
+                    "v": 0.94,
+                    "h": 13.1
+                  },
+                  "target": {
+                    "u": 0.562,
+                    "v": 0.94,
+                    "h": 11.25
+                  },
+                  "u": 0.562,
+                  "v": 0.94,
+                  "h": 11.25,
+                  "releaseAt": 0.265,
+                  "contactAt": 0.51,
+                  "settledAt": 0.8300000000000001,
+                  "travel": 1,
+                  "incorporation": 1,
+                  "retained": true,
+                  "arrived": true,
+                  "sourcePresent": false,
+                  "stage": "retained"
+                },
+                {
+                  "id": 10,
+                  "source": {
+                    "u": 0.6699999999999999,
+                    "v": 0.94,
+                    "h": 19
+                  },
+                  "contact": {
+                    "u": 0.6819999999999999,
+                    "v": 0.94,
+                    "h": 13.1
+                  },
+                  "target": {
+                    "u": 0.6819999999999999,
+                    "v": 0.94,
+                    "h": 11.25
+                  },
+                  "u": 0.6819999999999999,
+                  "v": 0.94,
+                  "h": 11.25,
+                  "releaseAt": 0.31,
+                  "contactAt": 0.5650000000000001,
+                  "settledAt": 0.87,
+                  "travel": 1,
+                  "incorporation": 1,
+                  "retained": true,
+                  "arrived": true,
+                  "sourcePresent": false,
+                  "stage": "retained"
+                },
+                {
+                  "id": 11,
+                  "source": {
+                    "u": 0.79,
+                    "v": 0.94,
+                    "h": 19
+                  },
+                  "contact": {
+                    "u": 0.802,
+                    "v": 0.94,
+                    "h": 13.1
+                  },
+                  "target": {
+                    "u": 0.802,
+                    "v": 0.94,
+                    "h": 11.25
+                  },
+                  "u": 0.802,
+                  "v": 0.94,
+                  "h": 11.25,
+                  "releaseAt": 0.355,
+                  "contactAt": 0.62,
+                  "settledAt": 0.91,
+                  "travel": 1,
+                  "incorporation": 1,
+                  "retained": true,
+                  "arrived": true,
+                  "sourcePresent": false,
+                  "stage": "retained"
+                }
+              ],
+              "receiverPatches": [
+                {
+                  "column": 0,
+                  "u": 0.19,
+                  "amount": 1,
+                  "base": 9.4,
+                  "growth": 2.2
+                },
+                {
+                  "column": 1,
+                  "u": 0.31,
+                  "amount": 1,
+                  "base": 9.4,
+                  "growth": 2.2
+                },
+                {
+                  "column": 2,
+                  "u": 0.43,
+                  "amount": 1,
+                  "base": 9.4,
+                  "growth": 2.2
+                },
+                {
+                  "column": 3,
+                  "u": 0.55,
+                  "amount": 1,
+                  "base": 9.4,
+                  "growth": 2.2
+                },
+                {
+                  "column": 4,
+                  "u": 0.6699999999999999,
+                  "amount": 1,
+                  "base": 9.4,
+                  "growth": 2.2
+                },
+                {
+                  "column": 5,
+                  "u": 0.79,
+                  "amount": 1,
+                  "base": 9.4,
+                  "growth": 2.2
+                }
+              ],
+              "received": 1,
+              "inventory": {
+                "source": 0,
+                "moving": 0,
+                "incorporating": 0,
+                "retained": 12,
+                "total": 12
+              },
+              "water": {
+                "rain": false,
+                "rainReach": 1,
+                "front": 9,
+                "active": false
+              },
+              "retained": 12,
+              "soilDepth": 6,
+              "material": "mobile-soil-constituent",
+              "sameMarkedMaterial": true,
+              "receivingResponseAfterContact": true,
+              "rainAddsMobileMaterial": false,
+              "trajectoryIsIllustrative": true,
+              "decompositionIsNotInstantaneous": true,
+              "actualYearsOrCentimetres": false
+            },
+            "soilDepth": "illustrative-not-centimetres",
+            "organicMatterViaBiology": true,
+            "hotWetIsNotAutomaticallyFertile": true,
+            "growthIsNotAChronometer": true,
+            "buffersStable": true
+          },
+          "view": "detail",
+          "labels": [
+            {
+              "text": "温度与降水",
+              "left": 620.0471603995501,
+              "top": 200.1861481580411,
+              "right": 797.047156017792,
+              "bottom": 236.8068369066429,
+              "fontPx": 25.14256242441317
+            },
+            {
+              "text": "风化",
+              "left": 310.1114425008551,
+              "top": 519.8550899739527,
+              "right": 390.2830111311926,
+              "bottom": 559.9408742891213,
+              "fontPx": 27.521583261160576
+            },
+            {
+              "text": "淋溶",
+              "left": 778.5113773687581,
+              "top": 558.3942988517932,
+              "right": 933.1655062590821,
+              "bottom": 600.5726976400634,
+              "fontPx": 28.958303645678058
+            }
+          ],
+          "models": 1,
+          "images": 6,
+          "triangles": 15049,
+          "calls": 76,
+          "geometries": 75,
+          "textures": 417,
+          "hiRes": 6,
+          "engine": "Every Joule 48591dd"
+        },
+        "regions": [
+          {
+            "id": "soil-factors",
+            "screenX": 1010.1428388252448,
+            "screenY": 605.7497184154236
+          }
+        ],
+        "pages": [
+          95,
+          96
+        ],
+        "notes": {},
+        "originalPageCount": 132,
+        "sectionCount": 17,
+        "studyCount": 6,
+        "figureCount": 60
+      }
+    },
+    {
+      "name": "soil-climate-1366",
+      "state": {
+        "ready": true,
+        "twoD": false,
+        "spread": 48,
+        "turning": false,
+        "figureBusy": false,
+        "active": "soil-factors",
+        "playing": false,
+        "playbackSpeed": 2,
+        "teacher": false,
+        "stored": true,
+        "state": {
+          "phase": 1,
+          "selection": 2,
+          "routes": [],
+          "rings": [],
+          "focus": null,
+          "caption": "气候作用"
+        },
+        "process": null,
+        "render": {
+          "position": 48,
+          "spread": 48,
+          "busy": false,
+          "figure": "soil-factors",
+          "modelState": "live",
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 109,
+            "labels": 15,
+            "meshes": 127,
+            "imageMappedMeshes": 0,
+            "extent": [
+              150.82556725834363,
+              72.3447415213236,
+              152.0725730680183
+            ],
+            "sceneElevation": 56,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 1,
+            "selection": 2,
+            "kind": "soil-forming-factors",
+            "factor": "climate",
+            "provenance": {
+              "phase": 1,
+              "factor": 2,
+              "particles": [
+                {
+                  "id": 0,
+                  "source": {
+                    "u": 0.19,
+                    "v": 0.94,
+                    "h": 18.5
+                  },
+                  "contact": {
+                    "u": 0.178,
+                    "v": 0.94,
+                    "h": 12.7
+                  },
+                  "target": {
+                    "u": 0.178,
+                    "v": 0.94,
+                    "h": 10
+                  },
+                  "u": 0.178,
+                  "v": 0.94,
+                  "h": 10,
+                  "releaseAt": 0.22,
+                  "contactAt": 0.51,
+                  "settledAt": 0.79,
+                  "travel": 1,
+                  "incorporation": 1,
+                  "retained": true,
+                  "arrived": true,
+                  "sourcePresent": false,
+                  "stage": "retained"
+                },
+                {
+                  "id": 1,
+                  "source": {
+                    "u": 0.31,
+                    "v": 0.94,
+                    "h": 18.5
+                  },
+                  "contact": {
+                    "u": 0.298,
+                    "v": 0.94,
+                    "h": 12.7
+                  },
+                  "target": {
+                    "u": 0.298,
+                    "v": 0.94,
+                    "h": 10
+                  },
+                  "u": 0.298,
+                  "v": 0.94,
+                  "h": 10,
+                  "releaseAt": 0.265,
+                  "contactAt": 0.5650000000000001,
+                  "settledAt": 0.8300000000000001,
+                  "travel": 1,
+                  "incorporation": 1,
+                  "retained": true,
+                  "arrived": true,
+                  "sourcePresent": false,
+                  "stage": "retained"
+                },
+                {
+                  "id": 2,
+                  "source": {
+                    "u": 0.43,
+                    "v": 0.94,
+                    "h": 18.5
+                  },
+                  "contact": {
+                    "u": 0.418,
+                    "v": 0.94,
+                    "h": 12.7
+                  },
+                  "target": {
+                    "u": 0.418,
+                    "v": 0.94,
+                    "h": 10
+                  },
+                  "u": 0.418,
+                  "v": 0.94,
+                  "h": 10,
+                  "releaseAt": 0.31,
+                  "contactAt": 0.62,
+                  "settledAt": 0.87,
+                  "travel": 1,
+                  "incorporation": 1,
+                  "retained": true,
+                  "arrived": true,
+                  "sourcePresent": false,
+                  "stage": "retained"
+                },
+                {
+                  "id": 3,
+                  "source": {
+                    "u": 0.55,
+                    "v": 0.94,
+                    "h": 18.5
+                  },
+                  "contact": {
+                    "u": 0.538,
+                    "v": 0.94,
+                    "h": 12.7
+                  },
+                  "target": {
+                    "u": 0.538,
+                    "v": 0.94,
+                    "h": 10
+                  },
+                  "u": 0.538,
+                  "v": 0.94,
+                  "h": 10,
+                  "releaseAt": 0.355,
+                  "contactAt": 0.51,
+                  "settledAt": 0.91,
+                  "travel": 1,
+                  "incorporation": 1,
+                  "retained": true,
+                  "arrived": true,
+                  "sourcePresent": false,
+                  "stage": "retained"
+                },
+                {
+                  "id": 4,
+                  "source": {
+                    "u": 0.6699999999999999,
+                    "v": 0.94,
+                    "h": 18.5
+                  },
+                  "contact": {
+                    "u": 0.6579999999999999,
+                    "v": 0.94,
+                    "h": 12.7
+                  },
+                  "target": {
+                    "u": 0.6579999999999999,
+                    "v": 0.94,
+                    "h": 10
+                  },
+                  "u": 0.6579999999999999,
+                  "v": 0.94,
+                  "h": 10,
+                  "releaseAt": 0.22,
+                  "contactAt": 0.5650000000000001,
+                  "settledAt": 0.79,
+                  "travel": 1,
+                  "incorporation": 1,
+                  "retained": true,
+                  "arrived": true,
+                  "sourcePresent": false,
+                  "stage": "retained"
+                },
+                {
+                  "id": 5,
+                  "source": {
+                    "u": 0.79,
+                    "v": 0.94,
+                    "h": 18.5
+                  },
+                  "contact": {
+                    "u": 0.778,
+                    "v": 0.94,
+                    "h": 12.7
+                  },
+                  "target": {
+                    "u": 0.778,
+                    "v": 0.94,
+                    "h": 10
+                  },
+                  "u": 0.778,
+                  "v": 0.94,
+                  "h": 10,
+                  "releaseAt": 0.265,
+                  "contactAt": 0.62,
+                  "settledAt": 0.8300000000000001,
+                  "travel": 1,
+                  "incorporation": 1,
+                  "retained": true,
+                  "arrived": true,
+                  "sourcePresent": false,
+                  "stage": "retained"
+                },
+                {
+                  "id": 6,
+                  "source": {
+                    "u": 0.19,
+                    "v": 0.94,
+                    "h": 19
+                  },
+                  "contact": {
+                    "u": 0.202,
+                    "v": 0.94,
+                    "h": 13.1
+                  },
+                  "target": {
+                    "u": 0.202,
+                    "v": 0.94,
+                    "h": 11.25
+                  },
+                  "u": 0.202,
+                  "v": 0.94,
+                  "h": 11.25,
+                  "releaseAt": 0.31,
+                  "contactAt": 0.51,
+                  "settledAt": 0.87,
+                  "travel": 1,
+                  "incorporation": 1,
+                  "retained": true,
+                  "arrived": true,
+                  "sourcePresent": false,
+                  "stage": "retained"
+                },
+                {
+                  "id": 7,
+                  "source": {
+                    "u": 0.31,
+                    "v": 0.94,
+                    "h": 19
+                  },
+                  "contact": {
+                    "u": 0.322,
+                    "v": 0.94,
+                    "h": 13.1
+                  },
+                  "target": {
+                    "u": 0.322,
+                    "v": 0.94,
+                    "h": 11.25
+                  },
+                  "u": 0.322,
+                  "v": 0.94,
+                  "h": 11.25,
+                  "releaseAt": 0.355,
+                  "contactAt": 0.5650000000000001,
+                  "settledAt": 0.91,
+                  "travel": 1,
+                  "incorporation": 1,
+                  "retained": true,
+                  "arrived": true,
+                  "sourcePresent": false,
+                  "stage": "retained"
+                },
+                {
+                  "id": 8,
+                  "source": {
+                    "u": 0.43,
+                    "v": 0.94,
+                    "h": 19
+                  },
+                  "contact": {
+                    "u": 0.442,
+                    "v": 0.94,
+                    "h": 13.1
+                  },
+                  "target": {
+                    "u": 0.442,
+                    "v": 0.94,
+                    "h": 11.25
+                  },
+                  "u": 0.442,
+                  "v": 0.94,
+                  "h": 11.25,
+                  "releaseAt": 0.22,
+                  "contactAt": 0.62,
+                  "settledAt": 0.79,
+                  "travel": 1,
+                  "incorporation": 1,
+                  "retained": true,
+                  "arrived": true,
+                  "sourcePresent": false,
+                  "stage": "retained"
+                },
+                {
+                  "id": 9,
+                  "source": {
+                    "u": 0.55,
+                    "v": 0.94,
+                    "h": 19
+                  },
+                  "contact": {
+                    "u": 0.562,
+                    "v": 0.94,
+                    "h": 13.1
+                  },
+                  "target": {
+                    "u": 0.562,
+                    "v": 0.94,
+                    "h": 11.25
+                  },
+                  "u": 0.562,
+                  "v": 0.94,
+                  "h": 11.25,
+                  "releaseAt": 0.265,
+                  "contactAt": 0.51,
+                  "settledAt": 0.8300000000000001,
+                  "travel": 1,
+                  "incorporation": 1,
+                  "retained": true,
+                  "arrived": true,
+                  "sourcePresent": false,
+                  "stage": "retained"
+                },
+                {
+                  "id": 10,
+                  "source": {
+                    "u": 0.6699999999999999,
+                    "v": 0.94,
+                    "h": 19
+                  },
+                  "contact": {
+                    "u": 0.6819999999999999,
+                    "v": 0.94,
+                    "h": 13.1
+                  },
+                  "target": {
+                    "u": 0.6819999999999999,
+                    "v": 0.94,
+                    "h": 11.25
+                  },
+                  "u": 0.6819999999999999,
+                  "v": 0.94,
+                  "h": 11.25,
+                  "releaseAt": 0.31,
+                  "contactAt": 0.5650000000000001,
+                  "settledAt": 0.87,
+                  "travel": 1,
+                  "incorporation": 1,
+                  "retained": true,
+                  "arrived": true,
+                  "sourcePresent": false,
+                  "stage": "retained"
+                },
+                {
+                  "id": 11,
+                  "source": {
+                    "u": 0.79,
+                    "v": 0.94,
+                    "h": 19
+                  },
+                  "contact": {
+                    "u": 0.802,
+                    "v": 0.94,
+                    "h": 13.1
+                  },
+                  "target": {
+                    "u": 0.802,
+                    "v": 0.94,
+                    "h": 11.25
+                  },
+                  "u": 0.802,
+                  "v": 0.94,
+                  "h": 11.25,
+                  "releaseAt": 0.355,
+                  "contactAt": 0.62,
+                  "settledAt": 0.91,
+                  "travel": 1,
+                  "incorporation": 1,
+                  "retained": true,
+                  "arrived": true,
+                  "sourcePresent": false,
+                  "stage": "retained"
+                }
+              ],
+              "receiverPatches": [
+                {
+                  "column": 0,
+                  "u": 0.19,
+                  "amount": 1,
+                  "base": 9.4,
+                  "growth": 2.2
+                },
+                {
+                  "column": 1,
+                  "u": 0.31,
+                  "amount": 1,
+                  "base": 9.4,
+                  "growth": 2.2
+                },
+                {
+                  "column": 2,
+                  "u": 0.43,
+                  "amount": 1,
+                  "base": 9.4,
+                  "growth": 2.2
+                },
+                {
+                  "column": 3,
+                  "u": 0.55,
+                  "amount": 1,
+                  "base": 9.4,
+                  "growth": 2.2
+                },
+                {
+                  "column": 4,
+                  "u": 0.6699999999999999,
+                  "amount": 1,
+                  "base": 9.4,
+                  "growth": 2.2
+                },
+                {
+                  "column": 5,
+                  "u": 0.79,
+                  "amount": 1,
+                  "base": 9.4,
+                  "growth": 2.2
+                }
+              ],
+              "received": 1,
+              "inventory": {
+                "source": 0,
+                "moving": 0,
+                "incorporating": 0,
+                "retained": 12,
+                "total": 12
+              },
+              "water": {
+                "rain": false,
+                "rainReach": 1,
+                "front": 9,
+                "active": false
+              },
+              "retained": 12,
+              "soilDepth": 6,
+              "material": "mobile-soil-constituent",
+              "sameMarkedMaterial": true,
+              "receivingResponseAfterContact": true,
+              "rainAddsMobileMaterial": false,
+              "trajectoryIsIllustrative": true,
+              "decompositionIsNotInstantaneous": true,
+              "actualYearsOrCentimetres": false
+            },
+            "soilDepth": "illustrative-not-centimetres",
+            "organicMatterViaBiology": true,
+            "hotWetIsNotAutomaticallyFertile": true,
+            "growthIsNotAChronometer": true,
+            "buffersStable": true
+          },
+          "view": "detail",
+          "labels": [
+            {
+              "text": "温度与降水",
+              "left": 631.3612190443507,
+              "top": 179.0790064604053,
+              "right": 776.5563310200166,
+              "bottom": 209.11937445537077,
+              "fontPx": 20.62473026520017
+            },
+            {
+              "text": "风化",
+              "left": 378.2142632679914,
+              "top": 441.08469096808074,
+              "right": 443.7384779195289,
+              "bottom": 473.8467982938495,
+              "fontPx": 22.493387119184508
+            },
+            {
+              "text": "淋溶",
+              "left": 760.8588692079518,
+              "top": 472.4148074810792,
+              "right": 886.9827954638283,
+              "bottom": 506.8122419145001,
+              "fontPx": 23.616149013990448
+            }
+          ],
+          "models": 1,
+          "images": 6,
+          "triangles": 15049,
+          "calls": 76,
+          "geometries": 75,
+          "textures": 417,
+          "hiRes": 6,
+          "engine": "Every Joule 48591dd"
+        },
+        "regions": [
+          {
+            "id": "soil-factors",
+            "screenX": 953.1841335814867,
+            "screenY": 512.6394479582477
+          }
+        ],
+        "pages": [
+          95,
+          96
+        ],
+        "notes": {},
+        "originalPageCount": 132,
+        "sectionCount": 17,
+        "studyCount": 6,
+        "figureCount": 60
+      }
+    },
+    {
+      "name": "soil-climate-1024",
+      "state": {
+        "ready": true,
+        "twoD": false,
+        "spread": 48,
+        "turning": false,
+        "figureBusy": false,
+        "active": "soil-factors",
+        "playing": false,
+        "playbackSpeed": 2,
+        "teacher": false,
+        "stored": true,
+        "state": {
+          "phase": 1,
+          "selection": 2,
+          "routes": [],
+          "rings": [],
+          "focus": null,
+          "caption": "气候作用"
+        },
+        "process": null,
+        "render": {
+          "position": 48,
+          "spread": 48,
+          "busy": false,
+          "figure": "soil-factors",
+          "modelState": "live",
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 109,
+            "labels": 15,
+            "meshes": 127,
+            "imageMappedMeshes": 0,
+            "extent": [
+              150.82556725834363,
+              72.3447415213236,
+              152.0725730680183
+            ],
+            "sceneElevation": 56,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 1,
+            "selection": 2,
+            "kind": "soil-forming-factors",
+            "factor": "climate",
+            "provenance": {
+              "phase": 1,
+              "factor": 2,
+              "particles": [
+                {
+                  "id": 0,
+                  "source": {
+                    "u": 0.19,
+                    "v": 0.94,
+                    "h": 18.5
+                  },
+                  "contact": {
+                    "u": 0.178,
+                    "v": 0.94,
+                    "h": 12.7
+                  },
+                  "target": {
+                    "u": 0.178,
+                    "v": 0.94,
+                    "h": 10
+                  },
+                  "u": 0.178,
+                  "v": 0.94,
+                  "h": 10,
+                  "releaseAt": 0.22,
+                  "contactAt": 0.51,
+                  "settledAt": 0.79,
+                  "travel": 1,
+                  "incorporation": 1,
+                  "retained": true,
+                  "arrived": true,
+                  "sourcePresent": false,
+                  "stage": "retained"
+                },
+                {
+                  "id": 1,
+                  "source": {
+                    "u": 0.31,
+                    "v": 0.94,
+                    "h": 18.5
+                  },
+                  "contact": {
+                    "u": 0.298,
+                    "v": 0.94,
+                    "h": 12.7
+                  },
+                  "target": {
+                    "u": 0.298,
+                    "v": 0.94,
+                    "h": 10
+                  },
+                  "u": 0.298,
+                  "v": 0.94,
+                  "h": 10,
+                  "releaseAt": 0.265,
+                  "contactAt": 0.5650000000000001,
+                  "settledAt": 0.8300000000000001,
+                  "travel": 1,
+                  "incorporation": 1,
+                  "retained": true,
+                  "arrived": true,
+                  "sourcePresent": false,
+                  "stage": "retained"
+                },
+                {
+                  "id": 2,
+                  "source": {
+                    "u": 0.43,
+                    "v": 0.94,
+                    "h": 18.5
+                  },
+                  "contact": {
+                    "u": 0.418,
+                    "v": 0.94,
+                    "h": 12.7
+                  },
+                  "target": {
+                    "u": 0.418,
+                    "v": 0.94,
+                    "h": 10
+                  },
+                  "u": 0.418,
+                  "v": 0.94,
+                  "h": 10,
+                  "releaseAt": 0.31,
+                  "contactAt": 0.62,
+                  "settledAt": 0.87,
+                  "travel": 1,
+                  "incorporation": 1,
+                  "retained": true,
+                  "arrived": true,
+                  "sourcePresent": false,
+                  "stage": "retained"
+                },
+                {
+                  "id": 3,
+                  "source": {
+                    "u": 0.55,
+                    "v": 0.94,
+                    "h": 18.5
+                  },
+                  "contact": {
+                    "u": 0.538,
+                    "v": 0.94,
+                    "h": 12.7
+                  },
+                  "target": {
+                    "u": 0.538,
+                    "v": 0.94,
+                    "h": 10
+                  },
+                  "u": 0.538,
+                  "v": 0.94,
+                  "h": 10,
+                  "releaseAt": 0.355,
+                  "contactAt": 0.51,
+                  "settledAt": 0.91,
+                  "travel": 1,
+                  "incorporation": 1,
+                  "retained": true,
+                  "arrived": true,
+                  "sourcePresent": false,
+                  "stage": "retained"
+                },
+                {
+                  "id": 4,
+                  "source": {
+                    "u": 0.6699999999999999,
+                    "v": 0.94,
+                    "h": 18.5
+                  },
+                  "contact": {
+                    "u": 0.6579999999999999,
+                    "v": 0.94,
+                    "h": 12.7
+                  },
+                  "target": {
+                    "u": 0.6579999999999999,
+                    "v": 0.94,
+                    "h": 10
+                  },
+                  "u": 0.6579999999999999,
+                  "v": 0.94,
+                  "h": 10,
+                  "releaseAt": 0.22,
+                  "contactAt": 0.5650000000000001,
+                  "settledAt": 0.79,
+                  "travel": 1,
+                  "incorporation": 1,
+                  "retained": true,
+                  "arrived": true,
+                  "sourcePresent": false,
+                  "stage": "retained"
+                },
+                {
+                  "id": 5,
+                  "source": {
+                    "u": 0.79,
+                    "v": 0.94,
+                    "h": 18.5
+                  },
+                  "contact": {
+                    "u": 0.778,
+                    "v": 0.94,
+                    "h": 12.7
+                  },
+                  "target": {
+                    "u": 0.778,
+                    "v": 0.94,
+                    "h": 10
+                  },
+                  "u": 0.778,
+                  "v": 0.94,
+                  "h": 10,
+                  "releaseAt": 0.265,
+                  "contactAt": 0.62,
+                  "settledAt": 0.8300000000000001,
+                  "travel": 1,
+                  "incorporation": 1,
+                  "retained": true,
+                  "arrived": true,
+                  "sourcePresent": false,
+                  "stage": "retained"
+                },
+                {
+                  "id": 6,
+                  "source": {
+                    "u": 0.19,
+                    "v": 0.94,
+                    "h": 19
+                  },
+                  "contact": {
+                    "u": 0.202,
+                    "v": 0.94,
+                    "h": 13.1
+                  },
+                  "target": {
+                    "u": 0.202,
+                    "v": 0.94,
+                    "h": 11.25
+                  },
+                  "u": 0.202,
+                  "v": 0.94,
+                  "h": 11.25,
+                  "releaseAt": 0.31,
+                  "contactAt": 0.51,
+                  "settledAt": 0.87,
+                  "travel": 1,
+                  "incorporation": 1,
+                  "retained": true,
+                  "arrived": true,
+                  "sourcePresent": false,
+                  "stage": "retained"
+                },
+                {
+                  "id": 7,
+                  "source": {
+                    "u": 0.31,
+                    "v": 0.94,
+                    "h": 19
+                  },
+                  "contact": {
+                    "u": 0.322,
+                    "v": 0.94,
+                    "h": 13.1
+                  },
+                  "target": {
+                    "u": 0.322,
+                    "v": 0.94,
+                    "h": 11.25
+                  },
+                  "u": 0.322,
+                  "v": 0.94,
+                  "h": 11.25,
+                  "releaseAt": 0.355,
+                  "contactAt": 0.5650000000000001,
+                  "settledAt": 0.91,
+                  "travel": 1,
+                  "incorporation": 1,
+                  "retained": true,
+                  "arrived": true,
+                  "sourcePresent": false,
+                  "stage": "retained"
+                },
+                {
+                  "id": 8,
+                  "source": {
+                    "u": 0.43,
+                    "v": 0.94,
+                    "h": 19
+                  },
+                  "contact": {
+                    "u": 0.442,
+                    "v": 0.94,
+                    "h": 13.1
+                  },
+                  "target": {
+                    "u": 0.442,
+                    "v": 0.94,
+                    "h": 11.25
+                  },
+                  "u": 0.442,
+                  "v": 0.94,
+                  "h": 11.25,
+                  "releaseAt": 0.22,
+                  "contactAt": 0.62,
+                  "settledAt": 0.79,
+                  "travel": 1,
+                  "incorporation": 1,
+                  "retained": true,
+                  "arrived": true,
+                  "sourcePresent": false,
+                  "stage": "retained"
+                },
+                {
+                  "id": 9,
+                  "source": {
+                    "u": 0.55,
+                    "v": 0.94,
+                    "h": 19
+                  },
+                  "contact": {
+                    "u": 0.562,
+                    "v": 0.94,
+                    "h": 13.1
+                  },
+                  "target": {
+                    "u": 0.562,
+                    "v": 0.94,
+                    "h": 11.25
+                  },
+                  "u": 0.562,
+                  "v": 0.94,
+                  "h": 11.25,
+                  "releaseAt": 0.265,
+                  "contactAt": 0.51,
+                  "settledAt": 0.8300000000000001,
+                  "travel": 1,
+                  "incorporation": 1,
+                  "retained": true,
+                  "arrived": true,
+                  "sourcePresent": false,
+                  "stage": "retained"
+                },
+                {
+                  "id": 10,
+                  "source": {
+                    "u": 0.6699999999999999,
+                    "v": 0.94,
+                    "h": 19
+                  },
+                  "contact": {
+                    "u": 0.6819999999999999,
+                    "v": 0.94,
+                    "h": 13.1
+                  },
+                  "target": {
+                    "u": 0.6819999999999999,
+                    "v": 0.94,
+                    "h": 11.25
+                  },
+                  "u": 0.6819999999999999,
+                  "v": 0.94,
+                  "h": 11.25,
+                  "releaseAt": 0.31,
+                  "contactAt": 0.5650000000000001,
+                  "settledAt": 0.87,
+                  "travel": 1,
+                  "incorporation": 1,
+                  "retained": true,
+                  "arrived": true,
+                  "sourcePresent": false,
+                  "stage": "retained"
+                },
+                {
+                  "id": 11,
+                  "source": {
+                    "u": 0.79,
+                    "v": 0.94,
+                    "h": 19
+                  },
+                  "contact": {
+                    "u": 0.802,
+                    "v": 0.94,
+                    "h": 13.1
+                  },
+                  "target": {
+                    "u": 0.802,
+                    "v": 0.94,
+                    "h": 11.25
+                  },
+                  "u": 0.802,
+                  "v": 0.94,
+                  "h": 11.25,
+                  "releaseAt": 0.355,
+                  "contactAt": 0.62,
+                  "settledAt": 0.91,
+                  "travel": 1,
+                  "incorporation": 1,
+                  "retained": true,
+                  "arrived": true,
+                  "sourcePresent": false,
+                  "stage": "retained"
+                }
+              ],
+              "receiverPatches": [
+                {
+                  "column": 0,
+                  "u": 0.19,
+                  "amount": 1,
+                  "base": 9.4,
+                  "growth": 2.2
+                },
+                {
+                  "column": 1,
+                  "u": 0.31,
+                  "amount": 1,
+                  "base": 9.4,
+                  "growth": 2.2
+                },
+                {
+                  "column": 2,
+                  "u": 0.43,
+                  "amount": 1,
+                  "base": 9.4,
+                  "growth": 2.2
+                },
+                {
+                  "column": 3,
+                  "u": 0.55,
+                  "amount": 1,
+                  "base": 9.4,
+                  "growth": 2.2
+                },
+                {
+                  "column": 4,
+                  "u": 0.6699999999999999,
+                  "amount": 1,
+                  "base": 9.4,
+                  "growth": 2.2
+                },
+                {
+                  "column": 5,
+                  "u": 0.79,
+                  "amount": 1,
+                  "base": 9.4,
+                  "growth": 2.2
+                }
+              ],
+              "received": 1,
+              "inventory": {
+                "source": 0,
+                "moving": 0,
+                "incorporating": 0,
+                "retained": 12,
+                "total": 12
+              },
+              "water": {
+                "rain": false,
+                "rainReach": 1,
+                "front": 9,
+                "active": false
+              },
+              "retained": 12,
+              "soilDepth": 6,
+              "material": "mobile-soil-constituent",
+              "sameMarkedMaterial": true,
+              "receivingResponseAfterContact": true,
+              "rainAddsMobileMaterial": false,
+              "trajectoryIsIllustrative": true,
+              "decompositionIsNotInstantaneous": true,
+              "actualYearsOrCentimetres": false
+            },
+            "soilDepth": "illustrative-not-centimetres",
+            "organicMatterViaBiology": true,
+            "hotWetIsNotAutomaticallyFertile": true,
+            "growthIsNotAChronometer": true,
+            "buffersStable": true
+          },
+          "view": "detail",
+          "labels": [
+            {
+              "text": "温度与降水",
+              "left": 460.3637122261937,
+              "top": 179.08889983519117,
+              "right": 605.5518143497427,
+              "bottom": 209.12781751592547,
+              "fontPx": 20.62373452707131
+            },
+            {
+              "text": "风化",
+              "left": 207.23031095100646,
+              "top": 441.08168513416393,
+              "right": 272.7510755468485,
+              "bottom": 473.842067432085,
+              "fontPx": 22.492202771707003
+            },
+            {
+              "text": "淋溶",
+              "left": 589.8545647400927,
+              "top": 472.409920043508,
+              "right": 715.9715187603381,
+              "bottom": 506.80545295812044,
+              "fontPx": 23.614843493614504
+            }
+          ],
+          "models": 1,
+          "images": 6,
+          "triangles": 15049,
+          "calls": 76,
+          "geometries": 75,
+          "textures": 417,
+          "hiRes": 6,
+          "engine": "Every Joule 48591dd"
+        },
+        "regions": [
+          {
+            "id": "soil-factors",
+            "screenX": 782.1732818172737,
+            "screenY": 512.6342812761218
+          }
+        ],
+        "pages": [
+          95,
+          96
+        ],
+        "notes": {},
+        "originalPageCount": 132,
+        "sectionCount": 17,
+        "studyCount": 6,
+        "figureCount": 60
+      }
+    },
+    {
+      "name": "gis-menu",
+      "state": {
+        "ready": true,
+        "twoD": false,
+        "spread": 61,
+        "turning": false,
+        "figureBusy": false,
+        "active": "gis",
+        "playing": false,
+        "playbackSpeed": 2,
+        "teacher": false,
+        "stored": true,
+        "state": {
+          "phase": 0.93,
+          "selection": 1,
+          "routes": [],
+          "rings": [],
+          "focus": null,
+          "caption": "叠合统计：1区5、2区15、3区13"
+        },
+        "process": {
+          "key": "gis-result",
+          "stage": "空间叠合分析",
+          "title": "叠合得到分区统计",
+          "text": "同一批33个雨量站，按空间归属计入三个行政区，分别为5、15、13个。",
+          "activeStop": 1,
+          "seeking": false
+        },
+        "render": {
+          "position": 61,
+          "spread": 61,
+          "busy": false,
+          "figure": "gis",
+          "modelState": "live",
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 38,
+            "labels": 8,
+            "meshes": 46,
+            "imageMappedMeshes": 0,
+            "extent": [
+              74.84997286852344,
+              35.85025541502905,
+              70.36031281570773
+            ],
+            "sceneElevation": 33.50491164835741,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.93,
+            "selection": 1,
+            "kind": "gis-spatial-overlay",
+            "stage": "result",
+            "assembled": true,
+            "inspection": "region-1",
+            "source": {
+              "textbookPage": 117,
+              "pdfPage": 122,
+              "figure": "6.26",
+              "image": "textbook/page-122.webp",
+              "imagePixels": [
+                1530,
+                2147
+              ],
+              "stationLayerY": [
+                970,
+                1147
+              ],
+              "regionLayerY": [
+                1251,
+                1427
+              ],
+              "coordinateMeaning": "positions-traced-from-the-textbook-diagram"
+            },
+            "geometricLayers": 2,
+            "stationMeshCount": 33,
+            "oneStationSet": true,
+            "counts": [
+              {
+                "region": 1,
+                "count": 5
+              },
+              {
+                "region": 2,
+                "count": 15
+              },
+              {
+                "region": 3,
+                "count": 13
+              }
+            ],
+            "derivedTotals": [
+              {
+                "id": 1,
+                "count": 5
+              },
+              {
+                "id": 2,
+                "count": 15
+              },
+              {
+                "id": 3,
+                "count": 13
+              }
+            ],
+            "membershipMethod": "point-in-polygon",
+            "activeRegion": null,
+            "resultReady": true,
+            "measuredGeographicData": false,
+            "elevatedAbovePage": 33.50491164835741
+          },
+          "view": "detail",
+          "labels": [
+            {
+              "text": "1区 5",
+              "left": 391.3635855121097,
+              "top": 618.6471983215552,
+              "right": 527.4591802464676,
+              "bottom": 652.6710970051445,
+              "fontPx": 23.338707361470362
+            },
+            {
+              "text": "2区 15",
+              "left": 573.3940950757766,
+              "top": 635.6942708607017,
+              "right": 711.276630124514,
+              "bottom": 670.1649046228861,
+              "fontPx": 23.645145473233875
+            },
+            {
+              "text": "3区 13",
+              "left": 760.2683380144985,
+              "top": 653.1949567770936,
+              "right": 899.9853628925881,
+              "bottom": 688.1242129966159,
+              "fontPx": 23.959737737358314
+            }
+          ],
+          "models": 1,
+          "images": 6,
+          "triangles": 15357,
+          "calls": 102,
+          "geometries": 41,
+          "textures": 517,
+          "hiRes": 6,
+          "engine": "Every Joule 48591dd"
+        },
+        "regions": [
+          {
+            "id": "gnss",
+            "screenX": 384.10639468617745,
+            "screenY": 423.6747464913088
+          },
+          {
+            "id": "gis",
+            "screenX": 674.5832868298471,
+            "screenY": 710.9851029983074
+          }
+        ],
+        "pages": [
+          121,
+          122
+        ],
+        "notes": {},
+        "originalPageCount": 132,
+        "sectionCount": 17,
+        "studyCount": 6,
+        "figureCount": 60
+      }
+    },
+    {
+      "name": "phone-vine",
+      "state": {
+        "ready": true,
+        "twoD": true,
+        "spread": 45,
+        "turning": false,
+        "figureBusy": false,
+        "active": "vegetation",
+        "playing": false,
+        "playbackSpeed": 2,
+        "teacher": false,
+        "stored": true,
+        "state": {
+          "phase": 0,
+          "selection": 0,
+          "routes": [],
+          "rings": [],
+          "focus": null,
+          "caption": "热带雨林"
+        },
+        "process": null,
+        "render": null,
+        "regions": [],
+        "pages": [
+          89,
+          90
+        ],
+        "notes": {},
+        "originalPageCount": 132,
+        "sectionCount": 17,
+        "studyCount": 6,
+        "figureCount": 60
+      }
+    }
+  ],
+  "scope": "Final label adjustment at three viewports; menu/focus/navigation/reset regression and native phone fallback. Previous BGFlw9RG detailed test results remain separately fingerprinted.",
+  "reviewedEntry": {
+    "path": "/assets/index-SsFpYqVD.js",
+    "sha256": "5e8ccc5e11241a1a928998a3a93bd0e3e5bde15398ac63aaa5cd92089f0d298f"
+  },
+  "reviewedStyles": [
+    {
+      "path": "/assets/index-BqXd35wy.css",
+      "sha256": "5ae82f930e633c82e5398aacf4e3aa1c3f7b9570fce8ba498976feb6d78c2617"
+    }
+  ],
+  "reviewedAt": "2026-11-06T04:19:27.357Z",
+  "browser": "156.0.8078.80"
+}

@@ -1,0 +1,843 @@
+{
+  "base": "http://127.0.0.1:4175",
+  "checks": [
+    "Fresh book defaults to 2×",
+    "Changing speed while paused preserves pause and exact phase",
+    "Enter changes speed",
+    "Space changes speed",
+    "Speed 2× is selectable",
+    "Accessible label reports the current speed",
+    "Speed 2× is selectable",
+    "Real animation loop advances at 2× (measured 2.0000×)",
+    "Speed 4× is selectable",
+    "Real animation loop advances at 4× (measured 4.0000×)",
+    "Speed 0.5× is selectable",
+    "Real animation loop advances at 0.5× (measured 0.5000×)",
+    "Speed 1× is selectable",
+    "Real animation loop advances at 1× (measured 1.0000×)",
+    "Speed 2× is selectable",
+    "Changing speed during playback keeps playing without a phase jump",
+    "Refresh restores chosen speed and observation paused",
+    "Older bookmark without a speed migrates to 2× without losing phase",
+    "Migration preserves existing notes",
+    "Unsupported stored speed falls back to 2×",
+    "Speed 4× is selectable",
+    "Teacher speed does not overwrite personal preference",
+    "Leaving teacher mode restores personal speed",
+    "Speed 4× is selectable",
+    "One-shot animation still stops exactly at the end at 4×",
+    "Speed 4× is selectable",
+    "Cyclic animation wraps and keeps playing at 4×",
+    "Speed 2× is selectable",
+    "Three-dimensional book uses the same speed preference",
+    "Three-dimensional geometry advances with 2× playback",
+    "1920: speed button has 44-pixel touch area",
+    "1920: speed control remains on screen",
+    "1920: playback and page controls do not overlap",
+    "1920: page has no horizontal overflow",
+    "1366: speed button has 44-pixel touch area",
+    "1366: speed control remains on screen",
+    "1366: playback and page controls do not overlap",
+    "1366: page has no horizontal overflow",
+    "1024: speed button has 44-pixel touch area",
+    "1024: speed control remains on screen",
+    "1024: playback and page controls do not overlap",
+    "1024: page has no horizontal overflow",
+    "390: speed button has 44-pixel touch area",
+    "390: speed control remains on screen",
+    "390: playback and page controls do not overlap",
+    "390: page has no horizontal overflow",
+    "320: speed button has 44-pixel touch area",
+    "320: speed control remains on screen",
+    "320: playback and page controls do not overlap",
+    "320: page has no horizontal overflow"
+  ],
+  "failures": [],
+  "errors": [],
+  "samples": [
+    {
+      "initial": 0.20014,
+      "final": 0.21687500000000046,
+      "elapsed": 1.0041000000000018,
+      "wallSeconds": 1.0041,
+      "speed": 2,
+      "playing": true
+    },
+    {
+      "initial": 0.2002766666666667,
+      "final": 0.2337466666666674,
+      "elapsed": 1.0041000000000022,
+      "wallSeconds": 1.0041,
+      "speed": 4,
+      "playing": true
+    },
+    {
+      "initial": 0.20006958333333336,
+      "final": 0.20425291666666734,
+      "elapsed": 1.0040000000000016,
+      "wallSeconds": 1.0040000000000004,
+      "speed": 0.5,
+      "playing": true
+    },
+    {
+      "initial": 0.2001041666666667,
+      "final": 0.2084708333333346,
+      "elapsed": 1.0040000000000013,
+      "wallSeconds": 1.004,
+      "speed": 1,
+      "playing": true
+    }
+  ],
+  "layouts": [
+    {
+      "width": 1920,
+      "height": 1080,
+      "speed": {
+        "x": 1102,
+        "y": 1007,
+        "w": 44,
+        "h": 44,
+        "right": 1146,
+        "bottom": 1051
+      },
+      "dock": {
+        "x": 520,
+        "y": 929,
+        "w": 880,
+        "h": 133,
+        "right": 1400,
+        "bottom": 1062
+      },
+      "overlaps": [],
+      "controls": [
+        {
+          "id": "cPrev",
+          "x": 535,
+          "y": 940,
+          "w": 76,
+          "h": 48,
+          "right": 611,
+          "bottom": 988
+        },
+        {
+          "id": "cPause",
+          "x": 627,
+          "y": 942,
+          "w": 74,
+          "h": 44,
+          "right": 701,
+          "bottom": 986
+        },
+        {
+          "id": "夜晚",
+          "x": 536,
+          "y": 1007,
+          "w": 63,
+          "h": 44,
+          "right": 599,
+          "bottom": 1051
+        },
+        {
+          "id": "日出",
+          "x": 602,
+          "y": 1007,
+          "w": 63,
+          "h": 44,
+          "right": 665,
+          "bottom": 1051
+        },
+        {
+          "id": "白天",
+          "x": 668,
+          "y": 1007,
+          "w": 63,
+          "h": 44,
+          "right": 731,
+          "bottom": 1051
+        },
+        {
+          "id": "日落",
+          "x": 734,
+          "y": 1007,
+          "w": 63,
+          "h": 44,
+          "right": 797,
+          "bottom": 1051
+        },
+        {
+          "id": "phase",
+          "x": 941,
+          "y": 1009,
+          "w": 148,
+          "h": 40,
+          "right": 1089,
+          "bottom": 1049
+        },
+        {
+          "id": "cSpeed",
+          "x": 1102,
+          "y": 1007,
+          "w": 44,
+          "h": 44,
+          "right": 1146,
+          "bottom": 1051
+        },
+        {
+          "id": "scene-view",
+          "x": 1151,
+          "y": 1009,
+          "w": 46,
+          "h": 40,
+          "right": 1197,
+          "bottom": 1049
+        },
+        {
+          "id": "restart",
+          "x": 1202,
+          "y": 1009,
+          "w": 66,
+          "h": 40,
+          "right": 1268,
+          "bottom": 1049
+        },
+        {
+          "id": "fold",
+          "x": 1273,
+          "y": 1009,
+          "w": 66,
+          "h": 40,
+          "right": 1339,
+          "bottom": 1049
+        },
+        {
+          "id": "figure-note",
+          "x": 1344,
+          "y": 1009,
+          "w": 40,
+          "h": 40,
+          "right": 1384,
+          "bottom": 1049
+        },
+        {
+          "id": "cNext",
+          "x": 1205,
+          "y": 940,
+          "w": 76,
+          "h": 48,
+          "right": 1281,
+          "bottom": 988
+        },
+        {
+          "id": "folio-toggle",
+          "x": 1289,
+          "y": 940,
+          "w": 96,
+          "h": 48,
+          "right": 1385,
+          "bottom": 988
+        }
+      ],
+      "documentWidth": 1920
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "speed": {
+        "x": 825,
+        "y": 695,
+        "w": 44,
+        "h": 44,
+        "right": 869,
+        "bottom": 739
+      },
+      "dock": {
+        "x": 243,
+        "y": 617,
+        "w": 880,
+        "h": 133,
+        "right": 1123,
+        "bottom": 750
+      },
+      "overlaps": [],
+      "controls": [
+        {
+          "id": "cPrev",
+          "x": 258,
+          "y": 628,
+          "w": 76,
+          "h": 48,
+          "right": 334,
+          "bottom": 676
+        },
+        {
+          "id": "cPause",
+          "x": 350,
+          "y": 630,
+          "w": 74,
+          "h": 44,
+          "right": 424,
+          "bottom": 674
+        },
+        {
+          "id": "夜晚",
+          "x": 259,
+          "y": 695,
+          "w": 63,
+          "h": 44,
+          "right": 322,
+          "bottom": 739
+        },
+        {
+          "id": "日出",
+          "x": 325,
+          "y": 695,
+          "w": 63,
+          "h": 44,
+          "right": 388,
+          "bottom": 739
+        },
+        {
+          "id": "白天",
+          "x": 391,
+          "y": 695,
+          "w": 63,
+          "h": 44,
+          "right": 454,
+          "bottom": 739
+        },
+        {
+          "id": "日落",
+          "x": 457,
+          "y": 695,
+          "w": 63,
+          "h": 44,
+          "right": 520,
+          "bottom": 739
+        },
+        {
+          "id": "phase",
+          "x": 664,
+          "y": 697,
+          "w": 148,
+          "h": 40,
+          "right": 812,
+          "bottom": 737
+        },
+        {
+          "id": "cSpeed",
+          "x": 825,
+          "y": 695,
+          "w": 44,
+          "h": 44,
+          "right": 869,
+          "bottom": 739
+        },
+        {
+          "id": "scene-view",
+          "x": 874,
+          "y": 697,
+          "w": 46,
+          "h": 40,
+          "right": 920,
+          "bottom": 737
+        },
+        {
+          "id": "restart",
+          "x": 925,
+          "y": 697,
+          "w": 66,
+          "h": 40,
+          "right": 991,
+          "bottom": 737
+        },
+        {
+          "id": "fold",
+          "x": 996,
+          "y": 697,
+          "w": 66,
+          "h": 40,
+          "right": 1062,
+          "bottom": 737
+        },
+        {
+          "id": "figure-note",
+          "x": 1067,
+          "y": 697,
+          "w": 40,
+          "h": 40,
+          "right": 1107,
+          "bottom": 737
+        },
+        {
+          "id": "cNext",
+          "x": 928,
+          "y": 628,
+          "w": 76,
+          "h": 48,
+          "right": 1004,
+          "bottom": 676
+        },
+        {
+          "id": "folio-toggle",
+          "x": 1012,
+          "y": 628,
+          "w": 96,
+          "h": 48,
+          "right": 1108,
+          "bottom": 676
+        }
+      ],
+      "documentWidth": 1366
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "speed": {
+        "x": 682,
+        "y": 696,
+        "w": 44,
+        "h": 44,
+        "right": 726,
+        "bottom": 740
+      },
+      "dock": {
+        "x": 92,
+        "y": 622,
+        "w": 840,
+        "h": 128,
+        "right": 932,
+        "bottom": 750
+      },
+      "overlaps": [],
+      "controls": [
+        {
+          "id": "cPrev",
+          "x": 105,
+          "y": 632,
+          "w": 54,
+          "h": 48,
+          "right": 159,
+          "bottom": 680
+        },
+        {
+          "id": "cPause",
+          "x": 172,
+          "y": 634,
+          "w": 74,
+          "h": 44,
+          "right": 246,
+          "bottom": 678
+        },
+        {
+          "id": "夜晚",
+          "x": 106,
+          "y": 696,
+          "w": 57,
+          "h": 44,
+          "right": 163,
+          "bottom": 740
+        },
+        {
+          "id": "日出",
+          "x": 166,
+          "y": 696,
+          "w": 57,
+          "h": 44,
+          "right": 223,
+          "bottom": 740
+        },
+        {
+          "id": "白天",
+          "x": 226,
+          "y": 696,
+          "w": 57,
+          "h": 44,
+          "right": 283,
+          "bottom": 740
+        },
+        {
+          "id": "日落",
+          "x": 286,
+          "y": 696,
+          "w": 57,
+          "h": 44,
+          "right": 343,
+          "bottom": 740
+        },
+        {
+          "id": "phase",
+          "x": 543,
+          "y": 698,
+          "w": 129,
+          "h": 40,
+          "right": 672,
+          "bottom": 738
+        },
+        {
+          "id": "cSpeed",
+          "x": 682,
+          "y": 696,
+          "w": 44,
+          "h": 44,
+          "right": 726,
+          "bottom": 740
+        },
+        {
+          "id": "scene-view",
+          "x": 731,
+          "y": 698,
+          "w": 44,
+          "h": 40,
+          "right": 775,
+          "bottom": 738
+        },
+        {
+          "id": "restart",
+          "x": 780,
+          "y": 698,
+          "w": 44,
+          "h": 40,
+          "right": 824,
+          "bottom": 738
+        },
+        {
+          "id": "fold",
+          "x": 829,
+          "y": 698,
+          "w": 44,
+          "h": 40,
+          "right": 873,
+          "bottom": 738
+        },
+        {
+          "id": "figure-note",
+          "x": 878,
+          "y": 698,
+          "w": 40,
+          "h": 40,
+          "right": 918,
+          "bottom": 738
+        },
+        {
+          "id": "cNext",
+          "x": 764,
+          "y": 632,
+          "w": 54,
+          "h": 48,
+          "right": 818,
+          "bottom": 680
+        },
+        {
+          "id": "folio-toggle",
+          "x": 823,
+          "y": 632,
+          "w": 96,
+          "h": 48,
+          "right": 919,
+          "bottom": 680
+        }
+      ],
+      "documentWidth": 1024
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "speed": {
+        "x": 191,
+        "y": 779,
+        "w": 44,
+        "h": 44,
+        "right": 235,
+        "bottom": 823
+      },
+      "dock": {
+        "x": 10,
+        "y": 667,
+        "w": 370,
+        "h": 165,
+        "right": 380,
+        "bottom": 832
+      },
+      "overlaps": [],
+      "controls": [
+        {
+          "id": "cPrev",
+          "x": 19,
+          "y": 676,
+          "w": 44,
+          "h": 44,
+          "right": 63,
+          "bottom": 720
+        },
+        {
+          "id": "cPause",
+          "x": 69,
+          "y": 676,
+          "w": 44,
+          "h": 44,
+          "right": 113,
+          "bottom": 720
+        },
+        {
+          "id": "夜晚",
+          "x": 71.5,
+          "y": 731,
+          "w": 61,
+          "h": 44,
+          "right": 132.5,
+          "bottom": 775
+        },
+        {
+          "id": "日出",
+          "x": 133.5,
+          "y": 731,
+          "w": 61,
+          "h": 44,
+          "right": 194.5,
+          "bottom": 775
+        },
+        {
+          "id": "白天",
+          "x": 195.5,
+          "y": 731,
+          "w": 61,
+          "h": 44,
+          "right": 256.5,
+          "bottom": 775
+        },
+        {
+          "id": "日落",
+          "x": 257.5,
+          "y": 731,
+          "w": 61,
+          "h": 44,
+          "right": 318.5,
+          "bottom": 775
+        },
+        {
+          "id": "phase",
+          "x": 25,
+          "y": 779,
+          "w": 160,
+          "h": 44,
+          "right": 185,
+          "bottom": 823
+        },
+        {
+          "id": "cSpeed",
+          "x": 191,
+          "y": 779,
+          "w": 44,
+          "h": 44,
+          "right": 235,
+          "bottom": 823
+        },
+        {
+          "id": "restart",
+          "x": 236,
+          "y": 779,
+          "w": 44,
+          "h": 44,
+          "right": 280,
+          "bottom": 823
+        },
+        {
+          "id": "fold",
+          "x": 281,
+          "y": 779,
+          "w": 44,
+          "h": 44,
+          "right": 325,
+          "bottom": 823
+        },
+        {
+          "id": "figure-note",
+          "x": 326,
+          "y": 779,
+          "w": 44,
+          "h": 44,
+          "right": 370,
+          "bottom": 823
+        },
+        {
+          "id": "cNext",
+          "x": 257,
+          "y": 676,
+          "w": 44,
+          "h": 44,
+          "right": 301,
+          "bottom": 720
+        },
+        {
+          "id": "folio-toggle",
+          "x": 305,
+          "y": 676,
+          "w": 66,
+          "h": 44,
+          "right": 371,
+          "bottom": 720
+        }
+      ],
+      "documentWidth": 390
+    },
+    {
+      "width": 320,
+      "height": 740,
+      "speed": {
+        "x": 121,
+        "y": 675,
+        "w": 44,
+        "h": 44,
+        "right": 165,
+        "bottom": 719
+      },
+      "dock": {
+        "x": 10,
+        "y": 563,
+        "w": 300,
+        "h": 165,
+        "right": 310,
+        "bottom": 728
+      },
+      "overlaps": [],
+      "controls": [
+        {
+          "id": "cPrev",
+          "x": 19,
+          "y": 572,
+          "w": 44,
+          "h": 44,
+          "right": 63,
+          "bottom": 616
+        },
+        {
+          "id": "cPause",
+          "x": 69,
+          "y": 572,
+          "w": 44,
+          "h": 44,
+          "right": 113,
+          "bottom": 616
+        },
+        {
+          "id": "夜晚",
+          "x": 36.5,
+          "y": 627,
+          "w": 61,
+          "h": 44,
+          "right": 97.5,
+          "bottom": 671
+        },
+        {
+          "id": "日出",
+          "x": 98.5,
+          "y": 627,
+          "w": 61,
+          "h": 44,
+          "right": 159.5,
+          "bottom": 671
+        },
+        {
+          "id": "白天",
+          "x": 160.5,
+          "y": 627,
+          "w": 61,
+          "h": 44,
+          "right": 221.5,
+          "bottom": 671
+        },
+        {
+          "id": "日落",
+          "x": 222.5,
+          "y": 627,
+          "w": 61,
+          "h": 44,
+          "right": 283.5,
+          "bottom": 671
+        },
+        {
+          "id": "phase",
+          "x": 25,
+          "y": 675,
+          "w": 90,
+          "h": 44,
+          "right": 115,
+          "bottom": 719
+        },
+        {
+          "id": "cSpeed",
+          "x": 121,
+          "y": 675,
+          "w": 44,
+          "h": 44,
+          "right": 165,
+          "bottom": 719
+        },
+        {
+          "id": "restart",
+          "x": 166,
+          "y": 675,
+          "w": 44,
+          "h": 44,
+          "right": 210,
+          "bottom": 719
+        },
+        {
+          "id": "fold",
+          "x": 211,
+          "y": 675,
+          "w": 44,
+          "h": 44,
+          "right": 255,
+          "bottom": 719
+        },
+        {
+          "id": "figure-note",
+          "x": 256,
+          "y": 675,
+          "w": 44,
+          "h": 44,
+          "right": 300,
+          "bottom": 719
+        },
+        {
+          "id": "cNext",
+          "x": 187,
+          "y": 572,
+          "w": 44,
+          "h": 44,
+          "right": 231,
+          "bottom": 616
+        },
+        {
+          "id": "folio-toggle",
+          "x": 235,
+          "y": 572,
+          "w": 66,
+          "h": 44,
+          "right": 301,
+          "bottom": 616
+        }
+      ],
+      "documentWidth": 320
+    }
+  ],
+  "screenshots": [
+    "output/playwright/playback-speed-1366.png",
+    "output/playwright/playback-speed-390.png",
+    "output/playwright/playback-speed-320.png"
+  ],
+  "scope": "Playback speed control only: real Chrome production build, all four rates, pause/phase continuity, keyboard, old bookmarks, preference persistence, teacher isolation, once/cyclic playback, Three.js and native SVG, and five viewport layouts. Elapsed animation time accounts for the existing per-frame 50 ms cap; this is not an FPS benchmark.",
+  "reviewedEntry": {
+    "path": "/assets/index-Uef11BQ2.js",
+    "sha256": "bc44e5c5e1911def8467f6e6fa5b41b183d7292beb8558bee0db102a89b0430a"
+  },
+  "reviewedStyles": [
+    {
+      "path": "/assets/index-DCIocZMP.css",
+      "sha256": "696cf7fe472a2eb8a08746d338dfe1d7bf53233e6cb946b7307c0277f2486cdb"
+    }
+  ],
+  "reviewedAt": "2026-11-06T06:29:26.912Z",
+  "browser": "156.0.8078.80"
+}

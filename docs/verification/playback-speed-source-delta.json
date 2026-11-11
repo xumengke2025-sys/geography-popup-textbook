@@ -1,0 +1,16 @@
+{
+  "baseline": "docs/verification/previous-playback-base-20261106.json",
+  "scope": "Only playback speed preference, control, advance multiplier and matching button styles; scientific model and 3D geometry unchanged",
+  "changed": [
+    {
+      "path": "src/textbook-main.ts",
+      "before": "5133b24901c7ab50e47144e5791004286a3c7dd1b3d0449121785a816d0be389",
+      "after": "6dd7e200f02d237d8de7ef4df1471f3ac8f17486a39e15332b70687a3681b12f"
+    },
+    {
+      "path": "src/textbook-workbench.css",
+      "before": "2711bbc26e9de698459501fdcd6c1a4d4c044b03e672589cc988076d46c015ea",
+      "after": "8b38564e95e29f0fdbda082e41d00f11efce457ec4d0c72eedc4fc5c3fe4560b"
+    }
+  ]
+}

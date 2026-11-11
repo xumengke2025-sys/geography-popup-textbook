@@ -1,0 +1,1649 @@
+{
+  "errors": [],
+  "checks": [
+    "the actual geometry rises above the original page",
+    "白天: opposite surface and upper flow",
+    "白天: the camera focuses on the lifted explanation",
+    "白天: selected state stays paused",
+    "白天: model text is at least 18 CSS pixels",
+    "白天: labels fit and clear the controls",
+    "白天: labels do not overlap",
+    "夜晚: opposite surface and upper flow",
+    "夜晚: the camera focuses on the lifted explanation",
+    "夜晚: selected state stays paused",
+    "夜晚: model text is at least 18 CSS pixels",
+    "夜晚: labels fit and clear the controls",
+    "夜晚: labels do not overlap",
+    "wind reversal passes through a calm state",
+    "scrubbing in either direction gives the same scientific state",
+    "rotation preserves geographic identity",
+    "full-size reading shows the textbook page",
+    "folding removes the entire lifted scene",
+    "a paragraph opens into a same-height pressure field above the page",
+    "all rendered pressure-gradient arrowheads point from high to low",
+    "pressure field: model text is at least 18 CSS pixels",
+    "pressure field: labels fit and clear the controls",
+    "pressure field: labels do not overlap",
+    "equal pressure removes the idealized wind component",
+    "teacher experiments leave the student bookmark untouched",
+    "leaving teacher mode restores the student scene and keeps it paused",
+    "solar: real elevated geometry, with no illustration bitmap on its surfaces",
+    "sun: real elevated geometry, with no illustration bitmap on its surfaces",
+    "history: real elevated geometry, with no illustration bitmap on its surfaces",
+    "earth: real elevated geometry, with no illustration bitmap on its surfaces",
+    "atmosphere: real elevated geometry, with no illustration bitmap on its surfaces",
+    "heating: real elevated geometry, with no illustration bitmap on its surfaces",
+    "thermal: real elevated geometry, with no illustration bitmap on its surfaces",
+    "breeze: real elevated geometry, with no illustration bitmap on its surfaces",
+    "pressure-wind: real elevated geometry, with no illustration bitmap on its surfaces",
+    "water: real elevated geometry, with no illustration bitmap on its surfaces",
+    "temperature: real elevated geometry, with no illustration bitmap on its surfaces",
+    "waves: real elevated geometry, with no illustration bitmap on its surfaces",
+    "tides: real elevated geometry, with no illustration bitmap on its surfaces",
+    "currents: real elevated geometry, with no illustration bitmap on its surfaces",
+    "karst: real elevated geometry, with no illustration bitmap on its surfaces",
+    "river: real elevated geometry, with no illustration bitmap on its surfaces",
+    "slope: real elevated geometry, with no illustration bitmap on its surfaces",
+    "forest: real elevated geometry, with no illustration bitmap on its surfaces",
+    "soil: real elevated geometry, with no illustration bitmap on its surfaces",
+    "typhoon: real elevated geometry, with no illustration bitmap on its surfaces",
+    "earthquake: real elevated geometry, with no illustration bitmap on its surfaces",
+    "slide: real elevated geometry, with no illustration bitmap on its surfaces",
+    "mitigation: real elevated geometry, with no illustration bitmap on its surfaces",
+    "remote: real elevated geometry, with no illustration bitmap on its surfaces",
+    "gis: real elevated geometry, with no illustration bitmap on its surfaces",
+    "1366: model text is at least 18 CSS pixels",
+    "1366: labels fit and clear the controls",
+    "1366: labels do not overlap",
+    "1366: controls fit the viewport",
+    "1024: model text is at least 18 CSS pixels",
+    "1024: labels fit and clear the controls",
+    "1024: labels do not overlap",
+    "1024: controls fit the viewport",
+    "phone uses the two-dimensional fallback",
+    "the fallback explanation is separate from the original textbook pages",
+    "the fallback uses the same sea-breeze state",
+    "all phone controls remain inside the viewport",
+    "phone reading can enlarge the original text",
+    "no browser exceptions"
+  ],
+  "states": [
+    {
+      "id": "solar",
+      "geometry": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 9,
+        "labels": 2,
+        "meshes": 11,
+        "imageMappedMeshes": 0,
+        "extent": [
+          95.48899819781863,
+          13.104341262166955,
+          57.154681803033384
+        ],
+        "sceneElevation": 46.728658692549544,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "phase": 0,
+        "selection": 0,
+        "kind": "solar-system",
+        "bodies": 8,
+        "units": "schematic",
+        "orbitalPlane": "3d"
+      },
+      "labels": [
+        {
+          "text": "太阳",
+          "left": 690.6397702121114,
+          "top": 430.19582347154295,
+          "right": 752.0058925633344,
+          "bottom": 458.01513227076407,
+          "fontPx": 19.10482652476631
+        },
+        {
+          "text": "地球",
+          "left": 555.6994862783262,
+          "top": 439.7251070017683,
+          "right": 616.0779923829356,
+          "bottom": 467.09669643585795,
+          "fontPx": 18.797356599314565
+        }
+      ],
+      "triangles": 22301,
+      "calls": 42
+    },
+    {
+      "id": "sun",
+      "geometry": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 18,
+        "labels": 0,
+        "meshes": 18,
+        "imageMappedMeshes": 0,
+        "extent": [
+          36.6397590637207,
+          19.03364182811245,
+          9.916679382324219
+        ],
+        "sceneElevation": 34,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "phase": 0,
+        "selection": 0,
+        "kind": "solar-heating-system",
+        "closedPipes": true
+      },
+      "labels": [],
+      "triangles": 9739,
+      "calls": 56
+    },
+    {
+      "id": "history",
+      "geometry": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 6,
+        "labels": 2,
+        "meshes": 8,
+        "imageMappedMeshes": 0,
+        "extent": [
+          74.80862242748066,
+          19.55225462544952,
+          5.170590209960935
+        ],
+        "sceneElevation": 39.10450911639672,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "phase": 0,
+        "selection": 0,
+        "kind": "strata",
+        "columns": 2,
+        "layersPerColumn": 3,
+        "separated": false,
+        "timeIsEquallySpaced": false
+      },
+      "labels": [
+        {
+          "text": "A",
+          "left": 508.0702402075904,
+          "top": 413.2782358992558,
+          "right": 535.4882470094254,
+          "bottom": 440.6962427010906,
+          "fontPx": 18.72449245003356
+        },
+        {
+          "text": "B",
+          "left": 899.1682267929303,
+          "top": 443.93998452994464,
+          "right": 927.2681699072631,
+          "bottom": 472.0399276442775,
+          "fontPx": 19.190205053690736
+        }
+      ],
+      "triangles": 8229,
+      "calls": 34
+    },
+    {
+      "id": "earth",
+      "geometry": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 12,
+        "labels": 4,
+        "meshes": 16,
+        "imageMappedMeshes": 0,
+        "extent": [
+          80.09099626383521,
+          48.05459774927177,
+          67.18479919433594
+        ],
+        "sceneElevation": 52.631226106345274,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "phase": 0,
+        "selection": 0,
+        "kind": "earth-cutaway",
+        "layers": [
+          "crust",
+          "mantle",
+          "outer-core",
+          "inner-core"
+        ],
+        "scale": "schematic"
+      },
+      "labels": [
+        {
+          "text": "地壳",
+          "left": 934.5674483025828,
+          "top": 454.96884691182476,
+          "right": 1029.3637049787635,
+          "bottom": 492.88734958229713,
+          "fontPx": 26.140785931916565
+        },
+        {
+          "text": "地幔",
+          "left": 931.1109400596491,
+          "top": 493.57538907073814,
+          "right": 1029.12552211735,
+          "bottom": 532.7812218938184,
+          "fontPx": 27.028263537123504
+        },
+        {
+          "text": "外核",
+          "left": 927.4114875166555,
+          "top": 534.895432457867,
+          "right": 1028.870598324197,
+          "bottom": 575.4790767808836,
+          "fontPx": 27.97811843480693
+        },
+        {
+          "text": "内核",
+          "left": 923.4425443643772,
+          "top": 579.2254789572562,
+          "right": 1028.5971043324705,
+          "bottom": 621.2873029444934,
+          "fontPx": 28.997166536655936
+        }
+      ],
+      "triangles": 21053,
+      "calls": 52
+    },
+    {
+      "id": "atmosphere",
+      "geometry": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 3,
+        "labels": 3,
+        "meshes": 6,
+        "imageMappedMeshes": 0,
+        "extent": [
+          77.56030515997008,
+          84.7875,
+          12.79745000186091
+        ],
+        "sceneElevation": 44.59717601534553,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "phase": 0,
+        "selection": 0,
+        "kind": "atmosphere",
+        "layers": [
+          "对流层",
+          "平流层",
+          "高层大气"
+        ],
+        "heightScale": "schematic"
+      },
+      "labels": [
+        {
+          "text": "对流层",
+          "left": 830.864172208301,
+          "top": 707.6995761892308,
+          "right": 1007.5685003746164,
+          "bottom": 738.622833618336,
+          "fontPx": 21.141410691327028
+        },
+        {
+          "text": "平流层",
+          "left": 836.6511837845069,
+          "top": 589.0969800453904,
+          "right": 1021.0274621665453,
+          "bottom": 621.3628287622473,
+          "fontPx": 22.059304734994008
+        },
+        {
+          "text": "高层大气",
+          "left": 848.9166669108628,
+          "top": 337.72057918841045,
+          "right": 1049.5535272319637,
+          "bottom": 372.83202974460306,
+          "fontPx": 24.004767216988824
+        }
+      ],
+      "triangles": 7725,
+      "calls": 32
+    },
+    {
+      "id": "heating",
+      "geometry": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 1,
+        "labels": 2,
+        "meshes": 3,
+        "imageMappedMeshes": 0,
+        "extent": [
+          79.07515584242651,
+          13.997211494272243,
+          28.060000000000002
+        ],
+        "sceneElevation": 41.809852514386435,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "phase": 0,
+        "selection": 0,
+        "kind": "radiation",
+        "wavelength": "schematic"
+      },
+      "labels": [
+        {
+          "text": "太阳短波辐射",
+          "left": 455.3188431610256,
+          "top": 431.43631811869204,
+          "right": 609.9620085698823,
+          "bottom": 463.7096743779317,
+          "fontPx": 22.130301434907206
+        },
+        {
+          "text": "地面长波辐射",
+          "left": 865.8614813269752,
+          "top": 449.8869316508435,
+          "right": 1024.8480033043227,
+          "bottom": 483.06672754176816,
+          "fontPx": 22.75186003949119
+        }
+      ],
+      "triangles": 7941,
+      "calls": 26
+    },
+    {
+      "id": "thermal",
+      "geometry": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 9,
+        "labels": 23,
+        "meshes": 41,
+        "imageMappedMeshes": 0,
+        "extent": [
+          68.28051487187568,
+          16.853594257161017,
+          78.1785590206124
+        ],
+        "sceneElevation": 34,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "phase": 0,
+        "selection": 0,
+        "kind": "thermal-circulation",
+        "comparison": "same-height",
+        "warmColumn": "A",
+        "panels": 3,
+        "isobaricSurfaces": 9
+      },
+      "labels": [
+        {
+          "text": "B",
+          "left": 607.3956847715563,
+          "top": 385.94991518649755,
+          "right": 626.1702983430969,
+          "bottom": 403.2022627927779,
+          "fontPx": 11.860988979317742
+        },
+        {
+          "text": "A",
+          "left": 756.7739917487189,
+          "top": 394.99417645299513,
+          "right": 775.740312768253,
+          "bottom": 412.42268766013456,
+          "fontPx": 11.982101454908353
+        },
+        {
+          "text": "C",
+          "left": 909.2343714464586,
+          "top": 404.2250449417282,
+          "right": 928.3963553497373,
+          "bottom": 421.8333544744706,
+          "fontPx": 12.105712803760397
+        },
+        {
+          "text": "a",
+          "left": 511.0848662410992,
+          "top": 289.349985396703,
+          "right": 527.5943663100679,
+          "bottom": 307.4072510971373,
+          "fontPx": 12.414370169048581
+        },
+        {
+          "text": "等压面",
+          "left": 888.8945173204785,
+          "top": 306.34471946130475,
+          "right": 952.6097904452333,
+          "bottom": 324.9283407893583,
+          "fontPx": 12.776239663036808
+        },
+        {
+          "text": "B",
+          "left": 555.9509678981038,
+          "top": 514.0440299005381,
+          "right": 576.9770763570136,
+          "bottom": 533.3653187546712,
+          "fontPx": 13.283386087216478
+        },
+        {
+          "text": "A",
+          "left": 722.8591517349864,
+          "top": 525.6519366410403,
+          "right": 744.125999443998,
+          "bottom": 545.1944453466183,
+          "fontPx": 13.435474735084895
+        },
+        {
+          "text": "C",
+          "left": 893.6336465918074,
+          "top": 537.5287324001486,
+          "right": 915.1468101068102,
+          "bottom": 557.2975853598809,
+          "fontPx": 13.591086409816015
+        },
+        {
+          "text": "b",
+          "left": 446.9061807442424,
+          "top": 408.04972937811215,
+          "right": 465.43275487452985,
+          "bottom": 428.31316983311405,
+          "fontPx": 13.931115312813805
+        },
+        {
+          "text": "受热",
+          "left": 711.7354547553107,
+          "top": 512.100615810995,
+          "right": 755.0433521634172,
+          "bottom": 531.7335293026699,
+          "fontPx": 13.497628025526502
+        },
+        {
+          "text": "低",
+          "left": 511.02499326318315,
+          "top": 417.3162421232105,
+          "right": 531.4969422906165,
+          "bottom": 437.20327832128834,
+          "fontPx": 13.672337386178523
+        },
+        {
+          "text": "高",
+          "left": 722.3844740555719,
+          "top": 430.65425652690146,
+          "right": 743.1541593798571,
+          "bottom": 450.830522270493,
+          "fontPx": 13.871182698719196
+        },
+        {
+          "text": "低",
+          "left": 939.9825516106844,
+          "top": 444.38596272604934,
+          "right": 961.0587613717755,
+          "bottom": 464.8599950653951,
+          "fontPx": 14.075897233300196
+        },
+        {
+          "text": "B",
+          "left": 490.48619594465106,
+          "top": 677.0472014207888,
+          "right": 514.377391594507,
+          "bottom": 699.0012730990348,
+          "fontPx": 15.093424278794132
+        },
+        {
+          "text": "A",
+          "left": 679.5811822987065,
+          "top": 692.3813845683034,
+          "right": 703.7836807055902,
+          "bottom": 714.621518239494,
+          "fontPx": 15.290091898943551
+        },
+        {
+          "text": "C",
+          "left": 873.6690488884542,
+          "top": 708.1204528026407,
+          "right": 898.1910697170586,
+          "bottom": 730.654201672169,
+          "fontPx": 15.491952347800762
+        },
+        {
+          "text": "c",
+          "left": 364.8625550728515,
+          "top": 559.7910323840388,
+          "right": 385.9676810690296,
+          "bottom": 582.8747639423586,
+          "fontPx": 15.87006544634491
+        },
+        {
+          "text": "低",
+          "left": 437.04716491666795,
+          "top": 572.143680087946,
+          "right": 460.4018732071851,
+          "bottom": 594.8311109987336,
+          "fontPx": 15.597608751166483
+        },
+        {
+          "text": "高",
+          "left": 677.4341430953294,
+          "top": 589.9652183814409,
+          "right": 701.177138183404,
+          "bottom": 613.0298421812852,
+          "fontPx": 15.856928862392955
+        },
+        {
+          "text": "低",
+          "left": 925.9494306808612,
+          "top": 608.3893640975735,
+          "right": 950.0938418767964,
+          "bottom": 631.8439349736253,
+          "fontPx": 16.125017477285596
+        },
+        {
+          "text": "高",
+          "left": 444.70884443972875,
+          "top": 641.4382694009372,
+          "right": 467.50218009240956,
+          "bottom": 663.5803668921128,
+          "fontPx": 15.222692025183228
+        },
+        {
+          "text": "低",
+          "left": 679.3482371756659,
+          "top": 659.9484120248901,
+          "right": 702.5112698743103,
+          "bottom": 682.4496437892874,
+          "fontPx": 15.469596838023136
+        },
+        {
+          "text": "高",
+          "left": 921.7245981960604,
+          "top": 679.0689056421369,
+          "right": 945.2695182821368,
+          "bottom": 701.9411137257543,
+          "fontPx": 15.724643057487008
+        }
+      ],
+      "triangles": 11165,
+      "calls": 102
+    },
+    {
+      "id": "breeze",
+      "geometry": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 41,
+        "labels": 18,
+        "meshes": 69,
+        "imageMappedMeshes": 0,
+        "extent": [
+          143.64340209960938,
+          111.89820487110067,
+          96.24107653375516
+        ],
+        "sceneElevation": 61.76666105897719,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "phase": 0.5,
+        "selection": 0,
+        "kind": "sea-breeze",
+        "layout": "land-left-sea-right",
+        "scene": "coastal-paper-world",
+        "selected": "day",
+        "groundX": -1,
+        "upperX": 1,
+        "strength": 0.9401870664873426,
+        "pressure": {
+          "seaGround": "相对高压",
+          "landGround": "相对低压",
+          "seaUpper": "相对低压",
+          "landUpper": "相对高压"
+        },
+        "continuousDayNight": true,
+        "panels": 1,
+        "sameHeightGuides": 2,
+        "elevatedAbovePage": 61.76666105897719,
+        "sourceFootprint": [
+          115.84144984804425,
+          31.25
+        ],
+        "sceneDepth": 90.49534062129217
+      },
+      "labels": [
+        {
+          "text": "低压",
+          "left": 534.4049656349773,
+          "top": 501.15492791942853,
+          "right": 629.4601430654023,
+          "bottom": 541.5533783273589,
+          "fontPx": 27.84914453653074
+        },
+        {
+          "text": "高压",
+          "left": 818.54986934294,
+          "top": 521.231700973961,
+          "right": 915.4429178903196,
+          "bottom": 562.4112466065972,
+          "fontPx": 28.387601670157704
+        },
+        {
+          "text": "高压",
+          "left": 529.8126012931405,
+          "top": 353.9333951536617,
+          "right": 629.6620081777734,
+          "bottom": 396.3693930796307,
+          "fontPx": 29.253751761731813
+        },
+        {
+          "text": "低压",
+          "left": 815.7996986605754,
+          "top": 371.28080175075837,
+          "right": 917.5927958473517,
+          "bottom": 414.54286805513823,
+          "fontPx": 29.823211665146964
+        },
+        {
+          "text": "陆地 · 较暖",
+          "left": 448.8555218013611,
+          "top": 704.8021958539948,
+          "right": 636.3843427562651,
+          "bottom": 745.9375501279739,
+          "fontPx": 28.35713783993448
+        },
+        {
+          "text": "海洋 · 较冷",
+          "left": 767.1802134287063,
+          "top": 738.5907593168032,
+          "right": 958.3219006307876,
+          "bottom": 780.5186132837114,
+          "fontPx": 28.903456777187763
+        }
+      ],
+      "triangles": 31995,
+      "calls": 127
+    },
+    {
+      "id": "pressure-wind",
+      "geometry": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 2,
+        "labels": 4,
+        "meshes": 7,
+        "imageMappedMeshes": 0,
+        "extent": [
+          105.14839111595222,
+          19.87304642761614,
+          58.88310110987831
+        ],
+        "sceneElevation": 51.522712540107065,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "phase": 0.2367777777777775,
+        "selection": 1,
+        "kind": "pressure-gradient-wind",
+        "origin": "textbook-paragraph",
+        "sameHeight": true,
+        "pressureDifference": false,
+        "windDirection": "none-in-this-idealized-component",
+        "elevatedAbovePage": 51.522712540107065,
+        "measuredPressure": false
+      },
+      "labels": [
+        {
+          "text": "同一高度 · 气压相同",
+          "left": 529.7644052165433,
+          "top": 384.13764462311354,
+          "right": 956.3890833144143,
+          "bottom": 436.88396846066854,
+          "fontPx": 36.18643146995052
+        },
+        {
+          "text": "同一水平面",
+          "left": 545.05457616085,
+          "top": 630.1591498886785,
+          "right": 834.348725825184,
+          "bottom": 691.6341566923494,
+          "fontPx": 42.17471396996027
+        }
+      ],
+      "triangles": 7721,
+      "calls": 30
+    },
+    {
+      "id": "water",
+      "geometry": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 57,
+        "labels": 5,
+        "meshes": 62,
+        "imageMappedMeshes": 0,
+        "extent": [
+          171.0889105738795,
+          64.51406381937579,
+          51.22562866210937
+        ],
+        "sceneElevation": 56,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "phase": 0,
+        "selection": 0,
+        "kind": "water-cycle",
+        "cycles": 3,
+        "terrain": "closed-heightfield",
+        "groundwater": "section-view",
+        "physicalFlowRate": false
+      },
+      "labels": [
+        {
+          "text": "蒸发",
+          "left": 1143.4958264862235,
+          "top": 574.3883316394827,
+          "right": 1223.6046600697257,
+          "bottom": 628.6556060025003,
+          "fontPx": 35.87669805110614
+        },
+        {
+          "text": "水汽输送",
+          "left": 707.6092830893658,
+          "top": 231.3405637630796,
+          "right": 860.2019059038334,
+          "bottom": 283.0251618131412,
+          "fontPx": 34.16926204420741
+        },
+        {
+          "text": "降水",
+          "left": 383.89476161915144,
+          "top": 345.54585102625936,
+          "right": 456.4096855662098,
+          "bottom": 394.66886402265374,
+          "fontPx": 32.47576970317184
+        },
+        {
+          "text": "地表径流",
+          "left": 587.5768782589137,
+          "top": 567.0905615903604,
+          "right": 740.0215043586553,
+          "bottom": 618.7250317209181,
+          "fontPx": 34.13612191964648
+        },
+        {
+          "text": "地下径流",
+          "left": 513.9996856773462,
+          "top": 683.363802346912,
+          "right": 667.9314201768633,
+          "bottom": 735.5019704838452,
+          "fontPx": 34.46912226830579
+        }
+      ],
+      "triangles": 28907,
+      "calls": 144
+    },
+    {
+      "id": "temperature",
+      "geometry": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 4,
+        "labels": 9,
+        "meshes": 13,
+        "imageMappedMeshes": 0,
+        "extent": [
+          44.73636833684592,
+          65.23882233388872,
+          2.42090959906578
+        ],
+        "sceneElevation": 34,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "phase": 0,
+        "selection": 0,
+        "kind": "temperature-profile",
+        "source": "textbook-curve",
+        "interpolation": "illustrative-no-new-readings"
+      },
+      "labels": [
+        {
+          "text": "0",
+          "left": 532.3459771748066,
+          "top": 241.37716390831514,
+          "right": 546.7835938330828,
+          "bottom": 255.81478056659103,
+          "fontPx": 9.925861452564671
+        },
+        {
+          "text": "1",
+          "left": 537.5586285876907,
+          "top": 313.6187018565026,
+          "right": 551.6719227076892,
+          "bottom": 327.73199597650085,
+          "fontPx": 9.702889707498812
+        },
+        {
+          "text": "2",
+          "left": 542.542234166572,
+          "top": 382.68591986684567,
+          "right": 556.3454566007634,
+          "bottom": 396.4891423010369,
+          "fontPx": 9.489715423506478
+        },
+        {
+          "text": "3",
+          "left": 547.3115659061782,
+          "top": 448.7835413196573,
+          "right": 560.8180484179849,
+          "bottom": 462.29002383146417,
+          "fontPx": 9.28570672686724
+        },
+        {
+          "text": "4",
+          "left": 551.8801522686766,
+          "top": 512.0990556201666,
+          "right": 565.1023849030097,
+          "bottom": 525.3212882544997,
+          "fontPx": 9.090284936103984
+        },
+        {
+          "text": "5",
+          "left": 556.2604063400232,
+          "top": 572.8044943026327,
+          "right": 569.2101068201422,
+          "bottom": 585.7541947827517,
+          "fontPx": 8.902919080081787
+        },
+        {
+          "text": "6",
+          "left": 560.4637384572974,
+          "top": 631.0579919196745,
+          "right": 573.1519145741856,
+          "bottom": 643.746168036563,
+          "fontPx": 8.723121080360833
+        },
+        {
+          "text": "深度 / km",
+          "left": 649.6105976307774,
+          "top": 655.9765823418362,
+          "right": 735.6322068662506,
+          "bottom": 673.9289181822827,
+          "fontPx": 12.342230890306965
+        },
+        {
+          "text": "海水温度",
+          "left": 741.0550618480196,
+          "top": 230.5269022508013,
+          "right": 836.6811422769096,
+          "bottom": 251.39077434437735,
+          "fontPx": 14.343912064333534
+        }
+      ],
+      "triangles": 8807,
+      "calls": 46
+    },
+    {
+      "id": "waves",
+      "geometry": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 2,
+        "labels": 1,
+        "meshes": 4,
+        "imageMappedMeshes": 0,
+        "extent": [
+          166.28328371047974,
+          7.5730200652724635,
+          26.140128443152776
+        ],
+        "sceneElevation": 56,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "phase": 0,
+        "selection": 0,
+        "kind": "surface-wave",
+        "wavePropagates": true,
+        "particleAdvection": false,
+        "particleMotion": "closed-orbit"
+      },
+      "labels": [
+        {
+          "text": "波的传播方向",
+          "left": 314.51225209527985,
+          "top": 399.9667424649904,
+          "right": 570.4394557919782,
+          "bottom": 446.4989613189356,
+          "fontPx": 31.85241171549821
+        }
+      ],
+      "triangles": 14109,
+      "calls": 29
+    },
+    {
+      "id": "tides",
+      "geometry": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 6,
+        "labels": 0,
+        "meshes": 6,
+        "imageMappedMeshes": 0,
+        "extent": [
+          82.1440646648407,
+          14.64307219726544,
+          48.80218505859375
+        ],
+        "sceneElevation": 41.07203158766197,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "phase": 0,
+        "selection": 0,
+        "kind": "tide",
+        "level": 1.0714443022868338,
+        "units": "schematic-no-tide-forecast"
+      },
+      "labels": [],
+      "triangles": 9195,
+      "calls": 32
+    },
+    {
+      "id": "currents",
+      "geometry": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 5,
+        "labels": 2,
+        "meshes": 7,
+        "imageMappedMeshes": 0,
+        "extent": [
+          91.81771850585938,
+          6.78652696330388,
+          81.77068481445312
+        ],
+        "sceneElevation": 45.908857662855695,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "phase": 0,
+        "selection": 0,
+        "kind": "ocean-current",
+        "route": "schematic-gulf-stream",
+        "observedVelocity": false
+      },
+      "labels": [
+        {
+          "text": "北美洲",
+          "left": 395.36114851764034,
+          "top": 446.1593184539986,
+          "right": 531.0170662827175,
+          "bottom": 484.46216582296154,
+          "fontPx": 26.312390801287588
+        },
+        {
+          "text": "大西洋",
+          "left": 845.2821210475207,
+          "top": 572.21790858463,
+          "right": 993.1793095905678,
+          "bottom": 613.9771147614904,
+          "fontPx": 28.686759025843234
+        }
+      ],
+      "triangles": 9513,
+      "calls": 34
+    },
+    {
+      "id": "karst",
+      "geometry": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 24,
+        "labels": 6,
+        "meshes": 30,
+        "imageMappedMeshes": 0,
+        "extent": [
+          93.42315912305588,
+          20.17653424470886,
+          61.47151801964242
+        ],
+        "sceneElevation": 47.13855920739647,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "phase": 0,
+        "selection": 0,
+        "kind": "karst-forms",
+        "forms": 6,
+        "universalTimeSequence": false
+      },
+      "labels": [
+        {
+          "text": "溶沟",
+          "left": 459.79518498292447,
+          "top": 426.18669148558763,
+          "right": 526.7248052659138,
+          "bottom": 451.4712147036057,
+          "fontPx": 17.157355040797984
+        },
+        {
+          "text": "洼地",
+          "left": 704.940280135062,
+          "top": 445.7085691104085,
+          "right": 772.9155997352552,
+          "bottom": 471.3881342927036,
+          "fontPx": 17.425419230843108
+        },
+        {
+          "text": "峰丛",
+          "left": 957.8671847138008,
+          "top": 465.8501431286306,
+          "right": 1026.9213979841136,
+          "bottom": 491.93729036408206,
+          "fontPx": 17.701992766913506
+        },
+        {
+          "text": "峰林",
+          "left": 355.4398714443236,
+          "top": 626.790985494696,
+          "right": 434.48300632469653,
+          "bottom": 656.6517253383925,
+          "fontPx": 20.262644893936898
+        },
+        {
+          "text": "孤峰",
+          "left": 643.8435024185565,
+          "top": 653.6234526887865,
+          "right": 724.3492462549045,
+          "bottom": 684.036733693629,
+          "fontPx": 20.63758353900025
+        },
+        {
+          "text": "残丘",
+          "left": 943.1215565440249,
+          "top": 681.4676533394721,
+          "right": 1025.1450578399863,
+          "bottom": 712.454309384613,
+          "fontPx": 21.026659459202737
+        }
+      ],
+      "triangles": 53581,
+      "calls": 78
+    },
+    {
+      "id": "river",
+      "geometry": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 1,
+        "labels": 0,
+        "meshes": 3,
+        "imageMappedMeshes": 0,
+        "extent": [
+          171.53531908988953,
+          6.669918982284699,
+          64.7075424194336
+        ],
+        "sceneElevation": 56,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "phase": 0,
+        "selection": 0,
+        "kind": "meander-cutoff",
+        "stage": 0,
+        "closedOxbow": false,
+        "geometryGap": true,
+        "erosionRate": "not-simulated"
+      },
+      "labels": [],
+      "triangles": 15331,
+      "calls": 38
+    },
+    {
+      "id": "slope",
+      "geometry": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 1,
+        "labels": 0,
+        "meshes": 1,
+        "imageMappedMeshes": 0,
+        "extent": [
+          73.29021464657178,
+          10.369178771972656,
+          31.6875
+        ],
+        "sceneElevation": 36.64510602731517,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "phase": 0,
+        "selection": 0,
+        "kind": "contour-relief",
+        "geometry": "heightfield",
+        "elevation": "illustrative-constrained-by-textbook",
+        "surveyedDEM": false
+      },
+      "labels": [],
+      "triangles": 15701,
+      "calls": 20
+    },
+    {
+      "id": "forest",
+      "geometry": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 55,
+        "labels": 3,
+        "meshes": 58,
+        "imageMappedMeshes": 0,
+        "extent": [
+          87.25534427165985,
+          40.85776945992825,
+          25.051231384277344
+        ],
+        "sceneElevation": 41.809852514386435,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "phase": 0,
+        "selection": 0,
+        "kind": "forest-strata",
+        "treesAreVolumes": true,
+        "layers": 3
+      },
+      "labels": [
+        {
+          "text": "乔木层",
+          "left": 965.0729660669244,
+          "top": 403.070518781254,
+          "right": 1066.4019183802557,
+          "bottom": 438.1459253512531,
+          "fontPx": 24.092198452120577
+        }
+      ],
+      "triangles": 22321,
+      "calls": 130
+    },
+    {
+      "id": "soil",
+      "geometry": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 6,
+        "labels": 0,
+        "meshes": 6,
+        "imageMappedMeshes": 0,
+        "extent": [
+          29.00188645629955,
+          70.71304122045876,
+          6.672666931152335
+        ],
+        "sceneElevation": 37.792827468886564,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "phase": 0,
+        "selection": 0,
+        "kind": "soil-profile",
+        "layers": 6,
+        "selectedFromSurface": 0,
+        "sampledThickness": false
+      },
+      "labels": [],
+      "triangles": 7721,
+      "calls": 32
+    },
+    {
+      "id": "typhoon",
+      "geometry": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 18,
+        "labels": 2,
+        "meshes": 20,
+        "imageMappedMeshes": 0,
+        "extent": [
+          123.22322368621826,
+          31.982485515778343,
+          47.6553955078125
+        ],
+        "sceneElevation": 56,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "phase": 0,
+        "selection": 0,
+        "kind": "typhoon",
+        "hemisphere": "north",
+        "surfaceConvergence": true,
+        "eyewallAscent": true,
+        "eyeDescent": true,
+        "forecast": false
+      },
+      "labels": [
+        {
+          "text": "台风眼",
+          "left": 854.543635227752,
+          "top": 574.4891215968261,
+          "right": 988.8282372206963,
+          "bottom": 621.4887322943566,
+          "fontPx": 32.35480446569132
+        },
+        {
+          "text": "云墙",
+          "left": 711.0838479050142,
+          "top": 513.6569856021787,
+          "right": 801.1124667566914,
+          "bottom": 560.9220104993091,
+          "fontPx": 32.53751713932889
+        }
+      ],
+      "triangles": 49601,
+      "calls": 58
+    },
+    {
+      "id": "earthquake",
+      "geometry": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 10,
+        "labels": 3,
+        "meshes": 13,
+        "imageMappedMeshes": 0,
+        "extent": [
+          127.55034716345426,
+          30.161905713789093,
+          34.62068116750558
+        ],
+        "sceneElevation": 56,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "phase": 0,
+        "selection": 0,
+        "kind": "earthquake",
+        "epicenterDirectlyAboveFocus": true,
+        "waveOrigin": [
+          54.0213235045218,
+          6.0023692782802005,
+          -102.54741115206448
+        ],
+        "measuredWaveSpeed": false
+      },
+      "labels": [
+        {
+          "text": "震源",
+          "left": 417.53524166570014,
+          "top": 576.0998327458559,
+          "right": 515.0999088371998,
+          "bottom": 622.4430496523183,
+          "fontPx": 31.79753568764576
+        },
+        {
+          "text": "震中",
+          "left": 565.8627697334678,
+          "top": 427.89103284284505,
+          "right": 670.0021788654672,
+          "bottom": 477.3572521805448,
+          "fontPx": 33.94032567696186
+        },
+        {
+          "text": "震源深度",
+          "left": 223.5312429660491,
+          "top": 491.067783983695,
+          "right": 409.16799001885795,
+          "bottom": 538.0957599037399,
+          "fontPx": 32.267370339300896
+        }
+      ],
+      "triangles": 16323,
+      "calls": 44
+    },
+    {
+      "id": "slide",
+      "geometry": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 12,
+        "labels": 0,
+        "meshes": 12,
+        "imageMappedMeshes": 0,
+        "extent": [
+          69.19121058203511,
+          14.560236930847168,
+          77.19750213623047
+        ],
+        "sceneElevation": 34.595603453080535,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "phase": 0,
+        "selection": 0,
+        "kind": "slope-movement",
+        "slidingBodyIsSolid": true,
+        "debrisFollowsSlope": true,
+        "stabilityPrediction": false
+      },
+      "labels": [],
+      "triangles": 23141,
+      "calls": 44
+    },
+    {
+      "id": "mitigation",
+      "geometry": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 18,
+        "labels": 0,
+        "meshes": 18,
+        "imageMappedMeshes": 0,
+        "extent": [
+          133.4493613243103,
+          29.192045386374687,
+          20.052886962890625
+        ],
+        "sceneElevation": 56,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "phase": 0,
+        "selection": 0,
+        "kind": "rescue-and-recovery",
+        "geometry": "rubble-crane-housing",
+        "operationalInstructions": false
+      },
+      "labels": [],
+      "triangles": 9329,
+      "calls": 56
+    },
+    {
+      "id": "remote",
+      "geometry": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 22,
+        "labels": 0,
+        "meshes": 22,
+        "imageMappedMeshes": 0,
+        "extent": [
+          94.09890139102936,
+          31.170261373592545,
+          17.32944563045757
+        ],
+        "sceneElevation": 45.089056633161846,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "phase": 0,
+        "selection": 0,
+        "kind": "remote-sensing",
+        "components": [
+          "satellite",
+          "ground-target",
+          "receiver",
+          "processing",
+          "display"
+        ]
+      },
+      "labels": [],
+      "triangles": 9397,
+      "calls": 64
+    },
+    {
+      "id": "gis",
+      "geometry": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 31,
+        "labels": 0,
+        "meshes": 31,
+        "imageMappedMeshes": 0,
+        "extent": [
+          67.00982570648193,
+          1.784136563539505,
+          76.21397399902344
+        ],
+        "sceneElevation": 38.530648395611024,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "phase": 0,
+        "selection": 0,
+        "kind": "gis-overlay",
+        "geometricLayers": 3,
+        "assembled": false,
+        "source": "textbook-illustration"
+      },
+      "labels": [],
+      "triangles": 11317,
+      "calls": 82
+    }
+  ],
+  "measurements": [
+    {
+      "label": "白天",
+      "labels": [
+        {
+          "text": "低压",
+          "left": 534.4033823339769,
+          "top": 501.15355985571364,
+          "right": 629.4586622274802,
+          "bottom": 541.5520538104525,
+          "fontPx": 27.849174556032782
+        },
+        {
+          "text": "高压",
+          "left": 818.5482889510587,
+          "top": 521.2317423661611,
+          "right": 915.441574256728,
+          "bottom": 562.4113886210705,
+          "fontPx": 28.387671035299217
+        },
+        {
+          "text": "高压",
+          "left": 529.8109849232502,
+          "top": 353.93146766197503,
+          "right": 629.6604739964267,
+          "bottom": 396.36750051807513,
+          "fontPx": 29.25377584122645
+        },
+        {
+          "text": "低压",
+          "left": 815.798006504481,
+          "top": 371.28007173898123,
+          "right": 917.5913269251299,
+          "bottom": 414.5422329177572,
+          "fontPx": 29.82327706792215
+        },
+        {
+          "text": "陆地 · 较暖",
+          "left": 448.8523625542094,
+          "top": 704.8007468557475,
+          "right": 636.3814439172147,
+          "bottom": 745.9361582515035,
+          "fontPx": 28.357177217499817
+        },
+        {
+          "text": "海洋 · 较冷",
+          "left": 767.1770535828257,
+          "top": 738.5912719957654,
+          "right": 958.3193034808315,
+          "bottom": 780.5192493927473,
+          "fontPx": 28.90354186515346
+        }
+      ]
+    },
+    {
+      "label": "夜晚",
+      "labels": [
+        {
+          "text": "高压",
+          "left": 534.4049655332234,
+          "top": 501.154927829595,
+          "right": 629.4601429821159,
+          "bottom": 541.5533782453743,
+          "fontPx": 27.8491445419415
+        },
+        {
+          "text": "低压",
+          "left": 818.5498692720078,
+          "top": 521.2317010054996,
+          "right": 915.4429178495559,
+          "bottom": 562.4112466509577,
+          "fontPx": 28.38760167899658
+        },
+        {
+          "text": "低压",
+          "left": 529.8126011897018,
+          "top": 353.9333950019511,
+          "right": 629.6620080921087,
+          "bottom": 396.36939293547414,
+          "fontPx": 29.253751766939278
+        },
+        {
+          "text": "高压",
+          "left": 815.799698583066,
+          "top": 371.28080170207767,
+          "right": 917.5927957999288,
+          "bottom": 414.54286801924445,
+          "fontPx": 29.823211673961783
+        },
+        {
+          "text": "陆地 · 较冷",
+          "left": 448.8555215583646,
+          "top": 704.8021957792542,
+          "right": 636.3843425549713,
+          "bottom": 745.937550062381,
+          "fontPx": 28.357137846240555
+        },
+        {
+          "text": "海洋 · 较暖",
+          "left": 767.1802132202947,
+          "top": 738.590759411902,
+          "right": 958.3219004903212,
+          "bottom": 780.5186133937143,
+          "fontPx": 28.90345678746209
+        }
+      ]
+    },
+    {
+      "label": "pressure field",
+      "labels": [
+        {
+          "text": "相对高压",
+          "left": 372.53859502531475,
+          "top": 366.9078905101818,
+          "right": 555.2152893465462,
+          "bottom": 418.6662872345307,
+          "fontPx": 35.508667520192866
+        },
+        {
+          "text": "相对低压",
+          "left": 938.2643098800743,
+          "top": 402.0337533731316,
+          "right": 1128.0606884644849,
+          "bottom": 455.809393972048,
+          "fontPx": 36.892590643442624
+        },
+        {
+          "text": "同一水平面",
+          "left": 545.0201969532732,
+          "top": 630.1583081428353,
+          "right": 834.3232452763064,
+          "bottom": 691.6352059114798,
+          "fontPx": 42.17601125988406
+        }
+      ]
+    },
+    {
+      "label": "1366",
+      "labels": [
+        {
+          "text": "低压",
+          "left": 549.2429799668752,
+          "top": 384.83234832970794,
+          "right": 617.748569652036,
+          "bottom": 413.9472239459013,
+          "fontPx": 20.070680212014164
+        },
+        {
+          "text": "高压",
+          "left": 753.9397014855613,
+          "top": 399.28333359714793,
+          "right": 823.6867644274516,
+          "bottom": 428.9258353474513,
+          "fontPx": 20.43440546191127
+        },
+        {
+          "text": "高压",
+          "left": 546.3578107657984,
+          "top": 279.05687129685293,
+          "right": 618.0956947855598,
+          "bottom": 309.54547200525155,
+          "fontPx": 21.017673679832242
+        },
+        {
+          "text": "低压",
+          "left": 751.7420113713079,
+          "top": 291.63627951372246,
+          "right": 824.7846445128431,
+          "bottom": 322.67939859887485,
+          "fontPx": 21.399937411892292
+        },
+        {
+          "text": "陆地 · 较暖",
+          "left": 487.8074230308873,
+          "top": 531.433828058221,
+          "right": 622.8064245276134,
+          "bottom": 561.0465122575029,
+          "fontPx": 20.41385038418577
+        },
+        {
+          "text": "海洋 · 较冷",
+          "left": 716.9233357979754,
+          "top": 555.550611122782,
+          "right": 854.3572973832906,
+          "bottom": 585.6974155995608,
+          "fontPx": 20.78205244782199
+        }
+      ]
+    },
+    {
+      "label": "1024",
+      "labels": [
+        {
+          "text": "低压",
+          "left": 378.24297996687517,
+          "top": 384.83234832970794,
+          "right": 446.74856965203605,
+          "bottom": 413.9472239459013,
+          "fontPx": 20.070680212014164
+        },
+        {
+          "text": "高压",
+          "left": 582.9397014855613,
+          "top": 399.28333359714793,
+          "right": 652.6867644274516,
+          "bottom": 428.9258353474513,
+          "fontPx": 20.43440546191127
+        },
+        {
+          "text": "高压",
+          "left": 375.3578107657983,
+          "top": 279.05687129685293,
+          "right": 447.0956947855598,
+          "bottom": 309.54547200525155,
+          "fontPx": 21.017673679832242
+        },
+        {
+          "text": "低压",
+          "left": 580.7420113713079,
+          "top": 291.63627951372246,
+          "right": 653.7846445128431,
+          "bottom": 322.67939859887485,
+          "fontPx": 21.399937411892292
+        },
+        {
+          "text": "陆地 · 较暖",
+          "left": 316.80742303088726,
+          "top": 531.433828058221,
+          "right": 451.8064245276134,
+          "bottom": 561.0465122575029,
+          "fontPx": 20.41385038418577
+        },
+        {
+          "text": "海洋 · 较冷",
+          "left": 545.9233357979754,
+          "top": 555.550611122782,
+          "right": 683.3572973832905,
+          "bottom": 585.6974155995608,
+          "fontPx": 20.78205244782199
+        }
+      ]
+    }
+  ],
+  "browser": "156.0.8078.80",
+  "base": "http://127.0.0.1:5173"
+}

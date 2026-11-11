@@ -1,0 +1,138 @@
+{
+  "baseline": "docs/verification/previous-polish-base-20261106.json",
+  "generatedAt": "2026-11-06T04:19:34.817Z",
+  "changes": [
+    {
+      "path": "src/textbook-book.ts",
+      "before": "c6b80dc8dedcc5fd17c0d9c19637e3da9d4d46fd214b067bfba9fe8bbcdaba90",
+      "after": "5c9266aeeefd8e405c1320a520cf2bcc86d0beff32cfb28bdc6090b6af62288c",
+      "status": "modified"
+    },
+    {
+      "path": "src/textbook-flat-land-extra.ts",
+      "before": "c938682ae9325bb443f8fffc79d6936f70d58eee3177f411d28d42af833edbc3",
+      "after": "299c6e99273c75dc439f0c85295c65bc11466faefee8f9e0affc66bdc6d1228f",
+      "status": "modified"
+    },
+    {
+      "path": "src/textbook-flat-model.ts",
+      "before": "869d541c7f136fdebcd63140cf102ce59b6934e3e6971e89d9bb7622d0fa1090",
+      "after": "568ef9175c9b149caf344b8e9c47d331c547d732ead8ad32fb9c62ec7b7f2356",
+      "status": "modified"
+    },
+    {
+      "path": "src/textbook-flat-sky-extra.ts",
+      "before": "b95cd0980facf27d5f8bb0a61c95ca8695de807b43eaae535f91f76f1425e13d",
+      "after": "bdbe5c43d8ced2cc9f243336c26b1aaf64a5beee03f571af04fffcb2645299bd",
+      "status": "modified"
+    },
+    {
+      "path": "src/textbook-geometry.ts",
+      "before": "a29436cd89f5ee0c4d817a25551e1c1168e1ae46f60712c4bc83e8450a38a613",
+      "after": "69760d7bef15c423bac1d6cf78dd11d5de496b0fa0a98951a49480ab4c06fb8d",
+      "status": "modified"
+    },
+    {
+      "path": "src/textbook-gis-model.ts",
+      "before": "51bd1d7b6bb67d814fceec0a0f7bfc0b8ac410471963cc0c503c82f43eb1a60f",
+      "after": "1777db61ff2975c5ce9ddda7476c6034fbed64adba7b055e4f4223008c877525",
+      "status": "modified"
+    },
+    {
+      "path": "src/textbook-gis-world.ts",
+      "before": "a46d22884f6fb8190db9bbdba32ebc5f8d939db2538de63ce944e54294510ff4",
+      "after": "510cca6f70c90d6cc328b6ab3689a569f712fb009aa13a672f253557ba6ca428",
+      "status": "modified"
+    },
+    {
+      "path": "src/textbook-illustration.ts",
+      "before": "41c597b4d46695daafbe74ef9d3b3b155d4b39c73c7ef8219663f67cfdd81014",
+      "after": "4854c39b6b50bedd692ce97666b6601c5c5ba0d35d27c0b6fa516195f7ed890b",
+      "status": "modified"
+    },
+    {
+      "path": "src/textbook-inspection.ts",
+      "before": null,
+      "after": "3fa077567f9e2e3625fbb516f25f5a9544c50e59e66c31198616be2c81d42148",
+      "status": "added"
+    },
+    {
+      "path": "src/textbook-main.ts",
+      "before": "5e40b73e6b9a97c7a8748ceaf2211e14f23fcbddfd1c7efbd5f3fe772b5249d4",
+      "after": "fe477f26d1aff972b29887e2fc608b4393c9e1e8af9ad8b05fe6b7fbffafd2d5",
+      "status": "modified"
+    },
+    {
+      "path": "src/textbook-model-input.ts",
+      "before": "143967137a48e92365f7a7a21c18c0db0ef9adbfdf7690f9e8191613920c2308",
+      "after": "71a42158608843aeaa50179b888e8fa5b9f5a34816bd6ae25f5b866a4fa5335c",
+      "status": "modified"
+    },
+    {
+      "path": "src/textbook-models-land-extra.ts",
+      "before": "4b504c5f6f0eeab28868cd8b243dbdfbca5f97e1923f83c72855fb87de0fb68c",
+      "after": "b57847ffd247ad85acd8042227f012eb4d82ee55a76720ca2642ac66e41b1733",
+      "status": "modified"
+    },
+    {
+      "path": "src/textbook-playback-rhythm.ts",
+      "before": null,
+      "after": "2e0d7bbdbdc71624d491d890cace2e54085501aec98a963c755fcc2b119ae524",
+      "status": "added"
+    },
+    {
+      "path": "src/textbook-remote-world.ts",
+      "before": "598eb3fbc96f5bb471c0735cf4331feaef023b91a01c780143d0777ed3bb08ab",
+      "after": "781b39fdd7b649e0644e09d887fb24f41ee489c3d85b22eff1491e869e689d71",
+      "status": "modified"
+    },
+    {
+      "path": "src/textbook-sky-causality-model.ts",
+      "before": "e3e6eb6f947b7c980da4736aecb7ba425906c967516977ffa135f8dffa11e630",
+      "after": "0232b95d0e789582a8c9ff3d645cdd6a02718577a67dcda3b988ef2b4a74436c",
+      "status": "modified"
+    },
+    {
+      "path": "src/textbook-sky-causality-world.ts",
+      "before": "6b5afc022f0a98b23f98b223d7ab05ac64ecc1dcb0ff1bbdb82fc6b52317282d",
+      "after": "030c040428840bb757f6e493a25d7ca31dae5ac09207a19a3dc414e01e8de158",
+      "status": "modified"
+    },
+    {
+      "path": "src/textbook-soil-transfer-detail-model.ts",
+      "before": null,
+      "after": "a931597859a93481cc3db5632eb5e8d1ab271e8d96e34c133a5647ab1c158d89",
+      "status": "added"
+    },
+    {
+      "path": "src/textbook-timeline.css",
+      "before": "d3be948620023aeec7dad9eb370f99164070001e6aacef47088fe5ab44f4a031",
+      "after": "cbe2a5b05136e7144132419b048e236f638a8755cc60ad6e984122353cf8a83a",
+      "status": "modified"
+    },
+    {
+      "path": "src/textbook-typhoon-model.ts",
+      "before": "5057835d2b6b4940232dab67089290b25f773f70447f1f13db6d6719e1b8f4a9",
+      "after": "5cf312b271fb2a7790496e1a18efe8071475c0ac8236c6bfb726bd65b8a3eca0",
+      "status": "modified"
+    },
+    {
+      "path": "src/textbook-typhoon-world.ts",
+      "before": "dbe1bd345eed915d51c31d42844ae615dfcba4acb55c60af126c2767eab3fbe4",
+      "after": "b19ee97c369de3afa740a8f86903416eff00d47af7988bbec9440ff1a23a436b",
+      "status": "modified"
+    },
+    {
+      "path": "src/textbook-urban-water-model.ts",
+      "before": "afa3bc3710b700083618bd11e968fa27731a206d4d6ad02463021a96ed09345b",
+      "after": "b33c509ec0e7f895b2918d3c9fb27fcc00173fa08c6b3a40e3980582146699d1",
+      "status": "modified"
+    },
+    {
+      "path": "src/textbook-urban-water-world.ts",
+      "before": "45f2e49cf841ef74a9723212ec7b8297cfa9cf9761c5a0c00a159add479297aa",
+      "after": "2887951eb8aae1b6891a14d21a89edf93936b705b5d2d55d10354e64ae21783f",
+      "status": "modified"
+    }
+  ]
+}

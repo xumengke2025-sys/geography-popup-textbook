@@ -1,0 +1,515 @@
+{
+  "base": "http://127.0.0.1:4175",
+  "browser": "156.0.8078.80",
+  "errors": [],
+  "failures": [],
+  "checks": [
+    "the river can be opened paused",
+    "0: a real bank and channel depth is present",
+    "0: independent geometry without the textbook photograph as a surface",
+    "0: within the scene triangle target",
+    "350: a real bank and channel depth is present",
+    "350: independent geometry without the textbook photograph as a surface",
+    "350: within the scene triangle target",
+    "550: a real bank and channel depth is present",
+    "550: independent geometry without the textbook photograph as a surface",
+    "550: within the scene triangle target",
+    "680: a real bank and channel depth is present",
+    "680: independent geometry without the textbook photograph as a surface",
+    "680: within the scene triangle target",
+    "810: a real bank and channel depth is present",
+    "810: independent geometry without the textbook photograph as a surface",
+    "810: within the scene triangle target",
+    "1000: a real bank and channel depth is present",
+    "1000: independent geometry without the textbook photograph as a surface",
+    "1000: within the scene triangle target",
+    "the separated lake stops receiving a through-flow",
+    "backward scrubbing restores the same process geometry",
+    "play advances the landform process",
+    "pause freezes the process and flow",
+    "0: the named stop seeks and stays paused",
+    "1: the named stop seeks and stays paused",
+    "2: the named stop seeks and stays paused",
+    "the inspected landscape tablet state keeps the lake label clear and readable",
+    "the 2D process uses shared vector geometry",
+    "2D and diagnostic captions follow the same process",
+    "no browser exceptions"
+  ],
+  "states": [
+    {
+      "phase": 0,
+      "render": {
+        "position": 38,
+        "spread": 38,
+        "busy": false,
+        "figure": "river",
+        "modelState": "live",
+        "geometry": {
+          "architecture": "three-dimensional-geometry",
+          "bitmapSurfaces": 0,
+          "solids": 13,
+          "labels": 3,
+          "meshes": 20,
+          "imageMappedMeshes": 0,
+          "extent": [
+            178.8693389892578,
+            32.079170698075,
+            177.927734375
+          ],
+          "sceneElevation": 56,
+          "unfoldProgress": 1,
+          "originalPagePreserved": true,
+          "phase": 0,
+          "selection": 0,
+          "kind": "meander-cutoff",
+          "stage": 0,
+          "breach": 0,
+          "separation": 0,
+          "closedOxbow": false,
+          "lakeFlow": 1,
+          "shortcutFlow": 0,
+          "channelDepth": 6.415834145430142,
+          "waterSurface": 7.93068387421226,
+          "lakeEndpoints": [
+            [
+              0.37,
+              0.73
+            ],
+            [
+              0.63,
+              0.73
+            ]
+          ],
+          "bufferVertices": 9725,
+          "geometryGap": false,
+          "buffersStable": true,
+          "erosionRate": "schematic-flood-triggered-possible-cutoff"
+        },
+        "view": "detail",
+        "labels": [
+          {
+            "text": "河曲颈部",
+            "left": 548.7432980258144,
+            "top": 726.8267758384733,
+            "right": 759.5219151290096,
+            "bottom": 779.5214301142721,
+            "fontPx": 36.15098374735036
+          }
+        ],
+        "models": 1,
+        "images": 6,
+        "triangles": 54827,
+        "calls": 54,
+        "geometries": 44,
+        "textures": 329,
+        "hiRes": 6,
+        "engine": "Every Joule 48591dd"
+      },
+      "state": {
+        "phase": 0,
+        "selection": 0,
+        "routes": [],
+        "rings": [],
+        "focus": null,
+        "caption": "河曲"
+      }
+    },
+    {
+      "phase": 350,
+      "render": {
+        "position": 38,
+        "spread": 38,
+        "busy": false,
+        "figure": "river",
+        "modelState": "live",
+        "geometry": {
+          "architecture": "three-dimensional-geometry",
+          "bitmapSurfaces": 0,
+          "solids": 13,
+          "labels": 3,
+          "meshes": 20,
+          "imageMappedMeshes": 0,
+          "extent": [
+            178.8693389892578,
+            32.079170698075,
+            177.927734375
+          ],
+          "sceneElevation": 56,
+          "unfoldProgress": 1,
+          "originalPagePreserved": true,
+          "phase": 0.35,
+          "selection": 0,
+          "kind": "meander-cutoff",
+          "stage": 0,
+          "breach": 0,
+          "separation": 0,
+          "closedOxbow": false,
+          "lakeFlow": 1,
+          "shortcutFlow": 0,
+          "channelDepth": 6.415834145430142,
+          "waterSurface": 7.93068387421226,
+          "lakeEndpoints": [
+            [
+              0.44238317572503105,
+              0.73
+            ],
+            [
+              0.557616824274969,
+              0.73
+            ]
+          ],
+          "bufferVertices": 9725,
+          "geometryGap": false,
+          "buffersStable": true,
+          "erosionRate": "schematic-flood-triggered-possible-cutoff"
+        },
+        "view": "detail",
+        "labels": [
+          {
+            "text": "河曲颈部",
+            "left": 553.0775261227258,
+            "top": 727.4792123646528,
+            "right": 763.7317359638181,
+            "bottom": 780.1427648249258,
+            "fontPx": 36.12964645530363
+          }
+        ],
+        "models": 1,
+        "images": 6,
+        "triangles": 55009,
+        "calls": 54,
+        "geometries": 44,
+        "textures": 329,
+        "hiRes": 6,
+        "engine": "Every Joule 48591dd"
+      },
+      "state": {
+        "phase": 0.35,
+        "selection": 0,
+        "routes": [],
+        "rings": [],
+        "focus": null,
+        "caption": "河曲"
+      }
+    },
+    {
+      "phase": 550,
+      "render": {
+        "position": 38,
+        "spread": 38,
+        "busy": false,
+        "figure": "river",
+        "modelState": "live",
+        "geometry": {
+          "architecture": "three-dimensional-geometry",
+          "bitmapSurfaces": 0,
+          "solids": 13,
+          "labels": 3,
+          "meshes": 20,
+          "imageMappedMeshes": 0,
+          "extent": [
+            178.8693389892578,
+            32.079170698075,
+            177.927734375
+          ],
+          "sceneElevation": 56,
+          "unfoldProgress": 1,
+          "originalPagePreserved": true,
+          "phase": 0.55,
+          "selection": 0,
+          "kind": "meander-cutoff",
+          "stage": 1,
+          "breach": 0.5972713076354076,
+          "separation": 0,
+          "closedOxbow": false,
+          "lakeFlow": 1,
+          "shortcutFlow": 0,
+          "channelDepth": 6.415834145430142,
+          "waterSurface": 7.93068387421226,
+          "lakeEndpoints": [
+            [
+              0.443,
+              0.73
+            ],
+            [
+              0.557,
+              0.73
+            ]
+          ],
+          "bufferVertices": 9725,
+          "geometryGap": false,
+          "buffersStable": true,
+          "erosionRate": "schematic-flood-triggered-possible-cutoff"
+        },
+        "view": "detail",
+        "labels": [
+          {
+            "text": "洪水冲颈",
+            "left": 553.1205745005417,
+            "top": 727.4821059980408,
+            "right": 763.7706269606751,
+            "bottom": 780.1446191130741,
+            "fontPx": 36.12893341612752
+          }
+        ],
+        "models": 1,
+        "images": 6,
+        "triangles": 55201,
+        "calls": 56,
+        "geometries": 46,
+        "textures": 330,
+        "hiRes": 6,
+        "engine": "Every Joule 48591dd"
+      },
+      "state": {
+        "phase": 0.55,
+        "selection": 1,
+        "routes": [],
+        "rings": [],
+        "focus": null,
+        "caption": "洪水冲颈"
+      }
+    },
+    {
+      "phase": 680,
+      "render": {
+        "position": 38,
+        "spread": 38,
+        "busy": false,
+        "figure": "river",
+        "modelState": "live",
+        "geometry": {
+          "architecture": "three-dimensional-geometry",
+          "bitmapSurfaces": 0,
+          "solids": 13,
+          "labels": 3,
+          "meshes": 20,
+          "imageMappedMeshes": 0,
+          "extent": [
+            178.8693389892578,
+            32.079170698075,
+            177.927734375
+          ],
+          "sceneElevation": 56,
+          "unfoldProgress": 1,
+          "originalPagePreserved": true,
+          "phase": 0.68,
+          "selection": 0,
+          "kind": "meander-cutoff",
+          "stage": 1,
+          "breach": 1,
+          "separation": 0,
+          "closedOxbow": false,
+          "lakeFlow": 0.9259259259259257,
+          "shortcutFlow": 1,
+          "channelDepth": 6.415834145430142,
+          "waterSurface": 7.93068387421226,
+          "lakeEndpoints": [
+            [
+              0.443,
+              0.73
+            ],
+            [
+              0.557,
+              0.73
+            ]
+          ],
+          "bufferVertices": 9725,
+          "geometryGap": false,
+          "buffersStable": true,
+          "erosionRate": "schematic-flood-triggered-possible-cutoff"
+        },
+        "view": "detail",
+        "labels": [
+          {
+            "text": "洪水冲颈",
+            "left": 553.247407129461,
+            "top": 727.4879966801358,
+            "right": 763.8830047155456,
+            "bottom": 780.146896076657,
+            "fontPx": 36.12645423714825
+          }
+        ],
+        "models": 1,
+        "images": 6,
+        "triangles": 55353,
+        "calls": 56,
+        "geometries": 46,
+        "textures": 330,
+        "hiRes": 6,
+        "engine": "Every Joule 48591dd"
+      },
+      "state": {
+        "phase": 0.68,
+        "selection": 1,
+        "routes": [],
+        "rings": [],
+        "focus": null,
+        "caption": "洪水冲颈"
+      }
+    },
+    {
+      "phase": 810,
+      "render": {
+        "position": 38,
+        "spread": 38,
+        "busy": false,
+        "figure": "river",
+        "modelState": "live",
+        "geometry": {
+          "architecture": "three-dimensional-geometry",
+          "bitmapSurfaces": 0,
+          "solids": 13,
+          "labels": 3,
+          "meshes": 20,
+          "imageMappedMeshes": 0,
+          "extent": [
+            178.8693389892578,
+            32.079170698075,
+            177.927734375
+          ],
+          "sceneElevation": 56,
+          "unfoldProgress": 1,
+          "originalPagePreserved": true,
+          "phase": 0.81,
+          "selection": 0,
+          "kind": "meander-cutoff",
+          "stage": 1,
+          "breach": 1,
+          "separation": 0.5000000000000003,
+          "closedOxbow": false,
+          "lakeFlow": 0.03429355281207114,
+          "shortcutFlow": 1,
+          "channelDepth": 6.415834145430142,
+          "waterSurface": 7.93068387421226,
+          "lakeEndpoints": [
+            [
+              0.42380818399999987,
+              0.6643424799999997
+            ],
+            [
+              0.5761918160000001,
+              0.66434248
+            ]
+          ],
+          "bufferVertices": 9725,
+          "geometryGap": false,
+          "buffersStable": true,
+          "erosionRate": "schematic-flood-triggered-possible-cutoff"
+        },
+        "view": "detail",
+        "labels": [
+          {
+            "text": "洪水冲颈",
+            "left": 553.2497000066413,
+            "top": 727.487987767514,
+            "right": 763.8849393017941,
+            "bottom": 780.1467975913023,
+            "fontPx": 36.126392786087294
+          }
+        ],
+        "models": 1,
+        "images": 6,
+        "triangles": 55263,
+        "calls": 56,
+        "geometries": 46,
+        "textures": 330,
+        "hiRes": 6,
+        "engine": "Every Joule 48591dd"
+      },
+      "state": {
+        "phase": 0.81,
+        "selection": 1,
+        "routes": [],
+        "rings": [],
+        "focus": null,
+        "caption": "洪水冲颈"
+      }
+    },
+    {
+      "phase": 1000,
+      "render": {
+        "position": 38,
+        "spread": 38,
+        "busy": false,
+        "figure": "river",
+        "modelState": "live",
+        "geometry": {
+          "architecture": "three-dimensional-geometry",
+          "bitmapSurfaces": 0,
+          "solids": 13,
+          "labels": 3,
+          "meshes": 20,
+          "imageMappedMeshes": 0,
+          "extent": [
+            178.8693389892578,
+            32.079170698075,
+            177.927734375
+          ],
+          "sceneElevation": 56,
+          "unfoldProgress": 1,
+          "originalPagePreserved": true,
+          "phase": 1,
+          "selection": 0,
+          "kind": "meander-cutoff",
+          "stage": 2,
+          "breach": 1,
+          "separation": 1,
+          "closedOxbow": true,
+          "lakeFlow": 0,
+          "shortcutFlow": 1,
+          "channelDepth": 6.415834145430142,
+          "waterSurface": 7.93068387421226,
+          "lakeEndpoints": [
+            [
+              0.379667072,
+              0.6259398399999999
+            ],
+            [
+              0.6203329280000001,
+              0.62593984
+            ]
+          ],
+          "bufferVertices": 9725,
+          "geometryGap": true,
+          "buffersStable": true,
+          "erosionRate": "schematic-flood-triggered-possible-cutoff"
+        },
+        "view": "detail",
+        "labels": [
+          {
+            "text": "牛轭湖",
+            "left": 651.9971981371324,
+            "top": 359.6261261835361,
+            "right": 816.0739190742547,
+            "bottom": 403.3799184334353,
+            "fontPx": 30.01713654353551
+          }
+        ],
+        "models": 1,
+        "images": 6,
+        "triangles": 54869,
+        "calls": 56,
+        "geometries": 47,
+        "textures": 331,
+        "hiRes": 6,
+        "engine": "Every Joule 48591dd"
+      },
+      "state": {
+        "phase": 1,
+        "selection": 2,
+        "routes": [],
+        "rings": [],
+        "focus": null,
+        "caption": "牛轭湖"
+      }
+    }
+  ],
+  "reviewedEntry": {
+    "path": "/assets/index-B2EOZTu1.js",
+    "sha256": "dcbc3320877b03aad27ce73f712ad120e73e98477bf3cf9b7b10055e6ab4297e"
+  },
+  "reviewedAt": "2026-11-05T06:10:20.254Z",
+  "externalRequests": [],
+  "requestFailures": []
+}

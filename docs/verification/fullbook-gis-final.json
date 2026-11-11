@@ -1,0 +1,7859 @@
+{
+  "scope": "GIS only: desktop Chrome, 1366×900 and 1024×768, 3D/2D and playback; not full-book or real-touch acceptance",
+  "base": "http://127.0.0.1:4175",
+  "browser": "156.0.8078.80",
+  "errors": [],
+  "checks": [
+    "3D 中始终只有一组 33 个站点",
+    "3D 终点统计为原图的 5／15／13",
+    "正向与反向拖动得到相同位置及计数",
+    "拖动进度后保持暂停",
+    "播放操作在正常动态设置下检查",
+    "叠合停靠按钮准确跳到 phase 1 并暂停",
+    "phase 1 对应按钮正确标记为当前状态",
+    "分离停靠按钮准确跳到 phase 0 并暂停",
+    "phase 0 对应按钮正确标记为当前状态",
+    "播放按钮推进真实课程时间",
+    "暂停后时间及模型保持不动",
+    "重放从分离起点重新播放",
+    "once 播放到终点后停止并保持结果",
+    "自动播放终点仍为 5／15／13",
+    "1024×768 结果态有三个实际统计标签",
+    "1024×768 统计标签在视口内且避开底栏至少 8px",
+    "1024×768 三个统计标签互不重叠",
+    "2D SVG 仅有同源的 33 个站点",
+    "2D 与 3D 的站点 ID 和空间归属逐点一致",
+    "2D 结果态显示相同的 5／15／13",
+    "2D 模型没有贴教材裁图"
+  ],
+  "failures": [],
+  "states": [
+    {
+      "phase": 0,
+      "selection": 0,
+      "playing": false,
+      "geometry": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 38,
+        "labels": 8,
+        "meshes": 46,
+        "imageMappedMeshes": 0,
+        "extent": [
+          74.84997286852344,
+          34.845108109162624,
+          70.36031281570773
+        ],
+        "sceneElevation": 38.530648395611024,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "phase": 0,
+        "selection": 0,
+        "kind": "gis-spatial-overlay",
+        "stage": "separated",
+        "assembled": false,
+        "source": {
+          "textbookPage": 117,
+          "pdfPage": 122,
+          "figure": "6.26",
+          "image": "textbook/page-122.webp",
+          "imagePixels": [
+            1530,
+            2147
+          ],
+          "stationLayerY": [
+            970,
+            1147
+          ],
+          "regionLayerY": [
+            1251,
+            1427
+          ],
+          "coordinateMeaning": "positions-traced-from-the-textbook-diagram"
+        },
+        "geometricLayers": 2,
+        "stationMeshCount": 33,
+        "oneStationSet": true,
+        "counts": [
+          {
+            "region": 1,
+            "count": 0
+          },
+          {
+            "region": 2,
+            "count": 0
+          },
+          {
+            "region": 3,
+            "count": 0
+          }
+        ],
+        "derivedTotals": [
+          {
+            "id": 1,
+            "count": 5
+          },
+          {
+            "id": 2,
+            "count": 15
+          },
+          {
+            "id": 3,
+            "count": 13
+          }
+        ],
+        "membershipMethod": "point-in-polygon",
+        "activeRegion": null,
+        "resultReady": false,
+        "measuredGeographicData": false
+      },
+      "actualStationMeshes": 33,
+      "stations": [
+        {
+          "id": "station-01",
+          "region": 1,
+          "position": [
+            13.498378961616618,
+            31.511369405280142,
+            -166.06217753586603
+          ]
+        },
+        {
+          "id": "station-02",
+          "region": 3,
+          "position": [
+            71.85355914202724,
+            31.511369405280142,
+            -165.55108566326396
+          ]
+        },
+        {
+          "id": "station-03",
+          "region": 3,
+          "position": [
+            33.08506170731366,
+            31.511369405280142,
+            -165.42331269511345
+          ]
+        },
+        {
+          "id": "station-04",
+          "region": 3,
+          "position": [
+            46.188764424053815,
+            31.511369405280142,
+            -165.29553972696291
+          ]
+        },
+        {
+          "id": "station-05",
+          "region": 3,
+          "position": [
+            59.87308851658199,
+            31.511369405280142,
+            -165.1677667588124
+          ]
+        },
+        {
+          "id": "station-06",
+          "region": 1,
+          "position": [
+            23.950966847100723,
+            31.511369405280142,
+            -160.56793990539384
+          ]
+        },
+        {
+          "id": "station-07",
+          "region": 1,
+          "position": [
+            9.557301795890076,
+            31.511369405280142,
+            -157.50138866978148
+          ]
+        },
+        {
+          "id": "station-08",
+          "region": 3,
+          "position": [
+            44.71480773901712,
+            31.511369405280142,
+            -155.84034008382477
+          ]
+        },
+        {
+          "id": "station-09",
+          "region": 3,
+          "position": [
+            72.70825775332088,
+            31.511369405280142,
+            -154.69038337047013
+          ]
+        },
+        {
+          "id": "station-10",
+          "region": 3,
+          "position": [
+            36.025949231109585,
+            31.511369405280142,
+            -154.4348374341691
+          ]
+        },
+        {
+          "id": "station-11",
+          "region": 3,
+          "position": [
+            61.912445236764896,
+            31.511369405280142,
+            -153.668199625266
+          ]
+        },
+        {
+          "id": "station-12",
+          "region": 1,
+          "position": [
+            25.58061323095307,
+            31.511369405280142,
+            -150.85719432595468
+          ]
+        },
+        {
+          "id": "station-13",
+          "region": 1,
+          "position": [
+            18.399588848273197,
+            31.511369405280142,
+            -149.83501058075055
+          ]
+        },
+        {
+          "id": "station-14",
+          "region": 2,
+          "position": [
+            35.45709518054958,
+            31.511369405280142,
+            -146.00182153623507
+          ]
+        },
+        {
+          "id": "station-15",
+          "region": 3,
+          "position": [
+            51.442038842408074,
+            31.511369405280142,
+            -144.21299998212785
+          ]
+        },
+        {
+          "id": "station-16",
+          "region": 3,
+          "position": [
+            72.92253782462817,
+            31.511369405280142,
+            -142.16863249171962
+          ]
+        },
+        {
+          "id": "station-17",
+          "region": 3,
+          "position": [
+            63.81496350797294,
+            31.511369405280142,
+            -140.89090281021447
+          ]
+        },
+        {
+          "id": "station-18",
+          "region": 2,
+          "position": [
+            10.139879807259328,
+            31.511369405280142,
+            -140.76312984206393
+          ]
+        },
+        {
+          "id": "station-19",
+          "region": 2,
+          "position": [
+            47.59991977123941,
+            31.511369405280142,
+            -140.25203796946187
+          ]
+        },
+        {
+          "id": "station-20",
+          "region": 2,
+          "position": [
+            18.779691434534215,
+            31.511369405280142,
+            -139.61317312870932
+          ]
+        },
+        {
+          "id": "station-21",
+          "region": 2,
+          "position": [
+            31.381201597282,
+            31.511369405280142,
+            -139.35762719240827
+          ]
+        },
+        {
+          "id": "station-22",
+          "region": 2,
+          "position": [
+            42.87719619669467,
+            31.511369405280142,
+            -137.057713765699
+          ]
+        },
+        {
+          "id": "station-23",
+          "region": 2,
+          "position": [
+            26.68648140028807,
+            31.511369405280142,
+            -134.50225440268866
+          ]
+        },
+        {
+          "id": "station-24",
+          "region": 2,
+          "position": [
+            39.64598576208762,
+            31.511369405280142,
+            -134.50225440268866
+          ]
+        },
+        {
+          "id": "station-25",
+          "region": 2,
+          "position": [
+            16.88218274035278,
+            31.511369405280142,
+            -132.9689787848825
+          ]
+        },
+        {
+          "id": "station-26",
+          "region": 2,
+          "position": [
+            51.28640260737977,
+            31.511369405280142,
+            -132.2023409759794
+          ]
+        },
+        {
+          "id": "station-27",
+          "region": 3,
+          "position": [
+            64.77290136893279,
+            31.511369405280142,
+            -129.64688161296908
+          ]
+        },
+        {
+          "id": "station-28",
+          "region": 2,
+          "position": [
+            58.33547410685887,
+            31.511369405280142,
+            -128.7524708359155
+          ]
+        },
+        {
+          "id": "station-29",
+          "region": 3,
+          "position": [
+            72.76865854963707,
+            31.511369405280142,
+            -128.7524708359155
+          ]
+        },
+        {
+          "id": "station-30",
+          "region": 2,
+          "position": [
+            12.072346019951068,
+            31.511369405280142,
+            -128.36915193146393
+          ]
+        },
+        {
+          "id": "station-31",
+          "region": 2,
+          "position": [
+            26.312279599488935,
+            31.511369405280142,
+            -128.36915193146393
+          ]
+        },
+        {
+          "id": "station-32",
+          "region": 2,
+          "position": [
+            38.84342114948225,
+            31.511369405280142,
+            -128.36915193146393
+          ]
+        },
+        {
+          "id": "station-33",
+          "region": 2,
+          "position": [
+            48.488574704430846,
+            31.511369405280142,
+            -127.85806005886187
+          ]
+        }
+      ]
+    },
+    {
+      "phase": 0.52,
+      "selection": 1,
+      "playing": false,
+      "geometry": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 38,
+        "labels": 8,
+        "meshes": 46,
+        "imageMappedMeshes": 0,
+        "extent": [
+          74.84997286852344,
+          34.845108109162624,
+          70.36031281570773
+        ],
+        "sceneElevation": 38.530648395611024,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "phase": 0.52,
+        "selection": 0,
+        "kind": "gis-spatial-overlay",
+        "stage": "aligned",
+        "assembled": true,
+        "source": {
+          "textbookPage": 117,
+          "pdfPage": 122,
+          "figure": "6.26",
+          "image": "textbook/page-122.webp",
+          "imagePixels": [
+            1530,
+            2147
+          ],
+          "stationLayerY": [
+            970,
+            1147
+          ],
+          "regionLayerY": [
+            1251,
+            1427
+          ],
+          "coordinateMeaning": "positions-traced-from-the-textbook-diagram"
+        },
+        "geometricLayers": 2,
+        "stationMeshCount": 33,
+        "oneStationSet": true,
+        "counts": [
+          {
+            "region": 1,
+            "count": 0
+          },
+          {
+            "region": 2,
+            "count": 0
+          },
+          {
+            "region": 3,
+            "count": 0
+          }
+        ],
+        "derivedTotals": [
+          {
+            "id": 1,
+            "count": 5
+          },
+          {
+            "id": 2,
+            "count": 15
+          },
+          {
+            "id": 3,
+            "count": 13
+          }
+        ],
+        "membershipMethod": "point-in-polygon",
+        "activeRegion": null,
+        "resultReady": false,
+        "measuredGeographicData": false
+      },
+      "actualStationMeshes": 33,
+      "stations": [
+        {
+          "id": "station-01",
+          "region": 1,
+          "position": [
+            13.498378961616618,
+            4.539915528352426,
+            -156.0107040413588
+          ]
+        },
+        {
+          "id": "station-02",
+          "region": 3,
+          "position": [
+            71.85355914202724,
+            4.539915528352426,
+            -155.49961216875673
+          ]
+        },
+        {
+          "id": "station-03",
+          "region": 3,
+          "position": [
+            33.08506170731366,
+            4.539915528352426,
+            -155.37183920060622
+          ]
+        },
+        {
+          "id": "station-04",
+          "region": 3,
+          "position": [
+            46.188764424053815,
+            4.539915528352426,
+            -155.2440662324557
+          ]
+        },
+        {
+          "id": "station-05",
+          "region": 3,
+          "position": [
+            59.87308851658199,
+            4.539915528352426,
+            -155.1162932643052
+          ]
+        },
+        {
+          "id": "station-06",
+          "region": 1,
+          "position": [
+            23.950966847100723,
+            4.539915528352426,
+            -150.51646641088664
+          ]
+        },
+        {
+          "id": "station-07",
+          "region": 1,
+          "position": [
+            9.557301795890076,
+            4.539915528352426,
+            -147.44991517527427
+          ]
+        },
+        {
+          "id": "station-08",
+          "region": 3,
+          "position": [
+            44.71480773901712,
+            4.539915528352426,
+            -145.78886658931756
+          ]
+        },
+        {
+          "id": "station-09",
+          "region": 3,
+          "position": [
+            72.70825775332088,
+            4.539915528352426,
+            -144.63890987596292
+          ]
+        },
+        {
+          "id": "station-10",
+          "region": 3,
+          "position": [
+            36.025949231109585,
+            4.539915528352426,
+            -144.38336393966188
+          ]
+        },
+        {
+          "id": "station-11",
+          "region": 3,
+          "position": [
+            61.912445236764896,
+            4.539915528352426,
+            -143.6167261307588
+          ]
+        },
+        {
+          "id": "station-12",
+          "region": 1,
+          "position": [
+            25.58061323095307,
+            4.539915528352426,
+            -140.80572083144745
+          ]
+        },
+        {
+          "id": "station-13",
+          "region": 1,
+          "position": [
+            18.399588848273197,
+            4.539915528352426,
+            -139.7835370862433
+          ]
+        },
+        {
+          "id": "station-14",
+          "region": 2,
+          "position": [
+            35.45709518054958,
+            4.539915528352426,
+            -135.95034804172786
+          ]
+        },
+        {
+          "id": "station-15",
+          "region": 3,
+          "position": [
+            51.442038842408074,
+            4.539915528352426,
+            -134.16152648762065
+          ]
+        },
+        {
+          "id": "station-16",
+          "region": 3,
+          "position": [
+            72.92253782462817,
+            4.539915528352426,
+            -132.11715899721239
+          ]
+        },
+        {
+          "id": "station-17",
+          "region": 3,
+          "position": [
+            63.81496350797294,
+            4.539915528352426,
+            -130.83942931570724
+          ]
+        },
+        {
+          "id": "station-18",
+          "region": 2,
+          "position": [
+            10.139879807259328,
+            4.539915528352426,
+            -130.71165634755673
+          ]
+        },
+        {
+          "id": "station-19",
+          "region": 2,
+          "position": [
+            47.59991977123941,
+            4.539915528352426,
+            -130.20056447495466
+          ]
+        },
+        {
+          "id": "station-20",
+          "region": 2,
+          "position": [
+            18.779691434534215,
+            4.539915528352426,
+            -129.56169963420209
+          ]
+        },
+        {
+          "id": "station-21",
+          "region": 2,
+          "position": [
+            31.381201597282,
+            4.539915528352426,
+            -129.30615369790104
+          ]
+        },
+        {
+          "id": "station-22",
+          "region": 2,
+          "position": [
+            42.87719619669467,
+            4.539915528352426,
+            -127.00624027119177
+          ]
+        },
+        {
+          "id": "station-23",
+          "region": 2,
+          "position": [
+            26.68648140028807,
+            4.539915528352426,
+            -124.45078090818146
+          ]
+        },
+        {
+          "id": "station-24",
+          "region": 2,
+          "position": [
+            39.64598576208762,
+            4.539915528352426,
+            -124.45078090818146
+          ]
+        },
+        {
+          "id": "station-25",
+          "region": 2,
+          "position": [
+            16.88218274035278,
+            4.539915528352426,
+            -122.91750529037527
+          ]
+        },
+        {
+          "id": "station-26",
+          "region": 2,
+          "position": [
+            51.28640260737977,
+            4.539915528352426,
+            -122.15086748147218
+          ]
+        },
+        {
+          "id": "station-27",
+          "region": 3,
+          "position": [
+            64.77290136893279,
+            4.539915528352426,
+            -119.59540811846188
+          ]
+        },
+        {
+          "id": "station-28",
+          "region": 2,
+          "position": [
+            58.33547410685887,
+            4.539915528352426,
+            -118.70099734140825
+          ]
+        },
+        {
+          "id": "station-29",
+          "region": 3,
+          "position": [
+            72.76865854963707,
+            4.539915528352426,
+            -118.70099734140825
+          ]
+        },
+        {
+          "id": "station-30",
+          "region": 2,
+          "position": [
+            12.072346019951068,
+            4.539915528352426,
+            -118.31767843695671
+          ]
+        },
+        {
+          "id": "station-31",
+          "region": 2,
+          "position": [
+            26.312279599488935,
+            4.539915528352426,
+            -118.31767843695671
+          ]
+        },
+        {
+          "id": "station-32",
+          "region": 2,
+          "position": [
+            38.84342114948225,
+            4.539915528352426,
+            -118.31767843695671
+          ]
+        },
+        {
+          "id": "station-33",
+          "region": 2,
+          "position": [
+            48.488574704430846,
+            4.539915528352426,
+            -117.80658656435466
+          ]
+        }
+      ]
+    },
+    {
+      "phase": 0.73,
+      "selection": 1,
+      "playing": false,
+      "geometry": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 38,
+        "labels": 8,
+        "meshes": 46,
+        "imageMappedMeshes": 0,
+        "extent": [
+          74.84997286852344,
+          34.845108109162624,
+          70.36031281570773
+        ],
+        "sceneElevation": 38.530648395611024,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "phase": 0.73,
+        "selection": 0,
+        "kind": "gis-spatial-overlay",
+        "stage": "classifying",
+        "assembled": true,
+        "source": {
+          "textbookPage": 117,
+          "pdfPage": 122,
+          "figure": "6.26",
+          "image": "textbook/page-122.webp",
+          "imagePixels": [
+            1530,
+            2147
+          ],
+          "stationLayerY": [
+            970,
+            1147
+          ],
+          "regionLayerY": [
+            1251,
+            1427
+          ],
+          "coordinateMeaning": "positions-traced-from-the-textbook-diagram"
+        },
+        "geometricLayers": 2,
+        "stationMeshCount": 33,
+        "oneStationSet": true,
+        "counts": [
+          {
+            "region": 1,
+            "count": 5
+          },
+          {
+            "region": 2,
+            "count": 7
+          },
+          {
+            "region": 3,
+            "count": 0
+          }
+        ],
+        "derivedTotals": [
+          {
+            "id": 1,
+            "count": 5
+          },
+          {
+            "id": 2,
+            "count": 15
+          },
+          {
+            "id": 3,
+            "count": 13
+          }
+        ],
+        "membershipMethod": "point-in-polygon",
+        "activeRegion": 2,
+        "resultReady": false,
+        "measuredGeographicData": false
+      },
+      "actualStationMeshes": 33,
+      "stations": [
+        {
+          "id": "station-01",
+          "region": 1,
+          "position": [
+            13.498378961616618,
+            4.539915528352426,
+            -156.0107040413588
+          ]
+        },
+        {
+          "id": "station-02",
+          "region": 3,
+          "position": [
+            71.85355914202724,
+            4.539915528352426,
+            -155.49961216875673
+          ]
+        },
+        {
+          "id": "station-03",
+          "region": 3,
+          "position": [
+            33.08506170731366,
+            4.539915528352426,
+            -155.37183920060622
+          ]
+        },
+        {
+          "id": "station-04",
+          "region": 3,
+          "position": [
+            46.188764424053815,
+            4.539915528352426,
+            -155.2440662324557
+          ]
+        },
+        {
+          "id": "station-05",
+          "region": 3,
+          "position": [
+            59.87308851658199,
+            4.539915528352426,
+            -155.1162932643052
+          ]
+        },
+        {
+          "id": "station-06",
+          "region": 1,
+          "position": [
+            23.950966847100723,
+            4.539915528352426,
+            -150.51646641088664
+          ]
+        },
+        {
+          "id": "station-07",
+          "region": 1,
+          "position": [
+            9.557301795890076,
+            4.539915528352426,
+            -147.44991517527427
+          ]
+        },
+        {
+          "id": "station-08",
+          "region": 3,
+          "position": [
+            44.71480773901712,
+            4.539915528352426,
+            -145.78886658931756
+          ]
+        },
+        {
+          "id": "station-09",
+          "region": 3,
+          "position": [
+            72.70825775332088,
+            4.539915528352426,
+            -144.63890987596292
+          ]
+        },
+        {
+          "id": "station-10",
+          "region": 3,
+          "position": [
+            36.025949231109585,
+            4.539915528352426,
+            -144.38336393966188
+          ]
+        },
+        {
+          "id": "station-11",
+          "region": 3,
+          "position": [
+            61.912445236764896,
+            4.539915528352426,
+            -143.6167261307588
+          ]
+        },
+        {
+          "id": "station-12",
+          "region": 1,
+          "position": [
+            25.58061323095307,
+            4.539915528352426,
+            -140.80572083144745
+          ]
+        },
+        {
+          "id": "station-13",
+          "region": 1,
+          "position": [
+            18.399588848273197,
+            4.539915528352426,
+            -139.7835370862433
+          ]
+        },
+        {
+          "id": "station-14",
+          "region": 2,
+          "position": [
+            35.45709518054958,
+            4.539915528352426,
+            -135.95034804172786
+          ]
+        },
+        {
+          "id": "station-15",
+          "region": 3,
+          "position": [
+            51.442038842408074,
+            4.539915528352426,
+            -134.16152648762065
+          ]
+        },
+        {
+          "id": "station-16",
+          "region": 3,
+          "position": [
+            72.92253782462817,
+            4.539915528352426,
+            -132.11715899721239
+          ]
+        },
+        {
+          "id": "station-17",
+          "region": 3,
+          "position": [
+            63.81496350797294,
+            4.539915528352426,
+            -130.83942931570724
+          ]
+        },
+        {
+          "id": "station-18",
+          "region": 2,
+          "position": [
+            10.139879807259328,
+            4.539915528352426,
+            -130.71165634755673
+          ]
+        },
+        {
+          "id": "station-19",
+          "region": 2,
+          "position": [
+            47.59991977123941,
+            4.539915528352426,
+            -130.20056447495466
+          ]
+        },
+        {
+          "id": "station-20",
+          "region": 2,
+          "position": [
+            18.779691434534215,
+            4.539915528352426,
+            -129.56169963420209
+          ]
+        },
+        {
+          "id": "station-21",
+          "region": 2,
+          "position": [
+            31.381201597282,
+            4.539915528352426,
+            -129.30615369790104
+          ]
+        },
+        {
+          "id": "station-22",
+          "region": 2,
+          "position": [
+            42.87719619669467,
+            4.539915528352426,
+            -127.00624027119177
+          ]
+        },
+        {
+          "id": "station-23",
+          "region": 2,
+          "position": [
+            26.68648140028807,
+            4.539915528352426,
+            -124.45078090818146
+          ]
+        },
+        {
+          "id": "station-24",
+          "region": 2,
+          "position": [
+            39.64598576208762,
+            4.539915528352426,
+            -124.45078090818146
+          ]
+        },
+        {
+          "id": "station-25",
+          "region": 2,
+          "position": [
+            16.88218274035278,
+            4.539915528352426,
+            -122.91750529037527
+          ]
+        },
+        {
+          "id": "station-26",
+          "region": 2,
+          "position": [
+            51.28640260737977,
+            4.539915528352426,
+            -122.15086748147218
+          ]
+        },
+        {
+          "id": "station-27",
+          "region": 3,
+          "position": [
+            64.77290136893279,
+            4.539915528352426,
+            -119.59540811846188
+          ]
+        },
+        {
+          "id": "station-28",
+          "region": 2,
+          "position": [
+            58.33547410685887,
+            4.539915528352426,
+            -118.70099734140825
+          ]
+        },
+        {
+          "id": "station-29",
+          "region": 3,
+          "position": [
+            72.76865854963707,
+            4.539915528352426,
+            -118.70099734140825
+          ]
+        },
+        {
+          "id": "station-30",
+          "region": 2,
+          "position": [
+            12.072346019951068,
+            4.539915528352426,
+            -118.31767843695671
+          ]
+        },
+        {
+          "id": "station-31",
+          "region": 2,
+          "position": [
+            26.312279599488935,
+            4.539915528352426,
+            -118.31767843695671
+          ]
+        },
+        {
+          "id": "station-32",
+          "region": 2,
+          "position": [
+            38.84342114948225,
+            4.539915528352426,
+            -118.31767843695671
+          ]
+        },
+        {
+          "id": "station-33",
+          "region": 2,
+          "position": [
+            48.488574704430846,
+            4.539915528352426,
+            -117.80658656435466
+          ]
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "selection": 1,
+      "playing": false,
+      "geometry": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 38,
+        "labels": 8,
+        "meshes": 46,
+        "imageMappedMeshes": 0,
+        "extent": [
+          74.84997286852344,
+          34.845108109162624,
+          70.36031281570773
+        ],
+        "sceneElevation": 38.530648395611024,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "phase": 1,
+        "selection": 0,
+        "kind": "gis-spatial-overlay",
+        "stage": "result",
+        "assembled": true,
+        "source": {
+          "textbookPage": 117,
+          "pdfPage": 122,
+          "figure": "6.26",
+          "image": "textbook/page-122.webp",
+          "imagePixels": [
+            1530,
+            2147
+          ],
+          "stationLayerY": [
+            970,
+            1147
+          ],
+          "regionLayerY": [
+            1251,
+            1427
+          ],
+          "coordinateMeaning": "positions-traced-from-the-textbook-diagram"
+        },
+        "geometricLayers": 2,
+        "stationMeshCount": 33,
+        "oneStationSet": true,
+        "counts": [
+          {
+            "region": 1,
+            "count": 5
+          },
+          {
+            "region": 2,
+            "count": 15
+          },
+          {
+            "region": 3,
+            "count": 13
+          }
+        ],
+        "derivedTotals": [
+          {
+            "id": 1,
+            "count": 5
+          },
+          {
+            "id": 2,
+            "count": 15
+          },
+          {
+            "id": 3,
+            "count": 13
+          }
+        ],
+        "membershipMethod": "point-in-polygon",
+        "activeRegion": null,
+        "resultReady": true,
+        "measuredGeographicData": false
+      },
+      "actualStationMeshes": 33,
+      "stations": [
+        {
+          "id": "station-01",
+          "region": 1,
+          "position": [
+            13.498378961616618,
+            4.539915528352426,
+            -156.0107040413588
+          ]
+        },
+        {
+          "id": "station-02",
+          "region": 3,
+          "position": [
+            71.85355914202724,
+            4.539915528352426,
+            -155.49961216875673
+          ]
+        },
+        {
+          "id": "station-03",
+          "region": 3,
+          "position": [
+            33.08506170731366,
+            4.539915528352426,
+            -155.37183920060622
+          ]
+        },
+        {
+          "id": "station-04",
+          "region": 3,
+          "position": [
+            46.188764424053815,
+            4.539915528352426,
+            -155.2440662324557
+          ]
+        },
+        {
+          "id": "station-05",
+          "region": 3,
+          "position": [
+            59.87308851658199,
+            4.539915528352426,
+            -155.1162932643052
+          ]
+        },
+        {
+          "id": "station-06",
+          "region": 1,
+          "position": [
+            23.950966847100723,
+            4.539915528352426,
+            -150.51646641088664
+          ]
+        },
+        {
+          "id": "station-07",
+          "region": 1,
+          "position": [
+            9.557301795890076,
+            4.539915528352426,
+            -147.44991517527427
+          ]
+        },
+        {
+          "id": "station-08",
+          "region": 3,
+          "position": [
+            44.71480773901712,
+            4.539915528352426,
+            -145.78886658931756
+          ]
+        },
+        {
+          "id": "station-09",
+          "region": 3,
+          "position": [
+            72.70825775332088,
+            4.539915528352426,
+            -144.63890987596292
+          ]
+        },
+        {
+          "id": "station-10",
+          "region": 3,
+          "position": [
+            36.025949231109585,
+            4.539915528352426,
+            -144.38336393966188
+          ]
+        },
+        {
+          "id": "station-11",
+          "region": 3,
+          "position": [
+            61.912445236764896,
+            4.539915528352426,
+            -143.6167261307588
+          ]
+        },
+        {
+          "id": "station-12",
+          "region": 1,
+          "position": [
+            25.58061323095307,
+            4.539915528352426,
+            -140.80572083144745
+          ]
+        },
+        {
+          "id": "station-13",
+          "region": 1,
+          "position": [
+            18.399588848273197,
+            4.539915528352426,
+            -139.7835370862433
+          ]
+        },
+        {
+          "id": "station-14",
+          "region": 2,
+          "position": [
+            35.45709518054958,
+            4.539915528352426,
+            -135.95034804172786
+          ]
+        },
+        {
+          "id": "station-15",
+          "region": 3,
+          "position": [
+            51.442038842408074,
+            4.539915528352426,
+            -134.16152648762065
+          ]
+        },
+        {
+          "id": "station-16",
+          "region": 3,
+          "position": [
+            72.92253782462817,
+            4.539915528352426,
+            -132.11715899721239
+          ]
+        },
+        {
+          "id": "station-17",
+          "region": 3,
+          "position": [
+            63.81496350797294,
+            4.539915528352426,
+            -130.83942931570724
+          ]
+        },
+        {
+          "id": "station-18",
+          "region": 2,
+          "position": [
+            10.139879807259328,
+            4.539915528352426,
+            -130.71165634755673
+          ]
+        },
+        {
+          "id": "station-19",
+          "region": 2,
+          "position": [
+            47.59991977123941,
+            4.539915528352426,
+            -130.20056447495466
+          ]
+        },
+        {
+          "id": "station-20",
+          "region": 2,
+          "position": [
+            18.779691434534215,
+            4.539915528352426,
+            -129.56169963420209
+          ]
+        },
+        {
+          "id": "station-21",
+          "region": 2,
+          "position": [
+            31.381201597282,
+            4.539915528352426,
+            -129.30615369790104
+          ]
+        },
+        {
+          "id": "station-22",
+          "region": 2,
+          "position": [
+            42.87719619669467,
+            4.539915528352426,
+            -127.00624027119177
+          ]
+        },
+        {
+          "id": "station-23",
+          "region": 2,
+          "position": [
+            26.68648140028807,
+            4.539915528352426,
+            -124.45078090818146
+          ]
+        },
+        {
+          "id": "station-24",
+          "region": 2,
+          "position": [
+            39.64598576208762,
+            4.539915528352426,
+            -124.45078090818146
+          ]
+        },
+        {
+          "id": "station-25",
+          "region": 2,
+          "position": [
+            16.88218274035278,
+            4.539915528352426,
+            -122.91750529037527
+          ]
+        },
+        {
+          "id": "station-26",
+          "region": 2,
+          "position": [
+            51.28640260737977,
+            4.539915528352426,
+            -122.15086748147218
+          ]
+        },
+        {
+          "id": "station-27",
+          "region": 3,
+          "position": [
+            64.77290136893279,
+            4.539915528352426,
+            -119.59540811846188
+          ]
+        },
+        {
+          "id": "station-28",
+          "region": 2,
+          "position": [
+            58.33547410685887,
+            4.539915528352426,
+            -118.70099734140825
+          ]
+        },
+        {
+          "id": "station-29",
+          "region": 3,
+          "position": [
+            72.76865854963707,
+            4.539915528352426,
+            -118.70099734140825
+          ]
+        },
+        {
+          "id": "station-30",
+          "region": 2,
+          "position": [
+            12.072346019951068,
+            4.539915528352426,
+            -118.31767843695671
+          ]
+        },
+        {
+          "id": "station-31",
+          "region": 2,
+          "position": [
+            26.312279599488935,
+            4.539915528352426,
+            -118.31767843695671
+          ]
+        },
+        {
+          "id": "station-32",
+          "region": 2,
+          "position": [
+            38.84342114948225,
+            4.539915528352426,
+            -118.31767843695671
+          ]
+        },
+        {
+          "id": "station-33",
+          "region": 2,
+          "position": [
+            48.488574704430846,
+            4.539915528352426,
+            -117.80658656435466
+          ]
+        }
+      ]
+    },
+    {
+      "phase": 0.735,
+      "selection": 1,
+      "playing": false,
+      "geometry": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 38,
+        "labels": 8,
+        "meshes": 46,
+        "imageMappedMeshes": 0,
+        "extent": [
+          74.84997286852344,
+          34.845108109162624,
+          70.36031281570773
+        ],
+        "sceneElevation": 38.530648395611024,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "phase": 0.735,
+        "selection": 0,
+        "kind": "gis-spatial-overlay",
+        "stage": "classifying",
+        "assembled": true,
+        "source": {
+          "textbookPage": 117,
+          "pdfPage": 122,
+          "figure": "6.26",
+          "image": "textbook/page-122.webp",
+          "imagePixels": [
+            1530,
+            2147
+          ],
+          "stationLayerY": [
+            970,
+            1147
+          ],
+          "regionLayerY": [
+            1251,
+            1427
+          ],
+          "coordinateMeaning": "positions-traced-from-the-textbook-diagram"
+        },
+        "geometricLayers": 2,
+        "stationMeshCount": 33,
+        "oneStationSet": true,
+        "counts": [
+          {
+            "region": 1,
+            "count": 5
+          },
+          {
+            "region": 2,
+            "count": 8
+          },
+          {
+            "region": 3,
+            "count": 0
+          }
+        ],
+        "derivedTotals": [
+          {
+            "id": 1,
+            "count": 5
+          },
+          {
+            "id": 2,
+            "count": 15
+          },
+          {
+            "id": 3,
+            "count": 13
+          }
+        ],
+        "membershipMethod": "point-in-polygon",
+        "activeRegion": 2,
+        "resultReady": false,
+        "measuredGeographicData": false
+      },
+      "actualStationMeshes": 33,
+      "stations": [
+        {
+          "id": "station-01",
+          "region": 1,
+          "position": [
+            13.498378961616618,
+            4.539915528352426,
+            -156.0107040413588
+          ]
+        },
+        {
+          "id": "station-02",
+          "region": 3,
+          "position": [
+            71.85355914202724,
+            4.539915528352426,
+            -155.49961216875673
+          ]
+        },
+        {
+          "id": "station-03",
+          "region": 3,
+          "position": [
+            33.08506170731366,
+            4.539915528352426,
+            -155.37183920060622
+          ]
+        },
+        {
+          "id": "station-04",
+          "region": 3,
+          "position": [
+            46.188764424053815,
+            4.539915528352426,
+            -155.2440662324557
+          ]
+        },
+        {
+          "id": "station-05",
+          "region": 3,
+          "position": [
+            59.87308851658199,
+            4.539915528352426,
+            -155.1162932643052
+          ]
+        },
+        {
+          "id": "station-06",
+          "region": 1,
+          "position": [
+            23.950966847100723,
+            4.539915528352426,
+            -150.51646641088664
+          ]
+        },
+        {
+          "id": "station-07",
+          "region": 1,
+          "position": [
+            9.557301795890076,
+            4.539915528352426,
+            -147.44991517527427
+          ]
+        },
+        {
+          "id": "station-08",
+          "region": 3,
+          "position": [
+            44.71480773901712,
+            4.539915528352426,
+            -145.78886658931756
+          ]
+        },
+        {
+          "id": "station-09",
+          "region": 3,
+          "position": [
+            72.70825775332088,
+            4.539915528352426,
+            -144.63890987596292
+          ]
+        },
+        {
+          "id": "station-10",
+          "region": 3,
+          "position": [
+            36.025949231109585,
+            4.539915528352426,
+            -144.38336393966188
+          ]
+        },
+        {
+          "id": "station-11",
+          "region": 3,
+          "position": [
+            61.912445236764896,
+            4.539915528352426,
+            -143.6167261307588
+          ]
+        },
+        {
+          "id": "station-12",
+          "region": 1,
+          "position": [
+            25.58061323095307,
+            4.539915528352426,
+            -140.80572083144745
+          ]
+        },
+        {
+          "id": "station-13",
+          "region": 1,
+          "position": [
+            18.399588848273197,
+            4.539915528352426,
+            -139.7835370862433
+          ]
+        },
+        {
+          "id": "station-14",
+          "region": 2,
+          "position": [
+            35.45709518054958,
+            4.539915528352426,
+            -135.95034804172786
+          ]
+        },
+        {
+          "id": "station-15",
+          "region": 3,
+          "position": [
+            51.442038842408074,
+            4.539915528352426,
+            -134.16152648762065
+          ]
+        },
+        {
+          "id": "station-16",
+          "region": 3,
+          "position": [
+            72.92253782462817,
+            4.539915528352426,
+            -132.11715899721239
+          ]
+        },
+        {
+          "id": "station-17",
+          "region": 3,
+          "position": [
+            63.81496350797294,
+            4.539915528352426,
+            -130.83942931570724
+          ]
+        },
+        {
+          "id": "station-18",
+          "region": 2,
+          "position": [
+            10.139879807259328,
+            4.539915528352426,
+            -130.71165634755673
+          ]
+        },
+        {
+          "id": "station-19",
+          "region": 2,
+          "position": [
+            47.59991977123941,
+            4.539915528352426,
+            -130.20056447495466
+          ]
+        },
+        {
+          "id": "station-20",
+          "region": 2,
+          "position": [
+            18.779691434534215,
+            4.539915528352426,
+            -129.56169963420209
+          ]
+        },
+        {
+          "id": "station-21",
+          "region": 2,
+          "position": [
+            31.381201597282,
+            4.539915528352426,
+            -129.30615369790104
+          ]
+        },
+        {
+          "id": "station-22",
+          "region": 2,
+          "position": [
+            42.87719619669467,
+            4.539915528352426,
+            -127.00624027119177
+          ]
+        },
+        {
+          "id": "station-23",
+          "region": 2,
+          "position": [
+            26.68648140028807,
+            4.539915528352426,
+            -124.45078090818146
+          ]
+        },
+        {
+          "id": "station-24",
+          "region": 2,
+          "position": [
+            39.64598576208762,
+            4.539915528352426,
+            -124.45078090818146
+          ]
+        },
+        {
+          "id": "station-25",
+          "region": 2,
+          "position": [
+            16.88218274035278,
+            4.539915528352426,
+            -122.91750529037527
+          ]
+        },
+        {
+          "id": "station-26",
+          "region": 2,
+          "position": [
+            51.28640260737977,
+            4.539915528352426,
+            -122.15086748147218
+          ]
+        },
+        {
+          "id": "station-27",
+          "region": 3,
+          "position": [
+            64.77290136893279,
+            4.539915528352426,
+            -119.59540811846188
+          ]
+        },
+        {
+          "id": "station-28",
+          "region": 2,
+          "position": [
+            58.33547410685887,
+            4.539915528352426,
+            -118.70099734140825
+          ]
+        },
+        {
+          "id": "station-29",
+          "region": 3,
+          "position": [
+            72.76865854963707,
+            4.539915528352426,
+            -118.70099734140825
+          ]
+        },
+        {
+          "id": "station-30",
+          "region": 2,
+          "position": [
+            12.072346019951068,
+            4.539915528352426,
+            -118.31767843695671
+          ]
+        },
+        {
+          "id": "station-31",
+          "region": 2,
+          "position": [
+            26.312279599488935,
+            4.539915528352426,
+            -118.31767843695671
+          ]
+        },
+        {
+          "id": "station-32",
+          "region": 2,
+          "position": [
+            38.84342114948225,
+            4.539915528352426,
+            -118.31767843695671
+          ]
+        },
+        {
+          "id": "station-33",
+          "region": 2,
+          "position": [
+            48.488574704430846,
+            4.539915528352426,
+            -117.80658656435466
+          ]
+        }
+      ]
+    },
+    {
+      "phase": 0,
+      "selection": 0,
+      "playing": false,
+      "geometry": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 38,
+        "labels": 8,
+        "meshes": 46,
+        "imageMappedMeshes": 0,
+        "extent": [
+          74.84997286852344,
+          34.845108109162624,
+          70.36031281570773
+        ],
+        "sceneElevation": 38.530648395611024,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "phase": 0,
+        "selection": 0,
+        "kind": "gis-spatial-overlay",
+        "stage": "separated",
+        "assembled": false,
+        "source": {
+          "textbookPage": 117,
+          "pdfPage": 122,
+          "figure": "6.26",
+          "image": "textbook/page-122.webp",
+          "imagePixels": [
+            1530,
+            2147
+          ],
+          "stationLayerY": [
+            970,
+            1147
+          ],
+          "regionLayerY": [
+            1251,
+            1427
+          ],
+          "coordinateMeaning": "positions-traced-from-the-textbook-diagram"
+        },
+        "geometricLayers": 2,
+        "stationMeshCount": 33,
+        "oneStationSet": true,
+        "counts": [
+          {
+            "region": 1,
+            "count": 0
+          },
+          {
+            "region": 2,
+            "count": 0
+          },
+          {
+            "region": 3,
+            "count": 0
+          }
+        ],
+        "derivedTotals": [
+          {
+            "id": 1,
+            "count": 5
+          },
+          {
+            "id": 2,
+            "count": 15
+          },
+          {
+            "id": 3,
+            "count": 13
+          }
+        ],
+        "membershipMethod": "point-in-polygon",
+        "activeRegion": null,
+        "resultReady": false,
+        "measuredGeographicData": false
+      },
+      "actualStationMeshes": 33,
+      "stations": [
+        {
+          "id": "station-01",
+          "region": 1,
+          "position": [
+            13.498378961616618,
+            31.511369405280142,
+            -166.06217753586603
+          ]
+        },
+        {
+          "id": "station-02",
+          "region": 3,
+          "position": [
+            71.85355914202724,
+            31.511369405280142,
+            -165.55108566326396
+          ]
+        },
+        {
+          "id": "station-03",
+          "region": 3,
+          "position": [
+            33.08506170731366,
+            31.511369405280142,
+            -165.42331269511345
+          ]
+        },
+        {
+          "id": "station-04",
+          "region": 3,
+          "position": [
+            46.188764424053815,
+            31.511369405280142,
+            -165.29553972696291
+          ]
+        },
+        {
+          "id": "station-05",
+          "region": 3,
+          "position": [
+            59.87308851658199,
+            31.511369405280142,
+            -165.1677667588124
+          ]
+        },
+        {
+          "id": "station-06",
+          "region": 1,
+          "position": [
+            23.950966847100723,
+            31.511369405280142,
+            -160.56793990539384
+          ]
+        },
+        {
+          "id": "station-07",
+          "region": 1,
+          "position": [
+            9.557301795890076,
+            31.511369405280142,
+            -157.50138866978148
+          ]
+        },
+        {
+          "id": "station-08",
+          "region": 3,
+          "position": [
+            44.71480773901712,
+            31.511369405280142,
+            -155.84034008382477
+          ]
+        },
+        {
+          "id": "station-09",
+          "region": 3,
+          "position": [
+            72.70825775332088,
+            31.511369405280142,
+            -154.69038337047013
+          ]
+        },
+        {
+          "id": "station-10",
+          "region": 3,
+          "position": [
+            36.025949231109585,
+            31.511369405280142,
+            -154.4348374341691
+          ]
+        },
+        {
+          "id": "station-11",
+          "region": 3,
+          "position": [
+            61.912445236764896,
+            31.511369405280142,
+            -153.668199625266
+          ]
+        },
+        {
+          "id": "station-12",
+          "region": 1,
+          "position": [
+            25.58061323095307,
+            31.511369405280142,
+            -150.85719432595468
+          ]
+        },
+        {
+          "id": "station-13",
+          "region": 1,
+          "position": [
+            18.399588848273197,
+            31.511369405280142,
+            -149.83501058075055
+          ]
+        },
+        {
+          "id": "station-14",
+          "region": 2,
+          "position": [
+            35.45709518054958,
+            31.511369405280142,
+            -146.00182153623507
+          ]
+        },
+        {
+          "id": "station-15",
+          "region": 3,
+          "position": [
+            51.442038842408074,
+            31.511369405280142,
+            -144.21299998212785
+          ]
+        },
+        {
+          "id": "station-16",
+          "region": 3,
+          "position": [
+            72.92253782462817,
+            31.511369405280142,
+            -142.16863249171962
+          ]
+        },
+        {
+          "id": "station-17",
+          "region": 3,
+          "position": [
+            63.81496350797294,
+            31.511369405280142,
+            -140.89090281021447
+          ]
+        },
+        {
+          "id": "station-18",
+          "region": 2,
+          "position": [
+            10.139879807259328,
+            31.511369405280142,
+            -140.76312984206393
+          ]
+        },
+        {
+          "id": "station-19",
+          "region": 2,
+          "position": [
+            47.59991977123941,
+            31.511369405280142,
+            -140.25203796946187
+          ]
+        },
+        {
+          "id": "station-20",
+          "region": 2,
+          "position": [
+            18.779691434534215,
+            31.511369405280142,
+            -139.61317312870932
+          ]
+        },
+        {
+          "id": "station-21",
+          "region": 2,
+          "position": [
+            31.381201597282,
+            31.511369405280142,
+            -139.35762719240827
+          ]
+        },
+        {
+          "id": "station-22",
+          "region": 2,
+          "position": [
+            42.87719619669467,
+            31.511369405280142,
+            -137.057713765699
+          ]
+        },
+        {
+          "id": "station-23",
+          "region": 2,
+          "position": [
+            26.68648140028807,
+            31.511369405280142,
+            -134.50225440268866
+          ]
+        },
+        {
+          "id": "station-24",
+          "region": 2,
+          "position": [
+            39.64598576208762,
+            31.511369405280142,
+            -134.50225440268866
+          ]
+        },
+        {
+          "id": "station-25",
+          "region": 2,
+          "position": [
+            16.88218274035278,
+            31.511369405280142,
+            -132.9689787848825
+          ]
+        },
+        {
+          "id": "station-26",
+          "region": 2,
+          "position": [
+            51.28640260737977,
+            31.511369405280142,
+            -132.2023409759794
+          ]
+        },
+        {
+          "id": "station-27",
+          "region": 3,
+          "position": [
+            64.77290136893279,
+            31.511369405280142,
+            -129.64688161296908
+          ]
+        },
+        {
+          "id": "station-28",
+          "region": 2,
+          "position": [
+            58.33547410685887,
+            31.511369405280142,
+            -128.7524708359155
+          ]
+        },
+        {
+          "id": "station-29",
+          "region": 3,
+          "position": [
+            72.76865854963707,
+            31.511369405280142,
+            -128.7524708359155
+          ]
+        },
+        {
+          "id": "station-30",
+          "region": 2,
+          "position": [
+            12.072346019951068,
+            31.511369405280142,
+            -128.36915193146393
+          ]
+        },
+        {
+          "id": "station-31",
+          "region": 2,
+          "position": [
+            26.312279599488935,
+            31.511369405280142,
+            -128.36915193146393
+          ]
+        },
+        {
+          "id": "station-32",
+          "region": 2,
+          "position": [
+            38.84342114948225,
+            31.511369405280142,
+            -128.36915193146393
+          ]
+        },
+        {
+          "id": "station-33",
+          "region": 2,
+          "position": [
+            48.488574704430846,
+            31.511369405280142,
+            -127.85806005886187
+          ]
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "selection": 1,
+      "playing": false,
+      "geometry": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 38,
+        "labels": 8,
+        "meshes": 46,
+        "imageMappedMeshes": 0,
+        "extent": [
+          74.84997286852344,
+          34.845108109162624,
+          70.36031281570773
+        ],
+        "sceneElevation": 38.530648395611024,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "phase": 1,
+        "selection": 0,
+        "kind": "gis-spatial-overlay",
+        "stage": "result",
+        "assembled": true,
+        "source": {
+          "textbookPage": 117,
+          "pdfPage": 122,
+          "figure": "6.26",
+          "image": "textbook/page-122.webp",
+          "imagePixels": [
+            1530,
+            2147
+          ],
+          "stationLayerY": [
+            970,
+            1147
+          ],
+          "regionLayerY": [
+            1251,
+            1427
+          ],
+          "coordinateMeaning": "positions-traced-from-the-textbook-diagram"
+        },
+        "geometricLayers": 2,
+        "stationMeshCount": 33,
+        "oneStationSet": true,
+        "counts": [
+          {
+            "region": 1,
+            "count": 5
+          },
+          {
+            "region": 2,
+            "count": 15
+          },
+          {
+            "region": 3,
+            "count": 13
+          }
+        ],
+        "derivedTotals": [
+          {
+            "id": 1,
+            "count": 5
+          },
+          {
+            "id": 2,
+            "count": 15
+          },
+          {
+            "id": 3,
+            "count": 13
+          }
+        ],
+        "membershipMethod": "point-in-polygon",
+        "activeRegion": null,
+        "resultReady": true,
+        "measuredGeographicData": false
+      },
+      "actualStationMeshes": 33,
+      "stations": [
+        {
+          "id": "station-01",
+          "region": 1,
+          "position": [
+            13.498378961616618,
+            4.539915528352426,
+            -156.0107040413588
+          ]
+        },
+        {
+          "id": "station-02",
+          "region": 3,
+          "position": [
+            71.85355914202724,
+            4.539915528352426,
+            -155.49961216875673
+          ]
+        },
+        {
+          "id": "station-03",
+          "region": 3,
+          "position": [
+            33.08506170731366,
+            4.539915528352426,
+            -155.37183920060622
+          ]
+        },
+        {
+          "id": "station-04",
+          "region": 3,
+          "position": [
+            46.188764424053815,
+            4.539915528352426,
+            -155.2440662324557
+          ]
+        },
+        {
+          "id": "station-05",
+          "region": 3,
+          "position": [
+            59.87308851658199,
+            4.539915528352426,
+            -155.1162932643052
+          ]
+        },
+        {
+          "id": "station-06",
+          "region": 1,
+          "position": [
+            23.950966847100723,
+            4.539915528352426,
+            -150.51646641088664
+          ]
+        },
+        {
+          "id": "station-07",
+          "region": 1,
+          "position": [
+            9.557301795890076,
+            4.539915528352426,
+            -147.44991517527427
+          ]
+        },
+        {
+          "id": "station-08",
+          "region": 3,
+          "position": [
+            44.71480773901712,
+            4.539915528352426,
+            -145.78886658931756
+          ]
+        },
+        {
+          "id": "station-09",
+          "region": 3,
+          "position": [
+            72.70825775332088,
+            4.539915528352426,
+            -144.63890987596292
+          ]
+        },
+        {
+          "id": "station-10",
+          "region": 3,
+          "position": [
+            36.025949231109585,
+            4.539915528352426,
+            -144.38336393966188
+          ]
+        },
+        {
+          "id": "station-11",
+          "region": 3,
+          "position": [
+            61.912445236764896,
+            4.539915528352426,
+            -143.6167261307588
+          ]
+        },
+        {
+          "id": "station-12",
+          "region": 1,
+          "position": [
+            25.58061323095307,
+            4.539915528352426,
+            -140.80572083144745
+          ]
+        },
+        {
+          "id": "station-13",
+          "region": 1,
+          "position": [
+            18.399588848273197,
+            4.539915528352426,
+            -139.7835370862433
+          ]
+        },
+        {
+          "id": "station-14",
+          "region": 2,
+          "position": [
+            35.45709518054958,
+            4.539915528352426,
+            -135.95034804172786
+          ]
+        },
+        {
+          "id": "station-15",
+          "region": 3,
+          "position": [
+            51.442038842408074,
+            4.539915528352426,
+            -134.16152648762065
+          ]
+        },
+        {
+          "id": "station-16",
+          "region": 3,
+          "position": [
+            72.92253782462817,
+            4.539915528352426,
+            -132.11715899721239
+          ]
+        },
+        {
+          "id": "station-17",
+          "region": 3,
+          "position": [
+            63.81496350797294,
+            4.539915528352426,
+            -130.83942931570724
+          ]
+        },
+        {
+          "id": "station-18",
+          "region": 2,
+          "position": [
+            10.139879807259328,
+            4.539915528352426,
+            -130.71165634755673
+          ]
+        },
+        {
+          "id": "station-19",
+          "region": 2,
+          "position": [
+            47.59991977123941,
+            4.539915528352426,
+            -130.20056447495466
+          ]
+        },
+        {
+          "id": "station-20",
+          "region": 2,
+          "position": [
+            18.779691434534215,
+            4.539915528352426,
+            -129.56169963420209
+          ]
+        },
+        {
+          "id": "station-21",
+          "region": 2,
+          "position": [
+            31.381201597282,
+            4.539915528352426,
+            -129.30615369790104
+          ]
+        },
+        {
+          "id": "station-22",
+          "region": 2,
+          "position": [
+            42.87719619669467,
+            4.539915528352426,
+            -127.00624027119177
+          ]
+        },
+        {
+          "id": "station-23",
+          "region": 2,
+          "position": [
+            26.68648140028807,
+            4.539915528352426,
+            -124.45078090818146
+          ]
+        },
+        {
+          "id": "station-24",
+          "region": 2,
+          "position": [
+            39.64598576208762,
+            4.539915528352426,
+            -124.45078090818146
+          ]
+        },
+        {
+          "id": "station-25",
+          "region": 2,
+          "position": [
+            16.88218274035278,
+            4.539915528352426,
+            -122.91750529037527
+          ]
+        },
+        {
+          "id": "station-26",
+          "region": 2,
+          "position": [
+            51.28640260737977,
+            4.539915528352426,
+            -122.15086748147218
+          ]
+        },
+        {
+          "id": "station-27",
+          "region": 3,
+          "position": [
+            64.77290136893279,
+            4.539915528352426,
+            -119.59540811846188
+          ]
+        },
+        {
+          "id": "station-28",
+          "region": 2,
+          "position": [
+            58.33547410685887,
+            4.539915528352426,
+            -118.70099734140825
+          ]
+        },
+        {
+          "id": "station-29",
+          "region": 3,
+          "position": [
+            72.76865854963707,
+            4.539915528352426,
+            -118.70099734140825
+          ]
+        },
+        {
+          "id": "station-30",
+          "region": 2,
+          "position": [
+            12.072346019951068,
+            4.539915528352426,
+            -118.31767843695671
+          ]
+        },
+        {
+          "id": "station-31",
+          "region": 2,
+          "position": [
+            26.312279599488935,
+            4.539915528352426,
+            -118.31767843695671
+          ]
+        },
+        {
+          "id": "station-32",
+          "region": 2,
+          "position": [
+            38.84342114948225,
+            4.539915528352426,
+            -118.31767843695671
+          ]
+        },
+        {
+          "id": "station-33",
+          "region": 2,
+          "position": [
+            48.488574704430846,
+            4.539915528352426,
+            -117.80658656435466
+          ]
+        }
+      ]
+    },
+    {
+      "phase": 0.735,
+      "selection": 1,
+      "playing": false,
+      "geometry": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 38,
+        "labels": 8,
+        "meshes": 46,
+        "imageMappedMeshes": 0,
+        "extent": [
+          74.84997286852344,
+          34.845108109162624,
+          70.36031281570773
+        ],
+        "sceneElevation": 38.530648395611024,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "phase": 0.735,
+        "selection": 0,
+        "kind": "gis-spatial-overlay",
+        "stage": "classifying",
+        "assembled": true,
+        "source": {
+          "textbookPage": 117,
+          "pdfPage": 122,
+          "figure": "6.26",
+          "image": "textbook/page-122.webp",
+          "imagePixels": [
+            1530,
+            2147
+          ],
+          "stationLayerY": [
+            970,
+            1147
+          ],
+          "regionLayerY": [
+            1251,
+            1427
+          ],
+          "coordinateMeaning": "positions-traced-from-the-textbook-diagram"
+        },
+        "geometricLayers": 2,
+        "stationMeshCount": 33,
+        "oneStationSet": true,
+        "counts": [
+          {
+            "region": 1,
+            "count": 5
+          },
+          {
+            "region": 2,
+            "count": 8
+          },
+          {
+            "region": 3,
+            "count": 0
+          }
+        ],
+        "derivedTotals": [
+          {
+            "id": 1,
+            "count": 5
+          },
+          {
+            "id": 2,
+            "count": 15
+          },
+          {
+            "id": 3,
+            "count": 13
+          }
+        ],
+        "membershipMethod": "point-in-polygon",
+        "activeRegion": 2,
+        "resultReady": false,
+        "measuredGeographicData": false
+      },
+      "actualStationMeshes": 33,
+      "stations": [
+        {
+          "id": "station-01",
+          "region": 1,
+          "position": [
+            13.498378961616618,
+            4.539915528352426,
+            -156.0107040413588
+          ]
+        },
+        {
+          "id": "station-02",
+          "region": 3,
+          "position": [
+            71.85355914202724,
+            4.539915528352426,
+            -155.49961216875673
+          ]
+        },
+        {
+          "id": "station-03",
+          "region": 3,
+          "position": [
+            33.08506170731366,
+            4.539915528352426,
+            -155.37183920060622
+          ]
+        },
+        {
+          "id": "station-04",
+          "region": 3,
+          "position": [
+            46.188764424053815,
+            4.539915528352426,
+            -155.2440662324557
+          ]
+        },
+        {
+          "id": "station-05",
+          "region": 3,
+          "position": [
+            59.87308851658199,
+            4.539915528352426,
+            -155.1162932643052
+          ]
+        },
+        {
+          "id": "station-06",
+          "region": 1,
+          "position": [
+            23.950966847100723,
+            4.539915528352426,
+            -150.51646641088664
+          ]
+        },
+        {
+          "id": "station-07",
+          "region": 1,
+          "position": [
+            9.557301795890076,
+            4.539915528352426,
+            -147.44991517527427
+          ]
+        },
+        {
+          "id": "station-08",
+          "region": 3,
+          "position": [
+            44.71480773901712,
+            4.539915528352426,
+            -145.78886658931756
+          ]
+        },
+        {
+          "id": "station-09",
+          "region": 3,
+          "position": [
+            72.70825775332088,
+            4.539915528352426,
+            -144.63890987596292
+          ]
+        },
+        {
+          "id": "station-10",
+          "region": 3,
+          "position": [
+            36.025949231109585,
+            4.539915528352426,
+            -144.38336393966188
+          ]
+        },
+        {
+          "id": "station-11",
+          "region": 3,
+          "position": [
+            61.912445236764896,
+            4.539915528352426,
+            -143.6167261307588
+          ]
+        },
+        {
+          "id": "station-12",
+          "region": 1,
+          "position": [
+            25.58061323095307,
+            4.539915528352426,
+            -140.80572083144745
+          ]
+        },
+        {
+          "id": "station-13",
+          "region": 1,
+          "position": [
+            18.399588848273197,
+            4.539915528352426,
+            -139.7835370862433
+          ]
+        },
+        {
+          "id": "station-14",
+          "region": 2,
+          "position": [
+            35.45709518054958,
+            4.539915528352426,
+            -135.95034804172786
+          ]
+        },
+        {
+          "id": "station-15",
+          "region": 3,
+          "position": [
+            51.442038842408074,
+            4.539915528352426,
+            -134.16152648762065
+          ]
+        },
+        {
+          "id": "station-16",
+          "region": 3,
+          "position": [
+            72.92253782462817,
+            4.539915528352426,
+            -132.11715899721239
+          ]
+        },
+        {
+          "id": "station-17",
+          "region": 3,
+          "position": [
+            63.81496350797294,
+            4.539915528352426,
+            -130.83942931570724
+          ]
+        },
+        {
+          "id": "station-18",
+          "region": 2,
+          "position": [
+            10.139879807259328,
+            4.539915528352426,
+            -130.71165634755673
+          ]
+        },
+        {
+          "id": "station-19",
+          "region": 2,
+          "position": [
+            47.59991977123941,
+            4.539915528352426,
+            -130.20056447495466
+          ]
+        },
+        {
+          "id": "station-20",
+          "region": 2,
+          "position": [
+            18.779691434534215,
+            4.539915528352426,
+            -129.56169963420209
+          ]
+        },
+        {
+          "id": "station-21",
+          "region": 2,
+          "position": [
+            31.381201597282,
+            4.539915528352426,
+            -129.30615369790104
+          ]
+        },
+        {
+          "id": "station-22",
+          "region": 2,
+          "position": [
+            42.87719619669467,
+            4.539915528352426,
+            -127.00624027119177
+          ]
+        },
+        {
+          "id": "station-23",
+          "region": 2,
+          "position": [
+            26.68648140028807,
+            4.539915528352426,
+            -124.45078090818146
+          ]
+        },
+        {
+          "id": "station-24",
+          "region": 2,
+          "position": [
+            39.64598576208762,
+            4.539915528352426,
+            -124.45078090818146
+          ]
+        },
+        {
+          "id": "station-25",
+          "region": 2,
+          "position": [
+            16.88218274035278,
+            4.539915528352426,
+            -122.91750529037527
+          ]
+        },
+        {
+          "id": "station-26",
+          "region": 2,
+          "position": [
+            51.28640260737977,
+            4.539915528352426,
+            -122.15086748147218
+          ]
+        },
+        {
+          "id": "station-27",
+          "region": 3,
+          "position": [
+            64.77290136893279,
+            4.539915528352426,
+            -119.59540811846188
+          ]
+        },
+        {
+          "id": "station-28",
+          "region": 2,
+          "position": [
+            58.33547410685887,
+            4.539915528352426,
+            -118.70099734140825
+          ]
+        },
+        {
+          "id": "station-29",
+          "region": 3,
+          "position": [
+            72.76865854963707,
+            4.539915528352426,
+            -118.70099734140825
+          ]
+        },
+        {
+          "id": "station-30",
+          "region": 2,
+          "position": [
+            12.072346019951068,
+            4.539915528352426,
+            -118.31767843695671
+          ]
+        },
+        {
+          "id": "station-31",
+          "region": 2,
+          "position": [
+            26.312279599488935,
+            4.539915528352426,
+            -118.31767843695671
+          ]
+        },
+        {
+          "id": "station-32",
+          "region": 2,
+          "position": [
+            38.84342114948225,
+            4.539915528352426,
+            -118.31767843695671
+          ]
+        },
+        {
+          "id": "station-33",
+          "region": 2,
+          "position": [
+            48.488574704430846,
+            4.539915528352426,
+            -117.80658656435466
+          ]
+        }
+      ]
+    },
+    {
+      "phase": 0.3,
+      "selection": 0,
+      "playing": false,
+      "geometry": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 38,
+        "labels": 8,
+        "meshes": 46,
+        "imageMappedMeshes": 0,
+        "extent": [
+          74.84997286852344,
+          34.845108109162624,
+          70.36031281570773
+        ],
+        "sceneElevation": 38.530648395611024,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "phase": 0.3,
+        "selection": 0,
+        "kind": "gis-spatial-overlay",
+        "stage": "aligning",
+        "assembled": false,
+        "source": {
+          "textbookPage": 117,
+          "pdfPage": 122,
+          "figure": "6.26",
+          "image": "textbook/page-122.webp",
+          "imagePixels": [
+            1530,
+            2147
+          ],
+          "stationLayerY": [
+            970,
+            1147
+          ],
+          "regionLayerY": [
+            1251,
+            1427
+          ],
+          "coordinateMeaning": "positions-traced-from-the-textbook-diagram"
+        },
+        "geometricLayers": 2,
+        "stationMeshCount": 33,
+        "oneStationSet": true,
+        "counts": [
+          {
+            "region": 1,
+            "count": 0
+          },
+          {
+            "region": 2,
+            "count": 0
+          },
+          {
+            "region": 3,
+            "count": 0
+          }
+        ],
+        "derivedTotals": [
+          {
+            "id": 1,
+            "count": 5
+          },
+          {
+            "id": 2,
+            "count": 15
+          },
+          {
+            "id": 3,
+            "count": 13
+          }
+        ],
+        "membershipMethod": "point-in-polygon",
+        "activeRegion": null,
+        "resultReady": false,
+        "measuredGeographicData": false
+      },
+      "actualStationMeshes": 33,
+      "stations": [
+        {
+          "id": "station-01",
+          "region": 1,
+          "position": [
+            13.498378961616618,
+            14.938104619730572,
+            -159.885805566096
+          ]
+        },
+        {
+          "id": "station-02",
+          "region": 3,
+          "position": [
+            71.85355914202724,
+            14.938104619730572,
+            -159.37471369349393
+          ]
+        },
+        {
+          "id": "station-03",
+          "region": 3,
+          "position": [
+            33.08506170731366,
+            14.938104619730572,
+            -159.24694072534342
+          ]
+        },
+        {
+          "id": "station-04",
+          "region": 3,
+          "position": [
+            46.188764424053815,
+            14.938104619730572,
+            -159.1191677571929
+          ]
+        },
+        {
+          "id": "station-05",
+          "region": 3,
+          "position": [
+            59.87308851658199,
+            14.938104619730572,
+            -158.99139478904237
+          ]
+        },
+        {
+          "id": "station-06",
+          "region": 1,
+          "position": [
+            23.950966847100723,
+            14.938104619730572,
+            -154.3915679356238
+          ]
+        },
+        {
+          "id": "station-07",
+          "region": 1,
+          "position": [
+            9.557301795890076,
+            14.938104619730572,
+            -151.32501670001145
+          ]
+        },
+        {
+          "id": "station-08",
+          "region": 3,
+          "position": [
+            44.71480773901712,
+            14.938104619730572,
+            -149.66396811405474
+          ]
+        },
+        {
+          "id": "station-09",
+          "region": 3,
+          "position": [
+            72.70825775332088,
+            14.938104619730572,
+            -148.5140114007001
+          ]
+        },
+        {
+          "id": "station-10",
+          "region": 3,
+          "position": [
+            36.025949231109585,
+            14.938104619730572,
+            -148.25846546439908
+          ]
+        },
+        {
+          "id": "station-11",
+          "region": 3,
+          "position": [
+            61.912445236764896,
+            14.938104619730572,
+            -147.491827655496
+          ]
+        },
+        {
+          "id": "station-12",
+          "region": 1,
+          "position": [
+            25.58061323095307,
+            14.938104619730572,
+            -144.68082235618465
+          ]
+        },
+        {
+          "id": "station-13",
+          "region": 1,
+          "position": [
+            18.399588848273197,
+            14.938104619730572,
+            -143.65863861098052
+          ]
+        },
+        {
+          "id": "station-14",
+          "region": 2,
+          "position": [
+            35.45709518054958,
+            14.938104619730572,
+            -139.82544956646507
+          ]
+        },
+        {
+          "id": "station-15",
+          "region": 3,
+          "position": [
+            51.442038842408074,
+            14.938104619730572,
+            -138.03662801235782
+          ]
+        },
+        {
+          "id": "station-16",
+          "region": 3,
+          "position": [
+            72.92253782462817,
+            14.938104619730572,
+            -135.9922605219496
+          ]
+        },
+        {
+          "id": "station-17",
+          "region": 3,
+          "position": [
+            63.81496350797294,
+            14.938104619730572,
+            -134.71453084044444
+          ]
+        },
+        {
+          "id": "station-18",
+          "region": 2,
+          "position": [
+            10.139879807259328,
+            14.938104619730572,
+            -134.58675787229393
+          ]
+        },
+        {
+          "id": "station-19",
+          "region": 2,
+          "position": [
+            47.59991977123941,
+            14.938104619730572,
+            -134.07566599969186
+          ]
+        },
+        {
+          "id": "station-20",
+          "region": 2,
+          "position": [
+            18.779691434534215,
+            14.938104619730572,
+            -133.4368011589393
+          ]
+        },
+        {
+          "id": "station-21",
+          "region": 2,
+          "position": [
+            31.381201597282,
+            14.938104619730572,
+            -133.18125522263824
+          ]
+        },
+        {
+          "id": "station-22",
+          "region": 2,
+          "position": [
+            42.87719619669467,
+            14.938104619730572,
+            -130.88134179592896
+          ]
+        },
+        {
+          "id": "station-23",
+          "region": 2,
+          "position": [
+            26.68648140028807,
+            14.938104619730572,
+            -128.32588243291866
+          ]
+        },
+        {
+          "id": "station-24",
+          "region": 2,
+          "position": [
+            39.64598576208762,
+            14.938104619730572,
+            -128.32588243291866
+          ]
+        },
+        {
+          "id": "station-25",
+          "region": 2,
+          "position": [
+            16.88218274035278,
+            14.938104619730572,
+            -126.79260681511246
+          ]
+        },
+        {
+          "id": "station-26",
+          "region": 2,
+          "position": [
+            51.28640260737977,
+            14.938104619730572,
+            -126.02596900620938
+          ]
+        },
+        {
+          "id": "station-27",
+          "region": 3,
+          "position": [
+            64.77290136893279,
+            14.938104619730572,
+            -123.47050964319907
+          ]
+        },
+        {
+          "id": "station-28",
+          "region": 2,
+          "position": [
+            58.33547410685887,
+            14.938104619730572,
+            -122.57609886614546
+          ]
+        },
+        {
+          "id": "station-29",
+          "region": 3,
+          "position": [
+            72.76865854963707,
+            14.938104619730572,
+            -122.57609886614546
+          ]
+        },
+        {
+          "id": "station-30",
+          "region": 2,
+          "position": [
+            12.072346019951068,
+            14.938104619730572,
+            -122.1927799616939
+          ]
+        },
+        {
+          "id": "station-31",
+          "region": 2,
+          "position": [
+            26.312279599488935,
+            14.938104619730572,
+            -122.1927799616939
+          ]
+        },
+        {
+          "id": "station-32",
+          "region": 2,
+          "position": [
+            38.84342114948225,
+            14.938104619730572,
+            -122.1927799616939
+          ]
+        },
+        {
+          "id": "station-33",
+          "region": 2,
+          "position": [
+            48.488574704430846,
+            14.938104619730572,
+            -121.68168808909185
+          ]
+        }
+      ]
+    },
+    {
+      "phase": 0.3,
+      "selection": 0,
+      "playing": false,
+      "geometry": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 38,
+        "labels": 8,
+        "meshes": 46,
+        "imageMappedMeshes": 0,
+        "extent": [
+          74.84997286852344,
+          34.845108109162624,
+          70.36031281570773
+        ],
+        "sceneElevation": 38.530648395611024,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "phase": 0.3,
+        "selection": 0,
+        "kind": "gis-spatial-overlay",
+        "stage": "aligning",
+        "assembled": false,
+        "source": {
+          "textbookPage": 117,
+          "pdfPage": 122,
+          "figure": "6.26",
+          "image": "textbook/page-122.webp",
+          "imagePixels": [
+            1530,
+            2147
+          ],
+          "stationLayerY": [
+            970,
+            1147
+          ],
+          "regionLayerY": [
+            1251,
+            1427
+          ],
+          "coordinateMeaning": "positions-traced-from-the-textbook-diagram"
+        },
+        "geometricLayers": 2,
+        "stationMeshCount": 33,
+        "oneStationSet": true,
+        "counts": [
+          {
+            "region": 1,
+            "count": 0
+          },
+          {
+            "region": 2,
+            "count": 0
+          },
+          {
+            "region": 3,
+            "count": 0
+          }
+        ],
+        "derivedTotals": [
+          {
+            "id": 1,
+            "count": 5
+          },
+          {
+            "id": 2,
+            "count": 15
+          },
+          {
+            "id": 3,
+            "count": 13
+          }
+        ],
+        "membershipMethod": "point-in-polygon",
+        "activeRegion": null,
+        "resultReady": false,
+        "measuredGeographicData": false
+      },
+      "actualStationMeshes": 33,
+      "stations": [
+        {
+          "id": "station-01",
+          "region": 1,
+          "position": [
+            13.498378961616618,
+            14.938104619730572,
+            -159.885805566096
+          ]
+        },
+        {
+          "id": "station-02",
+          "region": 3,
+          "position": [
+            71.85355914202724,
+            14.938104619730572,
+            -159.37471369349393
+          ]
+        },
+        {
+          "id": "station-03",
+          "region": 3,
+          "position": [
+            33.08506170731366,
+            14.938104619730572,
+            -159.24694072534342
+          ]
+        },
+        {
+          "id": "station-04",
+          "region": 3,
+          "position": [
+            46.188764424053815,
+            14.938104619730572,
+            -159.1191677571929
+          ]
+        },
+        {
+          "id": "station-05",
+          "region": 3,
+          "position": [
+            59.87308851658199,
+            14.938104619730572,
+            -158.99139478904237
+          ]
+        },
+        {
+          "id": "station-06",
+          "region": 1,
+          "position": [
+            23.950966847100723,
+            14.938104619730572,
+            -154.3915679356238
+          ]
+        },
+        {
+          "id": "station-07",
+          "region": 1,
+          "position": [
+            9.557301795890076,
+            14.938104619730572,
+            -151.32501670001145
+          ]
+        },
+        {
+          "id": "station-08",
+          "region": 3,
+          "position": [
+            44.71480773901712,
+            14.938104619730572,
+            -149.66396811405474
+          ]
+        },
+        {
+          "id": "station-09",
+          "region": 3,
+          "position": [
+            72.70825775332088,
+            14.938104619730572,
+            -148.5140114007001
+          ]
+        },
+        {
+          "id": "station-10",
+          "region": 3,
+          "position": [
+            36.025949231109585,
+            14.938104619730572,
+            -148.25846546439908
+          ]
+        },
+        {
+          "id": "station-11",
+          "region": 3,
+          "position": [
+            61.912445236764896,
+            14.938104619730572,
+            -147.491827655496
+          ]
+        },
+        {
+          "id": "station-12",
+          "region": 1,
+          "position": [
+            25.58061323095307,
+            14.938104619730572,
+            -144.68082235618465
+          ]
+        },
+        {
+          "id": "station-13",
+          "region": 1,
+          "position": [
+            18.399588848273197,
+            14.938104619730572,
+            -143.65863861098052
+          ]
+        },
+        {
+          "id": "station-14",
+          "region": 2,
+          "position": [
+            35.45709518054958,
+            14.938104619730572,
+            -139.82544956646507
+          ]
+        },
+        {
+          "id": "station-15",
+          "region": 3,
+          "position": [
+            51.442038842408074,
+            14.938104619730572,
+            -138.03662801235782
+          ]
+        },
+        {
+          "id": "station-16",
+          "region": 3,
+          "position": [
+            72.92253782462817,
+            14.938104619730572,
+            -135.9922605219496
+          ]
+        },
+        {
+          "id": "station-17",
+          "region": 3,
+          "position": [
+            63.81496350797294,
+            14.938104619730572,
+            -134.71453084044444
+          ]
+        },
+        {
+          "id": "station-18",
+          "region": 2,
+          "position": [
+            10.139879807259328,
+            14.938104619730572,
+            -134.58675787229393
+          ]
+        },
+        {
+          "id": "station-19",
+          "region": 2,
+          "position": [
+            47.59991977123941,
+            14.938104619730572,
+            -134.07566599969186
+          ]
+        },
+        {
+          "id": "station-20",
+          "region": 2,
+          "position": [
+            18.779691434534215,
+            14.938104619730572,
+            -133.4368011589393
+          ]
+        },
+        {
+          "id": "station-21",
+          "region": 2,
+          "position": [
+            31.381201597282,
+            14.938104619730572,
+            -133.18125522263824
+          ]
+        },
+        {
+          "id": "station-22",
+          "region": 2,
+          "position": [
+            42.87719619669467,
+            14.938104619730572,
+            -130.88134179592896
+          ]
+        },
+        {
+          "id": "station-23",
+          "region": 2,
+          "position": [
+            26.68648140028807,
+            14.938104619730572,
+            -128.32588243291866
+          ]
+        },
+        {
+          "id": "station-24",
+          "region": 2,
+          "position": [
+            39.64598576208762,
+            14.938104619730572,
+            -128.32588243291866
+          ]
+        },
+        {
+          "id": "station-25",
+          "region": 2,
+          "position": [
+            16.88218274035278,
+            14.938104619730572,
+            -126.79260681511246
+          ]
+        },
+        {
+          "id": "station-26",
+          "region": 2,
+          "position": [
+            51.28640260737977,
+            14.938104619730572,
+            -126.02596900620938
+          ]
+        },
+        {
+          "id": "station-27",
+          "region": 3,
+          "position": [
+            64.77290136893279,
+            14.938104619730572,
+            -123.47050964319907
+          ]
+        },
+        {
+          "id": "station-28",
+          "region": 2,
+          "position": [
+            58.33547410685887,
+            14.938104619730572,
+            -122.57609886614546
+          ]
+        },
+        {
+          "id": "station-29",
+          "region": 3,
+          "position": [
+            72.76865854963707,
+            14.938104619730572,
+            -122.57609886614546
+          ]
+        },
+        {
+          "id": "station-30",
+          "region": 2,
+          "position": [
+            12.072346019951068,
+            14.938104619730572,
+            -122.1927799616939
+          ]
+        },
+        {
+          "id": "station-31",
+          "region": 2,
+          "position": [
+            26.312279599488935,
+            14.938104619730572,
+            -122.1927799616939
+          ]
+        },
+        {
+          "id": "station-32",
+          "region": 2,
+          "position": [
+            38.84342114948225,
+            14.938104619730572,
+            -122.1927799616939
+          ]
+        },
+        {
+          "id": "station-33",
+          "region": 2,
+          "position": [
+            48.488574704430846,
+            14.938104619730572,
+            -121.68168808909185
+          ]
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "selection": 1,
+      "playing": false,
+      "geometry": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 38,
+        "labels": 8,
+        "meshes": 46,
+        "imageMappedMeshes": 0,
+        "extent": [
+          74.84997286852344,
+          34.845108109162624,
+          70.36031281570773
+        ],
+        "sceneElevation": 38.530648395611024,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "phase": 1,
+        "selection": 0,
+        "kind": "gis-spatial-overlay",
+        "stage": "result",
+        "assembled": true,
+        "source": {
+          "textbookPage": 117,
+          "pdfPage": 122,
+          "figure": "6.26",
+          "image": "textbook/page-122.webp",
+          "imagePixels": [
+            1530,
+            2147
+          ],
+          "stationLayerY": [
+            970,
+            1147
+          ],
+          "regionLayerY": [
+            1251,
+            1427
+          ],
+          "coordinateMeaning": "positions-traced-from-the-textbook-diagram"
+        },
+        "geometricLayers": 2,
+        "stationMeshCount": 33,
+        "oneStationSet": true,
+        "counts": [
+          {
+            "region": 1,
+            "count": 5
+          },
+          {
+            "region": 2,
+            "count": 15
+          },
+          {
+            "region": 3,
+            "count": 13
+          }
+        ],
+        "derivedTotals": [
+          {
+            "id": 1,
+            "count": 5
+          },
+          {
+            "id": 2,
+            "count": 15
+          },
+          {
+            "id": 3,
+            "count": 13
+          }
+        ],
+        "membershipMethod": "point-in-polygon",
+        "activeRegion": null,
+        "resultReady": true,
+        "measuredGeographicData": false
+      },
+      "actualStationMeshes": 33,
+      "stations": [
+        {
+          "id": "station-01",
+          "region": 1,
+          "position": [
+            13.498378961616618,
+            4.539915528352426,
+            -156.0107040413588
+          ]
+        },
+        {
+          "id": "station-02",
+          "region": 3,
+          "position": [
+            71.85355914202724,
+            4.539915528352426,
+            -155.49961216875673
+          ]
+        },
+        {
+          "id": "station-03",
+          "region": 3,
+          "position": [
+            33.08506170731366,
+            4.539915528352426,
+            -155.37183920060622
+          ]
+        },
+        {
+          "id": "station-04",
+          "region": 3,
+          "position": [
+            46.188764424053815,
+            4.539915528352426,
+            -155.2440662324557
+          ]
+        },
+        {
+          "id": "station-05",
+          "region": 3,
+          "position": [
+            59.87308851658199,
+            4.539915528352426,
+            -155.1162932643052
+          ]
+        },
+        {
+          "id": "station-06",
+          "region": 1,
+          "position": [
+            23.950966847100723,
+            4.539915528352426,
+            -150.51646641088664
+          ]
+        },
+        {
+          "id": "station-07",
+          "region": 1,
+          "position": [
+            9.557301795890076,
+            4.539915528352426,
+            -147.44991517527427
+          ]
+        },
+        {
+          "id": "station-08",
+          "region": 3,
+          "position": [
+            44.71480773901712,
+            4.539915528352426,
+            -145.78886658931756
+          ]
+        },
+        {
+          "id": "station-09",
+          "region": 3,
+          "position": [
+            72.70825775332088,
+            4.539915528352426,
+            -144.63890987596292
+          ]
+        },
+        {
+          "id": "station-10",
+          "region": 3,
+          "position": [
+            36.025949231109585,
+            4.539915528352426,
+            -144.38336393966188
+          ]
+        },
+        {
+          "id": "station-11",
+          "region": 3,
+          "position": [
+            61.912445236764896,
+            4.539915528352426,
+            -143.6167261307588
+          ]
+        },
+        {
+          "id": "station-12",
+          "region": 1,
+          "position": [
+            25.58061323095307,
+            4.539915528352426,
+            -140.80572083144745
+          ]
+        },
+        {
+          "id": "station-13",
+          "region": 1,
+          "position": [
+            18.399588848273197,
+            4.539915528352426,
+            -139.7835370862433
+          ]
+        },
+        {
+          "id": "station-14",
+          "region": 2,
+          "position": [
+            35.45709518054958,
+            4.539915528352426,
+            -135.95034804172786
+          ]
+        },
+        {
+          "id": "station-15",
+          "region": 3,
+          "position": [
+            51.442038842408074,
+            4.539915528352426,
+            -134.16152648762065
+          ]
+        },
+        {
+          "id": "station-16",
+          "region": 3,
+          "position": [
+            72.92253782462817,
+            4.539915528352426,
+            -132.11715899721239
+          ]
+        },
+        {
+          "id": "station-17",
+          "region": 3,
+          "position": [
+            63.81496350797294,
+            4.539915528352426,
+            -130.83942931570724
+          ]
+        },
+        {
+          "id": "station-18",
+          "region": 2,
+          "position": [
+            10.139879807259328,
+            4.539915528352426,
+            -130.71165634755673
+          ]
+        },
+        {
+          "id": "station-19",
+          "region": 2,
+          "position": [
+            47.59991977123941,
+            4.539915528352426,
+            -130.20056447495466
+          ]
+        },
+        {
+          "id": "station-20",
+          "region": 2,
+          "position": [
+            18.779691434534215,
+            4.539915528352426,
+            -129.56169963420209
+          ]
+        },
+        {
+          "id": "station-21",
+          "region": 2,
+          "position": [
+            31.381201597282,
+            4.539915528352426,
+            -129.30615369790104
+          ]
+        },
+        {
+          "id": "station-22",
+          "region": 2,
+          "position": [
+            42.87719619669467,
+            4.539915528352426,
+            -127.00624027119177
+          ]
+        },
+        {
+          "id": "station-23",
+          "region": 2,
+          "position": [
+            26.68648140028807,
+            4.539915528352426,
+            -124.45078090818146
+          ]
+        },
+        {
+          "id": "station-24",
+          "region": 2,
+          "position": [
+            39.64598576208762,
+            4.539915528352426,
+            -124.45078090818146
+          ]
+        },
+        {
+          "id": "station-25",
+          "region": 2,
+          "position": [
+            16.88218274035278,
+            4.539915528352426,
+            -122.91750529037527
+          ]
+        },
+        {
+          "id": "station-26",
+          "region": 2,
+          "position": [
+            51.28640260737977,
+            4.539915528352426,
+            -122.15086748147218
+          ]
+        },
+        {
+          "id": "station-27",
+          "region": 3,
+          "position": [
+            64.77290136893279,
+            4.539915528352426,
+            -119.59540811846188
+          ]
+        },
+        {
+          "id": "station-28",
+          "region": 2,
+          "position": [
+            58.33547410685887,
+            4.539915528352426,
+            -118.70099734140825
+          ]
+        },
+        {
+          "id": "station-29",
+          "region": 3,
+          "position": [
+            72.76865854963707,
+            4.539915528352426,
+            -118.70099734140825
+          ]
+        },
+        {
+          "id": "station-30",
+          "region": 2,
+          "position": [
+            12.072346019951068,
+            4.539915528352426,
+            -118.31767843695671
+          ]
+        },
+        {
+          "id": "station-31",
+          "region": 2,
+          "position": [
+            26.312279599488935,
+            4.539915528352426,
+            -118.31767843695671
+          ]
+        },
+        {
+          "id": "station-32",
+          "region": 2,
+          "position": [
+            38.84342114948225,
+            4.539915528352426,
+            -118.31767843695671
+          ]
+        },
+        {
+          "id": "station-33",
+          "region": 2,
+          "position": [
+            48.488574704430846,
+            4.539915528352426,
+            -117.80658656435466
+          ]
+        }
+      ]
+    },
+    {
+      "phase": 0.98,
+      "selection": 1,
+      "playing": false,
+      "geometry": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 38,
+        "labels": 8,
+        "meshes": 46,
+        "imageMappedMeshes": 0,
+        "extent": [
+          74.84997286852344,
+          34.845108109162624,
+          70.36031281570773
+        ],
+        "sceneElevation": 38.530648395611024,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "phase": 0.98,
+        "selection": 0,
+        "kind": "gis-spatial-overlay",
+        "stage": "result",
+        "assembled": true,
+        "source": {
+          "textbookPage": 117,
+          "pdfPage": 122,
+          "figure": "6.26",
+          "image": "textbook/page-122.webp",
+          "imagePixels": [
+            1530,
+            2147
+          ],
+          "stationLayerY": [
+            970,
+            1147
+          ],
+          "regionLayerY": [
+            1251,
+            1427
+          ],
+          "coordinateMeaning": "positions-traced-from-the-textbook-diagram"
+        },
+        "geometricLayers": 2,
+        "stationMeshCount": 33,
+        "oneStationSet": true,
+        "counts": [
+          {
+            "region": 1,
+            "count": 5
+          },
+          {
+            "region": 2,
+            "count": 15
+          },
+          {
+            "region": 3,
+            "count": 13
+          }
+        ],
+        "derivedTotals": [
+          {
+            "id": 1,
+            "count": 5
+          },
+          {
+            "id": 2,
+            "count": 15
+          },
+          {
+            "id": 3,
+            "count": 13
+          }
+        ],
+        "membershipMethod": "point-in-polygon",
+        "activeRegion": null,
+        "resultReady": true,
+        "measuredGeographicData": false
+      },
+      "actualStationMeshes": 33,
+      "stations": [
+        {
+          "id": "station-01",
+          "region": 1,
+          "position": [
+            13.498378961616618,
+            4.539915528352426,
+            -156.0107040413588
+          ]
+        },
+        {
+          "id": "station-02",
+          "region": 3,
+          "position": [
+            71.85355914202724,
+            4.539915528352426,
+            -155.49961216875673
+          ]
+        },
+        {
+          "id": "station-03",
+          "region": 3,
+          "position": [
+            33.08506170731366,
+            4.539915528352426,
+            -155.37183920060622
+          ]
+        },
+        {
+          "id": "station-04",
+          "region": 3,
+          "position": [
+            46.188764424053815,
+            4.539915528352426,
+            -155.2440662324557
+          ]
+        },
+        {
+          "id": "station-05",
+          "region": 3,
+          "position": [
+            59.87308851658199,
+            4.539915528352426,
+            -155.1162932643052
+          ]
+        },
+        {
+          "id": "station-06",
+          "region": 1,
+          "position": [
+            23.950966847100723,
+            4.539915528352426,
+            -150.51646641088664
+          ]
+        },
+        {
+          "id": "station-07",
+          "region": 1,
+          "position": [
+            9.557301795890076,
+            4.539915528352426,
+            -147.44991517527427
+          ]
+        },
+        {
+          "id": "station-08",
+          "region": 3,
+          "position": [
+            44.71480773901712,
+            4.539915528352426,
+            -145.78886658931756
+          ]
+        },
+        {
+          "id": "station-09",
+          "region": 3,
+          "position": [
+            72.70825775332088,
+            4.539915528352426,
+            -144.63890987596292
+          ]
+        },
+        {
+          "id": "station-10",
+          "region": 3,
+          "position": [
+            36.025949231109585,
+            4.539915528352426,
+            -144.38336393966188
+          ]
+        },
+        {
+          "id": "station-11",
+          "region": 3,
+          "position": [
+            61.912445236764896,
+            4.539915528352426,
+            -143.6167261307588
+          ]
+        },
+        {
+          "id": "station-12",
+          "region": 1,
+          "position": [
+            25.58061323095307,
+            4.539915528352426,
+            -140.80572083144745
+          ]
+        },
+        {
+          "id": "station-13",
+          "region": 1,
+          "position": [
+            18.399588848273197,
+            4.539915528352426,
+            -139.7835370862433
+          ]
+        },
+        {
+          "id": "station-14",
+          "region": 2,
+          "position": [
+            35.45709518054958,
+            4.539915528352426,
+            -135.95034804172786
+          ]
+        },
+        {
+          "id": "station-15",
+          "region": 3,
+          "position": [
+            51.442038842408074,
+            4.539915528352426,
+            -134.16152648762065
+          ]
+        },
+        {
+          "id": "station-16",
+          "region": 3,
+          "position": [
+            72.92253782462817,
+            4.539915528352426,
+            -132.11715899721239
+          ]
+        },
+        {
+          "id": "station-17",
+          "region": 3,
+          "position": [
+            63.81496350797294,
+            4.539915528352426,
+            -130.83942931570724
+          ]
+        },
+        {
+          "id": "station-18",
+          "region": 2,
+          "position": [
+            10.139879807259328,
+            4.539915528352426,
+            -130.71165634755673
+          ]
+        },
+        {
+          "id": "station-19",
+          "region": 2,
+          "position": [
+            47.59991977123941,
+            4.539915528352426,
+            -130.20056447495466
+          ]
+        },
+        {
+          "id": "station-20",
+          "region": 2,
+          "position": [
+            18.779691434534215,
+            4.539915528352426,
+            -129.56169963420209
+          ]
+        },
+        {
+          "id": "station-21",
+          "region": 2,
+          "position": [
+            31.381201597282,
+            4.539915528352426,
+            -129.30615369790104
+          ]
+        },
+        {
+          "id": "station-22",
+          "region": 2,
+          "position": [
+            42.87719619669467,
+            4.539915528352426,
+            -127.00624027119177
+          ]
+        },
+        {
+          "id": "station-23",
+          "region": 2,
+          "position": [
+            26.68648140028807,
+            4.539915528352426,
+            -124.45078090818146
+          ]
+        },
+        {
+          "id": "station-24",
+          "region": 2,
+          "position": [
+            39.64598576208762,
+            4.539915528352426,
+            -124.45078090818146
+          ]
+        },
+        {
+          "id": "station-25",
+          "region": 2,
+          "position": [
+            16.88218274035278,
+            4.539915528352426,
+            -122.91750529037527
+          ]
+        },
+        {
+          "id": "station-26",
+          "region": 2,
+          "position": [
+            51.28640260737977,
+            4.539915528352426,
+            -122.15086748147218
+          ]
+        },
+        {
+          "id": "station-27",
+          "region": 3,
+          "position": [
+            64.77290136893279,
+            4.539915528352426,
+            -119.59540811846188
+          ]
+        },
+        {
+          "id": "station-28",
+          "region": 2,
+          "position": [
+            58.33547410685887,
+            4.539915528352426,
+            -118.70099734140825
+          ]
+        },
+        {
+          "id": "station-29",
+          "region": 3,
+          "position": [
+            72.76865854963707,
+            4.539915528352426,
+            -118.70099734140825
+          ]
+        },
+        {
+          "id": "station-30",
+          "region": 2,
+          "position": [
+            12.072346019951068,
+            4.539915528352426,
+            -118.31767843695671
+          ]
+        },
+        {
+          "id": "station-31",
+          "region": 2,
+          "position": [
+            26.312279599488935,
+            4.539915528352426,
+            -118.31767843695671
+          ]
+        },
+        {
+          "id": "station-32",
+          "region": 2,
+          "position": [
+            38.84342114948225,
+            4.539915528352426,
+            -118.31767843695671
+          ]
+        },
+        {
+          "id": "station-33",
+          "region": 2,
+          "position": [
+            48.488574704430846,
+            4.539915528352426,
+            -117.80658656435466
+          ]
+        }
+      ]
+    },
+    {
+      "phase": 1,
+      "selection": 1,
+      "playing": false,
+      "geometry": null
+    }
+  ],
+  "interactions": {
+    "dockEnd": {
+      "phase": 1,
+      "selection": 1,
+      "playing": false,
+      "geometry": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 38,
+        "labels": 8,
+        "meshes": 46,
+        "imageMappedMeshes": 0,
+        "extent": [
+          74.84997286852344,
+          34.845108109162624,
+          70.36031281570773
+        ],
+        "sceneElevation": 38.530648395611024,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "phase": 1,
+        "selection": 1,
+        "kind": "gis-spatial-overlay",
+        "stage": "result",
+        "assembled": true,
+        "source": {
+          "textbookPage": 117,
+          "pdfPage": 122,
+          "figure": "6.26",
+          "image": "textbook/page-122.webp",
+          "imagePixels": [
+            1530,
+            2147
+          ],
+          "stationLayerY": [
+            970,
+            1147
+          ],
+          "regionLayerY": [
+            1251,
+            1427
+          ],
+          "coordinateMeaning": "positions-traced-from-the-textbook-diagram"
+        },
+        "geometricLayers": 2,
+        "stationMeshCount": 33,
+        "oneStationSet": true,
+        "counts": [
+          {
+            "region": 1,
+            "count": 5
+          },
+          {
+            "region": 2,
+            "count": 15
+          },
+          {
+            "region": 3,
+            "count": 13
+          }
+        ],
+        "derivedTotals": [
+          {
+            "id": 1,
+            "count": 5
+          },
+          {
+            "id": 2,
+            "count": 15
+          },
+          {
+            "id": 3,
+            "count": 13
+          }
+        ],
+        "membershipMethod": "point-in-polygon",
+        "activeRegion": null,
+        "resultReady": true,
+        "measuredGeographicData": false
+      },
+      "actualStationMeshes": 33,
+      "stations": [
+        {
+          "id": "station-01",
+          "region": 1,
+          "position": [
+            13.498378961616618,
+            4.539915528352426,
+            -156.0107040413588
+          ]
+        },
+        {
+          "id": "station-02",
+          "region": 3,
+          "position": [
+            71.85355914202724,
+            4.539915528352426,
+            -155.49961216875673
+          ]
+        },
+        {
+          "id": "station-03",
+          "region": 3,
+          "position": [
+            33.08506170731366,
+            4.539915528352426,
+            -155.37183920060622
+          ]
+        },
+        {
+          "id": "station-04",
+          "region": 3,
+          "position": [
+            46.188764424053815,
+            4.539915528352426,
+            -155.2440662324557
+          ]
+        },
+        {
+          "id": "station-05",
+          "region": 3,
+          "position": [
+            59.87308851658199,
+            4.539915528352426,
+            -155.1162932643052
+          ]
+        },
+        {
+          "id": "station-06",
+          "region": 1,
+          "position": [
+            23.950966847100723,
+            4.539915528352426,
+            -150.51646641088664
+          ]
+        },
+        {
+          "id": "station-07",
+          "region": 1,
+          "position": [
+            9.557301795890076,
+            4.539915528352426,
+            -147.44991517527427
+          ]
+        },
+        {
+          "id": "station-08",
+          "region": 3,
+          "position": [
+            44.71480773901712,
+            4.539915528352426,
+            -145.78886658931756
+          ]
+        },
+        {
+          "id": "station-09",
+          "region": 3,
+          "position": [
+            72.70825775332088,
+            4.539915528352426,
+            -144.63890987596292
+          ]
+        },
+        {
+          "id": "station-10",
+          "region": 3,
+          "position": [
+            36.025949231109585,
+            4.539915528352426,
+            -144.38336393966188
+          ]
+        },
+        {
+          "id": "station-11",
+          "region": 3,
+          "position": [
+            61.912445236764896,
+            4.539915528352426,
+            -143.6167261307588
+          ]
+        },
+        {
+          "id": "station-12",
+          "region": 1,
+          "position": [
+            25.58061323095307,
+            4.539915528352426,
+            -140.80572083144745
+          ]
+        },
+        {
+          "id": "station-13",
+          "region": 1,
+          "position": [
+            18.399588848273197,
+            4.539915528352426,
+            -139.7835370862433
+          ]
+        },
+        {
+          "id": "station-14",
+          "region": 2,
+          "position": [
+            35.45709518054958,
+            4.539915528352426,
+            -135.95034804172786
+          ]
+        },
+        {
+          "id": "station-15",
+          "region": 3,
+          "position": [
+            51.442038842408074,
+            4.539915528352426,
+            -134.16152648762065
+          ]
+        },
+        {
+          "id": "station-16",
+          "region": 3,
+          "position": [
+            72.92253782462817,
+            4.539915528352426,
+            -132.11715899721239
+          ]
+        },
+        {
+          "id": "station-17",
+          "region": 3,
+          "position": [
+            63.81496350797294,
+            4.539915528352426,
+            -130.83942931570724
+          ]
+        },
+        {
+          "id": "station-18",
+          "region": 2,
+          "position": [
+            10.139879807259328,
+            4.539915528352426,
+            -130.71165634755673
+          ]
+        },
+        {
+          "id": "station-19",
+          "region": 2,
+          "position": [
+            47.59991977123941,
+            4.539915528352426,
+            -130.20056447495466
+          ]
+        },
+        {
+          "id": "station-20",
+          "region": 2,
+          "position": [
+            18.779691434534215,
+            4.539915528352426,
+            -129.56169963420209
+          ]
+        },
+        {
+          "id": "station-21",
+          "region": 2,
+          "position": [
+            31.381201597282,
+            4.539915528352426,
+            -129.30615369790104
+          ]
+        },
+        {
+          "id": "station-22",
+          "region": 2,
+          "position": [
+            42.87719619669467,
+            4.539915528352426,
+            -127.00624027119177
+          ]
+        },
+        {
+          "id": "station-23",
+          "region": 2,
+          "position": [
+            26.68648140028807,
+            4.539915528352426,
+            -124.45078090818146
+          ]
+        },
+        {
+          "id": "station-24",
+          "region": 2,
+          "position": [
+            39.64598576208762,
+            4.539915528352426,
+            -124.45078090818146
+          ]
+        },
+        {
+          "id": "station-25",
+          "region": 2,
+          "position": [
+            16.88218274035278,
+            4.539915528352426,
+            -122.91750529037527
+          ]
+        },
+        {
+          "id": "station-26",
+          "region": 2,
+          "position": [
+            51.28640260737977,
+            4.539915528352426,
+            -122.15086748147218
+          ]
+        },
+        {
+          "id": "station-27",
+          "region": 3,
+          "position": [
+            64.77290136893279,
+            4.539915528352426,
+            -119.59540811846188
+          ]
+        },
+        {
+          "id": "station-28",
+          "region": 2,
+          "position": [
+            58.33547410685887,
+            4.539915528352426,
+            -118.70099734140825
+          ]
+        },
+        {
+          "id": "station-29",
+          "region": 3,
+          "position": [
+            72.76865854963707,
+            4.539915528352426,
+            -118.70099734140825
+          ]
+        },
+        {
+          "id": "station-30",
+          "region": 2,
+          "position": [
+            12.072346019951068,
+            4.539915528352426,
+            -118.31767843695671
+          ]
+        },
+        {
+          "id": "station-31",
+          "region": 2,
+          "position": [
+            26.312279599488935,
+            4.539915528352426,
+            -118.31767843695671
+          ]
+        },
+        {
+          "id": "station-32",
+          "region": 2,
+          "position": [
+            38.84342114948225,
+            4.539915528352426,
+            -118.31767843695671
+          ]
+        },
+        {
+          "id": "station-33",
+          "region": 2,
+          "position": [
+            48.488574704430846,
+            4.539915528352426,
+            -117.80658656435466
+          ]
+        }
+      ]
+    },
+    "dockStart": {
+      "phase": 0,
+      "selection": 0,
+      "playing": false,
+      "geometry": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 38,
+        "labels": 8,
+        "meshes": 46,
+        "imageMappedMeshes": 0,
+        "extent": [
+          74.84997286852344,
+          34.845108109162624,
+          70.36031281570773
+        ],
+        "sceneElevation": 38.530648395611024,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "phase": 0,
+        "selection": 0,
+        "kind": "gis-spatial-overlay",
+        "stage": "separated",
+        "assembled": false,
+        "source": {
+          "textbookPage": 117,
+          "pdfPage": 122,
+          "figure": "6.26",
+          "image": "textbook/page-122.webp",
+          "imagePixels": [
+            1530,
+            2147
+          ],
+          "stationLayerY": [
+            970,
+            1147
+          ],
+          "regionLayerY": [
+            1251,
+            1427
+          ],
+          "coordinateMeaning": "positions-traced-from-the-textbook-diagram"
+        },
+        "geometricLayers": 2,
+        "stationMeshCount": 33,
+        "oneStationSet": true,
+        "counts": [
+          {
+            "region": 1,
+            "count": 0
+          },
+          {
+            "region": 2,
+            "count": 0
+          },
+          {
+            "region": 3,
+            "count": 0
+          }
+        ],
+        "derivedTotals": [
+          {
+            "id": 1,
+            "count": 5
+          },
+          {
+            "id": 2,
+            "count": 15
+          },
+          {
+            "id": 3,
+            "count": 13
+          }
+        ],
+        "membershipMethod": "point-in-polygon",
+        "activeRegion": null,
+        "resultReady": false,
+        "measuredGeographicData": false
+      },
+      "actualStationMeshes": 33,
+      "stations": [
+        {
+          "id": "station-01",
+          "region": 1,
+          "position": [
+            13.498378961616618,
+            31.511369405280142,
+            -166.06217753586603
+          ]
+        },
+        {
+          "id": "station-02",
+          "region": 3,
+          "position": [
+            71.85355914202724,
+            31.511369405280142,
+            -165.55108566326396
+          ]
+        },
+        {
+          "id": "station-03",
+          "region": 3,
+          "position": [
+            33.08506170731366,
+            31.511369405280142,
+            -165.42331269511345
+          ]
+        },
+        {
+          "id": "station-04",
+          "region": 3,
+          "position": [
+            46.188764424053815,
+            31.511369405280142,
+            -165.29553972696291
+          ]
+        },
+        {
+          "id": "station-05",
+          "region": 3,
+          "position": [
+            59.87308851658199,
+            31.511369405280142,
+            -165.1677667588124
+          ]
+        },
+        {
+          "id": "station-06",
+          "region": 1,
+          "position": [
+            23.950966847100723,
+            31.511369405280142,
+            -160.56793990539384
+          ]
+        },
+        {
+          "id": "station-07",
+          "region": 1,
+          "position": [
+            9.557301795890076,
+            31.511369405280142,
+            -157.50138866978148
+          ]
+        },
+        {
+          "id": "station-08",
+          "region": 3,
+          "position": [
+            44.71480773901712,
+            31.511369405280142,
+            -155.84034008382477
+          ]
+        },
+        {
+          "id": "station-09",
+          "region": 3,
+          "position": [
+            72.70825775332088,
+            31.511369405280142,
+            -154.69038337047013
+          ]
+        },
+        {
+          "id": "station-10",
+          "region": 3,
+          "position": [
+            36.025949231109585,
+            31.511369405280142,
+            -154.4348374341691
+          ]
+        },
+        {
+          "id": "station-11",
+          "region": 3,
+          "position": [
+            61.912445236764896,
+            31.511369405280142,
+            -153.668199625266
+          ]
+        },
+        {
+          "id": "station-12",
+          "region": 1,
+          "position": [
+            25.58061323095307,
+            31.511369405280142,
+            -150.85719432595468
+          ]
+        },
+        {
+          "id": "station-13",
+          "region": 1,
+          "position": [
+            18.399588848273197,
+            31.511369405280142,
+            -149.83501058075055
+          ]
+        },
+        {
+          "id": "station-14",
+          "region": 2,
+          "position": [
+            35.45709518054958,
+            31.511369405280142,
+            -146.00182153623507
+          ]
+        },
+        {
+          "id": "station-15",
+          "region": 3,
+          "position": [
+            51.442038842408074,
+            31.511369405280142,
+            -144.21299998212785
+          ]
+        },
+        {
+          "id": "station-16",
+          "region": 3,
+          "position": [
+            72.92253782462817,
+            31.511369405280142,
+            -142.16863249171962
+          ]
+        },
+        {
+          "id": "station-17",
+          "region": 3,
+          "position": [
+            63.81496350797294,
+            31.511369405280142,
+            -140.89090281021447
+          ]
+        },
+        {
+          "id": "station-18",
+          "region": 2,
+          "position": [
+            10.139879807259328,
+            31.511369405280142,
+            -140.76312984206393
+          ]
+        },
+        {
+          "id": "station-19",
+          "region": 2,
+          "position": [
+            47.59991977123941,
+            31.511369405280142,
+            -140.25203796946187
+          ]
+        },
+        {
+          "id": "station-20",
+          "region": 2,
+          "position": [
+            18.779691434534215,
+            31.511369405280142,
+            -139.61317312870932
+          ]
+        },
+        {
+          "id": "station-21",
+          "region": 2,
+          "position": [
+            31.381201597282,
+            31.511369405280142,
+            -139.35762719240827
+          ]
+        },
+        {
+          "id": "station-22",
+          "region": 2,
+          "position": [
+            42.87719619669467,
+            31.511369405280142,
+            -137.057713765699
+          ]
+        },
+        {
+          "id": "station-23",
+          "region": 2,
+          "position": [
+            26.68648140028807,
+            31.511369405280142,
+            -134.50225440268866
+          ]
+        },
+        {
+          "id": "station-24",
+          "region": 2,
+          "position": [
+            39.64598576208762,
+            31.511369405280142,
+            -134.50225440268866
+          ]
+        },
+        {
+          "id": "station-25",
+          "region": 2,
+          "position": [
+            16.88218274035278,
+            31.511369405280142,
+            -132.9689787848825
+          ]
+        },
+        {
+          "id": "station-26",
+          "region": 2,
+          "position": [
+            51.28640260737977,
+            31.511369405280142,
+            -132.2023409759794
+          ]
+        },
+        {
+          "id": "station-27",
+          "region": 3,
+          "position": [
+            64.77290136893279,
+            31.511369405280142,
+            -129.64688161296908
+          ]
+        },
+        {
+          "id": "station-28",
+          "region": 2,
+          "position": [
+            58.33547410685887,
+            31.511369405280142,
+            -128.7524708359155
+          ]
+        },
+        {
+          "id": "station-29",
+          "region": 3,
+          "position": [
+            72.76865854963707,
+            31.511369405280142,
+            -128.7524708359155
+          ]
+        },
+        {
+          "id": "station-30",
+          "region": 2,
+          "position": [
+            12.072346019951068,
+            31.511369405280142,
+            -128.36915193146393
+          ]
+        },
+        {
+          "id": "station-31",
+          "region": 2,
+          "position": [
+            26.312279599488935,
+            31.511369405280142,
+            -128.36915193146393
+          ]
+        },
+        {
+          "id": "station-32",
+          "region": 2,
+          "position": [
+            38.84342114948225,
+            31.511369405280142,
+            -128.36915193146393
+          ]
+        },
+        {
+          "id": "station-33",
+          "region": 2,
+          "position": [
+            48.488574704430846,
+            31.511369405280142,
+            -127.85806005886187
+          ]
+        }
+      ]
+    },
+    "play": {
+      "phase": 0.30323888888888884,
+      "selection": 0,
+      "playing": true,
+      "geometry": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 38,
+        "labels": 8,
+        "meshes": 46,
+        "imageMappedMeshes": 0,
+        "extent": [
+          74.84997286852344,
+          34.845108109162624,
+          70.36031281570773
+        ],
+        "sceneElevation": 38.530648395611024,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "phase": 0.30323888888888884,
+        "selection": 0,
+        "kind": "gis-spatial-overlay",
+        "stage": "aligning",
+        "assembled": false,
+        "source": {
+          "textbookPage": 117,
+          "pdfPage": 122,
+          "figure": "6.26",
+          "image": "textbook/page-122.webp",
+          "imagePixels": [
+            1530,
+            2147
+          ],
+          "stationLayerY": [
+            970,
+            1147
+          ],
+          "regionLayerY": [
+            1251,
+            1427
+          ],
+          "coordinateMeaning": "positions-traced-from-the-textbook-diagram"
+        },
+        "geometricLayers": 2,
+        "stationMeshCount": 33,
+        "oneStationSet": true,
+        "counts": [
+          {
+            "region": 1,
+            "count": 0
+          },
+          {
+            "region": 2,
+            "count": 0
+          },
+          {
+            "region": 3,
+            "count": 0
+          }
+        ],
+        "derivedTotals": [
+          {
+            "id": 1,
+            "count": 5
+          },
+          {
+            "id": 2,
+            "count": 15
+          },
+          {
+            "id": 3,
+            "count": 13
+          }
+        ],
+        "membershipMethod": "point-in-polygon",
+        "activeRegion": null,
+        "resultReady": false,
+        "measuredGeographicData": false
+      },
+      "actualStationMeshes": 33,
+      "stations": [
+        {
+          "id": "station-01",
+          "region": 1,
+          "position": [
+            13.498378961616618,
+            14.692572018586421,
+            -159.79430273337147
+          ]
+        },
+        {
+          "id": "station-02",
+          "region": 3,
+          "position": [
+            71.85355914202724,
+            14.692572018586421,
+            -159.2832108607694
+          ]
+        },
+        {
+          "id": "station-03",
+          "region": 3,
+          "position": [
+            33.08506170731366,
+            14.692572018586421,
+            -159.1554378926189
+          ]
+        },
+        {
+          "id": "station-04",
+          "region": 3,
+          "position": [
+            46.188764424053815,
+            14.692572018586421,
+            -159.02766492446838
+          ]
+        },
+        {
+          "id": "station-05",
+          "region": 3,
+          "position": [
+            59.87308851658199,
+            14.692572018586421,
+            -158.89989195631784
+          ]
+        },
+        {
+          "id": "station-06",
+          "region": 1,
+          "position": [
+            23.950966847100723,
+            14.692572018586421,
+            -154.3000651028993
+          ]
+        },
+        {
+          "id": "station-07",
+          "region": 1,
+          "position": [
+            9.557301795890076,
+            14.692572018586421,
+            -151.23351386728692
+          ]
+        },
+        {
+          "id": "station-08",
+          "region": 3,
+          "position": [
+            44.71480773901712,
+            14.692572018586421,
+            -149.5724652813302
+          ]
+        },
+        {
+          "id": "station-09",
+          "region": 3,
+          "position": [
+            72.70825775332088,
+            14.692572018586421,
+            -148.42250856797557
+          ]
+        },
+        {
+          "id": "station-10",
+          "region": 3,
+          "position": [
+            36.025949231109585,
+            14.692572018586421,
+            -148.16696263167455
+          ]
+        },
+        {
+          "id": "station-11",
+          "region": 3,
+          "position": [
+            61.912445236764896,
+            14.692572018586421,
+            -147.40032482277147
+          ]
+        },
+        {
+          "id": "station-12",
+          "region": 1,
+          "position": [
+            25.58061323095307,
+            14.692572018586421,
+            -144.58931952346012
+          ]
+        },
+        {
+          "id": "station-13",
+          "region": 1,
+          "position": [
+            18.399588848273197,
+            14.692572018586421,
+            -143.567135778256
+          ]
+        },
+        {
+          "id": "station-14",
+          "region": 2,
+          "position": [
+            35.45709518054958,
+            14.692572018586421,
+            -139.73394673374054
+          ]
+        },
+        {
+          "id": "station-15",
+          "region": 3,
+          "position": [
+            51.442038842408074,
+            14.692572018586421,
+            -137.9451251796333
+          ]
+        },
+        {
+          "id": "station-16",
+          "region": 3,
+          "position": [
+            72.92253782462817,
+            14.692572018586421,
+            -135.90075768922506
+          ]
+        },
+        {
+          "id": "station-17",
+          "region": 3,
+          "position": [
+            63.81496350797294,
+            14.692572018586421,
+            -134.6230280077199
+          ]
+        },
+        {
+          "id": "station-18",
+          "region": 2,
+          "position": [
+            10.139879807259328,
+            14.692572018586421,
+            -134.4952550395694
+          ]
+        },
+        {
+          "id": "station-19",
+          "region": 2,
+          "position": [
+            47.59991977123941,
+            14.692572018586421,
+            -133.98416316696733
+          ]
+        },
+        {
+          "id": "station-20",
+          "region": 2,
+          "position": [
+            18.779691434534215,
+            14.692572018586421,
+            -133.34529832621476
+          ]
+        },
+        {
+          "id": "station-21",
+          "region": 2,
+          "position": [
+            31.381201597282,
+            14.692572018586421,
+            -133.0897523899137
+          ]
+        },
+        {
+          "id": "station-22",
+          "region": 2,
+          "position": [
+            42.87719619669467,
+            14.692572018586421,
+            -130.78983896320443
+          ]
+        },
+        {
+          "id": "station-23",
+          "region": 2,
+          "position": [
+            26.68648140028807,
+            14.692572018586421,
+            -128.23437960019413
+          ]
+        },
+        {
+          "id": "station-24",
+          "region": 2,
+          "position": [
+            39.64598576208762,
+            14.692572018586421,
+            -128.23437960019413
+          ]
+        },
+        {
+          "id": "station-25",
+          "region": 2,
+          "position": [
+            16.88218274035278,
+            14.692572018586421,
+            -126.70110398238793
+          ]
+        },
+        {
+          "id": "station-26",
+          "region": 2,
+          "position": [
+            51.28640260737977,
+            14.692572018586421,
+            -125.93446617348485
+          ]
+        },
+        {
+          "id": "station-27",
+          "region": 3,
+          "position": [
+            64.77290136893279,
+            14.692572018586421,
+            -123.37900681047454
+          ]
+        },
+        {
+          "id": "station-28",
+          "region": 2,
+          "position": [
+            58.33547410685887,
+            14.692572018586421,
+            -122.48459603342093
+          ]
+        },
+        {
+          "id": "station-29",
+          "region": 3,
+          "position": [
+            72.76865854963707,
+            14.692572018586421,
+            -122.48459603342093
+          ]
+        },
+        {
+          "id": "station-30",
+          "region": 2,
+          "position": [
+            12.072346019951068,
+            14.692572018586421,
+            -122.10127712896937
+          ]
+        },
+        {
+          "id": "station-31",
+          "region": 2,
+          "position": [
+            26.312279599488935,
+            14.692572018586421,
+            -122.10127712896937
+          ]
+        },
+        {
+          "id": "station-32",
+          "region": 2,
+          "position": [
+            38.84342114948225,
+            14.692572018586421,
+            -122.10127712896937
+          ]
+        },
+        {
+          "id": "station-33",
+          "region": 2,
+          "position": [
+            48.488574704430846,
+            14.692572018586421,
+            -121.59018525636732
+          ]
+        }
+      ]
+    },
+    "pause": {
+      "phase": 0.3078666666666666,
+      "selection": 0,
+      "playing": false,
+      "geometry": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 38,
+        "labels": 8,
+        "meshes": 46,
+        "imageMappedMeshes": 0,
+        "extent": [
+          74.84997286852344,
+          34.845108109162624,
+          70.36031281570773
+        ],
+        "sceneElevation": 38.530648395611024,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "phase": 0.3078666666666666,
+        "selection": 0,
+        "kind": "gis-spatial-overlay",
+        "stage": "aligning",
+        "assembled": false,
+        "source": {
+          "textbookPage": 117,
+          "pdfPage": 122,
+          "figure": "6.26",
+          "image": "textbook/page-122.webp",
+          "imagePixels": [
+            1530,
+            2147
+          ],
+          "stationLayerY": [
+            970,
+            1147
+          ],
+          "regionLayerY": [
+            1251,
+            1427
+          ],
+          "coordinateMeaning": "positions-traced-from-the-textbook-diagram"
+        },
+        "geometricLayers": 2,
+        "stationMeshCount": 33,
+        "oneStationSet": true,
+        "counts": [
+          {
+            "region": 1,
+            "count": 0
+          },
+          {
+            "region": 2,
+            "count": 0
+          },
+          {
+            "region": 3,
+            "count": 0
+          }
+        ],
+        "derivedTotals": [
+          {
+            "id": 1,
+            "count": 5
+          },
+          {
+            "id": 2,
+            "count": 15
+          },
+          {
+            "id": 3,
+            "count": 13
+          }
+        ],
+        "membershipMethod": "point-in-polygon",
+        "activeRegion": null,
+        "resultReady": false,
+        "measuredGeographicData": false
+      },
+      "actualStationMeshes": 33,
+      "stations": [
+        {
+          "id": "station-01",
+          "region": 1,
+          "position": [
+            13.498378961616618,
+            14.3435820806579,
+            -159.66424437141052
+          ]
+        },
+        {
+          "id": "station-02",
+          "region": 3,
+          "position": [
+            71.85355914202724,
+            14.3435820806579,
+            -159.15315249880845
+          ]
+        },
+        {
+          "id": "station-03",
+          "region": 3,
+          "position": [
+            33.08506170731366,
+            14.3435820806579,
+            -159.02537953065794
+          ]
+        },
+        {
+          "id": "station-04",
+          "region": 3,
+          "position": [
+            46.188764424053815,
+            14.3435820806579,
+            -158.89760656250743
+          ]
+        },
+        {
+          "id": "station-05",
+          "region": 3,
+          "position": [
+            59.87308851658199,
+            14.3435820806579,
+            -158.76983359435692
+          ]
+        },
+        {
+          "id": "station-06",
+          "region": 1,
+          "position": [
+            23.950966847100723,
+            14.3435820806579,
+            -154.17000674093836
+          ]
+        },
+        {
+          "id": "station-07",
+          "region": 1,
+          "position": [
+            9.557301795890076,
+            14.3435820806579,
+            -151.103455505326
+          ]
+        },
+        {
+          "id": "station-08",
+          "region": 3,
+          "position": [
+            44.71480773901712,
+            14.3435820806579,
+            -149.4424069193693
+          ]
+        },
+        {
+          "id": "station-09",
+          "region": 3,
+          "position": [
+            72.70825775332088,
+            14.3435820806579,
+            -148.29245020601465
+          ]
+        },
+        {
+          "id": "station-10",
+          "region": 3,
+          "position": [
+            36.025949231109585,
+            14.3435820806579,
+            -148.0369042697136
+          ]
+        },
+        {
+          "id": "station-11",
+          "region": 3,
+          "position": [
+            61.912445236764896,
+            14.3435820806579,
+            -147.27026646081052
+          ]
+        },
+        {
+          "id": "station-12",
+          "region": 1,
+          "position": [
+            25.58061323095307,
+            14.3435820806579,
+            -144.45926116149917
+          ]
+        },
+        {
+          "id": "station-13",
+          "region": 1,
+          "position": [
+            18.399588848273197,
+            14.3435820806579,
+            -143.43707741629504
+          ]
+        },
+        {
+          "id": "station-14",
+          "region": 2,
+          "position": [
+            35.45709518054958,
+            14.3435820806579,
+            -139.6038883717796
+          ]
+        },
+        {
+          "id": "station-15",
+          "region": 3,
+          "position": [
+            51.442038842408074,
+            14.3435820806579,
+            -137.81506681767237
+          ]
+        },
+        {
+          "id": "station-16",
+          "region": 3,
+          "position": [
+            72.92253782462817,
+            14.3435820806579,
+            -135.7706993272641
+          ]
+        },
+        {
+          "id": "station-17",
+          "region": 3,
+          "position": [
+            63.81496350797294,
+            14.3435820806579,
+            -134.49296964575896
+          ]
+        },
+        {
+          "id": "station-18",
+          "region": 2,
+          "position": [
+            10.139879807259328,
+            14.3435820806579,
+            -134.36519667760845
+          ]
+        },
+        {
+          "id": "station-19",
+          "region": 2,
+          "position": [
+            47.59991977123941,
+            14.3435820806579,
+            -133.8541048050064
+          ]
+        },
+        {
+          "id": "station-20",
+          "region": 2,
+          "position": [
+            18.779691434534215,
+            14.3435820806579,
+            -133.2152399642538
+          ]
+        },
+        {
+          "id": "station-21",
+          "region": 2,
+          "position": [
+            31.381201597282,
+            14.3435820806579,
+            -132.95969402795276
+          ]
+        },
+        {
+          "id": "station-22",
+          "region": 2,
+          "position": [
+            42.87719619669467,
+            14.3435820806579,
+            -130.65978060124348
+          ]
+        },
+        {
+          "id": "station-23",
+          "region": 2,
+          "position": [
+            26.68648140028807,
+            14.3435820806579,
+            -128.10432123823318
+          ]
+        },
+        {
+          "id": "station-24",
+          "region": 2,
+          "position": [
+            39.64598576208762,
+            14.3435820806579,
+            -128.10432123823318
+          ]
+        },
+        {
+          "id": "station-25",
+          "region": 2,
+          "position": [
+            16.88218274035278,
+            14.3435820806579,
+            -126.571045620427
+          ]
+        },
+        {
+          "id": "station-26",
+          "region": 2,
+          "position": [
+            51.28640260737977,
+            14.3435820806579,
+            -125.8044078115239
+          ]
+        },
+        {
+          "id": "station-27",
+          "region": 3,
+          "position": [
+            64.77290136893279,
+            14.3435820806579,
+            -123.2489484485136
+          ]
+        },
+        {
+          "id": "station-28",
+          "region": 2,
+          "position": [
+            58.33547410685887,
+            14.3435820806579,
+            -122.35453767145998
+          ]
+        },
+        {
+          "id": "station-29",
+          "region": 3,
+          "position": [
+            72.76865854963707,
+            14.3435820806579,
+            -122.35453767145998
+          ]
+        },
+        {
+          "id": "station-30",
+          "region": 2,
+          "position": [
+            12.072346019951068,
+            14.3435820806579,
+            -121.97121876700844
+          ]
+        },
+        {
+          "id": "station-31",
+          "region": 2,
+          "position": [
+            26.312279599488935,
+            14.3435820806579,
+            -121.97121876700844
+          ]
+        },
+        {
+          "id": "station-32",
+          "region": 2,
+          "position": [
+            38.84342114948225,
+            14.3435820806579,
+            -121.97121876700844
+          ]
+        },
+        {
+          "id": "station-33",
+          "region": 2,
+          "position": [
+            48.488574704430846,
+            14.3435820806579,
+            -121.46012689440639
+          ]
+        }
+      ]
+    },
+    "pauseHeld": {
+      "phase": 0.3078666666666666,
+      "selection": 0,
+      "playing": false,
+      "geometry": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 38,
+        "labels": 8,
+        "meshes": 46,
+        "imageMappedMeshes": 0,
+        "extent": [
+          74.84997286852344,
+          34.845108109162624,
+          70.36031281570773
+        ],
+        "sceneElevation": 38.530648395611024,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "phase": 0.3078666666666666,
+        "selection": 0,
+        "kind": "gis-spatial-overlay",
+        "stage": "aligning",
+        "assembled": false,
+        "source": {
+          "textbookPage": 117,
+          "pdfPage": 122,
+          "figure": "6.26",
+          "image": "textbook/page-122.webp",
+          "imagePixels": [
+            1530,
+            2147
+          ],
+          "stationLayerY": [
+            970,
+            1147
+          ],
+          "regionLayerY": [
+            1251,
+            1427
+          ],
+          "coordinateMeaning": "positions-traced-from-the-textbook-diagram"
+        },
+        "geometricLayers": 2,
+        "stationMeshCount": 33,
+        "oneStationSet": true,
+        "counts": [
+          {
+            "region": 1,
+            "count": 0
+          },
+          {
+            "region": 2,
+            "count": 0
+          },
+          {
+            "region": 3,
+            "count": 0
+          }
+        ],
+        "derivedTotals": [
+          {
+            "id": 1,
+            "count": 5
+          },
+          {
+            "id": 2,
+            "count": 15
+          },
+          {
+            "id": 3,
+            "count": 13
+          }
+        ],
+        "membershipMethod": "point-in-polygon",
+        "activeRegion": null,
+        "resultReady": false,
+        "measuredGeographicData": false
+      },
+      "actualStationMeshes": 33,
+      "stations": [
+        {
+          "id": "station-01",
+          "region": 1,
+          "position": [
+            13.498378961616618,
+            14.3435820806579,
+            -159.66424437141052
+          ]
+        },
+        {
+          "id": "station-02",
+          "region": 3,
+          "position": [
+            71.85355914202724,
+            14.3435820806579,
+            -159.15315249880845
+          ]
+        },
+        {
+          "id": "station-03",
+          "region": 3,
+          "position": [
+            33.08506170731366,
+            14.3435820806579,
+            -159.02537953065794
+          ]
+        },
+        {
+          "id": "station-04",
+          "region": 3,
+          "position": [
+            46.188764424053815,
+            14.3435820806579,
+            -158.89760656250743
+          ]
+        },
+        {
+          "id": "station-05",
+          "region": 3,
+          "position": [
+            59.87308851658199,
+            14.3435820806579,
+            -158.76983359435692
+          ]
+        },
+        {
+          "id": "station-06",
+          "region": 1,
+          "position": [
+            23.950966847100723,
+            14.3435820806579,
+            -154.17000674093836
+          ]
+        },
+        {
+          "id": "station-07",
+          "region": 1,
+          "position": [
+            9.557301795890076,
+            14.3435820806579,
+            -151.103455505326
+          ]
+        },
+        {
+          "id": "station-08",
+          "region": 3,
+          "position": [
+            44.71480773901712,
+            14.3435820806579,
+            -149.4424069193693
+          ]
+        },
+        {
+          "id": "station-09",
+          "region": 3,
+          "position": [
+            72.70825775332088,
+            14.3435820806579,
+            -148.29245020601465
+          ]
+        },
+        {
+          "id": "station-10",
+          "region": 3,
+          "position": [
+            36.025949231109585,
+            14.3435820806579,
+            -148.0369042697136
+          ]
+        },
+        {
+          "id": "station-11",
+          "region": 3,
+          "position": [
+            61.912445236764896,
+            14.3435820806579,
+            -147.27026646081052
+          ]
+        },
+        {
+          "id": "station-12",
+          "region": 1,
+          "position": [
+            25.58061323095307,
+            14.3435820806579,
+            -144.45926116149917
+          ]
+        },
+        {
+          "id": "station-13",
+          "region": 1,
+          "position": [
+            18.399588848273197,
+            14.3435820806579,
+            -143.43707741629504
+          ]
+        },
+        {
+          "id": "station-14",
+          "region": 2,
+          "position": [
+            35.45709518054958,
+            14.3435820806579,
+            -139.6038883717796
+          ]
+        },
+        {
+          "id": "station-15",
+          "region": 3,
+          "position": [
+            51.442038842408074,
+            14.3435820806579,
+            -137.81506681767237
+          ]
+        },
+        {
+          "id": "station-16",
+          "region": 3,
+          "position": [
+            72.92253782462817,
+            14.3435820806579,
+            -135.7706993272641
+          ]
+        },
+        {
+          "id": "station-17",
+          "region": 3,
+          "position": [
+            63.81496350797294,
+            14.3435820806579,
+            -134.49296964575896
+          ]
+        },
+        {
+          "id": "station-18",
+          "region": 2,
+          "position": [
+            10.139879807259328,
+            14.3435820806579,
+            -134.36519667760845
+          ]
+        },
+        {
+          "id": "station-19",
+          "region": 2,
+          "position": [
+            47.59991977123941,
+            14.3435820806579,
+            -133.8541048050064
+          ]
+        },
+        {
+          "id": "station-20",
+          "region": 2,
+          "position": [
+            18.779691434534215,
+            14.3435820806579,
+            -133.2152399642538
+          ]
+        },
+        {
+          "id": "station-21",
+          "region": 2,
+          "position": [
+            31.381201597282,
+            14.3435820806579,
+            -132.95969402795276
+          ]
+        },
+        {
+          "id": "station-22",
+          "region": 2,
+          "position": [
+            42.87719619669467,
+            14.3435820806579,
+            -130.65978060124348
+          ]
+        },
+        {
+          "id": "station-23",
+          "region": 2,
+          "position": [
+            26.68648140028807,
+            14.3435820806579,
+            -128.10432123823318
+          ]
+        },
+        {
+          "id": "station-24",
+          "region": 2,
+          "position": [
+            39.64598576208762,
+            14.3435820806579,
+            -128.10432123823318
+          ]
+        },
+        {
+          "id": "station-25",
+          "region": 2,
+          "position": [
+            16.88218274035278,
+            14.3435820806579,
+            -126.571045620427
+          ]
+        },
+        {
+          "id": "station-26",
+          "region": 2,
+          "position": [
+            51.28640260737977,
+            14.3435820806579,
+            -125.8044078115239
+          ]
+        },
+        {
+          "id": "station-27",
+          "region": 3,
+          "position": [
+            64.77290136893279,
+            14.3435820806579,
+            -123.2489484485136
+          ]
+        },
+        {
+          "id": "station-28",
+          "region": 2,
+          "position": [
+            58.33547410685887,
+            14.3435820806579,
+            -122.35453767145998
+          ]
+        },
+        {
+          "id": "station-29",
+          "region": 3,
+          "position": [
+            72.76865854963707,
+            14.3435820806579,
+            -122.35453767145998
+          ]
+        },
+        {
+          "id": "station-30",
+          "region": 2,
+          "position": [
+            12.072346019951068,
+            14.3435820806579,
+            -121.97121876700844
+          ]
+        },
+        {
+          "id": "station-31",
+          "region": 2,
+          "position": [
+            26.312279599488935,
+            14.3435820806579,
+            -121.97121876700844
+          ]
+        },
+        {
+          "id": "station-32",
+          "region": 2,
+          "position": [
+            38.84342114948225,
+            14.3435820806579,
+            -121.97121876700844
+          ]
+        },
+        {
+          "id": "station-33",
+          "region": 2,
+          "position": [
+            48.488574704430846,
+            14.3435820806579,
+            -121.46012689440639
+          ]
+        }
+      ]
+    },
+    "replay": {
+      "phase": 0,
+      "selection": 0,
+      "playing": true,
+      "geometry": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 38,
+        "labels": 8,
+        "meshes": 46,
+        "imageMappedMeshes": 0,
+        "extent": [
+          74.84997286852344,
+          34.845108109162624,
+          70.36031281570773
+        ],
+        "sceneElevation": 38.530648395611024,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "phase": 1,
+        "selection": 0,
+        "kind": "gis-spatial-overlay",
+        "stage": "result",
+        "assembled": true,
+        "source": {
+          "textbookPage": 117,
+          "pdfPage": 122,
+          "figure": "6.26",
+          "image": "textbook/page-122.webp",
+          "imagePixels": [
+            1530,
+            2147
+          ],
+          "stationLayerY": [
+            970,
+            1147
+          ],
+          "regionLayerY": [
+            1251,
+            1427
+          ],
+          "coordinateMeaning": "positions-traced-from-the-textbook-diagram"
+        },
+        "geometricLayers": 2,
+        "stationMeshCount": 33,
+        "oneStationSet": true,
+        "counts": [
+          {
+            "region": 1,
+            "count": 5
+          },
+          {
+            "region": 2,
+            "count": 15
+          },
+          {
+            "region": 3,
+            "count": 13
+          }
+        ],
+        "derivedTotals": [
+          {
+            "id": 1,
+            "count": 5
+          },
+          {
+            "id": 2,
+            "count": 15
+          },
+          {
+            "id": 3,
+            "count": 13
+          }
+        ],
+        "membershipMethod": "point-in-polygon",
+        "activeRegion": null,
+        "resultReady": true,
+        "measuredGeographicData": false
+      },
+      "actualStationMeshes": 33,
+      "stations": [
+        {
+          "id": "station-01",
+          "region": 1,
+          "position": [
+            13.498378961616618,
+            4.539915528352426,
+            -156.0107040413588
+          ]
+        },
+        {
+          "id": "station-02",
+          "region": 3,
+          "position": [
+            71.85355914202724,
+            4.539915528352426,
+            -155.49961216875673
+          ]
+        },
+        {
+          "id": "station-03",
+          "region": 3,
+          "position": [
+            33.08506170731366,
+            4.539915528352426,
+            -155.37183920060622
+          ]
+        },
+        {
+          "id": "station-04",
+          "region": 3,
+          "position": [
+            46.188764424053815,
+            4.539915528352426,
+            -155.2440662324557
+          ]
+        },
+        {
+          "id": "station-05",
+          "region": 3,
+          "position": [
+            59.87308851658199,
+            4.539915528352426,
+            -155.1162932643052
+          ]
+        },
+        {
+          "id": "station-06",
+          "region": 1,
+          "position": [
+            23.950966847100723,
+            4.539915528352426,
+            -150.51646641088664
+          ]
+        },
+        {
+          "id": "station-07",
+          "region": 1,
+          "position": [
+            9.557301795890076,
+            4.539915528352426,
+            -147.44991517527427
+          ]
+        },
+        {
+          "id": "station-08",
+          "region": 3,
+          "position": [
+            44.71480773901712,
+            4.539915528352426,
+            -145.78886658931756
+          ]
+        },
+        {
+          "id": "station-09",
+          "region": 3,
+          "position": [
+            72.70825775332088,
+            4.539915528352426,
+            -144.63890987596292
+          ]
+        },
+        {
+          "id": "station-10",
+          "region": 3,
+          "position": [
+            36.025949231109585,
+            4.539915528352426,
+            -144.38336393966188
+          ]
+        },
+        {
+          "id": "station-11",
+          "region": 3,
+          "position": [
+            61.912445236764896,
+            4.539915528352426,
+            -143.6167261307588
+          ]
+        },
+        {
+          "id": "station-12",
+          "region": 1,
+          "position": [
+            25.58061323095307,
+            4.539915528352426,
+            -140.80572083144745
+          ]
+        },
+        {
+          "id": "station-13",
+          "region": 1,
+          "position": [
+            18.399588848273197,
+            4.539915528352426,
+            -139.7835370862433
+          ]
+        },
+        {
+          "id": "station-14",
+          "region": 2,
+          "position": [
+            35.45709518054958,
+            4.539915528352426,
+            -135.95034804172786
+          ]
+        },
+        {
+          "id": "station-15",
+          "region": 3,
+          "position": [
+            51.442038842408074,
+            4.539915528352426,
+            -134.16152648762065
+          ]
+        },
+        {
+          "id": "station-16",
+          "region": 3,
+          "position": [
+            72.92253782462817,
+            4.539915528352426,
+            -132.11715899721239
+          ]
+        },
+        {
+          "id": "station-17",
+          "region": 3,
+          "position": [
+            63.81496350797294,
+            4.539915528352426,
+            -130.83942931570724
+          ]
+        },
+        {
+          "id": "station-18",
+          "region": 2,
+          "position": [
+            10.139879807259328,
+            4.539915528352426,
+            -130.71165634755673
+          ]
+        },
+        {
+          "id": "station-19",
+          "region": 2,
+          "position": [
+            47.59991977123941,
+            4.539915528352426,
+            -130.20056447495466
+          ]
+        },
+        {
+          "id": "station-20",
+          "region": 2,
+          "position": [
+            18.779691434534215,
+            4.539915528352426,
+            -129.56169963420209
+          ]
+        },
+        {
+          "id": "station-21",
+          "region": 2,
+          "position": [
+            31.381201597282,
+            4.539915528352426,
+            -129.30615369790104
+          ]
+        },
+        {
+          "id": "station-22",
+          "region": 2,
+          "position": [
+            42.87719619669467,
+            4.539915528352426,
+            -127.00624027119177
+          ]
+        },
+        {
+          "id": "station-23",
+          "region": 2,
+          "position": [
+            26.68648140028807,
+            4.539915528352426,
+            -124.45078090818146
+          ]
+        },
+        {
+          "id": "station-24",
+          "region": 2,
+          "position": [
+            39.64598576208762,
+            4.539915528352426,
+            -124.45078090818146
+          ]
+        },
+        {
+          "id": "station-25",
+          "region": 2,
+          "position": [
+            16.88218274035278,
+            4.539915528352426,
+            -122.91750529037527
+          ]
+        },
+        {
+          "id": "station-26",
+          "region": 2,
+          "position": [
+            51.28640260737977,
+            4.539915528352426,
+            -122.15086748147218
+          ]
+        },
+        {
+          "id": "station-27",
+          "region": 3,
+          "position": [
+            64.77290136893279,
+            4.539915528352426,
+            -119.59540811846188
+          ]
+        },
+        {
+          "id": "station-28",
+          "region": 2,
+          "position": [
+            58.33547410685887,
+            4.539915528352426,
+            -118.70099734140825
+          ]
+        },
+        {
+          "id": "station-29",
+          "region": 3,
+          "position": [
+            72.76865854963707,
+            4.539915528352426,
+            -118.70099734140825
+          ]
+        },
+        {
+          "id": "station-30",
+          "region": 2,
+          "position": [
+            12.072346019951068,
+            4.539915528352426,
+            -118.31767843695671
+          ]
+        },
+        {
+          "id": "station-31",
+          "region": 2,
+          "position": [
+            26.312279599488935,
+            4.539915528352426,
+            -118.31767843695671
+          ]
+        },
+        {
+          "id": "station-32",
+          "region": 2,
+          "position": [
+            38.84342114948225,
+            4.539915528352426,
+            -118.31767843695671
+          ]
+        },
+        {
+          "id": "station-33",
+          "region": 2,
+          "position": [
+            48.488574704430846,
+            4.539915528352426,
+            -117.80658656435466
+          ]
+        }
+      ]
+    },
+    "end": {
+      "phase": 1,
+      "selection": 1,
+      "playing": false,
+      "geometry": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 38,
+        "labels": 8,
+        "meshes": 46,
+        "imageMappedMeshes": 0,
+        "extent": [
+          74.84997286852344,
+          34.845108109162624,
+          70.36031281570773
+        ],
+        "sceneElevation": 38.530648395611024,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "phase": 1,
+        "selection": 0,
+        "kind": "gis-spatial-overlay",
+        "stage": "result",
+        "assembled": true,
+        "source": {
+          "textbookPage": 117,
+          "pdfPage": 122,
+          "figure": "6.26",
+          "image": "textbook/page-122.webp",
+          "imagePixels": [
+            1530,
+            2147
+          ],
+          "stationLayerY": [
+            970,
+            1147
+          ],
+          "regionLayerY": [
+            1251,
+            1427
+          ],
+          "coordinateMeaning": "positions-traced-from-the-textbook-diagram"
+        },
+        "geometricLayers": 2,
+        "stationMeshCount": 33,
+        "oneStationSet": true,
+        "counts": [
+          {
+            "region": 1,
+            "count": 5
+          },
+          {
+            "region": 2,
+            "count": 15
+          },
+          {
+            "region": 3,
+            "count": 13
+          }
+        ],
+        "derivedTotals": [
+          {
+            "id": 1,
+            "count": 5
+          },
+          {
+            "id": 2,
+            "count": 15
+          },
+          {
+            "id": 3,
+            "count": 13
+          }
+        ],
+        "membershipMethod": "point-in-polygon",
+        "activeRegion": null,
+        "resultReady": true,
+        "measuredGeographicData": false
+      },
+      "actualStationMeshes": 33,
+      "stations": [
+        {
+          "id": "station-01",
+          "region": 1,
+          "position": [
+            13.498378961616618,
+            4.539915528352426,
+            -156.0107040413588
+          ]
+        },
+        {
+          "id": "station-02",
+          "region": 3,
+          "position": [
+            71.85355914202724,
+            4.539915528352426,
+            -155.49961216875673
+          ]
+        },
+        {
+          "id": "station-03",
+          "region": 3,
+          "position": [
+            33.08506170731366,
+            4.539915528352426,
+            -155.37183920060622
+          ]
+        },
+        {
+          "id": "station-04",
+          "region": 3,
+          "position": [
+            46.188764424053815,
+            4.539915528352426,
+            -155.2440662324557
+          ]
+        },
+        {
+          "id": "station-05",
+          "region": 3,
+          "position": [
+            59.87308851658199,
+            4.539915528352426,
+            -155.1162932643052
+          ]
+        },
+        {
+          "id": "station-06",
+          "region": 1,
+          "position": [
+            23.950966847100723,
+            4.539915528352426,
+            -150.51646641088664
+          ]
+        },
+        {
+          "id": "station-07",
+          "region": 1,
+          "position": [
+            9.557301795890076,
+            4.539915528352426,
+            -147.44991517527427
+          ]
+        },
+        {
+          "id": "station-08",
+          "region": 3,
+          "position": [
+            44.71480773901712,
+            4.539915528352426,
+            -145.78886658931756
+          ]
+        },
+        {
+          "id": "station-09",
+          "region": 3,
+          "position": [
+            72.70825775332088,
+            4.539915528352426,
+            -144.63890987596292
+          ]
+        },
+        {
+          "id": "station-10",
+          "region": 3,
+          "position": [
+            36.025949231109585,
+            4.539915528352426,
+            -144.38336393966188
+          ]
+        },
+        {
+          "id": "station-11",
+          "region": 3,
+          "position": [
+            61.912445236764896,
+            4.539915528352426,
+            -143.6167261307588
+          ]
+        },
+        {
+          "id": "station-12",
+          "region": 1,
+          "position": [
+            25.58061323095307,
+            4.539915528352426,
+            -140.80572083144745
+          ]
+        },
+        {
+          "id": "station-13",
+          "region": 1,
+          "position": [
+            18.399588848273197,
+            4.539915528352426,
+            -139.7835370862433
+          ]
+        },
+        {
+          "id": "station-14",
+          "region": 2,
+          "position": [
+            35.45709518054958,
+            4.539915528352426,
+            -135.95034804172786
+          ]
+        },
+        {
+          "id": "station-15",
+          "region": 3,
+          "position": [
+            51.442038842408074,
+            4.539915528352426,
+            -134.16152648762065
+          ]
+        },
+        {
+          "id": "station-16",
+          "region": 3,
+          "position": [
+            72.92253782462817,
+            4.539915528352426,
+            -132.11715899721239
+          ]
+        },
+        {
+          "id": "station-17",
+          "region": 3,
+          "position": [
+            63.81496350797294,
+            4.539915528352426,
+            -130.83942931570724
+          ]
+        },
+        {
+          "id": "station-18",
+          "region": 2,
+          "position": [
+            10.139879807259328,
+            4.539915528352426,
+            -130.71165634755673
+          ]
+        },
+        {
+          "id": "station-19",
+          "region": 2,
+          "position": [
+            47.59991977123941,
+            4.539915528352426,
+            -130.20056447495466
+          ]
+        },
+        {
+          "id": "station-20",
+          "region": 2,
+          "position": [
+            18.779691434534215,
+            4.539915528352426,
+            -129.56169963420209
+          ]
+        },
+        {
+          "id": "station-21",
+          "region": 2,
+          "position": [
+            31.381201597282,
+            4.539915528352426,
+            -129.30615369790104
+          ]
+        },
+        {
+          "id": "station-22",
+          "region": 2,
+          "position": [
+            42.87719619669467,
+            4.539915528352426,
+            -127.00624027119177
+          ]
+        },
+        {
+          "id": "station-23",
+          "region": 2,
+          "position": [
+            26.68648140028807,
+            4.539915528352426,
+            -124.45078090818146
+          ]
+        },
+        {
+          "id": "station-24",
+          "region": 2,
+          "position": [
+            39.64598576208762,
+            4.539915528352426,
+            -124.45078090818146
+          ]
+        },
+        {
+          "id": "station-25",
+          "region": 2,
+          "position": [
+            16.88218274035278,
+            4.539915528352426,
+            -122.91750529037527
+          ]
+        },
+        {
+          "id": "station-26",
+          "region": 2,
+          "position": [
+            51.28640260737977,
+            4.539915528352426,
+            -122.15086748147218
+          ]
+        },
+        {
+          "id": "station-27",
+          "region": 3,
+          "position": [
+            64.77290136893279,
+            4.539915528352426,
+            -119.59540811846188
+          ]
+        },
+        {
+          "id": "station-28",
+          "region": 2,
+          "position": [
+            58.33547410685887,
+            4.539915528352426,
+            -118.70099734140825
+          ]
+        },
+        {
+          "id": "station-29",
+          "region": 3,
+          "position": [
+            72.76865854963707,
+            4.539915528352426,
+            -118.70099734140825
+          ]
+        },
+        {
+          "id": "station-30",
+          "region": 2,
+          "position": [
+            12.072346019951068,
+            4.539915528352426,
+            -118.31767843695671
+          ]
+        },
+        {
+          "id": "station-31",
+          "region": 2,
+          "position": [
+            26.312279599488935,
+            4.539915528352426,
+            -118.31767843695671
+          ]
+        },
+        {
+          "id": "station-32",
+          "region": 2,
+          "position": [
+            38.84342114948225,
+            4.539915528352426,
+            -118.31767843695671
+          ]
+        },
+        {
+          "id": "station-33",
+          "region": 2,
+          "position": [
+            48.488574704430846,
+            4.539915528352426,
+            -117.80658656435466
+          ]
+        }
+      ]
+    },
+    "endHeld": {
+      "phase": 1,
+      "selection": 1,
+      "playing": false,
+      "geometry": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 38,
+        "labels": 8,
+        "meshes": 46,
+        "imageMappedMeshes": 0,
+        "extent": [
+          74.84997286852344,
+          34.845108109162624,
+          70.36031281570773
+        ],
+        "sceneElevation": 38.530648395611024,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "phase": 1,
+        "selection": 0,
+        "kind": "gis-spatial-overlay",
+        "stage": "result",
+        "assembled": true,
+        "source": {
+          "textbookPage": 117,
+          "pdfPage": 122,
+          "figure": "6.26",
+          "image": "textbook/page-122.webp",
+          "imagePixels": [
+            1530,
+            2147
+          ],
+          "stationLayerY": [
+            970,
+            1147
+          ],
+          "regionLayerY": [
+            1251,
+            1427
+          ],
+          "coordinateMeaning": "positions-traced-from-the-textbook-diagram"
+        },
+        "geometricLayers": 2,
+        "stationMeshCount": 33,
+        "oneStationSet": true,
+        "counts": [
+          {
+            "region": 1,
+            "count": 5
+          },
+          {
+            "region": 2,
+            "count": 15
+          },
+          {
+            "region": 3,
+            "count": 13
+          }
+        ],
+        "derivedTotals": [
+          {
+            "id": 1,
+            "count": 5
+          },
+          {
+            "id": 2,
+            "count": 15
+          },
+          {
+            "id": 3,
+            "count": 13
+          }
+        ],
+        "membershipMethod": "point-in-polygon",
+        "activeRegion": null,
+        "resultReady": true,
+        "measuredGeographicData": false
+      },
+      "actualStationMeshes": 33,
+      "stations": [
+        {
+          "id": "station-01",
+          "region": 1,
+          "position": [
+            13.498378961616618,
+            4.539915528352426,
+            -156.0107040413588
+          ]
+        },
+        {
+          "id": "station-02",
+          "region": 3,
+          "position": [
+            71.85355914202724,
+            4.539915528352426,
+            -155.49961216875673
+          ]
+        },
+        {
+          "id": "station-03",
+          "region": 3,
+          "position": [
+            33.08506170731366,
+            4.539915528352426,
+            -155.37183920060622
+          ]
+        },
+        {
+          "id": "station-04",
+          "region": 3,
+          "position": [
+            46.188764424053815,
+            4.539915528352426,
+            -155.2440662324557
+          ]
+        },
+        {
+          "id": "station-05",
+          "region": 3,
+          "position": [
+            59.87308851658199,
+            4.539915528352426,
+            -155.1162932643052
+          ]
+        },
+        {
+          "id": "station-06",
+          "region": 1,
+          "position": [
+            23.950966847100723,
+            4.539915528352426,
+            -150.51646641088664
+          ]
+        },
+        {
+          "id": "station-07",
+          "region": 1,
+          "position": [
+            9.557301795890076,
+            4.539915528352426,
+            -147.44991517527427
+          ]
+        },
+        {
+          "id": "station-08",
+          "region": 3,
+          "position": [
+            44.71480773901712,
+            4.539915528352426,
+            -145.78886658931756
+          ]
+        },
+        {
+          "id": "station-09",
+          "region": 3,
+          "position": [
+            72.70825775332088,
+            4.539915528352426,
+            -144.63890987596292
+          ]
+        },
+        {
+          "id": "station-10",
+          "region": 3,
+          "position": [
+            36.025949231109585,
+            4.539915528352426,
+            -144.38336393966188
+          ]
+        },
+        {
+          "id": "station-11",
+          "region": 3,
+          "position": [
+            61.912445236764896,
+            4.539915528352426,
+            -143.6167261307588
+          ]
+        },
+        {
+          "id": "station-12",
+          "region": 1,
+          "position": [
+            25.58061323095307,
+            4.539915528352426,
+            -140.80572083144745
+          ]
+        },
+        {
+          "id": "station-13",
+          "region": 1,
+          "position": [
+            18.399588848273197,
+            4.539915528352426,
+            -139.7835370862433
+          ]
+        },
+        {
+          "id": "station-14",
+          "region": 2,
+          "position": [
+            35.45709518054958,
+            4.539915528352426,
+            -135.95034804172786
+          ]
+        },
+        {
+          "id": "station-15",
+          "region": 3,
+          "position": [
+            51.442038842408074,
+            4.539915528352426,
+            -134.16152648762065
+          ]
+        },
+        {
+          "id": "station-16",
+          "region": 3,
+          "position": [
+            72.92253782462817,
+            4.539915528352426,
+            -132.11715899721239
+          ]
+        },
+        {
+          "id": "station-17",
+          "region": 3,
+          "position": [
+            63.81496350797294,
+            4.539915528352426,
+            -130.83942931570724
+          ]
+        },
+        {
+          "id": "station-18",
+          "region": 2,
+          "position": [
+            10.139879807259328,
+            4.539915528352426,
+            -130.71165634755673
+          ]
+        },
+        {
+          "id": "station-19",
+          "region": 2,
+          "position": [
+            47.59991977123941,
+            4.539915528352426,
+            -130.20056447495466
+          ]
+        },
+        {
+          "id": "station-20",
+          "region": 2,
+          "position": [
+            18.779691434534215,
+            4.539915528352426,
+            -129.56169963420209
+          ]
+        },
+        {
+          "id": "station-21",
+          "region": 2,
+          "position": [
+            31.381201597282,
+            4.539915528352426,
+            -129.30615369790104
+          ]
+        },
+        {
+          "id": "station-22",
+          "region": 2,
+          "position": [
+            42.87719619669467,
+            4.539915528352426,
+            -127.00624027119177
+          ]
+        },
+        {
+          "id": "station-23",
+          "region": 2,
+          "position": [
+            26.68648140028807,
+            4.539915528352426,
+            -124.45078090818146
+          ]
+        },
+        {
+          "id": "station-24",
+          "region": 2,
+          "position": [
+            39.64598576208762,
+            4.539915528352426,
+            -124.45078090818146
+          ]
+        },
+        {
+          "id": "station-25",
+          "region": 2,
+          "position": [
+            16.88218274035278,
+            4.539915528352426,
+            -122.91750529037527
+          ]
+        },
+        {
+          "id": "station-26",
+          "region": 2,
+          "position": [
+            51.28640260737977,
+            4.539915528352426,
+            -122.15086748147218
+          ]
+        },
+        {
+          "id": "station-27",
+          "region": 3,
+          "position": [
+            64.77290136893279,
+            4.539915528352426,
+            -119.59540811846188
+          ]
+        },
+        {
+          "id": "station-28",
+          "region": 2,
+          "position": [
+            58.33547410685887,
+            4.539915528352426,
+            -118.70099734140825
+          ]
+        },
+        {
+          "id": "station-29",
+          "region": 3,
+          "position": [
+            72.76865854963707,
+            4.539915528352426,
+            -118.70099734140825
+          ]
+        },
+        {
+          "id": "station-30",
+          "region": 2,
+          "position": [
+            12.072346019951068,
+            4.539915528352426,
+            -118.31767843695671
+          ]
+        },
+        {
+          "id": "station-31",
+          "region": 2,
+          "position": [
+            26.312279599488935,
+            4.539915528352426,
+            -118.31767843695671
+          ]
+        },
+        {
+          "id": "station-32",
+          "region": 2,
+          "position": [
+            38.84342114948225,
+            4.539915528352426,
+            -118.31767843695671
+          ]
+        },
+        {
+          "id": "station-33",
+          "region": 2,
+          "position": [
+            48.488574704430846,
+            4.539915528352426,
+            -117.80658656435466
+          ]
+        }
+      ]
+    }
+  },
+  "narrow": {
+    "viewport": {
+      "width": 1024,
+      "height": 768
+    },
+    "reduced": true,
+    "dock": {
+      "left": 82,
+      "right": 942,
+      "top": 649,
+      "bottom": 754
+    },
+    "labels": [
+      {
+        "text": "1区 5",
+        "left": 241.9181057909409,
+        "right": 373.4653281810872,
+        "top": 502.32038770294076,
+        "bottom": 535.2071933004772
+      },
+      {
+        "text": "2区 15",
+        "left": 417.84662607215483,
+        "right": 551.3565450863051,
+        "top": 518.4958491812436,
+        "bottom": 551.8733289347811
+      },
+      {
+        "text": "3区 13",
+        "left": 599.1043986044452,
+        "right": 734.6364685333813,
+        "top": 535.1613000845562,
+        "bottom": 569.0443175667901
+      }
+    ]
+  },
+  "flat": {
+    "stage": "result",
+    "stations": [
+      {
+        "id": "station-01",
+        "region": 1,
+        "counted": true
+      },
+      {
+        "id": "station-02",
+        "region": 3,
+        "counted": true
+      },
+      {
+        "id": "station-03",
+        "region": 3,
+        "counted": true
+      },
+      {
+        "id": "station-04",
+        "region": 3,
+        "counted": true
+      },
+      {
+        "id": "station-05",
+        "region": 3,
+        "counted": true
+      },
+      {
+        "id": "station-06",
+        "region": 1,
+        "counted": true
+      },
+      {
+        "id": "station-07",
+        "region": 1,
+        "counted": true
+      },
+      {
+        "id": "station-08",
+        "region": 3,
+        "counted": true
+      },
+      {
+        "id": "station-09",
+        "region": 3,
+        "counted": true
+      },
+      {
+        "id": "station-10",
+        "region": 3,
+        "counted": true
+      },
+      {
+        "id": "station-11",
+        "region": 3,
+        "counted": true
+      },
+      {
+        "id": "station-12",
+        "region": 1,
+        "counted": true
+      },
+      {
+        "id": "station-13",
+        "region": 1,
+        "counted": true
+      },
+      {
+        "id": "station-14",
+        "region": 2,
+        "counted": true
+      },
+      {
+        "id": "station-15",
+        "region": 3,
+        "counted": true
+      },
+      {
+        "id": "station-16",
+        "region": 3,
+        "counted": true
+      },
+      {
+        "id": "station-17",
+        "region": 3,
+        "counted": true
+      },
+      {
+        "id": "station-18",
+        "region": 2,
+        "counted": true
+      },
+      {
+        "id": "station-19",
+        "region": 2,
+        "counted": true
+      },
+      {
+        "id": "station-20",
+        "region": 2,
+        "counted": true
+      },
+      {
+        "id": "station-21",
+        "region": 2,
+        "counted": true
+      },
+      {
+        "id": "station-22",
+        "region": 2,
+        "counted": true
+      },
+      {
+        "id": "station-23",
+        "region": 2,
+        "counted": true
+      },
+      {
+        "id": "station-24",
+        "region": 2,
+        "counted": true
+      },
+      {
+        "id": "station-25",
+        "region": 2,
+        "counted": true
+      },
+      {
+        "id": "station-26",
+        "region": 2,
+        "counted": true
+      },
+      {
+        "id": "station-27",
+        "region": 3,
+        "counted": true
+      },
+      {
+        "id": "station-28",
+        "region": 2,
+        "counted": true
+      },
+      {
+        "id": "station-29",
+        "region": 3,
+        "counted": true
+      },
+      {
+        "id": "station-30",
+        "region": 2,
+        "counted": true
+      },
+      {
+        "id": "station-31",
+        "region": 2,
+        "counted": true
+      },
+      {
+        "id": "station-32",
+        "region": 2,
+        "counted": true
+      },
+      {
+        "id": "station-33",
+        "region": 2,
+        "counted": true
+      }
+    ],
+    "counts": [
+      "1区 5",
+      "2区 15",
+      "3区 13"
+    ],
+    "bitmapImages": 0
+  },
+  "reviewedEntry": {
+    "path": "/assets/index-B2EOZTu1.js",
+    "sha256": "dcbc3320877b03aad27ce73f712ad120e73e98477bf3cf9b7b10055e6ab4297e"
+  },
+  "reviewedAt": "2026-11-05T06:14:15.031Z",
+  "externalRequests": [],
+  "requestFailures": []
+}

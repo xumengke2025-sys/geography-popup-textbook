@@ -1,0 +1,1902 @@
+{
+  "base": "http://127.0.0.1:4175",
+  "checks": [
+    "3D/method-0/0: seeking freezes the requested scientific state",
+    "3D/method-0/500: seeking freezes the requested scientific state",
+    "3D/method-0/1000: seeking freezes the requested scientific state",
+    "3D/method-0/1000: all twelve separated brine pockets reach the collector and four remain in the ice",
+    "3D/method-0/500: seeking freezes the requested scientific state",
+    "3D/method-0/1000: seeking freezes the requested scientific state",
+    "3D/method-0/1000: all twelve separated brine pockets reach the collector and four remain in the ice",
+    "3D/method-1/0: seeking freezes the requested scientific state",
+    "3D/method-1/500: seeking freezes the requested scientific state",
+    "3D/method-1/1000: seeking freezes the requested scientific state",
+    "3D/method-1/1000: all twelve separated brine pockets reach the collector and four remain in the ice",
+    "3D/method-1/500: seeking freezes the requested scientific state",
+    "3D/method-1/1000: seeking freezes the requested scientific state",
+    "3D/method-1/1000: all twelve separated brine pockets reach the collector and four remain in the ice",
+    "SVG/method-0/0: seeking freezes the requested scientific state",
+    "SVG/method-0/500: seeking freezes the requested scientific state",
+    "SVG/method-0/1000: seeking freezes the requested scientific state",
+    "SVG/method-0/1000: all twelve separated brine pockets reach the collector and four remain in the ice",
+    "SVG/method-0/500: seeking freezes the requested scientific state",
+    "SVG/method-0/1000: seeking freezes the requested scientific state",
+    "SVG/method-0/1000: all twelve separated brine pockets reach the collector and four remain in the ice",
+    "SVG/method-1/0: seeking freezes the requested scientific state",
+    "SVG/method-1/500: seeking freezes the requested scientific state",
+    "SVG/method-1/1000: seeking freezes the requested scientific state",
+    "SVG/method-1/1000: all twelve separated brine pockets reach the collector and four remain in the ice",
+    "SVG/method-1/500: seeking freezes the requested scientific state",
+    "SVG/method-1/1000: seeking freezes the requested scientific state",
+    "SVG/method-1/1000: all twelve separated brine pockets reach the collector and four remain in the ice",
+    "GIS/0: visible titles remain separate throughout layer alignment",
+    "GIS/20: visible titles remain separate throughout layer alignment",
+    "GIS/40: visible titles remain separate throughout layer alignment",
+    "GIS/60: visible titles remain separate throughout layer alignment",
+    "GIS/80: visible titles remain separate throughout layer alignment",
+    "GIS/100: visible titles remain separate throughout layer alignment",
+    "GIS/120: visible titles remain separate throughout layer alignment",
+    "GIS/140: visible titles remain separate throughout layer alignment",
+    "GIS/160: visible titles remain separate throughout layer alignment",
+    "GIS/180: visible titles remain separate throughout layer alignment",
+    "GIS/200: visible titles remain separate throughout layer alignment",
+    "GIS/220: visible titles remain separate throughout layer alignment",
+    "GIS/240: visible titles remain separate throughout layer alignment",
+    "GIS/260: visible titles remain separate throughout layer alignment",
+    "GIS/280: visible titles remain separate throughout layer alignment",
+    "GIS/300: visible titles remain separate throughout layer alignment",
+    "GIS/320: visible titles remain separate throughout layer alignment",
+    "GIS/340: visible titles remain separate throughout layer alignment",
+    "GIS/360: visible titles remain separate throughout layer alignment",
+    "GIS/380: visible titles remain separate throughout layer alignment",
+    "GIS/400: visible titles remain separate throughout layer alignment",
+    "GIS/420: visible titles remain separate throughout layer alignment",
+    "GIS/440: visible titles remain separate throughout layer alignment",
+    "GIS/460: visible titles remain separate throughout layer alignment",
+    "GIS/480: visible titles remain separate throughout layer alignment",
+    "GIS/500: visible titles remain separate throughout layer alignment",
+    "GIS/520: visible titles remain separate throughout layer alignment",
+    "GIS/540: visible titles remain separate throughout layer alignment",
+    "GIS/560: visible titles remain separate throughout layer alignment",
+    "GIS/580: visible titles remain separate throughout layer alignment",
+    "GIS/600: visible titles remain separate throughout layer alignment",
+    "GIS/620: visible titles remain separate throughout layer alignment",
+    "GIS/640: visible titles remain separate throughout layer alignment",
+    "GIS/660: visible titles remain separate throughout layer alignment",
+    "GIS/680: visible titles remain separate throughout layer alignment",
+    "GIS/700: visible titles remain separate throughout layer alignment",
+    "GIS/720: visible titles remain separate throughout layer alignment",
+    "GIS/740: visible titles remain separate throughout layer alignment",
+    "GIS/760: visible titles remain separate throughout layer alignment",
+    "GIS/780: visible titles remain separate throughout layer alignment",
+    "GIS/800: visible titles remain separate throughout layer alignment",
+    "GIS/820: visible titles remain separate throughout layer alignment",
+    "GIS/840: visible titles remain separate throughout layer alignment",
+    "GIS/860: visible titles remain separate throughout layer alignment",
+    "GIS/880: visible titles remain separate throughout layer alignment",
+    "GIS/900: visible titles remain separate throughout layer alignment",
+    "GIS/920: visible titles remain separate throughout layer alignment",
+    "GIS/940: visible titles remain separate throughout layer alignment",
+    "GIS/960: visible titles remain separate throughout layer alignment",
+    "GIS/980: visible titles remain separate throughout layer alignment",
+    "GIS/1000: visible titles remain separate throughout layer alignment",
+    "collection and GIS transitions have no browser exceptions"
+  ],
+  "failures": [],
+  "errors": [],
+  "states": [
+    {
+      "method": 0,
+      "phase": 0,
+      "playing": false,
+      "twoD": false,
+      "pockets": [
+        {
+          "id": 0,
+          "retained": true,
+          "point": [
+            38,
+            23,
+            53.4
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 1,
+          "retained": true,
+          "point": [
+            46,
+            25,
+            53.4
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 2,
+          "retained": true,
+          "point": [
+            54,
+            27,
+            53.4
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 3,
+          "retained": true,
+          "point": [
+            62,
+            29,
+            53.4
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 4,
+          "retained": false,
+          "point": [
+            38,
+            33,
+            53.4
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 5,
+          "retained": false,
+          "point": [
+            46,
+            33,
+            53.4
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 6,
+          "retained": false,
+          "point": [
+            54,
+            33,
+            53.4
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 7,
+          "retained": false,
+          "point": [
+            62,
+            33,
+            53.4
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 8,
+          "retained": false,
+          "point": [
+            38,
+            29,
+            53.4
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 9,
+          "retained": false,
+          "point": [
+            46,
+            29,
+            53.4
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 10,
+          "retained": false,
+          "point": [
+            54,
+            29,
+            53.4
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 11,
+          "retained": false,
+          "point": [
+            62,
+            29,
+            53.4
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 12,
+          "retained": false,
+          "point": [
+            38,
+            25,
+            53.4
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 13,
+          "retained": false,
+          "point": [
+            46,
+            25,
+            53.4
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 14,
+          "retained": false,
+          "point": [
+            54,
+            25,
+            53.4
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 15,
+          "retained": false,
+          "point": [
+            62,
+            25,
+            53.4
+          ],
+          "inCollector": false
+        }
+      ],
+      "collected": 0,
+      "retained": 4,
+      "allCollected": false
+    },
+    {
+      "method": 0,
+      "phase": 0.5,
+      "playing": false,
+      "twoD": false,
+      "pockets": [
+        {
+          "id": 0,
+          "retained": true,
+          "point": [
+            38,
+            23,
+            53.4
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 1,
+          "retained": true,
+          "point": [
+            46,
+            25,
+            53.4
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 2,
+          "retained": true,
+          "point": [
+            54,
+            27,
+            53.4
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 3,
+          "retained": true,
+          "point": [
+            62,
+            29,
+            53.4
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 4,
+          "retained": false,
+          "point": [
+            38,
+            19.5,
+            53.4
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 5,
+          "retained": false,
+          "point": [
+            46,
+            19.5,
+            53.4
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 6,
+          "retained": false,
+          "point": [
+            54,
+            19.5,
+            53.4
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 7,
+          "retained": false,
+          "point": [
+            62,
+            19.5,
+            53.4
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 8,
+          "retained": false,
+          "point": [
+            38,
+            17.5,
+            53.4
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 9,
+          "retained": false,
+          "point": [
+            46,
+            17.5,
+            53.4
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 10,
+          "retained": false,
+          "point": [
+            54,
+            17.5,
+            53.4
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 11,
+          "retained": false,
+          "point": [
+            62,
+            17.5,
+            53.4
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 12,
+          "retained": false,
+          "point": [
+            38,
+            15.5,
+            53.4
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 13,
+          "retained": false,
+          "point": [
+            46,
+            15.5,
+            53.4
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 14,
+          "retained": false,
+          "point": [
+            54,
+            15.5,
+            53.4
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 15,
+          "retained": false,
+          "point": [
+            62,
+            15.5,
+            53.4
+          ],
+          "inCollector": false
+        }
+      ],
+      "collected": 0,
+      "retained": 4,
+      "allCollected": false
+    },
+    {
+      "method": 0,
+      "phase": 1,
+      "playing": false,
+      "twoD": false,
+      "pockets": [
+        {
+          "id": 0,
+          "retained": true,
+          "point": [
+            38,
+            23,
+            53.4
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 1,
+          "retained": true,
+          "point": [
+            46,
+            25,
+            53.4
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 2,
+          "retained": true,
+          "point": [
+            54,
+            27,
+            53.4
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 3,
+          "retained": true,
+          "point": [
+            62,
+            29,
+            53.4
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 4,
+          "retained": false,
+          "point": [
+            38,
+            6,
+            53.4
+          ],
+          "inCollector": true
+        },
+        {
+          "id": 5,
+          "retained": false,
+          "point": [
+            46,
+            6,
+            53.4
+          ],
+          "inCollector": true
+        },
+        {
+          "id": 6,
+          "retained": false,
+          "point": [
+            54,
+            6,
+            53.4
+          ],
+          "inCollector": true
+        },
+        {
+          "id": 7,
+          "retained": false,
+          "point": [
+            62,
+            6,
+            53.4
+          ],
+          "inCollector": true
+        },
+        {
+          "id": 8,
+          "retained": false,
+          "point": [
+            38,
+            6,
+            53.4
+          ],
+          "inCollector": true
+        },
+        {
+          "id": 9,
+          "retained": false,
+          "point": [
+            46,
+            6,
+            53.4
+          ],
+          "inCollector": true
+        },
+        {
+          "id": 10,
+          "retained": false,
+          "point": [
+            54,
+            6,
+            53.4
+          ],
+          "inCollector": true
+        },
+        {
+          "id": 11,
+          "retained": false,
+          "point": [
+            62,
+            6,
+            53.4
+          ],
+          "inCollector": true
+        },
+        {
+          "id": 12,
+          "retained": false,
+          "point": [
+            38,
+            6,
+            53.4
+          ],
+          "inCollector": true
+        },
+        {
+          "id": 13,
+          "retained": false,
+          "point": [
+            46,
+            6,
+            53.4
+          ],
+          "inCollector": true
+        },
+        {
+          "id": 14,
+          "retained": false,
+          "point": [
+            54,
+            6,
+            53.4
+          ],
+          "inCollector": true
+        },
+        {
+          "id": 15,
+          "retained": false,
+          "point": [
+            62,
+            6,
+            53.4
+          ],
+          "inCollector": true
+        }
+      ],
+      "collected": 12,
+      "retained": 4,
+      "allCollected": true
+    },
+    {
+      "method": 0,
+      "phase": 0.5,
+      "playing": false,
+      "twoD": false,
+      "pockets": [
+        {
+          "id": 0,
+          "retained": true,
+          "point": [
+            38,
+            23,
+            53.4
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 1,
+          "retained": true,
+          "point": [
+            46,
+            25,
+            53.4
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 2,
+          "retained": true,
+          "point": [
+            54,
+            27,
+            53.4
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 3,
+          "retained": true,
+          "point": [
+            62,
+            29,
+            53.4
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 4,
+          "retained": false,
+          "point": [
+            38,
+            19.5,
+            53.4
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 5,
+          "retained": false,
+          "point": [
+            46,
+            19.5,
+            53.4
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 6,
+          "retained": false,
+          "point": [
+            54,
+            19.5,
+            53.4
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 7,
+          "retained": false,
+          "point": [
+            62,
+            19.5,
+            53.4
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 8,
+          "retained": false,
+          "point": [
+            38,
+            17.5,
+            53.4
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 9,
+          "retained": false,
+          "point": [
+            46,
+            17.5,
+            53.4
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 10,
+          "retained": false,
+          "point": [
+            54,
+            17.5,
+            53.4
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 11,
+          "retained": false,
+          "point": [
+            62,
+            17.5,
+            53.4
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 12,
+          "retained": false,
+          "point": [
+            38,
+            15.5,
+            53.4
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 13,
+          "retained": false,
+          "point": [
+            46,
+            15.5,
+            53.4
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 14,
+          "retained": false,
+          "point": [
+            54,
+            15.5,
+            53.4
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 15,
+          "retained": false,
+          "point": [
+            62,
+            15.5,
+            53.4
+          ],
+          "inCollector": false
+        }
+      ],
+      "collected": 0,
+      "retained": 4,
+      "allCollected": false
+    },
+    {
+      "method": 0,
+      "phase": 1,
+      "playing": false,
+      "twoD": false,
+      "pockets": [
+        {
+          "id": 0,
+          "retained": true,
+          "point": [
+            38,
+            23,
+            53.4
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 1,
+          "retained": true,
+          "point": [
+            46,
+            25,
+            53.4
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 2,
+          "retained": true,
+          "point": [
+            54,
+            27,
+            53.4
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 3,
+          "retained": true,
+          "point": [
+            62,
+            29,
+            53.4
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 4,
+          "retained": false,
+          "point": [
+            38,
+            6,
+            53.4
+          ],
+          "inCollector": true
+        },
+        {
+          "id": 5,
+          "retained": false,
+          "point": [
+            46,
+            6,
+            53.4
+          ],
+          "inCollector": true
+        },
+        {
+          "id": 6,
+          "retained": false,
+          "point": [
+            54,
+            6,
+            53.4
+          ],
+          "inCollector": true
+        },
+        {
+          "id": 7,
+          "retained": false,
+          "point": [
+            62,
+            6,
+            53.4
+          ],
+          "inCollector": true
+        },
+        {
+          "id": 8,
+          "retained": false,
+          "point": [
+            38,
+            6,
+            53.4
+          ],
+          "inCollector": true
+        },
+        {
+          "id": 9,
+          "retained": false,
+          "point": [
+            46,
+            6,
+            53.4
+          ],
+          "inCollector": true
+        },
+        {
+          "id": 10,
+          "retained": false,
+          "point": [
+            54,
+            6,
+            53.4
+          ],
+          "inCollector": true
+        },
+        {
+          "id": 11,
+          "retained": false,
+          "point": [
+            62,
+            6,
+            53.4
+          ],
+          "inCollector": true
+        },
+        {
+          "id": 12,
+          "retained": false,
+          "point": [
+            38,
+            6,
+            53.4
+          ],
+          "inCollector": true
+        },
+        {
+          "id": 13,
+          "retained": false,
+          "point": [
+            46,
+            6,
+            53.4
+          ],
+          "inCollector": true
+        },
+        {
+          "id": 14,
+          "retained": false,
+          "point": [
+            54,
+            6,
+            53.4
+          ],
+          "inCollector": true
+        },
+        {
+          "id": 15,
+          "retained": false,
+          "point": [
+            62,
+            6,
+            53.4
+          ],
+          "inCollector": true
+        }
+      ],
+      "collected": 12,
+      "retained": 4,
+      "allCollected": true
+    },
+    {
+      "method": 1,
+      "phase": 0,
+      "playing": false,
+      "twoD": false,
+      "pockets": [
+        {
+          "id": 0,
+          "retained": true,
+          "point": [
+            58,
+            25,
+            39
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 1,
+          "retained": true,
+          "point": [
+            57.391036260090296,
+            25,
+            41.29610059419054
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 2,
+          "retained": true,
+          "point": [
+            55.65685424949238,
+            25,
+            43.242640687119284
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 3,
+          "retained": true,
+          "point": [
+            53.06146745892072,
+            25,
+            44.543277195067716
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 4,
+          "retained": false,
+          "point": [
+            50,
+            25,
+            42.44
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 5,
+          "retained": false,
+          "point": [
+            46.93853254107928,
+            25,
+            42.17814559183883
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 6,
+          "retained": false,
+          "point": [
+            44.34314575050762,
+            25,
+            41.43244732728172
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 7,
+          "retained": false,
+          "point": [
+            42.608963739909704,
+            25,
+            40.31643100733591
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 8,
+          "retained": false,
+          "point": [
+            42,
+            25,
+            39
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 9,
+          "retained": false,
+          "point": [
+            42.608963739909704,
+            25,
+            37.68356899266409
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 10,
+          "retained": false,
+          "point": [
+            44.34314575050762,
+            25,
+            36.56755267271828
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 11,
+          "retained": false,
+          "point": [
+            46.938532541079276,
+            25,
+            35.82185440816117
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 12,
+          "retained": false,
+          "point": [
+            50,
+            25,
+            35.56
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 13,
+          "retained": false,
+          "point": [
+            53.06146745892072,
+            25,
+            35.82185440816117
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 14,
+          "retained": false,
+          "point": [
+            55.656854249492376,
+            25,
+            36.56755267271828
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 15,
+          "retained": false,
+          "point": [
+            57.39103626009029,
+            25,
+            37.68356899266409
+          ],
+          "inCollector": false
+        }
+      ],
+      "collected": 0,
+      "retained": 4,
+      "allCollected": false
+    },
+    {
+      "method": 1,
+      "phase": 0.5,
+      "playing": false,
+      "twoD": false,
+      "pockets": [
+        {
+          "id": 0,
+          "retained": true,
+          "point": [
+            58,
+            25,
+            39
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 1,
+          "retained": true,
+          "point": [
+            57.391036260090296,
+            25,
+            41.29610059419054
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 2,
+          "retained": true,
+          "point": [
+            55.65685424949238,
+            25,
+            43.242640687119284
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 3,
+          "retained": true,
+          "point": [
+            53.061467458920724,
+            25,
+            44.543277195067716
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 4,
+          "retained": false,
+          "point": [
+            50.00000000000001,
+            15.5,
+            47.17
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 5,
+          "retained": false,
+          "point": [
+            42.72901478506329,
+            15.5,
+            46.54809578061722
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 6,
+          "retained": false,
+          "point": [
+            36.564971157455616,
+            15.5,
+            44.7770624022941
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 7,
+          "retained": false,
+          "point": [
+            32.44628888228556,
+            15.5,
+            42.12652364242279
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 8,
+          "retained": false,
+          "point": [
+            31,
+            15.5,
+            39
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 9,
+          "retained": false,
+          "point": [
+            32.44628888228555,
+            15.5,
+            35.87347635757722
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 10,
+          "retained": false,
+          "point": [
+            36.5649711574556,
+            15.5,
+            33.2229375977059
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 11,
+          "retained": false,
+          "point": [
+            42.72901478506328,
+            15.5,
+            31.45190421938279
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 12,
+          "retained": false,
+          "point": [
+            49.99999999999999,
+            15.5,
+            30.83
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 13,
+          "retained": false,
+          "point": [
+            57.27098521493671,
+            15.5,
+            31.451904219382786
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 14,
+          "retained": false,
+          "point": [
+            63.435028842544384,
+            15.5,
+            33.2229375977059
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 15,
+          "retained": false,
+          "point": [
+            67.55371111771444,
+            15.5,
+            35.87347635757721
+          ],
+          "inCollector": false
+        }
+      ],
+      "collected": 0,
+      "retained": 4,
+      "allCollected": false
+    },
+    {
+      "method": 1,
+      "phase": 1,
+      "playing": false,
+      "twoD": false,
+      "pockets": [
+        {
+          "id": 0,
+          "retained": true,
+          "point": [
+            58,
+            25,
+            39
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 1,
+          "retained": true,
+          "point": [
+            57.391036260090296,
+            25,
+            41.29610059419054
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 2,
+          "retained": true,
+          "point": [
+            55.656854249492376,
+            25,
+            43.242640687119284
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 3,
+          "retained": true,
+          "point": [
+            53.061467458920724,
+            25,
+            44.543277195067716
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 4,
+          "retained": false,
+          "point": [
+            50.000000000000014,
+            6,
+            51.9
+          ],
+          "inCollector": true
+        },
+        {
+          "id": 5,
+          "retained": false,
+          "point": [
+            38.51949702904731,
+            6,
+            50.9180459693956
+          ],
+          "inCollector": true
+        },
+        {
+          "id": 6,
+          "retained": false,
+          "point": [
+            28.786796564403605,
+            6,
+            48.12167747730648
+          ],
+          "inCollector": true
+        },
+        {
+          "id": 7,
+          "retained": false,
+          "point": [
+            22.283614024661407,
+            6,
+            43.93661627750967
+          ],
+          "inCollector": true
+        },
+        {
+          "id": 8,
+          "retained": false,
+          "point": [
+            20,
+            6,
+            39.00000000000001
+          ],
+          "inCollector": true
+        },
+        {
+          "id": 9,
+          "retained": false,
+          "point": [
+            22.283614024661375,
+            6,
+            34.063383722490364
+          ],
+          "inCollector": true
+        },
+        {
+          "id": 10,
+          "retained": false,
+          "point": [
+            28.78679656440358,
+            6,
+            29.878322522693537
+          ],
+          "inCollector": true
+        },
+        {
+          "id": 11,
+          "retained": false,
+          "point": [
+            38.51949702904727,
+            6,
+            27.081954030604408
+          ],
+          "inCollector": true
+        },
+        {
+          "id": 12,
+          "retained": false,
+          "point": [
+            49.99999999999993,
+            6,
+            26.1
+          ],
+          "inCollector": true
+        },
+        {
+          "id": 13,
+          "retained": false,
+          "point": [
+            61.480502970952685,
+            6,
+            27.0819540306044
+          ],
+          "inCollector": true
+        },
+        {
+          "id": 14,
+          "retained": false,
+          "point": [
+            71.2132034355964,
+            6,
+            29.878322522693523
+          ],
+          "inCollector": true
+        },
+        {
+          "id": 15,
+          "retained": false,
+          "point": [
+            77.71638597533861,
+            6,
+            34.06338372249035
+          ],
+          "inCollector": true
+        }
+      ],
+      "collected": 12,
+      "retained": 4,
+      "allCollected": true
+    },
+    {
+      "method": 1,
+      "phase": 0.5,
+      "playing": false,
+      "twoD": false,
+      "pockets": [
+        {
+          "id": 0,
+          "retained": true,
+          "point": [
+            58,
+            25,
+            39
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 1,
+          "retained": true,
+          "point": [
+            57.391036260090296,
+            25,
+            41.29610059419054
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 2,
+          "retained": true,
+          "point": [
+            55.65685424949238,
+            25,
+            43.242640687119284
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 3,
+          "retained": true,
+          "point": [
+            53.061467458920724,
+            25,
+            44.543277195067716
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 4,
+          "retained": false,
+          "point": [
+            50.00000000000001,
+            15.5,
+            47.17
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 5,
+          "retained": false,
+          "point": [
+            42.72901478506329,
+            15.5,
+            46.54809578061722
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 6,
+          "retained": false,
+          "point": [
+            36.564971157455616,
+            15.5,
+            44.7770624022941
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 7,
+          "retained": false,
+          "point": [
+            32.44628888228556,
+            15.5,
+            42.12652364242279
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 8,
+          "retained": false,
+          "point": [
+            31,
+            15.5,
+            39
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 9,
+          "retained": false,
+          "point": [
+            32.44628888228555,
+            15.5,
+            35.87347635757722
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 10,
+          "retained": false,
+          "point": [
+            36.5649711574556,
+            15.5,
+            33.2229375977059
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 11,
+          "retained": false,
+          "point": [
+            42.72901478506328,
+            15.5,
+            31.45190421938279
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 12,
+          "retained": false,
+          "point": [
+            49.99999999999999,
+            15.5,
+            30.83
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 13,
+          "retained": false,
+          "point": [
+            57.27098521493671,
+            15.5,
+            31.451904219382786
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 14,
+          "retained": false,
+          "point": [
+            63.435028842544384,
+            15.5,
+            33.2229375977059
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 15,
+          "retained": false,
+          "point": [
+            67.55371111771444,
+            15.5,
+            35.87347635757721
+          ],
+          "inCollector": false
+        }
+      ],
+      "collected": 0,
+      "retained": 4,
+      "allCollected": false
+    },
+    {
+      "method": 1,
+      "phase": 1,
+      "playing": false,
+      "twoD": false,
+      "pockets": [
+        {
+          "id": 0,
+          "retained": true,
+          "point": [
+            58,
+            25,
+            39
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 1,
+          "retained": true,
+          "point": [
+            57.391036260090296,
+            25,
+            41.29610059419054
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 2,
+          "retained": true,
+          "point": [
+            55.656854249492376,
+            25,
+            43.242640687119284
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 3,
+          "retained": true,
+          "point": [
+            53.061467458920724,
+            25,
+            44.543277195067716
+          ],
+          "inCollector": false
+        },
+        {
+          "id": 4,
+          "retained": false,
+          "point": [
+            50.000000000000014,
+            6,
+            51.9
+          ],
+          "inCollector": true
+        },
+        {
+          "id": 5,
+          "retained": false,
+          "point": [
+            38.51949702904731,
+            6,
+            50.9180459693956
+          ],
+          "inCollector": true
+        },
+        {
+          "id": 6,
+          "retained": false,
+          "point": [
+            28.786796564403605,
+            6,
+            48.12167747730648
+          ],
+          "inCollector": true
+        },
+        {
+          "id": 7,
+          "retained": false,
+          "point": [
+            22.283614024661407,
+            6,
+            43.93661627750967
+          ],
+          "inCollector": true
+        },
+        {
+          "id": 8,
+          "retained": false,
+          "point": [
+            20,
+            6,
+            39.00000000000001
+          ],
+          "inCollector": true
+        },
+        {
+          "id": 9,
+          "retained": false,
+          "point": [
+            22.283614024661375,
+            6,
+            34.063383722490364
+          ],
+          "inCollector": true
+        },
+        {
+          "id": 10,
+          "retained": false,
+          "point": [
+            28.78679656440358,
+            6,
+            29.878322522693537
+          ],
+          "inCollector": true
+        },
+        {
+          "id": 11,
+          "retained": false,
+          "point": [
+            38.51949702904727,
+            6,
+            27.081954030604408
+          ],
+          "inCollector": true
+        },
+        {
+          "id": 12,
+          "retained": false,
+          "point": [
+            49.99999999999993,
+            6,
+            26.1
+          ],
+          "inCollector": true
+        },
+        {
+          "id": 13,
+          "retained": false,
+          "point": [
+            61.480502970952685,
+            6,
+            27.0819540306044
+          ],
+          "inCollector": true
+        },
+        {
+          "id": 14,
+          "retained": false,
+          "point": [
+            71.2132034355964,
+            6,
+            29.878322522693523
+          ],
+          "inCollector": true
+        },
+        {
+          "id": 15,
+          "retained": false,
+          "point": [
+            77.71638597533861,
+            6,
+            34.06338372249035
+          ],
+          "inCollector": true
+        }
+      ],
+      "collected": 12,
+      "retained": 4,
+      "allCollected": true
+    },
+    {
+      "method": 0,
+      "phase": 0,
+      "playing": false,
+      "twoD": true,
+      "svgPockets": 16,
+      "svgCollected": 0
+    },
+    {
+      "method": 0,
+      "phase": 0.5,
+      "playing": false,
+      "twoD": true,
+      "svgPockets": 16,
+      "svgCollected": 0
+    },
+    {
+      "method": 0,
+      "phase": 1,
+      "playing": false,
+      "twoD": true,
+      "svgPockets": 16,
+      "svgCollected": 12
+    },
+    {
+      "method": 0,
+      "phase": 0.5,
+      "playing": false,
+      "twoD": true,
+      "svgPockets": 16,
+      "svgCollected": 0
+    },
+    {
+      "method": 0,
+      "phase": 1,
+      "playing": false,
+      "twoD": true,
+      "svgPockets": 16,
+      "svgCollected": 12
+    },
+    {
+      "method": 1,
+      "phase": 0,
+      "playing": false,
+      "twoD": true,
+      "svgPockets": 16,
+      "svgCollected": 0
+    },
+    {
+      "method": 1,
+      "phase": 0.5,
+      "playing": false,
+      "twoD": true,
+      "svgPockets": 16,
+      "svgCollected": 0
+    },
+    {
+      "method": 1,
+      "phase": 1,
+      "playing": false,
+      "twoD": true,
+      "svgPockets": 16,
+      "svgCollected": 12
+    },
+    {
+      "method": 1,
+      "phase": 0.5,
+      "playing": false,
+      "twoD": true,
+      "svgPockets": 16,
+      "svgCollected": 0
+    },
+    {
+      "method": 1,
+      "phase": 1,
+      "playing": false,
+      "twoD": true,
+      "svgPockets": 16,
+      "svgCollected": 12
+    }
+  ],
+  "screenshots": [
+    "output/playwright/final-collection-desktop-0.png",
+    "output/playwright/final-collection-desktop-1.png",
+    "output/playwright/final-collection-phone-0.png",
+    "output/playwright/final-collection-phone-1.png",
+    "output/playwright/final-collection-gis-phone-middle.png"
+  ],
+  "labelIssues": [],
+  "evidenceScope": "Current production 3D/SVG endpoints in both desalination methods with backward seeks; 51 paused native-SVG GIS positions at 390×844. Desktop uses 1366×900. This is not physical-device or teacher scientific acceptance.",
+  "reviewedEntry": {
+    "path": "/assets/index-CjURQsXs.js",
+    "sha256": "faa5b5d2fecd85ad48ee22efddd84e026d8da99dcfa179475231f7cd127dd276"
+  },
+  "reviewedStyles": [
+    {
+      "path": "/assets/index-BNlCIg7W.css",
+      "sha256": "7dc46979023abf69bb0739abccbdf5b37c1e2a4684645382e091631cf47753e2"
+    }
+  ],
+  "reviewedAt": "2026-11-05T20:28:59.333Z",
+  "browser": "156.0.8078.80",
+  "externalRequests": [],
+  "requestFailures": []
+}

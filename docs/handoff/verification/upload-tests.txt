@@ -1,0 +1,13 @@
+
+> earth-fieldbook@1.0.0 test
+> vitest run --maxWorkers=2
+
+
+ RUN  v4.1.12 D:/ai项目/20261104_3d课本
+
+
+ Test Files  80 passed (80)
+      Tests  584 passed (584)
+   Start at  10:21:55
+   Duration  148.92s (transform 12.85s, setup 0ms, import 35.26s, tests 24.87s, environment 9ms)
+

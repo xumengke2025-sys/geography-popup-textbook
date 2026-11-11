@@ -1,0 +1,3823 @@
+{
+  "base": "http://127.0.0.1:4175",
+  "browser": "153.0.4234.48",
+  "errors": [],
+  "failures": [],
+  "checks": [
+    "698-breeze",
+    "phase 800 highlights neither day nor night",
+    "day shortcut highlights its exact phase",
+    "night shortcut highlights its exact phase",
+    "night shortcut uses circular phase distance",
+    "automatic playback clears exact presets away from the shortcuts",
+    "restored phase 800 starts with neither preset highlighted",
+    "698-wind-forces",
+    "390-breeze",
+    "390-wind-forces",
+    "1366-breeze",
+    "1366-wind-forces",
+    "resize-698-wind-forces",
+    "resize-1366-wind-forces",
+    "resize-390-wind-forces"
+  ],
+  "states": [
+    {
+      "name": "698-breeze",
+      "viewport": {
+        "width": 698,
+        "height": 900
+      },
+      "dock": {
+        "left": 8,
+        "top": 733,
+        "right": 690,
+        "bottom": 886,
+        "width": 682,
+        "height": 153
+      },
+      "controls": [
+        {
+          "id": "cContents",
+          "text": "",
+          "left": 16,
+          "top": 741,
+          "right": 60,
+          "bottom": 785,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "id": "cPrev",
+          "text": "",
+          "left": 60,
+          "top": 741,
+          "right": 104,
+          "bottom": 785,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "id": "cPause",
+          "text": "",
+          "left": 106,
+          "top": 741,
+          "right": 150,
+          "bottom": 785,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "id": "",
+          "text": "白天",
+          "left": 294.5,
+          "top": 790,
+          "right": 348.5,
+          "bottom": 834,
+          "width": 54,
+          "height": 44
+        },
+        {
+          "id": "",
+          "text": "夜晚",
+          "left": 349.5,
+          "top": 790,
+          "right": 403.5,
+          "bottom": 834,
+          "width": 54,
+          "height": 44
+        },
+        {
+          "id": "phase",
+          "text": "",
+          "left": 16,
+          "top": 834,
+          "right": 486,
+          "bottom": 878,
+          "width": 470,
+          "height": 44
+        },
+        {
+          "id": "scene-view",
+          "text": "整本",
+          "left": 488,
+          "top": 834,
+          "right": 536,
+          "bottom": 878,
+          "width": 48,
+          "height": 44
+        },
+        {
+          "id": "restart",
+          "text": "重放",
+          "left": 538,
+          "top": 834,
+          "right": 586,
+          "bottom": 878,
+          "width": 48,
+          "height": 44
+        },
+        {
+          "id": "fold",
+          "text": "收回",
+          "left": 588,
+          "top": 834,
+          "right": 636,
+          "bottom": 878,
+          "width": 48,
+          "height": 44
+        },
+        {
+          "id": "figure-note",
+          "text": "",
+          "left": 638,
+          "top": 834,
+          "right": 682,
+          "bottom": 878,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "id": "cNext",
+          "text": "",
+          "left": 594,
+          "top": 741,
+          "right": 638,
+          "bottom": 785,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "id": "cRead",
+          "text": "",
+          "left": 638,
+          "top": 741,
+          "right": 682,
+          "bottom": 785,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "outsideDock": [],
+      "outsideViewport": [],
+      "overlaps": [],
+      "touchTargetsBelow44": [],
+      "title": {
+        "text": "海陆间的大气热力环流",
+        "box": {
+          "left": 158,
+          "top": 750.84375,
+          "right": 592,
+          "bottom": 775.140625,
+          "width": 434,
+          "height": 24.296875
+        },
+        "fontPx": 18,
+        "lineHeight": "24.3px",
+        "scrollWidth": 434,
+        "clientWidth": 434,
+        "scrollHeight": 25,
+        "clientHeight": 24
+      },
+      "glass": [],
+      "modelLabelsUnderDock": [],
+      "labels": [
+        {
+          "text": "低压",
+          "left": 185.7349742174627,
+          "top": 450.99832334761834,
+          "right": 269.3431476901247,
+          "bottom": 486.5317970734997,
+          "fontPx": 24.495415930182055
+        },
+        {
+          "text": "高压",
+          "left": 435.6202932799146,
+          "top": 468.66427892539144,
+          "right": 520.8090240433604,
+          "bottom": 504.869489499856,
+          "fontPx": 24.958485587503226
+        },
+        {
+          "text": "高压",
+          "left": 181.88645494639908,
+          "top": 321.6484106826389,
+          "right": 269.6107748358335,
+          "bottom": 358.9312466356484,
+          "fontPx": 25.701359252712937
+        },
+        {
+          "text": "低压",
+          "left": 433.1025238389446,
+          "top": 336.9546048367194,
+          "right": 522.4945311480642,
+          "bottom": 374.9462079430952,
+          "fontPx": 26.189956183969706
+        },
+        {
+          "text": "陆地 · 较暖",
+          "left": 110.57027849604873,
+          "top": 630.0434824085918,
+          "right": 275.44829852760176,
+          "bottom": 666.210273899384,
+          "fontPx": 24.93200094258867
+        },
+        {
+          "text": "海洋 · 较冷",
+          "left": 390.42249452120956,
+          "top": 659.6782886196492,
+          "right": 558.4053721859239,
+          "bottom": 696.5261456557799,
+          "fontPx": 25.40150144618378
+        }
+      ],
+      "diagnostics": {
+        "ready": true,
+        "twoD": false,
+        "spread": 22,
+        "turning": false,
+        "figureBusy": false,
+        "active": "breeze",
+        "playing": false,
+        "teacher": false,
+        "stored": true,
+        "state": {
+          "phase": 0.5,
+          "selection": 0,
+          "routes": [
+            {
+              "points": [
+                [
+                  0.28,
+                  0.625
+                ],
+                [
+                  0.2,
+                  0.625
+                ],
+                [
+                  0.174,
+                  0.58
+                ],
+                [
+                  0.163,
+                  0.51
+                ],
+                [
+                  0.163,
+                  0.25
+                ],
+                [
+                  0.177,
+                  0.17
+                ],
+                [
+                  0.205,
+                  0.123
+                ],
+                [
+                  0.337,
+                  0.123
+                ],
+                [
+                  0.37,
+                  0.14
+                ],
+                [
+                  0.395,
+                  0.22
+                ],
+                [
+                  0.399,
+                  0.5
+                ],
+                [
+                  0.385,
+                  0.58
+                ],
+                [
+                  0.358,
+                  0.625
+                ],
+                [
+                  0.28,
+                  0.625
+                ]
+              ],
+              "count": 2,
+              "color": "#456e91"
+            }
+          ],
+          "rings": [],
+          "focus": [
+            0,
+            0,
+            0.49,
+            1
+          ],
+          "caption": "午后"
+        },
+        "render": {
+          "position": 22,
+          "spread": 22,
+          "busy": false,
+          "figure": "breeze",
+          "modelState": "live",
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 41,
+            "labels": 18,
+            "meshes": 69,
+            "imageMappedMeshes": 0,
+            "extent": [
+              143.64340209960938,
+              111.89820487110067,
+              96.24107653375516
+            ],
+            "sceneElevation": 61.76666105897719,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.5,
+            "selection": 0,
+            "kind": "sea-breeze",
+            "layout": "land-left-sea-right",
+            "scene": "coastal-paper-world",
+            "selected": "day",
+            "groundX": -1,
+            "upperX": 1,
+            "strength": 0.9401870664873426,
+            "pressure": {
+              "seaGround": "相对高压",
+              "landGround": "相对低压",
+              "seaUpper": "相对低压",
+              "landUpper": "相对高压"
+            },
+            "continuousDayNight": true,
+            "flowPhase": 0,
+            "flowRate": 0.09401870664873427,
+            "flagArea": 49.70212706976835,
+            "panels": 1,
+            "sameHeightGuides": 2,
+            "elevatedAbovePage": 61.76666105897719,
+            "sourceFootprint": [
+              115.84144984804425,
+              31.25
+            ],
+            "sceneDepth": 90.49534062129217
+          },
+          "view": "detail",
+          "labels": [
+            {
+              "text": "低压",
+              "left": 185.7349742174627,
+              "top": 450.99832334761834,
+              "right": 269.3431476901247,
+              "bottom": 486.5317970734997,
+              "fontPx": 24.495415930182055
+            },
+            {
+              "text": "高压",
+              "left": 435.6202932799146,
+              "top": 468.66427892539144,
+              "right": 520.8090240433604,
+              "bottom": 504.869489499856,
+              "fontPx": 24.958485587503226
+            },
+            {
+              "text": "高压",
+              "left": 181.88645494639908,
+              "top": 321.6484106826389,
+              "right": 269.6107748358335,
+              "bottom": 358.9312466356484,
+              "fontPx": 25.701359252712937
+            },
+            {
+              "text": "低压",
+              "left": 433.1025238389446,
+              "top": 336.9546048367194,
+              "right": 522.4945311480642,
+              "bottom": 374.9462079430952,
+              "fontPx": 26.189956183969706
+            },
+            {
+              "text": "陆地 · 较暖",
+              "left": 110.57027849604873,
+              "top": 630.0434824085918,
+              "right": 275.44829852760176,
+              "bottom": 666.210273899384,
+              "fontPx": 24.93200094258867
+            },
+            {
+              "text": "海洋 · 较冷",
+              "left": 390.42249452120956,
+              "top": 659.6782886196492,
+              "right": 558.4053721859239,
+              "bottom": 696.5261456557799,
+              "fontPx": 25.40150144618378
+            }
+          ],
+          "models": 1,
+          "images": 6,
+          "triangles": 31995,
+          "calls": 127,
+          "geometries": 81,
+          "textures": 206,
+          "hiRes": 6,
+          "engine": "Every Joule 48591dd"
+        },
+        "regions": [
+          {
+            "id": "breeze",
+            "screenX": 296.5117249890233,
+            "screenY": 751.6621481498667
+          },
+          {
+            "id": "pressure-wind",
+            "screenX": 527.9201073644917,
+            "screenY": 916.0847795065425
+          },
+          {
+            "id": "wind-forces",
+            "screenX": 1178.5658049695685,
+            "screenY": 721.2963507274391
+          }
+        ],
+        "pages": [
+          43,
+          44
+        ],
+        "notes": {},
+        "originalPageCount": 132,
+        "sectionCount": 17,
+        "studyCount": 6,
+        "figureCount": 60
+      },
+      "documentOverflow": false
+    },
+    {
+      "name": "698-wind-forces",
+      "viewport": {
+        "width": 698,
+        "height": 900
+      },
+      "dock": {
+        "left": 8,
+        "top": 733,
+        "right": 690,
+        "bottom": 886,
+        "width": 682,
+        "height": 153
+      },
+      "controls": [
+        {
+          "id": "cContents",
+          "text": "",
+          "left": 16,
+          "top": 741,
+          "right": 60,
+          "bottom": 785,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "id": "cPrev",
+          "text": "",
+          "left": 60,
+          "top": 741,
+          "right": 104,
+          "bottom": 785,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "id": "cPause",
+          "text": "",
+          "left": 106,
+          "top": 741,
+          "right": 150,
+          "bottom": 785,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "id": "",
+          "text": "只受气压梯度力",
+          "left": 95.5,
+          "top": 790,
+          "right": 239.5,
+          "bottom": 834,
+          "width": 144,
+          "height": 44
+        },
+        {
+          "id": "",
+          "text": "北半球高空",
+          "left": 240.5,
+          "top": 790,
+          "right": 348.5,
+          "bottom": 834,
+          "width": 108,
+          "height": 44
+        },
+        {
+          "id": "",
+          "text": "北半球近地面",
+          "left": 349.5,
+          "top": 790,
+          "right": 475.5,
+          "bottom": 834,
+          "width": 126,
+          "height": 44
+        },
+        {
+          "id": "",
+          "text": "南半球近地面",
+          "left": 476.5,
+          "top": 790,
+          "right": 602.5,
+          "bottom": 834,
+          "width": 126,
+          "height": 44
+        },
+        {
+          "id": "phase",
+          "text": "",
+          "left": 16,
+          "top": 834,
+          "right": 486,
+          "bottom": 878,
+          "width": 470,
+          "height": 44
+        },
+        {
+          "id": "scene-view",
+          "text": "整本",
+          "left": 488,
+          "top": 834,
+          "right": 536,
+          "bottom": 878,
+          "width": 48,
+          "height": 44
+        },
+        {
+          "id": "restart",
+          "text": "重放",
+          "left": 538,
+          "top": 834,
+          "right": 586,
+          "bottom": 878,
+          "width": 48,
+          "height": 44
+        },
+        {
+          "id": "fold",
+          "text": "收回",
+          "left": 588,
+          "top": 834,
+          "right": 636,
+          "bottom": 878,
+          "width": 48,
+          "height": 44
+        },
+        {
+          "id": "figure-note",
+          "text": "",
+          "left": 638,
+          "top": 834,
+          "right": 682,
+          "bottom": 878,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "id": "cNext",
+          "text": "",
+          "left": 594,
+          "top": 741,
+          "right": 638,
+          "bottom": 785,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "id": "cRead",
+          "text": "",
+          "left": 638,
+          "top": 741,
+          "right": 682,
+          "bottom": 785,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "outsideDock": [],
+      "outsideViewport": [],
+      "overlaps": [],
+      "touchTargetsBelow44": [],
+      "title": {
+        "text": "等压线与风向",
+        "box": {
+          "left": 158,
+          "top": 750.84375,
+          "right": 592,
+          "bottom": 775.140625,
+          "width": 434,
+          "height": 24.296875
+        },
+        "fontPx": 18,
+        "lineHeight": "24.3px",
+        "scrollWidth": 434,
+        "clientWidth": 434,
+        "scrollHeight": 25,
+        "clientHeight": 24
+      },
+      "glass": [],
+      "modelLabelsUnderDock": [],
+      "labels": [
+        {
+          "text": "高压 → 低压",
+          "left": 264.4557000802771,
+          "top": 510.1730250023343,
+          "right": 481.59942913209267,
+          "bottom": 548.9486909044444,
+          "fontPx": 26.622098977568143
+        },
+        {
+          "text": "气压梯度力",
+          "left": 437.99268771387295,
+          "top": 413.8955308014468,
+          "right": 587.791328164421,
+          "bottom": 451.3451909140838,
+          "fontPx": 25.7117069430045
+        },
+        {
+          "text": "风向",
+          "left": 355.1870443797462,
+          "top": 297.8503262012037,
+          "right": 436.6346463072386,
+          "bottom": 335.44152709081567,
+          "fontPx": 25.808884192867918
+        }
+      ],
+      "diagnostics": {
+        "ready": true,
+        "twoD": false,
+        "spread": 22,
+        "turning": false,
+        "figureBusy": false,
+        "active": "wind-forces",
+        "playing": false,
+        "teacher": false,
+        "stored": true,
+        "state": {
+          "phase": 0,
+          "selection": 0,
+          "routes": [],
+          "rings": [],
+          "focus": null,
+          "caption": "只受气压梯度力"
+        },
+        "render": {
+          "position": 22,
+          "spread": 22,
+          "busy": false,
+          "figure": "wind-forces",
+          "modelState": "live",
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 33,
+            "labels": 5,
+            "meshes": 38,
+            "imageMappedMeshes": 0,
+            "extent": [
+              127.88896703720093,
+              51.433603927295984,
+              74.7977294921875
+            ],
+            "sceneElevation": 56,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0,
+            "selection": 0,
+            "kind": "wind-forces",
+            "selected": 0,
+            "hemisphere": "north",
+            "windXZ": [
+              1,
+              0
+            ],
+            "pressureGradientXZ": [
+              1,
+              0
+            ],
+            "balanced": false,
+            "coriolisPerpendicularToWind": true,
+            "frictionOppositeToWind": false,
+            "nearSurfaceCrossIsobars": false,
+            "forceScaleIsMeasured": false
+          },
+          "view": "detail",
+          "labels": [
+            {
+              "text": "高压 → 低压",
+              "left": 264.4557000802771,
+              "top": 510.1730250023343,
+              "right": 481.59942913209267,
+              "bottom": 548.9486909044444,
+              "fontPx": 26.622098977568143
+            },
+            {
+              "text": "气压梯度力",
+              "left": 437.99268771387295,
+              "top": 413.8955308014468,
+              "right": 587.791328164421,
+              "bottom": 451.3451909140838,
+              "fontPx": 25.7117069430045
+            },
+            {
+              "text": "风向",
+              "left": 355.1870443797462,
+              "top": 297.8503262012037,
+              "right": 436.6346463072386,
+              "bottom": 335.44152709081567,
+              "fontPx": 25.808884192867918
+            }
+          ],
+          "models": 1,
+          "images": 6,
+          "triangles": 10173,
+          "calls": 46,
+          "geometries": 41,
+          "textures": 203,
+          "hiRes": 6,
+          "engine": "Every Joule 48591dd"
+        },
+        "regions": [
+          {
+            "id": "breeze",
+            "screenX": -355.26327632072866,
+            "screenY": 632.4026554191161
+          },
+          {
+            "id": "pressure-wind",
+            "screenX": -175.81516212072387,
+            "screenY": 808.9915819080082
+          },
+          {
+            "id": "wind-forces",
+            "screenX": 675.0365492167862,
+            "screenY": 599.7533830752806
+          }
+        ],
+        "pages": [
+          43,
+          44
+        ],
+        "notes": {},
+        "originalPageCount": 132,
+        "sectionCount": 17,
+        "studyCount": 6,
+        "figureCount": 60
+      },
+      "documentOverflow": false
+    },
+    {
+      "name": "390-breeze",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "dock": {
+        "left": 8,
+        "top": 672.40625,
+        "right": 382,
+        "bottom": 830,
+        "width": 374,
+        "height": 157.59375
+      },
+      "controls": [
+        {
+          "id": "cContents",
+          "text": "",
+          "left": 16,
+          "top": 682.703125,
+          "right": 60,
+          "bottom": 726.703125,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "id": "cPrev",
+          "text": "",
+          "left": 60,
+          "top": 682.703125,
+          "right": 104,
+          "bottom": 726.703125,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "id": "cPause",
+          "text": "",
+          "left": 106,
+          "top": 682.703125,
+          "right": 150,
+          "bottom": 726.703125,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "id": "",
+          "text": "白天",
+          "left": 140.5,
+          "top": 734,
+          "right": 194.5,
+          "bottom": 778,
+          "width": 54,
+          "height": 44
+        },
+        {
+          "id": "",
+          "text": "夜晚",
+          "left": 195.5,
+          "top": 734,
+          "right": 249.5,
+          "bottom": 778,
+          "width": 54,
+          "height": 44
+        },
+        {
+          "id": "phase",
+          "text": "",
+          "left": 16,
+          "top": 778,
+          "right": 178,
+          "bottom": 822,
+          "width": 162,
+          "height": 44
+        },
+        {
+          "id": "scene-view",
+          "text": "整本",
+          "left": 180,
+          "top": 778,
+          "right": 228,
+          "bottom": 822,
+          "width": 48,
+          "height": 44
+        },
+        {
+          "id": "restart",
+          "text": "重放",
+          "left": 230,
+          "top": 778,
+          "right": 278,
+          "bottom": 822,
+          "width": 48,
+          "height": 44
+        },
+        {
+          "id": "fold",
+          "text": "收回",
+          "left": 280,
+          "top": 778,
+          "right": 328,
+          "bottom": 822,
+          "width": 48,
+          "height": 44
+        },
+        {
+          "id": "figure-note",
+          "text": "",
+          "left": 330,
+          "top": 778,
+          "right": 374,
+          "bottom": 822,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "id": "cNext",
+          "text": "",
+          "left": 286,
+          "top": 682.703125,
+          "right": 330,
+          "bottom": 726.703125,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "id": "cRead",
+          "text": "",
+          "left": 330,
+          "top": 682.703125,
+          "right": 374,
+          "bottom": 726.703125,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "outsideDock": [],
+      "outsideViewport": [],
+      "overlaps": [],
+      "touchTargetsBelow44": [],
+      "title": {
+        "text": "海陆间的大气热力环流",
+        "box": {
+          "left": 158,
+          "top": 680.40625,
+          "right": 284,
+          "bottom": 729,
+          "width": 126,
+          "height": 48.59375
+        },
+        "fontPx": 18,
+        "lineHeight": "24.3px",
+        "scrollWidth": 126,
+        "clientWidth": 126,
+        "scrollHeight": 49,
+        "clientHeight": 49
+      },
+      "glass": [],
+      "modelLabelsUnderDock": [],
+      "labels": [
+        {
+          "text": "低压",
+          "left": 101.58246986309894,
+          "top": 422.5731275592863,
+          "right": 149.42185406430195,
+          "bottom": 442.90486584479765,
+          "fontPx": 14.015921711714197
+        },
+        {
+          "text": "高压",
+          "left": 244.2014693091634,
+          "top": 432.59969302720157,
+          "right": 292.58842529973515,
+          "bottom": 453.16414932319447,
+          "fontPx": 14.17634859553553
+        },
+        {
+          "text": "高压",
+          "left": 101.18100275986443,
+          "top": 349.94488965927263,
+          "right": 150.4303965409816,
+          "bottom": 370.87588201624743,
+          "fontPx": 14.42902451842518
+        },
+        {
+          "text": "低压",
+          "left": 241.85978007073592,
+          "top": 359.0153467787388,
+          "right": 291.66523373846906,
+          "bottom": 380.1826645875253,
+          "fontPx": 14.591938234142217
+        },
+        {
+          "text": "陆地 · 较暖",
+          "left": 59.519298826120014,
+          "top": 524.3100908176747,
+          "right": 153.20904001505292,
+          "bottom": 544.8613888849246,
+          "fontPx": 14.167277816572303
+        },
+        {
+          "text": "海洋 · 较冷",
+          "left": 218.3693123071061,
+          "top": 540.2675957047915,
+          "right": 313.1198054529784,
+          "bottom": 561.0515748464666,
+          "fontPx": 14.327679238090923
+        }
+      ],
+      "diagnostics": {
+        "ready": true,
+        "twoD": false,
+        "spread": 22,
+        "turning": false,
+        "figureBusy": false,
+        "active": "breeze",
+        "playing": false,
+        "teacher": false,
+        "stored": true,
+        "state": {
+          "phase": 0.5,
+          "selection": 0,
+          "routes": [
+            {
+              "points": [
+                [
+                  0.28,
+                  0.625
+                ],
+                [
+                  0.2,
+                  0.625
+                ],
+                [
+                  0.174,
+                  0.58
+                ],
+                [
+                  0.163,
+                  0.51
+                ],
+                [
+                  0.163,
+                  0.25
+                ],
+                [
+                  0.177,
+                  0.17
+                ],
+                [
+                  0.205,
+                  0.123
+                ],
+                [
+                  0.337,
+                  0.123
+                ],
+                [
+                  0.37,
+                  0.14
+                ],
+                [
+                  0.395,
+                  0.22
+                ],
+                [
+                  0.399,
+                  0.5
+                ],
+                [
+                  0.385,
+                  0.58
+                ],
+                [
+                  0.358,
+                  0.625
+                ],
+                [
+                  0.28,
+                  0.625
+                ]
+              ],
+              "count": 2,
+              "color": "#456e91"
+            }
+          ],
+          "rings": [],
+          "focus": [
+            0,
+            0,
+            0.49,
+            1
+          ],
+          "caption": "午后"
+        },
+        "render": {
+          "position": 22,
+          "spread": 22,
+          "busy": false,
+          "figure": "breeze",
+          "modelState": "live",
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 41,
+            "labels": 18,
+            "meshes": 69,
+            "imageMappedMeshes": 0,
+            "extent": [
+              143.64340209960938,
+              111.89820487110067,
+              96.24107653375516
+            ],
+            "sceneElevation": 61.76666105897719,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.5,
+            "selection": 0,
+            "kind": "sea-breeze",
+            "layout": "land-left-sea-right",
+            "scene": "coastal-paper-world",
+            "selected": "day",
+            "groundX": -1,
+            "upperX": 1,
+            "strength": 0.9401870664873426,
+            "pressure": {
+              "seaGround": "相对高压",
+              "landGround": "相对低压",
+              "seaUpper": "相对低压",
+              "landUpper": "相对高压"
+            },
+            "continuousDayNight": true,
+            "flowPhase": 0,
+            "flowRate": 0.09401870664873427,
+            "flagArea": 49.70212706976835,
+            "panels": 1,
+            "sameHeightGuides": 2,
+            "elevatedAbovePage": 61.76666105897719,
+            "sourceFootprint": [
+              115.84144984804425,
+              31.25
+            ],
+            "sceneDepth": 90.49534062129217
+          },
+          "view": "detail",
+          "labels": [
+            {
+              "text": "低压",
+              "left": 101.58246986309894,
+              "top": 422.5731275592863,
+              "right": 149.42185406430195,
+              "bottom": 442.90486584479765,
+              "fontPx": 14.015921711714197
+            },
+            {
+              "text": "高压",
+              "left": 244.2014693091634,
+              "top": 432.59969302720157,
+              "right": 292.58842529973515,
+              "bottom": 453.16414932319447,
+              "fontPx": 14.17634859553553
+            },
+            {
+              "text": "高压",
+              "left": 101.18100275986443,
+              "top": 349.94488965927263,
+              "right": 150.4303965409816,
+              "bottom": 370.87588201624743,
+              "fontPx": 14.42902451842518
+            },
+            {
+              "text": "低压",
+              "left": 241.85978007073592,
+              "top": 359.0153467787388,
+              "right": 291.66523373846906,
+              "bottom": 380.1826645875253,
+              "fontPx": 14.591938234142217
+            },
+            {
+              "text": "陆地 · 较暖",
+              "left": 59.519298826120014,
+              "top": 524.3100908176747,
+              "right": 153.20904001505292,
+              "bottom": 544.8613888849246,
+              "fontPx": 14.167277816572303
+            },
+            {
+              "text": "海洋 · 较冷",
+              "left": 218.3693123071061,
+              "top": 540.2675957047915,
+              "right": 313.1198054529784,
+              "bottom": 561.0515748464666,
+              "fontPx": 14.327679238090923
+            }
+          ],
+          "models": 1,
+          "images": 6,
+          "triangles": 32475,
+          "calls": 128,
+          "geometries": 81,
+          "textures": 206,
+          "hiRes": 6,
+          "engine": "Every Joule 48591dd"
+        },
+        "regions": [
+          {
+            "id": "breeze",
+            "screenX": 163.66375348669348,
+            "screenY": 602.0972528369322
+          },
+          {
+            "id": "pressure-wind",
+            "screenX": 297.31022327964797,
+            "screenY": 688.4951999765083
+          },
+          {
+            "id": "wind-forces",
+            "screenX": 693.57663318206,
+            "screenY": 585.0358305212974
+          }
+        ],
+        "pages": [
+          43,
+          44
+        ],
+        "notes": {},
+        "originalPageCount": 132,
+        "sectionCount": 17,
+        "studyCount": 6,
+        "figureCount": 60
+      },
+      "documentOverflow": false
+    },
+    {
+      "name": "390-wind-forces",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "dock": {
+        "left": 8,
+        "top": 632,
+        "right": 382,
+        "bottom": 830,
+        "width": 374,
+        "height": 198
+      },
+      "controls": [
+        {
+          "id": "cContents",
+          "text": "",
+          "left": 16,
+          "top": 640,
+          "right": 60,
+          "bottom": 684,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "id": "cPrev",
+          "text": "",
+          "left": 60,
+          "top": 640,
+          "right": 104,
+          "bottom": 684,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "id": "cPause",
+          "text": "",
+          "left": 106,
+          "top": 640,
+          "right": 150,
+          "bottom": 684,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "id": "",
+          "text": "只受气压梯度力",
+          "left": 68.5,
+          "top": 689,
+          "right": 212.5,
+          "bottom": 733,
+          "width": 144,
+          "height": 44
+        },
+        {
+          "id": "",
+          "text": "北半球高空",
+          "left": 213.5,
+          "top": 689,
+          "right": 321.5,
+          "bottom": 733,
+          "width": 108,
+          "height": 44
+        },
+        {
+          "id": "",
+          "text": "北半球近地面",
+          "left": 68.5,
+          "top": 734,
+          "right": 194.5,
+          "bottom": 778,
+          "width": 126,
+          "height": 44
+        },
+        {
+          "id": "",
+          "text": "南半球近地面",
+          "left": 195.5,
+          "top": 734,
+          "right": 321.5,
+          "bottom": 778,
+          "width": 126,
+          "height": 44
+        },
+        {
+          "id": "phase",
+          "text": "",
+          "left": 16,
+          "top": 778,
+          "right": 178,
+          "bottom": 822,
+          "width": 162,
+          "height": 44
+        },
+        {
+          "id": "scene-view",
+          "text": "整本",
+          "left": 180,
+          "top": 778,
+          "right": 228,
+          "bottom": 822,
+          "width": 48,
+          "height": 44
+        },
+        {
+          "id": "restart",
+          "text": "重放",
+          "left": 230,
+          "top": 778,
+          "right": 278,
+          "bottom": 822,
+          "width": 48,
+          "height": 44
+        },
+        {
+          "id": "fold",
+          "text": "收回",
+          "left": 280,
+          "top": 778,
+          "right": 328,
+          "bottom": 822,
+          "width": 48,
+          "height": 44
+        },
+        {
+          "id": "figure-note",
+          "text": "",
+          "left": 330,
+          "top": 778,
+          "right": 374,
+          "bottom": 822,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "id": "cNext",
+          "text": "",
+          "left": 286,
+          "top": 640,
+          "right": 330,
+          "bottom": 684,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "id": "cRead",
+          "text": "",
+          "left": 330,
+          "top": 640,
+          "right": 374,
+          "bottom": 684,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "outsideDock": [],
+      "outsideViewport": [],
+      "overlaps": [],
+      "touchTargetsBelow44": [],
+      "title": {
+        "text": "等压线与风向",
+        "box": {
+          "left": 158,
+          "top": 649.84375,
+          "right": 284,
+          "bottom": 674.140625,
+          "width": 126,
+          "height": 24.296875
+        },
+        "fontPx": 18,
+        "lineHeight": "24.3px",
+        "scrollWidth": 126,
+        "clientWidth": 126,
+        "scrollHeight": 25,
+        "clientHeight": 24
+      },
+      "glass": [],
+      "modelLabelsUnderDock": [],
+      "labels": [
+        {
+          "text": "高压 → 低压",
+          "left": 148.555975868224,
+          "top": 455.0549320496307,
+          "right": 267.8362927067714,
+          "bottom": 476.35498862794276,
+          "fontPx": 14.623919441826205
+        },
+        {
+          "text": "气压梯度力",
+          "left": 244.58808076943393,
+          "top": 401.8847929113739,
+          "right": 328.0573673736863,
+          "bottom": 422.752114562437,
+          "fontPx": 14.326817849983616
+        },
+        {
+          "text": "风向",
+          "left": 198.44438361189853,
+          "top": 337.3513590516755,
+          "right": 243.7582454402014,
+          "bottom": 358.26544912627685,
+          "fontPx": 14.358927513905401
+        }
+      ],
+      "diagnostics": {
+        "ready": true,
+        "twoD": false,
+        "spread": 22,
+        "turning": false,
+        "figureBusy": false,
+        "active": "wind-forces",
+        "playing": false,
+        "teacher": false,
+        "stored": true,
+        "state": {
+          "phase": 0,
+          "selection": 0,
+          "routes": [],
+          "rings": [],
+          "focus": null,
+          "caption": "只受气压梯度力"
+        },
+        "render": {
+          "position": 22,
+          "spread": 22,
+          "busy": false,
+          "figure": "wind-forces",
+          "modelState": "live",
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 33,
+            "labels": 5,
+            "meshes": 38,
+            "imageMappedMeshes": 0,
+            "extent": [
+              127.88896703720093,
+              51.433603927295984,
+              74.7977294921875
+            ],
+            "sceneElevation": 56,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0,
+            "selection": 0,
+            "kind": "wind-forces",
+            "selected": 0,
+            "hemisphere": "north",
+            "windXZ": [
+              1,
+              0
+            ],
+            "pressureGradientXZ": [
+              1,
+              0
+            ],
+            "balanced": false,
+            "coriolisPerpendicularToWind": true,
+            "frictionOppositeToWind": false,
+            "nearSurfaceCrossIsobars": false,
+            "forceScaleIsMeasured": false
+          },
+          "view": "detail",
+          "labels": [
+            {
+              "text": "高压 → 低压",
+              "left": 148.555975868224,
+              "top": 455.0549320496307,
+              "right": 267.8362927067714,
+              "bottom": 476.35498862794276,
+              "fontPx": 14.623919441826205
+            },
+            {
+              "text": "气压梯度力",
+              "left": 244.58808076943393,
+              "top": 401.8847929113739,
+              "right": 328.0573673736863,
+              "bottom": 422.752114562437,
+              "fontPx": 14.326817849983616
+            },
+            {
+              "text": "风向",
+              "left": 198.44438361189853,
+              "top": 337.3513590516755,
+              "right": 243.7582454402014,
+              "bottom": 358.26544912627685,
+              "fontPx": 14.358927513905401
+            }
+          ],
+          "models": 1,
+          "images": 6,
+          "triangles": 10173,
+          "calls": 46,
+          "geometries": 41,
+          "textures": 203,
+          "hiRes": 6,
+          "engine": "Every Joule 48591dd"
+        },
+        "regions": [
+          {
+            "id": "breeze",
+            "screenX": -225.2953560194884,
+            "screenY": 530.8410000197498
+          },
+          {
+            "id": "pressure-wind",
+            "screenX": -102.72332394498272,
+            "screenY": 625.6407515380648
+          },
+          {
+            "id": "wind-forces",
+            "screenX": 391.0998931233006,
+            "screenY": 512.0705658346172
+          }
+        ],
+        "pages": [
+          43,
+          44
+        ],
+        "notes": {},
+        "originalPageCount": 132,
+        "sectionCount": 17,
+        "studyCount": 6,
+        "figureCount": 60
+      },
+      "documentOverflow": false
+    },
+    {
+      "name": "1366-breeze",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "dock": {
+        "left": 253,
+        "top": 649,
+        "right": 1113,
+        "bottom": 754,
+        "width": 860,
+        "height": 105
+      },
+      "controls": [
+        {
+          "id": "cContents",
+          "text": "",
+          "left": 265,
+          "top": 656,
+          "right": 305,
+          "bottom": 696,
+          "width": 40,
+          "height": 40
+        },
+        {
+          "id": "cPrev",
+          "text": "",
+          "left": 309,
+          "top": 656,
+          "right": 349,
+          "bottom": 696,
+          "width": 40,
+          "height": 40
+        },
+        {
+          "id": "cPause",
+          "text": "",
+          "left": 359,
+          "top": 661,
+          "right": 389,
+          "bottom": 691,
+          "width": 30,
+          "height": 30
+        },
+        {
+          "id": "",
+          "text": "白天",
+          "left": 267,
+          "top": 704,
+          "right": 315,
+          "bottom": 744,
+          "width": 48,
+          "height": 40
+        },
+        {
+          "id": "",
+          "text": "夜晚",
+          "left": 316,
+          "top": 704,
+          "right": 364,
+          "bottom": 744,
+          "width": 48,
+          "height": 40
+        },
+        {
+          "id": "phase",
+          "text": "",
+          "left": 713,
+          "top": 709,
+          "right": 893,
+          "bottom": 739,
+          "width": 180,
+          "height": 30
+        },
+        {
+          "id": "scene-view",
+          "text": "整本",
+          "left": 902,
+          "top": 704,
+          "right": 948,
+          "bottom": 744,
+          "width": 46,
+          "height": 40
+        },
+        {
+          "id": "restart",
+          "text": "重放",
+          "left": 955,
+          "top": 704,
+          "right": 1001,
+          "bottom": 744,
+          "width": 46,
+          "height": 40
+        },
+        {
+          "id": "fold",
+          "text": "收回",
+          "left": 1008,
+          "top": 704,
+          "right": 1054,
+          "bottom": 744,
+          "width": 46,
+          "height": 40
+        },
+        {
+          "id": "figure-note",
+          "text": "",
+          "left": 1061,
+          "top": 705,
+          "right": 1099,
+          "bottom": 743,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "cNext",
+          "text": "",
+          "left": 916,
+          "top": 656,
+          "right": 956,
+          "bottom": 696,
+          "width": 40,
+          "height": 40
+        },
+        {
+          "id": "cRead",
+          "text": "",
+          "left": 973,
+          "top": 656,
+          "right": 1013,
+          "bottom": 696,
+          "width": 40,
+          "height": 40
+        },
+        {
+          "id": "cStill",
+          "text": "",
+          "left": 1017,
+          "top": 656,
+          "right": 1057,
+          "bottom": 696,
+          "width": 40,
+          "height": 40
+        },
+        {
+          "id": "cTeach",
+          "text": "",
+          "left": 1061,
+          "top": 656,
+          "right": 1101,
+          "bottom": 696,
+          "width": 40,
+          "height": 40
+        }
+      ],
+      "outsideDock": [],
+      "outsideViewport": [],
+      "overlaps": [],
+      "touchTargetsBelow44": [
+        {
+          "id": "cContents",
+          "text": "",
+          "left": 265,
+          "top": 656,
+          "right": 305,
+          "bottom": 696,
+          "width": 40,
+          "height": 40
+        },
+        {
+          "id": "cPrev",
+          "text": "",
+          "left": 309,
+          "top": 656,
+          "right": 349,
+          "bottom": 696,
+          "width": 40,
+          "height": 40
+        },
+        {
+          "id": "cPause",
+          "text": "",
+          "left": 359,
+          "top": 661,
+          "right": 389,
+          "bottom": 691,
+          "width": 30,
+          "height": 30
+        },
+        {
+          "id": "",
+          "text": "白天",
+          "left": 267,
+          "top": 704,
+          "right": 315,
+          "bottom": 744,
+          "width": 48,
+          "height": 40
+        },
+        {
+          "id": "",
+          "text": "夜晚",
+          "left": 316,
+          "top": 704,
+          "right": 364,
+          "bottom": 744,
+          "width": 48,
+          "height": 40
+        },
+        {
+          "id": "phase",
+          "text": "",
+          "left": 713,
+          "top": 709,
+          "right": 893,
+          "bottom": 739,
+          "width": 180,
+          "height": 30
+        },
+        {
+          "id": "scene-view",
+          "text": "整本",
+          "left": 902,
+          "top": 704,
+          "right": 948,
+          "bottom": 744,
+          "width": 46,
+          "height": 40
+        },
+        {
+          "id": "restart",
+          "text": "重放",
+          "left": 955,
+          "top": 704,
+          "right": 1001,
+          "bottom": 744,
+          "width": 46,
+          "height": 40
+        },
+        {
+          "id": "fold",
+          "text": "收回",
+          "left": 1008,
+          "top": 704,
+          "right": 1054,
+          "bottom": 744,
+          "width": 46,
+          "height": 40
+        },
+        {
+          "id": "figure-note",
+          "text": "",
+          "left": 1061,
+          "top": 705,
+          "right": 1099,
+          "bottom": 743,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "cNext",
+          "text": "",
+          "left": 916,
+          "top": 656,
+          "right": 956,
+          "bottom": 696,
+          "width": 40,
+          "height": 40
+        },
+        {
+          "id": "cRead",
+          "text": "",
+          "left": 973,
+          "top": 656,
+          "right": 1013,
+          "bottom": 696,
+          "width": 40,
+          "height": 40
+        },
+        {
+          "id": "cStill",
+          "text": "",
+          "left": 1017,
+          "top": 656,
+          "right": 1057,
+          "bottom": 696,
+          "width": 40,
+          "height": 40
+        },
+        {
+          "id": "cTeach",
+          "text": "",
+          "left": 1061,
+          "top": 656,
+          "right": 1101,
+          "bottom": 696,
+          "width": 40,
+          "height": 40
+        }
+      ],
+      "title": {
+        "text": "海陆间的大气热力环流",
+        "box": {
+          "left": 397,
+          "top": 664,
+          "right": 906,
+          "bottom": 688,
+          "width": 509,
+          "height": 24
+        },
+        "fontPx": 16,
+        "lineHeight": "24px",
+        "scrollWidth": 509,
+        "clientWidth": 509,
+        "scrollHeight": 24,
+        "clientHeight": 24
+      },
+      "glass": [],
+      "modelLabelsUnderDock": [],
+      "labels": [
+        {
+          "text": "低压",
+          "left": 549.2279328573255,
+          "top": 384.8191664192169,
+          "right": 617.7333073409266,
+          "bottom": 413.9339505747473,
+          "fontPx": 20.07061716253585
+        },
+        {
+          "text": "高压",
+          "left": 753.92141904373,
+          "top": 399.28121402595565,
+          "right": 823.6692404268231,
+          "bottom": 428.9240381137703,
+          "fontPx": 20.43462766904668
+        },
+        {
+          "text": "高压",
+          "left": 546.3424498288232,
+          "top": 279.0407952181388,
+          "right": 618.0798661879278,
+          "bottom": 309.52919717075815,
+          "fontPx": 21.01753666520995
+        },
+        {
+          "text": "低压",
+          "left": 751.7226604477188,
+          "top": 291.6296955987568,
+          "right": 824.7658403613298,
+          "bottom": 322.6730470620415,
+          "fontPx": 21.400097604477107
+        },
+        {
+          "text": "陆地 · 较暖",
+          "left": 487.78067512495085,
+          "top": 531.4176754137875,
+          "right": 622.7796564470411,
+          "bottom": 561.0303551876654,
+          "fontPx": 20.41384733348176
+        },
+        {
+          "text": "海洋 · 较冷",
+          "left": 716.892898817546,
+          "top": 555.5495636163582,
+          "right": 854.3290353313894,
+          "bottom": 585.6968451742335,
+          "fontPx": 20.78238132925873
+        }
+      ],
+      "diagnostics": {
+        "ready": true,
+        "twoD": false,
+        "spread": 22,
+        "turning": false,
+        "figureBusy": false,
+        "active": "breeze",
+        "playing": false,
+        "teacher": false,
+        "stored": true,
+        "state": {
+          "phase": 0.5,
+          "selection": 0,
+          "routes": [
+            {
+              "points": [
+                [
+                  0.28,
+                  0.625
+                ],
+                [
+                  0.2,
+                  0.625
+                ],
+                [
+                  0.174,
+                  0.58
+                ],
+                [
+                  0.163,
+                  0.51
+                ],
+                [
+                  0.163,
+                  0.25
+                ],
+                [
+                  0.177,
+                  0.17
+                ],
+                [
+                  0.205,
+                  0.123
+                ],
+                [
+                  0.337,
+                  0.123
+                ],
+                [
+                  0.37,
+                  0.14
+                ],
+                [
+                  0.395,
+                  0.22
+                ],
+                [
+                  0.399,
+                  0.5
+                ],
+                [
+                  0.385,
+                  0.58
+                ],
+                [
+                  0.358,
+                  0.625
+                ],
+                [
+                  0.28,
+                  0.625
+                ]
+              ],
+              "count": 2,
+              "color": "#456e91"
+            }
+          ],
+          "rings": [],
+          "focus": [
+            0,
+            0,
+            0.49,
+            1
+          ],
+          "caption": "午后"
+        },
+        "render": {
+          "position": 22,
+          "spread": 22,
+          "busy": false,
+          "figure": "breeze",
+          "modelState": "live",
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 41,
+            "labels": 18,
+            "meshes": 69,
+            "imageMappedMeshes": 0,
+            "extent": [
+              143.64340209960938,
+              111.89820487110067,
+              96.24107653375516
+            ],
+            "sceneElevation": 61.76666105897719,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.5,
+            "selection": 0,
+            "kind": "sea-breeze",
+            "layout": "land-left-sea-right",
+            "scene": "coastal-paper-world",
+            "selected": "day",
+            "groundX": -1,
+            "upperX": 1,
+            "strength": 0.9401870664873426,
+            "pressure": {
+              "seaGround": "相对高压",
+              "landGround": "相对低压",
+              "seaUpper": "相对低压",
+              "landUpper": "相对高压"
+            },
+            "continuousDayNight": true,
+            "flowPhase": 0,
+            "flowRate": 0.09401870664873427,
+            "flagArea": 49.70212706976835,
+            "panels": 1,
+            "sameHeightGuides": 2,
+            "elevatedAbovePage": 61.76666105897719,
+            "sourceFootprint": [
+              115.84144984804425,
+              31.25
+            ],
+            "sceneDepth": 90.49534062129217
+          },
+          "view": "detail",
+          "labels": [
+            {
+              "text": "低压",
+              "left": 549.2279328573255,
+              "top": 384.8191664192169,
+              "right": 617.7333073409266,
+              "bottom": 413.9339505747473,
+              "fontPx": 20.07061716253585
+            },
+            {
+              "text": "高压",
+              "left": 753.92141904373,
+              "top": 399.28121402595565,
+              "right": 823.6692404268231,
+              "bottom": 428.9240381137703,
+              "fontPx": 20.43462766904668
+            },
+            {
+              "text": "高压",
+              "left": 546.3424498288232,
+              "top": 279.0407952181388,
+              "right": 618.0798661879278,
+              "bottom": 309.52919717075815,
+              "fontPx": 21.01753666520995
+            },
+            {
+              "text": "低压",
+              "left": 751.7226604477188,
+              "top": 291.6296955987568,
+              "right": 824.7658403613298,
+              "bottom": 322.6730470620415,
+              "fontPx": 21.400097604477107
+            },
+            {
+              "text": "陆地 · 较暖",
+              "left": 487.78067512495085,
+              "top": 531.4176754137875,
+              "right": 622.7796564470411,
+              "bottom": 561.0303551876654,
+              "fontPx": 20.41384733348176
+            },
+            {
+              "text": "海洋 · 较冷",
+              "left": 716.892898817546,
+              "top": 555.5495636163582,
+              "right": 854.3290353313894,
+              "bottom": 585.6968451742335,
+              "fontPx": 20.78238132925873
+            }
+          ],
+          "models": 1,
+          "images": 6,
+          "triangles": 31995,
+          "calls": 127,
+          "geometries": 81,
+          "textures": 206,
+          "hiRes": 6,
+          "engine": "Every Joule 48591dd"
+        },
+        "regions": [
+          {
+            "id": "breeze",
+            "screenX": 639.8106748995657,
+            "screenY": 632.224773736719
+          },
+          {
+            "id": "pressure-wind",
+            "screenX": 829.5930287698612,
+            "screenY": 765.8632195287345
+          },
+          {
+            "id": "wind-forces",
+            "screenX": 1366.0574585816455,
+            "screenY": 607.3778906656768
+          }
+        ],
+        "pages": [
+          43,
+          44
+        ],
+        "notes": {},
+        "originalPageCount": 132,
+        "sectionCount": 17,
+        "studyCount": 6,
+        "figureCount": 60
+      },
+      "documentOverflow": false
+    },
+    {
+      "name": "1366-wind-forces",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "dock": {
+        "left": 253,
+        "top": 649,
+        "right": 1113,
+        "bottom": 754,
+        "width": 860,
+        "height": 105
+      },
+      "controls": [
+        {
+          "id": "cContents",
+          "text": "",
+          "left": 265,
+          "top": 656,
+          "right": 305,
+          "bottom": 696,
+          "width": 40,
+          "height": 40
+        },
+        {
+          "id": "cPrev",
+          "text": "",
+          "left": 309,
+          "top": 656,
+          "right": 349,
+          "bottom": 696,
+          "width": 40,
+          "height": 40
+        },
+        {
+          "id": "cPause",
+          "text": "",
+          "left": 359,
+          "top": 661,
+          "right": 389,
+          "bottom": 691,
+          "width": 30,
+          "height": 30
+        },
+        {
+          "id": "",
+          "text": "只受气压梯度力",
+          "left": 267,
+          "top": 704,
+          "right": 390,
+          "bottom": 744,
+          "width": 123,
+          "height": 40
+        },
+        {
+          "id": "",
+          "text": "北半球高空",
+          "left": 391,
+          "top": 704,
+          "right": 484,
+          "bottom": 744,
+          "width": 93,
+          "height": 40
+        },
+        {
+          "id": "",
+          "text": "北半球近地面",
+          "left": 485,
+          "top": 704,
+          "right": 593,
+          "bottom": 744,
+          "width": 108,
+          "height": 40
+        },
+        {
+          "id": "",
+          "text": "南半球近地面",
+          "left": 594,
+          "top": 704,
+          "right": 702,
+          "bottom": 744,
+          "width": 108,
+          "height": 40
+        },
+        {
+          "id": "phase",
+          "text": "",
+          "left": 713,
+          "top": 709,
+          "right": 893,
+          "bottom": 739,
+          "width": 180,
+          "height": 30
+        },
+        {
+          "id": "scene-view",
+          "text": "整本",
+          "left": 902,
+          "top": 704,
+          "right": 948,
+          "bottom": 744,
+          "width": 46,
+          "height": 40
+        },
+        {
+          "id": "restart",
+          "text": "重放",
+          "left": 955,
+          "top": 704,
+          "right": 1001,
+          "bottom": 744,
+          "width": 46,
+          "height": 40
+        },
+        {
+          "id": "fold",
+          "text": "收回",
+          "left": 1008,
+          "top": 704,
+          "right": 1054,
+          "bottom": 744,
+          "width": 46,
+          "height": 40
+        },
+        {
+          "id": "figure-note",
+          "text": "",
+          "left": 1061,
+          "top": 705,
+          "right": 1099,
+          "bottom": 743,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "cNext",
+          "text": "",
+          "left": 916,
+          "top": 656,
+          "right": 956,
+          "bottom": 696,
+          "width": 40,
+          "height": 40
+        },
+        {
+          "id": "cRead",
+          "text": "",
+          "left": 973,
+          "top": 656,
+          "right": 1013,
+          "bottom": 696,
+          "width": 40,
+          "height": 40
+        },
+        {
+          "id": "cStill",
+          "text": "",
+          "left": 1017,
+          "top": 656,
+          "right": 1057,
+          "bottom": 696,
+          "width": 40,
+          "height": 40
+        },
+        {
+          "id": "cTeach",
+          "text": "",
+          "left": 1061,
+          "top": 656,
+          "right": 1101,
+          "bottom": 696,
+          "width": 40,
+          "height": 40
+        }
+      ],
+      "outsideDock": [],
+      "outsideViewport": [],
+      "overlaps": [],
+      "touchTargetsBelow44": [
+        {
+          "id": "cContents",
+          "text": "",
+          "left": 265,
+          "top": 656,
+          "right": 305,
+          "bottom": 696,
+          "width": 40,
+          "height": 40
+        },
+        {
+          "id": "cPrev",
+          "text": "",
+          "left": 309,
+          "top": 656,
+          "right": 349,
+          "bottom": 696,
+          "width": 40,
+          "height": 40
+        },
+        {
+          "id": "cPause",
+          "text": "",
+          "left": 359,
+          "top": 661,
+          "right": 389,
+          "bottom": 691,
+          "width": 30,
+          "height": 30
+        },
+        {
+          "id": "",
+          "text": "只受气压梯度力",
+          "left": 267,
+          "top": 704,
+          "right": 390,
+          "bottom": 744,
+          "width": 123,
+          "height": 40
+        },
+        {
+          "id": "",
+          "text": "北半球高空",
+          "left": 391,
+          "top": 704,
+          "right": 484,
+          "bottom": 744,
+          "width": 93,
+          "height": 40
+        },
+        {
+          "id": "",
+          "text": "北半球近地面",
+          "left": 485,
+          "top": 704,
+          "right": 593,
+          "bottom": 744,
+          "width": 108,
+          "height": 40
+        },
+        {
+          "id": "",
+          "text": "南半球近地面",
+          "left": 594,
+          "top": 704,
+          "right": 702,
+          "bottom": 744,
+          "width": 108,
+          "height": 40
+        },
+        {
+          "id": "phase",
+          "text": "",
+          "left": 713,
+          "top": 709,
+          "right": 893,
+          "bottom": 739,
+          "width": 180,
+          "height": 30
+        },
+        {
+          "id": "scene-view",
+          "text": "整本",
+          "left": 902,
+          "top": 704,
+          "right": 948,
+          "bottom": 744,
+          "width": 46,
+          "height": 40
+        },
+        {
+          "id": "restart",
+          "text": "重放",
+          "left": 955,
+          "top": 704,
+          "right": 1001,
+          "bottom": 744,
+          "width": 46,
+          "height": 40
+        },
+        {
+          "id": "fold",
+          "text": "收回",
+          "left": 1008,
+          "top": 704,
+          "right": 1054,
+          "bottom": 744,
+          "width": 46,
+          "height": 40
+        },
+        {
+          "id": "figure-note",
+          "text": "",
+          "left": 1061,
+          "top": 705,
+          "right": 1099,
+          "bottom": 743,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "cNext",
+          "text": "",
+          "left": 916,
+          "top": 656,
+          "right": 956,
+          "bottom": 696,
+          "width": 40,
+          "height": 40
+        },
+        {
+          "id": "cRead",
+          "text": "",
+          "left": 973,
+          "top": 656,
+          "right": 1013,
+          "bottom": 696,
+          "width": 40,
+          "height": 40
+        },
+        {
+          "id": "cStill",
+          "text": "",
+          "left": 1017,
+          "top": 656,
+          "right": 1057,
+          "bottom": 696,
+          "width": 40,
+          "height": 40
+        },
+        {
+          "id": "cTeach",
+          "text": "",
+          "left": 1061,
+          "top": 656,
+          "right": 1101,
+          "bottom": 696,
+          "width": 40,
+          "height": 40
+        }
+      ],
+      "title": {
+        "text": "等压线与风向",
+        "box": {
+          "left": 397,
+          "top": 664,
+          "right": 906,
+          "bottom": 688,
+          "width": 509,
+          "height": 24
+        },
+        "fontPx": 16,
+        "lineHeight": "24px",
+        "scrollWidth": 509,
+        "clientWidth": 509,
+        "scrollHeight": 24,
+        "clientHeight": 24
+      },
+      "glass": [],
+      "modelLabelsUnderDock": [],
+      "labels": [
+        {
+          "text": "高压 → 低压",
+          "left": 575.6022582552016,
+          "top": 460.44337140832783,
+          "right": 851.4840095857626,
+          "bottom": 509.7079698602137,
+          "fontPx": 33.82345565353359
+        },
+        {
+          "text": "气压梯度力",
+          "left": 794.2087338871027,
+          "top": 338.8715777596953,
+          "right": 981.3965799701197,
+          "bottom": 385.6685392804495,
+          "fontPx": 32.1292571635029
+        },
+        {
+          "text": "风向",
+          "left": 690.7421776595152,
+          "top": 193.53373806661807,
+          "right": 792.6981953422797,
+          "bottom": 240.59036161250955,
+          "fontPx": 32.307532583746394
+        }
+      ],
+      "diagnostics": {
+        "ready": true,
+        "twoD": false,
+        "spread": 22,
+        "turning": false,
+        "figureBusy": false,
+        "active": "wind-forces",
+        "playing": false,
+        "teacher": false,
+        "stored": true,
+        "state": {
+          "phase": 0,
+          "selection": 0,
+          "routes": [],
+          "rings": [],
+          "focus": null,
+          "caption": "只受气压梯度力"
+        },
+        "render": {
+          "position": 22,
+          "spread": 22,
+          "busy": false,
+          "figure": "wind-forces",
+          "modelState": "live",
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 33,
+            "labels": 5,
+            "meshes": 38,
+            "imageMappedMeshes": 0,
+            "extent": [
+              127.88896703720093,
+              51.433603927295984,
+              74.7977294921875
+            ],
+            "sceneElevation": 56,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0,
+            "selection": 0,
+            "kind": "wind-forces",
+            "selected": 0,
+            "hemisphere": "north",
+            "windXZ": [
+              1,
+              0
+            ],
+            "pressureGradientXZ": [
+              1,
+              0
+            ],
+            "balanced": false,
+            "coriolisPerpendicularToWind": true,
+            "frictionOppositeToWind": false,
+            "nearSurfaceCrossIsobars": false,
+            "forceScaleIsMeasured": false
+          },
+          "view": "detail",
+          "labels": [
+            {
+              "text": "高压 → 低压",
+              "left": 575.6022582552016,
+              "top": 460.44337140832783,
+              "right": 851.4840095857626,
+              "bottom": 509.7079698602137,
+              "fontPx": 33.82345565353359
+            },
+            {
+              "text": "气压梯度力",
+              "left": 794.2087338871027,
+              "top": 338.8715777596953,
+              "right": 981.3965799701197,
+              "bottom": 385.6685392804495,
+              "fontPx": 32.1292571635029
+            },
+            {
+              "text": "风向",
+              "left": 690.7421776595152,
+              "top": 193.53373806661807,
+              "right": 792.6981953422797,
+              "bottom": 240.59036161250955,
+              "fontPx": 32.307532583746394
+            }
+          ],
+          "models": 1,
+          "images": 6,
+          "triangles": 10197,
+          "calls": 48,
+          "geometries": 41,
+          "textures": 203,
+          "hiRes": 6,
+          "engine": "Every Joule 48591dd"
+        },
+        "regions": [
+          {
+            "id": "breeze",
+            "screenX": -135.00960557697798,
+            "screenY": 595.9103079105573
+          },
+          {
+            "id": "pressure-wind",
+            "screenX": 40.247039081777466,
+            "screenY": 823.7112939817223
+          },
+          {
+            "id": "wind-forces",
+            "screenX": 1058.7690489773872,
+            "screenY": 556.5956604793397
+          }
+        ],
+        "pages": [
+          43,
+          44
+        ],
+        "notes": {},
+        "originalPageCount": 132,
+        "sectionCount": 17,
+        "studyCount": 6,
+        "figureCount": 60
+      },
+      "documentOverflow": false
+    },
+    {
+      "name": "resize-698-wind-forces",
+      "viewport": {
+        "width": 698,
+        "height": 900
+      },
+      "dock": {
+        "left": 8,
+        "top": 733,
+        "right": 690,
+        "bottom": 886,
+        "width": 682,
+        "height": 153
+      },
+      "controls": [
+        {
+          "id": "cContents",
+          "text": "",
+          "left": 16,
+          "top": 741,
+          "right": 60,
+          "bottom": 785,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "id": "cPrev",
+          "text": "",
+          "left": 60,
+          "top": 741,
+          "right": 104,
+          "bottom": 785,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "id": "cPause",
+          "text": "",
+          "left": 106,
+          "top": 741,
+          "right": 150,
+          "bottom": 785,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "id": "",
+          "text": "只受气压梯度力",
+          "left": 95.5,
+          "top": 790,
+          "right": 239.5,
+          "bottom": 834,
+          "width": 144,
+          "height": 44
+        },
+        {
+          "id": "",
+          "text": "北半球高空",
+          "left": 240.5,
+          "top": 790,
+          "right": 348.5,
+          "bottom": 834,
+          "width": 108,
+          "height": 44
+        },
+        {
+          "id": "",
+          "text": "北半球近地面",
+          "left": 349.5,
+          "top": 790,
+          "right": 475.5,
+          "bottom": 834,
+          "width": 126,
+          "height": 44
+        },
+        {
+          "id": "",
+          "text": "南半球近地面",
+          "left": 476.5,
+          "top": 790,
+          "right": 602.5,
+          "bottom": 834,
+          "width": 126,
+          "height": 44
+        },
+        {
+          "id": "phase",
+          "text": "",
+          "left": 16,
+          "top": 834,
+          "right": 486,
+          "bottom": 878,
+          "width": 470,
+          "height": 44
+        },
+        {
+          "id": "scene-view",
+          "text": "整本",
+          "left": 488,
+          "top": 834,
+          "right": 536,
+          "bottom": 878,
+          "width": 48,
+          "height": 44
+        },
+        {
+          "id": "restart",
+          "text": "重放",
+          "left": 538,
+          "top": 834,
+          "right": 586,
+          "bottom": 878,
+          "width": 48,
+          "height": 44
+        },
+        {
+          "id": "fold",
+          "text": "收回",
+          "left": 588,
+          "top": 834,
+          "right": 636,
+          "bottom": 878,
+          "width": 48,
+          "height": 44
+        },
+        {
+          "id": "figure-note",
+          "text": "",
+          "left": 638,
+          "top": 834,
+          "right": 682,
+          "bottom": 878,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "id": "cNext",
+          "text": "",
+          "left": 594,
+          "top": 741,
+          "right": 638,
+          "bottom": 785,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "id": "cRead",
+          "text": "",
+          "left": 638,
+          "top": 741,
+          "right": 682,
+          "bottom": 785,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "outsideDock": [],
+      "outsideViewport": [],
+      "overlaps": [],
+      "touchTargetsBelow44": [],
+      "title": {
+        "text": "等压线与风向",
+        "box": {
+          "left": 158,
+          "top": 750.84375,
+          "right": 592,
+          "bottom": 775.140625,
+          "width": 434,
+          "height": 24.296875
+        },
+        "fontPx": 18,
+        "lineHeight": "24.3px",
+        "scrollWidth": 434,
+        "clientWidth": 434,
+        "scrollHeight": 25,
+        "clientHeight": 24
+      },
+      "glass": [],
+      "modelLabelsUnderDock": [],
+      "labels": [
+        {
+          "text": "高压 → 低压",
+          "left": 263.1995326865055,
+          "top": 511.0562446335185,
+          "right": 483.4681484243385,
+          "bottom": 550.3899260152743,
+          "fontPx": 27.005214082996563
+        },
+        {
+          "text": "气压梯度力",
+          "left": 439.20650368299283,
+          "top": 413.4178966025398,
+          "right": 591.0881864324451,
+          "bottom": 451.38831728990283,
+          "fontPx": 26.06924405401042
+        },
+        {
+          "text": "风向",
+          "left": 355.257884997125,
+          "top": 295.74289331829556,
+          "right": 437.8420159420383,
+          "bottom": 333.85864606210174,
+          "fontPx": 26.16902427186693
+        }
+      ],
+      "diagnostics": {
+        "ready": true,
+        "twoD": false,
+        "spread": 22,
+        "turning": false,
+        "figureBusy": false,
+        "active": "wind-forces",
+        "playing": false,
+        "teacher": false,
+        "stored": true,
+        "state": {
+          "phase": 0,
+          "selection": 0,
+          "routes": [],
+          "rings": [],
+          "focus": null,
+          "caption": "只受气压梯度力"
+        },
+        "render": {
+          "position": 22,
+          "spread": 22,
+          "busy": false,
+          "figure": "wind-forces",
+          "modelState": "live",
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 33,
+            "labels": 5,
+            "meshes": 38,
+            "imageMappedMeshes": 0,
+            "extent": [
+              127.88896703720093,
+              51.433603927295984,
+              74.7977294921875
+            ],
+            "sceneElevation": 56,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0,
+            "selection": 0,
+            "kind": "wind-forces",
+            "selected": 0,
+            "hemisphere": "north",
+            "windXZ": [
+              1,
+              0
+            ],
+            "pressureGradientXZ": [
+              1,
+              0
+            ],
+            "balanced": false,
+            "coriolisPerpendicularToWind": true,
+            "frictionOppositeToWind": false,
+            "nearSurfaceCrossIsobars": false,
+            "forceScaleIsMeasured": false
+          },
+          "view": "detail",
+          "labels": [
+            {
+              "text": "高压 → 低压",
+              "left": 263.1995326865055,
+              "top": 511.0562446335185,
+              "right": 483.4681484243385,
+              "bottom": 550.3899260152743,
+              "fontPx": 27.005214082996563
+            },
+            {
+              "text": "气压梯度力",
+              "left": 439.20650368299283,
+              "top": 413.4178966025398,
+              "right": 591.0881864324451,
+              "bottom": 451.38831728990283,
+              "fontPx": 26.06924405401042
+            },
+            {
+              "text": "风向",
+              "left": 355.257884997125,
+              "top": 295.74289331829556,
+              "right": 437.8420159420383,
+              "bottom": 333.85864606210174,
+              "fontPx": 26.16902427186693
+            }
+          ],
+          "models": 1,
+          "images": 6,
+          "triangles": 10173,
+          "calls": 46,
+          "geometries": 41,
+          "textures": 203,
+          "hiRes": 6,
+          "engine": "Every Joule 48591dd"
+        },
+        "regions": [
+          {
+            "id": "breeze",
+            "screenX": -363.3895821157304,
+            "screenY": 634.4462392542
+          },
+          {
+            "id": "pressure-wind",
+            "screenX": -182.79871661673764,
+            "screenY": 813.7051558136019
+          },
+          {
+            "id": "wind-forces",
+            "screenX": 678.7474155893796,
+            "screenY": 601.4730751781034
+          }
+        ],
+        "pages": [
+          43,
+          44
+        ],
+        "notes": {},
+        "originalPageCount": 132,
+        "sectionCount": 17,
+        "studyCount": 6,
+        "figureCount": 60
+      },
+      "documentOverflow": false
+    },
+    {
+      "name": "resize-1366-wind-forces",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "dock": {
+        "left": 253,
+        "top": 649,
+        "right": 1113,
+        "bottom": 754,
+        "width": 860,
+        "height": 105
+      },
+      "controls": [
+        {
+          "id": "cContents",
+          "text": "",
+          "left": 265,
+          "top": 656,
+          "right": 305,
+          "bottom": 696,
+          "width": 40,
+          "height": 40
+        },
+        {
+          "id": "cPrev",
+          "text": "",
+          "left": 309,
+          "top": 656,
+          "right": 349,
+          "bottom": 696,
+          "width": 40,
+          "height": 40
+        },
+        {
+          "id": "cPause",
+          "text": "",
+          "left": 359,
+          "top": 661,
+          "right": 389,
+          "bottom": 691,
+          "width": 30,
+          "height": 30
+        },
+        {
+          "id": "",
+          "text": "只受气压梯度力",
+          "left": 267,
+          "top": 704,
+          "right": 390,
+          "bottom": 744,
+          "width": 123,
+          "height": 40
+        },
+        {
+          "id": "",
+          "text": "北半球高空",
+          "left": 391,
+          "top": 704,
+          "right": 484,
+          "bottom": 744,
+          "width": 93,
+          "height": 40
+        },
+        {
+          "id": "",
+          "text": "北半球近地面",
+          "left": 485,
+          "top": 704,
+          "right": 593,
+          "bottom": 744,
+          "width": 108,
+          "height": 40
+        },
+        {
+          "id": "",
+          "text": "南半球近地面",
+          "left": 594,
+          "top": 704,
+          "right": 702,
+          "bottom": 744,
+          "width": 108,
+          "height": 40
+        },
+        {
+          "id": "phase",
+          "text": "",
+          "left": 713,
+          "top": 709,
+          "right": 893,
+          "bottom": 739,
+          "width": 180,
+          "height": 30
+        },
+        {
+          "id": "scene-view",
+          "text": "整本",
+          "left": 902,
+          "top": 704,
+          "right": 948,
+          "bottom": 744,
+          "width": 46,
+          "height": 40
+        },
+        {
+          "id": "restart",
+          "text": "重放",
+          "left": 955,
+          "top": 704,
+          "right": 1001,
+          "bottom": 744,
+          "width": 46,
+          "height": 40
+        },
+        {
+          "id": "fold",
+          "text": "收回",
+          "left": 1008,
+          "top": 704,
+          "right": 1054,
+          "bottom": 744,
+          "width": 46,
+          "height": 40
+        },
+        {
+          "id": "figure-note",
+          "text": "",
+          "left": 1061,
+          "top": 705,
+          "right": 1099,
+          "bottom": 743,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "cNext",
+          "text": "",
+          "left": 916,
+          "top": 656,
+          "right": 956,
+          "bottom": 696,
+          "width": 40,
+          "height": 40
+        },
+        {
+          "id": "cRead",
+          "text": "",
+          "left": 973,
+          "top": 656,
+          "right": 1013,
+          "bottom": 696,
+          "width": 40,
+          "height": 40
+        },
+        {
+          "id": "cStill",
+          "text": "",
+          "left": 1017,
+          "top": 656,
+          "right": 1057,
+          "bottom": 696,
+          "width": 40,
+          "height": 40
+        },
+        {
+          "id": "cTeach",
+          "text": "",
+          "left": 1061,
+          "top": 656,
+          "right": 1101,
+          "bottom": 696,
+          "width": 40,
+          "height": 40
+        }
+      ],
+      "outsideDock": [],
+      "outsideViewport": [],
+      "overlaps": [],
+      "touchTargetsBelow44": [
+        {
+          "id": "cContents",
+          "text": "",
+          "left": 265,
+          "top": 656,
+          "right": 305,
+          "bottom": 696,
+          "width": 40,
+          "height": 40
+        },
+        {
+          "id": "cPrev",
+          "text": "",
+          "left": 309,
+          "top": 656,
+          "right": 349,
+          "bottom": 696,
+          "width": 40,
+          "height": 40
+        },
+        {
+          "id": "cPause",
+          "text": "",
+          "left": 359,
+          "top": 661,
+          "right": 389,
+          "bottom": 691,
+          "width": 30,
+          "height": 30
+        },
+        {
+          "id": "",
+          "text": "只受气压梯度力",
+          "left": 267,
+          "top": 704,
+          "right": 390,
+          "bottom": 744,
+          "width": 123,
+          "height": 40
+        },
+        {
+          "id": "",
+          "text": "北半球高空",
+          "left": 391,
+          "top": 704,
+          "right": 484,
+          "bottom": 744,
+          "width": 93,
+          "height": 40
+        },
+        {
+          "id": "",
+          "text": "北半球近地面",
+          "left": 485,
+          "top": 704,
+          "right": 593,
+          "bottom": 744,
+          "width": 108,
+          "height": 40
+        },
+        {
+          "id": "",
+          "text": "南半球近地面",
+          "left": 594,
+          "top": 704,
+          "right": 702,
+          "bottom": 744,
+          "width": 108,
+          "height": 40
+        },
+        {
+          "id": "phase",
+          "text": "",
+          "left": 713,
+          "top": 709,
+          "right": 893,
+          "bottom": 739,
+          "width": 180,
+          "height": 30
+        },
+        {
+          "id": "scene-view",
+          "text": "整本",
+          "left": 902,
+          "top": 704,
+          "right": 948,
+          "bottom": 744,
+          "width": 46,
+          "height": 40
+        },
+        {
+          "id": "restart",
+          "text": "重放",
+          "left": 955,
+          "top": 704,
+          "right": 1001,
+          "bottom": 744,
+          "width": 46,
+          "height": 40
+        },
+        {
+          "id": "fold",
+          "text": "收回",
+          "left": 1008,
+          "top": 704,
+          "right": 1054,
+          "bottom": 744,
+          "width": 46,
+          "height": 40
+        },
+        {
+          "id": "figure-note",
+          "text": "",
+          "left": 1061,
+          "top": 705,
+          "right": 1099,
+          "bottom": 743,
+          "width": 38,
+          "height": 38
+        },
+        {
+          "id": "cNext",
+          "text": "",
+          "left": 916,
+          "top": 656,
+          "right": 956,
+          "bottom": 696,
+          "width": 40,
+          "height": 40
+        },
+        {
+          "id": "cRead",
+          "text": "",
+          "left": 973,
+          "top": 656,
+          "right": 1013,
+          "bottom": 696,
+          "width": 40,
+          "height": 40
+        },
+        {
+          "id": "cStill",
+          "text": "",
+          "left": 1017,
+          "top": 656,
+          "right": 1057,
+          "bottom": 696,
+          "width": 40,
+          "height": 40
+        },
+        {
+          "id": "cTeach",
+          "text": "",
+          "left": 1061,
+          "top": 656,
+          "right": 1101,
+          "bottom": 696,
+          "width": 40,
+          "height": 40
+        }
+      ],
+      "title": {
+        "text": "等压线与风向",
+        "box": {
+          "left": 397,
+          "top": 664,
+          "right": 906,
+          "bottom": 688,
+          "width": 509,
+          "height": 24
+        },
+        "fontPx": 16,
+        "lineHeight": "24px",
+        "scrollWidth": 509,
+        "clientWidth": 509,
+        "scrollHeight": 24,
+        "clientHeight": 24
+      },
+      "glass": [],
+      "modelLabelsUnderDock": [],
+      "labels": [
+        {
+          "text": "高压 → 低压",
+          "left": 577.2868256573416,
+          "top": 459.22611459331426,
+          "right": 848.6742719229067,
+          "bottom": 507.68815856930803,
+          "fontPx": 33.27244810292109
+        },
+        {
+          "text": "气压梯度力",
+          "left": 792.4571511018825,
+          "top": 339.61129735167015,
+          "right": 976.7518331315646,
+          "bottom": 385.68496785909076,
+          "fontPx": 31.632669303602214
+        },
+        {
+          "text": "风向",
+          "left": 690.6055264415786,
+          "top": 196.52039538084838,
+          "right": 790.9759939398785,
+          "bottom": 242.8452265339098,
+          "fontPx": 31.805107955833208
+        }
+      ],
+      "diagnostics": {
+        "ready": true,
+        "twoD": false,
+        "spread": 22,
+        "turning": false,
+        "figureBusy": false,
+        "active": "wind-forces",
+        "playing": false,
+        "teacher": false,
+        "stored": true,
+        "state": {
+          "phase": 0,
+          "selection": 0,
+          "routes": [],
+          "rings": [],
+          "focus": null,
+          "caption": "只受气压梯度力"
+        },
+        "render": {
+          "position": 22,
+          "spread": 22,
+          "busy": false,
+          "figure": "wind-forces",
+          "modelState": "live",
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 33,
+            "labels": 5,
+            "meshes": 38,
+            "imageMappedMeshes": 0,
+            "extent": [
+              127.88896703720093,
+              51.433603927295984,
+              74.7977294921875
+            ],
+            "sceneElevation": 56,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0,
+            "selection": 0,
+            "kind": "wind-forces",
+            "selected": 0,
+            "hemisphere": "north",
+            "windXZ": [
+              1,
+              0
+            ],
+            "pressureGradientXZ": [
+              1,
+              0
+            ],
+            "balanced": false,
+            "coriolisPerpendicularToWind": true,
+            "frictionOppositeToWind": false,
+            "nearSurfaceCrossIsobars": false,
+            "forceScaleIsMeasured": false
+          },
+          "view": "detail",
+          "labels": [
+            {
+              "text": "高压 → 低压",
+              "left": 577.2868256573416,
+              "top": 459.22611459331426,
+              "right": 848.6742719229067,
+              "bottom": 507.68815856930803,
+              "fontPx": 33.27244810292109
+            },
+            {
+              "text": "气压梯度力",
+              "left": 792.4571511018825,
+              "top": 339.61129735167015,
+              "right": 976.7518331315646,
+              "bottom": 385.68496785909076,
+              "fontPx": 31.632669303602214
+            },
+            {
+              "text": "风向",
+              "left": 690.6055264415786,
+              "top": 196.52039538084838,
+              "right": 790.9759939398785,
+              "bottom": 242.8452265339098,
+              "fontPx": 31.805107955833208
+            }
+          ],
+          "models": 1,
+          "images": 6,
+          "triangles": 10197,
+          "calls": 48,
+          "geometries": 41,
+          "textures": 203,
+          "hiRes": 6,
+          "engine": "Every Joule 48591dd"
+        },
+        "regions": [
+          {
+            "id": "breeze",
+            "screenX": -125.01431313125106,
+            "screenY": 593.203587551071
+          },
+          {
+            "id": "pressure-wind",
+            "screenX": 49.58780068042719,
+            "screenY": 817.1990639056179
+          },
+          {
+            "id": "wind-forces",
+            "screenX": 1054.3944820852632,
+            "screenY": 554.6042611528721
+          }
+        ],
+        "pages": [
+          43,
+          44
+        ],
+        "notes": {},
+        "originalPageCount": 132,
+        "sectionCount": 17,
+        "studyCount": 6,
+        "figureCount": 60
+      },
+      "documentOverflow": false
+    },
+    {
+      "name": "resize-390-wind-forces",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "dock": {
+        "left": 8,
+        "top": 632,
+        "right": 382,
+        "bottom": 830,
+        "width": 374,
+        "height": 198
+      },
+      "controls": [
+        {
+          "id": "cContents",
+          "text": "",
+          "left": 16,
+          "top": 640,
+          "right": 60,
+          "bottom": 684,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "id": "cPrev",
+          "text": "",
+          "left": 60,
+          "top": 640,
+          "right": 104,
+          "bottom": 684,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "id": "cPause",
+          "text": "",
+          "left": 106,
+          "top": 640,
+          "right": 150,
+          "bottom": 684,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "id": "",
+          "text": "只受气压梯度力",
+          "left": 68.5,
+          "top": 689,
+          "right": 212.5,
+          "bottom": 733,
+          "width": 144,
+          "height": 44
+        },
+        {
+          "id": "",
+          "text": "北半球高空",
+          "left": 213.5,
+          "top": 689,
+          "right": 321.5,
+          "bottom": 733,
+          "width": 108,
+          "height": 44
+        },
+        {
+          "id": "",
+          "text": "北半球近地面",
+          "left": 68.5,
+          "top": 734,
+          "right": 194.5,
+          "bottom": 778,
+          "width": 126,
+          "height": 44
+        },
+        {
+          "id": "",
+          "text": "南半球近地面",
+          "left": 195.5,
+          "top": 734,
+          "right": 321.5,
+          "bottom": 778,
+          "width": 126,
+          "height": 44
+        },
+        {
+          "id": "phase",
+          "text": "",
+          "left": 16,
+          "top": 778,
+          "right": 178,
+          "bottom": 822,
+          "width": 162,
+          "height": 44
+        },
+        {
+          "id": "scene-view",
+          "text": "整本",
+          "left": 180,
+          "top": 778,
+          "right": 228,
+          "bottom": 822,
+          "width": 48,
+          "height": 44
+        },
+        {
+          "id": "restart",
+          "text": "重放",
+          "left": 230,
+          "top": 778,
+          "right": 278,
+          "bottom": 822,
+          "width": 48,
+          "height": 44
+        },
+        {
+          "id": "fold",
+          "text": "收回",
+          "left": 280,
+          "top": 778,
+          "right": 328,
+          "bottom": 822,
+          "width": 48,
+          "height": 44
+        },
+        {
+          "id": "figure-note",
+          "text": "",
+          "left": 330,
+          "top": 778,
+          "right": 374,
+          "bottom": 822,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "id": "cNext",
+          "text": "",
+          "left": 286,
+          "top": 640,
+          "right": 330,
+          "bottom": 684,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "id": "cRead",
+          "text": "",
+          "left": 330,
+          "top": 640,
+          "right": 374,
+          "bottom": 684,
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "outsideDock": [],
+      "outsideViewport": [],
+      "overlaps": [],
+      "touchTargetsBelow44": [],
+      "title": {
+        "text": "等压线与风向",
+        "box": {
+          "left": 158,
+          "top": 649.84375,
+          "right": 284,
+          "bottom": 674.140625,
+          "width": 126,
+          "height": 24.296875
+        },
+        "fontPx": 18,
+        "lineHeight": "24.3px",
+        "scrollWidth": 126,
+        "clientWidth": 126,
+        "scrollHeight": 25,
+        "clientHeight": 24
+      },
+      "glass": [],
+      "modelLabelsUnderDock": [],
+      "labels": [
+        {
+          "text": "高压 → 低压",
+          "left": 147.64627002247138,
+          "top": 455.6971907457522,
+          "right": 269.21301790620544,
+          "bottom": 477.40553858213326,
+          "fontPx": 14.904238813037736
+        },
+        {
+          "text": "气压梯度力",
+          "left": 245.50532650087473,
+          "top": 401.5183261500214,
+          "right": 330.5419206893194,
+          "bottom": 422.77747469713256,
+          "fontPx": 14.595833330852452
+        },
+        {
+          "text": "风向",
+          "left": 198.49825173627772,
+          "top": 335.76654231879115,
+          "right": 244.6648340662613,
+          "bottom": 357.07419570186045,
+          "fontPx": 14.629135158525186
+        }
+      ],
+      "diagnostics": {
+        "ready": true,
+        "twoD": false,
+        "spread": 22,
+        "turning": false,
+        "figureBusy": false,
+        "active": "wind-forces",
+        "playing": false,
+        "teacher": false,
+        "stored": true,
+        "state": {
+          "phase": 0,
+          "selection": 0,
+          "routes": [],
+          "rings": [],
+          "focus": null,
+          "caption": "只受气压梯度力"
+        },
+        "render": {
+          "position": 22,
+          "spread": 22,
+          "busy": false,
+          "figure": "wind-forces",
+          "modelState": "live",
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 33,
+            "labels": 5,
+            "meshes": 38,
+            "imageMappedMeshes": 0,
+            "extent": [
+              127.88896703720093,
+              51.433603927295984,
+              74.7977294921875
+            ],
+            "sceneElevation": 56,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0,
+            "selection": 0,
+            "kind": "wind-forces",
+            "selected": 0,
+            "hemisphere": "north",
+            "windXZ": [
+              1,
+              0
+            ],
+            "pressureGradientXZ": [
+              1,
+              0
+            ],
+            "balanced": false,
+            "coriolisPerpendicularToWind": true,
+            "frictionOppositeToWind": false,
+            "nearSurfaceCrossIsobars": false,
+            "forceScaleIsMeasured": false
+          },
+          "view": "detail",
+          "labels": [
+            {
+              "text": "高压 → 低压",
+              "left": 147.64627002247138,
+              "top": 455.6971907457522,
+              "right": 269.21301790620544,
+              "bottom": 477.40553858213326,
+              "fontPx": 14.904238813037736
+            },
+            {
+              "text": "气压梯度力",
+              "left": 245.50532650087473,
+              "top": 401.5183261500214,
+              "right": 330.5419206893194,
+              "bottom": 422.77747469713256,
+              "fontPx": 14.595833330852452
+            },
+            {
+              "text": "风向",
+              "left": 198.49825173627772,
+              "top": 335.76654231879115,
+              "right": 244.6648340662613,
+              "bottom": 357.07419570186045,
+              "fontPx": 14.629135158525186
+            }
+          ],
+          "models": 1,
+          "images": 6,
+          "triangles": 10173,
+          "calls": 46,
+          "geometries": 41,
+          "textures": 203,
+          "hiRes": 6,
+          "engine": "Every Joule 48591dd"
+        },
+        "regions": [
+          {
+            "id": "breeze",
+            "screenX": -232.3457226845035,
+            "screenY": 532.6443880499711
+          },
+          {
+            "id": "pressure-wind",
+            "screenX": -108.17629742889085,
+            "screenY": 629.3463093942391
+          },
+          {
+            "id": "wind-forces",
+            "screenX": 394.3449765262084,
+            "screenY": 513.5713730465434
+          }
+        ],
+        "pages": [
+          43,
+          44
+        ],
+        "notes": {},
+        "originalPageCount": 132,
+        "sectionCount": 17,
+        "studyCount": 6,
+        "figureCount": 60
+      },
+      "documentOverflow": false
+    }
+  ],
+  "limits": [
+    "Desktop Edge viewport emulation; physical touchscreen not tested.",
+    "Model-label checks detect bounds intersection, not every geometry occlusion.",
+    "Shader rectangle inspection is available only on the development build.",
+    "390px captures deliberately force 3D to exercise the dock; a touch phone normally starts in 2D."
+  ],
+  "externalRequests": [],
+  "requestFailures": []
+}

@@ -1,0 +1,96 @@
+{
+  "base": "http://127.0.0.1:4175",
+  "reviewedEntry": {
+    "path": "/assets/index-CiqUfY83.js",
+    "sha256": "7ed9144ed014548b3015cb89d48e0701f0c74014aa53f934244469e03496b564"
+  },
+  "reviewedStyles": [
+    {
+      "path": "/assets/index-BNlCIg7W.css",
+      "sha256": "7dc46979023abf69bb0739abccbdf5b37c1e2a4684645382e091631cf47753e2"
+    }
+  ],
+  "reviewedAt": "2026-11-05T21:11:54.289Z",
+  "browser": "Chrome via Playwright channel chrome (version not recorded by this fixture)",
+  "rawReport": "output/playwright/current-e2e-results.json",
+  "rawReportSha256": "f86810745fe181d5cb71c88191f1fab88918b3db3243bb8be97c69e387fdb376",
+  "checks": [
+    "accessibility-mobile.spec.ts › 减少动态效果与键盘 › 键盘可进入目录和演示，减少动态时节点直接定位且条件保持暂停",
+    "accessibility-mobile.spec.ts › 手机原页与原生 SVG › 手机默认二维原页，SVG 实体节点可触摸并可向前和向后定位",
+    "process.spec.ts › 海陆风连续播放、暂停、昼夜节点与回拖同步改变旁注",
+    "process.spec.ts › 刷新恢复个人书签、演示条件及笔记，并保持暂停",
+    "process.spec.ts › 教师演示的进度、翻页和临时笔记不覆盖个人状态",
+    "reading.spec.ts › 整册封面与目录保留六章、十七节、六研究和六十个演示",
+    "reading.spec.ts › 翻页、正文跳转和放大原页使用同一教材页码",
+    "resilience.spec.ts › WebGL 不可用时仍能翻阅、放大原页并操作二维环流",
+    "resilience.spec.ts › 实际丢失 WebGL 上下文后保留条件并继续二维阅读"
+  ],
+  "failures": [],
+  "errors": [],
+  "cases": [
+    {
+      "title": "accessibility-mobile.spec.ts › 减少动态效果与键盘 › 键盘可进入目录和演示，减少动态时节点直接定位且条件保持暂停",
+      "file": "accessibility-mobile.spec.ts",
+      "line": 5,
+      "durationMs": 9962,
+      "status": "passed"
+    },
+    {
+      "title": "accessibility-mobile.spec.ts › 手机原页与原生 SVG › 手机默认二维原页，SVG 实体节点可触摸并可向前和向后定位",
+      "file": "accessibility-mobile.spec.ts",
+      "line": 43,
+      "durationMs": 4959,
+      "status": "passed"
+    },
+    {
+      "title": "process.spec.ts › 海陆风连续播放、暂停、昼夜节点与回拖同步改变旁注",
+      "file": "process.spec.ts",
+      "line": 4,
+      "durationMs": 15071,
+      "status": "passed"
+    },
+    {
+      "title": "process.spec.ts › 刷新恢复个人书签、演示条件及笔记，并保持暂停",
+      "file": "process.spec.ts",
+      "line": 36,
+      "durationMs": 18266,
+      "status": "passed"
+    },
+    {
+      "title": "process.spec.ts › 教师演示的进度、翻页和临时笔记不覆盖个人状态",
+      "file": "process.spec.ts",
+      "line": 61,
+      "durationMs": 20261,
+      "status": "passed"
+    },
+    {
+      "title": "reading.spec.ts › 整册封面与目录保留六章、十七节、六研究和六十个演示",
+      "file": "reading.spec.ts",
+      "line": 3,
+      "durationMs": 7070,
+      "status": "passed"
+    },
+    {
+      "title": "reading.spec.ts › 翻页、正文跳转和放大原页使用同一教材页码",
+      "file": "reading.spec.ts",
+      "line": 26,
+      "durationMs": 15822,
+      "status": "passed"
+    },
+    {
+      "title": "resilience.spec.ts › WebGL 不可用时仍能翻阅、放大原页并操作二维环流",
+      "file": "resilience.spec.ts",
+      "line": 3,
+      "durationMs": 5995,
+      "status": "passed"
+    },
+    {
+      "title": "resilience.spec.ts › 实际丢失 WebGL 上下文后保留条件并继续二维阅读",
+      "file": "resilience.spec.ts",
+      "line": 32,
+      "durationMs": 15056,
+      "status": "passed"
+    }
+  ],
+  "evidenceScope": "Nine current-book DOM user flows with a fresh context per test. Each case attaches the script and stylesheet bytes served to its real browser. Not all 60 model states or physical-device acceptance."
+}

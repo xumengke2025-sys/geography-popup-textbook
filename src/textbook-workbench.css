@@ -1,0 +1,312 @@
+/* The desk is the scene; furniture at its edges is navigation, not a second
+   illustration. Keep all the original page imagery and elevated model space. */
+:root{--desk-ink:#343329;--desk-muted:#787364;--desk-red:#934633;--desk-brass:#a98a52;--desk-line:#c8bca3;--desk-paper:#f6f0e1;--desk-key:#faf6eb;--desk-key-down:#e8deca;--desk-edge:#b9a683;--desk-shadow:0 10px 28px #1c160f30,0 2px 4px #1c160f1c;--desk-ease:cubic-bezier(.16,1,.3,1)}
+body{background:#30271f}
+#desk-header{position:fixed;inset:0 0 auto;height:86px;padding:20px 30px;display:flex;align-items:flex-start;justify-content:space-between;gap:24px;background:linear-gradient(#30291f7a,transparent);color:#fff5df;pointer-events:none}
+.desk-title{display:flex;align-items:center;gap:12px;padding-top:7px;text-shadow:0 1px 4px #201c1a66}
+.desk-title>svg{width:25px;height:25px;stroke:#e2ca96;fill:none;stroke-width:1.25;stroke-linecap:round;stroke-linejoin:round}
+.desk-title h1{font-size:19px;font-weight:500;letter-spacing:.09em;margin:0;line-height:1.4}
+.desk-tools{display:flex;align-items:center;gap:6px;pointer-events:auto}
+#book-ui .desk-tool{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:7px;border:1px solid transparent;border-radius:5px;background:none;color:inherit;min-height:44px;min-width:44px;padding:8px 11px;text-decoration:none;font-family:FieldSans,sans-serif;font-size:13px;font-weight:400;cursor:pointer;transition:background .2s,border-color .2s,transform .2s}
+.desk-tool svg{width:19px;height:19px;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;fill:none}
+#book-ui .desk-tool:hover{background:#f4eddb16;border-color:#f4eddb33}
+#book-ui .desk-tool[aria-pressed=true]{background:#f7f1dc26;border-color:#e2ca9673}
+#book-ui .desk-tool:active{transform:translateY(1px)}
+#book-ui #cStill{display:none}
+#book-ui .directory-bookmark{pointer-events:auto;position:fixed;left:26px;top:95px;display:flex;flex-direction:column;align-items:center;gap:10px;width:47px;height:106px;padding:16px 0 22px;border:1px solid #a56853;border-radius:2px 2px 3px 3px;color:#fff4dd;background:linear-gradient(90deg,#56291c44,transparent 18%,transparent 86%,#efbc8a22),#8b4537;box-shadow:2px 5px 10px #271e1938;font-size:15px;letter-spacing:.12em;transition:height .25s var(--desk-ease),background .2s;clip-path:polygon(0 0,100% 0,100% 100%,50% 91%,0 100%)}
+#book-ui .directory-bookmark:after{content:'';position:absolute;inset:4px 4px 15px;border:1px solid #edceb938;border-bottom:0;pointer-events:none}
+#book-ui .directory-bookmark:hover,#book-ui .directory-bookmark[aria-expanded=true]{height:114px;background-color:#a0523c}
+#book-ui .directory-bookmark svg{width:20px;height:20px}
+#chapter-tabs{position:fixed;right:0;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:7px;pointer-events:auto}
+#chapter-tabs button{display:flex;align-items:center;justify-content:space-between;gap:9px;min-width:91px;min-height:45px;padding:9px 16px 9px 12px;border:1px solid #d0c4a5;border-right:0;border-radius:4px 0 0 4px;background:linear-gradient(90deg,#f9f3e5,#e5dbc3);color:#454d42;box-shadow:-2px 3px 7px #231f192b;font-size:14px;transform:translateX(9px);transition:transform .25s var(--desk-ease),color .2s,background .2s}
+#chapter-tabs button:hover,#chapter-tabs button:focus-visible{transform:translateX(0)}
+#chapter-tabs button[aria-current]{background:linear-gradient(90deg,#63715b,#4c5e49);color:#fff4d9;border-color:#98a18b;transform:translateX(0)}
+.chapter-tab-number{font-family:FieldSans,sans-serif;font-size:10px;opacity:.65;font-variant-numeric:tabular-nums}
+
+/* One low, tactile instrument bar. The play key and paper dial are actual
+   controls; raised edges and pressed faces make their state legible. */
+#book-ui .capsule,#book-ui .capsule.touring{left:50%;right:auto;bottom:max(18px,env(safe-area-inset-bottom));transform:translateX(-50%);display:grid;grid-template-columns:76px minmax(0,1fr) 76px auto;align-items:center;justify-content:stretch;gap:8px;width:min(880px,calc(100vw - 208px));height:auto;min-height:74px;max-width:none;padding:10px 14px;border:1px solid #d6cbb1;border-radius:10px;background:linear-gradient(#fffcf3e8,#f1ead7f5),url('/desk/paper.jpg') center/600px;color:var(--desk-ink);box-shadow:inset 0 1px 0 #fff,0 3px 0 #b5a88c,0 4px 0 #675c46,var(--desk-shadow);font-family:FieldSerif,serif;white-space:normal}
+#book-ui .capsule:before{content:'';position:absolute;inset:4px;border:1px solid #baaa8426;border-radius:7px;pointer-events:none}
+#book-ui .capsule #cPrev,#book-ui .capsule #cNext{width:76px;min-width:0;height:48px;min-height:44px;display:flex;align-items:center;justify-content:center;gap:5px;border:1px solid #cfc5ad;border-radius:5px;background:linear-gradient(#fffdf5,#e9e2cf);box-shadow:0 1px 1px #5d503422,inset 0 1px 0 #fff;color:#46524a;font-size:12px}
+#book-ui .capsule #cPrev{grid-column:1;grid-row:1}
+#book-ui .capsule #cNext{grid-column:3;grid-row:1}
+#book-ui .capsule #cPrev svg,#book-ui .capsule #cNext svg{width:16px;height:16px}
+#book-ui .capsule #cNext{flex-direction:row-reverse}
+#book-ui .capsule .ic:hover{background:#e2dbc6}
+#book-ui .capsule .ic:disabled{opacity:.3;box-shadow:none}
+#book-ui .capsule .mid{grid-column:2;grid-row:1;min-width:0;max-width:none;width:auto;overflow:hidden;padding:0 8px}
+#book-ui .capsule .where,#book-ui .capsule .caption{display:flex;align-items:center;gap:12px;width:100%;min-width:0}
+#book-ui .capsule .lbl{display:block;min-width:0;max-width:none;overflow:hidden}
+#book-ui .capsule #cN{display:none}
+#book-ui .capsule #cT{display:block;max-width:none;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:16px;line-height:1.6;font-weight:400;color:var(--desk-ink)}
+#book-ui .capsule #cCap{position:static;display:block;flex:1;max-width:none;min-width:0;min-height:0;padding:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:17px;line-height:1.5;font-weight:400;border:0;border-radius:0;background:none;box-shadow:none;-webkit-line-clamp:unset;color:var(--desk-ink)}
+#book-ui .capsule #cPause,#book-ui .capsule #cWatch{display:flex;align-items:center;justify-content:center;gap:6px;flex-shrink:0;width:74px;height:44px;min-width:74px;min-height:44px;padding:0 9px;border-radius:5px;border:1px solid #a65b45;background:linear-gradient(#a05a43,#85402e);color:#fff7e7;box-shadow:inset 0 1px 0 #d8a18666,0 2px 2px #4d2d2426;font-size:13px}
+#book-ui .capsule #cPause:hover,#book-ui .capsule #cWatch:hover{background:linear-gradient(#b06449,#904632)}
+#book-ui .capsule #cPause svg,#book-ui .capsule #cWatch svg{width:16px;height:16px}
+#book-ui .capsule .ic:active:not(:disabled){transform:translateY(1px);box-shadow:inset 0 1px 3px #4b3f282e}
+#book-ui #folio-toggle{grid-column:4;grid-row:1;display:flex;align-items:center;justify-content:center;gap:10px;height:48px;min-width:96px;padding:0 12px;border:0;border-left:1px solid #c7bea6;border-radius:0;background:none;color:#66705f;font-family:FieldSans,sans-serif;font-size:13px;font-variant-numeric:tabular-nums;white-space:nowrap}
+#book-ui #folio-toggle:hover,#book-ui #folio-toggle[aria-expanded=true]{color:#8b4537;background:#e4dac1a6;border-radius:3px}
+.folio-chevron{width:7px;height:7px;border:1px solid currentColor;border-right:0;border-bottom:0;transform:rotate(45deg);transition:transform .2s}
+#folio-toggle[aria-expanded=true] .folio-chevron{transform:rotate(225deg)}
+#book-ui #figure-controls{grid-column:1/-1;grid-row:2;display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;padding:9px 1px 0;margin-top:1px;border-top:1px solid #c9bfa37d}
+#figure-controls #selections{display:flex;flex-wrap:wrap;justify-content:flex-start;gap:3px;min-width:0}
+#figure-controls #selections button{position:relative;min-width:44px;min-height:40px;padding:8px 11px;border:1px solid transparent;border-radius:4px;background:none;color:#6b7162;font-size:14px;line-height:1.3;transition:background .2s,color .2s}
+#figure-controls #selections button:hover{background:#e6deca}
+#figure-controls #selections button[aria-pressed=true]{border-color:#b6bca5;background:#e3e7d8;color:#3f574a;box-shadow:inset 0 1px 2px #52634214}
+#figure-controls .figure-timeline{display:flex;align-items:center;flex-shrink:0;min-width:0;gap:5px}
+#book-ui #cSpeed{display:inline-flex;align-items:center;justify-content:center;flex:0 0 44px;min-width:44px;height:44px;padding:0 4px;border:1px solid #c5bea7;border-radius:4px;background:linear-gradient(#fffdf5,#e9e2cf);box-shadow:inset 0 1px 0 #fff,0 1px 1px #5d503414;color:#4d644c;font-family:FieldSans,sans-serif;font-size:14px;font-variant-numeric:tabular-nums;line-height:1;white-space:nowrap;transition:background .2s,box-shadow .2s}
+#book-ui #cSpeed:hover{background:#e3e7d8;border-color:#aeb99d}
+#book-ui #cSpeed:active{transform:translateY(1px);box-shadow:inset 0 1px 3px #4b3f282e}
+#figure-controls #phase{appearance:none;-webkit-appearance:none;width:clamp(80px,12vw,148px);min-width:60px;height:40px;margin:0 8px;background:transparent;cursor:ew-resize}
+#phase::-webkit-slider-runnable-track{height:5px;border:1px solid #bab39f;border-radius:5px;background:linear-gradient(90deg,#70816b,#d2c9b0);box-shadow:inset 0 1px 2px #48513a26}
+#phase::-webkit-slider-thumb{-webkit-appearance:none;width:17px;height:17px;margin-top:-7px;border:2px solid #eee5cf;border-radius:50%;background:#51684f;box-shadow:0 1px 3px #17291666;transition:box-shadow .2s}
+#phase::-moz-range-track{height:4px;border:1px solid #bab39f;border-radius:5px;background:#cdc7b1}
+#phase::-moz-range-thumb{width:14px;height:14px;border:2px solid #eee5cf;border-radius:50%;background:#51684f}
+#phase:hover::-webkit-slider-thumb{box-shadow:0 0 0 4px #5a6e511a,0 1px 3px #17291666}
+#figure-controls #restart,#figure-controls #fold,#figure-controls #scene-view{display:flex;align-items:center;justify-content:center;gap:5px;min-height:40px;min-width:44px;padding:7px 8px;border:1px solid transparent;border-radius:4px;background:none;color:#5d695b;font-size:14px;white-space:nowrap}
+#figure-controls #restart svg,#figure-controls #fold svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+#figure-controls #restart:hover,#figure-controls #fold:hover,#figure-controls #scene-view:hover,#figure-controls .icon:hover{background:#e6deca}
+#figure-controls #figure-note{min-width:40px;min-height:40px;color:#838675}
+.workbench-busy #folio-toggle{opacity:.75}
+#hover-title{bottom:110px;background:#f8f2e5;padding:8px 13px;border:1px solid #c7b997;border-radius:4px;box-shadow:0 4px 12px #231e1b24;text-shadow:none}
+
+/* Directory is a usable paper index with search and two independent tabs. */
+#contents{left:87px;top:92px;bottom:112px;width:min(426px,calc(100vw - 120px));padding:18px 22px;border:1px solid #d3c7ad;border-radius:3px 9px 9px 3px;background:linear-gradient(90deg,#c4b89733,transparent 13px),linear-gradient(#fcf9eeed,#f4eddeed),url('/desk/paper.jpg') center/520px;box-shadow:inset 4px 0 5px #74694c14,8px 12px 48px #231a1b45;color:var(--desk-ink)}
+#contents .panel-heading{padding:0 0 13px;border-color:#c8bea4}
+#contents .panel-heading h1{font-size:18px;letter-spacing:.02em}
+#contents .icon{width:44px;height:44px;border-radius:4px}
+.directory-tabs{display:flex;gap:20px;margin-top:7px;border-bottom:1px solid #b9b29866}
+.directory-tabs button{position:relative;flex:1;min-height:48px;padding:10px 0;border:0;background:none;color:#7d806e;font-size:14px}
+.directory-tabs button[aria-selected=true]{color:#80432e;box-shadow:0 2px 0 #9c6747}
+.directory-tabs button span{margin-left:3px;font-family:FieldSans,sans-serif;font-size:11px;opacity:.7}
+.directory-search{display:flex;align-items:center;gap:9px;padding:0 11px;min-height:42px;margin:16px 0 5px;border:1px solid #c5bea7;border-radius:4px;background:#ffffff52}
+.directory-search>svg{width:17px;height:17px;fill:none;stroke:#888b78;stroke-width:1.4}
+.directory-search input{width:100%;min-width:0;height:40px;padding:8px 0;border:0;background:transparent;font-family:FieldSans,sans-serif;font-size:13px;outline-offset:0}
+.directory-search:focus-within{outline:2px solid #8e9b73;outline-offset:2px}
+.directory-search input:focus-visible{outline:none}
+#contents .contents-scroll{margin:0 -9px;padding:8px 9px 16px;scrollbar-width:thin;scrollbar-color:#b0ad97 transparent}
+#contents .chapter{margin:8px 0 17px}
+#contents .chapter-title{width:100%;padding:8px 6px;font-size:16px;color:#8b4a36;min-height:44px;border-radius:3px}
+#contents .contents-row{border:1px solid transparent;border-radius:4px;min-height:44px;padding:10px 8px;font-size:14px;line-height:1.5}
+#contents .contents-row:hover,#contents .chapter-title:hover{background:#e8e3d0}
+#contents .contents-row[aria-current]{background:#e5e8da;border-color:#b8c1a9;color:#395442}
+#contents .contents-row.secondary{font-size:12px;color:#777d69;padding-left:17px}
+#contents #model-contents .contents-row{font-size:13px;padding:12px 8px;border-bottom-color:#c8bea429;border-radius:0}
+#contents #model-contents .contents-row span:last-child{color:#838774;font-variant-numeric:tabular-nums}
+#contents .menu-tools{padding-top:10px;gap:3px;border-color:#cbc2a7}
+#contents .menu-tools button{min-height:44px;border-radius:4px;font-size:12px;color:#717a64;padding:9px 8px}
+#contents .menu-tools button:hover{background:#e5dfcc}
+#contents #page-jump{gap:8px;padding:9px 2px;color:#747a69}
+#contents #page-jump input{height:38px;background:#fff9;border-color:#bdb69e}
+#contents #page-jump button{min-height:44px;color:#5c6d53}
+.directory-empty{padding:22px 9px;margin:0;color:#81816e;text-align:center;font-size:14px}
+
+/* A fan of real page thumbnails, rather than a blind numeric jump. */
+#folio{position:fixed;left:50%;bottom:108px;transform:translateX(-50%);width:min(840px,calc(100vw - 200px));padding:18px 22px 16px;pointer-events:auto;border:1px solid #c9b99a;border-radius:7px;background:linear-gradient(#fbf8eeed,#f2ead9f5),url('/desk/paper.jpg') center/600px;box-shadow:0 13px 50px #241e1959;color:var(--desk-ink)}
+body.touring #folio{bottom:166px}
+.folio-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:15px}
+.folio-heading h2{margin:0;font-size:16px;font-weight:400}
+#folio-jump{display:flex;align-items:center;gap:7px;font-family:FieldSans,sans-serif;font-size:12px;color:#7d806e;margin-left:auto}
+#folio-page{width:62px;height:36px;padding:6px 5px;border:1px solid #bfb69a;border-radius:3px;background:#ffffff66;text-align:center;font-variant-numeric:tabular-nums}
+#folio-jump button,#folio-go{display:flex;align-items:center;justify-content:center;gap:5px;min-height:44px;padding:7px 11px;border:1px solid #bbbea5;border-radius:4px;background:#e3e7d8;color:#4d644c;font-size:13px;white-space:nowrap}
+#folio-jump button:hover,#folio-go:hover{background:#cfd9c2}
+#folio-jump button svg,#folio-go svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:1.5}
+#book-ui #folio-close{padding:8px;color:#787d68}
+#book-ui #folio-close:hover{background:#e5dfce;border-color:#c2b69c}
+#folio-thumbs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:15px}
+.folio-thumb{display:flex;flex-direction:column;align-items:center;gap:9px;min-width:0;padding:7px 5px 3px;border:1px solid transparent;border-radius:4px;background:none;color:#85816d;font-family:FieldSans,sans-serif;font-size:11px;font-variant-numeric:tabular-nums;transition:transform .25s var(--desk-ease),background .2s,border-color .2s}
+.folio-mini-spread{position:relative;display:flex;justify-content:center;width:100%;height:85px;border-radius:2px;background:#fff;box-shadow:0 2px 4px #2e2c1e30,0 0 0 1px #c1b9a140;pointer-events:none}
+.folio-mini-spread img{display:block;min-width:0;width:50%;height:100%;object-fit:contain}
+.folio-mini-spread:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 46%,#4b4b2b20 49.7%,#4b4b2b06 50%,transparent 55%);pointer-events:none}
+.folio-thumb[aria-current]{color:#8b4537}
+.folio-thumb[data-preview]{background:#e2e7d5;border-color:#aab49a;color:#3f5a43}
+.folio-thumb:hover,.folio-thumb:focus-visible{transform:translateY(-5px);background:#ece6d6;border-color:#d0c2a1}
+.folio-cover{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;width:62px;margin:0 auto;background:#526350;color:#e9d8a4;font-size:15px;box-shadow:inset 3px 0 3px #14200d44}
+.folio-cover svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1}
+.folio-track{display:flex;align-items:center;gap:14px;margin-top:15px;border-top:1px solid #c2b99d66;padding-top:12px;font-family:FieldSans,sans-serif;font-size:12px;color:#87816a}
+#folio-range{flex:1;min-width:0;accent-color:#667957;height:36px;cursor:ew-resize}
+
+dialog:not(#page-reader){border-radius:4px 10px 10px 4px;border-color:#d0c1a3;background:linear-gradient(#fbf8eee8,#f4eddce8),url('/desk/paper.jpg') center/600px;color:var(--desk-ink);box-shadow:var(--desk-shadow)}
+dialog:not(#page-reader)::backdrop{background:#24241c70;backdrop-filter:blur(4px)}
+dialog:not(#page-reader) h2{font-weight:400;color:#82523a}
+dialog:not(#page-reader) button:not(.icon){min-height:44px;border-color:#b7b99f;background:#e7e9db;color:#4a6047}
+#status{top:85px;background:#f7f1e2;border-color:#c5b38c;color:#494e3f;box-shadow:0 5px 16px #261e1e26}
+.two-d{background:linear-gradient(#3c2e2366,#3c2e2366),url('/desk/dark_wood_diff_1k.jpg') repeat center/1024px}
+.two-d #desk-header{background:linear-gradient(#30291fed,#30291fed),url('/desk/dark_wood_diff_1k.jpg') center/1024px;border-bottom:1px solid #a68f6150;box-shadow:0 3px 14px #201c1a22}
+.two-d .flat-demonstration{scroll-margin-top:96px}
+.two-d #book-stage{padding-top:96px;padding-bottom:176px}
+.two-d .original-page{box-shadow:0 9px 35px #1b181840}
+.two-d .flat-cover{background:#526350}
+.two-d #book-ui .capsule{background:linear-gradient(#fffcf3f2,#f1ead7fa),url('/desk/paper.jpg') center/600px;border-radius:10px;box-shadow:inset 0 1px 0 #fff,0 3px 0 #b5a88c,var(--desk-shadow)}
+
+@media(max-width:1100px){
+ #desk-header{padding:16px 22px}.desk-tools{gap:2px}#book-ui .desk-tool{padding:8px 9px}
+ #book-ui .capsule,#book-ui .capsule.touring{width:calc(100vw - 184px);grid-template-columns:54px minmax(0,1fr) 54px auto;gap:5px;padding:9px 12px}
+ #book-ui .capsule #cPrev,#book-ui .capsule #cNext{width:54px}.capsule #cPrev .control-name,.capsule #cNext .control-name{display:none}
+ #figure-controls #phase{width:80px;margin:0 5px}#figure-controls #selections button{padding:7px 8px}
+ #figure-controls #restart,#figure-controls #fold,#figure-controls #scene-view{padding:7px 6px;font-size:13px}
+ #figure-controls #restart svg,#figure-controls #fold svg{display:none}
+ #chapter-tabs button{min-width:78px;padding:8px 12px 8px 10px;font-size:13px;transform:translateX(0)}.chapter-tab-number{display:none}
+ #book-ui .directory-bookmark{left:20px}#contents{left:80px}
+ #book-ui #figure-controls{flex-wrap:wrap}#figure-controls .figure-timeline{margin-left:auto}
+ #folio{width:calc(100vw - 160px)}
+}
+@media(max-width:759px){
+ #desk-header{height:70px;padding:10px 12px;align-items:center;gap:7px}.desk-title{gap:7px;padding:0}.desk-title h1{font-size:16px;letter-spacing:.02em}.desk-title>svg{width:21px;height:21px}
+ #book-ui .desk-tools .desk-tool{padding:6px;min-width:44px;height:44px;gap:0}.desk-tool>span{display:none}#book-ui .desk-tools #cRead{display:flex}
+ #chapter-tabs{display:none}#book-ui .directory-bookmark{left:12px;top:76px;width:44px;height:82px;padding:12px 0 16px;font-size:13px;gap:6px}#book-ui .directory-bookmark:hover,#book-ui .directory-bookmark[aria-expanded=true]{height:88px}
+ #book-ui .capsule,#book-ui .capsule.touring{left:10px;right:10px;bottom:max(12px,env(safe-area-inset-bottom));width:calc(100vw - 20px);transform:none;grid-template-columns:44px minmax(0,1fr) 44px auto;gap:4px;padding:8px;min-height:64px;border-radius:7px}
+ #book-ui .capsule #cPrev,#book-ui .capsule #cNext{width:44px;height:44px;border-radius:4px}
+ #book-ui .capsule .mid{padding:0 2px}#book-ui .capsule #cT{font-size:14px}#book-ui .capsule #cCap{font-size:16px;white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;line-height:1.35;overflow:hidden}
+ #book-ui .capsule .where,#book-ui .capsule .caption{gap:7px}
+ #book-ui .capsule #cPause,#book-ui .capsule #cWatch{width:44px;min-width:44px;padding:0}#cPause .control-name,#cWatch .control-name{display:none}
+ #book-ui #folio-toggle{min-width:66px;height:44px;padding:0 7px;gap:7px;font-size:11px}
+ #book-ui #figure-controls{display:grid;grid-template-columns:minmax(0,1fr);gap:4px;padding-top:5px;grid-column:1/-1;grid-row:2}
+ #figure-controls #selections{justify-content:center;gap:1px}#figure-controls #selections button{font-size:15px;min-height:44px;padding:7px 9px}
+ #figure-controls .figure-timeline{margin-left:0;width:100%;justify-content:space-between;gap:1px}
+ #figure-controls #phase{width:65px;flex:1;min-width:45px;max-width:none;margin:0 5px;height:44px}
+ #figure-controls #scene-view,#figure-controls #restart,#figure-controls #fold,#figure-controls #figure-note{min-height:44px;min-width:44px;padding:6px;font-size:15px}
+ #contents{left:63px;top:74px;bottom:92px;width:calc(100vw - 75px);max-width:420px;padding:12px 14px}
+ #contents .panel-heading{gap:2px;padding-bottom:4px}#contents .panel-heading h1{font-size:15px}
+ .directory-search{margin-top:10px;padding:0 8px}.directory-search input{font-size:12px}
+ #contents .contents-row{font-size:13px;padding:10px 6px}#contents .chapter-title{font-size:15px;line-height:1.5}
+ #contents #page-jump{font-size:12px;padding:5px 0;gap:7px}#contents #page-number{width:60px}#contents .menu-tools{padding-top:5px;gap:0}#contents .menu-tools button{padding:5px 6px}
+ #folio{width:calc(100vw - 24px);bottom:90px;padding:12px}body.touring #folio{bottom:226px}
+ .folio-heading{gap:5px;margin-bottom:8px}.folio-heading h2{font-size:15px}#folio-jump{font-size:11px;gap:4px}#folio-page{width:48px}#folio-jump button{font-size:12px;padding:6px 7px}#folio-jump button svg{display:none}
+ #folio-thumbs{gap:4px}.folio-thumb{gap:6px;padding:5px 3px;font-size:10px}.folio-mini-spread{height:70px}.folio-track{gap:8px;margin-top:8px;padding-top:6px}.folio-track>span{display:none}#folio-go{font-size:12px;padding:5px 9px}
+ #status{top:auto;bottom:244px;left:12px;right:12px;transform:none;width:max-content;max-width:calc(100vw - 24px);font-size:13px}
+ .two-d #book-stage{padding:86px 8px 238px}.two-d .flat-cover{min-height:520px}.flat-demonstration{scroll-margin-top:80px}
+ .two-d #book-ui .directory-bookmark{left:12px;top:12px;width:44px;height:44px;min-height:44px;padding:8px;gap:0;clip-path:none;border-radius:4px;letter-spacing:0}
+ .two-d #book-ui .directory-bookmark svg{display:none}
+ .two-d .desk-title{padding-left:52px}
+ .two-d .desk-title>svg{display:none}
+ .two-d .desk-title h1{font-size:14px}
+ .two-d .flat-demonstration{scroll-margin-top:86px}
+}
+@media(max-width:380px){.desk-title h1{font-size:14px}.desk-title>svg{width:19px}#desk-header{padding:9px}.desk-tools{gap:0}#book-ui .desk-tools .desk-tool{min-width:44px;padding:5px}#book-ui .capsule #cCap{font-size:14px}#contents{left:12px;width:calc(100vw - 24px);z-index:32}}
+@media(prefers-reduced-motion:reduce){#book-ui *,#contents *{transition:none!important;animation:none!important}}
+.workbench-reduced #book-ui *,.workbench-reduced #contents *{transition:none!important;animation:none!important}
+@media(max-width:380px){#desk-notes{display:none}}
+/* Shared instruments use the same restrained paper and engraved ink as the
+   raised constructions. Navigation stays subordinate to the actual book. */
+#book-ui .capsule,#book-ui .capsule.touring{width:min(936px,calc(100vw - 208px));box-shadow:inset 0 1px 0 #fff,0 2px 0 #b7ab91,0 10px 28px #1b19172b}
+#book-ui .capsule:before{display:none}
+#figure-controls #scene-orbit{display:inline-flex;align-items:center;justify-content:center;min-height:44px;min-width:44px;padding:7px 8px;border:1px solid transparent;border-radius:4px;background:transparent;color:#5d695b;font:inherit;font-size:14px;white-space:nowrap;cursor:pointer}
+#figure-controls #scene-orbit:hover{background:#e6deca}
+#figure-controls #scene-orbit[aria-pressed=true]{background:#e3e7d8;border-color:#b6bca5;color:#3f574a}
+#figure-controls #scene-orbit:disabled{opacity:.4;cursor:default}
+#render-mode-notice:not([hidden]){position:fixed;left:84px;top:74px;z-index:21;display:flex;align-items:center;gap:10px;max-width:calc(100vw - 200px);padding:7px 11px;border:1px solid #d0c4a5;border-radius:4px;background:#f7f3e7f5;color:#46574c;box-shadow:0 3px 12px #221c1926;pointer-events:auto;font:12px/1.6 FieldSans,sans-serif}
+#render-mode-label{padding-right:9px;border-right:1px solid #c9bfa3;white-space:nowrap}
+#render-mode-reason{color:#737965}
+#retry-3d{border:0;border-bottom:1px solid #87957a;border-radius:0;background:none;color:#405c49;padding:5px 2px;min-height:32px;font:inherit;white-space:nowrap;cursor:pointer}
+#retry-3d:disabled{opacity:.5}
+.page-load-fallback{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;min-height:340px;padding:32px;background:#f7f3e7;color:#5d695b;border:1px solid #d0c4a5}
+.page-load-fallback p{font-size:17px;margin:0;text-align:center}
+.page-load-fallback button{padding:9px 16px;min-height:44px;border:1px solid #b6bca5;border-radius:4px;background:#e3e7d8;color:#3f574a;font:14px FieldSans,sans-serif}
+.two-d{background:linear-gradient(#322b24dc,#322b24dc),url('/desk/dark_wood_diff_1k.jpg') repeat center/1024px}
+@media(max-width:1100px){#book-ui .capsule,#book-ui .capsule.touring{width:calc(100vw - 184px)}#figure-controls #scene-orbit{font-size:13px;padding:7px 6px}}
+@media(max-width:759px){
+ #book-ui .capsule,#book-ui .capsule.touring{width:calc(100vw - 20px)}
+ #figure-controls #scene-orbit{font-size:15px;padding:6px;min-width:44px}
+ #render-mode-notice:not([hidden]){left:10px;top:72px;max-width:calc(100vw - 20px);gap:7px;padding:5px 8px;font-size:11px;flex-wrap:wrap}
+ .two-d #book-stage{padding-top:128px}
+ .two-d #process-note[data-position=top]{top:123px;left:12px;right:12px}
+ .two-d .flat-demonstration{scroll-margin-top:128px}
+}
+@media print{#contents,#desk-header,#chapter-tabs,#folio,#render-mode-notice{display:none!important}}
+
+/* Classical field instruments: ivory working faces, a restrained brass cut
+   edge and engraved dark type. These rules only change the controls' skin;
+   book bounds, docking coordinates and all hidden states stay unchanged. */
+#desk-header{color:#f0e6cc;background:linear-gradient(#201a145c,transparent)}
+.desk-title{color:#f0e6cc;text-shadow:0 1px 3px #18120e66}
+.desk-title>svg{stroke:#c9b485}
+.desk-title h1{letter-spacing:.05em}
+#book-ui .desk-tool{border-radius:4px}
+#book-ui .desk-tool:hover{background:#f4e9cf12;border-color:#c9b48540}
+#book-ui .desk-tool[aria-pressed=true]{background:#f4e9cf1c;border-color:#c9b48566}
+#book-ui .directory-bookmark{background:linear-gradient(90deg,#381b1726,transparent 18%,transparent 88%,#ecc6a21a),var(--desk-red);border-color:#ac6d51;box-shadow:1px 3px 8px #160e0c35}
+#book-ui .directory-bookmark:after{border-color:#edceb922}
+#book-ui .directory-bookmark:hover,#book-ui .directory-bookmark[aria-expanded=true]{background-color:#a3543d}
+#chapter-tabs button{background:linear-gradient(90deg,#f6efdf,#e7dcc5);color:#514d40;border-color:#bca984;box-shadow:-1px 2px 5px #18120e26}
+#chapter-tabs button[aria-current]{background:linear-gradient(90deg,#5a5140,#494435);border-color:#a39068;color:#f5eace;box-shadow:-1px 2px 5px #18120e35}
+#book-ui .capsule,#book-ui .capsule.touring{border-color:#bba883;background:linear-gradient(#faf6ecf5,#eee5d3fa),url('/desk/paper.jpg') center/600px;box-shadow:inset 0 1px 0 #fffdf5,0 2px 0 #ac9976,0 8px 25px #16120e30;color:var(--desk-ink)}
+#book-ui .capsule #cT{font-family:FieldSans,sans-serif;font-weight:400;color:#494537}
+#book-ui .capsule #cCap{color:var(--desk-ink)}
+#book-ui .capsule #cPrev,#book-ui .capsule #cNext,#book-ui #cSpeed{border:1px solid #c4b493;background:linear-gradient(#fffbf0,#eae0cb);color:#514a3a;box-shadow:inset 0 1px 0 #fffdf6,0 1px 0 #a9987a55;border-radius:4px}
+#book-ui .capsule #cPrev:hover,#book-ui .capsule #cNext:hover,#book-ui #cSpeed:hover{background:linear-gradient(#fffaf0,#e0d4ba);border-color:#b19a6b}
+#book-ui .capsule #cPause,#book-ui .capsule #cWatch{border-color:#85432e;background:linear-gradient(#a65b40,#8d4430);box-shadow:inset 0 1px 0 #dca47c73,0 1px 0 #68352266;color:#fff6e3}
+#book-ui .capsule #cPause:hover,#book-ui .capsule #cWatch:hover{background:linear-gradient(#b2684b,#99503a)}
+#book-ui #folio-toggle{border-left-color:#c0b290;color:#6d634f}
+#book-ui #folio-toggle:hover,#book-ui #folio-toggle[aria-expanded=true]{color:var(--desk-red);background:#d8c9a94d}
+#book-ui #figure-controls{border-top-color:#bca98566}
+#figure-controls #selections button,#figure-controls #restart,#figure-controls #fold,#figure-controls #scene-view,#figure-controls #scene-orbit,#figure-controls #figure-note{color:#605a49;min-height:44px;border-radius:3px}
+#figure-controls #selections button:hover,#figure-controls #restart:hover,#figure-controls #fold:hover,#figure-controls #scene-view:hover,#figure-controls #scene-orbit:hover,#figure-controls #figure-note:hover{background:#d9c9aa45}
+#figure-controls #selections button[aria-pressed=true],#figure-controls #scene-view[aria-pressed=true],#figure-controls #scene-orbit[aria-pressed=true]{color:#853e2e;border-color:#bba17a66;background:#e7dbc455;box-shadow:inset 0 -2px 0 #a15a3f;border-radius:3px}
+#figure-controls #phase{height:44px}
+#phase::-webkit-slider-runnable-track{height:4px;border-color:#b6a582;background:#c8b996;box-shadow:inset 0 1px 1px #4c38251a}
+#phase::-webkit-slider-thumb{width:16px;height:16px;margin-top:-7px;border:2px solid #f1e7d0;background:#9a7850;box-shadow:0 1px 2px #4e382850}
+#phase:hover::-webkit-slider-thumb{box-shadow:0 0 0 4px #ac8b4d1a,0 1px 3px #4e382850}
+#phase::-moz-range-track{height:3px;border-color:#b6a582;background:#c8b996}
+#phase::-moz-range-thumb{width:14px;height:14px;border:2px solid #f1e7d0;background:#9a7850}
+#contents,#folio,dialog:not(#page-reader){border-color:#c2af89;background:linear-gradient(#fbf7ecf7,#f2e9d7fa),url('/desk/paper.jpg') center/600px;color:var(--desk-ink);box-shadow:0 9px 32px #17100d38}
+#contents{border-left:2px solid #a58a56}
+#contents .panel-heading{border-color:#bdac8b66}
+#contents .chapter-title{color:#83422f}
+#contents .contents-row{color:#4a473b}
+#contents .contents-row.secondary{color:#756c59;font-size:13px}
+#contents .contents-row:hover,#contents .chapter-title:hover{background:#e2d5ba50}
+#contents .contents-row[aria-current]{background:#e8dcc450;border-color:transparent;box-shadow:inset 2px 0 0 #9a573c;color:#843d2c}
+.directory-tabs{border-bottom-color:#b8a58255}
+.directory-tabs button{color:#7a705c}
+.directory-tabs button[aria-selected=true]{color:#89412e;box-shadow:0 2px 0 #9e7350}
+.directory-search{min-height:44px;background:#fffcf35c;border-color:#c7b794}
+.directory-search input{height:44px;font-size:14px;color:var(--desk-ink)}
+.directory-search input::placeholder{color:#8a806d}
+.directory-search>svg{stroke:#8d7b58}
+.directory-search:focus-within{outline-color:#ac8a4f}
+#contents .menu-tools,#contents #page-jump,.folio-track{border-color:#bdaa8366}
+#contents .menu-tools button{color:#665d4a;font-size:13px}
+#contents .menu-tools button:hover{background:#e1d1af40}
+#contents #page-jump input,#folio-page{min-height:44px;background:#fffaf0;border-color:#c3af88;color:#4b4435}
+#contents #page-jump button,#folio-jump button,#folio-go{min-height:44px;background:#eee3cc;border:1px solid #c2ac80;color:#625033;box-shadow:inset 0 1px 0 #fff9ec;border-radius:3px}
+#folio-jump button:hover,#folio-go:hover{background:#e2d2af}
+.folio-thumb[data-preview]{background:#e1d2b350;border-color:#b69b68;color:#7d492f}
+.folio-thumb:hover,.folio-thumb:focus-visible{background:#e5d8bd40;border-color:#beaa80;transform:translateY(-3px)}
+.folio-thumb[aria-current]{color:#8b402e}
+.folio-cover{background:#4c4a38;color:#e9d6a4;box-shadow:inset 3px 0 3px #201a1644}
+#folio-range{accent-color:#9b7c45;min-height:44px}
+dialog:not(#page-reader)::backdrop{background:#211c1766;backdrop-filter:blur(3px)}
+dialog:not(#page-reader) h2{color:#754732}
+dialog:not(#page-reader) button:not(.icon){background:#eee3cc;border-color:#c2ac80;color:#625033;border-radius:3px;box-shadow:inset 0 1px 0 #fff9ec}
+dialog:not(#page-reader) .icon{width:44px;height:44px;color:#70634d}
+dialog .setting select,#notes-text{background:#fffbf2;border-color:#c6b796;color:var(--desk-ink)}
+dialog .setting select{min-height:44px}
+dialog input[type=checkbox]{accent-color:#976346;width:20px;height:20px}
+#status,#hover-title{border-color:#c4b18a;background:#faf4e7;color:#5b4d37;box-shadow:0 3px 11px #241a1226}
+#render-mode-notice:not([hidden]){border-color:#bdab86;background:#f5edddf5;color:#574d3b;box-shadow:0 3px 10px #21180f26}
+#render-mode-label{border-right-color:#c6b592}
+#render-mode-reason{color:#7b6c54}
+#retry-3d{min-height:44px;border-bottom-color:#ae8d57;color:#805539}
+.page-load-fallback{background:#f7f0df;border-color:#c2ae83;color:#6a5b40}
+.page-load-fallback button{background:#eee1c7;border-color:#bfa576;color:#705333}
+#page-reader{background:#3f382d}
+#page-reader .reader-toolbar{background:linear-gradient(#faf6eb,#eee4ce);border-color:#bda67a;color:#4b4436;box-shadow:0 2px 6px #19130c22}
+#page-reader .reader-toolbar button{background:transparent;color:#665338;border-radius:3px}
+#page-reader .reader-toolbar button:hover{background:#d9c6a342}
+#page-reader .reader-toolbar button:active{background:#d8c5a55c;transform:translateY(1px)}
+#reader-scroll{scrollbar-color:#9e8964 #3f382d}
+#reader-anchor{border-color:#9a5b37;box-shadow:0 0 0 5px #b6a06a24}
+.model-touch-cue{color:#5a472e}
+.model-touch-cue span{background:#fbf4e6f5;border-color:#c9b388;box-shadow:0 2px 8px #241a1222}
+#book-ui button:active:not(:disabled),#contents button:active:not(:disabled),#folio button:active:not(:disabled){filter:brightness(.97)}
+#book-ui .capsule #cSpeed:active,#book-ui .capsule #cPrev:active:not(:disabled),#book-ui .capsule #cNext:active:not(:disabled){background:var(--desk-key-down);box-shadow:inset 0 1px 2px #705d3d26;transform:translateY(1px)}
+.two-d .flat-cover{background:#4b4b38}
+@media(max-width:759px){
+ .directory-search input{font-size:14px}
+ #contents .contents-row{font-size:14px}
+ #contents .contents-row.secondary{font-size:13px}
+ #contents #model-contents .contents-row{font-size:14px}
+ #contents .menu-tools button{font-size:13px;min-height:44px}
+ #contents #page-jump input,#folio-page{min-height:38px}
+}

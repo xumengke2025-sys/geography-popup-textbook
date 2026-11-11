@@ -1,0 +1,1194 @@
+{
+  "base": "http://127.0.0.1:4175",
+  "browser": "156.0.8078.80",
+  "checks": [
+    "0: real coastal solids with fixed inland bedrock and platform",
+    "0: comparison landforms do not intrude into cliff-process mode",
+    "0: three identifiable cliff blocks remain visible",
+    "250: real coastal solids with fixed inland bedrock and platform",
+    "250: comparison landforms do not intrude into cliff-process mode",
+    "250: three identifiable cliff blocks remain visible",
+    "550: real coastal solids with fixed inland bedrock and platform",
+    "550: comparison landforms do not intrude into cliff-process mode",
+    "550: three identifiable cliff blocks remain visible",
+    "800: real coastal solids with fixed inland bedrock and platform",
+    "800: comparison landforms do not intrude into cliff-process mode",
+    "800: three identifiable cliff blocks remain visible",
+    "1000: real coastal solids with fixed inland bedrock and platform",
+    "1000: comparison landforms do not intrude into cliff-process mode",
+    "1000: three identifiable cliff blocks remain visible",
+    "800: real coastal solids with fixed inland bedrock and platform",
+    "800: comparison landforms do not intrude into cliff-process mode",
+    "800: three identifiable cliff blocks remain visible",
+    "550: real coastal solids with fixed inland bedrock and platform",
+    "550: comparison landforms do not intrude into cliff-process mode",
+    "550: three identifiable cliff blocks remain visible",
+    "250: real coastal solids with fixed inland bedrock and platform",
+    "250: comparison landforms do not intrude into cliff-process mode",
+    "250: three identifiable cliff blocks remain visible",
+    "0: real coastal solids with fixed inland bedrock and platform",
+    "0: comparison landforms do not intrude into cliff-process mode",
+    "0: three identifiable cliff blocks remain visible",
+    "fixed-inland-core: actual position buffer, transform and bounds never move while the cliff retreats",
+    "fixed-platform: actual position buffer, transform and bounds never move while the cliff retreats",
+    "phase .25 physically cuts a recess into the toe while leaving the upper seaward face fixed",
+    "the same three upper front corners visibly drop between .55 and .8",
+    "the final blocks remain deposited and expose the original platform",
+    "all slab geometries, indices and position buffers are reused",
+    "reverse seeking exactly restores phase 0",
+    "reverse seeking exactly restores phase 0.25",
+    "reverse seeking exactly restores phase 0.55",
+    "reverse seeking exactly restores phase 0.8",
+    "the endpoint remains still and retains all fallen blocks",
+    "desktop-final: short Chinese labels remain readable, separated and above the controls",
+    "ordinary playback can advance the shared process before direct manipulation",
+    "the physical paper tab is a real phase-track ray target",
+    "grabbing the paper tab during playback immediately pauses the process",
+    "pointerdown freezes the current process without a phase jump",
+    "real paper-tab drag reaches 0.55 and pauses",
+    "real drag 0.55: the same finite three-block pool remains",
+    "real paper-tab drag reaches 0.8 and pauses",
+    "real drag 0.8: the same finite three-block pool remains",
+    "real paper-tab drag reaches 1 and pauses",
+    "real drag 1: the same finite three-block pool remains",
+    "real paper-tab drag reaches 0.25 and pauses",
+    "real drag 0.25: the same finite three-block pool remains",
+    "dragging the tab does not rotate the book or model",
+    "tab release saves the exact coastal condition",
+    "reload restores the saved process condition paused",
+    "mode 1: original through-arch remains real geometry without cliff-process slabs or handle",
+    "mode 1: independent coastal forms retain their scientific boundary",
+    "mode 2: original sea-stack remains real geometry without cliff-process slabs or handle",
+    "mode 2: independent coastal forms retain their scientific boundary",
+    "mode 3: original depositional-beach remains real geometry without cliff-process slabs or handle",
+    "mode 3: independent coastal forms retain their scientific boundary",
+    "desktop-collapse: short Chinese labels remain readable, separated and above the controls",
+    "tablet-collapse: short Chinese labels remain readable, separated and above the controls",
+    "SVG shares the exact undercut state with the actual Three.js cliff",
+    "SVG projects the same rigid block poses rather than playing a separate scene",
+    "the accessible vector description states both model boundaries",
+    "SVG keeps the same three deposited slabs at the endpoint",
+    "phone SVG keeps the short necessary labels at least 18 pixels and in bounds",
+    "no browser exceptions or console errors"
+  ],
+  "failures": [],
+  "errors": [],
+  "states": [
+    {
+      "name": "phase-0",
+      "phase": 0,
+      "model": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 30,
+        "labels": 14,
+        "meshes": 44,
+        "imageMappedMeshes": 0,
+        "extent": [
+          137.95073847780338,
+          51.76470041563229,
+          150.5810965001583
+        ],
+        "sceneElevation": 56,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "phase": 0,
+        "selection": 0,
+        "kind": "coastal-landforms",
+        "reference": {
+          "textbookPage": 74,
+          "figure": "4.16",
+          "measuredRates": false,
+          "progressMeansElapsedYears": false,
+          "allCoastsFollowThisSequence": false
+        },
+        "stage": "undercut",
+        "caption": "浪蚀掏空崖脚",
+        "undercut": 0,
+        "inventory": {
+          "attached": 3,
+          "falling": 0,
+          "deposited": 0,
+          "total": 3
+        },
+        "exposedPlatform": 0,
+        "fixedInlandCore": true,
+        "fixedPlatform": true,
+        "finiteBlocksRetained": true,
+        "closedVolumes": true,
+        "fixedBuffers": true,
+        "blocks": [
+          {
+            "id": 0,
+            "state": "attached",
+            "fall": 0,
+            "angle": 0,
+            "translation": [
+              0,
+              0,
+              0
+            ],
+            "exposedPlatform": 0
+          },
+          {
+            "id": 1,
+            "state": "attached",
+            "fall": 0,
+            "angle": 0,
+            "translation": [
+              0,
+              0,
+              0
+            ],
+            "exposedPlatform": 0
+          },
+          {
+            "id": 2,
+            "state": "attached",
+            "fall": 0,
+            "angle": 0,
+            "translation": [
+              0,
+              0,
+              0
+            ],
+            "exposedPlatform": 0
+          }
+        ],
+        "controls": [
+          "phase-track"
+        ],
+        "selected": "cliff-platform",
+        "archHasRealOpening": true,
+        "requiredChronologicalSequence": false,
+        "retreatAndWavesAreSchematic": true,
+        "buffersStable": true
+      },
+      "render": {
+        "calls": 40,
+        "triangles": 13015,
+        "geometries": 37,
+        "textures": 348
+      }
+    },
+    {
+      "name": "phase-250",
+      "phase": 0.25,
+      "model": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 30,
+        "labels": 14,
+        "meshes": 44,
+        "imageMappedMeshes": 0,
+        "extent": [
+          137.95073847780338,
+          51.76470041563229,
+          150.5810965001583
+        ],
+        "sceneElevation": 56,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "phase": 0.25,
+        "selection": 0,
+        "kind": "coastal-landforms",
+        "reference": {
+          "textbookPage": 74,
+          "figure": "4.16",
+          "measuredRates": false,
+          "progressMeansElapsedYears": false,
+          "allCoastsFollowThisSequence": false
+        },
+        "stage": "undercut",
+        "caption": "浪蚀掏空崖脚",
+        "undercut": 5.059741990450504,
+        "inventory": {
+          "attached": 3,
+          "falling": 0,
+          "deposited": 0,
+          "total": 3
+        },
+        "exposedPlatform": 0,
+        "fixedInlandCore": true,
+        "fixedPlatform": true,
+        "finiteBlocksRetained": true,
+        "closedVolumes": true,
+        "fixedBuffers": true,
+        "blocks": [
+          {
+            "id": 0,
+            "state": "attached",
+            "fall": 0,
+            "angle": 0,
+            "translation": [
+              0,
+              0,
+              0
+            ],
+            "exposedPlatform": 0
+          },
+          {
+            "id": 1,
+            "state": "attached",
+            "fall": 0,
+            "angle": 0,
+            "translation": [
+              0,
+              0,
+              0
+            ],
+            "exposedPlatform": 0
+          },
+          {
+            "id": 2,
+            "state": "attached",
+            "fall": 0,
+            "angle": 0,
+            "translation": [
+              0,
+              0,
+              0
+            ],
+            "exposedPlatform": 0
+          }
+        ],
+        "controls": [
+          "phase-track"
+        ],
+        "selected": "cliff-platform",
+        "archHasRealOpening": true,
+        "requiredChronologicalSequence": false,
+        "retreatAndWavesAreSchematic": true,
+        "buffersStable": true
+      },
+      "render": {
+        "calls": 40,
+        "triangles": 13087,
+        "geometries": 37,
+        "textures": 348
+      }
+    },
+    {
+      "name": "phase-550",
+      "phase": 0.55,
+      "model": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 30,
+        "labels": 14,
+        "meshes": 44,
+        "imageMappedMeshes": 0,
+        "extent": [
+          137.95073847780338,
+          51.76470041563229,
+          150.5810965001583
+        ],
+        "sceneElevation": 56,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "phase": 0.55,
+        "selection": 0,
+        "kind": "coastal-landforms",
+        "reference": {
+          "textbookPage": 74,
+          "figure": "4.16",
+          "measuredRates": false,
+          "progressMeansElapsedYears": false,
+          "allCoastsFollowThisSequence": false
+        },
+        "stage": "collapse",
+        "caption": "岩块断裂、崩落",
+        "undercut": 9.05,
+        "inventory": {
+          "attached": 2,
+          "falling": 1,
+          "deposited": 0,
+          "total": 3
+        },
+        "exposedPlatform": 0.49860103357501423,
+        "fixedInlandCore": true,
+        "fixedPlatform": true,
+        "finiteBlocksRetained": true,
+        "closedVolumes": true,
+        "fixedBuffers": true,
+        "blocks": [
+          {
+            "id": 0,
+            "state": "falling",
+            "fall": 0.13518434228493423,
+            "angle": 0.1824988620846612,
+            "translation": [
+              -0.06083295402822041,
+              0.04169317345601797,
+              0.629535730541648
+            ],
+            "exposedPlatform": 0.8347045799129944
+          },
+          {
+            "id": 1,
+            "state": "attached",
+            "fall": 0,
+            "angle": 0,
+            "translation": [
+              0,
+              0,
+              0.42
+            ],
+            "exposedPlatform": 0.4200000000000017
+          },
+          {
+            "id": 2,
+            "state": "attached",
+            "fall": 0,
+            "angle": 0,
+            "translation": [
+              0,
+              0,
+              0.25268829827197636
+            ],
+            "exposedPlatform": 0.2526882982719769
+          }
+        ],
+        "controls": [
+          "phase-track"
+        ],
+        "selected": "cliff-platform",
+        "archHasRealOpening": true,
+        "requiredChronologicalSequence": false,
+        "retreatAndWavesAreSchematic": true,
+        "buffersStable": true
+      },
+      "render": {
+        "calls": 40,
+        "triangles": 13699,
+        "geometries": 37,
+        "textures": 348
+      }
+    },
+    {
+      "name": "phase-800",
+      "phase": 0.8,
+      "model": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 30,
+        "labels": 14,
+        "meshes": 44,
+        "imageMappedMeshes": 0,
+        "extent": [
+          137.95073847780338,
+          51.76470041563229,
+          150.5810965001583
+        ],
+        "sceneElevation": 56,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "phase": 0.8,
+        "selection": 0,
+        "kind": "coastal-landforms",
+        "reference": {
+          "textbookPage": 74,
+          "figure": "4.16",
+          "measuredRates": false,
+          "progressMeansElapsedYears": false,
+          "allCoastsFollowThisSequence": false
+        },
+        "stage": "collapse",
+        "caption": "岩块断裂、崩落",
+        "undercut": 9.05,
+        "inventory": {
+          "attached": 0,
+          "falling": 2,
+          "deposited": 1,
+          "total": 3
+        },
+        "exposedPlatform": 8.930155351445205,
+        "fixedInlandCore": true,
+        "fixedPlatform": true,
+        "finiteBlocksRetained": true,
+        "closedVolumes": true,
+        "fixedBuffers": true,
+        "blocks": [
+          {
+            "id": 0,
+            "state": "deposited",
+            "fall": 1,
+            "angle": 1.35,
+            "translation": [
+              -0.45,
+              0.2623459242397277,
+              1.97
+            ],
+            "exposedPlatform": 9.763471547825773
+          },
+          {
+            "id": 1,
+            "state": "falling",
+            "fall": 0.9843519788650106,
+            "angle": 1.4076233297769651,
+            "translation": [
+              0,
+              0.36990275503475756,
+              2.1426159630137684
+            ],
+            "exposedPlatform": 10.41016650876071
+          },
+          {
+            "id": 2,
+            "state": "falling",
+            "fall": 0.8017492711370264,
+            "angle": 1.058309037900875,
+            "translation": [
+              0.3607871720116619,
+              1.032222258313459,
+              1.9834110787172017
+            ],
+            "exposedPlatform": 6.645563039003633
+          }
+        ],
+        "controls": [
+          "phase-track"
+        ],
+        "selected": "cliff-platform",
+        "archHasRealOpening": true,
+        "requiredChronologicalSequence": false,
+        "retreatAndWavesAreSchematic": true,
+        "buffersStable": true
+      },
+      "render": {
+        "calls": 42,
+        "triangles": 13711,
+        "geometries": 38,
+        "textures": 349
+      }
+    },
+    {
+      "name": "phase-1000",
+      "phase": 1,
+      "model": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 30,
+        "labels": 14,
+        "meshes": 44,
+        "imageMappedMeshes": 0,
+        "extent": [
+          137.95073847780338,
+          51.76470041563229,
+          150.5810965001583
+        ],
+        "sceneElevation": 56,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "phase": 1,
+        "selection": 0,
+        "kind": "coastal-landforms",
+        "reference": {
+          "textbookPage": 74,
+          "figure": "4.16",
+          "measuredRates": false,
+          "progressMeansElapsedYears": false,
+          "allCoastsFollowThisSequence": false
+        },
+        "stage": "platform",
+        "caption": "岸壁后退，平台留在原位",
+        "undercut": 9.05,
+        "inventory": {
+          "attached": 0,
+          "falling": 0,
+          "deposited": 3,
+          "total": 3
+        },
+        "exposedPlatform": 9.863922325920527,
+        "fixedInlandCore": true,
+        "fixedPlatform": true,
+        "finiteBlocksRetained": true,
+        "closedVolumes": true,
+        "fixedBuffers": true,
+        "blocks": [
+          {
+            "id": 0,
+            "state": "deposited",
+            "fall": 1,
+            "angle": 1.35,
+            "translation": [
+              -0.45,
+              0.2623459242397277,
+              1.97
+            ],
+            "exposedPlatform": 9.763471547825773
+          },
+          {
+            "id": 1,
+            "state": "deposited",
+            "fall": 1,
+            "angle": 1.43,
+            "translation": [
+              0,
+              0.37063202085865354,
+              2.17
+            ],
+            "exposedPlatform": 10.65002670141006
+          },
+          {
+            "id": 2,
+            "state": "deposited",
+            "fall": 1,
+            "angle": 1.32,
+            "translation": [
+              0.45,
+              1.1428634030345535,
+              2.37
+            ],
+            "exposedPlatform": 9.174804908591444
+          }
+        ],
+        "controls": [
+          "phase-track"
+        ],
+        "selected": "cliff-platform",
+        "archHasRealOpening": true,
+        "requiredChronologicalSequence": false,
+        "retreatAndWavesAreSchematic": true,
+        "buffersStable": true
+      },
+      "render": {
+        "calls": 42,
+        "triangles": 13711,
+        "geometries": 38,
+        "textures": 349
+      }
+    },
+    {
+      "name": "physical-handle",
+      "before": {
+        "phase": 0.26388888888888884,
+        "playing": true
+      },
+      "grab": {
+        "atDown": {
+          "phase": 0.2666666666666666,
+          "playing": true
+        },
+        "phase": 0.2666666666666666,
+        "playing": false
+      },
+      "after": {
+        "phase": 0.24999997584777858,
+        "playing": false,
+        "saved": {
+          "phase": 0.24999997584777858,
+          "selection": 0
+        }
+      },
+      "samples": [
+        {
+          "phase": 0.5499999443652487,
+          "model": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 30,
+            "labels": 14,
+            "meshes": 44,
+            "imageMappedMeshes": 0,
+            "extent": [
+              137.95073847780338,
+              51.76470041563229,
+              150.5810965001583
+            ],
+            "sceneElevation": 56,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.5499999443652487,
+            "selection": 0,
+            "kind": "coastal-landforms",
+            "reference": {
+              "textbookPage": 74,
+              "figure": "4.16",
+              "measuredRates": false,
+              "progressMeansElapsedYears": false,
+              "allCoastsFollowThisSequence": false
+            },
+            "stage": "collapse",
+            "caption": "岩块断裂、崩落",
+            "undercut": 9.05,
+            "inventory": {
+              "attached": 2,
+              "falling": 1,
+              "deposited": 0,
+              "total": 3
+            },
+            "exposedPlatform": 0.4986005866734612,
+            "fixedInlandCore": true,
+            "fixedPlatform": true,
+            "finiteBlocksRetained": true,
+            "closedVolumes": true,
+            "fixedBuffers": true,
+            "blocks": [
+              {
+                "id": 0,
+                "state": "falling",
+                "fall": 0.1351841143775151,
+                "angle": 0.18249855440964538,
+                "translation": [
+                  -0.060832851469881793,
+                  0.041693085148281295,
+                  0.6295353772851484
+                ],
+                "exposedPlatform": 0.8347036121350975
+              },
+              {
+                "id": 1,
+                "state": "attached",
+                "fall": 0,
+                "angle": 0,
+                "translation": [
+                  0,
+                  0,
+                  0.42
+                ],
+                "exposedPlatform": 0.4200000000000017
+              },
+              {
+                "id": 2,
+                "state": "attached",
+                "fall": 0,
+                "angle": 0,
+                "translation": [
+                  0,
+                  0,
+                  0.25268790738396296
+                ],
+                "exposedPlatform": 0.25268790738396163
+              }
+            ],
+            "controls": [
+              "phase-track"
+            ],
+            "selected": "cliff-platform",
+            "archHasRealOpening": true,
+            "requiredChronologicalSequence": false,
+            "retreatAndWavesAreSchematic": true,
+            "buffersStable": true
+          }
+        },
+        {
+          "phase": 0.8000000219357573,
+          "model": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 30,
+            "labels": 14,
+            "meshes": 44,
+            "imageMappedMeshes": 0,
+            "extent": [
+              137.95073847780338,
+              51.76470041563229,
+              150.5810965001583
+            ],
+            "sceneElevation": 56,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.8000000219357573,
+            "selection": 0,
+            "kind": "coastal-landforms",
+            "reference": {
+              "textbookPage": 74,
+              "figure": "4.16",
+              "measuredRates": false,
+              "progressMeansElapsedYears": false,
+              "allCoastsFollowThisSequence": false
+            },
+            "stage": "collapse",
+            "caption": "岩块断裂、崩落",
+            "undercut": 9.05,
+            "inventory": {
+              "attached": 0,
+              "falling": 2,
+              "deposited": 1,
+              "total": 3
+            },
+            "exposedPlatform": 8.930155917757842,
+            "fixedInlandCore": true,
+            "fixedPlatform": true,
+            "finiteBlocksRetained": true,
+            "closedVolumes": true,
+            "fixedBuffers": true,
+            "blocks": [
+              {
+                "id": 0,
+                "state": "deposited",
+                "fall": 1,
+                "angle": 1.35,
+                "translation": [
+                  -0.45,
+                  0.2623459242397277,
+                  1.97
+                ],
+                "exposedPlatform": 9.763471547825773
+              },
+              {
+                "id": 1,
+                "state": "falling",
+                "fall": 0.9843520122985514,
+                "angle": 1.4076233775869285,
+                "translation": [
+                  0,
+                  0.36990275682198837,
+                  2.142616021522465
+                ],
+                "exposedPlatform": 10.410167020588549
+              },
+              {
+                "id": 2,
+                "state": "falling",
+                "fall": 0.8017493670659859,
+                "angle": 1.0583091645271014,
+                "translation": [
+                  0.36078721517969364,
+                  1.0322223306172216,
+                  1.9834112657786724
+                ],
+                "exposedPlatform": 6.645564206585686
+              }
+            ],
+            "controls": [
+              "phase-track"
+            ],
+            "selected": "cliff-platform",
+            "archHasRealOpening": true,
+            "requiredChronologicalSequence": false,
+            "retreatAndWavesAreSchematic": true,
+            "buffersStable": true
+          }
+        },
+        {
+          "phase": 0.999999917367634,
+          "model": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 30,
+            "labels": 14,
+            "meshes": 44,
+            "imageMappedMeshes": 0,
+            "extent": [
+              137.95073847780338,
+              51.76470041563229,
+              150.5810965001583
+            ],
+            "sceneElevation": 56,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.999999917367634,
+            "selection": 0,
+            "kind": "coastal-landforms",
+            "reference": {
+              "textbookPage": 74,
+              "figure": "4.16",
+              "measuredRates": false,
+              "progressMeansElapsedYears": false,
+              "allCoastsFollowThisSequence": false
+            },
+            "stage": "platform",
+            "caption": "岸壁后退，平台留在原位",
+            "undercut": 9.05,
+            "inventory": {
+              "attached": 0,
+              "falling": 0,
+              "deposited": 3,
+              "total": 3
+            },
+            "exposedPlatform": 9.863922325920527,
+            "fixedInlandCore": true,
+            "fixedPlatform": true,
+            "finiteBlocksRetained": true,
+            "closedVolumes": true,
+            "fixedBuffers": true,
+            "blocks": [
+              {
+                "id": 0,
+                "state": "deposited",
+                "fall": 1,
+                "angle": 1.35,
+                "translation": [
+                  -0.45,
+                  0.2623459242397277,
+                  1.97
+                ],
+                "exposedPlatform": 9.763471547825773
+              },
+              {
+                "id": 1,
+                "state": "deposited",
+                "fall": 1,
+                "angle": 1.43,
+                "translation": [
+                  0,
+                  0.37063202085865354,
+                  2.17
+                ],
+                "exposedPlatform": 10.65002670141006
+              },
+              {
+                "id": 2,
+                "state": "deposited",
+                "fall": 1,
+                "angle": 1.32,
+                "translation": [
+                  0.45,
+                  1.1428634030345535,
+                  2.37
+                ],
+                "exposedPlatform": 9.174804908591444
+              }
+            ],
+            "controls": [
+              "phase-track"
+            ],
+            "selected": "cliff-platform",
+            "archHasRealOpening": true,
+            "requiredChronologicalSequence": false,
+            "retreatAndWavesAreSchematic": true,
+            "buffersStable": true
+          }
+        },
+        {
+          "phase": 0.24999997584777858,
+          "model": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 30,
+            "labels": 14,
+            "meshes": 44,
+            "imageMappedMeshes": 0,
+            "extent": [
+              137.95073847780338,
+              51.76470041563229,
+              150.5810965001583
+            ],
+            "sceneElevation": 56,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.24999997584777858,
+            "selection": 0,
+            "kind": "coastal-landforms",
+            "reference": {
+              "textbookPage": 74,
+              "figure": "4.16",
+              "measuredRates": false,
+              "progressMeansElapsedYears": false,
+              "allCoastsFollowThisSequence": false
+            },
+            "stage": "undercut",
+            "caption": "浪蚀掏空崖脚",
+            "undercut": 5.059741133021765,
+            "inventory": {
+              "attached": 3,
+              "falling": 0,
+              "deposited": 0,
+              "total": 3
+            },
+            "exposedPlatform": 0,
+            "fixedInlandCore": true,
+            "fixedPlatform": true,
+            "finiteBlocksRetained": true,
+            "closedVolumes": true,
+            "fixedBuffers": true,
+            "blocks": [
+              {
+                "id": 0,
+                "state": "attached",
+                "fall": 0,
+                "angle": 0,
+                "translation": [
+                  0,
+                  0,
+                  0
+                ],
+                "exposedPlatform": 0
+              },
+              {
+                "id": 1,
+                "state": "attached",
+                "fall": 0,
+                "angle": 0,
+                "translation": [
+                  0,
+                  0,
+                  0
+                ],
+                "exposedPlatform": 0
+              },
+              {
+                "id": 2,
+                "state": "attached",
+                "fall": 0,
+                "angle": 0,
+                "translation": [
+                  0,
+                  0,
+                  0
+                ],
+                "exposedPlatform": 0
+              }
+            ],
+            "controls": [
+              "phase-track"
+            ],
+            "selected": "cliff-platform",
+            "archHasRealOpening": true,
+            "requiredChronologicalSequence": false,
+            "retreatAndWavesAreSchematic": true,
+            "buffersStable": true
+          }
+        }
+      ]
+    },
+    {
+      "name": "comparison-1",
+      "model": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 30,
+        "labels": 14,
+        "meshes": 44,
+        "imageMappedMeshes": 0,
+        "extent": [
+          137.95073847780338,
+          51.76470041563229,
+          150.5810965001583
+        ],
+        "sceneElevation": 56,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "phase": 0.55,
+        "selection": 1,
+        "kind": "coastal-landforms",
+        "selected": "through-arch",
+        "archHasRealOpening": true,
+        "requiredChronologicalSequence": false,
+        "retreatAndWavesAreSchematic": true,
+        "buffersStable": true
+      },
+      "roles": [
+        null,
+        null,
+        "comparison-platform",
+        "comparison-cliff",
+        "through-arch",
+        "arch-pier",
+        "arch-pier",
+        "sea-stack",
+        "depositional-beach",
+        null,
+        null,
+        null
+      ],
+      "render": {
+        "calls": 44,
+        "triangles": 13779,
+        "geometries": 49,
+        "textures": 351
+      }
+    },
+    {
+      "name": "comparison-2",
+      "model": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 30,
+        "labels": 14,
+        "meshes": 44,
+        "imageMappedMeshes": 0,
+        "extent": [
+          137.95073847780338,
+          51.76470041563229,
+          150.5810965001583
+        ],
+        "sceneElevation": 56,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "phase": 0.55,
+        "selection": 2,
+        "kind": "coastal-landforms",
+        "selected": "sea-stack",
+        "archHasRealOpening": true,
+        "requiredChronologicalSequence": false,
+        "retreatAndWavesAreSchematic": true,
+        "buffersStable": true
+      },
+      "roles": [
+        null,
+        null,
+        "comparison-platform",
+        "comparison-cliff",
+        "through-arch",
+        "arch-pier",
+        "arch-pier",
+        "sea-stack",
+        "depositional-beach",
+        null,
+        null,
+        null
+      ],
+      "render": {
+        "calls": 44,
+        "triangles": 13779,
+        "geometries": 52,
+        "textures": 354
+      }
+    },
+    {
+      "name": "comparison-3",
+      "model": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 30,
+        "labels": 14,
+        "meshes": 44,
+        "imageMappedMeshes": 0,
+        "extent": [
+          137.95073847780338,
+          51.76470041563229,
+          150.5810965001583
+        ],
+        "sceneElevation": 56,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "phase": 0.55,
+        "selection": 3,
+        "kind": "coastal-landforms",
+        "selected": "depositional-beach",
+        "archHasRealOpening": true,
+        "requiredChronologicalSequence": false,
+        "retreatAndWavesAreSchematic": true,
+        "buffersStable": true
+      },
+      "roles": [
+        null,
+        null,
+        "comparison-platform",
+        "comparison-cliff",
+        "through-arch",
+        "arch-pier",
+        "arch-pier",
+        "sea-stack",
+        "depositional-beach",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "render": {
+        "calls": 68,
+        "triangles": 14259,
+        "geometries": 67,
+        "textures": 357
+      }
+    },
+    {
+      "name": "shared-svg-state",
+      "flat": {
+        "images": 0,
+        "phase": 0.55,
+        "stage": "collapse",
+        "undercut": 9.05,
+        "probes": [
+          {
+            "id": 0,
+            "state": "falling",
+            "fall": 0.1352,
+            "translation": [
+              -0.0608,
+              0.0417,
+              0.6295
+            ],
+            "angle": 0.1825
+          },
+          {
+            "id": 1,
+            "state": "attached",
+            "fall": 0,
+            "translation": [
+              0,
+              0,
+              0.42
+            ],
+            "angle": 0
+          },
+          {
+            "id": 2,
+            "state": "attached",
+            "fall": 0,
+            "translation": [
+              0,
+              0,
+              0.2527
+            ],
+            "angle": 0
+          }
+        ],
+        "aria": "海蚀崖与海蚀平台：浪蚀掏空崖脚，上部岩块断裂崩落，岸壁后退，平台留在原位；示意进度不表示真实年限或侵蚀速率，其他海岸形态不是必经阶段。"
+      },
+      "phone": {
+        "box": {
+          "left": 8,
+          "right": 382
+        },
+        "labels": [
+          {
+            "text": "海蚀崖",
+            "left": 63.515628814697266,
+            "right": 126.609375,
+            "px": 21.037499999999998
+          },
+          {
+            "text": "原位平台",
+            "left": 253.43751525878906,
+            "right": 337.5625,
+            "px": 21.037499999999998
+          },
+          {
+            "text": "岸壁后退，平台留在原位",
+            "left": 79.328125,
+            "right": 310.671875,
+            "px": 21.037499999999998
+          }
+        ]
+      }
+    }
+  ],
+  "targets": [
+    {
+      "x": 542.3266466566582,
+      "y": 550.8865151486116,
+      "kind": "phase-track",
+      "label": "拖动纸签，暂停回看凹蚀、崩塌与平台露出"
+    }
+  ],
+  "labelIssues": [],
+  "reviewedEntry": {
+    "path": "/assets/index-BS7rZUsE.js",
+    "sha256": "eef71ac68e48300b53b13fd51705eb361b0cc5cfb2b3f5978103f9c4706ced7e"
+  },
+  "reviewedStyles": [
+    {
+      "path": "/assets/index-BDRJ6fJi.css",
+      "sha256": "ec33cde6eb611ad9fd5b174f8b9b9cb94bc132749fc8f563f0b17b039955dec6"
+    }
+  ],
+  "reviewedAt": "2026-11-05T12:08:58.660Z",
+  "externalRequests": [],
+  "requestFailures": []
+}

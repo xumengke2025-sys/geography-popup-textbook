@@ -1,0 +1,1019 @@
+{
+  "base": "http://127.0.0.1:4175",
+  "browser": "153.0.4234.48",
+  "checks": [
+    "double fold during unfolding leaves no scene or busy flag",
+    "model can reopen after interrupted unfolding",
+    "rapid next/next/previous reaches the final target after folding",
+    "fold immediately followed by next completes the transaction",
+    "next immediately followed by fold does not strand the navigation promise",
+    "reader advances to the intended original page",
+    "returning from a different reader page moves the book and removes the old model",
+    "Escape from original-page reading follows the same destination as Return",
+    "navigation supersedes an in-flight model request instead of attaching it to the wrong spread",
+    "range arrow changes phase and pauses without turning pages",
+    "scene toggles to book view",
+    "scene returns to detail view",
+    "the menu Whole Book action returns an active detail scene to book view",
+    "teacher navigation does not change the student bookmark",
+    "leaving teacher mode restores the student model and phase paused",
+    "no browser exceptions"
+  ],
+  "failures": [],
+  "errors": [],
+  "states": [
+    {
+      "name": "rapid-fold",
+      "diag": {
+        "ready": true,
+        "twoD": false,
+        "spread": 22,
+        "turning": false,
+        "figureBusy": false,
+        "active": "breeze",
+        "playing": false,
+        "teacher": false,
+        "stored": true,
+        "state": {
+          "phase": 0.5018749999999998,
+          "selection": 0,
+          "routes": [
+            {
+              "points": [
+                [
+                  0.28,
+                  0.625
+                ],
+                [
+                  0.2,
+                  0.625
+                ],
+                [
+                  0.174,
+                  0.58
+                ],
+                [
+                  0.163,
+                  0.51
+                ],
+                [
+                  0.163,
+                  0.25
+                ],
+                [
+                  0.177,
+                  0.17
+                ],
+                [
+                  0.205,
+                  0.123
+                ],
+                [
+                  0.337,
+                  0.123
+                ],
+                [
+                  0.37,
+                  0.14
+                ],
+                [
+                  0.395,
+                  0.22
+                ],
+                [
+                  0.399,
+                  0.5
+                ],
+                [
+                  0.385,
+                  0.58
+                ],
+                [
+                  0.358,
+                  0.625
+                ],
+                [
+                  0.28,
+                  0.625
+                ]
+              ],
+              "count": 2,
+              "color": "#456e91"
+            }
+          ],
+          "rings": [],
+          "focus": [
+            0,
+            0,
+            0.49,
+            1
+          ],
+          "caption": "午后"
+        },
+        "process": {
+          "key": "breeze-2-sea-true",
+          "stage": "午后",
+          "title": "海风吹向陆地",
+          "text": "陆地相对较暖，空气上升；近地面空气由海洋流向陆地，高空反向返回。",
+          "activeStop": 2,
+          "seeking": false
+        },
+        "render": {
+          "position": 22,
+          "spread": 22,
+          "busy": false,
+          "figure": "breeze",
+          "modelState": "live",
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 41,
+            "labels": 18,
+            "meshes": 69,
+            "imageMappedMeshes": 0,
+            "extent": [
+              143.64340209960938,
+              127.69898733177706,
+              96.24107653375516
+            ],
+            "sceneElevation": 61.76666105897719,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.5018749999999998,
+            "selection": 0,
+            "kind": "sea-breeze",
+            "layout": "land-left-sea-right",
+            "scene": "coastal-paper-world",
+            "selected": "day",
+            "groundX": -1,
+            "upperX": 1,
+            "strength": 0.9439005932948781,
+            "pressure": {
+              "seaGround": "相对高压",
+              "landGround": "相对低压",
+              "seaUpper": "相对低压",
+              "landUpper": "相对高压"
+            },
+            "continuousDayNight": true,
+            "flowPhase": 0,
+            "flowRate": 0.09439005932948781,
+            "flagArea": 49.70207000597732,
+            "panels": 1,
+            "sameHeightGuides": 2,
+            "elevatedAbovePage": 61.76666105897719,
+            "sourceFootprint": [
+              115.84144984804425,
+              31.25
+            ],
+            "sceneDepth": 90.49534062129217,
+            "directInteraction": "drag-daylight-handle",
+            "daylightControlIsSchematic": true
+          },
+          "view": "detail",
+          "labels": [
+            {
+              "text": "低压",
+              "left": 547.5567711589223,
+              "top": 487.9155104950427,
+              "right": 616.353851379522,
+              "bottom": 517.1542695887974,
+              "fontPx": 20.15608073697133
+            },
+            {
+              "text": "高压",
+              "left": 752.7809012054864,
+              "top": 503.62219552184007,
+              "right": 822.6905811587943,
+              "bottom": 533.333809501996,
+              "fontPx": 20.482048786320277
+            },
+            {
+              "text": "高压",
+              "left": 545.5511627871955,
+              "top": 383.7400302354529,
+              "right": 617.100971752628,
+              "bottom": 414.1486990457617,
+              "fontPx": 20.962571690510764
+            },
+            {
+              "text": "低压",
+              "left": 750.050317169764,
+              "top": 397.71464386289364,
+              "right": 822.753338155252,
+              "bottom": 428.6134277817261,
+              "fontPx": 21.300438275961103
+            },
+            {
+              "text": "陆地 · 较暖",
+              "left": 485.678010827753,
+              "top": 635.1957682275205,
+              "right": 620.9385548286824,
+              "bottom": 664.8658230406276,
+              "fontPx": 20.45339948818445
+            },
+            {
+              "text": "海洋 · 较冷",
+              "left": 714.9347604821904,
+              "top": 660.3540923333712,
+              "right": 852.3802231101524,
+              "bottom": 690.5034196195048,
+              "fontPx": 20.78379157597295
+            }
+          ],
+          "models": 1,
+          "images": 6,
+          "triangles": 32175,
+          "calls": 127,
+          "geometries": 81,
+          "textures": 209,
+          "hiRes": 6,
+          "engine": "Every Joule 48591dd"
+        },
+        "regions": [
+          {
+            "id": "breeze",
+            "screenX": 637.9474851993671,
+            "screenY": 737.436795521499
+          },
+          {
+            "id": "pressure-wind",
+            "screenX": 828.044296885621,
+            "screenY": 871.8836875688106
+          },
+          {
+            "id": "wind-forces",
+            "screenX": 1381.9247723365106,
+            "screenY": 715.1705253439126
+          }
+        ],
+        "pages": [
+          43,
+          44
+        ],
+        "notes": {},
+        "originalPageCount": 132,
+        "sectionCount": 17,
+        "studyCount": 6,
+        "figureCount": 60
+      }
+    },
+    {
+      "name": "rapid-navigation",
+      "diag": {
+        "ready": true,
+        "twoD": false,
+        "spread": 23,
+        "turning": false,
+        "figureBusy": false,
+        "active": null,
+        "playing": false,
+        "teacher": false,
+        "stored": true,
+        "state": null,
+        "process": null,
+        "render": {
+          "position": 23,
+          "spread": 23,
+          "busy": false,
+          "figure": null,
+          "modelState": null,
+          "geometry": null,
+          "view": "detail",
+          "labels": [],
+          "models": 0,
+          "images": 8,
+          "triangles": 12681,
+          "calls": 29,
+          "geometries": 23,
+          "textures": 209,
+          "hiRes": 6,
+          "engine": "Every Joule 48591dd"
+        },
+        "regions": [],
+        "pages": [
+          45,
+          46
+        ],
+        "notes": {},
+        "originalPageCount": 132,
+        "sectionCount": 17,
+        "studyCount": 6,
+        "figureCount": 60
+      }
+    },
+    {
+      "name": "fold-navigation",
+      "diag": {
+        "ready": true,
+        "twoD": false,
+        "spread": 23,
+        "turning": false,
+        "figureBusy": false,
+        "active": null,
+        "playing": false,
+        "teacher": false,
+        "stored": true,
+        "state": null,
+        "process": null,
+        "render": {
+          "position": 23,
+          "spread": 23,
+          "busy": false,
+          "figure": null,
+          "modelState": null,
+          "geometry": null,
+          "view": "detail",
+          "labels": [],
+          "models": 0,
+          "images": 8,
+          "triangles": 12681,
+          "calls": 29,
+          "geometries": 23,
+          "textures": 209,
+          "hiRes": 6,
+          "engine": "Every Joule 48591dd"
+        },
+        "regions": [],
+        "pages": [
+          45,
+          46
+        ],
+        "notes": {},
+        "originalPageCount": 132,
+        "sectionCount": 17,
+        "studyCount": 6,
+        "figureCount": 60
+      }
+    },
+    {
+      "name": "navigation-fold",
+      "diag": {
+        "ready": true,
+        "twoD": false,
+        "spread": 23,
+        "turning": false,
+        "figureBusy": false,
+        "active": null,
+        "playing": false,
+        "teacher": false,
+        "stored": true,
+        "state": null,
+        "process": null,
+        "render": {
+          "position": 23,
+          "spread": 23,
+          "busy": false,
+          "figure": null,
+          "modelState": null,
+          "geometry": null,
+          "view": "detail",
+          "labels": [],
+          "models": 0,
+          "images": 8,
+          "triangles": 12681,
+          "calls": 29,
+          "geometries": 23,
+          "textures": 209,
+          "hiRes": 6,
+          "engine": "Every Joule 48591dd"
+        },
+        "regions": [],
+        "pages": [
+          45,
+          46
+        ],
+        "notes": {},
+        "originalPageCount": 132,
+        "sectionCount": 17,
+        "studyCount": 6,
+        "figureCount": 60
+      }
+    },
+    {
+      "name": "reader-return",
+      "diag": {
+        "ready": true,
+        "twoD": false,
+        "spread": 23,
+        "turning": false,
+        "figureBusy": false,
+        "active": null,
+        "playing": false,
+        "teacher": false,
+        "stored": true,
+        "state": null,
+        "process": null,
+        "render": {
+          "position": 23,
+          "spread": 23,
+          "busy": false,
+          "figure": null,
+          "modelState": null,
+          "geometry": null,
+          "view": "detail",
+          "labels": [],
+          "models": 0,
+          "images": 8,
+          "triangles": 12681,
+          "calls": 29,
+          "geometries": 23,
+          "textures": 209,
+          "hiRes": 6,
+          "engine": "Every Joule 48591dd"
+        },
+        "regions": [],
+        "pages": [
+          45,
+          46
+        ],
+        "notes": {},
+        "originalPageCount": 132,
+        "sectionCount": 17,
+        "studyCount": 6,
+        "figureCount": 60
+      }
+    },
+    {
+      "name": "reader-escape",
+      "diag": {
+        "ready": true,
+        "twoD": false,
+        "spread": 23,
+        "turning": false,
+        "figureBusy": false,
+        "active": null,
+        "playing": false,
+        "teacher": false,
+        "stored": true,
+        "state": null,
+        "process": null,
+        "render": {
+          "position": 23,
+          "spread": 23,
+          "busy": false,
+          "figure": null,
+          "modelState": null,
+          "geometry": null,
+          "view": "book",
+          "labels": [],
+          "models": 0,
+          "images": 8,
+          "triangles": 12681,
+          "calls": 29,
+          "geometries": 23,
+          "textures": 209,
+          "hiRes": 6,
+          "engine": "Every Joule 48591dd"
+        },
+        "regions": [],
+        "pages": [
+          45,
+          46
+        ],
+        "notes": {},
+        "originalPageCount": 132,
+        "sectionCount": 17,
+        "studyCount": 6,
+        "figureCount": 60
+      }
+    },
+    {
+      "name": "interrupt-menu-model",
+      "diag": {
+        "ready": true,
+        "twoD": false,
+        "spread": 61,
+        "turning": false,
+        "figureBusy": false,
+        "active": null,
+        "playing": false,
+        "teacher": false,
+        "stored": true,
+        "state": null,
+        "process": null,
+        "render": {
+          "position": 61,
+          "spread": 61,
+          "busy": false,
+          "figure": null,
+          "modelState": null,
+          "geometry": null,
+          "view": "book",
+          "labels": [],
+          "models": 0,
+          "images": 8,
+          "triangles": 12681,
+          "calls": 29,
+          "geometries": 33,
+          "textures": 507,
+          "hiRes": 6,
+          "engine": "Every Joule 48591dd"
+        },
+        "regions": [
+          {
+            "id": "gnss",
+            "screenX": 635.31401867696,
+            "screenY": 359.09393537940576
+          },
+          {
+            "id": "gis",
+            "screenX": 838.3395928870374,
+            "screenY": 547.932153715154
+          }
+        ],
+        "pages": [
+          121,
+          122
+        ],
+        "notes": {},
+        "originalPageCount": 132,
+        "sectionCount": 17,
+        "studyCount": 6,
+        "figureCount": 60
+      }
+    },
+    {
+      "name": "slider-keyboard",
+      "diag": {
+        "ready": true,
+        "twoD": false,
+        "spread": 22,
+        "turning": false,
+        "figureBusy": false,
+        "active": "breeze",
+        "playing": false,
+        "teacher": false,
+        "stored": true,
+        "state": {
+          "phase": 0.501,
+          "selection": 0,
+          "routes": [
+            {
+              "points": [
+                [
+                  0.28,
+                  0.625
+                ],
+                [
+                  0.2,
+                  0.625
+                ],
+                [
+                  0.174,
+                  0.58
+                ],
+                [
+                  0.163,
+                  0.51
+                ],
+                [
+                  0.163,
+                  0.25
+                ],
+                [
+                  0.177,
+                  0.17
+                ],
+                [
+                  0.205,
+                  0.123
+                ],
+                [
+                  0.337,
+                  0.123
+                ],
+                [
+                  0.37,
+                  0.14
+                ],
+                [
+                  0.395,
+                  0.22
+                ],
+                [
+                  0.399,
+                  0.5
+                ],
+                [
+                  0.385,
+                  0.58
+                ],
+                [
+                  0.358,
+                  0.625
+                ],
+                [
+                  0.28,
+                  0.625
+                ]
+              ],
+              "count": 2,
+              "color": "#456e91"
+            }
+          ],
+          "rings": [],
+          "focus": [
+            0,
+            0,
+            0.49,
+            1
+          ],
+          "caption": "午后"
+        },
+        "process": {
+          "key": "breeze-2-sea-true",
+          "stage": "午后",
+          "title": "海风吹向陆地",
+          "text": "陆地相对较暖，空气上升；近地面空气由海洋流向陆地，高空反向返回。",
+          "activeStop": 2,
+          "seeking": false
+        },
+        "render": {
+          "position": 22,
+          "spread": 22,
+          "busy": false,
+          "figure": "breeze",
+          "modelState": "live",
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 41,
+            "labels": 18,
+            "meshes": 69,
+            "imageMappedMeshes": 0,
+            "extent": [
+              143.64340209960938,
+              127.69898733177706,
+              96.24107653375516
+            ],
+            "sceneElevation": 61.76666105897719,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.501,
+            "selection": 0,
+            "kind": "sea-breeze",
+            "layout": "land-left-sea-right",
+            "scene": "coastal-paper-world",
+            "selected": "day",
+            "groundX": -1,
+            "upperX": 1,
+            "strength": 0.9421838858655948,
+            "pressure": {
+              "seaGround": "相对高压",
+              "landGround": "相对低压",
+              "seaUpper": "相对低压",
+              "landUpper": "相对高压"
+            },
+            "continuousDayNight": true,
+            "flowPhase": 0,
+            "flowRate": 0.09421838858655948,
+            "flagArea": 49.70208754621278,
+            "panels": 1,
+            "sameHeightGuides": 2,
+            "elevatedAbovePage": 61.76666105897719,
+            "sourceFootprint": [
+              115.84144984804425,
+              31.25
+            ],
+            "sceneDepth": 90.49534062129217,
+            "directInteraction": "drag-daylight-handle",
+            "daylightControlIsSchematic": true
+          },
+          "view": "book",
+          "labels": [
+            {
+              "text": "低压",
+              "left": 534.9890185455985,
+              "top": 478.04729890062066,
+              "right": 601.8154765418171,
+              "bottom": 506.4485435490137,
+              "fontPx": 19.57873035336032
+            },
+            {
+              "text": "高压",
+              "left": 733.4636420170712,
+              "top": 495.2932890040353,
+              "right": 801.4938227198097,
+              "bottom": 524.2061158026992,
+              "fontPx": 19.931395495249156
+            },
+            {
+              "text": "高压",
+              "left": 532.6183038136172,
+              "top": 376.1001402351182,
+              "right": 602.0046738108115,
+              "bottom": 405.58934748392574,
+              "fontPx": 20.328730103433276
+            },
+            {
+              "text": "低压",
+              "left": 730.049186632308,
+              "top": 391.4320524592719,
+              "right": 800.6790850901107,
+              "bottom": 421.44975930383805,
+              "fontPx": 20.693057484339207
+            },
+            {
+              "text": "陆地 · 较暖",
+              "left": 472.5668852362255,
+              "top": 620.456782861343,
+              "right": 603.9549810980745,
+              "bottom": 649.2773974374904,
+              "fontPx": 19.86782792057826
+            },
+            {
+              "text": "海洋 · 较冷",
+              "left": 694.2003456963513,
+              "top": 647.4833557548194,
+              "right": 827.9930087078022,
+              "bottom": 676.8314237702344,
+              "fontPx": 20.231434121264833
+            }
+          ],
+          "models": 1,
+          "images": 6,
+          "triangles": 32175,
+          "calls": 127,
+          "geometries": 81,
+          "textures": 209,
+          "hiRes": 6,
+          "engine": "Every Joule 48591dd"
+        },
+        "regions": [
+          {
+            "id": "breeze",
+            "screenX": 623.9688171728413,
+            "screenY": 724.1405579864005
+          },
+          {
+            "id": "pressure-wind",
+            "screenX": 803.6649905836564,
+            "screenY": 855.3972616095291
+          },
+          {
+            "id": "wind-forces",
+            "screenX": 1355.8397075296307,
+            "screenY": 713.0543363010571
+          }
+        ],
+        "pages": [
+          43,
+          44
+        ],
+        "notes": {},
+        "originalPageCount": 132,
+        "sectionCount": 17,
+        "studyCount": 6,
+        "figureCount": 60
+      }
+    },
+    {
+      "name": "teacher-isolation",
+      "diag": {
+        "ready": true,
+        "twoD": false,
+        "spread": 22,
+        "turning": false,
+        "figureBusy": false,
+        "active": "breeze",
+        "playing": false,
+        "teacher": false,
+        "stored": true,
+        "state": {
+          "phase": 0.5,
+          "selection": 0,
+          "routes": [
+            {
+              "points": [
+                [
+                  0.28,
+                  0.625
+                ],
+                [
+                  0.2,
+                  0.625
+                ],
+                [
+                  0.174,
+                  0.58
+                ],
+                [
+                  0.163,
+                  0.51
+                ],
+                [
+                  0.163,
+                  0.25
+                ],
+                [
+                  0.177,
+                  0.17
+                ],
+                [
+                  0.205,
+                  0.123
+                ],
+                [
+                  0.337,
+                  0.123
+                ],
+                [
+                  0.37,
+                  0.14
+                ],
+                [
+                  0.395,
+                  0.22
+                ],
+                [
+                  0.399,
+                  0.5
+                ],
+                [
+                  0.385,
+                  0.58
+                ],
+                [
+                  0.358,
+                  0.625
+                ],
+                [
+                  0.28,
+                  0.625
+                ]
+              ],
+              "count": 2,
+              "color": "#456e91"
+            }
+          ],
+          "rings": [],
+          "focus": [
+            0,
+            0,
+            0.49,
+            1
+          ],
+          "caption": "午后"
+        },
+        "process": {
+          "key": "breeze-2-sea-true",
+          "stage": "午后",
+          "title": "海风吹向陆地",
+          "text": "陆地相对较暖，空气上升；近地面空气由海洋流向陆地，高空反向返回。",
+          "activeStop": 2,
+          "seeking": false
+        },
+        "render": {
+          "position": 22,
+          "spread": 22,
+          "busy": false,
+          "figure": "breeze",
+          "modelState": "live",
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 41,
+            "labels": 18,
+            "meshes": 69,
+            "imageMappedMeshes": 0,
+            "extent": [
+              143.64340209960938,
+              127.69898733177706,
+              96.24107653375516
+            ],
+            "sceneElevation": 61.76666105897719,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.5,
+            "selection": 0,
+            "kind": "sea-breeze",
+            "layout": "land-left-sea-right",
+            "scene": "coastal-paper-world",
+            "selected": "day",
+            "groundX": -1,
+            "upperX": 1,
+            "strength": 0.9401870664873426,
+            "pressure": {
+              "seaGround": "相对高压",
+              "landGround": "相对低压",
+              "seaUpper": "相对低压",
+              "landUpper": "相对高压"
+            },
+            "continuousDayNight": true,
+            "flowPhase": 0,
+            "flowRate": 0.09401870664873427,
+            "flagArea": 49.70212706976835,
+            "panels": 1,
+            "sameHeightGuides": 2,
+            "elevatedAbovePage": 61.76666105897719,
+            "sourceFootprint": [
+              115.84144984804425,
+              31.25
+            ],
+            "sceneDepth": 90.49534062129217,
+            "directInteraction": "drag-daylight-handle",
+            "daylightControlIsSchematic": true
+          },
+          "view": "detail",
+          "labels": [
+            {
+              "text": "低压",
+              "left": 547.5496716387461,
+              "top": 487.91315776344396,
+              "right": 616.3528389344974,
+              "bottom": 517.1545038641382,
+              "fontPx": 20.157864120478564
+            },
+            {
+              "text": "高压",
+              "left": 752.7873093896832,
+              "top": 503.64289142668764,
+              "right": 822.7048276835802,
+              "bottom": 533.357836701594,
+              "fontPx": 20.48434525333971
+            },
+            {
+              "text": "高压",
+              "left": 545.5441518801085,
+              "top": 383.72316923110355,
+              "right": 617.1002000529832,
+              "bottom": 414.1344897045753,
+              "fontPx": 20.964399645542215
+            },
+            {
+              "text": "低压",
+              "left": 750.0564399544834,
+              "top": 397.71800612246574,
+              "right": 822.7675122703371,
+              "bottom": 428.62021185670346,
+              "fontPx": 21.30279714445324
+            },
+            {
+              "text": "陆地 · 较暖",
+              "left": 485.64401284261226,
+              "top": 635.202401607136,
+              "right": 620.9172917107599,
+              "bottom": 664.8752498749877,
+              "fontPx": 20.455325188902016
+            },
+            {
+              "text": "海洋 · 较冷",
+              "left": 714.9158003571241,
+              "top": 660.391757275571,
+              "right": 852.3778692258259,
+              "bottom": 690.5447272209635,
+              "fontPx": 20.786302685759974
+            }
+          ],
+          "models": 1,
+          "images": 8,
+          "triangles": 32175,
+          "calls": 127,
+          "geometries": 81,
+          "textures": 215,
+          "hiRes": 6,
+          "engine": "Every Joule 48591dd"
+        },
+        "regions": [
+          {
+            "id": "breeze",
+            "screenX": 637.9473132093535,
+            "screenY": 737.4769664109049
+          },
+          {
+            "id": "pressure-wind",
+            "screenX": 828.0271282692615,
+            "screenY": 871.9603733954192
+          },
+          {
+            "id": "wind-forces",
+            "screenX": 1382.054973743017,
+            "screenY": 715.3114406306289
+          }
+        ],
+        "pages": [
+          43,
+          44
+        ],
+        "notes": {},
+        "originalPageCount": 132,
+        "sectionCount": 17,
+        "studyCount": 6,
+        "figureCount": 60
+      }
+    }
+  ],
+  "reviewedEntry": {
+    "path": "/assets/index-DeWBg8MI.js",
+    "sha256": "ec96f82b826571539b4f96947cd63429a09bd620f1962d495fa6f718172b7d32"
+  },
+  "reviewedStyles": [
+    {
+      "path": "/assets/index-BNlCIg7W.css",
+      "sha256": "7dc46979023abf69bb0739abccbdf5b37c1e2a4684645382e091631cf47753e2"
+    }
+  ],
+  "reviewedAt": "2026-11-05T18:54:24.846Z",
+  "externalRequests": [],
+  "requestFailures": []
+}

@@ -1,0 +1,13 @@
+import { evaluateWater, evaluateRiver, samplePath, riverUpstream, riverBend, riverDownstream, riverShortcut, type Point, type WaterProgress, type RiverProgress } from './chapters';
+
+function path(points:Point[],project:(p:Point)=>number[],a=0,b=1){return Array.from({length:81},(_,i)=>{const [x,y]=project(samplePath(points,a+(b-a)*i/80));return`${i?'L':'M'}${x.toFixed(1)},${y.toFixed(1)}`}).join(' ')}
+const defs='<defs><marker id="ch-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0L10,5L0,10" fill="#317f8b"/></marker><pattern id="ch-hatch" width="12" height="12" patternUnits="userSpaceOnUse"><path d="M0,12L12,0" stroke="#c7c2b5" stroke-width="1"/></pattern></defs>';
+export function waterDiagram(input:WaterProgress){
+  const s=evaluateWater(input),p=(v:Point)=>[60+v.x*5.1,660+v.z*1.45-v.y*4.4];
+  return `<svg class="chapter-diagram" viewBox="0 0 1000 760" role="img" aria-label="水循环：${s.mode}">${defs}<path d="M100 515L132 380L210 310L300 395L390 440L500 485L630 522L900 522L900 640L100 640Z" fill="#f2eddf" stroke="#253945" stroke-width="2"/><path d="M100 555H630V640H100Z" fill="url(#ch-hatch)"/><path d="M630 522H900V565H630Z" fill="#dae8e5" stroke="#253945"/><g fill="#fbf7ee" stroke="#253945" stroke-width="2"><ellipse cx="280" cy="310" rx="100" ry="32"/><ellipse cx="785" cy="325" rx="80" ry="28"/></g><g fill="#253945" font-family="FieldSerif,serif" font-size="24"><text x="300" y="700">陆地</text><text x="770" y="700">海洋</text></g>${input.revealed?s.paths.map(q=>{const at=p(samplePath(q.points,s.phase));return`<path d="${path(q.points,p)}" fill="none" stroke="#317f8b" stroke-width="${s.focus===q.id?4:2}" marker-end="url(#ch-arrow)"/><circle cx="${at[0]}" cy="${at[1]}" r="5" fill="#317f8b"/>`}).join(''):''}</svg>`;
+}
+export function riverDiagram(input:RiverProgress){
+  const s=evaluateRiver(input.phase),p=(v:Point)=>[30+v.x*5.6,50+(v.z+125)*5];
+  const water=(points:Point[],width=27,a=0,b=1)=>`<path d="${path(points,p,a,b)}" fill="none" stroke="#314c58" stroke-width="${width+3}" stroke-linecap="round"/><path d="${path(points,p,a,b)}" fill="none" stroke="#c8dfdf" stroke-width="${width}" stroke-linecap="round"/>`;
+  return `<svg class="chapter-diagram" viewBox="0 0 1000 760" role="img" aria-label="河曲演变：${s.stage}">${defs}<path d="M65 55H960V690H65Z" fill="#f2eddf" stroke="#253945" stroke-width="2"/>${water(riverUpstream)}${water(riverBend,27,.06*s.isolation,1-.1*s.isolation)}${water(riverDownstream)}${s.cut>.005?water(riverShortcut,27*s.cut):''}<g fill="#253945" font-family="FieldSerif,serif" font-size="24"><text x="120" y="95">上游</text><text x="100" y="660">下游</text>${s.isolation>.9?'<text x="710" y="400">牛轭湖</text>':'<text x="365" y="390">颈部</text>'}</g></svg>`;
+}

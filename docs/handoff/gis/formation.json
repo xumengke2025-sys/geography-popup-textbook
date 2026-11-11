@@ -1,0 +1,1356 @@
+{
+  "samples": [
+    {
+      "name": "early",
+      "active": "gis",
+      "modelState": "peel",
+      "formation": {
+        "kind": "rigid-parts",
+        "parts": 72,
+        "progress": 0.053523809523810216,
+        "preservesScientificTransforms": true,
+        "surfaceReveal": "per-part"
+      },
+      "phase": 0.023611111111110306,
+      "scales": [
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "name": "middle",
+      "active": "gis",
+      "modelState": "peel",
+      "formation": {
+        "kind": "rigid-parts",
+        "parts": 72,
+        "progress": 0.2677619047619027,
+        "preservesScientificTransforms": true,
+        "surfaceReveal": "per-part"
+      },
+      "phase": 0.023611111111110306,
+      "scales": [
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "name": "late",
+      "active": "gis",
+      "modelState": "peel",
+      "formation": {
+        "kind": "rigid-parts",
+        "parts": 72,
+        "progress": 0.5476190476190443,
+        "preservesScientificTransforms": true,
+        "surfaceReveal": "per-part"
+      },
+      "phase": 0.023611111111110306,
+      "scales": [
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "name": "live",
+      "formation": {
+        "kind": "rigid-parts",
+        "parts": 72,
+        "progress": 1,
+        "preservesScientificTransforms": true,
+        "surfaceReveal": "per-part"
+      },
+      "rootScale": [
+        1,
+        1,
+        1
+      ],
+      "model": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 70,
+        "labels": 8,
+        "meshes": 78,
+        "imageMappedMeshes": 0,
+        "extent": [
+          81.58446073532103,
+          34.359286962042844,
+          86.94524943444864
+        ],
+        "sceneElevation": 33.50491164835741,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "materialRoles": [
+          "steel",
+          "brass",
+          "enamel",
+          "land",
+          "ivory",
+          "wood"
+        ],
+        "physicalMaterials": 69,
+        "formation": {
+          "kind": "rigid-parts",
+          "parts": 72,
+          "progress": 1,
+          "preservesScientificTransforms": true,
+          "surfaceReveal": "per-part"
+        },
+        "instrument": {
+          "family": "mapping",
+          "strategy": "map-pins",
+          "parts": 6,
+          "progress": 1,
+          "rigid": true,
+          "touchesScientificTransforms": false,
+          "footprintCount": 1,
+          "reason": "structural-underside",
+          "attachmentBounds": [
+            {
+              "min": [
+                1.0889096260070799,
+                0.16752456128597257,
+                -171.38604736328125
+              ],
+              "max": [
+                82.67337036132811,
+                1.3401964902877805,
+                -87.62377166748047
+              ]
+            }
+          ],
+          "extent": {
+            "min": [
+              7.942004203796387,
+              -1.5914833545684814,
+              -160.89935302734375
+            ],
+            "max": [
+              75.82027435302734,
+              0.1675245612859726,
+              -153.39356994628906
+            ]
+          },
+          "materialRoles": [
+            "wood",
+            "steel",
+            "brass"
+          ]
+        },
+        "phase": 0.023611111111110306,
+        "selection": 0,
+        "kind": "gis-spatial-overlay",
+        "stage": "aligning",
+        "assembled": false,
+        "inspection": "overview",
+        "source": {
+          "textbookPage": 117,
+          "pdfPage": 122,
+          "figure": "6.26",
+          "image": "textbook/page-122.webp",
+          "imagePixels": [
+            1530,
+            2147
+          ],
+          "stationLayerY": [
+            970,
+            1147
+          ],
+          "regionLayerY": [
+            1251,
+            1427
+          ],
+          "coordinateMeaning": "positions-traced-from-the-textbook-diagram"
+        },
+        "geometricLayers": 2,
+        "stationMeshCount": 33,
+        "oneStationSet": true,
+        "counts": [
+          {
+            "region": 1,
+            "count": 0
+          },
+          {
+            "region": 2,
+            "count": 0
+          },
+          {
+            "region": 3,
+            "count": 0
+          }
+        ],
+        "derivedTotals": [
+          {
+            "id": 1,
+            "count": 5
+          },
+          {
+            "id": 2,
+            "count": 15
+          },
+          {
+            "id": 3,
+            "count": 13
+          }
+        ],
+        "membershipMethod": "point-in-polygon",
+        "activeRegion": null,
+        "resultReady": false,
+        "measuredGeographicData": false,
+        "elevatedAbovePage": 33.50491164835741,
+        "registrationRig": {
+          "openFrame": true,
+          "mapThickness": 0.55,
+          "stationSheetThickness": 0.28,
+          "guideXs": [
+            3,
+            97
+          ],
+          "mapXRange": [
+            7,
+            93
+          ],
+          "guidesOutsideMapSweep": true,
+          "sharedLayerCoordinates": true,
+          "stationIds": [
+            "station-01",
+            "station-02",
+            "station-03",
+            "station-04",
+            "station-05",
+            "station-06",
+            "station-07",
+            "station-08",
+            "station-09",
+            "station-10",
+            "station-11",
+            "station-12",
+            "station-13",
+            "station-14",
+            "station-15",
+            "station-16",
+            "station-17",
+            "station-18",
+            "station-19",
+            "station-20",
+            "station-21",
+            "station-22",
+            "station-23",
+            "station-24",
+            "station-25",
+            "station-26",
+            "station-27",
+            "station-28",
+            "station-29",
+            "station-30",
+            "station-31",
+            "station-32",
+            "station-33"
+          ],
+          "directPhaseTrack": {
+            "start": [
+              7.538605120880417,
+              2.680392931868593,
+              -90.13664046153745
+            ],
+            "end": [
+              76.2236740000131,
+              2.680392931868593,
+              -90.13664046153745
+            ]
+          },
+          "handlePosition": [
+            9.160335913859884,
+            2.680392931868593,
+            -90.13664046153745
+          ],
+          "attachedCountSockets": 3,
+          "viewBoundsStable": true
+        }
+      }
+    }
+  ],
+  "checks": [
+    "actual partially formed geometry sampled after original-page native button",
+    "rigid formation completes without parent-scale replacement",
+    "same 33 stations survive unfold",
+    "no browser errors during fold/reopen"
+  ],
+  "failures": [],
+  "errors": [],
+  "scope": "Actual original page native button, source GIS rigid formation. Sampled stills, not continuous normal-speed video review."
+}

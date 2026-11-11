@@ -1,0 +1,36 @@
+人教版地理必修一：第三方组件与素材说明
+
+Three.js 0.187.0 - MIT License, Copyright 2010-2026 three.js authors.
+完整文本见 THREE-LICENSE.txt。
+参考引擎自带 Three.js r170；实际书本渲染使用该版本，并非将原引擎替换为 0.187.0。
+
+Noto Serif SC / Noto Sans SC - SIL Open Font License 1.1.
+完整文本见 dist/fonts/OFL-serif.txt 和 dist/fonts/OFL-sans.txt。
+字体由 @fontsource 包提供，原字形未修改。
+
+Node.js 24.15.0 - 便携运行时，完整官方许可证及各组件声明见 runtime/LICENSE.txt。
+
+工作台新增材质：
+Poly Haven / dark_wood，颜色、OpenGL法线与粗糙度三张1k贴图，CC0-1.0。
+来源：https://polyhaven.com/a/dark_wood
+纸张处理输出取自 Vincentwei1021/mg-styles-15（MIT，Copyright (c) 2026 Vincentwei1021）。
+其 demos/05-cel-boil/tools/gen_paper.py 标注底层 ambientCG Paper001 为 CC0。
+四张资产的路径、SHA256、来源证据和完整 MIT 通知见 dist/desk/sources.json
+（静态网站路径为 desk/sources.json）。教材页影像未覆加纸张纹理。
+
+Every Joule, Techartist / iamtechartist.
+来源：https://github.com/iamtechartist/every-joule-lesson1
+固定提交：48591ddc5f0a22e6eb2a5a41c424a426599061ca。
+本地改编直接使用原项目书本几何、纸张/桌面/布面材质、笔触、
+排线、模型升起/印刷投影、翻片、后期效果与胶囊底栏代码，
+并带入运行所需的原项目 JS 模块（包含其 Three.js 与后期依赖）。
+来源仓库未附许可证；这份说明不表示原作者已授予开源再许可或公开再分发权。
+具体提取边界及改动记录见 docs/原作代码研究.md。
+地理几何、海陆风科学计算及 SVG 演示适配为本项目编写。
+当前页面入口为 src/textbook-main.ts；包含60个立体演示及132张原教材内页阅读，覆盖17节和6个问题研究的主要知识。
+
+教材：人教版普通高中教科书《地理 必修 第一册》。
+来源：https://github.com/TapXWorld/ChinaTextbook/blob/master/高中/地理/人教版-人民教育出版社/普通高中教科书·地理必修%20第一册.pdf
+当前 public/textbook/ 包含由PDF转换的页面与封面影像，静态构建和离线包包含这些影像。
+未附原PDF文件不等于未包含教材内容。教材版权归原权利人；来源记录不授予公开再分发许可。
+本项目名称不表示出版社或 Every Joule 作者授权的官方版本。

@@ -1,0 +1,4190 @@
+{
+  "base": "http://127.0.0.1:4175",
+  "browser": "156.0.8078.80",
+  "checks": [
+    "only whole-wave and same-water-point observation controls are present",
+    "0: the wave is a solid closed cutaway with no picture texture",
+    "0: one material point follows the same mathematical surface",
+    "0: the idealized particle and uncalibrated quantities stay explicit",
+    "0: surface vertices move without scaling a flat object",
+    "200: the wave is a solid closed cutaway with no picture texture",
+    "200: one material point follows the same mathematical surface",
+    "200: the idealized particle and uncalibrated quantities stay explicit",
+    "200: surface vertices move without scaling a flat object",
+    "400: the wave is a solid closed cutaway with no picture texture",
+    "400: one material point follows the same mathematical surface",
+    "400: the idealized particle and uncalibrated quantities stay explicit",
+    "400: surface vertices move without scaling a flat object",
+    "700: the wave is a solid closed cutaway with no picture texture",
+    "700: one material point follows the same mathematical surface",
+    "700: the idealized particle and uncalibrated quantities stay explicit",
+    "700: surface vertices move without scaling a flat object",
+    "1000: the wave is a solid closed cutaway with no picture texture",
+    "1000: one material point follows the same mathematical surface",
+    "1000: the idealized particle and uncalibrated quantities stay explicit",
+    "1000: surface vertices move without scaling a flat object",
+    "400: the wave is a solid closed cutaway with no picture texture",
+    "400: one material point follows the same mathematical surface",
+    "400: the idealized particle and uncalibrated quantities stay explicit",
+    "400: surface vertices move without scaling a flat object",
+    "forward and reverse seeking reuse all mesh, geometry, index and position buffers",
+    "a full period returns the same particle and water surface with no accumulated translation",
+    "reverse keyboard seeking exactly restores phase .4",
+    "the ocean has a closed, thick three-dimensional volume with every geometric edge shared twice",
+    "desktop-phase-0.4: two short labels are readable and separated",
+    "water particle exposes its click meaning on real pointer hover",
+    "clicking the same physical water point toggles emphasis without replaying",
+    "particle selection never changes the scientific state",
+    "the real water particle reveals its closed orbit",
+    "water particle exposes its click meaning on real pointer hover",
+    "clicking the same physical water point toggles emphasis without replaying",
+    "particle selection never changes the scientific state",
+    "the delicate water point has an unobstructed 44-pixel target beyond its visible sphere",
+    "a real click near the 44-pixel target edge toggles only particle emphasis",
+    "paper handle: real drag seeks to 0.2 and pauses",
+    "paper handle 0.2: same particle remains on the actual wave surface",
+    "paper handle: real drag seeks to 0.7 and pauses",
+    "paper handle 0.7: same particle remains on the actual wave surface",
+    "paper handle: real drag seeks to 1 and pauses",
+    "paper handle 1: same particle remains on the actual wave surface",
+    "paper handle: real drag seeks to 0 and pauses",
+    "paper handle 0: same particle remains on the actual wave surface",
+    "paper handle: real drag seeks to 0.4 and pauses",
+    "paper handle 0.4: same particle remains on the actual wave surface",
+    "dragging the wave handle never rotates the scene",
+    "release saves the exact wave conditions",
+    "paused shape, particle and orbit do not advance",
+    "refresh restores the saved wave condition in a paused state",
+    "ordinary drag still rotates the solid without changing the wave conditions",
+    "tablet-phase-0.4: two short labels are readable and separated",
+    "switching to vector mode preserves the paused wave state",
+    "fallback is native accessible vector geometry with one persistent particle",
+    "vector point and surface probes equal the production Three.js scientific state",
+    "vector explanation states model limits without inventing real measurements",
+    "clicking the vector particle reveals the same closed orbit without replay",
+    "Enter hides the vector orbit and preserves the same keyboard focus",
+    "Space shows the vector orbit while keeping playback paused and focus retained",
+    "vector mode closes the same complete period",
+    "phone keeps both necessary vector labels at least 18 pixels and in bounds",
+    "draw-call budget remains below 120 (measured 33)",
+    "no browser exceptions or console errors"
+  ],
+  "failures": [],
+  "errors": [],
+  "states": [
+    {
+      "name": "direct-handle-drag",
+      "before": {
+        "phase": 0.4,
+        "selection": 0,
+        "playing": false,
+        "twoD": false,
+        "model": {
+          "architecture": "three-dimensional-geometry",
+          "bitmapSurfaces": 0,
+          "solids": 4,
+          "labels": 2,
+          "meshes": 6,
+          "imageMappedMeshes": 0,
+          "extent": [
+            174.1186065673828,
+            72.08510477895771,
+            83.45504978590148
+          ],
+          "sceneElevation": 56,
+          "unfoldProgress": 1,
+          "originalPagePreserved": true,
+          "phase": 0.4,
+          "selection": 0,
+          "kind": "surface-wave",
+          "reference": {
+            "textbookPage": 57,
+            "pdfPage": 62,
+            "figure": "3.20",
+            "quantities": "schematic",
+            "model": "ideal-periodic-deep-water",
+            "includesCurrent": false,
+            "includesBreaking": false,
+            "includesStokesDrift": false,
+            "markerIsRealBuoy": false
+          },
+          "cyclePhase": 0.4,
+          "caption": "波形向前传播；橙点表示同一水质点。",
+          "wavePropagates": true,
+          "propagationDirection": "right",
+          "particleAdvection": false,
+          "particleMotion": "closed-orbit",
+          "particle": {
+            "restX": 57,
+            "x": 62.63974553830653,
+            "height": 20.353983110364247
+          },
+          "waveHeight": 11.6,
+          "amplitude": 5.8,
+          "wavelength": 48,
+          "closedVolume": true,
+          "fixedBuffers": true,
+          "surfaceEquation": "monotone-gerstner-inverse",
+          "heightProbes": [
+            {
+              "x": 0,
+              "height": 13.57283298241104
+            },
+            {
+              "x": 25,
+              "height": 19.30982694864922
+            },
+            {
+              "x": 50,
+              "height": 13.954327352651877
+            },
+            {
+              "x": 75,
+              "height": 17.87590332843935
+            },
+            {
+              "x": 100,
+              "height": 14.477558802376958
+            }
+          ],
+          "trackedSurfaceError": 5.151434834260726e-13,
+          "controls": [
+            "particle",
+            "phase-track"
+          ]
+        },
+        "labels": [
+          {
+            "text": "波向前传播",
+            "left": 417.2368208538623,
+            "top": 132.1621599002014,
+            "right": 621.4677197266027,
+            "bottom": 178.45449697802252,
+            "fontPx": 31.836133569308558
+          },
+          {
+            "text": "水质点",
+            "left": 833.5669228029118,
+            "top": 152.40618302158506,
+            "right": 988.4641216372929,
+            "bottom": 200.2834990249392,
+            "fontPx": 32.926154163710216
+          }
+        ],
+        "camera": {
+          "position": [
+            132.13480875601664,
+            267.5685190311972,
+            362.4259153882087
+          ],
+          "quaternion": [
+            -0.277915299867644,
+            0.06825395727063417,
+            0.019800993977346727,
+            0.9579730706308425
+          ],
+          "orbit": 0.18,
+          "elevation": 0.64
+        },
+        "saved": {
+          "phase": 0.4,
+          "selection": 0
+        },
+        "render": {
+          "calls": 33,
+          "geometries": 33,
+          "triangles": 22751,
+          "textures": 277
+        },
+        "meshes": [
+          {
+            "role": "water-volume",
+            "xyz": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "geometry": "47334157-3ab3-4a8a-94a3-ac971578515e",
+            "position": 1,
+            "array": 2,
+            "index": 3
+          },
+          {
+            "role": "particle",
+            "restX": 57,
+            "particleX": 62.63974553830653,
+            "particleHeight": 20.353983110364247,
+            "xyz": [
+              109.06745424031968,
+              35.440072471882985,
+              -77.57857653439261
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "geometry": "0edf6ac4-fa19-4de0-9f3c-42948e58c6b6",
+            "position": 4,
+            "array": 5,
+            "index": 6
+          },
+          {
+            "text": "波向前传播",
+            "xyz": [
+              38.30609420052097,
+              66.16507180089985,
+              -147.38272728434194
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "geometry": "f74d8a4f-5f46-44d3-9207-a47f9c293a7c",
+            "position": 7,
+            "array": 8,
+            "index": 9
+          },
+          {
+            "text": "水质点",
+            "xyz": [
+              137.55370190187074,
+              66.16507180089985,
+              -147.38272728434194
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "geometry": "6dcc9abd-03de-460c-afd2-8e000080fef1",
+            "position": 10,
+            "array": 11,
+            "index": 12
+          },
+          {
+            "role": "phase-rail",
+            "xyz": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "geometry": "188e3be3-0965-4383-8c7f-979bbcc9be9c",
+            "position": 13,
+            "array": 14,
+            "index": 15
+          },
+          {
+            "role": "phase-handle",
+            "xyz": [
+              75.91571396103247,
+              3.4823722000473607,
+              -65.99968896923514
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "geometry": "3c5c9e85-0758-4f67-9ded-e60285e7f08e",
+            "position": 16,
+            "array": 17,
+            "index": 18
+          }
+        ]
+      },
+      "after": {
+        "phase": 0.4000000000002068,
+        "selection": 0,
+        "playing": false,
+        "twoD": false,
+        "model": {
+          "architecture": "three-dimensional-geometry",
+          "bitmapSurfaces": 0,
+          "solids": 4,
+          "labels": 2,
+          "meshes": 6,
+          "imageMappedMeshes": 0,
+          "extent": [
+            174.1186065673828,
+            72.08510477895771,
+            83.45504978590148
+          ],
+          "sceneElevation": 56,
+          "unfoldProgress": 1,
+          "originalPagePreserved": true,
+          "phase": 0.4000000000002068,
+          "selection": 0,
+          "kind": "surface-wave",
+          "reference": {
+            "textbookPage": 57,
+            "pdfPage": 62,
+            "figure": "3.20",
+            "quantities": "schematic",
+            "model": "ideal-periodic-deep-water",
+            "includesCurrent": false,
+            "includesBreaking": false,
+            "includesStokesDrift": false,
+            "markerIsRealBuoy": false
+          },
+          "cyclePhase": 0.4000000000002068,
+          "caption": "波形向前传播；橙点表示同一水质点。",
+          "wavePropagates": true,
+          "propagationDirection": "right",
+          "particleAdvection": false,
+          "particleMotion": "closed-orbit",
+          "particle": {
+            "restX": 57,
+            "x": 62.63974553830828,
+            "height": 20.35398311035692
+          },
+          "waveHeight": 11.6,
+          "amplitude": 5.8,
+          "wavelength": 48,
+          "closedVolume": true,
+          "fixedBuffers": true,
+          "surfaceEquation": "monotone-gerstner-inverse",
+          "heightProbes": [
+            {
+              "x": 0,
+              "height": 13.57283298240838
+            },
+            {
+              "x": 25,
+              "height": 19.309826948656745
+            },
+            {
+              "x": 50,
+              "height": 13.954327352652115
+            },
+            {
+              "x": 75,
+              "height": 17.87590332844674
+            },
+            {
+              "x": 100,
+              "height": 14.477558802377256
+            }
+          ],
+          "trackedSurfaceError": 7.851497230149107e-13,
+          "controls": [
+            "particle",
+            "phase-track"
+          ]
+        },
+        "labels": [
+          {
+            "text": "波向前传播",
+            "left": 417.2368208542428,
+            "top": 132.16215990032467,
+            "right": 621.4677197268096,
+            "bottom": 178.45449697810636,
+            "fontPx": 31.836133569281447
+          },
+          {
+            "text": "水质点",
+            "left": 833.5669228029184,
+            "top": 152.40618302185328,
+            "right": 988.4641216371967,
+            "bottom": 200.28349902517567,
+            "fontPx": 32.92615416368838
+          }
+        ],
+        "camera": {
+          "position": [
+            132.13480875632592,
+            267.56851903140193,
+            362.4259153883779
+          ],
+          "quaternion": [
+            -0.2779152998677157,
+            0.06825395727108442,
+            0.019800993977483597,
+            0.9579730706307868
+          ],
+          "orbit": 0.18,
+          "elevation": 0.64
+        },
+        "saved": {
+          "phase": 0.4000000000002068,
+          "selection": 0
+        },
+        "render": {
+          "calls": 33,
+          "geometries": 33,
+          "triangles": 22751,
+          "textures": 277
+        },
+        "meshes": [
+          {
+            "role": "water-volume",
+            "xyz": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "geometry": "47334157-3ab3-4a8a-94a3-ac971578515e",
+            "position": 1,
+            "array": 2,
+            "index": 3
+          },
+          {
+            "role": "particle",
+            "restX": 57,
+            "particleX": 62.63974553830828,
+            "particleHeight": 20.35398311035692,
+            "xyz": [
+              109.06745424032273,
+              35.440072471870224,
+              -77.57857653439261
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "geometry": "0edf6ac4-fa19-4de0-9f3c-42948e58c6b6",
+            "position": 4,
+            "array": 5,
+            "index": 6
+          },
+          {
+            "text": "波向前传播",
+            "xyz": [
+              38.30609420052097,
+              66.16507180089985,
+              -147.38272728434194
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "geometry": "f74d8a4f-5f46-44d3-9207-a47f9c293a7c",
+            "position": 7,
+            "array": 8,
+            "index": 9
+          },
+          {
+            "text": "水质点",
+            "xyz": [
+              137.55370190187074,
+              66.16507180089985,
+              -147.38272728434194
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "geometry": "6dcc9abd-03de-460c-afd2-8e000080fef1",
+            "position": 10,
+            "array": 11,
+            "index": 12
+          },
+          {
+            "role": "phase-rail",
+            "xyz": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "geometry": "188e3be3-0965-4383-8c7f-979bbcc9be9c",
+            "position": 13,
+            "array": 14,
+            "index": 15
+          },
+          {
+            "role": "phase-handle",
+            "xyz": [
+              75.91571396105552,
+              3.4823722000473607,
+              -65.99968896923514
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "geometry": "3c5c9e85-0758-4f67-9ded-e60285e7f08e",
+            "position": 16,
+            "array": 17,
+            "index": 18
+          }
+        ]
+      },
+      "samples": [
+        {
+          "phase": 0.2000000743276753,
+          "selection": 0,
+          "playing": false,
+          "twoD": false,
+          "model": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 4,
+            "labels": 2,
+            "meshes": 6,
+            "imageMappedMeshes": 0,
+            "extent": [
+              174.1186065673828,
+              72.08510477895771,
+              83.45504978590148
+            ],
+            "sceneElevation": 56,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.2000000743276753,
+            "selection": 0,
+            "kind": "surface-wave",
+            "reference": {
+              "textbookPage": 57,
+              "pdfPage": 62,
+              "figure": "3.20",
+              "quantities": "schematic",
+              "model": "ideal-periodic-deep-water",
+              "includesCurrent": false,
+              "includesBreaking": false,
+              "includesStokesDrift": false,
+              "markerIsRealBuoy": false
+            },
+            "cyclePhase": 0.2000000743276753,
+            "caption": "波形向前传播；橙点表示同一水质点。",
+            "wavePropagates": true,
+            "propagationDirection": "right",
+            "particleAdvection": false,
+            "particleMotion": "closed-orbit",
+            "particle": {
+              "restX": 57,
+              "x": 57.45506545555592,
+              "height": 24.78212032313058
+            },
+            "waveHeight": 11.6,
+            "amplitude": 5.8,
+            "wavelength": 48,
+            "closedVolume": true,
+            "fixedBuffers": true,
+            "surfaceEquation": "monotone-gerstner-inverse",
+            "heightProbes": [
+              {
+                "x": 0,
+                "height": 16.803034775229357
+              },
+              {
+                "x": 25,
+                "height": 14.418597164744597
+              },
+              {
+                "x": 50,
+                "height": 18.007021575907302
+              },
+              {
+                "x": 75,
+                "height": 13.90993743787054
+              },
+              {
+                "x": 100,
+                "height": 19.469462621637973
+              }
+            ],
+            "trackedSurfaceError": 1.3500311979441904e-13,
+            "controls": [
+              "particle",
+              "phase-track"
+            ]
+          },
+          "labels": [
+            {
+              "text": "波向前传播",
+              "left": 417.23682085416164,
+              "top": 132.16215990029826,
+              "right": 621.4677197267652,
+              "bottom": 178.45449697808846,
+              "fontPx": 31.83613356928729
+            },
+            {
+              "text": "水质点",
+              "left": 833.5669228029165,
+              "top": 152.4061830217962,
+              "right": 988.4641216372167,
+              "bottom": 200.28349902512542,
+              "fontPx": 32.92615416369308
+            }
+          ],
+          "camera": {
+            "position": [
+              132.13480875626055,
+              267.56851903135856,
+              362.42591538834193
+            ],
+            "quaternion": [
+              -0.2779152998677006,
+              0.06825395727098911,
+              0.01980099397745463,
+              0.9579730706307984
+            ],
+            "orbit": 0.18,
+            "elevation": 0.64
+          },
+          "saved": {
+            "phase": 0.4,
+            "selection": 0
+          },
+          "render": {
+            "calls": 33,
+            "geometries": 33,
+            "triangles": 22765,
+            "textures": 277
+          },
+          "meshes": [
+            {
+              "role": "water-volume",
+              "xyz": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "47334157-3ab3-4a8a-94a3-ac971578515e",
+              "position": 1,
+              "array": 2,
+              "index": 3
+            },
+            {
+              "role": "particle",
+              "restX": 57,
+              "particleX": 57.45506545555592,
+              "particleHeight": 24.78212032313058,
+              "xyz": [
+                100.03996134716469,
+                43.15028343574932,
+                -77.57857653439261
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "0edf6ac4-fa19-4de0-9f3c-42948e58c6b6",
+              "position": 4,
+              "array": 5,
+              "index": 6
+            },
+            {
+              "text": "波向前传播",
+              "xyz": [
+                38.30609420052097,
+                66.16507180089985,
+                -147.38272728434194
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "f74d8a4f-5f46-44d3-9207-a47f9c293a7c",
+              "position": 7,
+              "array": 8,
+              "index": 9
+            },
+            {
+              "text": "水质点",
+              "xyz": [
+                137.55370190187074,
+                66.16507180089985,
+                -147.38272728434194
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "6dcc9abd-03de-460c-afd2-8e000080fef1",
+              "position": 10,
+              "array": 11,
+              "index": 12
+            },
+            {
+              "role": "phase-rail",
+              "xyz": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "188e3be3-0965-4383-8c7f-979bbcc9be9c",
+              "position": 13,
+              "array": 14,
+              "index": 15
+            },
+            {
+              "role": "phase-handle",
+              "xyz": [
+                53.628540163501526,
+                3.4823722000473607,
+                -65.99968896923514
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "3c5c9e85-0758-4f67-9ded-e60285e7f08e",
+              "position": 16,
+              "array": 17,
+              "index": 18
+            }
+          ]
+        },
+        {
+          "phase": 0.7000000324684996,
+          "selection": 0,
+          "playing": false,
+          "twoD": false,
+          "model": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 4,
+            "labels": 2,
+            "meshes": 6,
+            "imageMappedMeshes": 0,
+            "extent": [
+              174.1186065673828,
+              72.08510477895771,
+              83.45504978590148
+            ],
+            "sceneElevation": 56,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.7000000324684996,
+            "selection": 0,
+            "kind": "surface-wave",
+            "reference": {
+              "textbookPage": 57,
+              "pdfPage": 62,
+              "figure": "3.20",
+              "quantities": "schematic",
+              "model": "ideal-periodic-deep-water",
+              "includesCurrent": false,
+              "includesBreaking": false,
+              "includesStokesDrift": false,
+              "markerIsRealBuoy": false
+            },
+            "cyclePhase": 0.7000000324684996,
+            "caption": "波形向前传播；橙点表示同一水质点。",
+            "wavePropagates": true,
+            "propagationDirection": "right",
+            "particleAdvection": false,
+            "particleMotion": "closed-orbit",
+            "particle": {
+              "restX": 57,
+              "x": 56.54493606519354,
+              "height": 13.217879557183329
+            },
+            "waveHeight": 11.6,
+            "amplitude": 5.8,
+            "wavelength": 48,
+            "closedVolume": true,
+            "fixedBuffers": true,
+            "surfaceEquation": "monotone-gerstner-inverse",
+            "heightProbes": [
+              {
+                "x": 0,
+                "height": 14.72869946723219
+              },
+              {
+                "x": 25,
+                "height": 17.37601546919787
+              },
+              {
+                "x": 50,
+                "height": 14.146123466899226
+              },
+              {
+                "x": 75,
+                "height": 18.70224880094979
+              },
+              {
+                "x": 100,
+                "height": 13.708927884552288
+              }
+            ],
+            "trackedSurfaceError": 1.1901590823981678e-13,
+            "controls": [
+              "particle",
+              "phase-track"
+            ]
+          },
+          "labels": [
+            {
+              "text": "波向前传播",
+              "left": 417.23682085422416,
+              "top": 132.16215990031856,
+              "right": 621.4677197267993,
+              "bottom": 178.45449697810227,
+              "fontPx": 31.836133569282836
+            },
+            {
+              "text": "水质点",
+              "left": 833.5669228029177,
+              "top": 152.40618302184026,
+              "right": 988.4641216372013,
+              "bottom": 200.28349902516422,
+              "fontPx": 32.92615416368946
+            }
+          ],
+          "camera": {
+            "position": [
+              132.13480875631103,
+              267.5685190313921,
+              362.42591538836973
+            ],
+            "quaternion": [
+              -0.27791529986771224,
+              0.06825395727106266,
+              0.01980099397747699,
+              0.9579730706307895
+            ],
+            "orbit": 0.18,
+            "elevation": 0.64
+          },
+          "saved": {
+            "phase": 0.4,
+            "selection": 0
+          },
+          "render": {
+            "calls": 33,
+            "geometries": 33,
+            "triangles": 22753,
+            "textures": 277
+          },
+          "meshes": [
+            {
+              "role": "water-volume",
+              "xyz": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "47334157-3ab3-4a8a-94a3-ac971578515e",
+              "position": 1,
+              "array": 2,
+              "index": 3
+            },
+            {
+              "role": "particle",
+              "restX": 57,
+              "particleX": 56.54493606519354,
+              "particleHeight": 13.217879557183329,
+              "xyz": [
+                98.45525670344269,
+                23.014788156754772,
+                -77.57857653439261
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "0edf6ac4-fa19-4de0-9f3c-42948e58c6b6",
+              "position": 4,
+              "array": 5,
+              "index": 6
+            },
+            {
+              "text": "波向前传播",
+              "xyz": [
+                38.30609420052097,
+                66.16507180089985,
+                -147.38272728434194
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "f74d8a4f-5f46-44d3-9207-a47f9c293a7c",
+              "position": 7,
+              "array": 8,
+              "index": 9
+            },
+            {
+              "text": "水质点",
+              "xyz": [
+                137.55370190187074,
+                66.16507180089985,
+                -147.38272728434194
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "6dcc9abd-03de-460c-afd2-8e000080fef1",
+              "position": 10,
+              "array": 11,
+              "index": 12
+            },
+            {
+              "role": "phase-rail",
+              "xyz": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "188e3be3-0965-4383-8c7f-979bbcc9be9c",
+              "position": 13,
+              "array": 14,
+              "index": 15
+            },
+            {
+              "role": "phase-handle",
+              "xyz": [
+                109.34649069964395,
+                3.4823722000473607,
+                -65.99968896923514
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "3c5c9e85-0758-4f67-9ded-e60285e7f08e",
+              "position": 16,
+              "array": 17,
+              "index": 18
+            }
+          ]
+        },
+        {
+          "phase": 1,
+          "selection": 0,
+          "playing": false,
+          "twoD": false,
+          "model": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 4,
+            "labels": 2,
+            "meshes": 6,
+            "imageMappedMeshes": 0,
+            "extent": [
+              174.1186065673828,
+              72.08510477895771,
+              83.45504978590148
+            ],
+            "sceneElevation": 56,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 1,
+            "selection": 0,
+            "kind": "surface-wave",
+            "reference": {
+              "textbookPage": 57,
+              "pdfPage": 62,
+              "figure": "3.20",
+              "quantities": "schematic",
+              "model": "ideal-periodic-deep-water",
+              "includesCurrent": false,
+              "includesBreaking": false,
+              "includesStokesDrift": false,
+              "markerIsRealBuoy": false
+            },
+            "cyclePhase": 0,
+            "caption": "波形向前传播；橙点表示同一水质点。",
+            "wavePropagates": true,
+            "propagationDirection": "right",
+            "particleAdvection": false,
+            "particleMotion": "closed-orbit",
+            "particle": {
+              "restX": 57,
+              "x": 51.64149871143454,
+              "height": 21.219563907717525
+            },
+            "waveHeight": 11.6,
+            "amplitude": 5.8,
+            "wavelength": 48,
+            "closedVolume": true,
+            "fixedBuffers": true,
+            "surfaceEquation": "monotone-gerstner-inverse",
+            "heightProbes": [
+              {
+                "x": 0,
+                "height": 24.8
+              },
+              {
+                "x": 25,
+                "height": 13.21606132731916
+              },
+              {
+                "x": 50,
+                "height": 22.9841853110861
+              },
+              {
+                "x": 75,
+                "height": 13.344942104756525
+              },
+              {
+                "x": 100,
+                "height": 20.871774874978335
+              }
+            ],
+            "trackedSurfaceError": 2.1600499167107046e-12,
+            "controls": [
+              "particle",
+              "phase-track"
+            ]
+          },
+          "labels": [
+            {
+              "text": "波向前传播",
+              "left": 417.23682085423917,
+              "top": 132.16215990032356,
+              "right": 621.4677197268074,
+              "bottom": 178.45449697810574,
+              "fontPx": 31.83613356928178
+            },
+            {
+              "text": "水质点",
+              "left": 833.5669228029179,
+              "top": 152.4061830218509,
+              "right": 988.4641216371973,
+              "bottom": 200.28349902517368,
+              "fontPx": 32.92615416368866
+            }
+          ],
+          "camera": {
+            "position": [
+              132.13480875632317,
+              267.56851903140017,
+              362.4259153883764
+            ],
+            "quaternion": [
+              -0.27791529986771507,
+              0.06825395727108036,
+              0.019800993977482372,
+              0.9579730706307872
+            ],
+            "orbit": 0.18,
+            "elevation": 0.64
+          },
+          "saved": {
+            "phase": 0.4,
+            "selection": 0
+          },
+          "render": {
+            "calls": 33,
+            "geometries": 33,
+            "triangles": 22801,
+            "textures": 277
+          },
+          "meshes": [
+            {
+              "role": "water-volume",
+              "xyz": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "47334157-3ab3-4a8a-94a3-ac971578515e",
+              "position": 1,
+              "array": 2,
+              "index": 3
+            },
+            {
+              "role": "particle",
+              "restX": 57,
+              "particleX": 51.64149871143454,
+              "particleHeight": 21.219563907717525,
+              "xyz": [
+                89.91745974074061,
+                36.947209724681926,
+                -77.57857653439261
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "0edf6ac4-fa19-4de0-9f3c-42948e58c6b6",
+              "position": 4,
+              "array": 5,
+              "index": 6
+            },
+            {
+              "text": "波向前传播",
+              "xyz": [
+                38.30609420052097,
+                66.16507180089985,
+                -147.38272728434194
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "f74d8a4f-5f46-44d3-9207-a47f9c293a7c",
+              "position": 7,
+              "array": 8,
+              "index": 9
+            },
+            {
+              "text": "水质点",
+              "xyz": [
+                137.55370190187074,
+                66.16507180089985,
+                -147.38272728434194
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "6dcc9abd-03de-460c-afd2-8e000080fef1",
+              "position": 10,
+              "array": 11,
+              "index": 12
+            },
+            {
+              "role": "phase-rail",
+              "xyz": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "188e3be3-0965-4383-8c7f-979bbcc9be9c",
+              "position": 13,
+              "array": 14,
+              "index": 15
+            },
+            {
+              "role": "phase-handle",
+              "xyz": [
+                142.7772602019418,
+                3.4823722000473607,
+                -65.99968896923514
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "3c5c9e85-0758-4f67-9ded-e60285e7f08e",
+              "position": 16,
+              "array": 17,
+              "index": 18
+            }
+          ]
+        },
+        {
+          "phase": 5.1718855331920685e-8,
+          "selection": 0,
+          "playing": false,
+          "twoD": false,
+          "model": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 4,
+            "labels": 2,
+            "meshes": 6,
+            "imageMappedMeshes": 0,
+            "extent": [
+              174.1186065673828,
+              72.08510477895771,
+              83.45504978590148
+            ],
+            "sceneElevation": 56,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 5.1718855331920685e-8,
+            "selection": 0,
+            "kind": "surface-wave",
+            "reference": {
+              "textbookPage": 57,
+              "pdfPage": 62,
+              "figure": "3.20",
+              "quantities": "schematic",
+              "model": "ideal-periodic-deep-water",
+              "includesCurrent": false,
+              "includesBreaking": false,
+              "includesStokesDrift": false,
+              "markerIsRealBuoy": false
+            },
+            "cyclePhase": 5.1718855331920685e-8,
+            "caption": "波形向前传播；橙点表示同一水质点。",
+            "wavePropagates": true,
+            "propagationDirection": "right",
+            "particleAdvection": false,
+            "particleMotion": "closed-orbit",
+            "particle": {
+              "restX": 57,
+              "x": 51.641499432702425,
+              "height": 21.219565649011443
+            },
+            "waveHeight": 11.6,
+            "amplitude": 5.8,
+            "wavelength": 48,
+            "closedVolume": true,
+            "fixedBuffers": true,
+            "surfaceEquation": "monotone-gerstner-inverse",
+            "heightProbes": [
+              {
+                "x": 0,
+                "height": 24.799999999994718
+              },
+              {
+                "x": 25,
+                "height": 13.216061247548026
+              },
+              {
+                "x": 50,
+                "height": 22.98418817375623
+              },
+              {
+                "x": 75,
+                "height": 13.344941864147215
+              },
+              {
+                "x": 100,
+                "height": 20.871777237825892
+              }
+            ],
+            "trackedSurfaceError": 1.2789769243681803e-13,
+            "controls": [
+              "particle",
+              "phase-track"
+            ]
+          },
+          "labels": [
+            {
+              "text": "波向前传播",
+              "left": 417.2368208542419,
+              "top": 132.16215990032424,
+              "right": 621.4677197268089,
+              "bottom": 178.45449697810614,
+              "fontPx": 31.836133569281586
+            },
+            {
+              "text": "水质点",
+              "left": 833.5669228029182,
+              "top": 152.40618302185254,
+              "right": 988.4641216371967,
+              "bottom": 200.28349902517513,
+              "fontPx": 32.92615416368852
+            }
+          ],
+          "camera": {
+            "position": [
+              132.1348087563253,
+              267.5685190314016,
+              362.42591538837763
+            ],
+            "quaternion": [
+              -0.2779152998677156,
+              0.06825395727108348,
+              0.01980099397748332,
+              0.9579730706307868
+            ],
+            "orbit": 0.18,
+            "elevation": 0.64
+          },
+          "saved": {
+            "phase": 0.4,
+            "selection": 0
+          },
+          "render": {
+            "calls": 33,
+            "geometries": 33,
+            "triangles": 22801,
+            "textures": 277
+          },
+          "meshes": [
+            {
+              "role": "water-volume",
+              "xyz": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "47334157-3ab3-4a8a-94a3-ac971578515e",
+              "position": 1,
+              "array": 2,
+              "index": 3
+            },
+            {
+              "role": "particle",
+              "restX": 57,
+              "particleX": 51.641499432702425,
+              "particleHeight": 21.219565649011443,
+              "xyz": [
+                89.91746099660223,
+                36.94721275659869,
+                -77.57857653439261
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "0edf6ac4-fa19-4de0-9f3c-42948e58c6b6",
+              "position": 4,
+              "array": 5,
+              "index": 6
+            },
+            {
+              "text": "波向前传播",
+              "xyz": [
+                38.30609420052097,
+                66.16507180089985,
+                -147.38272728434194
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "f74d8a4f-5f46-44d3-9207-a47f9c293a7c",
+              "position": 7,
+              "array": 8,
+              "index": 9
+            },
+            {
+              "text": "水质点",
+              "xyz": [
+                137.55370190187074,
+                66.16507180089985,
+                -147.38272728434194
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "6dcc9abd-03de-460c-afd2-8e000080fef1",
+              "position": 10,
+              "array": 11,
+              "index": 12
+            },
+            {
+              "role": "phase-rail",
+              "xyz": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "188e3be3-0965-4383-8c7f-979bbcc9be9c",
+              "position": 13,
+              "array": 14,
+              "index": 15
+            },
+            {
+              "role": "phase-handle",
+              "xyz": [
+                31.341355563763976,
+                3.4823722000473607,
+                -65.99968896923514
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "3c5c9e85-0758-4f67-9ded-e60285e7f08e",
+              "position": 16,
+              "array": 17,
+              "index": 18
+            }
+          ]
+        },
+        {
+          "phase": 0.4000000000002066,
+          "selection": 0,
+          "playing": false,
+          "twoD": false,
+          "model": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 4,
+            "labels": 2,
+            "meshes": 6,
+            "imageMappedMeshes": 0,
+            "extent": [
+              174.1186065673828,
+              72.08510477895771,
+              83.45504978590148
+            ],
+            "sceneElevation": 56,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.4000000000002066,
+            "selection": 0,
+            "kind": "surface-wave",
+            "reference": {
+              "textbookPage": 57,
+              "pdfPage": 62,
+              "figure": "3.20",
+              "quantities": "schematic",
+              "model": "ideal-periodic-deep-water",
+              "includesCurrent": false,
+              "includesBreaking": false,
+              "includesStokesDrift": false,
+              "markerIsRealBuoy": false
+            },
+            "cyclePhase": 0.4000000000002066,
+            "caption": "波形向前传播；橙点表示同一水质点。",
+            "wavePropagates": true,
+            "propagationDirection": "right",
+            "particleAdvection": false,
+            "particleMotion": "closed-orbit",
+            "particle": {
+              "restX": 57,
+              "x": 62.63974553830828,
+              "height": 20.353983110356925
+            },
+            "waveHeight": 11.6,
+            "amplitude": 5.8,
+            "wavelength": 48,
+            "closedVolume": true,
+            "fixedBuffers": true,
+            "surfaceEquation": "monotone-gerstner-inverse",
+            "heightProbes": [
+              {
+                "x": 0,
+                "height": 13.572832982408384
+              },
+              {
+                "x": 25,
+                "height": 19.309826948656738
+              },
+              {
+                "x": 50,
+                "height": 13.954327352652117
+              },
+              {
+                "x": 75,
+                "height": 17.87590332844674
+              },
+              {
+                "x": 100,
+                "height": 14.477558802377256
+              }
+            ],
+            "trackedSurfaceError": 7.922551503725117e-13,
+            "controls": [
+              "particle",
+              "phase-track"
+            ]
+          },
+          "labels": [
+            {
+              "text": "波向前传播",
+              "left": 417.2368208542427,
+              "top": 132.16215990032467,
+              "right": 621.4677197268094,
+              "bottom": 178.45449697810636,
+              "fontPx": 31.836133569281447
+            },
+            {
+              "text": "水质点",
+              "left": 833.5669228029183,
+              "top": 152.40618302185328,
+              "right": 988.4641216371967,
+              "bottom": 200.28349902517564,
+              "fontPx": 32.926154163688366
+            }
+          ],
+          "camera": {
+            "position": [
+              132.1348087563259,
+              267.56851903140193,
+              362.4259153883779
+            ],
+            "quaternion": [
+              -0.2779152998677157,
+              0.06825395727108438,
+              0.019800993977483587,
+              0.9579730706307868
+            ],
+            "orbit": 0.18,
+            "elevation": 0.64
+          },
+          "saved": {
+            "phase": 0.4,
+            "selection": 0
+          },
+          "render": {
+            "calls": 33,
+            "geometries": 33,
+            "triangles": 22751,
+            "textures": 277
+          },
+          "meshes": [
+            {
+              "role": "water-volume",
+              "xyz": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "47334157-3ab3-4a8a-94a3-ac971578515e",
+              "position": 1,
+              "array": 2,
+              "index": 3
+            },
+            {
+              "role": "particle",
+              "restX": 57,
+              "particleX": 62.63974553830828,
+              "particleHeight": 20.353983110356925,
+              "xyz": [
+                109.06745424032273,
+                35.44007247187023,
+                -77.57857653439261
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "0edf6ac4-fa19-4de0-9f3c-42948e58c6b6",
+              "position": 4,
+              "array": 5,
+              "index": 6
+            },
+            {
+              "text": "波向前传播",
+              "xyz": [
+                38.30609420052097,
+                66.16507180089985,
+                -147.38272728434194
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "f74d8a4f-5f46-44d3-9207-a47f9c293a7c",
+              "position": 7,
+              "array": 8,
+              "index": 9
+            },
+            {
+              "text": "水质点",
+              "xyz": [
+                137.55370190187074,
+                66.16507180089985,
+                -147.38272728434194
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "6dcc9abd-03de-460c-afd2-8e000080fef1",
+              "position": 10,
+              "array": 11,
+              "index": 12
+            },
+            {
+              "role": "phase-rail",
+              "xyz": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "188e3be3-0965-4383-8c7f-979bbcc9be9c",
+              "position": 13,
+              "array": 14,
+              "index": 15
+            },
+            {
+              "role": "phase-handle",
+              "xyz": [
+                75.91571396105549,
+                3.4823722000473607,
+                -65.99968896923514
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "3c5c9e85-0758-4f67-9ded-e60285e7f08e",
+              "position": 16,
+              "array": 17,
+              "index": 18
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "production-wave-states",
+      "samples": [
+        {
+          "phase": 0,
+          "selection": 0,
+          "playing": false,
+          "twoD": false,
+          "model": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 4,
+            "labels": 2,
+            "meshes": 6,
+            "imageMappedMeshes": 0,
+            "extent": [
+              174.1186065673828,
+              72.08510477895771,
+              83.45504978590148
+            ],
+            "sceneElevation": 56,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0,
+            "selection": 0,
+            "kind": "surface-wave",
+            "reference": {
+              "textbookPage": 57,
+              "pdfPage": 62,
+              "figure": "3.20",
+              "quantities": "schematic",
+              "model": "ideal-periodic-deep-water",
+              "includesCurrent": false,
+              "includesBreaking": false,
+              "includesStokesDrift": false,
+              "markerIsRealBuoy": false
+            },
+            "cyclePhase": 0,
+            "caption": "波形向前传播；橙点表示同一水质点。",
+            "wavePropagates": true,
+            "propagationDirection": "right",
+            "particleAdvection": false,
+            "particleMotion": "closed-orbit",
+            "particle": {
+              "restX": 57,
+              "x": 51.64149871143454,
+              "height": 21.219563907717525
+            },
+            "waveHeight": 11.6,
+            "amplitude": 5.8,
+            "wavelength": 48,
+            "closedVolume": true,
+            "fixedBuffers": true,
+            "surfaceEquation": "monotone-gerstner-inverse",
+            "heightProbes": [
+              {
+                "x": 0,
+                "height": 24.8
+              },
+              {
+                "x": 25,
+                "height": 13.21606132731916
+              },
+              {
+                "x": 50,
+                "height": 22.9841853110861
+              },
+              {
+                "x": 75,
+                "height": 13.344942104756525
+              },
+              {
+                "x": 100,
+                "height": 20.871774874978335
+              }
+            ],
+            "trackedSurfaceError": 2.1600499167107046e-12,
+            "controls": [
+              "particle",
+              "phase-track"
+            ]
+          },
+          "labels": [
+            {
+              "text": "波向前传播",
+              "left": 416.50588273203994,
+              "top": 131.6128525138643,
+              "right": 621.4090936503195,
+              "bottom": 178.05758032200765,
+              "fontPx": 31.940935615424895
+            },
+            {
+              "text": "水质点",
+              "left": 834.3356482987343,
+              "top": 151.05135397039234,
+              "right": 989.5769931204844,
+              "bottom": 199.03504236984242,
+              "fontPx": 32.99930851330602
+            }
+          ],
+          "camera": {
+            "position": [
+              130.28109079660484,
+              266.6790059588501,
+              361.9702507279074
+            ],
+            "quaternion": [
+              -0.27753344357894183,
+              0.06582077879591133,
+              0.019062985450882617,
+              0.9582689681710524
+            ],
+            "orbit": 0.18,
+            "elevation": 0.64
+          },
+          "saved": {
+            "phase": 0,
+            "selection": 0
+          },
+          "render": {
+            "calls": 33,
+            "geometries": 33,
+            "triangles": 22801,
+            "textures": 277
+          },
+          "meshes": [
+            {
+              "role": "water-volume",
+              "xyz": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "47334157-3ab3-4a8a-94a3-ac971578515e",
+              "position": 1,
+              "array": 2,
+              "index": 3
+            },
+            {
+              "role": "particle",
+              "restX": 57,
+              "particleX": 51.64149871143454,
+              "particleHeight": 21.219563907717525,
+              "xyz": [
+                89.91745974074061,
+                36.947209724681926,
+                -77.57857653439261
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "0edf6ac4-fa19-4de0-9f3c-42948e58c6b6",
+              "position": 4,
+              "array": 5,
+              "index": 6
+            },
+            {
+              "text": "波向前传播",
+              "xyz": [
+                38.30609420052097,
+                66.16507180089985,
+                -147.38272728434194
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "f74d8a4f-5f46-44d3-9207-a47f9c293a7c",
+              "position": 7,
+              "array": 8,
+              "index": 9
+            },
+            {
+              "text": "水质点",
+              "xyz": [
+                137.55370190187074,
+                66.16507180089985,
+                -147.38272728434194
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "6dcc9abd-03de-460c-afd2-8e000080fef1",
+              "position": 10,
+              "array": 11,
+              "index": 12
+            },
+            {
+              "role": "phase-rail",
+              "xyz": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "188e3be3-0965-4383-8c7f-979bbcc9be9c",
+              "position": 13,
+              "array": 14,
+              "index": 15
+            },
+            {
+              "role": "phase-handle",
+              "xyz": [
+                31.341349800426247,
+                3.4823722000473607,
+                -65.99968896923514
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "3c5c9e85-0758-4f67-9ded-e60285e7f08e",
+              "position": 16,
+              "array": 17,
+              "index": 18
+            }
+          ]
+        },
+        {
+          "phase": 0.2,
+          "selection": 0,
+          "playing": false,
+          "twoD": false,
+          "model": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 4,
+            "labels": 2,
+            "meshes": 6,
+            "imageMappedMeshes": 0,
+            "extent": [
+              174.1186065673828,
+              72.08510477895771,
+              83.45504978590148
+            ],
+            "sceneElevation": 56,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.2,
+            "selection": 0,
+            "kind": "surface-wave",
+            "reference": {
+              "textbookPage": 57,
+              "pdfPage": 62,
+              "figure": "3.20",
+              "quantities": "schematic",
+              "model": "ideal-periodic-deep-water",
+              "includesCurrent": false,
+              "includesBreaking": false,
+              "includesStokesDrift": false,
+              "markerIsRealBuoy": false
+            },
+            "cyclePhase": 0.2,
+            "caption": "波形向前传播；橙点表示同一水质点。",
+            "wavePropagates": true,
+            "propagationDirection": "right",
+            "particleAdvection": false,
+            "particleMotion": "closed-orbit",
+            "particle": {
+              "restX": 57,
+              "x": 57.455062755221505,
+              "height": 24.78212053565214
+            },
+            "waveHeight": 11.6,
+            "amplitude": 5.8,
+            "wavelength": 48,
+            "closedVolume": true,
+            "fixedBuffers": true,
+            "surfaceEquation": "monotone-gerstner-inverse",
+            "heightProbes": [
+              {
+                "x": 0,
+                "height": 16.80303672216975
+              },
+              {
+                "x": 25,
+                "height": 14.41859612638147
+              },
+              {
+                "x": 50,
+                "height": 18.007023937624844
+              },
+              {
+                "x": 75,
+                "height": 13.909936658567439
+              },
+              {
+                "x": 100,
+                "height": 19.469465498207
+              }
+            ],
+            "trackedSurfaceError": 1.7763568394002505e-13,
+            "controls": [
+              "particle",
+              "phase-track"
+            ]
+          },
+          "labels": [
+            {
+              "text": "波向前传播",
+              "left": 416.65294947267904,
+              "top": 131.78397740234735,
+              "right": 621.3554737725746,
+              "bottom": 178.183216243657,
+              "fontPx": 31.909651975076113
+            },
+            {
+              "text": "水质点",
+              "left": 834.0310529480515,
+              "top": 151.48623301734943,
+              "right": 989.1748498946172,
+              "bottom": 199.43977025537882,
+              "fontPx": 32.97857297773249
+            }
+          ],
+          "camera": {
+            "position": [
+              130.8965581983029,
+              266.95376954605103,
+              362.0875780769033
+            ],
+            "quaternion": [
+              -0.27765797685540633,
+              0.06661294583640073,
+              0.019302995521237022,
+              0.9581733442856082
+            ],
+            "orbit": 0.18,
+            "elevation": 0.64
+          },
+          "saved": {
+            "phase": 0.2,
+            "selection": 0
+          },
+          "render": {
+            "calls": 33,
+            "geometries": 33,
+            "triangles": 22765,
+            "textures": 277
+          },
+          "meshes": [
+            {
+              "role": "water-volume",
+              "xyz": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "47334157-3ab3-4a8a-94a3-ac971578515e",
+              "position": 1,
+              "array": 2,
+              "index": 3
+            },
+            {
+              "role": "particle",
+              "restX": 57,
+              "particleX": 57.455062755221505,
+              "particleHeight": 24.78212053565214,
+              "xyz": [
+                100.03995664537995,
+                43.15028380578891,
+                -77.57857653439261
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "0edf6ac4-fa19-4de0-9f3c-42948e58c6b6",
+              "position": 4,
+              "array": 5,
+              "index": 6
+            },
+            {
+              "text": "波向前传播",
+              "xyz": [
+                38.30609420052097,
+                66.16507180089985,
+                -147.38272728434194
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "f74d8a4f-5f46-44d3-9207-a47f9c293a7c",
+              "position": 7,
+              "array": 8,
+              "index": 9
+            },
+            {
+              "text": "水质点",
+              "xyz": [
+                137.55370190187074,
+                66.16507180089985,
+                -147.38272728434194
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "6dcc9abd-03de-460c-afd2-8e000080fef1",
+              "position": 10,
+              "array": 11,
+              "index": 12
+            },
+            {
+              "role": "phase-rail",
+              "xyz": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "188e3be3-0965-4383-8c7f-979bbcc9be9c",
+              "position": 13,
+              "array": 14,
+              "index": 15
+            },
+            {
+              "role": "phase-handle",
+              "xyz": [
+                53.628531880729355,
+                3.4823722000473607,
+                -65.99968896923514
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "3c5c9e85-0758-4f67-9ded-e60285e7f08e",
+              "position": 16,
+              "array": 17,
+              "index": 18
+            }
+          ]
+        },
+        {
+          "phase": 0.4,
+          "selection": 0,
+          "playing": false,
+          "twoD": false,
+          "model": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 4,
+            "labels": 2,
+            "meshes": 6,
+            "imageMappedMeshes": 0,
+            "extent": [
+              174.1186065673828,
+              72.08510477895771,
+              83.45504978590148
+            ],
+            "sceneElevation": 56,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.4,
+            "selection": 0,
+            "kind": "surface-wave",
+            "reference": {
+              "textbookPage": 57,
+              "pdfPage": 62,
+              "figure": "3.20",
+              "quantities": "schematic",
+              "model": "ideal-periodic-deep-water",
+              "includesCurrent": false,
+              "includesBreaking": false,
+              "includesStokesDrift": false,
+              "markerIsRealBuoy": false
+            },
+            "cyclePhase": 0.4,
+            "caption": "波形向前传播；橙点表示同一水质点。",
+            "wavePropagates": true,
+            "propagationDirection": "right",
+            "particleAdvection": false,
+            "particleMotion": "closed-orbit",
+            "particle": {
+              "restX": 57,
+              "x": 62.63974553830653,
+              "height": 20.353983110364247
+            },
+            "waveHeight": 11.6,
+            "amplitude": 5.8,
+            "wavelength": 48,
+            "closedVolume": true,
+            "fixedBuffers": true,
+            "surfaceEquation": "monotone-gerstner-inverse",
+            "heightProbes": [
+              {
+                "x": 0,
+                "height": 13.57283298241104
+              },
+              {
+                "x": 25,
+                "height": 19.30982694864922
+              },
+              {
+                "x": 50,
+                "height": 13.954327352651877
+              },
+              {
+                "x": 75,
+                "height": 17.87590332843935
+              },
+              {
+                "x": 100,
+                "height": 14.477558802376958
+              }
+            ],
+            "trackedSurfaceError": 5.151434834260726e-13,
+            "controls": [
+              "particle",
+              "phase-track"
+            ]
+          },
+          "labels": [
+            {
+              "text": "波向前传播",
+              "left": 416.7766636934564,
+              "top": 131.89095190807086,
+              "right": 621.3502010870316,
+              "bottom": 178.2609537172812,
+              "fontPx": 31.889545103877996
+            },
+            {
+              "text": "水质点",
+              "left": 833.8659711033207,
+              "top": 151.75321648772348,
+              "right": 988.944937765424,
+              "bottom": 199.68671527419178,
+              "fontPx": 32.964792147886975
+            }
+          ],
+          "camera": {
+            "position": [
+              131.26677392806138,
+              267.1265543597837,
+              362.1705501075248
+            ],
+            "quaternion": [
+              -0.27773361900193755,
+              0.06709517285764634,
+              0.0194492192845647,
+              0.958114816984118
+            ],
+            "orbit": 0.18,
+            "elevation": 0.64
+          },
+          "saved": {
+            "phase": 0.4,
+            "selection": 0
+          },
+          "render": {
+            "calls": 33,
+            "geometries": 33,
+            "triangles": 22751,
+            "textures": 277
+          },
+          "meshes": [
+            {
+              "role": "water-volume",
+              "xyz": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "47334157-3ab3-4a8a-94a3-ac971578515e",
+              "position": 1,
+              "array": 2,
+              "index": 3
+            },
+            {
+              "role": "particle",
+              "restX": 57,
+              "particleX": 62.63974553830653,
+              "particleHeight": 20.353983110364247,
+              "xyz": [
+                109.06745424031968,
+                35.440072471882985,
+                -77.57857653439261
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "0edf6ac4-fa19-4de0-9f3c-42948e58c6b6",
+              "position": 4,
+              "array": 5,
+              "index": 6
+            },
+            {
+              "text": "波向前传播",
+              "xyz": [
+                38.30609420052097,
+                66.16507180089985,
+                -147.38272728434194
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "f74d8a4f-5f46-44d3-9207-a47f9c293a7c",
+              "position": 7,
+              "array": 8,
+              "index": 9
+            },
+            {
+              "text": "水质点",
+              "xyz": [
+                137.55370190187074,
+                66.16507180089985,
+                -147.38272728434194
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "6dcc9abd-03de-460c-afd2-8e000080fef1",
+              "position": 10,
+              "array": 11,
+              "index": 12
+            },
+            {
+              "role": "phase-rail",
+              "xyz": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "188e3be3-0965-4383-8c7f-979bbcc9be9c",
+              "position": 13,
+              "array": 14,
+              "index": 15
+            },
+            {
+              "role": "phase-handle",
+              "xyz": [
+                75.91571396103247,
+                3.4823722000473607,
+                -65.99968896923514
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "3c5c9e85-0758-4f67-9ded-e60285e7f08e",
+              "position": 16,
+              "array": 17,
+              "index": 18
+            }
+          ]
+        },
+        {
+          "phase": 0.7,
+          "selection": 0,
+          "playing": false,
+          "twoD": false,
+          "model": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 4,
+            "labels": 2,
+            "meshes": 6,
+            "imageMappedMeshes": 0,
+            "extent": [
+              174.1186065673828,
+              72.08510477895771,
+              83.45504978590148
+            ],
+            "sceneElevation": 56,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.7,
+            "selection": 0,
+            "kind": "surface-wave",
+            "reference": {
+              "textbookPage": 57,
+              "pdfPage": 62,
+              "figure": "3.20",
+              "quantities": "schematic",
+              "model": "ideal-periodic-deep-water",
+              "includesCurrent": false,
+              "includesBreaking": false,
+              "includesStokesDrift": false,
+              "markerIsRealBuoy": false
+            },
+            "cyclePhase": 0.7,
+            "caption": "波形向前传播；橙点表示同一水质点。",
+            "wavePropagates": true,
+            "propagationDirection": "right",
+            "particleAdvection": false,
+            "particleMotion": "closed-orbit",
+            "particle": {
+              "restX": 57,
+              "x": 56.544937244778495,
+              "height": 13.217879464347858
+            },
+            "waveHeight": 11.6,
+            "amplitude": 5.8,
+            "wavelength": 48,
+            "closedVolume": true,
+            "fixedBuffers": true,
+            "surfaceEquation": "monotone-gerstner-inverse",
+            "heightProbes": [
+              {
+                "x": 0,
+                "height": 14.728698953819915
+              },
+              {
+                "x": 25,
+                "height": 17.376016405967807
+              },
+              {
+                "x": 50,
+                "height": 14.146123070847525
+              },
+              {
+                "x": 75,
+                "height": 18.70224993828999
+              },
+              {
+                "x": 100,
+                "height": 13.708927598196047
+              }
+            ],
+            "trackedSurfaceError": 1.758593271006248e-13,
+            "controls": [
+              "particle",
+              "phase-track"
+            ]
+          },
+          "labels": [
+            {
+              "text": "波向前传播",
+              "left": 416.88433227284764,
+              "top": 131.96905053789177,
+              "right": 621.3618209548077,
+              "bottom": 178.31728130580268,
+              "fontPx": 31.874572738633468
+            },
+            {
+              "text": "水质点",
+              "left": 833.759463247812,
+              "top": 151.9453657348583,
+              "right": 988.789019989954,
+              "bottom": 199.86359236424767,
+              "fontPx": 32.95428919073794
+            }
+          ],
+          "camera": {
+            "position": [
+              131.52887342843343,
+              267.2531999897675,
+              362.23642378915457
+            ],
+            "quaternion": [
+              -0.2777876341491702,
+              0.06743985508366503,
+              0.019553793016912967,
+              0.9580728288803273
+            ],
+            "orbit": 0.18,
+            "elevation": 0.64
+          },
+          "saved": {
+            "phase": 0.7,
+            "selection": 0
+          },
+          "render": {
+            "calls": 33,
+            "geometries": 33,
+            "triangles": 22753,
+            "textures": 277
+          },
+          "meshes": [
+            {
+              "role": "water-volume",
+              "xyz": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "47334157-3ab3-4a8a-94a3-ac971578515e",
+              "position": 1,
+              "array": 2,
+              "index": 3
+            },
+            {
+              "role": "particle",
+              "restX": 57,
+              "particleX": 56.544937244778495,
+              "particleHeight": 13.217879464347858,
+              "xyz": [
+                98.45525875731961,
+                23.01478799511094,
+                -77.57857653439261
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "0edf6ac4-fa19-4de0-9f3c-42948e58c6b6",
+              "position": 4,
+              "array": 5,
+              "index": 6
+            },
+            {
+              "text": "波向前传播",
+              "xyz": [
+                38.30609420052097,
+                66.16507180089985,
+                -147.38272728434194
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "f74d8a4f-5f46-44d3-9207-a47f9c293a7c",
+              "position": 7,
+              "array": 8,
+              "index": 9
+            },
+            {
+              "text": "水质点",
+              "xyz": [
+                137.55370190187074,
+                66.16507180089985,
+                -147.38272728434194
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "6dcc9abd-03de-460c-afd2-8e000080fef1",
+              "position": 10,
+              "array": 11,
+              "index": 12
+            },
+            {
+              "role": "phase-rail",
+              "xyz": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "188e3be3-0965-4383-8c7f-979bbcc9be9c",
+              "position": 13,
+              "array": 14,
+              "index": 15
+            },
+            {
+              "role": "phase-handle",
+              "xyz": [
+                109.34648708148713,
+                3.4823722000473607,
+                -65.99968896923514
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "3c5c9e85-0758-4f67-9ded-e60285e7f08e",
+              "position": 16,
+              "array": 17,
+              "index": 18
+            }
+          ]
+        },
+        {
+          "phase": 1,
+          "selection": 0,
+          "playing": false,
+          "twoD": false,
+          "model": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 4,
+            "labels": 2,
+            "meshes": 6,
+            "imageMappedMeshes": 0,
+            "extent": [
+              174.1186065673828,
+              72.08510477895771,
+              83.45504978590148
+            ],
+            "sceneElevation": 56,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 1,
+            "selection": 0,
+            "kind": "surface-wave",
+            "reference": {
+              "textbookPage": 57,
+              "pdfPage": 62,
+              "figure": "3.20",
+              "quantities": "schematic",
+              "model": "ideal-periodic-deep-water",
+              "includesCurrent": false,
+              "includesBreaking": false,
+              "includesStokesDrift": false,
+              "markerIsRealBuoy": false
+            },
+            "cyclePhase": 0,
+            "caption": "波形向前传播；橙点表示同一水质点。",
+            "wavePropagates": true,
+            "propagationDirection": "right",
+            "particleAdvection": false,
+            "particleMotion": "closed-orbit",
+            "particle": {
+              "restX": 57,
+              "x": 51.64149871143454,
+              "height": 21.219563907717525
+            },
+            "waveHeight": 11.6,
+            "amplitude": 5.8,
+            "wavelength": 48,
+            "closedVolume": true,
+            "fixedBuffers": true,
+            "surfaceEquation": "monotone-gerstner-inverse",
+            "heightProbes": [
+              {
+                "x": 0,
+                "height": 24.8
+              },
+              {
+                "x": 25,
+                "height": 13.21606132731916
+              },
+              {
+                "x": 50,
+                "height": 22.9841853110861
+              },
+              {
+                "x": 75,
+                "height": 13.344942104756525
+              },
+              {
+                "x": 100,
+                "height": 20.871774874978335
+              }
+            ],
+            "trackedSurfaceError": 2.1600499167107046e-12,
+            "controls": [
+              "particle",
+              "phase-track"
+            ]
+          },
+          "labels": [
+            {
+              "text": "波向前传播",
+              "left": 417.04681475007726,
+              "top": 132.0689741172544,
+              "right": 621.3987870212422,
+              "bottom": 178.38875449871836,
+              "fontPx": 31.855006858831345
+            },
+            {
+              "text": "水质点",
+              "left": 833.6433781060406,
+              "top": 152.18715441759895,
+              "right": 988.6067812576671,
+              "bottom": 200.08493357355624,
+              "fontPx": 32.94022706865835
+            }
+          ],
+          "camera": {
+            "position": [
+              131.85227090028715,
+              267.41588774191064,
+              362.32830794812344
+            ],
+            "quaternion": [
+              -0.277855029420256,
+              0.06787003534128956,
+              0.019684376198780943,
+              0.958020232699866
+            ],
+            "orbit": 0.18,
+            "elevation": 0.64
+          },
+          "saved": {
+            "phase": 1,
+            "selection": 0
+          },
+          "render": {
+            "calls": 33,
+            "geometries": 33,
+            "triangles": 22801,
+            "textures": 277
+          },
+          "meshes": [
+            {
+              "role": "water-volume",
+              "xyz": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "47334157-3ab3-4a8a-94a3-ac971578515e",
+              "position": 1,
+              "array": 2,
+              "index": 3
+            },
+            {
+              "role": "particle",
+              "restX": 57,
+              "particleX": 51.64149871143454,
+              "particleHeight": 21.219563907717525,
+              "xyz": [
+                89.91745974074061,
+                36.947209724681926,
+                -77.57857653439261
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "0edf6ac4-fa19-4de0-9f3c-42948e58c6b6",
+              "position": 4,
+              "array": 5,
+              "index": 6
+            },
+            {
+              "text": "波向前传播",
+              "xyz": [
+                38.30609420052097,
+                66.16507180089985,
+                -147.38272728434194
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "f74d8a4f-5f46-44d3-9207-a47f9c293a7c",
+              "position": 7,
+              "array": 8,
+              "index": 9
+            },
+            {
+              "text": "水质点",
+              "xyz": [
+                137.55370190187074,
+                66.16507180089985,
+                -147.38272728434194
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "6dcc9abd-03de-460c-afd2-8e000080fef1",
+              "position": 10,
+              "array": 11,
+              "index": 12
+            },
+            {
+              "role": "phase-rail",
+              "xyz": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "188e3be3-0965-4383-8c7f-979bbcc9be9c",
+              "position": 13,
+              "array": 14,
+              "index": 15
+            },
+            {
+              "role": "phase-handle",
+              "xyz": [
+                142.7772602019418,
+                3.4823722000473607,
+                -65.99968896923514
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "3c5c9e85-0758-4f67-9ded-e60285e7f08e",
+              "position": 16,
+              "array": 17,
+              "index": 18
+            }
+          ]
+        },
+        {
+          "phase": 0.4,
+          "selection": 0,
+          "playing": false,
+          "twoD": false,
+          "model": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 4,
+            "labels": 2,
+            "meshes": 6,
+            "imageMappedMeshes": 0,
+            "extent": [
+              174.1186065673828,
+              72.08510477895771,
+              83.45504978590148
+            ],
+            "sceneElevation": 56,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.4,
+            "selection": 0,
+            "kind": "surface-wave",
+            "reference": {
+              "textbookPage": 57,
+              "pdfPage": 62,
+              "figure": "3.20",
+              "quantities": "schematic",
+              "model": "ideal-periodic-deep-water",
+              "includesCurrent": false,
+              "includesBreaking": false,
+              "includesStokesDrift": false,
+              "markerIsRealBuoy": false
+            },
+            "cyclePhase": 0.4,
+            "caption": "波形向前传播；橙点表示同一水质点。",
+            "wavePropagates": true,
+            "propagationDirection": "right",
+            "particleAdvection": false,
+            "particleMotion": "closed-orbit",
+            "particle": {
+              "restX": 57,
+              "x": 62.63974553830653,
+              "height": 20.353983110364247
+            },
+            "waveHeight": 11.6,
+            "amplitude": 5.8,
+            "wavelength": 48,
+            "closedVolume": true,
+            "fixedBuffers": true,
+            "surfaceEquation": "monotone-gerstner-inverse",
+            "heightProbes": [
+              {
+                "x": 0,
+                "height": 13.57283298241104
+              },
+              {
+                "x": 25,
+                "height": 19.30982694864922
+              },
+              {
+                "x": 50,
+                "height": 13.954327352651877
+              },
+              {
+                "x": 75,
+                "height": 17.87590332843935
+              },
+              {
+                "x": 100,
+                "height": 14.477558802376958
+              }
+            ],
+            "trackedSurfaceError": 5.151434834260726e-13,
+            "controls": [
+              "particle",
+              "phase-track"
+            ]
+          },
+          "labels": [
+            {
+              "text": "波向前传播",
+              "left": 417.1063242074977,
+              "top": 132.10112099797996,
+              "right": 621.417157202123,
+              "bottom": 178.41157647676175,
+              "fontPx": 31.848593943302564
+            },
+            {
+              "text": "水质点",
+              "left": 833.6119885301647,
+              "top": 152.26373256965707,
+              "right": 988.5532566722059,
+              "bottom": 200.15466999537898,
+              "fontPx": 32.935521878742094
+            }
+          ],
+          "camera": {
+            "position": [
+              131.95275535607547,
+              267.4684039318878,
+              362.36010463252916
+            ],
+            "quaternion": [
+              -0.2778762166980005,
+              0.06800520298354794,
+              0.019725424186644094,
+              0.9580036577181891
+            ],
+            "orbit": 0.18,
+            "elevation": 0.64
+          },
+          "saved": {
+            "phase": 0.4,
+            "selection": 0
+          },
+          "render": {
+            "calls": 33,
+            "geometries": 33,
+            "triangles": 22751,
+            "textures": 277
+          },
+          "meshes": [
+            {
+              "role": "water-volume",
+              "xyz": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "47334157-3ab3-4a8a-94a3-ac971578515e",
+              "position": 1,
+              "array": 2,
+              "index": 3
+            },
+            {
+              "role": "particle",
+              "restX": 57,
+              "particleX": 62.63974553830653,
+              "particleHeight": 20.353983110364247,
+              "xyz": [
+                109.06745424031968,
+                35.440072471882985,
+                -77.57857653439261
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "0edf6ac4-fa19-4de0-9f3c-42948e58c6b6",
+              "position": 4,
+              "array": 5,
+              "index": 6
+            },
+            {
+              "text": "波向前传播",
+              "xyz": [
+                38.30609420052097,
+                66.16507180089985,
+                -147.38272728434194
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "f74d8a4f-5f46-44d3-9207-a47f9c293a7c",
+              "position": 7,
+              "array": 8,
+              "index": 9
+            },
+            {
+              "text": "水质点",
+              "xyz": [
+                137.55370190187074,
+                66.16507180089985,
+                -147.38272728434194
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "6dcc9abd-03de-460c-afd2-8e000080fef1",
+              "position": 10,
+              "array": 11,
+              "index": 12
+            },
+            {
+              "role": "phase-rail",
+              "xyz": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "188e3be3-0965-4383-8c7f-979bbcc9be9c",
+              "position": 13,
+              "array": 14,
+              "index": 15
+            },
+            {
+              "role": "phase-handle",
+              "xyz": [
+                75.91571396103247,
+                3.4823722000473607,
+                -65.99968896923514
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "geometry": "3c5c9e85-0758-4f67-9ded-e60285e7f08e",
+              "position": 16,
+              "array": 17,
+              "index": 18
+            }
+          ]
+        }
+      ],
+      "tracked": {
+        "phase": 0.4,
+        "selection": 1,
+        "playing": false,
+        "twoD": false,
+        "model": {
+          "architecture": "three-dimensional-geometry",
+          "bitmapSurfaces": 0,
+          "solids": 4,
+          "labels": 2,
+          "meshes": 6,
+          "imageMappedMeshes": 0,
+          "extent": [
+            174.1186065673828,
+            72.08510477895771,
+            83.45504978590148
+          ],
+          "sceneElevation": 56,
+          "unfoldProgress": 1,
+          "originalPagePreserved": true,
+          "phase": 0.4,
+          "selection": 1,
+          "kind": "surface-wave",
+          "reference": {
+            "textbookPage": 57,
+            "pdfPage": 62,
+            "figure": "3.20",
+            "quantities": "schematic",
+            "model": "ideal-periodic-deep-water",
+            "includesCurrent": false,
+            "includesBreaking": false,
+            "includesStokesDrift": false,
+            "markerIsRealBuoy": false
+          },
+          "cyclePhase": 0.4,
+          "caption": "追踪同一水质点：它作闭合往复运动，波形继续向前。",
+          "wavePropagates": true,
+          "propagationDirection": "right",
+          "particleAdvection": false,
+          "particleMotion": "closed-orbit",
+          "particle": {
+            "restX": 57,
+            "x": 62.63974553830653,
+            "height": 20.353983110364247
+          },
+          "waveHeight": 11.6,
+          "amplitude": 5.8,
+          "wavelength": 48,
+          "closedVolume": true,
+          "fixedBuffers": true,
+          "surfaceEquation": "monotone-gerstner-inverse",
+          "heightProbes": [
+            {
+              "x": 0,
+              "height": 13.57283298241104
+            },
+            {
+              "x": 25,
+              "height": 19.30982694864922
+            },
+            {
+              "x": 50,
+              "height": 13.954327352651877
+            },
+            {
+              "x": 75,
+              "height": 17.87590332843935
+            },
+            {
+              "x": 100,
+              "height": 14.477558802376958
+            }
+          ],
+          "trackedSurfaceError": 5.151434834260726e-13,
+          "controls": [
+            "particle",
+            "phase-track"
+          ]
+        },
+        "labels": [
+          {
+            "text": "波向前传播",
+            "left": 417.2368197406108,
+            "top": 132.1621595236967,
+            "right": 621.4677191385572,
+            "bottom": 178.45449672056452,
+            "fontPx": 31.836133651179285
+          },
+          {
+            "text": "水质点",
+            "left": 833.5669228237275,
+            "top": 152.40618219468692,
+            "right": 988.4641219656331,
+            "bottom": 200.2834982930941,
+            "fontPx": 32.92615422908003
+          }
+        ],
+        "camera": {
+          "position": [
+            132.13480778785757,
+            267.5685184067629,
+            362.425914886301
+          ],
+          "quaternion": [
+            -0.2779152996457481,
+            0.06825395587490844,
+            0.019800993553059015,
+            0.9579730708034291
+          ],
+          "orbit": 0.18,
+          "elevation": 0.64
+        },
+        "saved": {
+          "phase": 0.4,
+          "selection": 1
+        },
+        "render": {
+          "calls": 33,
+          "geometries": 33,
+          "triangles": 22855,
+          "textures": 277
+        },
+        "meshes": [
+          {
+            "role": "water-volume",
+            "xyz": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "geometry": "47334157-3ab3-4a8a-94a3-ac971578515e",
+            "position": 1,
+            "array": 2,
+            "index": 3
+          },
+          {
+            "role": "particle",
+            "restX": 57,
+            "particleX": 62.63974553830653,
+            "particleHeight": 20.353983110364247,
+            "xyz": [
+              109.06745424031968,
+              35.440072471882985,
+              -77.57857653439261
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "geometry": "0edf6ac4-fa19-4de0-9f3c-42948e58c6b6",
+            "position": 4,
+            "array": 5,
+            "index": 6
+          },
+          {
+            "text": "波向前传播",
+            "xyz": [
+              38.30609420052097,
+              66.16507180089985,
+              -147.38272728434194
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "geometry": "f74d8a4f-5f46-44d3-9207-a47f9c293a7c",
+            "position": 7,
+            "array": 8,
+            "index": 9
+          },
+          {
+            "text": "水质点",
+            "xyz": [
+              137.55370190187074,
+              66.16507180089985,
+              -147.38272728434194
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "geometry": "6dcc9abd-03de-460c-afd2-8e000080fef1",
+            "position": 10,
+            "array": 11,
+            "index": 12
+          },
+          {
+            "role": "phase-rail",
+            "xyz": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "geometry": "188e3be3-0965-4383-8c7f-979bbcc9be9c",
+            "position": 13,
+            "array": 14,
+            "index": 15
+          },
+          {
+            "role": "phase-handle",
+            "xyz": [
+              75.91571396103247,
+              3.4823722000473607,
+              -65.99968896923514
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "geometry": "3c5c9e85-0758-4f67-9ded-e60285e7f08e",
+            "position": 16,
+            "array": 17,
+            "index": 18
+          }
+        ]
+      },
+      "topology": {
+        "openEdges": 0,
+        "edges": 8286,
+        "height": 43.136173248291016,
+        "width": 174.1186065673828,
+        "zDepth": 66.16507720947266,
+        "vertices": 4156
+      },
+      "reloaded": {
+        "phase": 0.4000000000002068,
+        "selection": 0,
+        "playing": false,
+        "twoD": false,
+        "model": {
+          "architecture": "three-dimensional-geometry",
+          "bitmapSurfaces": 0,
+          "solids": 4,
+          "labels": 2,
+          "meshes": 6,
+          "imageMappedMeshes": 0,
+          "extent": [
+            174.1186065673828,
+            72.08510477895771,
+            83.45504978590148
+          ],
+          "sceneElevation": 56,
+          "unfoldProgress": 1,
+          "originalPagePreserved": true,
+          "phase": 0.4000000000002068,
+          "selection": 0,
+          "kind": "surface-wave",
+          "reference": {
+            "textbookPage": 57,
+            "pdfPage": 62,
+            "figure": "3.20",
+            "quantities": "schematic",
+            "model": "ideal-periodic-deep-water",
+            "includesCurrent": false,
+            "includesBreaking": false,
+            "includesStokesDrift": false,
+            "markerIsRealBuoy": false
+          },
+          "cyclePhase": 0.4000000000002068,
+          "caption": "波形向前传播；橙点表示同一水质点。",
+          "wavePropagates": true,
+          "propagationDirection": "right",
+          "particleAdvection": false,
+          "particleMotion": "closed-orbit",
+          "particle": {
+            "restX": 57,
+            "x": 62.63974553830828,
+            "height": 20.35398311035692
+          },
+          "waveHeight": 11.6,
+          "amplitude": 5.8,
+          "wavelength": 48,
+          "closedVolume": true,
+          "fixedBuffers": true,
+          "surfaceEquation": "monotone-gerstner-inverse",
+          "heightProbes": [
+            {
+              "x": 0,
+              "height": 13.57283298240838
+            },
+            {
+              "x": 25,
+              "height": 19.309826948656745
+            },
+            {
+              "x": 50,
+              "height": 13.954327352652115
+            },
+            {
+              "x": 75,
+              "height": 17.87590332844674
+            },
+            {
+              "x": 100,
+              "height": 14.477558802377256
+            }
+          ],
+          "trackedSurfaceError": 7.851497230149107e-13,
+          "controls": [
+            "particle",
+            "phase-track"
+          ]
+        },
+        "labels": [
+          {
+            "text": "波向前传播",
+            "left": 416.4139186404556,
+            "top": 131.19023127607815,
+            "right": 621.7812316995772,
+            "bottom": 177.74015556947904,
+            "fontPx": 32.013281268444125
+          },
+          {
+            "text": "水质点",
+            "left": 835.2998671953743,
+            "top": 149.93884307441868,
+            "right": 990.7488225981579,
+            "bottom": 197.98670201709726,
+            "fontPx": 33.04343983426316
+          }
+        ],
+        "camera": {
+          "position": [
+            128.64325285768268,
+            266.01060033561527,
+            361.7617506666458
+          ],
+          "quaternion": [
+            -0.2772078199041039,
+            0.06376178117846558,
+            0.018440266392643526,
+            0.9585145885276509
+          ],
+          "orbit": 0.18,
+          "elevation": 0.64
+        },
+        "saved": {
+          "phase": 0.4000000000002068,
+          "selection": 0
+        },
+        "render": {
+          "calls": 33,
+          "geometries": 33,
+          "triangles": 22751,
+          "textures": 277
+        },
+        "meshes": [
+          {
+            "role": "water-volume",
+            "xyz": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "geometry": "50ef2a33-76a6-46af-894a-b453855acbbf",
+            "position": 1,
+            "array": 2,
+            "index": 3
+          },
+          {
+            "role": "particle",
+            "restX": 57,
+            "particleX": 62.63974553830828,
+            "particleHeight": 20.35398311035692,
+            "xyz": [
+              109.06745424032273,
+              35.440072471870224,
+              -77.57857653439261
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "geometry": "93badebc-90fd-4e8c-b81b-03a20efd874c",
+            "position": 4,
+            "array": 5,
+            "index": 6
+          },
+          {
+            "text": "波向前传播",
+            "xyz": [
+              38.30609420052097,
+              66.16507180089985,
+              -147.38272728434194
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "geometry": "b5c70eb5-ba78-435a-a7a7-3c40f7195007",
+            "position": 7,
+            "array": 8,
+            "index": 9
+          },
+          {
+            "text": "水质点",
+            "xyz": [
+              137.55370190187074,
+              66.16507180089985,
+              -147.38272728434194
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "geometry": "ba42459e-cc45-46db-94cc-67a3dfcde9a7",
+            "position": 10,
+            "array": 11,
+            "index": 12
+          },
+          {
+            "role": "phase-rail",
+            "xyz": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "geometry": "c41c2985-db35-4ee0-8216-ccb9bcca56f7",
+            "position": 13,
+            "array": 14,
+            "index": 15
+          },
+          {
+            "role": "phase-handle",
+            "xyz": [
+              75.91571396105552,
+              3.4823722000473607,
+              -65.99968896923514
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "geometry": "ef1e02fe-3c1b-4a04-9e32-0f8e723016f0",
+            "position": 16,
+            "array": 17,
+            "index": 18
+          }
+        ]
+      },
+      "rotated": {
+        "phase": 0.4000000000002068,
+        "selection": 0,
+        "playing": false,
+        "twoD": false,
+        "model": {
+          "architecture": "three-dimensional-geometry",
+          "bitmapSurfaces": 0,
+          "solids": 4,
+          "labels": 2,
+          "meshes": 6,
+          "imageMappedMeshes": 0,
+          "extent": [
+            174.1186065673828,
+            72.08510477895771,
+            83.45504978590148
+          ],
+          "sceneElevation": 56,
+          "unfoldProgress": 1,
+          "originalPagePreserved": true,
+          "phase": 0.4000000000002068,
+          "selection": 0,
+          "kind": "surface-wave",
+          "reference": {
+            "textbookPage": 57,
+            "pdfPage": 62,
+            "figure": "3.20",
+            "quantities": "schematic",
+            "model": "ideal-periodic-deep-water",
+            "includesCurrent": false,
+            "includesBreaking": false,
+            "includesStokesDrift": false,
+            "markerIsRealBuoy": false
+          },
+          "cyclePhase": 0.4000000000002068,
+          "caption": "波形向前传播；橙点表示同一水质点。",
+          "wavePropagates": true,
+          "propagationDirection": "right",
+          "particleAdvection": false,
+          "particleMotion": "closed-orbit",
+          "particle": {
+            "restX": 57,
+            "x": 62.63974553830828,
+            "height": 20.35398311035692
+          },
+          "waveHeight": 11.6,
+          "amplitude": 5.8,
+          "wavelength": 48,
+          "closedVolume": true,
+          "fixedBuffers": true,
+          "surfaceEquation": "monotone-gerstner-inverse",
+          "heightProbes": [
+            {
+              "x": 0,
+              "height": 13.57283298240838
+            },
+            {
+              "x": 25,
+              "height": 19.309826948656745
+            },
+            {
+              "x": 50,
+              "height": 13.954327352652115
+            },
+            {
+              "x": 75,
+              "height": 17.87590332844674
+            },
+            {
+              "x": 100,
+              "height": 14.477558802377256
+            }
+          ],
+          "trackedSurfaceError": 7.851497230149107e-13,
+          "controls": [
+            "particle",
+            "phase-track"
+          ]
+        },
+        "labels": [
+          {
+            "text": "波向前传播",
+            "left": 444.7838155164741,
+            "top": 119.51944370969586,
+            "right": 650.0063098763898,
+            "bottom": 166.03654243127676,
+            "fontPx": 31.990706489227563
+          },
+          {
+            "text": "水质点",
+            "left": 858.3647901694227,
+            "top": 162.32388769979764,
+            "right": 1018.8812753202404,
+            "bottom": 211.93807401914128,
+            "fontPx": 34.120633398566156
+          }
+        ],
+        "camera": {
+          "position": [
+            167.4965350865604,
+            269.91975801489366,
+            347.29884082365487
+          ],
+          "quaternion": [
+            -0.2840370691332498,
+            0.13129465293571962,
+            0.03929800286468221,
+            0.9489680313053385
+          ],
+          "orbit": 0.47999999999999987,
+          "elevation": 0.7120000000000001
+        },
+        "saved": {
+          "phase": 0.4000000000002068,
+          "selection": 0
+        },
+        "render": {
+          "calls": 33,
+          "geometries": 33,
+          "triangles": 22751,
+          "textures": 277
+        },
+        "meshes": [
+          {
+            "role": "water-volume",
+            "xyz": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "geometry": "50ef2a33-76a6-46af-894a-b453855acbbf",
+            "position": 1,
+            "array": 2,
+            "index": 3
+          },
+          {
+            "role": "particle",
+            "restX": 57,
+            "particleX": 62.63974553830828,
+            "particleHeight": 20.35398311035692,
+            "xyz": [
+              109.06745424032273,
+              35.440072471870224,
+              -77.57857653439261
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "geometry": "93badebc-90fd-4e8c-b81b-03a20efd874c",
+            "position": 4,
+            "array": 5,
+            "index": 6
+          },
+          {
+            "text": "波向前传播",
+            "xyz": [
+              38.30609420052097,
+              66.16507180089985,
+              -147.38272728434194
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "geometry": "b5c70eb5-ba78-435a-a7a7-3c40f7195007",
+            "position": 7,
+            "array": 8,
+            "index": 9
+          },
+          {
+            "text": "水质点",
+            "xyz": [
+              137.55370190187074,
+              66.16507180089985,
+              -147.38272728434194
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "geometry": "ba42459e-cc45-46db-94cc-67a3dfcde9a7",
+            "position": 10,
+            "array": 11,
+            "index": 12
+          },
+          {
+            "role": "phase-rail",
+            "xyz": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "geometry": "c41c2985-db35-4ee0-8216-ccb9bcca56f7",
+            "position": 13,
+            "array": 14,
+            "index": 15
+          },
+          {
+            "role": "phase-handle",
+            "xyz": [
+              75.91571396105552,
+              3.4823722000473607,
+              -65.99968896923514
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "geometry": "ef1e02fe-3c1b-4a04-9e32-0f8e723016f0",
+            "position": 16,
+            "array": 17,
+            "index": 18
+          }
+        ]
+      },
+      "beforeFlat": {
+        "phase": 0.4,
+        "selection": 0,
+        "playing": false,
+        "twoD": false,
+        "model": {
+          "architecture": "three-dimensional-geometry",
+          "bitmapSurfaces": 0,
+          "solids": 4,
+          "labels": 2,
+          "meshes": 6,
+          "imageMappedMeshes": 0,
+          "extent": [
+            174.1186065673828,
+            72.08510477895771,
+            83.45504978590148
+          ],
+          "sceneElevation": 56,
+          "unfoldProgress": 1,
+          "originalPagePreserved": true,
+          "phase": 0.4,
+          "selection": 0,
+          "kind": "surface-wave",
+          "reference": {
+            "textbookPage": 57,
+            "pdfPage": 62,
+            "figure": "3.20",
+            "quantities": "schematic",
+            "model": "ideal-periodic-deep-water",
+            "includesCurrent": false,
+            "includesBreaking": false,
+            "includesStokesDrift": false,
+            "markerIsRealBuoy": false
+          },
+          "cyclePhase": 0.4,
+          "caption": "波形向前传播；橙点表示同一水质点。",
+          "wavePropagates": true,
+          "propagationDirection": "right",
+          "particleAdvection": false,
+          "particleMotion": "closed-orbit",
+          "particle": {
+            "restX": 57,
+            "x": 62.63974553830653,
+            "height": 20.353983110364247
+          },
+          "waveHeight": 11.6,
+          "amplitude": 5.8,
+          "wavelength": 48,
+          "closedVolume": true,
+          "fixedBuffers": true,
+          "surfaceEquation": "monotone-gerstner-inverse",
+          "heightProbes": [
+            {
+              "x": 0,
+              "height": 13.57283298241104
+            },
+            {
+              "x": 25,
+              "height": 19.30982694864922
+            },
+            {
+              "x": 50,
+              "height": 13.954327352651877
+            },
+            {
+              "x": 75,
+              "height": 17.87590332843935
+            },
+            {
+              "x": 100,
+              "height": 14.477558802376958
+            }
+          ],
+          "trackedSurfaceError": 5.151434834260726e-13,
+          "controls": [
+            "particle",
+            "phase-track"
+          ]
+        },
+        "labels": [
+          {
+            "text": "波向前传播",
+            "left": 246.236820572512,
+            "top": 132.16215980600862,
+            "right": 450.4677195769438,
+            "bottom": 178.45449691367983,
+            "fontPx": 31.836133589837047
+          },
+          {
+            "text": "水质点",
+            "left": 662.5669228057491,
+            "top": 152.40618281518886,
+            "right": 817.4641217173939,
+            "bottom": 200.2834988424245,
+            "fontPx": 32.92615418013399
+          }
+        ],
+        "camera": {
+          "position": [
+            132.1348085152301,
+            267.56851887491376,
+            362.42591526175903
+          ],
+          "quaternion": [
+            -0.2779152998123037,
+            0.06825395692272711,
+            0.019800993871583933,
+            0.9579730706738709
+          ],
+          "orbit": 0.18,
+          "elevation": 0.64
+        },
+        "saved": {
+          "phase": 0.4,
+          "selection": 0
+        },
+        "render": {
+          "calls": 33,
+          "geometries": 33,
+          "triangles": 22751,
+          "textures": 277
+        },
+        "meshes": [
+          {
+            "role": "water-volume",
+            "xyz": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "geometry": "6b54ead1-d25f-4ba6-820a-661a5213ba5a",
+            "position": 1,
+            "array": 2,
+            "index": 3
+          },
+          {
+            "role": "particle",
+            "restX": 57,
+            "particleX": 62.63974553830653,
+            "particleHeight": 20.353983110364247,
+            "xyz": [
+              109.06745424031968,
+              35.440072471882985,
+              -77.57857653439261
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "geometry": "0a97c8b4-6e2e-4934-b877-4ce2d0a95466",
+            "position": 4,
+            "array": 5,
+            "index": 6
+          },
+          {
+            "text": "波向前传播",
+            "xyz": [
+              38.30609420052097,
+              66.16507180089985,
+              -147.38272728434194
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "geometry": "7eac3007-1343-4a54-8913-568c3b8d84c9",
+            "position": 7,
+            "array": 8,
+            "index": 9
+          },
+          {
+            "text": "水质点",
+            "xyz": [
+              137.55370190187074,
+              66.16507180089985,
+              -147.38272728434194
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "geometry": "80c54d5d-b2a2-4537-84d3-db19cc019e84",
+            "position": 10,
+            "array": 11,
+            "index": 12
+          },
+          {
+            "role": "phase-rail",
+            "xyz": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "geometry": "9e5a99cd-cb3b-45dd-b5b4-cd7d780144b6",
+            "position": 13,
+            "array": 14,
+            "index": 15
+          },
+          {
+            "role": "phase-handle",
+            "xyz": [
+              75.91571396103247,
+              3.4823722000473607,
+              -65.99968896923514
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "geometry": "96408010-e12c-474c-8dca-5097edfb57b9",
+            "position": 16,
+            "array": 17,
+            "index": 18
+          }
+        ]
+      },
+      "flat": {
+        "role": "group",
+        "aria": "波形向右传播；橙点是同一水质点的示意，作闭合往复运动。理想深水周期波，不含洋流、破碎和近岸变化，不表示实测浪高、周期，也不是实际浮标运动。",
+        "images": 0,
+        "phase": 0.4,
+        "selection": 0,
+        "probes": [
+          {
+            "x": 0,
+            "height": 13.572833
+          },
+          {
+            "x": 25,
+            "height": 19.309827
+          },
+          {
+            "x": 50,
+            "height": 13.954327
+          },
+          {
+            "x": 75,
+            "height": 17.875903
+          },
+          {
+            "x": 100,
+            "height": 14.477559
+          }
+        ],
+        "orbit": false,
+        "particle": [
+          {
+            "x": 62.639746,
+            "height": 20.353983,
+            "restX": 57
+          }
+        ]
+      },
+      "startFlat": {
+        "role": "group",
+        "aria": "波形向右传播；橙点是同一水质点的示意，作闭合往复运动。理想深水周期波，不含洋流、破碎和近岸变化，不表示实测浪高、周期，也不是实际浮标运动。",
+        "images": 0,
+        "phase": 0,
+        "selection": 1,
+        "probes": [
+          {
+            "x": 0,
+            "height": 24.8
+          },
+          {
+            "x": 25,
+            "height": 13.216061
+          },
+          {
+            "x": 50,
+            "height": 22.984185
+          },
+          {
+            "x": 75,
+            "height": 13.344942
+          },
+          {
+            "x": 100,
+            "height": 20.871775
+          }
+        ],
+        "orbit": true,
+        "particle": [
+          {
+            "x": 51.641499,
+            "height": 21.219564,
+            "restX": 57
+          }
+        ]
+      },
+      "endFlat": {
+        "role": "group",
+        "aria": "波形向右传播；橙点是同一水质点的示意，作闭合往复运动。理想深水周期波，不含洋流、破碎和近岸变化，不表示实测浪高、周期，也不是实际浮标运动。",
+        "images": 0,
+        "phase": 1,
+        "selection": 1,
+        "probes": [
+          {
+            "x": 0,
+            "height": 24.8
+          },
+          {
+            "x": 25,
+            "height": 13.216061
+          },
+          {
+            "x": 50,
+            "height": 22.984185
+          },
+          {
+            "x": 75,
+            "height": 13.344942
+          },
+          {
+            "x": 100,
+            "height": 20.871775
+          }
+        ],
+        "orbit": true,
+        "particle": [
+          {
+            "x": 51.641499,
+            "height": 21.219564,
+            "restX": 57
+          }
+        ]
+      },
+      "phone": {
+        "box": {
+          "left": 8,
+          "right": 382,
+          "top": 12,
+          "bottom": 201.921875
+        },
+        "labels": [
+          {
+            "text": "波向前传播",
+            "left": 57.10313034057617,
+            "right": 162.25938034057617,
+            "top": 11.375,
+            "bottom": 41.375,
+            "px": 21.037499999999998
+          },
+          {
+            "text": "水质点",
+            "left": 261.04376220703125,
+            "right": 324.1374816894531,
+            "top": 34.165626525878906,
+            "bottom": 64.1656265258789,
+            "px": 21.037499999999998
+          }
+        ]
+      }
+    }
+  ],
+  "targets": [
+    {
+      "x": 766.6223755269691,
+      "y": 427.28724622741197,
+      "input": "select",
+      "label": "追踪同一水质点；再次选择收起轨迹",
+      "role": "particle"
+    },
+    {
+      "x": 766.6223741100104,
+      "y": 427.28724644978854,
+      "input": "select",
+      "label": "追踪同一水质点；再次选择收起轨迹",
+      "role": "particle"
+    },
+    {
+      "role": "particle-44px-edge",
+      "x": 787.1223740940447,
+      "y": 427.2872464521932,
+      "center": {
+        "x": 766.6223740940447,
+        "y": 427.2872464521932
+      },
+      "distance": 20.5,
+      "kind": "select"
+    },
+    {
+      "x": 613.5124811448048,
+      "y": 560.4011615919617,
+      "input": "phase-track",
+      "label": "拖动纸签，观察同一周期的波形和水质点",
+      "role": "phase-handle"
+    },
+    {
+      "x": 689.6144364009544,
+      "y": 389.16924260099984,
+      "input": null,
+      "label": "",
+      "role": "water-volume"
+    }
+  ],
+  "labelIssues": [],
+  "reviewedEntry": {
+    "path": "/assets/index-DesTAK90.js",
+    "sha256": "8983858ae98d4471fa6b771b90de127902fa99b76c7c9d6553c7696c86c82371"
+  },
+  "reviewedAt": "2026-11-05T10:55:36.726Z",
+  "externalRequests": [],
+  "requestFailures": []
+}

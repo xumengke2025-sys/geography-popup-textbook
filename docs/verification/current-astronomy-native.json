@@ -1,0 +1,708 @@
+{
+  "base": "http://127.0.0.1:4175",
+  "checks": [
+    "all eight actual 3D planet meshes use schematic units",
+    "changing renderer retains paused solar progress without a diagram crop",
+    "the native SVG planets occupy exactly the same normalized orbit positions as the actual meshes",
+    "desktop-solar-svg: the actual diagram labels are readable and separate",
+    "desktop-solar-svg: diagram stays within its reading area",
+    "the native vector orbit closes at the continuous cycle boundary",
+    "earth/0: layer focus survives switching to native SVG",
+    "earth/0: SVG extraction and actual shell groups share the same visibility and translation",
+    "earth/0: the source distinguishes this schematic shell from the full printed velocity graph",
+    "desktop-earth-0-svg: the actual diagram labels are readable and separate",
+    "desktop-earth-0-svg: diagram stays within its reading area",
+    "earth/1: layer focus survives switching to native SVG",
+    "earth/1: SVG extraction and actual shell groups share the same visibility and translation",
+    "earth/1: the source distinguishes this schematic shell from the full printed velocity graph",
+    "desktop-earth-1-svg: the actual diagram labels are readable and separate",
+    "desktop-earth-1-svg: diagram stays within its reading area",
+    "earth/2: layer focus survives switching to native SVG",
+    "earth/2: SVG extraction and actual shell groups share the same visibility and translation",
+    "earth/2: the source distinguishes this schematic shell from the full printed velocity graph",
+    "desktop-earth-2-svg: the actual diagram labels are readable and separate",
+    "desktop-earth-2-svg: diagram stays within its reading area",
+    "earth/3: layer focus survives switching to native SVG",
+    "earth/3: SVG extraction and actual shell groups share the same visibility and translation",
+    "earth/3: the source distinguishes this schematic shell from the full printed velocity graph",
+    "desktop-earth-3-svg: the actual diagram labels are readable and separate",
+    "desktop-earth-3-svg: diagram stays within its reading area",
+    "pressing the selected native shell with the keyboard restores the complete cutaway",
+    "phone-solar-svg: the actual diagram labels are readable and separate",
+    "phone-solar-svg: diagram stays within its reading area",
+    "phone-earth-svg: the actual diagram labels are readable and separate",
+    "phone-earth-svg: diagram stays within its reading area"
+  ],
+  "failures": [],
+  "errors": [],
+  "states": [
+    {
+      "name": "desktop-solar-svg",
+      "id": "solar",
+      "phase": 0.371,
+      "selection": 0,
+      "playing": false,
+      "twoD": true,
+      "model": null,
+      "labels": [
+        {
+          "text": "太阳",
+          "left": 650.796875,
+          "right": 715.203125,
+          "top": 353.8999938964844,
+          "bottom": 399.8999938964844,
+          "fontPx": 32.199999999999996
+        },
+        {
+          "text": "地球",
+          "left": 636.603271484375,
+          "right": 701.009521484375,
+          "top": 458.54998779296875,
+          "bottom": 504.54998779296875,
+          "fontPx": 32.199999999999996
+        },
+        {
+          "text": "轨道、天体大小和速度均为示意",
+          "left": 457.59375,
+          "right": 908.4063110351562,
+          "top": 587.3500366210938,
+          "bottom": 633.3500366210938,
+          "fontPx": 32.199999999999996
+        }
+      ],
+      "planets": [],
+      "layerObjects": [],
+      "svg": {
+        "box": {
+          "left": 315,
+          "right": 1051,
+          "top": 223,
+          "bottom": 671.5
+        },
+        "attrs": {
+          "class": "flat-model-svg flat-explanation-svg",
+          "viewBox": "0 0 640 390",
+          "role": "img",
+          "data-solar-system-state": "{\"phase\":0.371,\"bodyCount\":8,\"units\":\"schematic\"}",
+          "aria-label": "太阳系八颗行星连续公转示意；距离、大小与速度不按真实比例"
+        },
+        "images": 0,
+        "planets": [
+          {
+            "name": "地球",
+            "point": [
+              -2.2440461019167306,
+              0,
+              -9.773718641638284
+            ]
+          },
+          {
+            "name": "火星",
+            "point": [
+              -17.004525964762422,
+              0,
+              -8.096062433954893
+            ]
+          },
+          {
+            "name": "金星",
+            "point": [
+              6.959452149676343,
+              0,
+              -5.6699568844189026
+            ]
+          },
+          {
+            "name": "水星",
+            "point": [
+              7.838840419073966,
+              0,
+              -0.9266543095868581
+            ]
+          },
+          {
+            "name": "木星",
+            "point": [
+              -28.941153344386986,
+              0,
+              1.0709826972096437
+            ]
+          },
+          {
+            "name": "土星",
+            "point": [
+              -24.01104707105401,
+              0,
+              14.769738646325735
+            ]
+          },
+          {
+            "name": "海王星",
+            "point": [
+              31.902839053320296,
+              0,
+              20.01805836283038
+            ]
+          },
+          {
+            "name": "天王星",
+            "point": [
+              -0.2032179956066371,
+              0,
+              23.779707893557532
+            ]
+          }
+        ]
+      },
+      "viewport": {
+        "width": 1366,
+        "height": 900,
+        "scrollWidth": 1366
+      },
+      "dock": {
+        "left": 243,
+        "right": 1123,
+        "top": 753,
+        "bottom": 882
+      },
+      "header": {
+        "left": 0,
+        "right": 1366,
+        "top": 0,
+        "bottom": 86
+      }
+    },
+    {
+      "name": "desktop-earth-0-svg",
+      "id": "earth",
+      "phase": 0,
+      "selection": 0,
+      "playing": false,
+      "twoD": true,
+      "model": null,
+      "labels": [
+        {
+          "text": "地壳",
+          "left": 811.796875,
+          "right": 876.203125,
+          "top": 292.95001220703125,
+          "bottom": 338.95001220703125,
+          "fontPx": 32.199999999999996
+        },
+        {
+          "text": "地幔",
+          "left": 811.796875,
+          "right": 876.203125,
+          "top": 360.79998779296875,
+          "bottom": 406.79998779296875,
+          "fontPx": 32.199999999999996
+        },
+        {
+          "text": "外核",
+          "left": 811.796875,
+          "right": 876.203125,
+          "top": 428.6500244140625,
+          "bottom": 474.6500244140625,
+          "fontPx": 32.199999999999996
+        },
+        {
+          "text": "内核",
+          "left": 811.796875,
+          "right": 876.203125,
+          "top": 496.5,
+          "bottom": 542.5,
+          "fontPx": 32.199999999999996
+        },
+        {
+          "text": "圈层次序不变，抬出只为观察",
+          "left": 473.6953125,
+          "right": 892.3046875,
+          "top": 591.949951171875,
+          "bottom": 637.949951171875,
+          "fontPx": 32.199999999999996
+        }
+      ],
+      "planets": [],
+      "layerObjects": [],
+      "svg": {
+        "box": {
+          "left": 315,
+          "right": 1051,
+          "top": 223,
+          "bottom": 671.5
+        },
+        "attrs": {
+          "class": "flat-model-svg flat-explanation-svg",
+          "viewBox": "0 0 640 390",
+          "role": "img",
+          "data-earth-layers-state": "{\"selection\":0,\"focus\":\"all\",\"layers\":[{\"name\":\"地壳\",\"index\":0,\"outer\":21,\"inner\":20.3,\"color\":\"#c0b09a\",\"visible\":true,\"peeled\":false,\"labelVisible\":true,\"selection\":1,\"offset\":[0,0,0]},{\"name\":\"地幔\",\"index\":1,\"outer\":20.3,\"inner\":11.4,\"color\":\"#c5aa80\",\"visible\":true,\"peeled\":false,\"labelVisible\":true,\"selection\":2,\"offset\":[0,0,0]},{\"name\":\"外核\",\"index\":2,\"outer\":11.4,\"inner\":6.1,\"color\":\"#c98a5e\",\"visible\":true,\"peeled\":false,\"labelVisible\":true,\"selection\":3,\"offset\":[0,0,0]},{\"name\":\"内核\",\"index\":3,\"outer\":6.1,\"inner\":0,\"color\":\"#a86048\",\"visible\":true,\"peeled\":false,\"labelVisible\":true,\"selection\":3,\"offset\":[0,0,0]}]}",
+          "aria-label": "地球内部圈层完整剖面观察；厚度为示意，不展示地震波速度"
+        },
+        "images": 0,
+        "planets": []
+      },
+      "viewport": {
+        "width": 1366,
+        "height": 900,
+        "scrollWidth": 1366
+      },
+      "dock": {
+        "left": 243,
+        "right": 1123,
+        "top": 753,
+        "bottom": 882
+      },
+      "header": {
+        "left": 0,
+        "right": 1366,
+        "top": 0,
+        "bottom": 86
+      }
+    },
+    {
+      "name": "desktop-earth-1-svg",
+      "id": "earth",
+      "phase": 0,
+      "selection": 1,
+      "playing": false,
+      "twoD": true,
+      "model": null,
+      "labels": [
+        {
+          "text": "地壳",
+          "left": 761.6914672851562,
+          "right": 826.0977172851562,
+          "top": 237.05999755859375,
+          "bottom": 283.05999755859375,
+          "fontPx": 32.199999999999996
+        },
+        {
+          "text": "圈层次序不变，抬出只为观察",
+          "left": 473.6953125,
+          "right": 892.3046875,
+          "top": 591.949951171875,
+          "bottom": 637.949951171875,
+          "fontPx": 32.199999999999996
+        }
+      ],
+      "planets": [],
+      "layerObjects": [],
+      "svg": {
+        "box": {
+          "left": 315,
+          "right": 1051,
+          "top": 223,
+          "bottom": 671.5
+        },
+        "attrs": {
+          "class": "flat-model-svg flat-explanation-svg",
+          "viewBox": "0 0 640 390",
+          "role": "img",
+          "data-earth-layers-state": "{\"selection\":1,\"focus\":\"crust\",\"layers\":[{\"name\":\"地壳\",\"index\":0,\"outer\":21,\"inner\":20.3,\"color\":\"#c0b09a\",\"visible\":true,\"peeled\":true,\"labelVisible\":true,\"selection\":1,\"offset\":[51.733999999999995,3,0]},{\"name\":\"地幔\",\"index\":1,\"outer\":20.3,\"inner\":11.4,\"color\":\"#c5aa80\",\"visible\":true,\"peeled\":false,\"labelVisible\":false,\"selection\":2,\"offset\":[0,0,0]},{\"name\":\"外核\",\"index\":2,\"outer\":11.4,\"inner\":6.1,\"color\":\"#c98a5e\",\"visible\":true,\"peeled\":false,\"labelVisible\":false,\"selection\":3,\"offset\":[0,0,0]},{\"name\":\"内核\",\"index\":3,\"outer\":6.1,\"inner\":0,\"color\":\"#a86048\",\"visible\":true,\"peeled\":false,\"labelVisible\":false,\"selection\":3,\"offset\":[0,0,0]}]}",
+          "aria-label": "地球内部圈层分层观察；厚度为示意，不展示地震波速度"
+        },
+        "images": 0,
+        "planets": []
+      },
+      "viewport": {
+        "width": 1366,
+        "height": 900,
+        "scrollWidth": 1366
+      },
+      "dock": {
+        "left": 243,
+        "right": 1123,
+        "top": 753,
+        "bottom": 882
+      },
+      "header": {
+        "left": 0,
+        "right": 1366,
+        "top": 0,
+        "bottom": 86
+      }
+    },
+    {
+      "name": "desktop-earth-2-svg",
+      "id": "earth",
+      "phase": 0,
+      "selection": 2,
+      "playing": false,
+      "twoD": true,
+      "model": null,
+      "labels": [
+        {
+          "text": "地幔",
+          "left": 694.6014404296875,
+          "right": 759.0076904296875,
+          "top": 241.20574951171875,
+          "bottom": 287.20574951171875,
+          "fontPx": 32.199999999999996
+        },
+        {
+          "text": "圈层次序不变，抬出只为观察",
+          "left": 473.6953125,
+          "right": 892.3046875,
+          "top": 591.949951171875,
+          "bottom": 637.949951171875,
+          "fontPx": 32.199999999999996
+        }
+      ],
+      "planets": [],
+      "layerObjects": [],
+      "svg": {
+        "box": {
+          "left": 315,
+          "right": 1051,
+          "top": 223,
+          "bottom": 671.5
+        },
+        "attrs": {
+          "class": "flat-model-svg flat-explanation-svg",
+          "viewBox": "0 0 640 390",
+          "role": "img",
+          "data-earth-layers-state": "{\"selection\":2,\"focus\":\"mantle\",\"layers\":[{\"name\":\"地壳\",\"index\":0,\"outer\":21,\"inner\":20.3,\"color\":\"#c0b09a\",\"visible\":false,\"peeled\":false,\"labelVisible\":false,\"selection\":1,\"offset\":[0,0,0]},{\"name\":\"地幔\",\"index\":1,\"outer\":20.3,\"inner\":11.4,\"color\":\"#c5aa80\",\"visible\":true,\"peeled\":true,\"labelVisible\":true,\"selection\":2,\"offset\":[40.406,3,0]},{\"name\":\"外核\",\"index\":2,\"outer\":11.4,\"inner\":6.1,\"color\":\"#c98a5e\",\"visible\":true,\"peeled\":false,\"labelVisible\":false,\"selection\":3,\"offset\":[0,0,0]},{\"name\":\"内核\",\"index\":3,\"outer\":6.1,\"inner\":0,\"color\":\"#a86048\",\"visible\":true,\"peeled\":false,\"labelVisible\":false,\"selection\":3,\"offset\":[0,0,0]}]}",
+          "aria-label": "地球内部圈层分层观察；厚度为示意，不展示地震波速度"
+        },
+        "images": 0,
+        "planets": []
+      },
+      "viewport": {
+        "width": 1366,
+        "height": 900,
+        "scrollWidth": 1366
+      },
+      "dock": {
+        "left": 243,
+        "right": 1123,
+        "top": 753,
+        "bottom": 882
+      },
+      "header": {
+        "left": 0,
+        "right": 1366,
+        "top": 0,
+        "bottom": 86
+      }
+    },
+    {
+      "name": "desktop-earth-3-svg",
+      "id": "earth",
+      "phase": 0,
+      "selection": 3,
+      "playing": false,
+      "twoD": true,
+      "model": null,
+      "labels": [
+        {
+          "text": "外核",
+          "left": 811.796875,
+          "right": 876.203125,
+          "top": 382.6499938964844,
+          "bottom": 428.6499938964844,
+          "fontPx": 32.199999999999996
+        },
+        {
+          "text": "内核",
+          "left": 811.796875,
+          "right": 876.203125,
+          "top": 442.45001220703125,
+          "bottom": 488.4499816894531,
+          "fontPx": 32.199999999999996
+        },
+        {
+          "text": "圈层次序不变，抬出只为观察",
+          "left": 473.6953125,
+          "right": 892.3046875,
+          "top": 591.949951171875,
+          "bottom": 637.949951171875,
+          "fontPx": 32.199999999999996
+        }
+      ],
+      "planets": [],
+      "layerObjects": [],
+      "svg": {
+        "box": {
+          "left": 315,
+          "right": 1051,
+          "top": 223,
+          "bottom": 671.5
+        },
+        "attrs": {
+          "class": "flat-model-svg flat-explanation-svg",
+          "viewBox": "0 0 640 390",
+          "role": "img",
+          "data-earth-layers-state": "{\"selection\":3,\"focus\":\"core\",\"layers\":[{\"name\":\"地壳\",\"index\":0,\"outer\":21,\"inner\":20.3,\"color\":\"#c0b09a\",\"visible\":false,\"peeled\":false,\"labelVisible\":false,\"selection\":1,\"offset\":[0,0,0]},{\"name\":\"地幔\",\"index\":1,\"outer\":20.3,\"inner\":11.4,\"color\":\"#c5aa80\",\"visible\":false,\"peeled\":false,\"labelVisible\":false,\"selection\":2,\"offset\":[0,0,0]},{\"name\":\"外核\",\"index\":2,\"outer\":11.4,\"inner\":6.1,\"color\":\"#c98a5e\",\"visible\":true,\"peeled\":false,\"labelVisible\":true,\"selection\":3,\"offset\":[0,0,0]},{\"name\":\"内核\",\"index\":3,\"outer\":6.1,\"inner\":0,\"color\":\"#a86048\",\"visible\":true,\"peeled\":false,\"labelVisible\":true,\"selection\":3,\"offset\":[0,0,0]}]}",
+          "aria-label": "地球内部圈层分层观察；厚度为示意，不展示地震波速度"
+        },
+        "images": 0,
+        "planets": []
+      },
+      "viewport": {
+        "width": 1366,
+        "height": 900,
+        "scrollWidth": 1366
+      },
+      "dock": {
+        "left": 243,
+        "right": 1123,
+        "top": 753,
+        "bottom": 882
+      },
+      "header": {
+        "left": 0,
+        "right": 1366,
+        "top": 0,
+        "bottom": 86
+      }
+    },
+    {
+      "name": "phone-solar-svg",
+      "id": "solar",
+      "phase": 1,
+      "selection": 0,
+      "playing": false,
+      "twoD": true,
+      "labels": [
+        {
+          "text": "太阳",
+          "left": 173.96873474121094,
+          "right": 216.03123474121094,
+          "top": 302.3187561035156,
+          "bottom": 332.3187561035156,
+          "fontPx": 21.037499999999998
+        },
+        {
+          "text": "地球",
+          "left": 119.33894348144531,
+          "right": 161.40142822265625,
+          "top": 308.9112548828125,
+          "bottom": 338.9112854003906,
+          "fontPx": 21.037499999999998
+        },
+        {
+          "text": "轨道、天体大小和速度均为示意",
+          "left": 47.7890625,
+          "right": 342.2109375,
+          "top": 420.9468688964844,
+          "bottom": 450.9468994140625,
+          "fontPx": 21.037499999999998
+        }
+      ],
+      "planets": [],
+      "layerObjects": [],
+      "svg": {
+        "box": {
+          "left": 8,
+          "right": 382,
+          "top": 241,
+          "bottom": 468.90625
+        },
+        "attrs": {
+          "class": "flat-model-svg flat-explanation-svg",
+          "viewBox": "0 0 640 390",
+          "role": "img",
+          "data-solar-system-state": "{\"phase\":1,\"bodyCount\":8,\"units\":\"schematic\"}",
+          "aria-label": "太阳系八颗行星连续公转示意；距离、大小与速度不按真实比例"
+        },
+        "images": 0,
+        "planets": [
+          {
+            "name": "海王星",
+            "point": [
+              3.025914207273848,
+              0,
+              -27.203445900398673
+            ]
+          },
+          {
+            "name": "火星",
+            "point": [
+              0.6073652519926637,
+              0,
+              -12.755136398581003
+            ]
+          },
+          {
+            "name": "天王星",
+            "point": [
+              -40.93750167552706,
+              0,
+              -1.3125127766525435
+            ]
+          },
+          {
+            "name": "地球",
+            "point": [
+              -16.997120022904173,
+              0,
+              -0.18148618635986039
+            ]
+          },
+          {
+            "name": "水星",
+            "point": [
+              8,
+              0,
+              -7.177199351112124e-15
+            ]
+          },
+          {
+            "name": "木星",
+            "point": [
+              28.980350056175006,
+              0,
+              0.6190832683023889
+            ]
+          },
+          {
+            "name": "金星",
+            "point": [
+              -0.11044251922566094,
+              0,
+              6.959705219631229
+            ]
+          },
+          {
+            "name": "土星",
+            "point": [
+              -1.6100743973837035,
+              0,
+              20.27850923934737
+            ]
+          }
+        ]
+      },
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "scrollWidth": 390
+      },
+      "dock": {
+        "left": 10,
+        "right": 380,
+        "top": 706.40625,
+        "bottom": 832
+      },
+      "header": {
+        "left": 0,
+        "right": 390,
+        "top": 0,
+        "bottom": 70
+      }
+    },
+    {
+      "name": "phone-earth-svg",
+      "id": "earth",
+      "phase": 0,
+      "selection": 0,
+      "playing": false,
+      "twoD": true,
+      "labels": [
+        {
+          "text": "地壳",
+          "left": 255.78123474121094,
+          "right": 297.84375,
+          "top": 271.34686279296875,
+          "bottom": 301.34686279296875,
+          "fontPx": 21.037499999999998
+        },
+        {
+          "text": "地幔",
+          "left": 255.78123474121094,
+          "right": 297.84375,
+          "top": 305.82501220703125,
+          "bottom": 335.82501220703125,
+          "fontPx": 21.037499999999998
+        },
+        {
+          "text": "外核",
+          "left": 255.78123474121094,
+          "right": 297.84375,
+          "top": 340.3031311035156,
+          "bottom": 370.3031311035156,
+          "fontPx": 21.037499999999998
+        },
+        {
+          "text": "内核",
+          "left": 255.78123474121094,
+          "right": 297.84375,
+          "top": 374.78125,
+          "bottom": 404.78125,
+          "fontPx": 21.037499999999998
+        },
+        {
+          "text": "圈层次序不变，抬出只为观察",
+          "left": 58.3046875,
+          "right": 331.6953125,
+          "top": 423.28436279296875,
+          "bottom": 453.28436279296875,
+          "fontPx": 21.037499999999998
+        }
+      ],
+      "planets": [],
+      "layerObjects": [],
+      "svg": {
+        "box": {
+          "left": 8,
+          "right": 382,
+          "top": 241,
+          "bottom": 468.90625
+        },
+        "attrs": {
+          "class": "flat-model-svg flat-explanation-svg",
+          "viewBox": "0 0 640 390",
+          "role": "img",
+          "data-earth-layers-state": "{\"selection\":0,\"focus\":\"all\",\"layers\":[{\"name\":\"地壳\",\"index\":0,\"outer\":21,\"inner\":20.3,\"color\":\"#c0b09a\",\"visible\":true,\"peeled\":false,\"labelVisible\":true,\"selection\":1,\"offset\":[0,0,0]},{\"name\":\"地幔\",\"index\":1,\"outer\":20.3,\"inner\":11.4,\"color\":\"#c5aa80\",\"visible\":true,\"peeled\":false,\"labelVisible\":true,\"selection\":2,\"offset\":[0,0,0]},{\"name\":\"外核\",\"index\":2,\"outer\":11.4,\"inner\":6.1,\"color\":\"#c98a5e\",\"visible\":true,\"peeled\":false,\"labelVisible\":true,\"selection\":3,\"offset\":[0,0,0]},{\"name\":\"内核\",\"index\":3,\"outer\":6.1,\"inner\":0,\"color\":\"#a86048\",\"visible\":true,\"peeled\":false,\"labelVisible\":true,\"selection\":3,\"offset\":[0,0,0]}]}",
+          "aria-label": "地球内部圈层完整剖面观察；厚度为示意，不展示地震波速度"
+        },
+        "images": 0,
+        "planets": []
+      },
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "scrollWidth": 390
+      },
+      "dock": {
+        "left": 10,
+        "right": 380,
+        "top": 638.109375,
+        "bottom": 832
+      },
+      "header": {
+        "left": 0,
+        "right": 390,
+        "top": 0,
+        "bottom": 70
+      }
+    }
+  ],
+  "screenshots": [
+    "output/playwright/continuous-desktop-solar-svg.png",
+    "output/playwright/continuous-desktop-earth-0-svg.png",
+    "output/playwright/continuous-desktop-earth-1-svg.png",
+    "output/playwright/continuous-desktop-earth-2-svg.png",
+    "output/playwright/continuous-desktop-earth-3-svg.png",
+    "output/playwright/continuous-phone-solar-svg.png",
+    "output/playwright/continuous-phone-earth-svg.png"
+  ],
+  "labelIssues": [],
+  "layoutIssues": [],
+  "fatal": null,
+  "evidenceScope": "Actual 3D planet and shell positions compared with native vectors, renderer switching and SVG keyboard selections; desktop and simulated phone screenshots. No physical device or whole-book aesthetic acceptance.",
+  "reviewedEntry": {
+    "path": "/assets/index-RQbEqc7g.js",
+    "sha256": "b0de5cf693e263331b876eb02db890dc5992e64b35af5f36075a2ae48716c8db"
+  },
+  "reviewedStyles": [
+    {
+      "path": "/assets/index-BNlCIg7W.css",
+      "sha256": "7dc46979023abf69bb0739abccbdf5b37c1e2a4684645382e091631cf47753e2"
+    }
+  ],
+  "reviewedAt": "2026-11-05T17:58:36.819Z",
+  "browser": "156.0.8078.80",
+  "externalRequests": [],
+  "requestFailures": []
+}

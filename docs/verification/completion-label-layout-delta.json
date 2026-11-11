@@ -1,0 +1,20 @@
+{
+  "previousEntry": "/assets/index-CiqUfY83.js",
+  "currentEntry": "/assets/index-BVed_P16.js",
+  "changes": [
+    {
+      "file": "src/textbook-models-foundation.ts",
+      "beforeSha256": "aa7155faa927d859d5881c5b59ff354a9bdbb6ec9c545d90ed49dbf0c85f6664",
+      "afterSha256": "0341051554bc6e74deb48dc47ab160ed1ba1c97211113f5e97fa43ef405ae50b",
+      "diff": "--- before/src/textbook-models-foundation.ts\n+++ after/src/textbook-models-foundation.ts\n@@ -67,8 +67,10 @@\n       hanging.push({mesh:b.cylinder([x * b.width, anchor - .1 * s, z], [x * b.width, anchor, z], 0, C.paper, false, 1.5 * s),anchor});\n       rising.push(b.cylinder([x * b.width, 4.1 * s, z], [x * b.width, 4.2 * s, z], 1.8 * s, C.land, false, 0));\n     }\n-    const down = b.label('石钟乳', p(.18, .93, 23), 17 * s, 5 * s);\n-    const up = b.label('石笋', p(.76, .96, 6), 12 * s, 5 * s);\n+    // Keep the two paper labels in front of the cut face, rather than inside\n+    // the opaque rock. Their positions must not depend on the source crop.\n+    const down = b.label('石钟乳', [.18 * b.width, 23 * s, z + 14 * s], 17 * s, 5 * s);\n+    const up = b.label('石笋', [.76 * b.width, 6 * s, z + 14 * s], 12 * s, 5 * s);\n     const cave = b.label('溶洞', p(.52, .9, 35), 12 * s, 5 * s);\n     let deposition = false;\n     return { update(t, selection) {\n"
+    },
+    {
+      "file": "src/textbook-models-water-risk-extra.ts",
+      "beforeSha256": "b445c1227a46a88b1cbee4c04c1d4b3c4714b09105334f833da72580f6048103",
+      "afterSha256": "988833cf141087bf5fe8a4698446ba3bc5bbac0e04aa048cce8b5323892d09da",
+      "diff": "--- before/src/textbook-models-water-risk-extra.ts\n+++ after/src/textbook-models-water-risk-extra.ts\n@@ -127,7 +127,8 @@\n   }\n   const pockets = Array.from({ length: 16 }, (_, i) => ({ mesh: w.movingBox(1.25, 1.4, 1.25, C.gold), angle: i / 16 * Math.PI * 2 }));\n   label('海冰', 26, 19, 39, 10); label('盐水收集', 70, 62, 9, 18);\n-  const gravity = label('重力排盐', 72, 16, 32, 18), centrifuge = label('破碎离心', 72, 16, 32, 18);\n+  // The method tag stands clear of the ice and cage, including shallow views.\n+  const gravity = label('重力排盐', 80, 58, 41, 18), centrifuge = label('破碎离心', 80, 58, 41, 18);\n   let mode = 0, progress = 0, pocketState = evaluateDesalination(0);\n   return {\n     update(phase, selection) {\n"
+    }
+  ],
+  "unchangedSourceFiles": 121,
+  "scope": "Only 3D label positions and adjacent explanatory comments changed after the full-book desktop/phone, insolation and E2E checks. No calculation, SVG, navigation or timeline change."
+}

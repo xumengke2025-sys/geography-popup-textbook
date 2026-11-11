@@ -1,0 +1,15 @@
+
+> earth-fieldbook@1.0.0 build
+> tsc && vite build
+
+vite v8.3.5 building client environment for production...
+transforming...
+✓ 169 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                             0.67 kB │ gzip:   0.46 kB
+dist/assets/index-BOPjmP1V.css             55.90 kB │ gzip:  11.99 kB
+dist/assets/sound-vOpPkm07-CahB0RyQ.js      5.75 kB │ gzip:   2.69 kB
+dist/assets/index-CQ7CYORw.js           2,386.94 kB │ gzip: 839.02 kB
+
+✓ built in 3.24s

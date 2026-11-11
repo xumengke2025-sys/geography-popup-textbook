@@ -1,0 +1,165 @@
+{
+  "baseline": "previous-experience-base-20261106.json",
+  "changes": [
+    {
+      "path": "src/textbook-astronomy-model.ts",
+      "before": "33a6240c851c13be5b8bbd4b7223129ccf57500fdb0429cba9eb9c3221cc0590",
+      "after": "1e27156bd90d7c6d55fcb36727bb9133725d721d62d983eaa7deb1aa2e596878"
+    },
+    {
+      "path": "src/textbook-atmosphere-world.ts",
+      "before": "d77fa87672f1c028b91c16f56924dfd04401dcfe7904540c0e1901f05db10ce0",
+      "after": "066dbdee33e4972a6cbcdef7d3fbc85c7076b9a212a4787dc291efc7ad62f7c4"
+    },
+    {
+      "path": "src/textbook-book.ts",
+      "before": "665df0bc3a35457d872f873755712a30f5214de1ea674988424470d08306d666",
+      "after": "c6b80dc8dedcc5fd17c0d9c19637e3da9d4d46fd214b067bfba9fe8bbcdaba90"
+    },
+    {
+      "path": "src/textbook-catalog-additions.ts",
+      "before": "936f33b985296665bf3a1c21bc2bfeb45f29d796b91e03340c432e22f09fbbdd",
+      "after": "cef08d738efb201f0fe5ed7949c304ccd5b3cfd3cbf4e78d5f85ee122a34b3a4"
+    },
+    {
+      "path": "src/textbook-coastal-world.ts",
+      "before": "ad29619b4a13ca775b879ef98545a0b3c38414fc1850e744c31a326abc138608",
+      "after": "2bf82c38a4e99acd94fc070ab8b42d603ba7a76806de26ca8f4c7c72d6847b2c"
+    },
+    {
+      "path": "src/textbook-current-world.ts",
+      "before": "0b199152e1fa4ca3a2fb9ed82540bbf2a36499d45ca992c69d28f15ceeb2f977",
+      "after": "6a1a151432f5fff6af97aa86205cecea1c3a9ef185ccb3b57f51c6e2a3456958"
+    },
+    {
+      "path": "src/textbook-delta-world.ts",
+      "before": "3bf4d7d56a28a7ecf5077ed7240eca9449aa28d014cdc59da44a6f0690efc4c0",
+      "after": "0a0cb52a9deba51b8534cf88ecc44bb48edc3335ba5580c63683318616583714"
+    },
+    {
+      "path": "src/textbook-effects.ts",
+      "before": "295436a345b6225270b396d866040fb790b5619c6964e263e0b1a9a64bdb702e",
+      "after": "f024262e04a476bbf4a6481e40d2e448cae0bd6df99209f0d5b62e09be64e800"
+    },
+    {
+      "path": "src/textbook-flat-model.ts",
+      "before": "0ce731277abd3565a42a72cf846c5f209c1b49282499d5461c03b186cacb8713",
+      "after": "869d541c7f136fdebcd63140cf102ce59b6934e3e6971e89d9bb7622d0fa1090"
+    },
+    {
+      "path": "src/textbook-flat-sky-extra.ts",
+      "before": "6e7a34e0396489405f0939431fba5e5daeb18c52c1af6b51ce1d1d0b7db21686",
+      "after": "b95cd0980facf27d5f8bb0a61c95ca8695de807b43eaae535f91f76f1425e13d"
+    },
+    {
+      "path": "src/textbook-flat-water-risk-extra.ts",
+      "before": "1f1179b72747673b8d508cee532fdbaf41c0988615166cc82e1fa085fc727be0",
+      "after": "19acb93c9c7a66617d0a9bc4536e63baa4a0b4dce82f4186187c466b6c2a2375"
+    },
+    {
+      "path": "src/textbook-forest-world.ts",
+      "before": "aa4c02d4a2599e5e3fc4d4fa059f427903e39db3258e05e75f7e7d07059323e0",
+      "after": "db33ee2d2772ed21421f3d4961249acd573fd41e79fb9d1314d63fd766e8832e"
+    },
+    {
+      "path": "src/textbook-foundation-process-world.ts",
+      "before": null,
+      "after": "475422a7e97075f54e5afd90648e62d17d9e95a73526a4fc56377c57f35c98ab"
+    },
+    {
+      "path": "src/textbook-gnss-world.ts",
+      "before": "1750fe70fee55ae293b445f85913e29aec27a30a234313fc32bb2230f428edcd",
+      "after": "a37c3212a5fb4bfb8c72bac10a4374bd98b2c4315e3e99d1485fd47886f15ab8"
+    },
+    {
+      "path": "src/textbook-ground-process-model.ts",
+      "before": null,
+      "after": "80b6d7ef22a21636af255ed926c5810e8996d514569390508d8f1100ec482976"
+    },
+    {
+      "path": "src/textbook-haze-world.ts",
+      "before": "966e9e2ce9e5d0c53027e830fde28c8bf638d282b6c2e63353b060a2dafcf3ce",
+      "after": "22bd0403497a8e98873708b0b0505e22f6027bf983d6260ef4f482e9f2662a4e"
+    },
+    {
+      "path": "src/textbook-insolation-world.ts",
+      "before": "3f9596eadc52749dd5746ff7a8855f74f5230aa9922762acf9c73bad5414fabc",
+      "after": "eff8a031e558260a69b1ba959931f4467148f6ef8e40a60e2f390261dffd5138"
+    },
+    {
+      "path": "src/textbook-main.ts",
+      "before": "6dd7e200f02d237d8de7ef4df1471f3ac8f17486a39e15332b70687a3681b12f",
+      "after": "5e40b73e6b9a97c7a8748ceaf2211e14f23fcbddfd1c7efbd5f3fe772b5249d4"
+    },
+    {
+      "path": "src/textbook-models-astronomy.ts",
+      "before": "5894fddfb9535d848d22a4ed8a6327be3ed2b893bc7591f36cc999e3a67bc6c4",
+      "after": "5ead259ee5f124b12b16a40d74019045ed11456d02c0c06f272430ccfcd70f6a"
+    },
+    {
+      "path": "src/textbook-models-foundation.ts",
+      "before": "0341051554bc6e74deb48dc47ab160ed1ba1c97211113f5e97fa43ef405ae50b",
+      "after": "a01bd756298bc1904262e1292d37806fb37fd1e405d41cde490afc7e3da4a56e"
+    },
+    {
+      "path": "src/textbook-models-land-extra.ts",
+      "before": "0b6328b3c911d723cd93da56500a1af75c53e439f10705e83b7c11f485334fc4",
+      "after": "4b504c5f6f0eeab28868cd8b243dbdfbca5f97e1923f83c72855fb87de0fb68c"
+    },
+    {
+      "path": "src/textbook-models-sky-extra.ts",
+      "before": "3b0c96267ffa003717856425eb4f872981c796081a1ffec6e263cb25fac3c40d",
+      "after": "7aacad3528e665cd1773e506bba21ea29a983009149b61d79f366b3c3b037b89"
+    },
+    {
+      "path": "src/textbook-models-water-risk-extra.ts",
+      "before": "988833cf141087bf5fe8a4698446ba3bc5bbac0e04aa048cce8b5323892d09da",
+      "after": "e1b5a26d06f4e3d609e82c34ca6e96d2b5656e60787f9a19b7696ccb8d5d316d"
+    },
+    {
+      "path": "src/textbook-playback-policy.ts",
+      "before": null,
+      "after": "dcac6854b8ab0a935331920638ca9d1a4c10c095e6c6bfd7b3e0237324bac3cd"
+    },
+    {
+      "path": "src/textbook-pressure-world.ts",
+      "before": "f6fe021996fa67536887ccc8b549e1a62db7966fcca84a60096b1c1cb487f29c",
+      "after": "f4654a1b50b8f64ef423aa02bd09d4a4a04d9a2dd1578ef556326a200b358040"
+    },
+    {
+      "path": "src/textbook-river-world.ts",
+      "before": "69eaaa4b1cea991da9e7cf73248b840f55d1a118a1a8dc13e92603dbfdc82280",
+      "after": "9f52699b5e1e93b9df5cb5e8a11af72cc4b3775c1d65e9cb48108c0a67c45bde"
+    },
+    {
+      "path": "src/textbook-salinity-world.ts",
+      "before": "ead594a59232acae241af3574c0fff274e037ed138bdfdb982a8a139eddb028f",
+      "after": "0f1687a796e868d3ad2f5f21d993f31b85194c01ef7cb73b70bb7a847e821a54"
+    },
+    {
+      "path": "src/textbook-sky-causality-model.ts",
+      "before": null,
+      "after": "e3e6eb6f947b7c980da4736aecb7ba425906c967516977ffa135f8dffa11e630"
+    },
+    {
+      "path": "src/textbook-sky-causality-world.ts",
+      "before": null,
+      "after": "6b5afc022f0a98b23f98b223d7ab05ac64ecc1dcb0ff1bbdb82fc6b52317282d"
+    },
+    {
+      "path": "src/textbook-solar-heating-world.ts",
+      "before": "6e687b35a484e32e042bc0a786ce646b3b7baa62dd617e271f08559c5fa5871d",
+      "after": "30c83607116255af135b0a374abe68560a77812a0014f721995e3b018407be94"
+    },
+    {
+      "path": "src/textbook-water-cycle-world.ts",
+      "before": "4c1059383fe8fe926cd5827b540b70af918ac673c7cc9fd6e94e1bfe54c36dde",
+      "after": "bc66da4afa58d050bc2265fd76a2a608e597c2a3a8ab32709182a3c085d5c28a"
+    },
+    {
+      "path": "src/textbook-wave-world.ts",
+      "before": "df0e6c1b1540b4769b281891165ae8c9668bc8fc6f9d42f02f0bb637ba846e95",
+      "after": "212edebcb566d5d0b4d0b895eaba33b6189ff6e1c74ae7228e3a9eebb78552e6"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "base": "http://127.0.0.1:4175",
+  "checks": [
+    "550: identical parcel objects, visibility and positions",
+    "550: unchanged scientific state",
+    "550: closed parcel surfaces fit the draw-call target",
+    "1000: identical parcel objects, visibility and positions",
+    "1000: unchanged scientific state",
+    "1000: closed parcel surfaces fit the draw-call target"
+  ],
+  "failures": [],
+  "errors": [],
+  "states": [
+    {
+      "phase": 0.55,
+      "before": {
+        "calls": 146,
+        "triangles": 52353
+      },
+      "after": {
+        "calls": 92,
+        "triangles": 51273
+      },
+      "visibleGrains": 54
+    },
+    {
+      "phase": 1,
+      "before": {
+        "calls": 148,
+        "triangles": 53507
+      },
+      "after": {
+        "calls": 94,
+        "triangles": 52427
+      },
+      "visibleGrains": 54
+    }
+  ],
+  "scope": "Same desktop viewport, paused phases and geometry; this compares material face passes, not school-hardware FPS.",
+  "reviewedEntry": {
+    "path": "/assets/index-CekyyFwd.js",
+    "sha256": "973583d5283e308700ee413bfc50c0f7e433ffb4e0d67354922041d403f7edc0"
+  },
+  "reviewedStyles": [
+    {
+      "path": "/assets/index-BNlCIg7W.css",
+      "sha256": "7dc46979023abf69bb0739abccbdf5b37c1e2a4684645382e091631cf47753e2"
+    }
+  ],
+  "reviewedAt": "2026-11-05T19:32:02.529Z",
+  "browser": "156.0.8078.80"
+}

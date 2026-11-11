@@ -1,0 +1,14 @@
+export const THREE: typeof import('three');
+export function createRenderer(...args: any[]): any;
+export function createStage(...args: any[]): any;
+export function createLight(...args: any[]): any;
+export function createBook(...args: any[]): any;
+export function pageFrame(...args: any[]): any;
+export function createFlap(...args: any[]): any;
+export function createPost(...args: any[]): any;
+export const Popout: any;
+export const PaperTone: any;
+export const LiquidGlass: any;
+export function createCapsule(...args: any[]): any;
+export const capsuleCSS: string;
+export const paperMaterial: any;

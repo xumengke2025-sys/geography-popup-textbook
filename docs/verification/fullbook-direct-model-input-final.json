@@ -1,0 +1,4826 @@
+{
+  "scope": "Targeted real-mouse model input: day/moon dragging, 18px edge grabs and earth layer clicks on 1440×1000, 1024×768 and 713×818 desktop; not real-touch or whole-book acceptance",
+  "base": "http://127.0.0.1:4175",
+  "browser": "156.0.8078.80",
+  "checks": [
+    "the direct dragging checks run with normal motion enabled",
+    "breeze bottom play still starts playback before direct manipulation",
+    "forward day-to-night: the visible handle gives its drag hint on hover",
+    "forward day-to-night: grasping the day/moon handle pauses playback",
+    "forward day-to-night: dragging reaches phase 0.600",
+    "forward day-to-night: phase 0.600 keeps lower and upper flow consistent",
+    "forward day-to-night: dragging reaches phase 0.780",
+    "forward day-to-night: phase 0.780 keeps lower and upper flow consistent",
+    "forward day-to-night: dragging reaches phase 0.790",
+    "forward day-to-night: phase 0.790 keeps lower and upper flow consistent",
+    "forward day-to-night: dragging reaches phase 0.800",
+    "forward day-to-night: phase 0.800 keeps lower and upper flow consistent",
+    "forward day-to-night: dragging reaches phase 0.810",
+    "forward day-to-night: phase 0.810 keeps lower and upper flow consistent",
+    "forward day-to-night: dragging reaches phase 0.820",
+    "forward day-to-night: phase 0.820 keeps lower and upper flow consistent",
+    "forward day-to-night: dragging reaches phase 0.900",
+    "forward day-to-night: phase 0.900 keeps lower and upper flow consistent",
+    "forward day-to-night: dragging reaches phase 0.020",
+    "forward day-to-night: phase 0.020 keeps lower and upper flow consistent",
+    "forward day-to-night: release stays paused and freezes circulation travel",
+    "forward day-to-night: dragging time does not rotate or move the camera",
+    "forward day-to-night: releasing saves the same model input",
+    "forward time dragging changes the same model to land breeze",
+    "the dragged transition has calm circulation while the flag retains a real surface",
+    "backward night-to-day: the visible handle gives its drag hint on hover",
+    "backward night-to-day: grasping the day/moon handle pauses playback",
+    "backward night-to-day: dragging reaches phase 0.920",
+    "backward night-to-day: phase 0.920 keeps lower and upper flow consistent",
+    "backward night-to-day: dragging reaches phase 0.820",
+    "backward night-to-day: phase 0.820 keeps lower and upper flow consistent",
+    "backward night-to-day: dragging reaches phase 0.800",
+    "backward night-to-day: phase 0.800 keeps lower and upper flow consistent",
+    "backward night-to-day: dragging reaches phase 0.780",
+    "backward night-to-day: phase 0.780 keeps lower and upper flow consistent",
+    "backward night-to-day: dragging reaches phase 0.650",
+    "backward night-to-day: phase 0.650 keeps lower and upper flow consistent",
+    "backward night-to-day: dragging reaches phase 0.430",
+    "backward night-to-day: phase 0.430 keeps lower and upper flow consistent",
+    "backward night-to-day: release stays paused and freezes circulation travel",
+    "backward night-to-day: dragging time does not rotate or move the camera",
+    "backward night-to-day: releasing saves the same model input",
+    "backward time dragging restores sea breeze",
+    "the daytime pressure labels follow the dragged thermal state",
+    "refresh restores the released nonpreset phase and stays paused",
+    "the nighttime bottom shortcut remains usable",
+    "the daytime bottom shortcut remains usable",
+    "1024 day-to-night: the visible handle gives its drag hint on hover",
+    "1024 day-to-night: grasping the day/moon handle pauses playback",
+    "1024 day-to-night: dragging reaches phase 0.650",
+    "1024 day-to-night: phase 0.650 keeps lower and upper flow consistent",
+    "1024 day-to-night: dragging reaches phase 0.780",
+    "1024 day-to-night: phase 0.780 keeps lower and upper flow consistent",
+    "1024 day-to-night: dragging reaches phase 0.800",
+    "1024 day-to-night: phase 0.800 keeps lower and upper flow consistent",
+    "1024 day-to-night: dragging reaches phase 0.850",
+    "1024 day-to-night: phase 0.850 keeps lower and upper flow consistent",
+    "1024 day-to-night: dragging reaches phase 0.980",
+    "1024 day-to-night: phase 0.980 keeps lower and upper flow consistent",
+    "1024 day-to-night: release stays paused and freezes circulation travel",
+    "1024 day-to-night: dragging time does not rotate or move the camera",
+    "1024 day-to-night: releasing saves the same model input",
+    "1024×768: the real day/moon control remains operable",
+    "1024×768: direct controls keep the original open book below the model",
+    "1024×768: model labels remain clear of the bottom controls",
+    "earth layer 0: the physical surface has its hover hint",
+    "earth layer 0: clicking its actual solid selects the correct layer and pauses",
+    "earth layer 0: the bottom shortcut follows the direct selection",
+    "earth layer 0: clicking the selected solid again restores the whole earth",
+    "earth layer 1: the physical surface has its hover hint",
+    "earth layer 1: clicking its actual solid selects the correct layer and pauses",
+    "earth layer 1: the bottom shortcut follows the direct selection",
+    "earth layer 1: clicking the selected solid again restores the whole earth",
+    "earth layer 2: the physical surface has its hover hint",
+    "earth layer 2: clicking its actual solid selects the correct layer and pauses",
+    "earth layer 2: the bottom shortcut follows the direct selection",
+    "earth layer 2: clicking the selected solid again restores the whole earth",
+    "earth layer 3: the physical surface has its hover hint",
+    "earth layer 3: clicking its actual solid selects the correct layer and pauses",
+    "earth layer 3: the bottom shortcut follows the direct selection",
+    "earth layer 3: clicking the selected solid again restores the whole earth",
+    "dragging a physical earth layer rotates without selecting it",
+    "earth surface dragging still changes the viewing angle",
+    "earth bottom shortcut 1 still works after direct manipulation",
+    "earth bottom shortcut 2 still works after direct manipulation",
+    "earth bottom shortcut 3 still works after direct manipulation",
+    "earth bottom shortcut 0 still works after direct manipulation",
+    "713 sun edge grab: the padded target is 18 CSS px from the icon center and outside its actual mesh",
+    "713 sun edge grab: the padded empty space exposes the actual handle hint",
+    "713 sun edge grab: pressing outside the icon grabs it without a phase jump",
+    "713 sun edge grab: 3px movement retains the original grab offset without jumping",
+    "713 sun edge grab: 8px movement retains the original grab offset without jumping",
+    "713 sun edge grab: 12px movement retains the original grab offset without jumping",
+    "713 sun edge grab: 8px movement retains the original grab offset without jumping",
+    "713 sun edge grab: 0px movement retains the original grab offset without jumping",
+    "713 sun edge grab: the small round-trip returns smoothly to the original phase and stays paused",
+    "713 sun edge grab: an edge grab never becomes camera rotation",
+    "713 sun edge grab: releasing an edge grab saves the final input",
+    "713 moon edge grab: the padded target is 18 CSS px from the icon center and outside its actual mesh",
+    "713 moon edge grab: the padded empty space exposes the actual handle hint",
+    "713 moon edge grab: pressing outside the icon grabs it without a phase jump",
+    "713 moon edge grab: 3px movement retains the original grab offset without jumping",
+    "713 moon edge grab: 8px movement retains the original grab offset without jumping",
+    "713 moon edge grab: 12px movement retains the original grab offset without jumping",
+    "713 moon edge grab: 8px movement retains the original grab offset without jumping",
+    "713 moon edge grab: 0px movement retains the original grab offset without jumping",
+    "713 moon edge grab: the small round-trip returns smoothly to the original phase and stays paused",
+    "713 moon edge grab: an edge grab never becomes camera rotation",
+    "713 moon edge grab: releasing an edge grab saves the final input",
+    "no browser exceptions or console errors in the direct-input flow"
+  ],
+  "failures": [],
+  "errors": [],
+  "states": [
+    {
+      "name": "forward day-to-night",
+      "before": {
+        "active": "breeze",
+        "phase": 0.5049299999999995,
+        "selection": 0,
+        "playing": false,
+        "geometry": {
+          "architecture": "three-dimensional-geometry",
+          "bitmapSurfaces": 0,
+          "solids": 41,
+          "labels": 18,
+          "meshes": 69,
+          "imageMappedMeshes": 0,
+          "extent": [
+            143.64340209960938,
+            127.69898733177706,
+            96.24107653375516
+          ],
+          "sceneElevation": 61.76666105897719,
+          "unfoldProgress": 1,
+          "originalPagePreserved": true,
+          "phase": 0.5049299999999995,
+          "selection": 0,
+          "kind": "sea-breeze",
+          "layout": "land-left-sea-right",
+          "scene": "coastal-paper-world",
+          "selected": "day",
+          "groundX": -1,
+          "upperX": 1,
+          "strength": 0.9496703282670583,
+          "pressure": {
+            "seaGround": "相对高压",
+            "landGround": "相对低压",
+            "seaUpper": "相对低压",
+            "landUpper": "相对高压"
+          },
+          "continuousDayNight": true,
+          "flowPhase": 0.0559298194978326,
+          "flowRate": 0.09496703282670584,
+          "flagArea": 49.24699550592709,
+          "panels": 1,
+          "sameHeightGuides": 2,
+          "elevatedAbovePage": 61.76666105897719,
+          "sourceFootprint": [
+            115.84144984804425,
+            31.25
+          ],
+          "sceneDepth": 90.49534062129217,
+          "directInteraction": "drag-daylight-handle",
+          "daylightControlIsSchematic": true
+        },
+        "pages": [
+          43,
+          44
+        ],
+        "view": "detail",
+        "camera": {
+          "position": [
+            -22.703825258215304,
+            410.05827637902377,
+            446.96818567660216
+          ],
+          "quaternion": [
+            -0.2779152998677158,
+            0.06825395727108453,
+            0.01980099397748365,
+            0.9579730706307868
+          ],
+          "orbit": 0.18,
+          "elevation": 0.64
+        },
+        "reduced": false,
+        "saved": {
+          "phase": 0.5004166666666666,
+          "selection": 0
+        }
+      },
+      "grab": {
+        "offset": [
+          0.6315668650575663,
+          0.002703939100960895
+        ],
+        "point": [
+          70.58476925182764,
+          140.7684101802688,
+          -113.23720773738899
+        ],
+        "expectedPhase": 0.5049299999999994
+      },
+      "samples": [
+        {
+          "requested": 0.6000000000000001,
+          "active": "breeze",
+          "phase": 0.600000018728466,
+          "selection": 0,
+          "playing": false,
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 41,
+            "labels": 18,
+            "meshes": 69,
+            "imageMappedMeshes": 0,
+            "extent": [
+              143.64340209960938,
+              127.69898733177706,
+              96.24107653375516
+            ],
+            "sceneElevation": 61.76666105897719,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.600000018728466,
+            "selection": 0,
+            "kind": "sea-breeze",
+            "layout": "land-left-sea-right",
+            "scene": "coastal-paper-world",
+            "selected": "day",
+            "groundX": -1,
+            "upperX": 1,
+            "strength": 0.9491649603561159,
+            "pressure": {
+              "seaGround": "相对高压",
+              "landGround": "相对低压",
+              "seaUpper": "相对低压",
+              "landUpper": "相对高压"
+            },
+            "continuousDayNight": true,
+            "flowPhase": 0.0559298194978326,
+            "flowRate": 0.09491649603561159,
+            "flagArea": 49.247459731424726,
+            "panels": 1,
+            "sameHeightGuides": 2,
+            "elevatedAbovePage": 61.76666105897719,
+            "sourceFootprint": [
+              115.84144984804425,
+              31.25
+            ],
+            "sceneDepth": 90.49534062129217,
+            "directInteraction": "drag-daylight-handle",
+            "daylightControlIsSchematic": true
+          },
+          "pages": [
+            43,
+            44
+          ],
+          "view": "detail",
+          "camera": {
+            "position": [
+              -22.703825258215304,
+              410.05827637902377,
+              446.96818567660216
+            ],
+            "quaternion": [
+              -0.2779152998677158,
+              0.06825395727108453,
+              0.01980099397748365,
+              0.9579730706307868
+            ],
+            "orbit": 0.18,
+            "elevation": 0.64
+          },
+          "reduced": false,
+          "saved": {
+            "phase": 0.5004166666666666,
+            "selection": 0
+          }
+        },
+        {
+          "requested": 0.78,
+          "active": "breeze",
+          "phase": 0.7800000012777083,
+          "selection": 0,
+          "playing": false,
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 41,
+            "labels": 18,
+            "meshes": 69,
+            "imageMappedMeshes": 0,
+            "extent": [
+              143.64340209960938,
+              127.69898733177706,
+              96.24107653375516
+            ],
+            "sceneElevation": 61.76666105897719,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.7800000012777083,
+            "selection": 0,
+            "kind": "sea-breeze",
+            "layout": "land-left-sea-right",
+            "scene": "coastal-paper-world",
+            "selected": "day",
+            "groundX": -1,
+            "upperX": 1,
+            "strength": 0.13890443181844048,
+            "pressure": {
+              "seaGround": "相对高压",
+              "landGround": "相对低压",
+              "seaUpper": "相对低压",
+              "landUpper": "相对高压"
+            },
+            "continuousDayNight": true,
+            "flowPhase": 0.0559298194978326,
+            "flowRate": 0.013890443181844049,
+            "flagArea": 50.308912081378324,
+            "panels": 1,
+            "sameHeightGuides": 2,
+            "elevatedAbovePage": 61.76666105897719,
+            "sourceFootprint": [
+              115.84144984804425,
+              31.25
+            ],
+            "sceneDepth": 90.49534062129217,
+            "directInteraction": "drag-daylight-handle",
+            "daylightControlIsSchematic": true
+          },
+          "pages": [
+            43,
+            44
+          ],
+          "view": "detail",
+          "camera": {
+            "position": [
+              -22.703825258215304,
+              410.05827637902377,
+              446.96818567660216
+            ],
+            "quaternion": [
+              -0.2779152998677158,
+              0.06825395727108453,
+              0.01980099397748365,
+              0.9579730706307868
+            ],
+            "orbit": 0.18,
+            "elevation": 0.64
+          },
+          "reduced": false,
+          "saved": {
+            "phase": 0.5004166666666666,
+            "selection": 0
+          }
+        },
+        {
+          "requested": 0.79,
+          "active": "breeze",
+          "phase": 0.7899999875818486,
+          "selection": 0,
+          "playing": false,
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 41,
+            "labels": 18,
+            "meshes": 69,
+            "imageMappedMeshes": 0,
+            "extent": [
+              143.64340209960938,
+              127.69898733177706,
+              96.24107653375516
+            ],
+            "sceneElevation": 61.76666105897719,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.7899999875818486,
+            "selection": 0,
+            "kind": "sea-breeze",
+            "layout": "land-left-sea-right",
+            "scene": "coastal-paper-world",
+            "selected": "day",
+            "groundX": -1,
+            "upperX": 1,
+            "strength": 0.03836393329749163,
+            "pressure": {
+              "seaGround": "相对高压",
+              "landGround": "相对低压",
+              "seaUpper": "相对低压",
+              "landUpper": "相对高压"
+            },
+            "continuousDayNight": true,
+            "flowPhase": 0.0559298194978326,
+            "flowRate": 0.0038363933297491633,
+            "flagArea": 50.320161129937084,
+            "panels": 1,
+            "sameHeightGuides": 2,
+            "elevatedAbovePage": 61.76666105897719,
+            "sourceFootprint": [
+              115.84144984804425,
+              31.25
+            ],
+            "sceneDepth": 90.49534062129217,
+            "directInteraction": "drag-daylight-handle",
+            "daylightControlIsSchematic": true
+          },
+          "pages": [
+            43,
+            44
+          ],
+          "view": "detail",
+          "camera": {
+            "position": [
+              -22.703825258215304,
+              410.05827637902377,
+              446.96818567660216
+            ],
+            "quaternion": [
+              -0.2779152998677158,
+              0.06825395727108453,
+              0.01980099397748365,
+              0.9579730706307868
+            ],
+            "orbit": 0.18,
+            "elevation": 0.64
+          },
+          "reduced": false,
+          "saved": {
+            "phase": 0.5004166666666666,
+            "selection": 0
+          }
+        },
+        {
+          "requested": 0.8,
+          "active": "breeze",
+          "phase": 0.8000000319103717,
+          "selection": 0,
+          "playing": false,
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 41,
+            "labels": 18,
+            "meshes": 69,
+            "imageMappedMeshes": 0,
+            "extent": [
+              143.64340209960938,
+              127.69898733177706,
+              96.24107653375516
+            ],
+            "sceneElevation": 61.76666105897719,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.8000000319103717,
+            "selection": 0,
+            "kind": "sea-breeze",
+            "layout": "land-left-sea-right",
+            "scene": "coastal-paper-world",
+            "selected": "transition",
+            "groundX": 0,
+            "upperX": 0,
+            "strength": 0,
+            "pressure": {
+              "seaGround": "差异很小",
+              "landGround": "差异很小",
+              "seaUpper": "差异很小",
+              "landUpper": "差异很小"
+            },
+            "continuousDayNight": true,
+            "flowPhase": 0.0559298194978326,
+            "flowRate": 0,
+            "flagArea": 50.3208003117921,
+            "panels": 1,
+            "sameHeightGuides": 2,
+            "elevatedAbovePage": 61.76666105897719,
+            "sourceFootprint": [
+              115.84144984804425,
+              31.25
+            ],
+            "sceneDepth": 90.49534062129217,
+            "directInteraction": "drag-daylight-handle",
+            "daylightControlIsSchematic": true
+          },
+          "pages": [
+            43,
+            44
+          ],
+          "view": "detail",
+          "camera": {
+            "position": [
+              -22.703825258215304,
+              410.05827637902377,
+              446.96818567660216
+            ],
+            "quaternion": [
+              -0.2779152998677158,
+              0.06825395727108453,
+              0.01980099397748365,
+              0.9579730706307868
+            ],
+            "orbit": 0.18,
+            "elevation": 0.64
+          },
+          "reduced": false,
+          "saved": {
+            "phase": 0.5004166666666666,
+            "selection": 0
+          }
+        },
+        {
+          "requested": 0.81,
+          "active": "breeze",
+          "phase": 0.8100000051264201,
+          "selection": 1,
+          "playing": false,
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 41,
+            "labels": 18,
+            "meshes": 69,
+            "imageMappedMeshes": 0,
+            "extent": [
+              143.64340209960938,
+              127.69898733177706,
+              96.24107653375516
+            ],
+            "sceneElevation": 61.76666105897719,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.8100000051264201,
+            "selection": 1,
+            "kind": "sea-breeze",
+            "layout": "land-left-sea-right",
+            "scene": "coastal-paper-world",
+            "selected": "night",
+            "groundX": 1,
+            "upperX": -1,
+            "strength": 0.004320823801200049,
+            "pressure": {
+              "seaGround": "相对低压",
+              "landGround": "相对高压",
+              "seaUpper": "相对高压",
+              "landUpper": "相对低压"
+            },
+            "continuousDayNight": true,
+            "flowPhase": 0.0559298194978326,
+            "flowRate": -0.0004320823801200049,
+            "flagArea": 50.3207928901,
+            "panels": 1,
+            "sameHeightGuides": 2,
+            "elevatedAbovePage": 61.76666105897719,
+            "sourceFootprint": [
+              115.84144984804425,
+              31.25
+            ],
+            "sceneDepth": 90.49534062129217,
+            "directInteraction": "drag-daylight-handle",
+            "daylightControlIsSchematic": true
+          },
+          "pages": [
+            43,
+            44
+          ],
+          "view": "detail",
+          "camera": {
+            "position": [
+              -22.703825258215304,
+              410.05827637902377,
+              446.96818567660216
+            ],
+            "quaternion": [
+              -0.2779152998677158,
+              0.06825395727108453,
+              0.01980099397748365,
+              0.9579730706307868
+            ],
+            "orbit": 0.18,
+            "elevation": 0.64
+          },
+          "reduced": false,
+          "saved": {
+            "phase": 0.5004166666666666,
+            "selection": 0
+          }
+        },
+        {
+          "requested": 0.8199999999999998,
+          "active": "breeze",
+          "phase": 0.8200000041439441,
+          "selection": 1,
+          "playing": false,
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 41,
+            "labels": 18,
+            "meshes": 69,
+            "imageMappedMeshes": 0,
+            "extent": [
+              143.64340209960938,
+              127.69898733177706,
+              96.24107653375516
+            ],
+            "sceneElevation": 61.76666105897719,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.8200000041439441,
+            "selection": 1,
+            "kind": "sea-breeze",
+            "layout": "land-left-sea-right",
+            "scene": "coastal-paper-world",
+            "selected": "night",
+            "groundX": 1,
+            "upperX": -1,
+            "strength": 0.10414831949154993,
+            "pressure": {
+              "seaGround": "相对低压",
+              "landGround": "相对高压",
+              "seaUpper": "相对高压",
+              "landUpper": "相对低压"
+            },
+            "continuousDayNight": true,
+            "flowPhase": 0.0559298194978326,
+            "flowRate": -0.010414831949154994,
+            "flagArea": 50.31484469908185,
+            "panels": 1,
+            "sameHeightGuides": 2,
+            "elevatedAbovePage": 61.76666105897719,
+            "sourceFootprint": [
+              115.84144984804425,
+              31.25
+            ],
+            "sceneDepth": 90.49534062129217,
+            "directInteraction": "drag-daylight-handle",
+            "daylightControlIsSchematic": true
+          },
+          "pages": [
+            43,
+            44
+          ],
+          "view": "detail",
+          "camera": {
+            "position": [
+              -22.703825258215304,
+              410.05827637902377,
+              446.96818567660216
+            ],
+            "quaternion": [
+              -0.2779152998677158,
+              0.06825395727108453,
+              0.01980099397748365,
+              0.9579730706307868
+            ],
+            "orbit": 0.18,
+            "elevation": 0.64
+          },
+          "reduced": false,
+          "saved": {
+            "phase": 0.5004166666666666,
+            "selection": 0
+          }
+        },
+        {
+          "requested": 0.8999999999999999,
+          "active": "breeze",
+          "phase": 0.8999999755021818,
+          "selection": 1,
+          "playing": false,
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 41,
+            "labels": 18,
+            "meshes": 69,
+            "imageMappedMeshes": 0,
+            "extent": [
+              143.64340209960938,
+              127.69898733177706,
+              96.24107653375516
+            ],
+            "sceneElevation": 61.76666105897719,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.8999999755021818,
+            "selection": 1,
+            "kind": "sea-breeze",
+            "layout": "land-left-sea-right",
+            "scene": "coastal-paper-world",
+            "selected": "night",
+            "groundX": 1,
+            "upperX": -1,
+            "strength": 0.5720895095035015,
+            "pressure": {
+              "seaGround": "相对低压",
+              "landGround": "相对高压",
+              "seaUpper": "相对高压",
+              "landUpper": "相对低压"
+            },
+            "continuousDayNight": true,
+            "flowPhase": 0.0559298194978326,
+            "flowRate": -0.05720895095035015,
+            "flagArea": 49.843234506960705,
+            "panels": 1,
+            "sameHeightGuides": 2,
+            "elevatedAbovePage": 61.76666105897719,
+            "sourceFootprint": [
+              115.84144984804425,
+              31.25
+            ],
+            "sceneDepth": 90.49534062129217,
+            "directInteraction": "drag-daylight-handle",
+            "daylightControlIsSchematic": true
+          },
+          "pages": [
+            43,
+            44
+          ],
+          "view": "detail",
+          "camera": {
+            "position": [
+              -22.703825258215304,
+              410.05827637902377,
+              446.96818567660216
+            ],
+            "quaternion": [
+              -0.2779152998677158,
+              0.06825395727108453,
+              0.01980099397748365,
+              0.9579730706307868
+            ],
+            "orbit": 0.18,
+            "elevation": 0.64
+          },
+          "reduced": false,
+          "saved": {
+            "phase": 0.5004166666666666,
+            "selection": 0
+          }
+        },
+        {
+          "requested": 0.020000000000000018,
+          "active": "breeze",
+          "phase": 0.019999968103987964,
+          "selection": 1,
+          "playing": false,
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 41,
+            "labels": 18,
+            "meshes": 69,
+            "imageMappedMeshes": 0,
+            "extent": [
+              143.64340209960938,
+              127.69898733177706,
+              96.24107653375516
+            ],
+            "sceneElevation": 61.76666105897719,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.019999968103987964,
+            "selection": 1,
+            "kind": "sea-breeze",
+            "layout": "land-left-sea-right",
+            "scene": "coastal-paper-world",
+            "selected": "night",
+            "groundX": 1,
+            "upperX": -1,
+            "strength": 0.9729751908157671,
+            "pressure": {
+              "seaGround": "相对低压",
+              "landGround": "相对高压",
+              "seaUpper": "相对高压",
+              "landUpper": "相对低压"
+            },
+            "continuousDayNight": true,
+            "flowPhase": 0.0559298194978326,
+            "flowRate": -0.09729751908157672,
+            "flagArea": 49.226722831587416,
+            "panels": 1,
+            "sameHeightGuides": 2,
+            "elevatedAbovePage": 61.76666105897719,
+            "sourceFootprint": [
+              115.84144984804425,
+              31.25
+            ],
+            "sceneDepth": 90.49534062129217,
+            "directInteraction": "drag-daylight-handle",
+            "daylightControlIsSchematic": true
+          },
+          "pages": [
+            43,
+            44
+          ],
+          "view": "detail",
+          "camera": {
+            "position": [
+              -22.703825258215304,
+              410.05827637902377,
+              446.96818567660216
+            ],
+            "quaternion": [
+              -0.2779152998677158,
+              0.06825395727108453,
+              0.01980099397748365,
+              0.9579730706307868
+            ],
+            "orbit": 0.18,
+            "elevation": 0.64
+          },
+          "reduced": false,
+          "saved": {
+            "phase": 0.5004166666666666,
+            "selection": 0
+          }
+        }
+      ],
+      "after": {
+        "active": "breeze",
+        "phase": 0.019999968103987964,
+        "selection": 1,
+        "playing": false,
+        "geometry": {
+          "architecture": "three-dimensional-geometry",
+          "bitmapSurfaces": 0,
+          "solids": 41,
+          "labels": 18,
+          "meshes": 69,
+          "imageMappedMeshes": 0,
+          "extent": [
+            143.64340209960938,
+            127.69898733177706,
+            96.24107653375516
+          ],
+          "sceneElevation": 61.76666105897719,
+          "unfoldProgress": 1,
+          "originalPagePreserved": true,
+          "phase": 0.019999968103987964,
+          "selection": 1,
+          "kind": "sea-breeze",
+          "layout": "land-left-sea-right",
+          "scene": "coastal-paper-world",
+          "selected": "night",
+          "groundX": 1,
+          "upperX": -1,
+          "strength": 0.9729751908157671,
+          "pressure": {
+            "seaGround": "相对低压",
+            "landGround": "相对高压",
+            "seaUpper": "相对高压",
+            "landUpper": "相对低压"
+          },
+          "continuousDayNight": true,
+          "flowPhase": 0.0559298194978326,
+          "flowRate": -0.09729751908157672,
+          "flagArea": 49.226722831587416,
+          "panels": 1,
+          "sameHeightGuides": 2,
+          "elevatedAbovePage": 61.76666105897719,
+          "sourceFootprint": [
+            115.84144984804425,
+            31.25
+          ],
+          "sceneDepth": 90.49534062129217,
+          "directInteraction": "drag-daylight-handle",
+          "daylightControlIsSchematic": true
+        },
+        "pages": [
+          43,
+          44
+        ],
+        "view": "detail",
+        "camera": {
+          "position": [
+            -22.703825258215304,
+            410.05827637902377,
+            446.96818567660216
+          ],
+          "quaternion": [
+            -0.2779152998677158,
+            0.06825395727108453,
+            0.01980099397748365,
+            0.9579730706307868
+          ],
+          "orbit": 0.18,
+          "elevation": 0.64
+        },
+        "reduced": false,
+        "saved": {
+          "phase": 0.019999968103987964,
+          "selection": 1
+        }
+      }
+    },
+    {
+      "name": "backward night-to-day",
+      "before": {
+        "active": "breeze",
+        "phase": 0.019999968103987964,
+        "selection": 1,
+        "playing": false,
+        "geometry": {
+          "architecture": "three-dimensional-geometry",
+          "bitmapSurfaces": 0,
+          "solids": 41,
+          "labels": 18,
+          "meshes": 69,
+          "imageMappedMeshes": 0,
+          "extent": [
+            143.64340209960938,
+            127.69898733177706,
+            96.24107653375516
+          ],
+          "sceneElevation": 61.76666105897719,
+          "unfoldProgress": 1,
+          "originalPagePreserved": true,
+          "phase": 0.019999968103987964,
+          "selection": 1,
+          "kind": "sea-breeze",
+          "layout": "land-left-sea-right",
+          "scene": "coastal-paper-world",
+          "selected": "night",
+          "groundX": 1,
+          "upperX": -1,
+          "strength": 0.9729751908157671,
+          "pressure": {
+            "seaGround": "相对低压",
+            "landGround": "相对高压",
+            "seaUpper": "相对高压",
+            "landUpper": "相对低压"
+          },
+          "continuousDayNight": true,
+          "flowPhase": 0.0559298194978326,
+          "flowRate": -0.09729751908157672,
+          "flagArea": 49.226722831587416,
+          "panels": 1,
+          "sameHeightGuides": 2,
+          "elevatedAbovePage": 61.76666105897719,
+          "sourceFootprint": [
+            115.84144984804425,
+            31.25
+          ],
+          "sceneDepth": 90.49534062129217,
+          "directInteraction": "drag-daylight-handle",
+          "daylightControlIsSchematic": true
+        },
+        "pages": [
+          43,
+          44
+        ],
+        "view": "detail",
+        "camera": {
+          "position": [
+            -22.703825258215304,
+            410.05827637902377,
+            446.96818567660216
+          ],
+          "quaternion": [
+            -0.2779152998677158,
+            0.06825395727108453,
+            0.01980099397748365,
+            0.9579730706307868
+          ],
+          "orbit": 0.18,
+          "elevation": 0.64
+        },
+        "reduced": false,
+        "saved": {
+          "phase": 0.019999968103987964,
+          "selection": 1
+        }
+      },
+      "grab": {
+        "offset": [
+          -0.5305742039299641,
+          0.003485967266223966
+        ],
+        "point": [
+          78.85249514821558,
+          120.74322685314468,
+          -113.23720773738899
+        ],
+        "expectedPhase": 0.019999968103987964
+      },
+      "samples": [
+        {
+          "requested": 0.92,
+          "active": "breeze",
+          "phase": 0.9200000056768393,
+          "selection": 1,
+          "playing": false,
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 41,
+            "labels": 18,
+            "meshes": 69,
+            "imageMappedMeshes": 0,
+            "extent": [
+              143.64340209960938,
+              127.69898733177706,
+              96.24107653375516
+            ],
+            "sceneElevation": 61.76666105897719,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.9200000056768393,
+            "selection": 1,
+            "kind": "sea-breeze",
+            "layout": "land-left-sea-right",
+            "scene": "coastal-paper-world",
+            "selected": "night",
+            "groundX": 1,
+            "upperX": -1,
+            "strength": 0.6693651846374487,
+            "pressure": {
+              "seaGround": "相对低压",
+              "landGround": "相对高压",
+              "seaUpper": "相对高压",
+              "landUpper": "相对低压"
+            },
+            "continuousDayNight": true,
+            "flowPhase": 0.0559298194978326,
+            "flowRate": -0.06693651846374486,
+            "flagArea": 49.655557914708005,
+            "panels": 1,
+            "sameHeightGuides": 2,
+            "elevatedAbovePage": 61.76666105897719,
+            "sourceFootprint": [
+              115.84144984804425,
+              31.25
+            ],
+            "sceneDepth": 90.49534062129217,
+            "directInteraction": "drag-daylight-handle",
+            "daylightControlIsSchematic": true
+          },
+          "pages": [
+            43,
+            44
+          ],
+          "view": "detail",
+          "camera": {
+            "position": [
+              -22.703825258215304,
+              410.05827637902377,
+              446.96818567660216
+            ],
+            "quaternion": [
+              -0.2779152998677158,
+              0.06825395727108453,
+              0.01980099397748365,
+              0.9579730706307868
+            ],
+            "orbit": 0.18,
+            "elevation": 0.64
+          },
+          "reduced": false,
+          "saved": {
+            "phase": 0.019999968103987964,
+            "selection": 1
+          }
+        },
+        {
+          "requested": 0.8200000000000001,
+          "active": "breeze",
+          "phase": 0.8200000373241194,
+          "selection": 1,
+          "playing": false,
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 41,
+            "labels": 18,
+            "meshes": 69,
+            "imageMappedMeshes": 0,
+            "extent": [
+              143.64340209960938,
+              127.69898733177706,
+              96.24107653375516
+            ],
+            "sceneElevation": 61.76666105897719,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.8200000373241194,
+            "selection": 1,
+            "kind": "sea-breeze",
+            "layout": "land-left-sea-right",
+            "scene": "coastal-paper-world",
+            "selected": "night",
+            "groundX": 1,
+            "upperX": -1,
+            "strength": 0.10414869238361321,
+            "pressure": {
+              "seaGround": "相对低压",
+              "landGround": "相对高压",
+              "seaUpper": "相对高压",
+              "landUpper": "相对低压"
+            },
+            "continuousDayNight": true,
+            "flowPhase": 0.0559298194978326,
+            "flowRate": -0.010414869238361322,
+            "flagArea": 50.31484302429014,
+            "panels": 1,
+            "sameHeightGuides": 2,
+            "elevatedAbovePage": 61.76666105897719,
+            "sourceFootprint": [
+              115.84144984804425,
+              31.25
+            ],
+            "sceneDepth": 90.49534062129217,
+            "directInteraction": "drag-daylight-handle",
+            "daylightControlIsSchematic": true
+          },
+          "pages": [
+            43,
+            44
+          ],
+          "view": "detail",
+          "camera": {
+            "position": [
+              -22.703825258215304,
+              410.05827637902377,
+              446.96818567660216
+            ],
+            "quaternion": [
+              -0.2779152998677158,
+              0.06825395727108453,
+              0.01980099397748365,
+              0.9579730706307868
+            ],
+            "orbit": 0.18,
+            "elevation": 0.64
+          },
+          "reduced": false,
+          "saved": {
+            "phase": 0.019999968103987964,
+            "selection": 1
+          }
+        },
+        {
+          "requested": 0.8,
+          "active": "breeze",
+          "phase": 0.8000000128210912,
+          "selection": 0,
+          "playing": false,
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 41,
+            "labels": 18,
+            "meshes": 69,
+            "imageMappedMeshes": 0,
+            "extent": [
+              143.64340209960938,
+              127.69898733177706,
+              96.24107653375516
+            ],
+            "sceneElevation": 61.76666105897719,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.8000000128210912,
+            "selection": 0,
+            "kind": "sea-breeze",
+            "layout": "land-left-sea-right",
+            "scene": "coastal-paper-world",
+            "selected": "transition",
+            "groundX": 0,
+            "upperX": 0,
+            "strength": 0,
+            "pressure": {
+              "seaGround": "差异很小",
+              "landGround": "差异很小",
+              "seaUpper": "差异很小",
+              "landUpper": "差异很小"
+            },
+            "continuousDayNight": true,
+            "flowPhase": 0.0559298194978326,
+            "flowRate": 0,
+            "flagArea": 50.3208003117921,
+            "panels": 1,
+            "sameHeightGuides": 2,
+            "elevatedAbovePage": 61.76666105897719,
+            "sourceFootprint": [
+              115.84144984804425,
+              31.25
+            ],
+            "sceneDepth": 90.49534062129217,
+            "directInteraction": "drag-daylight-handle",
+            "daylightControlIsSchematic": true
+          },
+          "pages": [
+            43,
+            44
+          ],
+          "view": "detail",
+          "camera": {
+            "position": [
+              -22.703825258215304,
+              410.05827637902377,
+              446.96818567660216
+            ],
+            "quaternion": [
+              -0.2779152998677158,
+              0.06825395727108453,
+              0.01980099397748365,
+              0.9579730706307868
+            ],
+            "orbit": 0.18,
+            "elevation": 0.64
+          },
+          "reduced": false,
+          "saved": {
+            "phase": 0.019999968103987964,
+            "selection": 1
+          }
+        },
+        {
+          "requested": 0.78,
+          "active": "breeze",
+          "phase": 0.7800000465006344,
+          "selection": 0,
+          "playing": false,
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 41,
+            "labels": 18,
+            "meshes": 69,
+            "imageMappedMeshes": 0,
+            "extent": [
+              143.64340209960938,
+              127.69898733177706,
+              96.24107653375516
+            ],
+            "sceneElevation": 61.76666105897719,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.7800000465006344,
+            "selection": 0,
+            "kind": "sea-breeze",
+            "layout": "land-left-sea-right",
+            "scene": "coastal-paper-world",
+            "selected": "day",
+            "groundX": -1,
+            "upperX": 1,
+            "strength": 0.13890415232354777,
+            "pressure": {
+              "seaGround": "相对高压",
+              "landGround": "相对低压",
+              "seaUpper": "相对低压",
+              "landUpper": "相对高压"
+            },
+            "continuousDayNight": true,
+            "flowPhase": 0.0559298194978326,
+            "flowRate": 0.013890415232354777,
+            "flagArea": 50.30891183611149,
+            "panels": 1,
+            "sameHeightGuides": 2,
+            "elevatedAbovePage": 61.76666105897719,
+            "sourceFootprint": [
+              115.84144984804425,
+              31.25
+            ],
+            "sceneDepth": 90.49534062129217,
+            "directInteraction": "drag-daylight-handle",
+            "daylightControlIsSchematic": true
+          },
+          "pages": [
+            43,
+            44
+          ],
+          "view": "detail",
+          "camera": {
+            "position": [
+              -22.703825258215304,
+              410.05827637902377,
+              446.96818567660216
+            ],
+            "quaternion": [
+              -0.2779152998677158,
+              0.06825395727108453,
+              0.01980099397748365,
+              0.9579730706307868
+            ],
+            "orbit": 0.18,
+            "elevation": 0.64
+          },
+          "reduced": false,
+          "saved": {
+            "phase": 0.019999968103987964,
+            "selection": 1
+          }
+        },
+        {
+          "requested": 0.65,
+          "active": "breeze",
+          "phase": 0.6500000062174571,
+          "selection": 0,
+          "playing": false,
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 41,
+            "labels": 18,
+            "meshes": 69,
+            "imageMappedMeshes": 0,
+            "extent": [
+              143.64340209960938,
+              127.69898733177706,
+              96.24107653375516
+            ],
+            "sceneElevation": 61.76666105897719,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.6500000062174571,
+            "selection": 0,
+            "kind": "sea-breeze",
+            "layout": "land-left-sea-right",
+            "scene": "coastal-paper-world",
+            "selected": "day",
+            "groundX": -1,
+            "upperX": 1,
+            "strength": 0.8121279240420571,
+            "pressure": {
+              "seaGround": "相对高压",
+              "landGround": "相对低压",
+              "seaUpper": "相对低压",
+              "landUpper": "相对高压"
+            },
+            "continuousDayNight": true,
+            "flowPhase": 0.0559298194978326,
+            "flowRate": 0.08121279240420572,
+            "flagArea": 49.41131610093372,
+            "panels": 1,
+            "sameHeightGuides": 2,
+            "elevatedAbovePage": 61.76666105897719,
+            "sourceFootprint": [
+              115.84144984804425,
+              31.25
+            ],
+            "sceneDepth": 90.49534062129217,
+            "directInteraction": "drag-daylight-handle",
+            "daylightControlIsSchematic": true
+          },
+          "pages": [
+            43,
+            44
+          ],
+          "view": "detail",
+          "camera": {
+            "position": [
+              -22.703825258215304,
+              410.05827637902377,
+              446.96818567660216
+            ],
+            "quaternion": [
+              -0.2779152998677158,
+              0.06825395727108453,
+              0.01980099397748365,
+              0.9579730706307868
+            ],
+            "orbit": 0.18,
+            "elevation": 0.64
+          },
+          "reduced": false,
+          "saved": {
+            "phase": 0.019999968103987964,
+            "selection": 1
+          }
+        },
+        {
+          "requested": 0.43000000000000005,
+          "active": "breeze",
+          "phase": 0.42999999097534736,
+          "selection": 0,
+          "playing": false,
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 41,
+            "labels": 18,
+            "meshes": 69,
+            "imageMappedMeshes": 0,
+            "extent": [
+              143.64340209960938,
+              127.69898733177706,
+              96.24107653375516
+            ],
+            "sceneElevation": 61.76666105897719,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.42999999097534736,
+            "selection": 0,
+            "kind": "sea-breeze",
+            "layout": "land-left-sea-right",
+            "scene": "coastal-paper-world",
+            "selected": "day",
+            "groundX": -1,
+            "upperX": 1,
+            "strength": 0.714133917303211,
+            "pressure": {
+              "seaGround": "相对高压",
+              "landGround": "相对低压",
+              "seaUpper": "相对低压",
+              "landUpper": "相对高压"
+            },
+            "continuousDayNight": true,
+            "flowPhase": 0.0559298194978326,
+            "flowRate": 0.0714133917303211,
+            "flagArea": 49.57264333295845,
+            "panels": 1,
+            "sameHeightGuides": 2,
+            "elevatedAbovePage": 61.76666105897719,
+            "sourceFootprint": [
+              115.84144984804425,
+              31.25
+            ],
+            "sceneDepth": 90.49534062129217,
+            "directInteraction": "drag-daylight-handle",
+            "daylightControlIsSchematic": true
+          },
+          "pages": [
+            43,
+            44
+          ],
+          "view": "detail",
+          "camera": {
+            "position": [
+              -22.703825258215304,
+              410.05827637902377,
+              446.96818567660216
+            ],
+            "quaternion": [
+              -0.2779152998677158,
+              0.06825395727108453,
+              0.01980099397748365,
+              0.9579730706307868
+            ],
+            "orbit": 0.18,
+            "elevation": 0.64
+          },
+          "reduced": false,
+          "saved": {
+            "phase": 0.019999968103987964,
+            "selection": 1
+          }
+        }
+      ],
+      "after": {
+        "active": "breeze",
+        "phase": 0.42999999097534736,
+        "selection": 0,
+        "playing": false,
+        "geometry": {
+          "architecture": "three-dimensional-geometry",
+          "bitmapSurfaces": 0,
+          "solids": 41,
+          "labels": 18,
+          "meshes": 69,
+          "imageMappedMeshes": 0,
+          "extent": [
+            143.64340209960938,
+            127.69898733177706,
+            96.24107653375516
+          ],
+          "sceneElevation": 61.76666105897719,
+          "unfoldProgress": 1,
+          "originalPagePreserved": true,
+          "phase": 0.42999999097534736,
+          "selection": 0,
+          "kind": "sea-breeze",
+          "layout": "land-left-sea-right",
+          "scene": "coastal-paper-world",
+          "selected": "day",
+          "groundX": -1,
+          "upperX": 1,
+          "strength": 0.714133917303211,
+          "pressure": {
+            "seaGround": "相对高压",
+            "landGround": "相对低压",
+            "seaUpper": "相对低压",
+            "landUpper": "相对高压"
+          },
+          "continuousDayNight": true,
+          "flowPhase": 0.0559298194978326,
+          "flowRate": 0.0714133917303211,
+          "flagArea": 49.57264333295845,
+          "panels": 1,
+          "sameHeightGuides": 2,
+          "elevatedAbovePage": 61.76666105897719,
+          "sourceFootprint": [
+            115.84144984804425,
+            31.25
+          ],
+          "sceneDepth": 90.49534062129217,
+          "directInteraction": "drag-daylight-handle",
+          "daylightControlIsSchematic": true
+        },
+        "pages": [
+          43,
+          44
+        ],
+        "view": "detail",
+        "camera": {
+          "position": [
+            -22.703825258215304,
+            410.05827637902377,
+            446.96818567660216
+          ],
+          "quaternion": [
+            -0.2779152998677158,
+            0.06825395727108453,
+            0.01980099397748365,
+            0.9579730706307868
+          ],
+          "orbit": 0.18,
+          "elevation": 0.64
+        },
+        "reduced": false,
+        "saved": {
+          "phase": 0.42999999097534736,
+          "selection": 0
+        }
+      }
+    },
+    {
+      "name": "breeze-refresh",
+      "restored": {
+        "active": "breeze",
+        "phase": 0.42999999097534736,
+        "selection": 0,
+        "playing": false,
+        "geometry": {
+          "architecture": "three-dimensional-geometry",
+          "bitmapSurfaces": 0,
+          "solids": 41,
+          "labels": 18,
+          "meshes": 69,
+          "imageMappedMeshes": 0,
+          "extent": [
+            143.64340209960938,
+            127.69898733177706,
+            96.24107653375516
+          ],
+          "sceneElevation": 61.76666105897719,
+          "unfoldProgress": 1,
+          "originalPagePreserved": true,
+          "phase": 0.42999999097534736,
+          "selection": 0,
+          "kind": "sea-breeze",
+          "layout": "land-left-sea-right",
+          "scene": "coastal-paper-world",
+          "selected": "day",
+          "groundX": -1,
+          "upperX": 1,
+          "strength": 0.714133917303211,
+          "pressure": {
+            "seaGround": "相对高压",
+            "landGround": "相对低压",
+            "seaUpper": "相对低压",
+            "landUpper": "相对高压"
+          },
+          "continuousDayNight": true,
+          "flowPhase": 0,
+          "flowRate": 0.0714133917303211,
+          "flagArea": 49.83107727603765,
+          "panels": 1,
+          "sameHeightGuides": 2,
+          "elevatedAbovePage": 61.76666105897719,
+          "sourceFootprint": [
+            115.84144984804425,
+            31.25
+          ],
+          "sceneDepth": 90.49534062129217,
+          "directInteraction": "drag-daylight-handle",
+          "daylightControlIsSchematic": true
+        },
+        "pages": [
+          43,
+          44
+        ],
+        "view": "detail",
+        "camera": {
+          "position": [
+            -18.438741511032795,
+            409.09685830595333,
+            448.37887792741554
+          ],
+          "quaternion": [
+            -0.27649744337593396,
+            0.071668394169008,
+            0.02068240274958251,
+            0.9581153601212705
+          ],
+          "orbit": 0.18,
+          "elevation": 0.64
+        },
+        "reduced": false,
+        "saved": {
+          "phase": 0.42999999097534736,
+          "selection": 0
+        }
+      }
+    },
+    {
+      "name": "1024 day-to-night",
+      "before": {
+        "active": "breeze",
+        "phase": 0.5,
+        "selection": 0,
+        "playing": false,
+        "geometry": {
+          "architecture": "three-dimensional-geometry",
+          "bitmapSurfaces": 0,
+          "solids": 41,
+          "labels": 18,
+          "meshes": 69,
+          "imageMappedMeshes": 0,
+          "extent": [
+            143.64340209960938,
+            127.69898733177706,
+            96.24107653375516
+          ],
+          "sceneElevation": 61.76666105897719,
+          "unfoldProgress": 1,
+          "originalPagePreserved": true,
+          "phase": 0.5,
+          "selection": 0,
+          "kind": "sea-breeze",
+          "layout": "land-left-sea-right",
+          "scene": "coastal-paper-world",
+          "selected": "day",
+          "groundX": -1,
+          "upperX": 1,
+          "strength": 0.9401870664873426,
+          "pressure": {
+            "seaGround": "相对高压",
+            "landGround": "相对低压",
+            "seaUpper": "相对低压",
+            "landUpper": "相对高压"
+          },
+          "continuousDayNight": true,
+          "flowPhase": 0,
+          "flowRate": 0.09401870664873427,
+          "flagArea": 49.70212706976835,
+          "panels": 1,
+          "sameHeightGuides": 2,
+          "elevatedAbovePage": 61.76666105897719,
+          "sourceFootprint": [
+            115.84144984804425,
+            31.25
+          ],
+          "sceneDepth": 90.49534062129217,
+          "directInteraction": "drag-daylight-handle",
+          "daylightControlIsSchematic": true
+        },
+        "pages": [
+          43,
+          44
+        ],
+        "view": "detail",
+        "camera": {
+          "position": [
+            -18.473236088426063,
+            428.9628140786278,
+            476.5065258449812
+          ],
+          "quaternion": [
+            -0.27791529986074415,
+            0.06825395728794832,
+            0.019800993981864145,
+            0.9579730706315172
+          ],
+          "orbit": 0.18,
+          "elevation": 0.64
+        },
+        "reduced": false,
+        "saved": {
+          "phase": 0.5,
+          "selection": 0
+        }
+      },
+      "grab": {
+        "offset": [
+          0.000002372782500118071,
+          -0.000005938733398380691
+        ],
+        "point": [
+          71.82170127856993,
+          140.77052391660996,
+          -113.23720773738899
+        ],
+        "expectedPhase": 0.5
+      },
+      "samples": [
+        {
+          "requested": 0.6499999999999999,
+          "active": "breeze",
+          "phase": 0.650000024839291,
+          "selection": 0,
+          "playing": false,
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 41,
+            "labels": 18,
+            "meshes": 69,
+            "imageMappedMeshes": 0,
+            "extent": [
+              143.64340209960938,
+              127.69898733177706,
+              96.24107653375516
+            ],
+            "sceneElevation": 61.76666105897719,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.650000024839291,
+            "selection": 0,
+            "kind": "sea-breeze",
+            "layout": "land-left-sea-right",
+            "scene": "coastal-paper-world",
+            "selected": "day",
+            "groundX": -1,
+            "upperX": 1,
+            "strength": 0.8121278571050248,
+            "pressure": {
+              "seaGround": "相对高压",
+              "landGround": "相对低压",
+              "seaUpper": "相对低压",
+              "landUpper": "相对高压"
+            },
+            "continuousDayNight": true,
+            "flowPhase": 0,
+            "flowRate": 0.08121278571050249,
+            "flagArea": 49.745508649546196,
+            "panels": 1,
+            "sameHeightGuides": 2,
+            "elevatedAbovePage": 61.76666105897719,
+            "sourceFootprint": [
+              115.84144984804425,
+              31.25
+            ],
+            "sceneDepth": 90.49534062129217,
+            "directInteraction": "drag-daylight-handle",
+            "daylightControlIsSchematic": true
+          },
+          "pages": [
+            43,
+            44
+          ],
+          "view": "detail",
+          "camera": {
+            "position": [
+              -18.473236039844668,
+              428.96281436254606,
+              476.5065262788632
+            ],
+            "quaternion": [
+              -0.27791529986606717,
+              0.06825395727507234,
+              0.019800993978519504,
+              0.9579730706309594
+            ],
+            "orbit": 0.18,
+            "elevation": 0.64
+          },
+          "reduced": false,
+          "saved": {
+            "phase": 0.5,
+            "selection": 0
+          }
+        },
+        {
+          "requested": 0.78,
+          "active": "breeze",
+          "phase": 0.7799999609716961,
+          "selection": 0,
+          "playing": false,
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 41,
+            "labels": 18,
+            "meshes": 69,
+            "imageMappedMeshes": 0,
+            "extent": [
+              143.64340209960938,
+              127.69898733177706,
+              96.24107653375516
+            ],
+            "sceneElevation": 61.76666105897719,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.7799999609716961,
+            "selection": 0,
+            "kind": "sea-breeze",
+            "layout": "land-left-sea-right",
+            "scene": "coastal-paper-world",
+            "selected": "day",
+            "groundX": -1,
+            "upperX": 1,
+            "strength": 0.13890468092492653,
+            "pressure": {
+              "seaGround": "相对高压",
+              "landGround": "相对低压",
+              "seaUpper": "相对低压",
+              "landUpper": "相对高压"
+            },
+            "continuousDayNight": true,
+            "flowPhase": 0,
+            "flowRate": 0.013890468092492654,
+            "flagArea": 50.318609418868995,
+            "panels": 1,
+            "sameHeightGuides": 2,
+            "elevatedAbovePage": 61.76666105897719,
+            "sourceFootprint": [
+              115.84144984804425,
+              31.25
+            ],
+            "sceneDepth": 90.49534062129217,
+            "directInteraction": "drag-daylight-handle",
+            "daylightControlIsSchematic": true
+          },
+          "pages": [
+            43,
+            44
+          ],
+          "view": "detail",
+          "camera": {
+            "position": [
+              -18.473236031042198,
+              428.9628144148037,
+              476.5065263586322
+            ],
+            "quaternion": [
+              -0.2779152998670988,
+              0.06825395727257702,
+              0.019800993977871325,
+              0.9579730706308515
+            ],
+            "orbit": 0.18,
+            "elevation": 0.64
+          },
+          "reduced": false,
+          "saved": {
+            "phase": 0.5,
+            "selection": 0
+          }
+        },
+        {
+          "requested": 0.8,
+          "active": "breeze",
+          "phase": 0.7999999385826118,
+          "selection": 0,
+          "playing": false,
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 41,
+            "labels": 18,
+            "meshes": 69,
+            "imageMappedMeshes": 0,
+            "extent": [
+              143.64340209960938,
+              127.69898733177706,
+              96.24107653375516
+            ],
+            "sceneElevation": 61.76666105897719,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.7999999385826118,
+            "selection": 0,
+            "kind": "sea-breeze",
+            "layout": "land-left-sea-right",
+            "scene": "coastal-paper-world",
+            "selected": "transition",
+            "groundX": 0,
+            "upperX": 0,
+            "strength": 0,
+            "pressure": {
+              "seaGround": "差异很小",
+              "landGround": "差异很小",
+              "seaUpper": "差异很小",
+              "landUpper": "差异很小"
+            },
+            "continuousDayNight": true,
+            "flowPhase": 0,
+            "flowRate": 0,
+            "flagArea": 50.3208003117921,
+            "panels": 1,
+            "sameHeightGuides": 2,
+            "elevatedAbovePage": 61.76666105897719,
+            "sourceFootprint": [
+              115.84144984804425,
+              31.25
+            ],
+            "sceneDepth": 90.49534062129217,
+            "directInteraction": "drag-daylight-handle",
+            "daylightControlIsSchematic": true
+          },
+          "pages": [
+            43,
+            44
+          ],
+          "view": "detail",
+          "camera": {
+            "position": [
+              -18.473236027437153,
+              428.96281443649644,
+              476.5065263917134
+            ],
+            "quaternion": [
+              -0.27791529986754515,
+              0.06825395727149706,
+              0.019800993977590796,
+              0.9579730706308046
+            ],
+            "orbit": 0.18,
+            "elevation": 0.64
+          },
+          "reduced": false,
+          "saved": {
+            "phase": 0.5,
+            "selection": 0
+          }
+        },
+        {
+          "requested": 0.8500000000000001,
+          "active": "breeze",
+          "phase": 0.8500000047597203,
+          "selection": 1,
+          "playing": false,
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 41,
+            "labels": 18,
+            "meshes": 69,
+            "imageMappedMeshes": 0,
+            "extent": [
+              143.64340209960938,
+              127.69898733177706,
+              96.24107653375516
+            ],
+            "sceneElevation": 61.76666105897719,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.8500000047597203,
+            "selection": 1,
+            "kind": "sea-breeze",
+            "layout": "land-left-sea-right",
+            "scene": "coastal-paper-world",
+            "selected": "night",
+            "groundX": 1,
+            "upperX": -1,
+            "strength": 0.2931282661496993,
+            "pressure": {
+              "seaGround": "相对低压",
+              "landGround": "相对高压",
+              "seaUpper": "相对高压",
+              "landUpper": "相对低压"
+            },
+            "continuousDayNight": true,
+            "flowPhase": 0,
+            "flowRate": -0.02931282661496993,
+            "flagArea": 50.28188892161297,
+            "panels": 1,
+            "sameHeightGuides": 2,
+            "elevatedAbovePage": 61.76666105897719,
+            "sourceFootprint": [
+              115.84144984804425,
+              31.25
+            ],
+            "sceneDepth": 90.49534062129217,
+            "directInteraction": "drag-daylight-handle",
+            "daylightControlIsSchematic": true
+          },
+          "pages": [
+            43,
+            44
+          ],
+          "view": "detail",
+          "camera": {
+            "position": [
+              -18.47323602646616,
+              428.9628144424337,
+              476.5065264007573
+            ],
+            "quaternion": [
+              -0.27791529986767327,
+              0.06825395727118737,
+              0.019800993977510353,
+              0.9579730706307911
+            ],
+            "orbit": 0.18,
+            "elevation": 0.64
+          },
+          "reduced": false,
+          "saved": {
+            "phase": 0.5,
+            "selection": 0
+          }
+        },
+        {
+          "requested": 0.98,
+          "active": "breeze",
+          "phase": 0.9800000064219352,
+          "selection": 1,
+          "playing": false,
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 41,
+            "labels": 18,
+            "meshes": 69,
+            "imageMappedMeshes": 0,
+            "extent": [
+              143.64340209960938,
+              127.69898733177706,
+              96.24107653375516
+            ],
+            "sceneElevation": 61.76666105897719,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.9800000064219352,
+            "selection": 1,
+            "kind": "sea-breeze",
+            "layout": "land-left-sea-right",
+            "scene": "coastal-paper-world",
+            "selected": "night",
+            "groundX": 1,
+            "upperX": -1,
+            "strength": 0.8925716079146817,
+            "pressure": {
+              "seaGround": "相对低压",
+              "landGround": "相对高压",
+              "seaUpper": "相对高压",
+              "landUpper": "相对低压"
+            },
+            "continuousDayNight": true,
+            "flowPhase": 0,
+            "flowRate": -0.08925716079146817,
+            "flagArea": 49.70881293072128,
+            "panels": 1,
+            "sameHeightGuides": 2,
+            "elevatedAbovePage": 61.76666105897719,
+            "sourceFootprint": [
+              115.84144984804425,
+              31.25
+            ],
+            "sceneDepth": 90.49534062129217,
+            "directInteraction": "drag-daylight-handle",
+            "daylightControlIsSchematic": true
+          },
+          "pages": [
+            43,
+            44
+          ],
+          "view": "detail",
+          "camera": {
+            "position": [
+              -18.473236026245182,
+              428.96281444380793,
+              476.50652640284835
+            ],
+            "quaternion": [
+              -0.27791529986770425,
+              0.06825395727111225,
+              0.019800993977490838,
+              0.9579730706307881
+            ],
+            "orbit": 0.18,
+            "elevation": 0.64
+          },
+          "reduced": false,
+          "saved": {
+            "phase": 0.5,
+            "selection": 0
+          }
+        }
+      ],
+      "after": {
+        "active": "breeze",
+        "phase": 0.9800000064218116,
+        "selection": 1,
+        "playing": false,
+        "geometry": {
+          "architecture": "three-dimensional-geometry",
+          "bitmapSurfaces": 0,
+          "solids": 41,
+          "labels": 18,
+          "meshes": 69,
+          "imageMappedMeshes": 0,
+          "extent": [
+            143.64340209960938,
+            127.69898733177706,
+            96.24107653375516
+          ],
+          "sceneElevation": 61.76666105897719,
+          "unfoldProgress": 1,
+          "originalPagePreserved": true,
+          "phase": 0.9800000064218116,
+          "selection": 1,
+          "kind": "sea-breeze",
+          "layout": "land-left-sea-right",
+          "scene": "coastal-paper-world",
+          "selected": "night",
+          "groundX": 1,
+          "upperX": -1,
+          "strength": 0.8925716079143428,
+          "pressure": {
+            "seaGround": "相对低压",
+            "landGround": "相对高压",
+            "seaUpper": "相对高压",
+            "landUpper": "相对低压"
+          },
+          "continuousDayNight": true,
+          "flowPhase": 0,
+          "flowRate": -0.08925716079143428,
+          "flagArea": 49.70881293072128,
+          "panels": 1,
+          "sameHeightGuides": 2,
+          "elevatedAbovePage": 61.76666105897719,
+          "sourceFootprint": [
+            115.84144984804425,
+            31.25
+          ],
+          "sceneDepth": 90.49534062129217,
+          "directInteraction": "drag-daylight-handle",
+          "daylightControlIsSchematic": true
+        },
+        "pages": [
+          43,
+          44
+        ],
+        "view": "detail",
+        "camera": {
+          "position": [
+            -18.473236026185,
+            428.9628144441888,
+            476.506526403427
+          ],
+          "quaternion": [
+            -0.2779152998677133,
+            0.06825395727109052,
+            0.01980099397748519,
+            0.9579730706307871
+          ],
+          "orbit": 0.18,
+          "elevation": 0.64
+        },
+        "reduced": false,
+        "saved": {
+          "phase": 0.9800000064218116,
+          "selection": 1
+        }
+      }
+    },
+    {
+      "name": "1024-layout",
+      "layout": {
+        "labels": [
+          {
+            "text": "高压",
+            "left": 402.4291521476525,
+            "top": 416.1713316770317,
+            "right": 458.95945122752323,
+            "bottom": 440.1967087859767,
+            "fontPx": 16.56217485808124
+          },
+          {
+            "text": "低压",
+            "left": 571.1704844330749,
+            "top": 428.52569216571504,
+            "right": 628.5434860281607,
+            "bottom": 452.9092178436265,
+            "fontPx": 16.809068765198532
+          },
+          {
+            "text": "低压",
+            "left": 401.0017934901606,
+            "top": 330.8104348844686,
+            "right": 459.7150944535054,
+            "bottom": 355.7635877938901,
+            "fontPx": 17.20174796309059
+          },
+          {
+            "text": "高压",
+            "left": 568.9240854090621,
+            "top": 341.8399137354521,
+            "right": 628.5084926650347,
+            "bottom": 367.16328681924057,
+            "fontPx": 17.456963572654168
+          },
+          {
+            "text": "陆地 · 较冷",
+            "left": 352.22429484421434,
+            "top": 537.226124688716,
+            "right": 463.29249015193665,
+            "bottom": 561.5894707562163,
+            "fontPx": 16.79515771461722
+          },
+          {
+            "text": "海洋 · 较暖",
+            "left": 540.6487361496529,
+            "top": 557.0902517739596,
+            "right": 653.3598793721878,
+            "bottom": 581.8139864163221,
+            "fontPx": 17.043595796011598
+          }
+        ],
+        "dock": {
+          "top": 649,
+          "bottom": 754
+        },
+        "pages": [
+          43,
+          44
+        ],
+        "hasOriginalBook": true
+      }
+    },
+    {
+      "name": "earth-layer-0",
+      "selected": {
+        "active": "earth",
+        "phase": 0,
+        "selection": 1,
+        "playing": false,
+        "geometry": {
+          "architecture": "three-dimensional-geometry",
+          "bitmapSurfaces": 0,
+          "solids": 15,
+          "labels": 4,
+          "meshes": 19,
+          "imageMappedMeshes": 0,
+          "extent": [
+            72.081895975584,
+            48.054595947265625,
+            48.054595947265625
+          ],
+          "sceneElevation": 52.631226106345274,
+          "unfoldProgress": 1,
+          "originalPagePreserved": true,
+          "phase": 0,
+          "selection": 1,
+          "kind": "earth-cutaway",
+          "layers": [
+            "crust",
+            "mantle",
+            "outer-core",
+            "inner-core"
+          ],
+          "scale": "schematic",
+          "selected": 1,
+          "focus": "crust",
+          "groupedSections": true,
+          "crustThicknessUnchanged": true,
+          "layerGroups": [
+            {
+              "layer": 0,
+              "visible": true,
+              "offset": [
+                59.19058925379203,
+                3.4323997325042734,
+                0
+              ],
+              "parts": 4,
+              "labelVisible": true
+            },
+            {
+              "layer": 1,
+              "visible": true,
+              "offset": [
+                0,
+                0,
+                0
+              ],
+              "parts": 4,
+              "labelVisible": false
+            },
+            {
+              "layer": 2,
+              "visible": true,
+              "offset": [
+                0,
+                0,
+                0
+              ],
+              "parts": 4,
+              "labelVisible": false
+            },
+            {
+              "layer": 3,
+              "visible": true,
+              "offset": [
+                0,
+                0,
+                0
+              ],
+              "parts": 3,
+              "labelVisible": false
+            }
+          ]
+        },
+        "pages": [
+          27,
+          28
+        ],
+        "view": "detail",
+        "camera": {
+          "position": [
+            -28.52387474415131,
+            201.9435927981629,
+            145.45691786970923
+          ],
+          "quaternion": [
+            -0.2772968599121049,
+            0.06361249314595734,
+            0.018403291057138844,
+            0.9584994632637559
+          ],
+          "orbit": 0.18,
+          "elevation": 0.64
+        },
+        "reduced": false,
+        "saved": {
+          "phase": 0,
+          "selection": 1
+        }
+      },
+      "reset": {
+        "active": "earth",
+        "phase": 0,
+        "selection": 0,
+        "playing": false,
+        "geometry": {
+          "architecture": "three-dimensional-geometry",
+          "bitmapSurfaces": 0,
+          "solids": 15,
+          "labels": 4,
+          "meshes": 19,
+          "imageMappedMeshes": 0,
+          "extent": [
+            72.081895975584,
+            48.054595947265625,
+            48.054595947265625
+          ],
+          "sceneElevation": 52.631226106345274,
+          "unfoldProgress": 1,
+          "originalPagePreserved": true,
+          "phase": 0,
+          "selection": 0,
+          "kind": "earth-cutaway",
+          "layers": [
+            "crust",
+            "mantle",
+            "outer-core",
+            "inner-core"
+          ],
+          "scale": "schematic",
+          "selected": 0,
+          "focus": "all",
+          "groupedSections": true,
+          "crustThicknessUnchanged": true,
+          "layerGroups": [
+            {
+              "layer": 0,
+              "visible": true,
+              "offset": [
+                0.001192841982594629,
+                0.00006917164626326762,
+                0
+              ],
+              "parts": 4,
+              "labelVisible": true
+            },
+            {
+              "layer": 1,
+              "visible": true,
+              "offset": [
+                0,
+                0,
+                0
+              ],
+              "parts": 4,
+              "labelVisible": true
+            },
+            {
+              "layer": 2,
+              "visible": true,
+              "offset": [
+                0,
+                0,
+                0
+              ],
+              "parts": 4,
+              "labelVisible": true
+            },
+            {
+              "layer": 3,
+              "visible": true,
+              "offset": [
+                0,
+                0,
+                0
+              ],
+              "parts": 3,
+              "labelVisible": true
+            }
+          ]
+        },
+        "pages": [
+          27,
+          28
+        ],
+        "view": "detail",
+        "camera": {
+          "position": [
+            -41.259378780190346,
+            196.33173390395,
+            144.9943357031659
+          ],
+          "quaternion": [
+            -0.27846395290794346,
+            0.07297517338077904,
+            0.021224368285570876,
+            0.957435103383935
+          ],
+          "orbit": 0.18,
+          "elevation": 0.64
+        },
+        "reduced": false,
+        "saved": {
+          "phase": 0,
+          "selection": 0
+        }
+      }
+    },
+    {
+      "name": "earth-layer-1",
+      "selected": {
+        "active": "earth",
+        "phase": 0,
+        "selection": 2,
+        "playing": false,
+        "geometry": {
+          "architecture": "three-dimensional-geometry",
+          "bitmapSurfaces": 0,
+          "solids": 15,
+          "labels": 4,
+          "meshes": 19,
+          "imageMappedMeshes": 0,
+          "extent": [
+            72.081895975584,
+            48.054595947265625,
+            48.054595947265625
+          ],
+          "sceneElevation": 52.631226106345274,
+          "unfoldProgress": 1,
+          "originalPagePreserved": true,
+          "phase": 0,
+          "selection": 2,
+          "kind": "earth-cutaway",
+          "layers": [
+            "crust",
+            "mantle",
+            "outer-core",
+            "inner-core"
+          ],
+          "scale": "schematic",
+          "selected": 2,
+          "focus": "mantle",
+          "groupedSections": true,
+          "crustThicknessUnchanged": true,
+          "layerGroups": [
+            {
+              "layer": 0,
+              "visible": false,
+              "offset": [
+                2.7354037615028137e-7,
+                1.5862317401531762e-8,
+                0
+              ],
+              "parts": 4,
+              "labelVisible": false
+            },
+            {
+              "layer": 1,
+              "visible": true,
+              "offset": [
+                46.197161728847625,
+                3.429972904681059,
+                0
+              ],
+              "parts": 4,
+              "labelVisible": true
+            },
+            {
+              "layer": 2,
+              "visible": true,
+              "offset": [
+                0,
+                0,
+                0
+              ],
+              "parts": 4,
+              "labelVisible": false
+            },
+            {
+              "layer": 3,
+              "visible": true,
+              "offset": [
+                0,
+                0,
+                0
+              ],
+              "parts": 3,
+              "labelVisible": false
+            }
+          ]
+        },
+        "pages": [
+          27,
+          28
+        ],
+        "view": "detail",
+        "camera": {
+          "position": [
+            -33.88493104726168,
+            201.60462636660714,
+            145.18323415084384
+          ],
+          "quaternion": [
+            -0.27557410465209453,
+            0.059132878186756735,
+            0.016986696420693042,
+            0.9593089532091619
+          ],
+          "orbit": 0.18,
+          "elevation": 0.64
+        },
+        "reduced": false,
+        "saved": {
+          "phase": 0,
+          "selection": 2
+        }
+      },
+      "reset": {
+        "active": "earth",
+        "phase": 0,
+        "selection": 0,
+        "playing": false,
+        "geometry": {
+          "architecture": "three-dimensional-geometry",
+          "bitmapSurfaces": 0,
+          "solids": 15,
+          "labels": 4,
+          "meshes": 19,
+          "imageMappedMeshes": 0,
+          "extent": [
+            72.081895975584,
+            48.054595947265625,
+            48.054595947265625
+          ],
+          "sceneElevation": 52.631226106345274,
+          "unfoldProgress": 1,
+          "originalPagePreserved": true,
+          "phase": 0,
+          "selection": 0,
+          "kind": "earth-cutaway",
+          "layers": [
+            "crust",
+            "mantle",
+            "outer-core",
+            "inner-core"
+          ],
+          "scale": "schematic",
+          "selected": 0,
+          "focus": "all",
+          "groupedSections": true,
+          "crustThicknessUnchanged": true,
+          "layerGroups": [
+            {
+              "layer": 0,
+              "visible": true,
+              "offset": [
+                1.0614325145220752e-11,
+                6.155135005153721e-13,
+                0
+              ],
+              "parts": 4,
+              "labelVisible": true
+            },
+            {
+              "layer": 1,
+              "visible": true,
+              "offset": [
+                0.001928080179492313,
+                0.00014315301040629952,
+                0
+              ],
+              "parts": 4,
+              "labelVisible": true
+            },
+            {
+              "layer": 2,
+              "visible": true,
+              "offset": [
+                0,
+                0,
+                0
+              ],
+              "parts": 4,
+              "labelVisible": true
+            },
+            {
+              "layer": 3,
+              "visible": true,
+              "offset": [
+                0,
+                0,
+                0
+              ],
+              "parts": 3,
+              "labelVisible": true
+            }
+          ]
+        },
+        "pages": [
+          27,
+          28
+        ],
+        "view": "detail",
+        "camera": {
+          "position": [
+            -41.20754909171471,
+            196.6603786374629,
+            144.98615371145993
+          ],
+          "quaternion": [
+            -0.2788610305734206,
+            0.07283353684110468,
+            0.021215698276664773,
+            0.9573305049382781
+          ],
+          "orbit": 0.18,
+          "elevation": 0.64
+        },
+        "reduced": false,
+        "saved": {
+          "phase": 0,
+          "selection": 0
+        }
+      }
+    },
+    {
+      "name": "earth-layer-2",
+      "selected": {
+        "active": "earth",
+        "phase": 0,
+        "selection": 3,
+        "playing": false,
+        "geometry": {
+          "architecture": "three-dimensional-geometry",
+          "bitmapSurfaces": 0,
+          "solids": 15,
+          "labels": 4,
+          "meshes": 19,
+          "imageMappedMeshes": 0,
+          "extent": [
+            72.081895975584,
+            48.054595947265625,
+            48.054595947265625
+          ],
+          "sceneElevation": 52.631226106345274,
+          "unfoldProgress": 1,
+          "originalPagePreserved": true,
+          "phase": 0,
+          "selection": 3,
+          "kind": "earth-cutaway",
+          "layers": [
+            "crust",
+            "mantle",
+            "outer-core",
+            "inner-core"
+          ],
+          "scale": "schematic",
+          "selected": 3,
+          "focus": "core",
+          "groupedSections": true,
+          "crustThicknessUnchanged": true,
+          "layerGroups": [
+            {
+              "layer": 0,
+              "visible": false,
+              "offset": [
+                5.40178785157693e-17,
+                3.1324397020780873e-18,
+                0
+              ],
+              "parts": 4,
+              "labelVisible": false
+            },
+            {
+              "layer": 1,
+              "visible": false,
+              "offset": [
+                9.81228664842378e-9,
+                7.285269500883863e-10,
+                0
+              ],
+              "parts": 4,
+              "labelVisible": false
+            },
+            {
+              "layer": 2,
+              "visible": true,
+              "offset": [
+                0,
+                0,
+                0
+              ],
+              "parts": 4,
+              "labelVisible": true
+            },
+            {
+              "layer": 3,
+              "visible": true,
+              "offset": [
+                0,
+                0,
+                0
+              ],
+              "parts": 3,
+              "labelVisible": true
+            }
+          ]
+        },
+        "pages": [
+          27,
+          28
+        ],
+        "view": "detail",
+        "camera": {
+          "position": [
+            -45.6020209738675,
+            197.4169503173671,
+            143.7860453670049
+          ],
+          "quaternion": [
+            -0.27750745228979334,
+            0.06878047296663341,
+            0.019922834490558754,
+            0.9580511161352383
+          ],
+          "orbit": 0.18,
+          "elevation": 0.64
+        },
+        "reduced": false,
+        "saved": {
+          "phase": 0,
+          "selection": 3
+        }
+      },
+      "reset": {
+        "active": "earth",
+        "phase": 0,
+        "selection": 0,
+        "playing": false,
+        "geometry": {
+          "architecture": "three-dimensional-geometry",
+          "bitmapSurfaces": 0,
+          "solids": 15,
+          "labels": 4,
+          "meshes": 19,
+          "imageMappedMeshes": 0,
+          "extent": [
+            72.081895975584,
+            48.054595947265625,
+            48.054595947265625
+          ],
+          "sceneElevation": 52.631226106345274,
+          "unfoldProgress": 1,
+          "originalPagePreserved": true,
+          "phase": 0,
+          "selection": 0,
+          "kind": "earth-cutaway",
+          "layers": [
+            "crust",
+            "mantle",
+            "outer-core",
+            "inner-core"
+          ],
+          "scale": "schematic",
+          "selected": 0,
+          "focus": "all",
+          "groupedSections": true,
+          "crustThicknessUnchanged": true,
+          "layerGroups": [
+            {
+              "layer": 0,
+              "visible": true,
+              "offset": [
+                1.8795373071183265e-24,
+                1.0899238259858072e-25,
+                0
+              ],
+              "parts": 4,
+              "labelVisible": true
+            },
+            {
+              "layer": 1,
+              "visible": true,
+              "offset": [
+                3.414158299176385e-16,
+                2.534889594993108e-17,
+                0
+              ],
+              "parts": 4,
+              "labelVisible": true
+            },
+            {
+              "layer": 2,
+              "visible": true,
+              "offset": [
+                0,
+                0,
+                0
+              ],
+              "parts": 4,
+              "labelVisible": true
+            },
+            {
+              "layer": 3,
+              "visible": true,
+              "offset": [
+                0,
+                0,
+                0
+              ],
+              "parts": 3,
+              "labelVisible": true
+            }
+          ]
+        },
+        "pages": [
+          27,
+          28
+        ],
+        "view": "detail",
+        "camera": {
+          "position": [
+            -44.21911666697309,
+            195.85151094341126,
+            144.76092297005667
+          ],
+          "quaternion": [
+            -0.27847458655114965,
+            0.06779927078681115,
+            0.019711308388147223,
+            0.9578447827532236
+          ],
+          "orbit": 0.18,
+          "elevation": 0.64
+        },
+        "reduced": false,
+        "saved": {
+          "phase": 0,
+          "selection": 0
+        }
+      }
+    },
+    {
+      "name": "earth-layer-3",
+      "selected": {
+        "active": "earth",
+        "phase": 0,
+        "selection": 3,
+        "playing": false,
+        "geometry": {
+          "architecture": "three-dimensional-geometry",
+          "bitmapSurfaces": 0,
+          "solids": 15,
+          "labels": 4,
+          "meshes": 19,
+          "imageMappedMeshes": 0,
+          "extent": [
+            72.081895975584,
+            48.054595947265625,
+            48.054595947265625
+          ],
+          "sceneElevation": 52.631226106345274,
+          "unfoldProgress": 1,
+          "originalPagePreserved": true,
+          "phase": 0,
+          "selection": 3,
+          "kind": "earth-cutaway",
+          "layers": [
+            "crust",
+            "mantle",
+            "outer-core",
+            "inner-core"
+          ],
+          "scale": "schematic",
+          "selected": 3,
+          "focus": "core",
+          "groupedSections": true,
+          "crustThicknessUnchanged": true,
+          "layerGroups": [
+            {
+              "layer": 0,
+              "visible": false,
+              "offset": [
+                1.380369336081376e-29,
+                8.004615935833545e-31,
+                0
+              ],
+              "parts": 4,
+              "labelVisible": false
+            },
+            {
+              "layer": 1,
+              "visible": false,
+              "offset": [
+                2.507425315189092e-21,
+                1.8616730053871389e-22,
+                0
+              ],
+              "parts": 4,
+              "labelVisible": false
+            },
+            {
+              "layer": 2,
+              "visible": true,
+              "offset": [
+                0,
+                0,
+                0
+              ],
+              "parts": 4,
+              "labelVisible": true
+            },
+            {
+              "layer": 3,
+              "visible": true,
+              "offset": [
+                0,
+                0,
+                0
+              ],
+              "parts": 3,
+              "labelVisible": true
+            }
+          ]
+        },
+        "pages": [
+          27,
+          28
+        ],
+        "view": "detail",
+        "camera": {
+          "position": [
+            -45.6812963930205,
+            197.38223759673932,
+            143.78712601875895
+          ],
+          "quaternion": [
+            -0.27747270278064745,
+            0.06861407221788621,
+            0.019871668144989117,
+            0.9580741751609928
+          ],
+          "orbit": 0.18,
+          "elevation": 0.64
+        },
+        "reduced": false,
+        "saved": {
+          "phase": 0,
+          "selection": 3
+        }
+      },
+      "reset": {
+        "active": "earth",
+        "phase": 0,
+        "selection": 0,
+        "playing": false,
+        "geometry": {
+          "architecture": "three-dimensional-geometry",
+          "bitmapSurfaces": 0,
+          "solids": 15,
+          "labels": 4,
+          "meshes": 19,
+          "imageMappedMeshes": 0,
+          "extent": [
+            72.081895975584,
+            48.054595947265625,
+            48.054595947265625
+          ],
+          "sceneElevation": 52.631226106345274,
+          "unfoldProgress": 1,
+          "originalPagePreserved": true,
+          "phase": 0,
+          "selection": 0,
+          "kind": "earth-cutaway",
+          "layers": [
+            "crust",
+            "mantle",
+            "outer-core",
+            "inner-core"
+          ],
+          "scale": "schematic",
+          "selected": 0,
+          "focus": "all",
+          "groupedSections": true,
+          "crustThicknessUnchanged": true,
+          "layerGroups": [
+            {
+              "layer": 0,
+              "visible": true,
+              "offset": [
+                4.263440925416617e-34,
+                2.4723243468994945e-35,
+                0
+              ],
+              "parts": 4,
+              "labelVisible": true
+            },
+            {
+              "layer": 1,
+              "visible": true,
+              "offset": [
+                7.744492308522728e-26,
+                5.7500066637549306e-27,
+                0
+              ],
+              "parts": 4,
+              "labelVisible": true
+            },
+            {
+              "layer": 2,
+              "visible": true,
+              "offset": [
+                0,
+                0,
+                0
+              ],
+              "parts": 4,
+              "labelVisible": true
+            },
+            {
+              "layer": 3,
+              "visible": true,
+              "offset": [
+                0,
+                0,
+                0
+              ],
+              "parts": 3,
+              "labelVisible": true
+            }
+          ]
+        },
+        "pages": [
+          27,
+          28
+        ],
+        "view": "detail",
+        "camera": {
+          "position": [
+            -44.150696760409836,
+            195.77927328865266,
+            144.80677115438806
+          ],
+          "quaternion": [
+            -0.27834131529866574,
+            0.06790690078792332,
+            0.019732519430155436,
+            0.9578754578232634
+          ],
+          "orbit": 0.18,
+          "elevation": 0.64
+        },
+        "reduced": false,
+        "saved": {
+          "phase": 0,
+          "selection": 0
+        }
+      }
+    },
+    {
+      "name": "earth-surface-rotation",
+      "before": {
+        "active": "earth",
+        "phase": 0,
+        "selection": 0,
+        "playing": false,
+        "geometry": {
+          "architecture": "three-dimensional-geometry",
+          "bitmapSurfaces": 0,
+          "solids": 15,
+          "labels": 4,
+          "meshes": 19,
+          "imageMappedMeshes": 0,
+          "extent": [
+            72.081895975584,
+            48.054595947265625,
+            48.054595947265625
+          ],
+          "sceneElevation": 52.631226106345274,
+          "unfoldProgress": 1,
+          "originalPagePreserved": true,
+          "phase": 0,
+          "selection": 0,
+          "kind": "earth-cutaway",
+          "layers": [
+            "crust",
+            "mantle",
+            "outer-core",
+            "inner-core"
+          ],
+          "scale": "schematic",
+          "selected": 0,
+          "focus": "all",
+          "groupedSections": true,
+          "crustThicknessUnchanged": true,
+          "layerGroups": [
+            {
+              "layer": 0,
+              "visible": true,
+              "offset": [
+                4.263440925416617e-34,
+                2.4723243468994945e-35,
+                0
+              ],
+              "parts": 4,
+              "labelVisible": true
+            },
+            {
+              "layer": 1,
+              "visible": true,
+              "offset": [
+                7.744492308522728e-26,
+                5.7500066637549306e-27,
+                0
+              ],
+              "parts": 4,
+              "labelVisible": true
+            },
+            {
+              "layer": 2,
+              "visible": true,
+              "offset": [
+                0,
+                0,
+                0
+              ],
+              "parts": 4,
+              "labelVisible": true
+            },
+            {
+              "layer": 3,
+              "visible": true,
+              "offset": [
+                0,
+                0,
+                0
+              ],
+              "parts": 3,
+              "labelVisible": true
+            }
+          ]
+        },
+        "pages": [
+          27,
+          28
+        ],
+        "view": "detail",
+        "camera": {
+          "position": [
+            -44.150696760409836,
+            195.77927328865266,
+            144.80677115438806
+          ],
+          "quaternion": [
+            -0.27834131529866574,
+            0.06790690078792332,
+            0.019732519430155436,
+            0.9578754578232634
+          ],
+          "orbit": 0.18,
+          "elevation": 0.64
+        },
+        "reduced": false,
+        "saved": {
+          "phase": 0,
+          "selection": 0
+        }
+      },
+      "after": {
+        "active": "earth",
+        "phase": 0,
+        "selection": 0,
+        "playing": false,
+        "geometry": {
+          "architecture": "three-dimensional-geometry",
+          "bitmapSurfaces": 0,
+          "solids": 15,
+          "labels": 4,
+          "meshes": 19,
+          "imageMappedMeshes": 0,
+          "extent": [
+            72.081895975584,
+            48.054595947265625,
+            48.054595947265625
+          ],
+          "sceneElevation": 52.631226106345274,
+          "unfoldProgress": 1,
+          "originalPagePreserved": true,
+          "phase": 0,
+          "selection": 0,
+          "kind": "earth-cutaway",
+          "layers": [
+            "crust",
+            "mantle",
+            "outer-core",
+            "inner-core"
+          ],
+          "scale": "schematic",
+          "selected": 0,
+          "focus": "all",
+          "groupedSections": true,
+          "crustThicknessUnchanged": true,
+          "layerGroups": [
+            {
+              "layer": 0,
+              "visible": true,
+              "offset": [
+                1.7308832757588585e-37,
+                1.0037209238173298e-38,
+                0
+              ],
+              "parts": 4,
+              "labelVisible": true
+            },
+            {
+              "layer": 1,
+              "visible": true,
+              "offset": [
+                3.1441299294548585e-29,
+                2.3344032540624077e-30,
+                0
+              ],
+              "parts": 4,
+              "labelVisible": true
+            },
+            {
+              "layer": 2,
+              "visible": true,
+              "offset": [
+                0,
+                0,
+                0
+              ],
+              "parts": 4,
+              "labelVisible": true
+            },
+            {
+              "layer": 3,
+              "visible": true,
+              "offset": [
+                0,
+                0,
+                0
+              ],
+              "parts": 3,
+              "labelVisible": true
+            }
+          ]
+        },
+        "pages": [
+          27,
+          28
+        ],
+        "view": "detail",
+        "camera": {
+          "position": [
+            -2.0187528145912412,
+            202.6815044256092,
+            128.71808963727293
+          ],
+          "quaternion": [
+            -0.2906190629899706,
+            0.17611601776681426,
+            0.0545128607369056,
+            0.9389100364396312
+          ],
+          "orbit": 0.5700000000000001,
+          "elevation": 0.7520000000000002
+        },
+        "reduced": false,
+        "saved": {
+          "phase": 0,
+          "selection": 0
+        }
+      }
+    },
+    {
+      "name": "713 sun edge grab",
+      "hit": {
+        "x": 381.63117252821905,
+        "y": 192.1518094080812,
+        "center": {
+          "x": 363.9770374809609,
+          "y": 188.6401836117909
+        },
+        "centerDistance": 17.99999999999999,
+        "outsideVisibleMesh": true,
+        "rawHit": null,
+        "label": "拖动日月，观察风向变化",
+        "viewport": {
+          "width": 713,
+          "height": 818
+        }
+      },
+      "grab": {
+        "offset": [
+          6.276089889302764,
+          -0.9941391291431962
+        ],
+        "point": [
+          78.0977887950902,
+          139.77639072620016,
+          -113.23720773738893
+        ],
+        "expectedPhase": 0.5
+      },
+      "initial": {
+        "active": "breeze",
+        "phase": 0.5,
+        "selection": 0,
+        "playing": false,
+        "geometry": {
+          "architecture": "three-dimensional-geometry",
+          "bitmapSurfaces": 0,
+          "solids": 41,
+          "labels": 18,
+          "meshes": 69,
+          "imageMappedMeshes": 0,
+          "extent": [
+            143.64340209960938,
+            127.69898733177706,
+            96.24107653375516
+          ],
+          "sceneElevation": 61.76666105897719,
+          "unfoldProgress": 1,
+          "originalPagePreserved": true,
+          "phase": 0.5,
+          "selection": 0,
+          "kind": "sea-breeze",
+          "layout": "land-left-sea-right",
+          "scene": "coastal-paper-world",
+          "selected": "day",
+          "groundX": -1,
+          "upperX": 1,
+          "strength": 0.9401870664873426,
+          "pressure": {
+            "seaGround": "相对高压",
+            "landGround": "相对低压",
+            "seaUpper": "相对低压",
+            "landUpper": "相对高压"
+          },
+          "continuousDayNight": true,
+          "flowPhase": 0,
+          "flowRate": 0.09401870664873427,
+          "flagArea": 49.70212706976835,
+          "panels": 1,
+          "sameHeightGuides": 2,
+          "elevatedAbovePage": 61.76666105897719,
+          "sourceFootprint": [
+            115.84144984804425,
+            31.25
+          ],
+          "sceneDepth": 90.49534062129217,
+          "directInteraction": "drag-daylight-handle",
+          "daylightControlIsSchematic": true
+        },
+        "pages": [
+          43,
+          44
+        ],
+        "view": "detail",
+        "camera": {
+          "position": [
+            -19.641081683623813,
+            423.74424775805693,
+            468.3525169657572
+          ],
+          "quaternion": [
+            -0.2779152993102961,
+            0.0682539586212484,
+            0.019800994328256966,
+            0.957973070689051
+          ],
+          "orbit": 0.18,
+          "elevation": 0.64
+        },
+        "reduced": false,
+        "saved": {
+          "phase": 0.5,
+          "selection": 0
+        }
+      },
+      "grasped": {
+        "active": "breeze",
+        "phase": 0.5,
+        "selection": 0,
+        "playing": false,
+        "geometry": {
+          "architecture": "three-dimensional-geometry",
+          "bitmapSurfaces": 0,
+          "solids": 41,
+          "labels": 18,
+          "meshes": 69,
+          "imageMappedMeshes": 0,
+          "extent": [
+            143.64340209960938,
+            127.69898733177706,
+            96.24107653375516
+          ],
+          "sceneElevation": 61.76666105897719,
+          "unfoldProgress": 1,
+          "originalPagePreserved": true,
+          "phase": 0.5,
+          "selection": 0,
+          "kind": "sea-breeze",
+          "layout": "land-left-sea-right",
+          "scene": "coastal-paper-world",
+          "selected": "day",
+          "groundX": -1,
+          "upperX": 1,
+          "strength": 0.9401870664873426,
+          "pressure": {
+            "seaGround": "相对高压",
+            "landGround": "相对低压",
+            "seaUpper": "相对低压",
+            "landUpper": "相对高压"
+          },
+          "continuousDayNight": true,
+          "flowPhase": 0,
+          "flowRate": 0.09401870664873427,
+          "flagArea": 49.70212706976835,
+          "panels": 1,
+          "sameHeightGuides": 2,
+          "elevatedAbovePage": 61.76666105897719,
+          "sourceFootprint": [
+            115.84144984804425,
+            31.25
+          ],
+          "sceneDepth": 90.49534062129217,
+          "directInteraction": "drag-daylight-handle",
+          "daylightControlIsSchematic": true
+        },
+        "pages": [
+          43,
+          44
+        ],
+        "view": "detail",
+        "camera": {
+          "position": [
+            -19.64108195639812,
+            423.74424790229875,
+            468.35251699276915
+          ],
+          "quaternion": [
+            -0.27791529941959453,
+            0.06825395835649234,
+            0.019800994259472647,
+            0.9579730706776279
+          ],
+          "orbit": 0.18,
+          "elevation": 0.64
+        },
+        "reduced": false,
+        "saved": {
+          "phase": 0.5,
+          "selection": 0
+        }
+      },
+      "samples": [
+        {
+          "pixels": 3,
+          "expected": 0.4972058800724235,
+          "active": "breeze",
+          "phase": 0.5,
+          "selection": 0,
+          "playing": false,
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 41,
+            "labels": 18,
+            "meshes": 69,
+            "imageMappedMeshes": 0,
+            "extent": [
+              143.64340209960938,
+              127.69898733177706,
+              96.24107653375516
+            ],
+            "sceneElevation": 61.76666105897719,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.5,
+            "selection": 0,
+            "kind": "sea-breeze",
+            "layout": "land-left-sea-right",
+            "scene": "coastal-paper-world",
+            "selected": "day",
+            "groundX": -1,
+            "upperX": 1,
+            "strength": 0.9401870664873426,
+            "pressure": {
+              "seaGround": "相对高压",
+              "landGround": "相对低压",
+              "seaUpper": "相对低压",
+              "landUpper": "相对高压"
+            },
+            "continuousDayNight": true,
+            "flowPhase": 0,
+            "flowRate": 0.09401870664873427,
+            "flagArea": 49.70212706976835,
+            "panels": 1,
+            "sameHeightGuides": 2,
+            "elevatedAbovePage": 61.76666105897719,
+            "sourceFootprint": [
+              115.84144984804425,
+              31.25
+            ],
+            "sceneDepth": 90.49534062129217,
+            "directInteraction": "drag-daylight-handle",
+            "daylightControlIsSchematic": true
+          },
+          "pages": [
+            43,
+            44
+          ],
+          "view": "detail",
+          "camera": {
+            "position": [
+              -19.641082243974708,
+              423.74424805502105,
+              468.3525170221677
+            ],
+            "quaternion": [
+              -0.27791529953496275,
+              0.06825395807703852,
+              0.01980099418687,
+              0.95797307066557
+            ],
+            "orbit": 0.18,
+            "elevation": 0.64
+          },
+          "reduced": false,
+          "saved": {
+            "phase": 0.5,
+            "selection": 0
+          }
+        },
+        {
+          "pixels": 8,
+          "expected": 0.49262944583700463,
+          "active": "breeze",
+          "phase": 0.49262944583468804,
+          "selection": 0,
+          "playing": false,
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 41,
+            "labels": 18,
+            "meshes": 69,
+            "imageMappedMeshes": 0,
+            "extent": [
+              143.64340209960938,
+              127.69898733177706,
+              96.24107653375516
+            ],
+            "sceneElevation": 61.76666105897719,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.49262944583468804,
+            "selection": 0,
+            "kind": "sea-breeze",
+            "layout": "land-left-sea-right",
+            "scene": "coastal-paper-world",
+            "selected": "day",
+            "groundX": -1,
+            "upperX": 1,
+            "strength": 0.9243298118673432,
+            "pressure": {
+              "seaGround": "相对高压",
+              "landGround": "相对低压",
+              "seaUpper": "相对低压",
+              "landUpper": "相对高压"
+            },
+            "continuousDayNight": true,
+            "flowPhase": 0,
+            "flowRate": 0.09243298118673432,
+            "flagArea": 49.703121747893015,
+            "panels": 1,
+            "sameHeightGuides": 2,
+            "elevatedAbovePage": 61.76666105897719,
+            "sourceFootprint": [
+              115.84144984804425,
+              31.25
+            ],
+            "sceneDepth": 90.49534062129217,
+            "directInteraction": "drag-daylight-handle",
+            "daylightControlIsSchematic": true
+          },
+          "pages": [
+            43,
+            44
+          ],
+          "view": "detail",
+          "camera": {
+            "position": [
+              -19.64108248124584,
+              423.74424818163317,
+              468.35251704727716
+            ],
+            "quaternion": [
+              -0.2779152996302786,
+              0.06825395784616285,
+              0.019800994126888224,
+              0.9579730706556077
+            ],
+            "orbit": 0.18,
+            "elevation": 0.64
+          },
+          "reduced": false,
+          "saved": {
+            "phase": 0.5,
+            "selection": 0
+          }
+        },
+        {
+          "pixels": 12,
+          "expected": 0.48904305323498654,
+          "active": "breeze",
+          "phase": 0.4890430532331729,
+          "selection": 0,
+          "playing": false,
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 41,
+            "labels": 18,
+            "meshes": 69,
+            "imageMappedMeshes": 0,
+            "extent": [
+              143.64340209960938,
+              127.69898733177706,
+              96.24107653375516
+            ],
+            "sceneElevation": 61.76666105897719,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.4890430532331729,
+            "selection": 0,
+            "kind": "sea-breeze",
+            "layout": "land-left-sea-right",
+            "scene": "coastal-paper-world",
+            "selected": "day",
+            "groundX": -1,
+            "upperX": 1,
+            "strength": 0.9158948118505947,
+            "pressure": {
+              "seaGround": "相对高压",
+              "landGround": "相对低压",
+              "seaUpper": "相对低压",
+              "landUpper": "相对高压"
+            },
+            "continuousDayNight": true,
+            "flowPhase": 0,
+            "flowRate": 0.09158948118505948,
+            "flagArea": 49.70415022098795,
+            "panels": 1,
+            "sameHeightGuides": 2,
+            "elevatedAbovePage": 61.76666105897719,
+            "sourceFootprint": [
+              115.84144984804425,
+              31.25
+            ],
+            "sceneDepth": 90.49534062129217,
+            "directInteraction": "drag-daylight-handle",
+            "daylightControlIsSchematic": true
+          },
+          "pages": [
+            43,
+            44
+          ],
+          "view": "detail",
+          "camera": {
+            "position": [
+              -19.641082739826132,
+              423.744248320507,
+              468.35251707589754
+            ],
+            "quaternion": [
+              -0.2779152997343444,
+              0.0682539575941016,
+              0.019800994061402673,
+              0.9579730706447298
+            ],
+            "orbit": 0.18,
+            "elevation": 0.64
+          },
+          "reduced": false,
+          "saved": {
+            "phase": 0.5,
+            "selection": 0
+          }
+        },
+        {
+          "pixels": 8,
+          "expected": 0.4926294458636349,
+          "active": "breeze",
+          "phase": 0.49262944586131674,
+          "selection": 0,
+          "playing": false,
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 41,
+            "labels": 18,
+            "meshes": 69,
+            "imageMappedMeshes": 0,
+            "extent": [
+              143.64340209960938,
+              127.69898733177706,
+              96.24107653375516
+            ],
+            "sceneElevation": 61.76666105897719,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.49262944586131674,
+            "selection": 0,
+            "kind": "sea-breeze",
+            "layout": "land-left-sea-right",
+            "scene": "coastal-paper-world",
+            "selected": "day",
+            "groundX": -1,
+            "upperX": 1,
+            "strength": 0.9243298119282354,
+            "pressure": {
+              "seaGround": "相对高压",
+              "landGround": "相对低压",
+              "seaUpper": "相对低压",
+              "landUpper": "相对高压"
+            },
+            "continuousDayNight": true,
+            "flowPhase": 0,
+            "flowRate": 0.09243298119282355,
+            "flagArea": 49.70312158378102,
+            "panels": 1,
+            "sameHeightGuides": 2,
+            "elevatedAbovePage": 61.76666105897719,
+            "sourceFootprint": [
+              115.84144984804425,
+              31.25
+            ],
+            "sceneDepth": 90.49534062129217,
+            "directInteraction": "drag-daylight-handle",
+            "daylightControlIsSchematic": true
+          },
+          "pages": [
+            43,
+            44
+          ],
+          "view": "detail",
+          "camera": {
+            "position": [
+              -19.64108282522928,
+              423.74424836665787,
+              468.35251708575066
+            ],
+            "quaternion": [
+              -0.27791529976877516,
+              0.06825395751070776,
+              0.01980099403973702,
+              0.9579730706411308
+            ],
+            "orbit": 0.18,
+            "elevation": 0.64
+          },
+          "reduced": false,
+          "saved": {
+            "phase": 0.5,
+            "selection": 0
+          }
+        },
+        {
+          "pixels": 0,
+          "expected": 0.5000000000072811,
+          "active": "breeze",
+          "phase": 0.500000000009512,
+          "selection": 0,
+          "playing": false,
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 41,
+            "labels": 18,
+            "meshes": 69,
+            "imageMappedMeshes": 0,
+            "extent": [
+              143.64340209960938,
+              127.69898733177706,
+              96.24107653375516
+            ],
+            "sceneElevation": 61.76666105897719,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.500000000009512,
+            "selection": 0,
+            "kind": "sea-breeze",
+            "layout": "land-left-sea-right",
+            "scene": "coastal-paper-world",
+            "selected": "day",
+            "groundX": -1,
+            "upperX": 1,
+            "strength": 0.940187066506513,
+            "pressure": {
+              "seaGround": "相对高压",
+              "landGround": "相对低压",
+              "seaUpper": "相对低压",
+              "landUpper": "相对高压"
+            },
+            "continuousDayNight": true,
+            "flowPhase": 0,
+            "flowRate": 0.0940187066506513,
+            "flagArea": 49.702127069752656,
+            "panels": 1,
+            "sameHeightGuides": 2,
+            "elevatedAbovePage": 61.76666105897719,
+            "sourceFootprint": [
+              115.84144984804425,
+              31.25
+            ],
+            "sceneDepth": 90.49534062129217,
+            "directInteraction": "drag-daylight-handle",
+            "daylightControlIsSchematic": true
+          },
+          "pages": [
+            43,
+            44
+          ],
+          "view": "detail",
+          "camera": {
+            "position": [
+              -19.641082888548414,
+              423.74424840100926,
+              468.3525170932455
+            ],
+            "quaternion": [
+              -0.2779152997943314,
+              0.06825395744881031,
+              0.01980099402365615,
+              0.957973070638459
+            ],
+            "orbit": 0.18,
+            "elevation": 0.64
+          },
+          "reduced": false,
+          "saved": {
+            "phase": 0.5,
+            "selection": 0
+          }
+        }
+      ],
+      "after": {
+        "active": "breeze",
+        "phase": 0.5000000000095737,
+        "selection": 0,
+        "playing": false,
+        "geometry": {
+          "architecture": "three-dimensional-geometry",
+          "bitmapSurfaces": 0,
+          "solids": 41,
+          "labels": 18,
+          "meshes": 69,
+          "imageMappedMeshes": 0,
+          "extent": [
+            143.64340209960938,
+            127.69898733177706,
+            96.24107653375516
+          ],
+          "sceneElevation": 61.76666105897719,
+          "unfoldProgress": 1,
+          "originalPagePreserved": true,
+          "phase": 0.5000000000095737,
+          "selection": 0,
+          "kind": "sea-breeze",
+          "layout": "land-left-sea-right",
+          "scene": "coastal-paper-world",
+          "selected": "day",
+          "groundX": -1,
+          "upperX": 1,
+          "strength": 0.9401870665066371,
+          "pressure": {
+            "seaGround": "相对高压",
+            "landGround": "相对低压",
+            "seaUpper": "相对低压",
+            "landUpper": "相对高压"
+          },
+          "continuousDayNight": true,
+          "flowPhase": 0,
+          "flowRate": 0.09401870665066371,
+          "flagArea": 49.702127069752656,
+          "panels": 1,
+          "sameHeightGuides": 2,
+          "elevatedAbovePage": 61.76666105897719,
+          "sourceFootprint": [
+            115.84144984804425,
+            31.25
+          ],
+          "sceneDepth": 90.49534062129217,
+          "directInteraction": "drag-daylight-handle",
+          "daylightControlIsSchematic": true
+        },
+        "pages": [
+          43,
+          44
+        ],
+        "view": "detail",
+        "camera": {
+          "position": [
+            -19.641082935471996,
+            423.7442484265607,
+            468.3525170989334
+          ],
+          "quaternion": [
+            -0.2779152998132904,
+            0.06825395740289227,
+            0.019800994011726736,
+            0.957973070636477
+          ],
+          "orbit": 0.18,
+          "elevation": 0.64
+        },
+        "reduced": false,
+        "saved": {
+          "phase": 0.5000000000095737,
+          "selection": 0
+        }
+      }
+    },
+    {
+      "name": "713 moon edge grab",
+      "hit": {
+        "x": 380.4748481068091,
+        "y": 243.6446751455522,
+        "center": {
+          "x": 362.82071305955094,
+          "y": 240.1330493492619
+        },
+        "centerDistance": 17.99999999999999,
+        "outsideVisibleMesh": true,
+        "rawHit": null,
+        "label": "拖动日月，观察风向变化",
+        "viewport": {
+          "width": 713,
+          "height": 818
+        }
+      },
+      "grab": {
+        "offset": [
+          5.8718390991827185,
+          -1.0011010219055088
+        ],
+        "point": [
+          77.69353800497015,
+          119.65935313981737,
+          -113.23720773738899
+        ],
+        "expectedPhase": 0
+      },
+      "initial": {
+        "active": "breeze",
+        "phase": 0,
+        "selection": 1,
+        "playing": false,
+        "geometry": {
+          "architecture": "three-dimensional-geometry",
+          "bitmapSurfaces": 0,
+          "solids": 41,
+          "labels": 18,
+          "meshes": 69,
+          "imageMappedMeshes": 0,
+          "extent": [
+            143.64340209960938,
+            127.69898733177706,
+            96.24107653375516
+          ],
+          "sceneElevation": 61.76666105897719,
+          "unfoldProgress": 1,
+          "originalPagePreserved": true,
+          "phase": 0,
+          "selection": 1,
+          "kind": "sea-breeze",
+          "layout": "land-left-sea-right",
+          "scene": "coastal-paper-world",
+          "selected": "night",
+          "groundX": 1,
+          "upperX": -1,
+          "strength": 0.9401870664873426,
+          "pressure": {
+            "seaGround": "相对低压",
+            "landGround": "相对高压",
+            "seaUpper": "相对高压",
+            "landUpper": "相对低压"
+          },
+          "continuousDayNight": true,
+          "flowPhase": 0,
+          "flowRate": -0.09401870664873427,
+          "flagArea": 49.70212706976836,
+          "panels": 1,
+          "sameHeightGuides": 2,
+          "elevatedAbovePage": 61.76666105897719,
+          "sourceFootprint": [
+            115.84144984804425,
+            31.25
+          ],
+          "sceneDepth": 90.49534062129217,
+          "directInteraction": "drag-daylight-handle",
+          "daylightControlIsSchematic": true
+        },
+        "pages": [
+          43,
+          44
+        ],
+        "view": "detail",
+        "camera": {
+          "position": [
+            -19.641083060317193,
+            423.7442484953169,
+            468.3525171151575
+          ],
+          "quaternion": [
+            -0.2779152998638973,
+            0.0682539572803308,
+            0.019800993979885738,
+            0.957973070631186
+          ],
+          "orbit": 0.18,
+          "elevation": 0.64
+        },
+        "reduced": false,
+        "saved": {
+          "phase": 0,
+          "selection": 1
+        }
+      },
+      "grasped": {
+        "active": "breeze",
+        "phase": 0,
+        "selection": 1,
+        "playing": false,
+        "geometry": {
+          "architecture": "three-dimensional-geometry",
+          "bitmapSurfaces": 0,
+          "solids": 41,
+          "labels": 18,
+          "meshes": 69,
+          "imageMappedMeshes": 0,
+          "extent": [
+            143.64340209960938,
+            127.69898733177706,
+            96.24107653375516
+          ],
+          "sceneElevation": 61.76666105897719,
+          "unfoldProgress": 1,
+          "originalPagePreserved": true,
+          "phase": 0,
+          "selection": 1,
+          "kind": "sea-breeze",
+          "layout": "land-left-sea-right",
+          "scene": "coastal-paper-world",
+          "selected": "night",
+          "groundX": 1,
+          "upperX": -1,
+          "strength": 0.9401870664873426,
+          "pressure": {
+            "seaGround": "相对低压",
+            "landGround": "相对高压",
+            "seaUpper": "相对高压",
+            "landUpper": "相对低压"
+          },
+          "continuousDayNight": true,
+          "flowPhase": 0,
+          "flowRate": -0.09401870664873427,
+          "flagArea": 49.70212706976836,
+          "panels": 1,
+          "sameHeightGuides": 2,
+          "elevatedAbovePage": 61.76666105897719,
+          "sourceFootprint": [
+            115.84144984804425,
+            31.25
+          ],
+          "sceneDepth": 90.49534062129217,
+          "directInteraction": "drag-daylight-handle",
+          "daylightControlIsSchematic": true
+        },
+        "pages": [
+          43,
+          44
+        ],
+        "view": "detail",
+        "camera": {
+          "position": [
+            -19.641083062746663,
+            423.74424849668355,
+            468.35251711551365
+          ],
+          "quaternion": [
+            -0.2779152998648883,
+            0.06825395727793131,
+            0.019800993979262372,
+            0.9579730706310823
+          ],
+          "orbit": 0.18,
+          "elevation": 0.64
+        },
+        "reduced": false,
+        "saved": {
+          "phase": 0,
+          "selection": 1
+        }
+      },
+      "samples": [
+        {
+          "pixels": 3,
+          "expected": 0.0028865208091184424,
+          "active": "breeze",
+          "phase": 0,
+          "selection": 1,
+          "playing": false,
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 41,
+            "labels": 18,
+            "meshes": 69,
+            "imageMappedMeshes": 0,
+            "extent": [
+              143.64340209960938,
+              127.69898733177706,
+              96.24107653375516
+            ],
+            "sceneElevation": 61.76666105897719,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0,
+            "selection": 1,
+            "kind": "sea-breeze",
+            "layout": "land-left-sea-right",
+            "scene": "coastal-paper-world",
+            "selected": "night",
+            "groundX": 1,
+            "upperX": -1,
+            "strength": 0.9401870664873426,
+            "pressure": {
+              "seaGround": "相对低压",
+              "landGround": "相对高压",
+              "seaUpper": "相对高压",
+              "landUpper": "相对低压"
+            },
+            "continuousDayNight": true,
+            "flowPhase": 0,
+            "flowRate": -0.09401870664873427,
+            "flagArea": 49.70212706976836,
+            "panels": 1,
+            "sameHeightGuides": 2,
+            "elevatedAbovePage": 61.76666105897719,
+            "sourceFootprint": [
+              115.84144984804425,
+              31.25
+            ],
+            "sceneDepth": 90.49534062129217,
+            "directInteraction": "drag-daylight-handle",
+            "daylightControlIsSchematic": true
+          },
+          "pages": [
+            43,
+            44
+          ],
+          "view": "detail",
+          "camera": {
+            "position": [
+              -19.641083064938115,
+              423.7442484979202,
+              468.3525171158404
+            ],
+            "quaternion": [
+              -0.27791529986578284,
+              0.06825395727576489,
+              0.019800993978699544,
+              0.9579730706309888
+            ],
+            "orbit": 0.18,
+            "elevation": 0.64
+          },
+          "reduced": false,
+          "saved": {
+            "phase": 0,
+            "selection": 1
+          }
+        },
+        {
+          "pixels": 8,
+          "expected": 0.007774779677483856,
+          "active": "breeze",
+          "phase": 0.0077747796469502806,
+          "selection": 1,
+          "playing": false,
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 41,
+            "labels": 18,
+            "meshes": 69,
+            "imageMappedMeshes": 0,
+            "extent": [
+              143.64340209960938,
+              127.69898733177706,
+              96.24107653375516
+            ],
+            "sceneElevation": 61.76666105897719,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.0077747796469502806,
+            "selection": 1,
+            "kind": "sea-breeze",
+            "layout": "land-left-sea-right",
+            "scene": "coastal-paper-world",
+            "selected": "night",
+            "groundX": 1,
+            "upperX": -1,
+            "strength": 0.9547284678610846,
+            "pressure": {
+              "seaGround": "相对低压",
+              "landGround": "相对高压",
+              "seaUpper": "相对高压",
+              "landUpper": "相对低压"
+            },
+            "continuousDayNight": true,
+            "flowPhase": 0,
+            "flowRate": -0.09547284678610846,
+            "flagArea": 49.70228177908026,
+            "panels": 1,
+            "sameHeightGuides": 2,
+            "elevatedAbovePage": 61.76666105897719,
+            "sourceFootprint": [
+              115.84144984804425,
+              31.25
+            ],
+            "sceneDepth": 90.49534062129217,
+            "directInteraction": "drag-daylight-handle",
+            "daylightControlIsSchematic": true
+          },
+          "pages": [
+            43,
+            44
+          ],
+          "view": "detail",
+          "camera": {
+            "position": [
+              -19.64108306643684,
+              423.7442484987689,
+              468.352517116068
+            ],
+            "quaternion": [
+              -0.27791529986639524,
+              0.06825395727428177,
+              0.01980099397831425,
+              0.9579730706309247
+            ],
+            "orbit": 0.18,
+            "elevation": 0.64
+          },
+          "reduced": false,
+          "saved": {
+            "phase": 0,
+            "selection": 1
+          }
+        },
+        {
+          "pixels": 12,
+          "expected": 0.011751275669836803,
+          "active": "breeze",
+          "phase": 0.011751275622117197,
+          "selection": 1,
+          "playing": false,
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 41,
+            "labels": 18,
+            "meshes": 69,
+            "imageMappedMeshes": 0,
+            "extent": [
+              143.64340209960938,
+              127.69898733177706,
+              96.24107653375516
+            ],
+            "sceneElevation": 61.76666105897719,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.011751275622117197,
+            "selection": 1,
+            "kind": "sea-breeze",
+            "layout": "land-left-sea-right",
+            "scene": "coastal-paper-world",
+            "selected": "night",
+            "groundX": 1,
+            "upperX": -1,
+            "strength": 0.9612873380040957,
+            "pressure": {
+              "seaGround": "相对低压",
+              "landGround": "相对高压",
+              "seaUpper": "相对高压",
+              "landUpper": "相对低压"
+            },
+            "continuousDayNight": true,
+            "flowPhase": 0,
+            "flowRate": -0.09612873380040958,
+            "flagArea": 49.70268285806245,
+            "panels": 1,
+            "sameHeightGuides": 2,
+            "elevatedAbovePage": 61.76666105897719,
+            "sourceFootprint": [
+              115.84144984804425,
+              31.25
+            ],
+            "sceneDepth": 90.49534062129217,
+            "directInteraction": "drag-daylight-handle",
+            "daylightControlIsSchematic": true
+          },
+          "pages": [
+            43,
+            44
+          ],
+          "view": "detail",
+          "camera": {
+            "position": [
+              -19.64108306745927,
+              423.7442484993499,
+              468.3525171162261
+            ],
+            "quaternion": [
+              -0.2779152998668135,
+              0.06825395727326898,
+              0.019800993978051136,
+              0.9579730706308812
+            ],
+            "orbit": 0.18,
+            "elevation": 0.64
+          },
+          "reduced": false,
+          "saved": {
+            "phase": 0,
+            "selection": 1
+          }
+        },
+        {
+          "pixels": 8,
+          "expected": 0.007774779677646837,
+          "active": "breeze",
+          "phase": 0.007774779647091945,
+          "selection": 1,
+          "playing": false,
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 41,
+            "labels": 18,
+            "meshes": 69,
+            "imageMappedMeshes": 0,
+            "extent": [
+              143.64340209960938,
+              127.69898733177706,
+              96.24107653375516
+            ],
+            "sceneElevation": 61.76666105897719,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.007774779647091945,
+            "selection": 1,
+            "kind": "sea-breeze",
+            "layout": "land-left-sea-right",
+            "scene": "coastal-paper-world",
+            "selected": "night",
+            "groundX": 1,
+            "upperX": -1,
+            "strength": 0.9547284678613293,
+            "pressure": {
+              "seaGround": "相对低压",
+              "landGround": "相对高压",
+              "seaUpper": "相对高压",
+              "landUpper": "相对低压"
+            },
+            "continuousDayNight": true,
+            "flowPhase": 0,
+            "flowRate": -0.09547284678613294,
+            "flagArea": 49.70228177908026,
+            "panels": 1,
+            "sameHeightGuides": 2,
+            "elevatedAbovePage": 61.76666105897719,
+            "sourceFootprint": [
+              115.84144984804425,
+              31.25
+            ],
+            "sceneDepth": 90.49534062129217,
+            "directInteraction": "drag-daylight-handle",
+            "daylightControlIsSchematic": true
+          },
+          "pages": [
+            43,
+            44
+          ],
+          "view": "detail",
+          "camera": {
+            "position": [
+              -19.6410830681581,
+              423.7442484997483,
+              468.352517116336
+            ],
+            "quaternion": [
+              -0.27791529986709973,
+              0.06825395727257608,
+              0.019800993977871124,
+              0.9579730706308512
+            ],
+            "orbit": 0.18,
+            "elevation": 0.64
+          },
+          "reduced": false,
+          "saved": {
+            "phase": 0,
+            "selection": 1
+          }
+        },
+        {
+          "pixels": 0,
+          "expected": 1.1546319456101628e-13,
+          "active": "breeze",
+          "phase": 1.5210055437364645e-13,
+          "selection": 1,
+          "playing": false,
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 41,
+            "labels": 18,
+            "meshes": 69,
+            "imageMappedMeshes": 0,
+            "extent": [
+              143.64340209960938,
+              127.69898733177706,
+              96.24107653375516
+            ],
+            "sceneElevation": 61.76666105897719,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 1.5210055437364645e-13,
+            "selection": 1,
+            "kind": "sea-breeze",
+            "layout": "land-left-sea-right",
+            "scene": "coastal-paper-world",
+            "selected": "night",
+            "groundX": 1,
+            "upperX": -1,
+            "strength": 0.9401870664876493,
+            "pressure": {
+              "seaGround": "相对低压",
+              "landGround": "相对高压",
+              "seaUpper": "相对高压",
+              "landUpper": "相对低压"
+            },
+            "continuousDayNight": true,
+            "flowPhase": 0,
+            "flowRate": -0.09401870664876494,
+            "flagArea": 49.70212706976836,
+            "panels": 1,
+            "sameHeightGuides": 2,
+            "elevatedAbovePage": 61.76666105897719,
+            "sourceFootprint": [
+              115.84144984804425,
+              31.25
+            ],
+            "sceneDepth": 90.49534062129217,
+            "directInteraction": "drag-daylight-handle",
+            "daylightControlIsSchematic": true
+          },
+          "pages": [
+            43,
+            44
+          ],
+          "view": "detail",
+          "camera": {
+            "position": [
+              -19.64108306863499,
+              423.744248500021,
+              468.3525171164122
+            ],
+            "quaternion": [
+              -0.2779152998672952,
+              0.06825395727210282,
+              0.019800993977748177,
+              0.9579730706308306
+            ],
+            "orbit": 0.18,
+            "elevation": 0.64
+          },
+          "reduced": false,
+          "saved": {
+            "phase": 0,
+            "selection": 1
+          }
+        }
+      ],
+      "after": {
+        "active": "breeze",
+        "phase": 1.6187051699034782e-13,
+        "selection": 1,
+        "playing": false,
+        "geometry": {
+          "architecture": "three-dimensional-geometry",
+          "bitmapSurfaces": 0,
+          "solids": 41,
+          "labels": 18,
+          "meshes": 69,
+          "imageMappedMeshes": 0,
+          "extent": [
+            143.64340209960938,
+            127.69898733177706,
+            96.24107653375516
+          ],
+          "sceneElevation": 61.76666105897719,
+          "unfoldProgress": 1,
+          "originalPagePreserved": true,
+          "phase": 1.6187051699034782e-13,
+          "selection": 1,
+          "kind": "sea-breeze",
+          "layout": "land-left-sea-right",
+          "scene": "coastal-paper-world",
+          "selected": "night",
+          "groundX": 1,
+          "upperX": -1,
+          "strength": 0.9401870664876688,
+          "pressure": {
+            "seaGround": "相对低压",
+            "landGround": "相对高压",
+            "seaUpper": "相对高压",
+            "landUpper": "相对低压"
+          },
+          "continuousDayNight": true,
+          "flowPhase": 0,
+          "flowRate": -0.09401870664876688,
+          "flagArea": 49.70212706976836,
+          "panels": 1,
+          "sameHeightGuides": 2,
+          "elevatedAbovePage": 61.76666105897719,
+          "sourceFootprint": [
+            115.84144984804425,
+            31.25
+          ],
+          "sceneDepth": 90.49534062129217,
+          "directInteraction": "drag-daylight-handle",
+          "daylightControlIsSchematic": true
+        },
+        "pages": [
+          43,
+          44
+        ],
+        "view": "detail",
+        "camera": {
+          "position": [
+            -19.64108306888664,
+            423.7442485001653,
+            468.352517116453
+          ],
+          "quaternion": [
+            -0.27791529986739844,
+            0.06825395727185288,
+            0.019800993977683246,
+            0.9579730706308198
+          ],
+          "orbit": 0.18,
+          "elevation": 0.64
+        },
+        "reduced": false,
+        "saved": {
+          "phase": 1.6187051699034782e-13,
+          "selection": 1
+        }
+      }
+    }
+  ],
+  "targets": [
+    {
+      "x": 725.138093067808,
+      "y": 216.9536939411698,
+      "label": "拖动日月，观察风向变化",
+      "kind": "phase-dial",
+      "isLabel": false,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "dockGap": 664.0463060588302
+    },
+    {
+      "x": 754.8506343144444,
+      "y": 284.69265966228363,
+      "label": "拖动日月，观察风向变化",
+      "kind": "phase-dial",
+      "isLabel": false,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "dockGap": 596.3073403377164
+    },
+    {
+      "x": 518.8950775803247,
+      "y": 180.7914398140005,
+      "label": "拖动日月，观察风向变化",
+      "kind": "phase-dial",
+      "isLabel": false,
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "dockGap": 468.2085601859995
+    },
+    {
+      "x": 623.1060195556873,
+      "y": 282.3260081535833,
+      "label": "查看地壳",
+      "kind": "select",
+      "layer": 0,
+      "part": "section-z",
+      "isLabel": false,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "dockGap": 598.6739918464167
+    },
+    {
+      "x": 974.8481825631814,
+      "y": 331.85796738665687,
+      "label": "查看地壳",
+      "kind": "select",
+      "layer": 0,
+      "part": "section-x",
+      "isLabel": false,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "dockGap": 549.1420326133432
+    },
+    {
+      "x": 620.0590952301277,
+      "y": 313.8893727279001,
+      "label": "查看地幔",
+      "kind": "select",
+      "layer": 1,
+      "part": "section-z",
+      "isLabel": false,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "dockGap": 567.1106272720999
+    },
+    {
+      "x": 891.7522324812087,
+      "y": 361.4861658589592,
+      "label": "查看地幔",
+      "kind": "select",
+      "layer": 1,
+      "part": "section-z",
+      "isLabel": false,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "dockGap": 519.5138341410408
+    },
+    {
+      "x": 621.3128693113478,
+      "y": 377.3595590125136,
+      "label": "查看外核",
+      "kind": "select",
+      "layer": 2,
+      "part": "section-z",
+      "isLabel": false,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "dockGap": 503.6404409874864
+    },
+    {
+      "x": 640.9960586048464,
+      "y": 396.39845045604665,
+      "label": "查看外核",
+      "kind": "select",
+      "layer": 2,
+      "part": "section-z",
+      "isLabel": false,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "dockGap": 484.60154954395335
+    },
+    {
+      "x": 624.6664561343338,
+      "y": 465.7713575320739,
+      "label": "查看内核",
+      "kind": "select",
+      "layer": 3,
+      "part": "section-z",
+      "isLabel": false,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "dockGap": 415.2286424679261
+    },
+    {
+      "x": 637.717247251593,
+      "y": 484.8678728756,
+      "label": "查看内核",
+      "kind": "select",
+      "layer": 3,
+      "part": "section-z",
+      "isLabel": false,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "dockGap": 396.1321271244
+    },
+    {
+      "x": 625.350065855739,
+      "y": 313.4374789332522,
+      "label": "查看地幔",
+      "kind": "select",
+      "layer": 1,
+      "part": "section-z",
+      "isLabel": false,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "dockGap": 567.5625210667479
+    },
+    {
+      "x": 381.63117252821905,
+      "y": 192.1518094080812,
+      "center": {
+        "x": 363.9770374809609,
+        "y": 188.6401836117909
+      },
+      "centerDistance": 17.99999999999999,
+      "outsideVisibleMesh": true,
+      "rawHit": null,
+      "label": "拖动日月，观察风向变化",
+      "viewport": {
+        "width": 713,
+        "height": 818
+      },
+      "kind": "phase-dial-edge"
+    },
+    {
+      "x": 380.4748481068091,
+      "y": 243.6446751455522,
+      "center": {
+        "x": 362.82071305955094,
+        "y": 240.1330493492619
+      },
+      "centerDistance": 17.99999999999999,
+      "outsideVisibleMesh": true,
+      "rawHit": null,
+      "label": "拖动日月，观察风向变化",
+      "viewport": {
+        "width": 713,
+        "height": 818
+      },
+      "kind": "phase-dial-edge"
+    }
+  ],
+  "reviewedEntry": {
+    "path": "/assets/index-B2EOZTu1.js",
+    "sha256": "dcbc3320877b03aad27ce73f712ad120e73e98477bf3cf9b7b10055e6ab4297e"
+  },
+  "reviewedAt": "2026-11-05T06:13:31.850Z",
+  "externalRequests": [],
+  "requestFailures": []
+}

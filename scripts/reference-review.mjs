@@ -1,0 +1,14 @@
+import {chromium} from '@playwright/test';
+import fs from 'node:fs';
+fs.mkdirSync('output/reference-review',{recursive:true});
+const browser=await chromium.launch({channel:'chrome',headless:true});
+const page=await browser.newPage({viewport:{width:1440,height:1000}});
+page.on('pageerror',e=>console.log('error',e.message));
+page.on('console',m=>{if(m.type()==='error')console.log('console',m.text().slice(0,300))});
+page.on('requestfailed',r=>console.log('failed',r.url(),r.failure()));
+await page.goto('http://127.0.0.1:5174/',{waitUntil:'domcontentloaded',timeout:60000});
+await page.waitForFunction(()=>document.body.classList.contains('ready'),{timeout:60000}).catch(e=>console.log('load timeout',e.message));
+console.log((await page.locator('body').innerText()).slice(0,7000));
+console.log(await page.getByRole('button').allTextContents());
+await page.screenshot({path:'output/reference-review/original-initial.png'});
+await browser.close();

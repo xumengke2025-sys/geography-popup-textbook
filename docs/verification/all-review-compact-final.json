@@ -1,0 +1,1977 @@
+{
+  "checks": [
+    "390/vegetation: current condition has a readable selected label",
+    "390/vegetation: native condition choice works",
+    "390/vegetation: condition picker keeps focus",
+    "390/vegetation: dock is at most 180px, including page navigation",
+    "390/vegetation: no horizontal page overflow",
+    "390/vegetation: visible controls do not overlap",
+    "390/vegetation: touch targets remain at least 44px",
+    "390/soil: current condition has a readable selected label",
+    "390/soil: native condition choice works",
+    "390/soil: condition picker keeps focus",
+    "390/soil: dock is at most 180px, including page navigation",
+    "390/soil: no horizontal page overflow",
+    "390/soil: visible controls do not overlap",
+    "390/soil: touch targets remain at least 44px",
+    "390/soil-factors: current condition has a readable selected label",
+    "390/soil-factors: native condition choice works",
+    "390/soil-factors: condition picker keeps focus",
+    "390/soil-factors: dock is at most 180px, including page navigation",
+    "390/soil-factors: no horizontal page overflow",
+    "390/soil-factors: visible controls do not overlap",
+    "390/soil-factors: touch targets remain at least 44px",
+    "390/urban-waterlogging: current condition has a readable selected label",
+    "390/urban-waterlogging: native condition choice works",
+    "390/urban-waterlogging: condition picker keeps focus",
+    "390/urban-waterlogging: dock is at most 180px, including page navigation",
+    "390/urban-waterlogging: no horizontal page overflow",
+    "390/urban-waterlogging: visible controls do not overlap",
+    "390/urban-waterlogging: touch targets remain at least 44px",
+    "390/water: current condition has a readable selected label",
+    "390/water: native condition choice works",
+    "390/water: condition picker keeps focus",
+    "390/water: dock is at most 180px, including page navigation",
+    "390/water: no horizontal page overflow",
+    "390/water: visible controls do not overlap",
+    "390/water: touch targets remain at least 44px",
+    "390/breeze: dock is at most 180px, including page navigation",
+    "390/breeze: no horizontal page overflow",
+    "390/breeze: visible controls do not overlap",
+    "390/breeze: touch targets remain at least 44px",
+    "390/atmosphere: dock is at most 180px, including page navigation",
+    "390/atmosphere: no horizontal page overflow",
+    "390/atmosphere: visible controls do not overlap",
+    "390/atmosphere: touch targets remain at least 44px",
+    "320/vegetation: current condition has a readable selected label",
+    "320/vegetation: native condition choice works",
+    "320/vegetation: condition picker keeps focus",
+    "320/vegetation: dock is at most 180px, including page navigation",
+    "320/vegetation: no horizontal page overflow",
+    "320/vegetation: visible controls do not overlap",
+    "320/vegetation: touch targets remain at least 44px",
+    "320/soil: current condition has a readable selected label",
+    "320/soil: native condition choice works",
+    "320/soil: condition picker keeps focus",
+    "320/soil: dock is at most 180px, including page navigation",
+    "320/soil: no horizontal page overflow",
+    "320/soil: visible controls do not overlap",
+    "320/soil: touch targets remain at least 44px",
+    "320/soil-factors: current condition has a readable selected label",
+    "320/soil-factors: native condition choice works",
+    "320/soil-factors: condition picker keeps focus",
+    "320/soil-factors: dock is at most 180px, including page navigation",
+    "320/soil-factors: no horizontal page overflow",
+    "320/soil-factors: visible controls do not overlap",
+    "320/soil-factors: touch targets remain at least 44px",
+    "320/urban-waterlogging: current condition has a readable selected label",
+    "320/urban-waterlogging: native condition choice works",
+    "320/urban-waterlogging: condition picker keeps focus",
+    "320/urban-waterlogging: dock is at most 180px, including page navigation",
+    "320/urban-waterlogging: no horizontal page overflow",
+    "320/urban-waterlogging: visible controls do not overlap",
+    "320/urban-waterlogging: touch targets remain at least 44px",
+    "320/water: current condition has a readable selected label",
+    "320/water: native condition choice works",
+    "320/water: condition picker keeps focus",
+    "320/water: dock is at most 180px, including page navigation",
+    "320/water: no horizontal page overflow",
+    "320/water: visible controls do not overlap",
+    "320/water: touch targets remain at least 44px",
+    "320/breeze: dock is at most 180px, including page navigation",
+    "320/breeze: no horizontal page overflow",
+    "320/breeze: visible controls do not overlap",
+    "320/breeze: touch targets remain at least 44px",
+    "320/atmosphere: dock is at most 180px, including page navigation",
+    "320/atmosphere: no horizontal page overflow",
+    "320/atmosphere: visible controls do not overlap",
+    "320/atmosphere: touch targets remain at least 44px",
+    "Desktop retains direct condition buttons",
+    "Structural observation retains no pointless speed control"
+  ],
+  "failures": [],
+  "errors": [],
+  "states": [
+    {
+      "id": "vegetation",
+      "width": 390,
+      "layout": {
+        "width": 390,
+        "dock": {
+          "x": 10,
+          "y": 667,
+          "w": 370,
+          "h": 165,
+          "right": 380,
+          "bottom": 832
+        },
+        "controls": [
+          {
+            "id": "cPrev",
+            "x": 19,
+            "y": 676,
+            "w": 44,
+            "h": 44,
+            "right": 63,
+            "bottom": 720
+          },
+          {
+            "id": "condition-choice",
+            "x": 21,
+            "y": 731,
+            "w": 348,
+            "h": 44,
+            "right": 369,
+            "bottom": 775
+          },
+          {
+            "id": "model-inspect",
+            "x": 20,
+            "y": 779,
+            "w": 46,
+            "h": 44,
+            "right": 66,
+            "bottom": 823
+          },
+          {
+            "id": "fold",
+            "x": 174,
+            "y": 779,
+            "w": 44,
+            "h": 44,
+            "right": 218,
+            "bottom": 823
+          },
+          {
+            "id": "figure-note",
+            "x": 326,
+            "y": 779,
+            "w": 44,
+            "h": 44,
+            "right": 370,
+            "bottom": 823
+          },
+          {
+            "id": "cNext",
+            "x": 257,
+            "y": 676,
+            "w": 44,
+            "h": 44,
+            "right": 301,
+            "bottom": 720
+          },
+          {
+            "id": "folio-toggle",
+            "x": 305,
+            "y": 676,
+            "w": 66,
+            "h": 44,
+            "right": 371,
+            "bottom": 720
+          }
+        ],
+        "overlaps": [],
+        "overflow": false
+      }
+    },
+    {
+      "id": "soil",
+      "width": 390,
+      "layout": {
+        "width": 390,
+        "dock": {
+          "x": 10,
+          "y": 667,
+          "w": 370,
+          "h": 165,
+          "right": 380,
+          "bottom": 832
+        },
+        "controls": [
+          {
+            "id": "cPrev",
+            "x": 19,
+            "y": 676,
+            "w": 44,
+            "h": 44,
+            "right": 63,
+            "bottom": 720
+          },
+          {
+            "id": "cPause",
+            "x": 69,
+            "y": 676,
+            "w": 44,
+            "h": 44,
+            "right": 113,
+            "bottom": 720
+          },
+          {
+            "id": "condition-choice",
+            "x": 21,
+            "y": 731,
+            "w": 156.96875,
+            "h": 44,
+            "right": 177.96875,
+            "bottom": 775
+          },
+          {
+            "id": "初始剖面",
+            "x": 182.96875,
+            "y": 731,
+            "w": 74,
+            "h": 44,
+            "right": 256.96875,
+            "bottom": 775
+          },
+          {
+            "id": "水分下渗",
+            "x": 258.96875,
+            "y": 731,
+            "w": 86.578125,
+            "h": 44,
+            "right": 345.546875,
+            "bottom": 775
+          },
+          {
+            "id": "淋溶迁移",
+            "x": 347.546875,
+            "y": 731,
+            "w": 86.578125,
+            "h": 44,
+            "right": 434.125,
+            "bottom": 775
+          },
+          {
+            "id": "淀积留存",
+            "x": 436.125,
+            "y": 731,
+            "w": 86.578125,
+            "h": 44,
+            "right": 522.703125,
+            "bottom": 775
+          },
+          {
+            "id": "phase",
+            "x": 25,
+            "y": 779,
+            "w": 113,
+            "h": 44,
+            "right": 138,
+            "bottom": 823
+          },
+          {
+            "id": "model-inspect",
+            "x": 144,
+            "y": 779,
+            "w": 46,
+            "h": 44,
+            "right": 190,
+            "bottom": 823
+          },
+          {
+            "id": "cSpeed",
+            "x": 191,
+            "y": 779,
+            "w": 44,
+            "h": 44,
+            "right": 235,
+            "bottom": 823
+          },
+          {
+            "id": "restart",
+            "x": 236,
+            "y": 779,
+            "w": 44,
+            "h": 44,
+            "right": 280,
+            "bottom": 823
+          },
+          {
+            "id": "fold",
+            "x": 281,
+            "y": 779,
+            "w": 44,
+            "h": 44,
+            "right": 325,
+            "bottom": 823
+          },
+          {
+            "id": "figure-note",
+            "x": 326,
+            "y": 779,
+            "w": 44,
+            "h": 44,
+            "right": 370,
+            "bottom": 823
+          },
+          {
+            "id": "cNext",
+            "x": 257,
+            "y": 676,
+            "w": 44,
+            "h": 44,
+            "right": 301,
+            "bottom": 720
+          },
+          {
+            "id": "folio-toggle",
+            "x": 305,
+            "y": 676,
+            "w": 66,
+            "h": 44,
+            "right": 371,
+            "bottom": 720
+          }
+        ],
+        "overlaps": [],
+        "overflow": false
+      }
+    },
+    {
+      "id": "soil-factors",
+      "width": 390,
+      "layout": {
+        "width": 390,
+        "dock": {
+          "x": 10,
+          "y": 667,
+          "w": 370,
+          "h": 165,
+          "right": 380,
+          "bottom": 832
+        },
+        "controls": [
+          {
+            "id": "cPrev",
+            "x": 19,
+            "y": 676,
+            "w": 44,
+            "h": 44,
+            "right": 63,
+            "bottom": 720
+          },
+          {
+            "id": "cPause",
+            "x": 69,
+            "y": 676,
+            "w": 44,
+            "h": 44,
+            "right": 113,
+            "bottom": 720
+          },
+          {
+            "id": "condition-choice",
+            "x": 21,
+            "y": 731,
+            "w": 348,
+            "h": 44,
+            "right": 369,
+            "bottom": 775
+          },
+          {
+            "id": "phase",
+            "x": 25,
+            "y": 779,
+            "w": 160,
+            "h": 44,
+            "right": 185,
+            "bottom": 823
+          },
+          {
+            "id": "cSpeed",
+            "x": 191,
+            "y": 779,
+            "w": 44,
+            "h": 44,
+            "right": 235,
+            "bottom": 823
+          },
+          {
+            "id": "restart",
+            "x": 236,
+            "y": 779,
+            "w": 44,
+            "h": 44,
+            "right": 280,
+            "bottom": 823
+          },
+          {
+            "id": "fold",
+            "x": 281,
+            "y": 779,
+            "w": 44,
+            "h": 44,
+            "right": 325,
+            "bottom": 823
+          },
+          {
+            "id": "figure-note",
+            "x": 326,
+            "y": 779,
+            "w": 44,
+            "h": 44,
+            "right": 370,
+            "bottom": 823
+          },
+          {
+            "id": "cNext",
+            "x": 257,
+            "y": 676,
+            "w": 44,
+            "h": 44,
+            "right": 301,
+            "bottom": 720
+          },
+          {
+            "id": "folio-toggle",
+            "x": 305,
+            "y": 676,
+            "w": 66,
+            "h": 44,
+            "right": 371,
+            "bottom": 720
+          }
+        ],
+        "overlaps": [],
+        "overflow": false
+      }
+    },
+    {
+      "id": "urban-waterlogging",
+      "width": 390,
+      "layout": {
+        "width": 390,
+        "dock": {
+          "x": 10,
+          "y": 667,
+          "w": 370,
+          "h": 165,
+          "right": 380,
+          "bottom": 832
+        },
+        "controls": [
+          {
+            "id": "cPrev",
+            "x": 19,
+            "y": 676,
+            "w": 44,
+            "h": 44,
+            "right": 63,
+            "bottom": 720
+          },
+          {
+            "id": "cPause",
+            "x": 69,
+            "y": 676,
+            "w": 44,
+            "h": 44,
+            "right": 113,
+            "bottom": 720
+          },
+          {
+            "id": "condition-choice",
+            "x": 21,
+            "y": 731,
+            "w": 156.96875,
+            "h": 44,
+            "right": 177.96875,
+            "bottom": 775
+          },
+          {
+            "id": "起点",
+            "x": 182.96875,
+            "y": 731,
+            "w": 46,
+            "h": 44,
+            "right": 228.96875,
+            "bottom": 775
+          },
+          {
+            "id": "降水落地",
+            "x": 230.96875,
+            "y": 731,
+            "w": 86.578125,
+            "h": 44,
+            "right": 317.546875,
+            "bottom": 775
+          },
+          {
+            "id": "分流下渗",
+            "x": 319.546875,
+            "y": 731,
+            "w": 86.578125,
+            "h": 44,
+            "right": 406.125,
+            "bottom": 775
+          },
+          {
+            "id": "暂存",
+            "x": 408.125,
+            "y": 731,
+            "w": 58.578125,
+            "h": 44,
+            "right": 466.703125,
+            "bottom": 775
+          },
+          {
+            "id": "排水对照",
+            "x": 468.703125,
+            "y": 731,
+            "w": 86.578125,
+            "h": 44,
+            "right": 555.28125,
+            "bottom": 775
+          },
+          {
+            "id": "phase",
+            "x": 25,
+            "y": 779,
+            "w": 113,
+            "h": 44,
+            "right": 138,
+            "bottom": 823
+          },
+          {
+            "id": "model-inspect",
+            "x": 144,
+            "y": 779,
+            "w": 46,
+            "h": 44,
+            "right": 190,
+            "bottom": 823
+          },
+          {
+            "id": "cSpeed",
+            "x": 191,
+            "y": 779,
+            "w": 44,
+            "h": 44,
+            "right": 235,
+            "bottom": 823
+          },
+          {
+            "id": "restart",
+            "x": 236,
+            "y": 779,
+            "w": 44,
+            "h": 44,
+            "right": 280,
+            "bottom": 823
+          },
+          {
+            "id": "fold",
+            "x": 281,
+            "y": 779,
+            "w": 44,
+            "h": 44,
+            "right": 325,
+            "bottom": 823
+          },
+          {
+            "id": "figure-note",
+            "x": 326,
+            "y": 779,
+            "w": 44,
+            "h": 44,
+            "right": 370,
+            "bottom": 823
+          },
+          {
+            "id": "cNext",
+            "x": 257,
+            "y": 676,
+            "w": 44,
+            "h": 44,
+            "right": 301,
+            "bottom": 720
+          },
+          {
+            "id": "folio-toggle",
+            "x": 305,
+            "y": 676,
+            "w": 66,
+            "h": 44,
+            "right": 371,
+            "bottom": 720
+          }
+        ],
+        "overlaps": [],
+        "overflow": false
+      }
+    },
+    {
+      "id": "water",
+      "width": 390,
+      "layout": {
+        "width": 390,
+        "dock": {
+          "x": 10,
+          "y": 667,
+          "w": 370,
+          "h": 165,
+          "right": 380,
+          "bottom": 832
+        },
+        "controls": [
+          {
+            "id": "cPrev",
+            "x": 19,
+            "y": 676,
+            "w": 44,
+            "h": 44,
+            "right": 63,
+            "bottom": 720
+          },
+          {
+            "id": "cPause",
+            "x": 69,
+            "y": 676,
+            "w": 44,
+            "h": 44,
+            "right": 113,
+            "bottom": 720
+          },
+          {
+            "id": "condition-choice",
+            "x": 21,
+            "y": 731,
+            "w": 156.96875,
+            "h": 44,
+            "right": 177.96875,
+            "bottom": 775
+          },
+          {
+            "id": "海水蒸发",
+            "x": 182.96875,
+            "y": 731,
+            "w": 74,
+            "h": 44,
+            "right": 256.96875,
+            "bottom": 775
+          },
+          {
+            "id": "水汽输送",
+            "x": 258.96875,
+            "y": 731,
+            "w": 86.578125,
+            "h": 44,
+            "right": 345.546875,
+            "bottom": 775
+          },
+          {
+            "id": "凝结成云",
+            "x": 347.546875,
+            "y": 731,
+            "w": 86.578125,
+            "h": 44,
+            "right": 434.125,
+            "bottom": 775
+          },
+          {
+            "id": "陆地降水",
+            "x": 436.125,
+            "y": 731,
+            "w": 86.578125,
+            "h": 44,
+            "right": 522.703125,
+            "bottom": 775
+          },
+          {
+            "id": "两路回流",
+            "x": 524.703125,
+            "y": 731,
+            "w": 86.578125,
+            "h": 44,
+            "right": 611.28125,
+            "bottom": 775
+          },
+          {
+            "id": "回到海洋",
+            "x": 613.28125,
+            "y": 731,
+            "w": 86.578125,
+            "h": 44,
+            "right": 699.859375,
+            "bottom": 775
+          },
+          {
+            "id": "phase",
+            "x": 25,
+            "y": 779,
+            "w": 160,
+            "h": 44,
+            "right": 185,
+            "bottom": 823
+          },
+          {
+            "id": "cSpeed",
+            "x": 191,
+            "y": 779,
+            "w": 44,
+            "h": 44,
+            "right": 235,
+            "bottom": 823
+          },
+          {
+            "id": "restart",
+            "x": 236,
+            "y": 779,
+            "w": 44,
+            "h": 44,
+            "right": 280,
+            "bottom": 823
+          },
+          {
+            "id": "fold",
+            "x": 281,
+            "y": 779,
+            "w": 44,
+            "h": 44,
+            "right": 325,
+            "bottom": 823
+          },
+          {
+            "id": "figure-note",
+            "x": 326,
+            "y": 779,
+            "w": 44,
+            "h": 44,
+            "right": 370,
+            "bottom": 823
+          },
+          {
+            "id": "cNext",
+            "x": 257,
+            "y": 676,
+            "w": 44,
+            "h": 44,
+            "right": 301,
+            "bottom": 720
+          },
+          {
+            "id": "folio-toggle",
+            "x": 305,
+            "y": 676,
+            "w": 66,
+            "h": 44,
+            "right": 371,
+            "bottom": 720
+          }
+        ],
+        "overlaps": [],
+        "overflow": false
+      }
+    },
+    {
+      "id": "breeze",
+      "width": 390,
+      "layout": {
+        "width": 390,
+        "dock": {
+          "x": 10,
+          "y": 667,
+          "w": 370,
+          "h": 165,
+          "right": 380,
+          "bottom": 832
+        },
+        "controls": [
+          {
+            "id": "cPrev",
+            "x": 19,
+            "y": 676,
+            "w": 44,
+            "h": 44,
+            "right": 63,
+            "bottom": 720
+          },
+          {
+            "id": "cPause",
+            "x": 69,
+            "y": 676,
+            "w": 44,
+            "h": 44,
+            "right": 113,
+            "bottom": 720
+          },
+          {
+            "id": "夜晚",
+            "x": 71.5,
+            "y": 731,
+            "w": 61,
+            "h": 44,
+            "right": 132.5,
+            "bottom": 775
+          },
+          {
+            "id": "日出",
+            "x": 133.5,
+            "y": 731,
+            "w": 61,
+            "h": 44,
+            "right": 194.5,
+            "bottom": 775
+          },
+          {
+            "id": "白天",
+            "x": 195.5,
+            "y": 731,
+            "w": 61,
+            "h": 44,
+            "right": 256.5,
+            "bottom": 775
+          },
+          {
+            "id": "日落",
+            "x": 257.5,
+            "y": 731,
+            "w": 61,
+            "h": 44,
+            "right": 318.5,
+            "bottom": 775
+          },
+          {
+            "id": "phase",
+            "x": 25,
+            "y": 779,
+            "w": 160,
+            "h": 44,
+            "right": 185,
+            "bottom": 823
+          },
+          {
+            "id": "cSpeed",
+            "x": 191,
+            "y": 779,
+            "w": 44,
+            "h": 44,
+            "right": 235,
+            "bottom": 823
+          },
+          {
+            "id": "restart",
+            "x": 236,
+            "y": 779,
+            "w": 44,
+            "h": 44,
+            "right": 280,
+            "bottom": 823
+          },
+          {
+            "id": "fold",
+            "x": 281,
+            "y": 779,
+            "w": 44,
+            "h": 44,
+            "right": 325,
+            "bottom": 823
+          },
+          {
+            "id": "figure-note",
+            "x": 326,
+            "y": 779,
+            "w": 44,
+            "h": 44,
+            "right": 370,
+            "bottom": 823
+          },
+          {
+            "id": "cNext",
+            "x": 257,
+            "y": 676,
+            "w": 44,
+            "h": 44,
+            "right": 301,
+            "bottom": 720
+          },
+          {
+            "id": "folio-toggle",
+            "x": 305,
+            "y": 676,
+            "w": 66,
+            "h": 44,
+            "right": 371,
+            "bottom": 720
+          }
+        ],
+        "overlaps": [],
+        "overflow": false
+      }
+    },
+    {
+      "id": "atmosphere",
+      "width": 390,
+      "layout": {
+        "width": 390,
+        "dock": {
+          "x": 10,
+          "y": 667,
+          "w": 370,
+          "h": 165,
+          "right": 380,
+          "bottom": 832
+        },
+        "controls": [
+          {
+            "id": "cPrev",
+            "x": 19,
+            "y": 676,
+            "w": 44,
+            "h": 44,
+            "right": 63,
+            "bottom": 720
+          },
+          {
+            "id": "cPause",
+            "x": 69,
+            "y": 676,
+            "w": 44,
+            "h": 44,
+            "right": 113,
+            "bottom": 720
+          },
+          {
+            "id": "对流层",
+            "x": 72.5,
+            "y": 731,
+            "w": 76,
+            "h": 44,
+            "right": 148.5,
+            "bottom": 775
+          },
+          {
+            "id": "平流层",
+            "x": 149.5,
+            "y": 731,
+            "w": 76,
+            "h": 44,
+            "right": 225.5,
+            "bottom": 775
+          },
+          {
+            "id": "高层大气",
+            "x": 226.5,
+            "y": 731,
+            "w": 91,
+            "h": 44,
+            "right": 317.5,
+            "bottom": 775
+          },
+          {
+            "id": "phase",
+            "x": 25,
+            "y": 779,
+            "w": 160,
+            "h": 44,
+            "right": 185,
+            "bottom": 823
+          },
+          {
+            "id": "cSpeed",
+            "x": 191,
+            "y": 779,
+            "w": 44,
+            "h": 44,
+            "right": 235,
+            "bottom": 823
+          },
+          {
+            "id": "restart",
+            "x": 236,
+            "y": 779,
+            "w": 44,
+            "h": 44,
+            "right": 280,
+            "bottom": 823
+          },
+          {
+            "id": "fold",
+            "x": 281,
+            "y": 779,
+            "w": 44,
+            "h": 44,
+            "right": 325,
+            "bottom": 823
+          },
+          {
+            "id": "figure-note",
+            "x": 326,
+            "y": 779,
+            "w": 44,
+            "h": 44,
+            "right": 370,
+            "bottom": 823
+          },
+          {
+            "id": "cNext",
+            "x": 257,
+            "y": 676,
+            "w": 44,
+            "h": 44,
+            "right": 301,
+            "bottom": 720
+          },
+          {
+            "id": "folio-toggle",
+            "x": 305,
+            "y": 676,
+            "w": 66,
+            "h": 44,
+            "right": 371,
+            "bottom": 720
+          }
+        ],
+        "overlaps": [],
+        "overflow": false
+      }
+    },
+    {
+      "id": "vegetation",
+      "width": 320,
+      "layout": {
+        "width": 320,
+        "dock": {
+          "x": 10,
+          "y": 667,
+          "w": 300,
+          "h": 165,
+          "right": 310,
+          "bottom": 832
+        },
+        "controls": [
+          {
+            "id": "cPrev",
+            "x": 19,
+            "y": 676,
+            "w": 44,
+            "h": 44,
+            "right": 63,
+            "bottom": 720
+          },
+          {
+            "id": "condition-choice",
+            "x": 21,
+            "y": 731,
+            "w": 278,
+            "h": 44,
+            "right": 299,
+            "bottom": 775
+          },
+          {
+            "id": "model-inspect",
+            "x": 20,
+            "y": 779,
+            "w": 46,
+            "h": 44,
+            "right": 66,
+            "bottom": 823
+          },
+          {
+            "id": "fold",
+            "x": 139,
+            "y": 779,
+            "w": 44,
+            "h": 44,
+            "right": 183,
+            "bottom": 823
+          },
+          {
+            "id": "figure-note",
+            "x": 256,
+            "y": 779,
+            "w": 44,
+            "h": 44,
+            "right": 300,
+            "bottom": 823
+          },
+          {
+            "id": "cNext",
+            "x": 187,
+            "y": 676,
+            "w": 44,
+            "h": 44,
+            "right": 231,
+            "bottom": 720
+          },
+          {
+            "id": "folio-toggle",
+            "x": 235,
+            "y": 676,
+            "w": 66,
+            "h": 44,
+            "right": 301,
+            "bottom": 720
+          }
+        ],
+        "overlaps": [],
+        "overflow": false
+      }
+    },
+    {
+      "id": "soil",
+      "width": 320,
+      "layout": {
+        "width": 320,
+        "dock": {
+          "x": 10,
+          "y": 667,
+          "w": 300,
+          "h": 165,
+          "right": 310,
+          "bottom": 832
+        },
+        "controls": [
+          {
+            "id": "cPrev",
+            "x": 19,
+            "y": 676,
+            "w": 44,
+            "h": 44,
+            "right": 63,
+            "bottom": 720
+          },
+          {
+            "id": "cPause",
+            "x": 69,
+            "y": 676,
+            "w": 44,
+            "h": 44,
+            "right": 113,
+            "bottom": 720
+          },
+          {
+            "id": "condition-choice",
+            "x": 21,
+            "y": 731,
+            "w": 124.796875,
+            "h": 44,
+            "right": 145.796875,
+            "bottom": 775
+          },
+          {
+            "id": "初始剖面",
+            "x": 150.796875,
+            "y": 731,
+            "w": 74,
+            "h": 44,
+            "right": 224.796875,
+            "bottom": 775
+          },
+          {
+            "id": "水分下渗",
+            "x": 226.796875,
+            "y": 731,
+            "w": 86.578125,
+            "h": 44,
+            "right": 313.375,
+            "bottom": 775
+          },
+          {
+            "id": "淋溶迁移",
+            "x": 315.375,
+            "y": 731,
+            "w": 86.578125,
+            "h": 44,
+            "right": 401.953125,
+            "bottom": 775
+          },
+          {
+            "id": "淀积留存",
+            "x": 403.953125,
+            "y": 731,
+            "w": 86.578125,
+            "h": 44,
+            "right": 490.53125,
+            "bottom": 775
+          },
+          {
+            "id": "phase",
+            "x": 25,
+            "y": 779,
+            "w": 43,
+            "h": 44,
+            "right": 68,
+            "bottom": 823
+          },
+          {
+            "id": "model-inspect",
+            "x": 74,
+            "y": 779,
+            "w": 46,
+            "h": 44,
+            "right": 120,
+            "bottom": 823
+          },
+          {
+            "id": "cSpeed",
+            "x": 121,
+            "y": 779,
+            "w": 44,
+            "h": 44,
+            "right": 165,
+            "bottom": 823
+          },
+          {
+            "id": "restart",
+            "x": 166,
+            "y": 779,
+            "w": 44,
+            "h": 44,
+            "right": 210,
+            "bottom": 823
+          },
+          {
+            "id": "fold",
+            "x": 211,
+            "y": 779,
+            "w": 44,
+            "h": 44,
+            "right": 255,
+            "bottom": 823
+          },
+          {
+            "id": "figure-note",
+            "x": 256,
+            "y": 779,
+            "w": 44,
+            "h": 44,
+            "right": 300,
+            "bottom": 823
+          },
+          {
+            "id": "cNext",
+            "x": 187,
+            "y": 676,
+            "w": 44,
+            "h": 44,
+            "right": 231,
+            "bottom": 720
+          },
+          {
+            "id": "folio-toggle",
+            "x": 235,
+            "y": 676,
+            "w": 66,
+            "h": 44,
+            "right": 301,
+            "bottom": 720
+          }
+        ],
+        "overlaps": [],
+        "overflow": false
+      }
+    },
+    {
+      "id": "soil-factors",
+      "width": 320,
+      "layout": {
+        "width": 320,
+        "dock": {
+          "x": 10,
+          "y": 667,
+          "w": 300,
+          "h": 165,
+          "right": 310,
+          "bottom": 832
+        },
+        "controls": [
+          {
+            "id": "cPrev",
+            "x": 19,
+            "y": 676,
+            "w": 44,
+            "h": 44,
+            "right": 63,
+            "bottom": 720
+          },
+          {
+            "id": "cPause",
+            "x": 69,
+            "y": 676,
+            "w": 44,
+            "h": 44,
+            "right": 113,
+            "bottom": 720
+          },
+          {
+            "id": "condition-choice",
+            "x": 21,
+            "y": 731,
+            "w": 278,
+            "h": 44,
+            "right": 299,
+            "bottom": 775
+          },
+          {
+            "id": "phase",
+            "x": 25,
+            "y": 779,
+            "w": 90,
+            "h": 44,
+            "right": 115,
+            "bottom": 823
+          },
+          {
+            "id": "cSpeed",
+            "x": 121,
+            "y": 779,
+            "w": 44,
+            "h": 44,
+            "right": 165,
+            "bottom": 823
+          },
+          {
+            "id": "restart",
+            "x": 166,
+            "y": 779,
+            "w": 44,
+            "h": 44,
+            "right": 210,
+            "bottom": 823
+          },
+          {
+            "id": "fold",
+            "x": 211,
+            "y": 779,
+            "w": 44,
+            "h": 44,
+            "right": 255,
+            "bottom": 823
+          },
+          {
+            "id": "figure-note",
+            "x": 256,
+            "y": 779,
+            "w": 44,
+            "h": 44,
+            "right": 300,
+            "bottom": 823
+          },
+          {
+            "id": "cNext",
+            "x": 187,
+            "y": 676,
+            "w": 44,
+            "h": 44,
+            "right": 231,
+            "bottom": 720
+          },
+          {
+            "id": "folio-toggle",
+            "x": 235,
+            "y": 676,
+            "w": 66,
+            "h": 44,
+            "right": 301,
+            "bottom": 720
+          }
+        ],
+        "overlaps": [],
+        "overflow": false
+      }
+    },
+    {
+      "id": "urban-waterlogging",
+      "width": 320,
+      "layout": {
+        "width": 320,
+        "dock": {
+          "x": 10,
+          "y": 667,
+          "w": 300,
+          "h": 165,
+          "right": 310,
+          "bottom": 832
+        },
+        "controls": [
+          {
+            "id": "cPrev",
+            "x": 19,
+            "y": 676,
+            "w": 44,
+            "h": 44,
+            "right": 63,
+            "bottom": 720
+          },
+          {
+            "id": "cPause",
+            "x": 69,
+            "y": 676,
+            "w": 44,
+            "h": 44,
+            "right": 113,
+            "bottom": 720
+          },
+          {
+            "id": "condition-choice",
+            "x": 21,
+            "y": 731,
+            "w": 124.796875,
+            "h": 44,
+            "right": 145.796875,
+            "bottom": 775
+          },
+          {
+            "id": "起点",
+            "x": 150.796875,
+            "y": 731,
+            "w": 46,
+            "h": 44,
+            "right": 196.796875,
+            "bottom": 775
+          },
+          {
+            "id": "降水落地",
+            "x": 198.796875,
+            "y": 731,
+            "w": 86.578125,
+            "h": 44,
+            "right": 285.375,
+            "bottom": 775
+          },
+          {
+            "id": "分流下渗",
+            "x": 287.375,
+            "y": 731,
+            "w": 86.578125,
+            "h": 44,
+            "right": 373.953125,
+            "bottom": 775
+          },
+          {
+            "id": "暂存",
+            "x": 375.953125,
+            "y": 731,
+            "w": 58.578125,
+            "h": 44,
+            "right": 434.53125,
+            "bottom": 775
+          },
+          {
+            "id": "排水对照",
+            "x": 436.53125,
+            "y": 731,
+            "w": 86.578125,
+            "h": 44,
+            "right": 523.109375,
+            "bottom": 775
+          },
+          {
+            "id": "phase",
+            "x": 25,
+            "y": 779,
+            "w": 43,
+            "h": 44,
+            "right": 68,
+            "bottom": 823
+          },
+          {
+            "id": "model-inspect",
+            "x": 74,
+            "y": 779,
+            "w": 46,
+            "h": 44,
+            "right": 120,
+            "bottom": 823
+          },
+          {
+            "id": "cSpeed",
+            "x": 121,
+            "y": 779,
+            "w": 44,
+            "h": 44,
+            "right": 165,
+            "bottom": 823
+          },
+          {
+            "id": "restart",
+            "x": 166,
+            "y": 779,
+            "w": 44,
+            "h": 44,
+            "right": 210,
+            "bottom": 823
+          },
+          {
+            "id": "fold",
+            "x": 211,
+            "y": 779,
+            "w": 44,
+            "h": 44,
+            "right": 255,
+            "bottom": 823
+          },
+          {
+            "id": "figure-note",
+            "x": 256,
+            "y": 779,
+            "w": 44,
+            "h": 44,
+            "right": 300,
+            "bottom": 823
+          },
+          {
+            "id": "cNext",
+            "x": 187,
+            "y": 676,
+            "w": 44,
+            "h": 44,
+            "right": 231,
+            "bottom": 720
+          },
+          {
+            "id": "folio-toggle",
+            "x": 235,
+            "y": 676,
+            "w": 66,
+            "h": 44,
+            "right": 301,
+            "bottom": 720
+          }
+        ],
+        "overlaps": [],
+        "overflow": false
+      }
+    },
+    {
+      "id": "water",
+      "width": 320,
+      "layout": {
+        "width": 320,
+        "dock": {
+          "x": 10,
+          "y": 667,
+          "w": 300,
+          "h": 165,
+          "right": 310,
+          "bottom": 832
+        },
+        "controls": [
+          {
+            "id": "cPrev",
+            "x": 19,
+            "y": 676,
+            "w": 44,
+            "h": 44,
+            "right": 63,
+            "bottom": 720
+          },
+          {
+            "id": "cPause",
+            "x": 69,
+            "y": 676,
+            "w": 44,
+            "h": 44,
+            "right": 113,
+            "bottom": 720
+          },
+          {
+            "id": "condition-choice",
+            "x": 21,
+            "y": 731,
+            "w": 124.796875,
+            "h": 44,
+            "right": 145.796875,
+            "bottom": 775
+          },
+          {
+            "id": "海水蒸发",
+            "x": 150.796875,
+            "y": 731,
+            "w": 74,
+            "h": 44,
+            "right": 224.796875,
+            "bottom": 775
+          },
+          {
+            "id": "水汽输送",
+            "x": 226.796875,
+            "y": 731,
+            "w": 86.578125,
+            "h": 44,
+            "right": 313.375,
+            "bottom": 775
+          },
+          {
+            "id": "凝结成云",
+            "x": 315.375,
+            "y": 731,
+            "w": 86.578125,
+            "h": 44,
+            "right": 401.953125,
+            "bottom": 775
+          },
+          {
+            "id": "陆地降水",
+            "x": 403.953125,
+            "y": 731,
+            "w": 86.578125,
+            "h": 44,
+            "right": 490.53125,
+            "bottom": 775
+          },
+          {
+            "id": "两路回流",
+            "x": 492.53125,
+            "y": 731,
+            "w": 86.578125,
+            "h": 44,
+            "right": 579.109375,
+            "bottom": 775
+          },
+          {
+            "id": "回到海洋",
+            "x": 581.109375,
+            "y": 731,
+            "w": 86.578125,
+            "h": 44,
+            "right": 667.6875,
+            "bottom": 775
+          },
+          {
+            "id": "phase",
+            "x": 25,
+            "y": 779,
+            "w": 90,
+            "h": 44,
+            "right": 115,
+            "bottom": 823
+          },
+          {
+            "id": "cSpeed",
+            "x": 121,
+            "y": 779,
+            "w": 44,
+            "h": 44,
+            "right": 165,
+            "bottom": 823
+          },
+          {
+            "id": "restart",
+            "x": 166,
+            "y": 779,
+            "w": 44,
+            "h": 44,
+            "right": 210,
+            "bottom": 823
+          },
+          {
+            "id": "fold",
+            "x": 211,
+            "y": 779,
+            "w": 44,
+            "h": 44,
+            "right": 255,
+            "bottom": 823
+          },
+          {
+            "id": "figure-note",
+            "x": 256,
+            "y": 779,
+            "w": 44,
+            "h": 44,
+            "right": 300,
+            "bottom": 823
+          },
+          {
+            "id": "cNext",
+            "x": 187,
+            "y": 676,
+            "w": 44,
+            "h": 44,
+            "right": 231,
+            "bottom": 720
+          },
+          {
+            "id": "folio-toggle",
+            "x": 235,
+            "y": 676,
+            "w": 66,
+            "h": 44,
+            "right": 301,
+            "bottom": 720
+          }
+        ],
+        "overlaps": [],
+        "overflow": false
+      }
+    },
+    {
+      "id": "breeze",
+      "width": 320,
+      "layout": {
+        "width": 320,
+        "dock": {
+          "x": 10,
+          "y": 667,
+          "w": 300,
+          "h": 165,
+          "right": 310,
+          "bottom": 832
+        },
+        "controls": [
+          {
+            "id": "cPrev",
+            "x": 19,
+            "y": 676,
+            "w": 44,
+            "h": 44,
+            "right": 63,
+            "bottom": 720
+          },
+          {
+            "id": "cPause",
+            "x": 69,
+            "y": 676,
+            "w": 44,
+            "h": 44,
+            "right": 113,
+            "bottom": 720
+          },
+          {
+            "id": "夜晚",
+            "x": 36.5,
+            "y": 731,
+            "w": 61,
+            "h": 44,
+            "right": 97.5,
+            "bottom": 775
+          },
+          {
+            "id": "日出",
+            "x": 98.5,
+            "y": 731,
+            "w": 61,
+            "h": 44,
+            "right": 159.5,
+            "bottom": 775
+          },
+          {
+            "id": "白天",
+            "x": 160.5,
+            "y": 731,
+            "w": 61,
+            "h": 44,
+            "right": 221.5,
+            "bottom": 775
+          },
+          {
+            "id": "日落",
+            "x": 222.5,
+            "y": 731,
+            "w": 61,
+            "h": 44,
+            "right": 283.5,
+            "bottom": 775
+          },
+          {
+            "id": "phase",
+            "x": 25,
+            "y": 779,
+            "w": 90,
+            "h": 44,
+            "right": 115,
+            "bottom": 823
+          },
+          {
+            "id": "cSpeed",
+            "x": 121,
+            "y": 779,
+            "w": 44,
+            "h": 44,
+            "right": 165,
+            "bottom": 823
+          },
+          {
+            "id": "restart",
+            "x": 166,
+            "y": 779,
+            "w": 44,
+            "h": 44,
+            "right": 210,
+            "bottom": 823
+          },
+          {
+            "id": "fold",
+            "x": 211,
+            "y": 779,
+            "w": 44,
+            "h": 44,
+            "right": 255,
+            "bottom": 823
+          },
+          {
+            "id": "figure-note",
+            "x": 256,
+            "y": 779,
+            "w": 44,
+            "h": 44,
+            "right": 300,
+            "bottom": 823
+          },
+          {
+            "id": "cNext",
+            "x": 187,
+            "y": 676,
+            "w": 44,
+            "h": 44,
+            "right": 231,
+            "bottom": 720
+          },
+          {
+            "id": "folio-toggle",
+            "x": 235,
+            "y": 676,
+            "w": 66,
+            "h": 44,
+            "right": 301,
+            "bottom": 720
+          }
+        ],
+        "overlaps": [],
+        "overflow": false
+      }
+    },
+    {
+      "id": "atmosphere",
+      "width": 320,
+      "layout": {
+        "width": 320,
+        "dock": {
+          "x": 10,
+          "y": 667,
+          "w": 300,
+          "h": 165,
+          "right": 310,
+          "bottom": 832
+        },
+        "controls": [
+          {
+            "id": "cPrev",
+            "x": 19,
+            "y": 676,
+            "w": 44,
+            "h": 44,
+            "right": 63,
+            "bottom": 720
+          },
+          {
+            "id": "cPause",
+            "x": 69,
+            "y": 676,
+            "w": 44,
+            "h": 44,
+            "right": 113,
+            "bottom": 720
+          },
+          {
+            "id": "对流层",
+            "x": 37.5,
+            "y": 731,
+            "w": 76,
+            "h": 44,
+            "right": 113.5,
+            "bottom": 775
+          },
+          {
+            "id": "平流层",
+            "x": 114.5,
+            "y": 731,
+            "w": 76,
+            "h": 44,
+            "right": 190.5,
+            "bottom": 775
+          },
+          {
+            "id": "高层大气",
+            "x": 191.5,
+            "y": 731,
+            "w": 91,
+            "h": 44,
+            "right": 282.5,
+            "bottom": 775
+          },
+          {
+            "id": "phase",
+            "x": 25,
+            "y": 779,
+            "w": 90,
+            "h": 44,
+            "right": 115,
+            "bottom": 823
+          },
+          {
+            "id": "cSpeed",
+            "x": 121,
+            "y": 779,
+            "w": 44,
+            "h": 44,
+            "right": 165,
+            "bottom": 823
+          },
+          {
+            "id": "restart",
+            "x": 166,
+            "y": 779,
+            "w": 44,
+            "h": 44,
+            "right": 210,
+            "bottom": 823
+          },
+          {
+            "id": "fold",
+            "x": 211,
+            "y": 779,
+            "w": 44,
+            "h": 44,
+            "right": 255,
+            "bottom": 823
+          },
+          {
+            "id": "figure-note",
+            "x": 256,
+            "y": 779,
+            "w": 44,
+            "h": 44,
+            "right": 300,
+            "bottom": 823
+          },
+          {
+            "id": "cNext",
+            "x": 187,
+            "y": 676,
+            "w": 44,
+            "h": 44,
+            "right": 231,
+            "bottom": 720
+          },
+          {
+            "id": "folio-toggle",
+            "x": 235,
+            "y": 676,
+            "w": 66,
+            "h": 44,
+            "right": 301,
+            "bottom": 720
+          }
+        ],
+        "overlaps": [],
+        "overflow": false
+      }
+    }
+  ],
+  "scope": "Compact mobile control layout with real native condition selection, seven models at two widths, desktop preserved. Includes the complete soil column default. Not a physical touch-device review.",
+  "reviewedEntry": {
+    "path": "/assets/index-D4LALJeW.js",
+    "sha256": "0c70ea4da5b54f5219c4606fa01b6913cf9036f9e556401ad7229f77c435fb57"
+  },
+  "reviewedStyles": [
+    {
+      "path": "/assets/index-CfTBMr01.css",
+      "sha256": "cc5465a410b3a8479f123eeac593a87c2d55493c5d018e38c161f2d66e08a6e0"
+    }
+  ],
+  "reviewedAt": "2026-11-06T05:32:58.905Z",
+  "browser": "156.0.8078.80"
+}

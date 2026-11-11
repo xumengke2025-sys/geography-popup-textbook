@@ -1,0 +1,354 @@
+{
+  "generatedAt": "2026-11-05T02:57:55.223Z",
+  "node": "v24.15.0",
+  "platform": "win32",
+  "command": "node output/playwright/water-route-review.mjs",
+  "method": "Execute transpiled actual builders using deterministic geometry stubs. This checks route/label selection, not rendered appearance or GPU behavior.",
+  "sourceSha256": {
+    "src/textbook-models-water.ts": "5b6212bb76c748dd1acc2a8ec4ca12e27cc9d73431fcf0da8624c1f9af8785cc",
+    "src/textbook-models-disasters.ts": "5c807c99dc417b33b75db2f79332060c680f3b94fe315b5533b21549c981cdef",
+    "src/textbook-effects.ts": "4b8779e3181bdc9d1bad72ef863a760be152a5dddff8219bc562fa43132e6e64"
+  },
+  "water": {
+    "assertions": 16,
+    "passed": true,
+    "phase": 0.25,
+    "transitions": [
+      0,
+      1,
+      2,
+      1,
+      0
+    ],
+    "results": [
+      {
+        "selection": 0,
+        "routeCount": 5,
+        "visibleLabels": [
+          "蒸发",
+          "水汽输送",
+          "降水",
+          "地表径流",
+          "地下径流"
+        ],
+        "routes": [
+          {
+            "start": [
+              83,
+              2.8,
+              -110
+            ],
+            "end": [
+              79,
+              27,
+              -133
+            ]
+          },
+          {
+            "start": [
+              70,
+              29,
+              -133
+            ],
+            "end": [
+              35,
+              31,
+              -141
+            ]
+          },
+          {
+            "start": [
+              26,
+              28,
+              -141
+            ],
+            "end": [
+              25,
+              19.190692239734997,
+              -123.23
+            ]
+          },
+          {
+            "start": [
+              18,
+              20.320280725080835,
+              -126.35
+            ],
+            "end": [
+              62,
+              1.693340187249879,
+              -105.68
+            ]
+          },
+          {
+            "start": [
+              24,
+              8,
+              -103
+            ],
+            "end": [
+              61,
+              1.8,
+              -103
+            ]
+          }
+        ]
+      },
+      {
+        "selection": 1,
+        "routeCount": 3,
+        "visibleLabels": [
+          "降水",
+          "蒸发",
+          "蒸腾"
+        ],
+        "routes": [
+          {
+            "start": [
+              44,
+              8.085740861947329,
+              -116
+            ],
+            "end": [
+              30,
+              28,
+              -141
+            ]
+          },
+          {
+            "start": [
+              26,
+              23.916663387447272,
+              -126.35
+            ],
+            "end": [
+              22,
+              28,
+              -141
+            ]
+          },
+          {
+            "start": [
+              26,
+              28,
+              -141
+            ],
+            "end": [
+              25,
+              19.190692239734997,
+              -123.23
+            ]
+          }
+        ],
+        "seaBoundRunoffCount": 0
+      },
+      {
+        "selection": 2,
+        "routeCount": 2,
+        "visibleLabels": [
+          "蒸发",
+          "降水"
+        ],
+        "routes": [
+          {
+            "start": [
+              83,
+              2.8,
+              -110
+            ],
+            "end": [
+              79,
+              27,
+              -133
+            ]
+          },
+          {
+            "start": [
+              82,
+              26,
+              -133
+            ],
+            "end": [
+              86,
+              2.8,
+              -113
+            ]
+          }
+        ]
+      },
+      {
+        "selection": 1,
+        "routeCount": 3,
+        "visibleLabels": [
+          "降水",
+          "蒸发",
+          "蒸腾"
+        ],
+        "routes": [
+          {
+            "start": [
+              44,
+              8.085740861947329,
+              -116
+            ],
+            "end": [
+              30,
+              28,
+              -141
+            ]
+          },
+          {
+            "start": [
+              26,
+              23.916663387447272,
+              -126.35
+            ],
+            "end": [
+              22,
+              28,
+              -141
+            ]
+          },
+          {
+            "start": [
+              26,
+              28,
+              -141
+            ],
+            "end": [
+              25,
+              19.190692239734997,
+              -123.23
+            ]
+          }
+        ],
+        "seaBoundRunoffCount": 0
+      },
+      {
+        "selection": 0,
+        "routeCount": 5,
+        "visibleLabels": [
+          "蒸发",
+          "水汽输送",
+          "降水",
+          "地表径流",
+          "地下径流"
+        ],
+        "routes": [
+          {
+            "start": [
+              83,
+              2.8,
+              -110
+            ],
+            "end": [
+              79,
+              27,
+              -133
+            ]
+          },
+          {
+            "start": [
+              70,
+              29,
+              -133
+            ],
+            "end": [
+              35,
+              31,
+              -141
+            ]
+          },
+          {
+            "start": [
+              26,
+              28,
+              -141
+            ],
+            "end": [
+              25,
+              19.190692239734997,
+              -123.23
+            ]
+          },
+          {
+            "start": [
+              18,
+              20.320280725080835,
+              -126.35
+            ],
+            "end": [
+              62,
+              1.693340187249879,
+              -105.68
+            ]
+          },
+          {
+            "start": [
+              24,
+              8,
+              -103
+            ],
+            "end": [
+              61,
+              1.8,
+              -103
+            ]
+          }
+        ]
+      }
+    ],
+    "residual": "2D land recycling additionally includes local infiltration. It has no sea-bound runoff; no 2D file was edited."
+  },
+  "typhoon": {
+    "reviewStatus": "correct-3d-rotation",
+    "hemisphere": "north",
+    "view": "Above +Y, screen right +X, screen up -Z",
+    "expected": "counterclockwise inward",
+    "actual3D": "counterclockwise inward",
+    "actual2D": "counterclockwise",
+    "signed3DArea": [
+      490.45977668020123,
+      490.45977668020123,
+      490.4597766802013,
+      490.4597766802011
+    ],
+    "signed2DArea": 0.24083357936867347,
+    "source": "src/textbook-models-disasters.ts:31-34",
+    "changedByThisReview": false
+  },
+  "staticChecks": [
+    {
+      "subject": "Sea breeze",
+      "result": "Direction, same-height pressure pairs and flag sign read the same derived state. Land is left; positive drive has groundX negative.",
+      "sources": [
+        "src/model.ts:26-69",
+        "src/textbook-coastal-world.ts:113-178"
+      ],
+      "status": "source-review-only"
+    },
+    {
+      "subject": "Surface waves",
+      "result": "sin(kx-omega*t) propagates toward +X while highlighted particle executes a closed ellipse with no mean advection.",
+      "sources": [
+        "src/textbook-models-water.ts:93-103"
+      ],
+      "status": "source-review-only"
+    },
+    {
+      "subject": "Earthquake",
+      "result": "Focus and epicenter share X/Z. Expanding waves originate at focus; surface ring appears only after radius exceeds source depth.",
+      "sources": [
+        "src/textbook-models-disasters.ts:11-25"
+      ],
+      "status": "source-review-only"
+    }
+  ],
+  "notCovered": [
+    "Browser pixels and label overlap",
+    "Real textbook figure visual comparison in this follow-up",
+    "All 25 models in depth",
+    "Real device physics/performance",
+    "Full teaching/scientific peer review"
+  ]
+}

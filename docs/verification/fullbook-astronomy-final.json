@@ -1,0 +1,2585 @@
+{
+  "base": "http://127.0.0.1:4175",
+  "browser": "156.0.8078.80",
+  "diagnosticInspection": true,
+  "errors": [],
+  "failures": [],
+  "checks": [
+    "solar 0: Sun and Earth label rectangles do not overlap",
+    "solar 1: Sun and Earth label rectangles do not overlap",
+    "solar 0.999: Sun and Earth label rectangles do not overlap",
+    "solar 0.998: Sun and Earth label rectangles do not overlap",
+    "solar 0.37: Sun and Earth label rectangles do not overlap",
+    "solar 0.8: Sun and Earth label rectangles do not overlap",
+    "solar 0.37: Sun and Earth label rectangles do not overlap",
+    "solar 0.05: Sun and Earth label rectangles do not overlap",
+    "solar 0.37: Sun and Earth label rectangles do not overlap",
+    "solar: exact phase 0 and 1 close all eight orbits",
+    "solar: boundary movement is the same scale as its preceding frame",
+    "solar: forward and backward scrubbing returns exactly the same positions",
+    "solar: motion retains explicit schematic period and distance semantics",
+    "earth 0: layer 0 shell and section visibility/transforms agree",
+    "earth 0: layer 1 shell and section visibility/transforms agree",
+    "earth 0: layer 2 shell and section visibility/transforms agree",
+    "earth 0: layer 3 shell and section visibility/transforms agree",
+    "earth 0: only relevant layer labels are visible",
+    "earth 1: layer 0 shell and section visibility/transforms agree",
+    "earth 1: layer 1 shell and section visibility/transforms agree",
+    "earth 1: layer 2 shell and section visibility/transforms agree",
+    "earth 1: layer 3 shell and section visibility/transforms agree",
+    "earth 1: only relevant layer labels are visible",
+    "earth 1: shell and remaining interior have a clear projection gap at orbit=-0.8, elevation=0.44",
+    "earth 1: shell and remaining interior have a clear projection gap at orbit=-0.8, elevation=1.45",
+    "earth 1: shell and remaining interior have a clear projection gap at orbit=0.8, elevation=0.44",
+    "earth 1: shell and remaining interior have a clear projection gap at orbit=0.8, elevation=1.45",
+    "earth 2: layer 0 shell and section visibility/transforms agree",
+    "earth 2: layer 1 shell and section visibility/transforms agree",
+    "earth 2: layer 2 shell and section visibility/transforms agree",
+    "earth 2: layer 3 shell and section visibility/transforms agree",
+    "earth 2: only relevant layer labels are visible",
+    "earth 2: shell and remaining interior have a clear projection gap at orbit=-0.8, elevation=0.44",
+    "earth 2: shell and remaining interior have a clear projection gap at orbit=-0.8, elevation=1.45",
+    "earth 2: shell and remaining interior have a clear projection gap at orbit=0.8, elevation=0.44",
+    "earth 2: shell and remaining interior have a clear projection gap at orbit=0.8, elevation=1.45",
+    "earth 3: layer 0 shell and section visibility/transforms agree",
+    "earth 3: layer 1 shell and section visibility/transforms agree",
+    "earth 3: layer 2 shell and section visibility/transforms agree",
+    "earth 3: layer 3 shell and section visibility/transforms agree",
+    "earth 3: only relevant layer labels are visible",
+    "earth 0: layer 0 shell and section visibility/transforms agree",
+    "earth 0: layer 1 shell and section visibility/transforms agree",
+    "earth 0: layer 2 shell and section visibility/transforms agree",
+    "earth 0: layer 3 shell and section visibility/transforms agree",
+    "earth 0: only relevant layer labels are visible",
+    "earth: returning to complete restores every part exactly",
+    "earth: selecting crust actually separates the thin outer shell",
+    "earth: focusing mantle removes the whole crust, including both cut faces",
+    "earth: focusing core removes complete crust and mantle groups",
+    "earth: separating crust preserves its thin shell geometry",
+    "earth: paused normal-motion selection completes its physical lift",
+    "earth: animated selection keeps cut faces attached to the shell",
+    "production runtime inspection is opt-in"
+  ],
+  "states": [
+    {
+      "id": "solar",
+      "samples": [
+        {
+          "phase": 0,
+          "planets": [
+            {
+              "body": "水星",
+              "position": [
+                57.90290316250704,
+                5.079202031798863,
+                -114.525
+              ]
+            },
+            {
+              "body": "金星",
+              "position": [
+                49.663987938019226,
+                5.079202031798863,
+                -107.45505022154559
+              ]
+            },
+            {
+              "body": "地球",
+              "position": [
+                32.50981860061606,
+                5.079202031798863,
+                -114.70936100130054
+              ]
+            },
+            {
+              "body": "火星",
+              "position": [
+                50.393166076021885,
+                5.079202031798863,
+                -127.48218294230887
+              ]
+            },
+            {
+              "body": "木星",
+              "position": [
+                79.21559048914213,
+                5.079202031798863,
+                -113.89611020115716
+              ]
+            },
+            {
+              "body": "土星",
+              "position": [
+                48.14060128152104,
+                5.079202031798863,
+                -93.92527093393097
+              ]
+            },
+            {
+              "body": "天王星",
+              "position": [
+                8.190211574207588,
+                5.079202031798863,
+                -115.85830351238712
+              ]
+            },
+            {
+              "body": "海王星",
+              "position": [
+                52.850025829555655,
+                5.079202031798863,
+                -142.15935953784708
+              ]
+            }
+          ],
+          "labelRects": [
+            {
+              "text": "太阳",
+              "left": -0.038688443227323975,
+              "right": 0.042174675288673205,
+              "top": 0.08396973513426156,
+              "bottom": 0.1396083533811246
+            },
+            {
+              "text": "地球",
+              "left": -0.21650140888145594,
+              "right": -0.13693968805099557,
+              "top": 0.06580660680929154,
+              "bottom": 0.12054978631545592
+            }
+          ]
+        },
+        {
+          "phase": 1,
+          "planets": [
+            {
+              "body": "水星",
+              "position": [
+                57.90290316250704,
+                5.079202031798863,
+                -114.52500000000002
+              ]
+            },
+            {
+              "body": "金星",
+              "position": [
+                49.66398793801927,
+                5.079202031798863,
+                -107.45505022154559
+              ]
+            },
+            {
+              "body": "地球",
+              "position": [
+                32.50981860061606,
+                5.079202031798863,
+                -114.7093610013005
+              ]
+            },
+            {
+              "body": "火星",
+              "position": [
+                50.39316607602189,
+                5.079202031798863,
+                -127.48218294230885
+              ]
+            },
+            {
+              "body": "木星",
+              "position": [
+                79.21559048914213,
+                5.079202031798863,
+                -113.89611020115717
+              ]
+            },
+            {
+              "body": "土星",
+              "position": [
+                48.14060128152113,
+                5.079202031798863,
+                -93.92527093393097
+              ]
+            },
+            {
+              "body": "天王星",
+              "position": [
+                8.19021157420758,
+                5.079202031798863,
+                -115.85830351238711
+              ]
+            },
+            {
+              "body": "海王星",
+              "position": [
+                52.850025829555726,
+                5.079202031798863,
+                -142.15935953784708
+              ]
+            }
+          ],
+          "labelRects": [
+            {
+              "text": "太阳",
+              "left": -0.038688443227323975,
+              "right": 0.042174675288673205,
+              "top": 0.08396973513426156,
+              "bottom": 0.1396083533811246
+            },
+            {
+              "text": "地球",
+              "left": -0.216501408881456,
+              "right": -0.13693968805099563,
+              "top": 0.06580660680929121,
+              "bottom": 0.12054978631545553
+            }
+          ]
+        },
+        {
+          "phase": 0.999,
+          "planets": [
+            {
+              "body": "水星",
+              "position": [
+                57.89263875839029,
+                5.079202031798863,
+                -114.76182656789011
+              ]
+            },
+            {
+              "body": "金星",
+              "position": [
+                50.20004882871126,
+                5.079202031798863,
+                -107.45902626022114
+              ]
+            },
+            {
+              "body": "地球",
+              "position": [
+                32.51010647821426,
+                5.079202031798863,
+                -114.331782066888
+              ]
+            },
+            {
+              "body": "火星",
+              "position": [
+                49.6911461965737,
+                5.079202031798863,
+                -127.48702975687995
+              ]
+            },
+            {
+              "body": "木星",
+              "position": [
+                79.23354158825094,
+                5.079202031798863,
+                -114.32540162590817
+              ]
+            },
+            {
+              "body": "土星",
+              "position": [
+                48.810327616542224,
+                5.079202031798863,
+                -93.91105012573409
+              ]
+            },
+            {
+              "body": "天王星",
+              "position": [
+                8.164608225528312,
+                5.079202031798863,
+                -115.55510709705155
+              ]
+            },
+            {
+              "body": "海王星",
+              "position": [
+                52.55060194865446,
+                5.079202031798863,
+                -142.17001584077818
+              ]
+            }
+          ],
+          "labelRects": [
+            {
+              "text": "太阳",
+              "left": -0.038688443227323975,
+              "right": 0.042174675288673205,
+              "top": 0.08396973513426156,
+              "bottom": 0.1396083533811246
+            },
+            {
+              "text": "地球",
+              "left": -0.2173489341967253,
+              "right": -0.13768037345494374,
+              "top": 0.06271990864951378,
+              "bottom": 0.11753660034700365
+            }
+          ]
+        },
+        {
+          "phase": 0.998,
+          "planets": [
+            {
+              "body": "水星",
+              "position": [
+                57.86187147481568,
+                5.079202031798863,
+                -114.99805489131606
+              ]
+            },
+            {
+              "body": "金星",
+              "position": [
+                50.73528990154178,
+                5.079202031798863,
+                -107.47666881523473
+              ]
+            },
+            {
+              "body": "地球",
+              "position": [
+                32.534930390940545,
+                5.079202031798863,
+                -113.95447770573098
+              ]
+            },
+            {
+              "body": "火星",
+              "position": [
+                48.98921023513601,
+                5.079202031798863,
+                -127.47908461300581
+              ]
+            },
+            {
+              "body": "木星",
+              "position": [
+                79.23288678635338,
+                5.079202031798863,
+                -114.75481912127039
+              ]
+            },
+            {
+              "body": "土星",
+              "position": [
+                49.480397114285005,
+                5.079202031798863,
+                -93.90415335577177
+              ]
+            },
+            {
+              "body": "天王星",
+              "position": [
+                8.14557582639491,
+                5.079202031798863,
+                -115.2517480158639
+              ]
+            },
+            {
+              "body": "海王星",
+              "position": [
+                52.25106853832192,
+                5.079202031798863,
+                -142.1795807658197
+              ]
+            }
+          ],
+          "labelRects": [
+            {
+              "text": "太阳",
+              "left": -0.038688443227323975,
+              "right": 0.042174675288673205,
+              "top": 0.08396973513426156,
+              "bottom": 0.1396083533811246
+            },
+            {
+              "text": "地球",
+              "left": -0.21794644560755072,
+              "right": -0.1381698692499938,
+              "top": 0.05959594465683992,
+              "bottom": 0.11448695750000305
+            }
+          ]
+        },
+        {
+          "phase": 0.37,
+          "planets": [
+            {
+              "body": "水星",
+              "position": [
+                57.64758720758199,
+                5.079202031798863,
+                -115.69719965520292
+              ]
+            },
+            {
+              "body": "金星",
+              "position": [
+                56.402404194260704,
+                5.079202031798863,
+                -120.45948905977372
+              ]
+            },
+            {
+              "body": "地球",
+              "position": [
+                46.85301998469559,
+                5.079202031798863,
+                -124.39665122450616
+              ]
+            },
+            {
+              "body": "火星",
+              "position": [
+                32.06541941862926,
+                5.079202031798863,
+                -122.43054937427192
+              ]
+            },
+            {
+              "body": "木星",
+              "position": [
+                20.43300996232676,
+                5.079202031798863,
+                -113.0088836322327
+              ]
+            },
+            {
+              "body": "土星",
+              "position": [
+                25.876700970916264,
+                5.079202031798863,
+                -99.25731904945208
+              ]
+            },
+            {
+              "body": "天王星",
+              "position": [
+                50.093121464407105,
+                5.079202031798863,
+                -90.36901458134238
+              ]
+            },
+            {
+              "body": "海王星",
+              "position": [
+                82.404024036121,
+                5.079202031798863,
+                -94.30835155515027
+              ]
+            }
+          ],
+          "labelRects": [
+            {
+              "text": "太阳",
+              "left": -0.038688443227323975,
+              "right": 0.042174675288673205,
+              "top": 0.08396973513426156,
+              "bottom": 0.1396083533811246
+            },
+            {
+              "text": "地球",
+              "left": -0.05245812008719979,
+              "right": 0.024986225510345843,
+              "top": 0.14781111514929815,
+              "bottom": 0.20109741499967485
+            }
+          ]
+        },
+        {
+          "phase": 0.8,
+          "planets": [
+            {
+              "body": "水星",
+              "position": [
+                43.201522693086396,
+                5.079202031798863,
+                -111.75447451572944
+              ]
+            },
+            {
+              "body": "金星",
+              "position": [
+                57.031793770125184,
+                5.079202031798863,
+                -120.20646154338931
+              ]
+            },
+            {
+              "body": "地球",
+              "position": [
+                44.138274401649994,
+                5.079202031798863,
+                -105.05762512872559
+              ]
+            },
+            {
+              "body": "火星",
+              "position": [
+                50.3931660760219,
+                5.079202031798863,
+                -127.48218294230885
+              ]
+            },
+            {
+              "body": "木星",
+              "position": [
+                57.84223439270164,
+                5.079202031798863,
+                -98.0915072705017
+              ]
+            },
+            {
+              "body": "土星",
+              "position": [
+                30.22315470478806,
+                5.079202031798863,
+                -131.74812491265982
+              ]
+            },
+            {
+              "body": "天王星",
+              "position": [
+                82.06873478032925,
+                5.079202031798863,
+                -99.26903584301701
+              ]
+            },
+            {
+              "body": "海王星",
+              "position": [
+                5.412537241612476,
+                5.079202031798863,
+                -124.7600594162545
+              ]
+            }
+          ],
+          "labelRects": [
+            {
+              "text": "太阳",
+              "left": -0.038688443227323975,
+              "right": 0.042174675288673205,
+              "top": 0.08396973513426156,
+              "bottom": 0.1396083533811246
+            },
+            {
+              "text": "地球",
+              "left": -0.11519530327672185,
+              "right": -0.03231831515539093,
+              "top": -0.03159743985208051,
+              "bottom": 0.025426840044078785
+            }
+          ]
+        },
+        {
+          "phase": 0.37,
+          "planets": [
+            {
+              "body": "水星",
+              "position": [
+                57.64758720758199,
+                5.079202031798863,
+                -115.69719965520292
+              ]
+            },
+            {
+              "body": "金星",
+              "position": [
+                56.402404194260704,
+                5.079202031798863,
+                -120.45948905977372
+              ]
+            },
+            {
+              "body": "地球",
+              "position": [
+                46.85301998469559,
+                5.079202031798863,
+                -124.39665122450616
+              ]
+            },
+            {
+              "body": "火星",
+              "position": [
+                32.06541941862926,
+                5.079202031798863,
+                -122.43054937427192
+              ]
+            },
+            {
+              "body": "木星",
+              "position": [
+                20.43300996232676,
+                5.079202031798863,
+                -113.0088836322327
+              ]
+            },
+            {
+              "body": "土星",
+              "position": [
+                25.876700970916264,
+                5.079202031798863,
+                -99.25731904945208
+              ]
+            },
+            {
+              "body": "天王星",
+              "position": [
+                50.093121464407105,
+                5.079202031798863,
+                -90.36901458134238
+              ]
+            },
+            {
+              "body": "海王星",
+              "position": [
+                82.404024036121,
+                5.079202031798863,
+                -94.30835155515027
+              ]
+            }
+          ],
+          "labelRects": [
+            {
+              "text": "太阳",
+              "left": -0.038688443227323975,
+              "right": 0.042174675288673205,
+              "top": 0.08396973513426156,
+              "bottom": 0.1396083533811246
+            },
+            {
+              "text": "地球",
+              "left": -0.05245812008719979,
+              "right": 0.024986225510345843,
+              "top": 0.14781111514929815,
+              "bottom": 0.20109741499967485
+            }
+          ]
+        },
+        {
+          "phase": 0.05,
+          "planets": [
+            {
+              "body": "水星",
+              "position": [
+                43.20152269308639,
+                5.079202031798863,
+                -111.75447451572946
+              ]
+            },
+            {
+              "body": "金星",
+              "position": [
+                39.980556560957666,
+                5.079202031798863,
+                -118.73325603792789
+              ]
+            },
+            {
+              "body": "地球",
+              "position": [
+                55.414085421607794,
+                5.079202031798863,
+                -123.99237487127441
+              ]
+            },
+            {
+              "body": "火星",
+              "position": [
+                72.11615050181655,
+                5.079202031798863,
+                -114.16714802465205
+              ]
+            },
+            {
+              "body": "木星",
+              "position": [
+                57.84223439270163,
+                5.079202031798863,
+                -98.0915072705017
+              ]
+            },
+            {
+              "body": "土星",
+              "position": [
+                20.08113695876708,
+                5.079202031798863,
+                -103.18424538003238
+              ]
+            },
+            {
+              "body": "天王星",
+              "position": [
+                17.483625042928473,
+                5.079202031798863,
+                -129.780964156983
+              ]
+            },
+            {
+              "body": "海王星",
+              "position": [
+                67.42283407758482,
+                5.079202031798863,
+                -140.25591274860952
+              ]
+            }
+          ],
+          "labelRects": [
+            {
+              "text": "太阳",
+              "left": -0.038688443227323975,
+              "right": 0.042174675288673205,
+              "top": 0.08396973513426156,
+              "bottom": 0.1396083533811246
+            },
+            {
+              "text": "地球",
+              "left": 0.03328343930086483,
+              "right": 0.1111561339641333,
+              "top": 0.14862866680641573,
+              "bottom": 0.20220969620199833
+            }
+          ]
+        },
+        {
+          "phase": 0.37,
+          "planets": [
+            {
+              "body": "水星",
+              "position": [
+                57.64758720758199,
+                5.079202031798863,
+                -115.69719965520292
+              ]
+            },
+            {
+              "body": "金星",
+              "position": [
+                56.402404194260704,
+                5.079202031798863,
+                -120.45948905977372
+              ]
+            },
+            {
+              "body": "地球",
+              "position": [
+                46.85301998469559,
+                5.079202031798863,
+                -124.39665122450616
+              ]
+            },
+            {
+              "body": "火星",
+              "position": [
+                32.06541941862926,
+                5.079202031798863,
+                -122.43054937427192
+              ]
+            },
+            {
+              "body": "木星",
+              "position": [
+                20.43300996232676,
+                5.079202031798863,
+                -113.0088836322327
+              ]
+            },
+            {
+              "body": "土星",
+              "position": [
+                25.876700970916264,
+                5.079202031798863,
+                -99.25731904945208
+              ]
+            },
+            {
+              "body": "天王星",
+              "position": [
+                50.093121464407105,
+                5.079202031798863,
+                -90.36901458134238
+              ]
+            },
+            {
+              "body": "海王星",
+              "position": [
+                82.404024036121,
+                5.079202031798863,
+                -94.30835155515027
+              ]
+            }
+          ],
+          "labelRects": [
+            {
+              "text": "太阳",
+              "left": -0.038688443227323975,
+              "right": 0.042174675288673205,
+              "top": 0.08396973513426156,
+              "bottom": 0.1396083533811246
+            },
+            {
+              "text": "地球",
+              "left": -0.05245812008719979,
+              "right": 0.024986225510345843,
+              "top": 0.14781111514929815,
+              "bottom": 0.20109741499967485
+            }
+          ]
+        }
+      ],
+      "maxClosureError": 8.526512829121202e-14,
+      "boundaryStep": 0.7020366106920163,
+      "precedingStep": 0.7019809251472837,
+      "diagnostics": {
+        "architecture": "three-dimensional-geometry",
+        "bitmapSurfaces": 0,
+        "solids": 9,
+        "labels": 2,
+        "meshes": 11,
+        "imageMappedMeshes": 0,
+        "extent": [
+          95.48899819781863,
+          13.104341262166955,
+          57.154681803033384
+        ],
+        "sceneElevation": 46.728658692549544,
+        "unfoldProgress": 1,
+        "originalPagePreserved": true,
+        "phase": 0.37,
+        "selection": 0,
+        "kind": "solar-system",
+        "bodies": 8,
+        "units": "schematic",
+        "orbitalPlane": "3d",
+        "turnsPerCycle": [
+          8,
+          7,
+          6,
+          5,
+          4,
+          3,
+          2,
+          1
+        ],
+        "realOrbitalPeriodRatio": false,
+        "cycleBoundaryContinuous": true
+      }
+    },
+    {
+      "id": "earth",
+      "samples": [
+        {
+          "diagnostics": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 15,
+            "labels": 4,
+            "meshes": 19,
+            "imageMappedMeshes": 0,
+            "extent": [
+              72.081895975584,
+              48.054595947265625,
+              48.054595947265625
+            ],
+            "sceneElevation": 52.631226106345274,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.4,
+            "selection": 0,
+            "kind": "earth-cutaway",
+            "layers": [
+              "crust",
+              "mantle",
+              "outer-core",
+              "inner-core"
+            ],
+            "scale": "schematic",
+            "selected": 0,
+            "focus": "all",
+            "groupedSections": true,
+            "crustThicknessUnchanged": true,
+            "layerGroups": [
+              {
+                "layer": 0,
+                "visible": true,
+                "offset": [
+                  0,
+                  0,
+                  0
+                ],
+                "parts": 4,
+                "labelVisible": true
+              },
+              {
+                "layer": 1,
+                "visible": true,
+                "offset": [
+                  0,
+                  0,
+                  0
+                ],
+                "parts": 4,
+                "labelVisible": true
+              },
+              {
+                "layer": 2,
+                "visible": true,
+                "offset": [
+                  0,
+                  0,
+                  0
+                ],
+                "parts": 4,
+                "labelVisible": true
+              },
+              {
+                "layer": 3,
+                "visible": true,
+                "offset": [
+                  0,
+                  0,
+                  0
+                ],
+                "parts": 3,
+                "labelVisible": true
+              }
+            ]
+          },
+          "parts": [
+            {
+              "layer": 0,
+              "part": "outer",
+              "visible": true,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": 24.027298874635886
+            },
+            {
+              "layer": 0,
+              "part": "inner",
+              "visible": false,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": 23.22638891214802
+            },
+            {
+              "layer": 0,
+              "part": "section-z",
+              "visible": true,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": null
+            },
+            {
+              "layer": 0,
+              "part": "section-x",
+              "visible": true,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": null
+            },
+            {
+              "layer": 1,
+              "part": "outer",
+              "visible": true,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": 23.22638891214802
+            },
+            {
+              "layer": 1,
+              "part": "inner",
+              "visible": false,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": 13.04339081765948
+            },
+            {
+              "layer": 1,
+              "part": "section-z",
+              "visible": true,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": null
+            },
+            {
+              "layer": 1,
+              "part": "section-x",
+              "visible": true,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": null
+            },
+            {
+              "layer": 2,
+              "part": "outer",
+              "visible": true,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": 13.04339081765948
+            },
+            {
+              "layer": 2,
+              "part": "inner",
+              "visible": false,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": 6.97935824453709
+            },
+            {
+              "layer": 2,
+              "part": "section-z",
+              "visible": true,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": null
+            },
+            {
+              "layer": 2,
+              "part": "section-x",
+              "visible": true,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": null
+            },
+            {
+              "layer": 3,
+              "part": "outer",
+              "visible": true,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": 6.97935824453709
+            },
+            {
+              "layer": 3,
+              "part": "section-z",
+              "visible": true,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": null
+            },
+            {
+              "layer": 3,
+              "part": "section-x",
+              "visible": true,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": null
+            }
+          ],
+          "labels": [
+            {
+              "text": "地壳",
+              "visible": true,
+              "position": [
+                77.80268207024953,
+                42.33381230292989,
+                -105.905
+              ]
+            },
+            {
+              "text": "地幔",
+              "visible": true,
+              "position": [
+                77.80268207024953,
+                30.892241410246136,
+                -105.905
+              ]
+            },
+            {
+              "text": "外核",
+              "visible": true,
+              "position": [
+                77.80268207024953,
+                19.450670517562383,
+                -105.905
+              ]
+            },
+            {
+              "text": "内核",
+              "visible": true,
+              "position": [
+                77.80268207024953,
+                8.00909962487863,
+                -105.905
+              ]
+            }
+          ]
+        },
+        {
+          "diagnostics": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 15,
+            "labels": 4,
+            "meshes": 19,
+            "imageMappedMeshes": 0,
+            "extent": [
+              72.081895975584,
+              48.054595947265625,
+              48.054595947265625
+            ],
+            "sceneElevation": 52.631226106345274,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.4,
+            "selection": 1,
+            "kind": "earth-cutaway",
+            "layers": [
+              "crust",
+              "mantle",
+              "outer-core",
+              "inner-core"
+            ],
+            "scale": "schematic",
+            "selected": 1,
+            "focus": "crust",
+            "groupedSections": true,
+            "crustThicknessUnchanged": true,
+            "layerGroups": [
+              {
+                "layer": 0,
+                "visible": true,
+                "offset": [
+                  59.19182285621013,
+                  3.432471267805126,
+                  0
+                ],
+                "parts": 4,
+                "labelVisible": true
+              },
+              {
+                "layer": 1,
+                "visible": true,
+                "offset": [
+                  0,
+                  0,
+                  0
+                ],
+                "parts": 4,
+                "labelVisible": false
+              },
+              {
+                "layer": 2,
+                "visible": true,
+                "offset": [
+                  0,
+                  0,
+                  0
+                ],
+                "parts": 4,
+                "labelVisible": false
+              },
+              {
+                "layer": 3,
+                "visible": true,
+                "offset": [
+                  0,
+                  0,
+                  0
+                ],
+                "parts": 3,
+                "labelVisible": false
+              }
+            ]
+          },
+          "parts": [
+            {
+              "layer": 0,
+              "part": "outer",
+              "visible": true,
+              "position": [
+                59.19182285621013,
+                3.432471267805126,
+                0
+              ],
+              "radius": 24.027298874635886
+            },
+            {
+              "layer": 0,
+              "part": "inner",
+              "visible": true,
+              "position": [
+                59.19182285621013,
+                3.432471267805126,
+                0
+              ],
+              "radius": 23.22638891214802
+            },
+            {
+              "layer": 0,
+              "part": "section-z",
+              "visible": true,
+              "position": [
+                59.19182285621013,
+                3.432471267805126,
+                0
+              ],
+              "radius": null
+            },
+            {
+              "layer": 0,
+              "part": "section-x",
+              "visible": true,
+              "position": [
+                59.19182285621013,
+                3.432471267805126,
+                0
+              ],
+              "radius": null
+            },
+            {
+              "layer": 1,
+              "part": "outer",
+              "visible": true,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": 23.22638891214802
+            },
+            {
+              "layer": 1,
+              "part": "inner",
+              "visible": false,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": 13.04339081765948
+            },
+            {
+              "layer": 1,
+              "part": "section-z",
+              "visible": true,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": null
+            },
+            {
+              "layer": 1,
+              "part": "section-x",
+              "visible": true,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": null
+            },
+            {
+              "layer": 2,
+              "part": "outer",
+              "visible": true,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": 13.04339081765948
+            },
+            {
+              "layer": 2,
+              "part": "inner",
+              "visible": false,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": 6.97935824453709
+            },
+            {
+              "layer": 2,
+              "part": "section-z",
+              "visible": true,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": null
+            },
+            {
+              "layer": 2,
+              "part": "section-x",
+              "visible": true,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": null
+            },
+            {
+              "layer": 3,
+              "part": "outer",
+              "visible": true,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": 6.97935824453709
+            },
+            {
+              "layer": 3,
+              "part": "section-z",
+              "visible": true,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": null
+            },
+            {
+              "layer": 3,
+              "part": "section-x",
+              "visible": true,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": null
+            }
+          ],
+          "labels": [
+            {
+              "text": "地壳",
+              "visible": true,
+              "position": [
+                95.80484971279814,
+                60.640325731223896,
+                -105.905
+              ]
+            },
+            {
+              "text": "地幔",
+              "visible": false,
+              "position": [
+                77.80268207024953,
+                30.892241410246136,
+                -105.905
+              ]
+            },
+            {
+              "text": "外核",
+              "visible": false,
+              "position": [
+                77.80268207024953,
+                19.450670517562383,
+                -105.905
+              ]
+            },
+            {
+              "text": "内核",
+              "visible": false,
+              "position": [
+                77.80268207024953,
+                8.00909962487863,
+                -105.905
+              ]
+            }
+          ]
+        },
+        {
+          "diagnostics": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 15,
+            "labels": 4,
+            "meshes": 19,
+            "imageMappedMeshes": 0,
+            "extent": [
+              72.081895975584,
+              48.054595947265625,
+              48.054595947265625
+            ],
+            "sceneElevation": 52.631226106345274,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.4,
+            "selection": 2,
+            "kind": "earth-cutaway",
+            "layers": [
+              "crust",
+              "mantle",
+              "outer-core",
+              "inner-core"
+            ],
+            "scale": "schematic",
+            "selected": 2,
+            "focus": "mantle",
+            "groupedSections": true,
+            "crustThicknessUnchanged": true,
+            "layerGroups": [
+              {
+                "layer": 0,
+                "visible": false,
+                "offset": [
+                  0,
+                  0,
+                  0
+                ],
+                "parts": 4,
+                "labelVisible": false
+              },
+              {
+                "layer": 1,
+                "visible": true,
+                "offset": [
+                  46.23081134897798,
+                  3.432471267805126,
+                  0
+                ],
+                "parts": 4,
+                "labelVisible": true
+              },
+              {
+                "layer": 2,
+                "visible": true,
+                "offset": [
+                  0,
+                  0,
+                  0
+                ],
+                "parts": 4,
+                "labelVisible": false
+              },
+              {
+                "layer": 3,
+                "visible": true,
+                "offset": [
+                  0,
+                  0,
+                  0
+                ],
+                "parts": 3,
+                "labelVisible": false
+              }
+            ]
+          },
+          "parts": [
+            {
+              "layer": 0,
+              "part": "outer",
+              "visible": false,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": 24.027298874635886
+            },
+            {
+              "layer": 0,
+              "part": "inner",
+              "visible": false,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": 23.22638891214802
+            },
+            {
+              "layer": 0,
+              "part": "section-z",
+              "visible": false,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": null
+            },
+            {
+              "layer": 0,
+              "part": "section-x",
+              "visible": false,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": null
+            },
+            {
+              "layer": 1,
+              "part": "outer",
+              "visible": true,
+              "position": [
+                46.23081134897798,
+                3.432471267805126,
+                0
+              ],
+              "radius": 23.22638891214802
+            },
+            {
+              "layer": 1,
+              "part": "inner",
+              "visible": true,
+              "position": [
+                46.23081134897798,
+                3.432471267805126,
+                0
+              ],
+              "radius": 13.04339081765948
+            },
+            {
+              "layer": 1,
+              "part": "section-z",
+              "visible": true,
+              "position": [
+                46.23081134897798,
+                3.432471267805126,
+                0
+              ],
+              "radius": null
+            },
+            {
+              "layer": 1,
+              "part": "section-x",
+              "visible": true,
+              "position": [
+                46.23081134897798,
+                3.432471267805126,
+                0
+              ],
+              "radius": null
+            },
+            {
+              "layer": 2,
+              "part": "outer",
+              "visible": true,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": 13.04339081765948
+            },
+            {
+              "layer": 2,
+              "part": "inner",
+              "visible": false,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": 6.97935824453709
+            },
+            {
+              "layer": 2,
+              "part": "section-z",
+              "visible": true,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": null
+            },
+            {
+              "layer": 2,
+              "part": "section-x",
+              "visible": true,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": null
+            },
+            {
+              "layer": 3,
+              "part": "outer",
+              "visible": true,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": 6.97935824453709
+            },
+            {
+              "layer": 3,
+              "part": "section-z",
+              "visible": true,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": null
+            },
+            {
+              "layer": 3,
+              "part": "section-x",
+              "visible": true,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": null
+            }
+          ],
+          "labels": [
+            {
+              "text": "地壳",
+              "visible": false,
+              "position": [
+                95.80484971279814,
+                60.640325731223896,
+                -105.905
+              ]
+            },
+            {
+              "text": "地幔",
+              "visible": true,
+              "position": [
+                82.84383820556599,
+                59.83941576873603,
+                -105.905
+              ]
+            },
+            {
+              "text": "外核",
+              "visible": false,
+              "position": [
+                77.80268207024953,
+                19.450670517562383,
+                -105.905
+              ]
+            },
+            {
+              "text": "内核",
+              "visible": false,
+              "position": [
+                77.80268207024953,
+                8.00909962487863,
+                -105.905
+              ]
+            }
+          ]
+        },
+        {
+          "diagnostics": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 15,
+            "labels": 4,
+            "meshes": 19,
+            "imageMappedMeshes": 0,
+            "extent": [
+              72.081895975584,
+              48.054595947265625,
+              48.054595947265625
+            ],
+            "sceneElevation": 52.631226106345274,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.4,
+            "selection": 3,
+            "kind": "earth-cutaway",
+            "layers": [
+              "crust",
+              "mantle",
+              "outer-core",
+              "inner-core"
+            ],
+            "scale": "schematic",
+            "selected": 3,
+            "focus": "core",
+            "groupedSections": true,
+            "crustThicknessUnchanged": true,
+            "layerGroups": [
+              {
+                "layer": 0,
+                "visible": false,
+                "offset": [
+                  0,
+                  0,
+                  0
+                ],
+                "parts": 4,
+                "labelVisible": false
+              },
+              {
+                "layer": 1,
+                "visible": false,
+                "offset": [
+                  0,
+                  0,
+                  0
+                ],
+                "parts": 4,
+                "labelVisible": false
+              },
+              {
+                "layer": 2,
+                "visible": true,
+                "offset": [
+                  0,
+                  0,
+                  0
+                ],
+                "parts": 4,
+                "labelVisible": true
+              },
+              {
+                "layer": 3,
+                "visible": true,
+                "offset": [
+                  0,
+                  0,
+                  0
+                ],
+                "parts": 3,
+                "labelVisible": true
+              }
+            ]
+          },
+          "parts": [
+            {
+              "layer": 0,
+              "part": "outer",
+              "visible": false,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": 24.027298874635886
+            },
+            {
+              "layer": 0,
+              "part": "inner",
+              "visible": false,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": 23.22638891214802
+            },
+            {
+              "layer": 0,
+              "part": "section-z",
+              "visible": false,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": null
+            },
+            {
+              "layer": 0,
+              "part": "section-x",
+              "visible": false,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": null
+            },
+            {
+              "layer": 1,
+              "part": "outer",
+              "visible": false,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": 23.22638891214802
+            },
+            {
+              "layer": 1,
+              "part": "inner",
+              "visible": false,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": 13.04339081765948
+            },
+            {
+              "layer": 1,
+              "part": "section-z",
+              "visible": false,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": null
+            },
+            {
+              "layer": 1,
+              "part": "section-x",
+              "visible": false,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": null
+            },
+            {
+              "layer": 2,
+              "part": "outer",
+              "visible": true,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": 13.04339081765948
+            },
+            {
+              "layer": 2,
+              "part": "inner",
+              "visible": false,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": 6.97935824453709
+            },
+            {
+              "layer": 2,
+              "part": "section-z",
+              "visible": true,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": null
+            },
+            {
+              "layer": 2,
+              "part": "section-x",
+              "visible": true,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": null
+            },
+            {
+              "layer": 3,
+              "part": "outer",
+              "visible": true,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": 6.97935824453709
+            },
+            {
+              "layer": 3,
+              "part": "section-z",
+              "visible": true,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": null
+            },
+            {
+              "layer": 3,
+              "part": "section-x",
+              "visible": true,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": null
+            }
+          ],
+          "labels": [
+            {
+              "text": "地壳",
+              "visible": false,
+              "position": [
+                95.80484971279814,
+                60.640325731223896,
+                -105.905
+              ]
+            },
+            {
+              "text": "地幔",
+              "visible": false,
+              "position": [
+                82.84383820556599,
+                59.83941576873603,
+                -105.905
+              ]
+            },
+            {
+              "text": "外核",
+              "visible": true,
+              "position": [
+                62.92863990976065,
+                29.748084320977764,
+                -105.905
+              ]
+            },
+            {
+              "text": "内核",
+              "visible": true,
+              "position": [
+                62.92863990976065,
+                16.01819924975726,
+                -105.905
+              ]
+            }
+          ]
+        },
+        {
+          "diagnostics": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 15,
+            "labels": 4,
+            "meshes": 19,
+            "imageMappedMeshes": 0,
+            "extent": [
+              72.081895975584,
+              48.054595947265625,
+              48.054595947265625
+            ],
+            "sceneElevation": 52.631226106345274,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.4,
+            "selection": 0,
+            "kind": "earth-cutaway",
+            "layers": [
+              "crust",
+              "mantle",
+              "outer-core",
+              "inner-core"
+            ],
+            "scale": "schematic",
+            "selected": 0,
+            "focus": "all",
+            "groupedSections": true,
+            "crustThicknessUnchanged": true,
+            "layerGroups": [
+              {
+                "layer": 0,
+                "visible": true,
+                "offset": [
+                  0,
+                  0,
+                  0
+                ],
+                "parts": 4,
+                "labelVisible": true
+              },
+              {
+                "layer": 1,
+                "visible": true,
+                "offset": [
+                  0,
+                  0,
+                  0
+                ],
+                "parts": 4,
+                "labelVisible": true
+              },
+              {
+                "layer": 2,
+                "visible": true,
+                "offset": [
+                  0,
+                  0,
+                  0
+                ],
+                "parts": 4,
+                "labelVisible": true
+              },
+              {
+                "layer": 3,
+                "visible": true,
+                "offset": [
+                  0,
+                  0,
+                  0
+                ],
+                "parts": 3,
+                "labelVisible": true
+              }
+            ]
+          },
+          "parts": [
+            {
+              "layer": 0,
+              "part": "outer",
+              "visible": true,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": 24.027298874635886
+            },
+            {
+              "layer": 0,
+              "part": "inner",
+              "visible": false,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": 23.22638891214802
+            },
+            {
+              "layer": 0,
+              "part": "section-z",
+              "visible": true,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": null
+            },
+            {
+              "layer": 0,
+              "part": "section-x",
+              "visible": true,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": null
+            },
+            {
+              "layer": 1,
+              "part": "outer",
+              "visible": true,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": 23.22638891214802
+            },
+            {
+              "layer": 1,
+              "part": "inner",
+              "visible": false,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": 13.04339081765948
+            },
+            {
+              "layer": 1,
+              "part": "section-z",
+              "visible": true,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": null
+            },
+            {
+              "layer": 1,
+              "part": "section-x",
+              "visible": true,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": null
+            },
+            {
+              "layer": 2,
+              "part": "outer",
+              "visible": true,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": 13.04339081765948
+            },
+            {
+              "layer": 2,
+              "part": "inner",
+              "visible": false,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": 6.97935824453709
+            },
+            {
+              "layer": 2,
+              "part": "section-z",
+              "visible": true,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": null
+            },
+            {
+              "layer": 2,
+              "part": "section-x",
+              "visible": true,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": null
+            },
+            {
+              "layer": 3,
+              "part": "outer",
+              "visible": true,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": 6.97935824453709
+            },
+            {
+              "layer": 3,
+              "part": "section-z",
+              "visible": true,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": null
+            },
+            {
+              "layer": 3,
+              "part": "section-x",
+              "visible": true,
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "radius": null
+            }
+          ],
+          "labels": [
+            {
+              "text": "地壳",
+              "visible": true,
+              "position": [
+                77.80268207024953,
+                42.33381230292989,
+                -105.905
+              ]
+            },
+            {
+              "text": "地幔",
+              "visible": true,
+              "position": [
+                77.80268207024953,
+                30.892241410246136,
+                -105.905
+              ]
+            },
+            {
+              "text": "外核",
+              "visible": true,
+              "position": [
+                77.80268207024953,
+                19.450670517562383,
+                -105.905
+              ]
+            },
+            {
+              "text": "内核",
+              "visible": true,
+              "position": [
+                77.80268207024953,
+                8.00909962487863,
+                -105.905
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "earth-normal-motion",
+      "sample": {
+        "diagnostics": {
+          "architecture": "three-dimensional-geometry",
+          "bitmapSurfaces": 0,
+          "solids": 15,
+          "labels": 4,
+          "meshes": 19,
+          "imageMappedMeshes": 0,
+          "extent": [
+            72.081895975584,
+            48.054595947265625,
+            48.054595947265625
+          ],
+          "sceneElevation": 52.631226106345274,
+          "unfoldProgress": 1,
+          "originalPagePreserved": true,
+          "phase": 0.4,
+          "selection": 1,
+          "kind": "earth-cutaway",
+          "layers": [
+            "crust",
+            "mantle",
+            "outer-core",
+            "inner-core"
+          ],
+          "scale": "schematic",
+          "selected": 1,
+          "focus": "crust",
+          "groupedSections": true,
+          "crustThicknessUnchanged": true,
+          "layerGroups": [
+            {
+              "layer": 0,
+              "visible": true,
+              "offset": [
+                59.182324310687676,
+                3.431920457186048,
+                0
+              ],
+              "parts": 4,
+              "labelVisible": true
+            },
+            {
+              "layer": 1,
+              "visible": true,
+              "offset": [
+                0,
+                0,
+                0
+              ],
+              "parts": 4,
+              "labelVisible": false
+            },
+            {
+              "layer": 2,
+              "visible": true,
+              "offset": [
+                0,
+                0,
+                0
+              ],
+              "parts": 4,
+              "labelVisible": false
+            },
+            {
+              "layer": 3,
+              "visible": true,
+              "offset": [
+                0,
+                0,
+                0
+              ],
+              "parts": 3,
+              "labelVisible": false
+            }
+          ]
+        },
+        "parts": [
+          {
+            "layer": 0,
+            "part": "outer",
+            "visible": true,
+            "position": [
+              59.182324310687676,
+              3.431920457186048,
+              0
+            ],
+            "radius": 24.027298874635886
+          },
+          {
+            "layer": 0,
+            "part": "inner",
+            "visible": true,
+            "position": [
+              59.182324310687676,
+              3.431920457186048,
+              0
+            ],
+            "radius": 23.22638891214802
+          },
+          {
+            "layer": 0,
+            "part": "section-z",
+            "visible": true,
+            "position": [
+              59.182324310687676,
+              3.431920457186048,
+              0
+            ],
+            "radius": null
+          },
+          {
+            "layer": 0,
+            "part": "section-x",
+            "visible": true,
+            "position": [
+              59.182324310687676,
+              3.431920457186048,
+              0
+            ],
+            "radius": null
+          },
+          {
+            "layer": 1,
+            "part": "outer",
+            "visible": true,
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "radius": 23.22638891214802
+          },
+          {
+            "layer": 1,
+            "part": "inner",
+            "visible": false,
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "radius": 13.04339081765948
+          },
+          {
+            "layer": 1,
+            "part": "section-z",
+            "visible": true,
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "radius": null
+          },
+          {
+            "layer": 1,
+            "part": "section-x",
+            "visible": true,
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "radius": null
+          },
+          {
+            "layer": 2,
+            "part": "outer",
+            "visible": true,
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "radius": 13.04339081765948
+          },
+          {
+            "layer": 2,
+            "part": "inner",
+            "visible": false,
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "radius": 6.97935824453709
+          },
+          {
+            "layer": 2,
+            "part": "section-z",
+            "visible": true,
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "radius": null
+          },
+          {
+            "layer": 2,
+            "part": "section-x",
+            "visible": true,
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "radius": null
+          },
+          {
+            "layer": 3,
+            "part": "outer",
+            "visible": true,
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "radius": 6.97935824453709
+          },
+          {
+            "layer": 3,
+            "part": "section-z",
+            "visible": true,
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "radius": null
+          },
+          {
+            "layer": 3,
+            "part": "section-x",
+            "visible": true,
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "radius": null
+          }
+        ],
+        "labels": [
+          {
+            "text": "地壳",
+            "visible": true,
+            "position": [
+              95.7953511672757,
+              60.639774920604815,
+              -105.905
+            ]
+          },
+          {
+            "text": "地幔",
+            "visible": false,
+            "position": [
+              77.80268207024953,
+              30.892241410246136,
+              -105.905
+            ]
+          },
+          {
+            "text": "外核",
+            "visible": false,
+            "position": [
+              77.80268207024953,
+              19.450670517562383,
+              -105.905
+            ]
+          },
+          {
+            "text": "内核",
+            "visible": false,
+            "position": [
+              77.80268207024953,
+              8.00909962487863,
+              -105.905
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "reviewedEntry": {
+    "path": "/assets/index-B2EOZTu1.js",
+    "sha256": "dcbc3320877b03aad27ce73f712ad120e73e98477bf3cf9b7b10055e6ab4297e"
+  },
+  "reviewedAt": "2026-11-05T06:12:37.929Z",
+  "externalRequests": [],
+  "requestFailures": []
+}

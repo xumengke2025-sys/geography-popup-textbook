@@ -1,0 +1,4441 @@
+{
+  "checks": [
+    "soil/section: actual visible mesh has a ray-hit observation target",
+    "3d/soil/section: observing preserves scientific inputs and pauses",
+    "3d/soil/section: real observation state selected",
+    "3d/soil: returning to overview preserves progress",
+    "waves/displacement: actual visible mesh has a ray-hit observation target",
+    "3d/waves/displacement: observing preserves scientific inputs and pauses",
+    "3d/waves/displacement: real observation state selected",
+    "3d/waves: returning to overview preserves progress",
+    "waves/depth-pair: actual visible mesh has a ray-hit observation target",
+    "3d/waves/depth-pair: observing preserves scientific inputs and pauses",
+    "3d/waves/depth-pair: real observation state selected",
+    "3d/waves: returning to overview preserves progress",
+    "temperature/surface-compare: actual visible mesh has a ray-hit observation target",
+    "3d/temperature/surface-compare: observing preserves scientific inputs and pauses",
+    "3d/temperature/surface-compare: real observation state selected",
+    "3d/temperature: returning to overview preserves progress",
+    "earth/closed: actual visible mesh has a ray-hit observation target",
+    "3d/earth/closed: observing preserves scientific inputs and pauses",
+    "3d/earth/closed: real observation state selected",
+    "3d/earth: returning to overview preserves progress",
+    "gnss/sat-0: actual visible mesh has a ray-hit observation target",
+    "3d/gnss/sat-0: observing preserves scientific inputs and pauses",
+    "3d/gnss/sat-0: real observation state selected",
+    "3d/gnss: returning to overview preserves progress",
+    "soil/section: native SVG has the corresponding physical control",
+    "soil/section: native object keeps keyboard focus",
+    "2d/soil/section: observing preserves scientific inputs and pauses",
+    "2d/soil/section: real observation state selected",
+    "2d/soil: returning to overview preserves progress",
+    "waves/displacement: native SVG has the corresponding physical control",
+    "waves/displacement: native object keeps keyboard focus",
+    "2d/waves/displacement: observing preserves scientific inputs and pauses",
+    "2d/waves/displacement: real observation state selected",
+    "2d/waves: returning to overview preserves progress",
+    "waves/depth-pair: native SVG has the corresponding physical control",
+    "waves/depth-pair: native object keeps keyboard focus",
+    "2d/waves/depth-pair: observing preserves scientific inputs and pauses",
+    "2d/waves/depth-pair: real observation state selected",
+    "2d/waves: returning to overview preserves progress",
+    "temperature/surface-compare: native SVG has the corresponding physical control",
+    "temperature/surface-compare: native object keeps keyboard focus",
+    "2d/temperature/surface-compare: observing preserves scientific inputs and pauses",
+    "2d/temperature/surface-compare: real observation state selected",
+    "2d/temperature: returning to overview preserves progress",
+    "earth/closed: native SVG has the corresponding physical control",
+    "earth/closed: native object keeps keyboard focus",
+    "2d/earth/closed: observing preserves scientific inputs and pauses",
+    "2d/earth/closed: real observation state selected",
+    "2d/earth: returning to overview preserves progress",
+    "gnss/sat-0: native SVG has the corresponding physical control",
+    "gnss/sat-0: native object keeps keyboard focus",
+    "2d/gnss/sat-0: observing preserves scientific inputs and pauses",
+    "2d/gnss/sat-0: real observation state selected",
+    "2d/gnss: returning to overview preserves progress"
+  ],
+  "failures": [],
+  "errors": [],
+  "states": [
+    {
+      "name": "3d-soil-section",
+      "state": {
+        "ready": true,
+        "twoD": false,
+        "spread": 47,
+        "turning": false,
+        "figureBusy": false,
+        "active": "soil",
+        "playing": false,
+        "playbackSpeed": 2,
+        "teacher": false,
+        "stored": true,
+        "state": {
+          "phase": 0.62,
+          "selection": -1,
+          "routes": [],
+          "rings": [],
+          "focus": null,
+          "caption": "图5.17　森林土壤剖面及各土层特点"
+        },
+        "process": {
+          "key": "soil-leaching",
+          "stage": "森林土壤剖面",
+          "title": "部分可移动物质随水下迁",
+          "text": "留意浅色淋溶层中的标记向下移动。这里只表示一部分可移动物质。",
+          "activeStop": 2,
+          "seeking": false
+        },
+        "render": {
+          "position": 47,
+          "spread": 47,
+          "busy": false,
+          "figure": "soil",
+          "modelState": "live",
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 58,
+            "labels": 6,
+            "meshes": 68,
+            "imageMappedMeshes": 0,
+            "extent": [
+              79.73464999251159,
+              78.74349107501865,
+              17.746194203808386
+            ],
+            "sceneElevation": 37.792827468886564,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.62,
+            "selection": -1,
+            "kind": "soil-profile",
+            "reference": {
+              "textbookPages": [
+                89
+              ],
+              "pdfPages": [
+                94
+              ],
+              "figure": "5.17",
+              "quantities": "schematic",
+              "scope": "leaching-and-illuviation-of-one-movable-portion",
+              "notAllSoilMinerals": true,
+              "progressIsNotSoilFormingTime": true
+            },
+            "stage": "leaching",
+            "layers": [
+              {
+                "name": "有机层",
+                "offset": 0
+              },
+              {
+                "name": "腐殖质层",
+                "offset": 0
+              },
+              {
+                "name": "淋溶层",
+                "offset": 0
+              },
+              {
+                "name": "淀积层",
+                "offset": 0
+              },
+              {
+                "name": "母质层",
+                "offset": 0
+              },
+              {
+                "name": "母岩层",
+                "offset": 0
+              }
+            ],
+            "inspection": "section",
+            "section": {
+              "inspection": "section",
+              "split": 0.55,
+              "frontOffset": 1.08,
+              "frontFraction": 0.45,
+              "rearFraction": 0.55,
+              "changesInventory": false,
+              "measuresRealThickness": false
+            },
+            "materials": [
+              {
+                "id": 0,
+                "radius": 0.8375199873929432,
+                "travel": 0.47329263092402246,
+                "sourceDepth": 0.2713797446924582,
+                "targetDepth": 0.5065279769382905,
+                "u": 0.1121735435947341,
+                "depth": 0.3826736701892212,
+                "offsetX": 0,
+                "status": "moving"
+              },
+              {
+                "id": 1,
+                "radius": 1.0162830191751708,
+                "travel": 0.5788816925395842,
+                "sourceDepth": 0.2717962840322798,
+                "targetDepth": 0.5089583532201466,
+                "u": 0.2768824955888111,
+                "depth": 0.4090850640499421,
+                "offsetX": 0,
+                "status": "moving"
+              },
+              {
+                "id": 2,
+                "radius": 0.7592127869100296,
+                "travel": 0.5538700270350886,
+                "sourceDepth": 0.2683175261240613,
+                "targetDepth": 0.5140953190819273,
+                "u": 0.42183094885400985,
+                "depth": 0.40444647895425895,
+                "offsetX": 0,
+                "status": "moving"
+              },
+              {
+                "id": 3,
+                "radius": 0.880561516238231,
+                "travel": 0.6808543135474315,
+                "sourceDepth": 0.2737282002208776,
+                "targetDepth": 0.5065950216253841,
+                "u": 0.5341425960038991,
+                "depth": 0.43227658005621517,
+                "offsetX": 0,
+                "status": "moving"
+              },
+              {
+                "id": 4,
+                "radius": 0.833336166566005,
+                "travel": 0.43047906999755653,
+                "sourceDepth": 0.27053712352363074,
+                "targetDepth": 0.5030059647870221,
+                "u": 0.7036526989616443,
+                "depth": 0.37061009411410506,
+                "offsetX": 0,
+                "status": "moving"
+              },
+              {
+                "id": 5,
+                "radius": 0.7777879285327799,
+                "travel": 0.5708256940725482,
+                "sourceDepth": 0.2717033385904943,
+                "targetDepth": 0.5079894620390405,
+                "u": 0.882719688563021,
+                "depth": 0.4065815290077225,
+                "offsetX": 0,
+                "status": "moving"
+              },
+              {
+                "id": 6,
+                "radius": 0.8332762647340133,
+                "travel": 0.3838259341646287,
+                "sourceDepth": 0.3143410530204765,
+                "targetDepth": 0.5576631875049644,
+                "u": 0.10030989366063478,
+                "depth": 0.40773439859191646,
+                "offsetX": 0,
+                "status": "moving"
+              },
+              {
+                "id": 7,
+                "radius": 0.7571976126957451,
+                "travel": 0.521782875919029,
+                "sourceDepth": 0.3193295420746072,
+                "targetDepth": 0.5590361619953037,
+                "u": 0.26389186307217044,
+                "depth": 0.4444043515936578,
+                "offsetX": 0,
+                "status": "moving"
+              },
+              {
+                "id": 8,
+                "radius": 0.7949503606258077,
+                "travel": 0.3958343976166105,
+                "sourceDepth": 0.31301294648738576,
+                "targetDepth": 0.5617069554250993,
+                "u": 0.4203258606521116,
+                "depth": 0.41145458970610554,
+                "offsetX": 0,
+                "status": "moving"
+              },
+              {
+                "id": 9,
+                "radius": 0.830811513527442,
+                "travel": 0.6007567186094155,
+                "sourceDepth": 0.3176888510229401,
+                "targetDepth": 0.558740785504895,
+                "u": 0.5453471701896901,
+                "depth": 0.4625024201967711,
+                "offsetX": 0,
+                "status": "moving"
+              },
+              {
+                "id": 10,
+                "radius": 0.7545535267679953,
+                "travel": 0.520587436811425,
+                "sourceDepth": 0.315210359665236,
+                "targetDepth": 0.5637715435737446,
+                "u": 0.6856430241702067,
+                "depth": 0.4446081892869797,
+                "offsetX": 0,
+                "status": "moving"
+              },
+              {
+                "id": 11,
+                "radius": 0.9210731318633407,
+                "travel": 0.46977198830665773,
+                "sourceDepth": 0.3185024095208064,
+                "targetDepth": 0.5524306891667512,
+                "u": 0.8430573126666745,
+                "depth": 0.4283953625712377,
+                "offsetX": 0,
+                "status": "moving"
+              },
+              {
+                "id": 12,
+                "radius": 0.9006734505695931,
+                "travel": 0.4542639534587317,
+                "sourceDepth": 0.3610287609037732,
+                "targetDepth": 0.6035804478319505,
+                "u": 0.12046207373244708,
+                "depth": 0.47121124912585166,
+                "offsetX": 0,
+                "status": "moving"
+              },
+              {
+                "id": 13,
+                "radius": 0.9849734389511469,
+                "travel": 0.44404477087402544,
+                "sourceDepth": 0.35876134537554755,
+                "targetDepth": 0.5946529881501774,
+                "u": 0.2676252140482246,
+                "depth": 0.4635077958425055,
+                "offsetX": 0,
+                "status": "moving"
+              },
+              {
+                "id": 14,
+                "radius": 0.7739688148416463,
+                "travel": 0.7011087429094308,
+                "sourceDepth": 0.361600373149573,
+                "targetDepth": 0.5966476676057827,
+                "u": 0.3798062270100759,
+                "depth": 0.526394086290029,
+                "offsetX": 0,
+                "status": "moving"
+              },
+              {
+                "id": 15,
+                "radius": 0.9565535173958779,
+                "travel": 0.3783240075028164,
+                "sourceDepth": 0.3624523505434918,
+                "targetDepth": 0.6053248850985983,
+                "u": 0.5766872545304076,
+                "depth": 0.45433686112874594,
+                "offsetX": 0,
+                "status": "moving"
+              },
+              {
+                "id": 16,
+                "radius": 0.7815274459928332,
+                "travel": 0.6535710839840048,
+                "sourceDepth": 0.3643549089329099,
+                "targetDepth": 0.6073551301862098,
+                "u": 0.7180147527906044,
+                "depth": 0.523172826945782,
+                "offsetX": 0,
+                "status": "moving"
+              },
+              {
+                "id": 17,
+                "radius": 1.0336531926324823,
+                "travel": 0.5047351560775631,
+                "sourceDepth": 0.36445700036593914,
+                "targetDepth": 0.5964391605108685,
+                "u": 0.8536119592070059,
+                "depth": 0.4815465521739003,
+                "offsetX": 0,
+                "status": "moving"
+              },
+              {
+                "id": 18,
+                "radius": 0.8822310241452215,
+                "travel": 0.572602135168662,
+                "sourceDepth": 0.41023823275123145,
+                "targetDepth": 0.6521581165830721,
+                "u": 0.1053247459857741,
+                "depth": 0.5487620747730981,
+                "offsetX": 0,
+                "status": "moving"
+              },
+              {
+                "id": 19,
+                "radius": 0.8300122204665967,
+                "travel": 0.492526915463354,
+                "sourceDepth": 0.41176533035745433,
+                "targetDepth": 0.6480319652344843,
+                "u": 0.2909877055922806,
+                "depth": 0.5281330072603444,
+                "offsetX": 0,
+                "status": "moving"
+              },
+              {
+                "id": 20,
+                "radius": 0.8055132108631369,
+                "travel": 0.4364027991277542,
+                "sourceDepth": 0.4033327042722158,
+                "targetDepth": 0.6390950653441833,
+                "u": 0.4162942428256284,
+                "depth": 0.5062200585729907,
+                "offsetX": 0,
+                "status": "moving"
+              },
+              {
+                "id": 21,
+                "radius": 0.7838554303336422,
+                "travel": 0.547318333383531,
+                "sourceDepth": 0.40836175875322356,
+                "targetDepth": 0.6504476999473263,
+                "u": 0.579819853217878,
+                "depth": 0.5408598326231634,
+                "offsetX": 0,
+                "status": "moving"
+              },
+              {
+                "id": 22,
+                "radius": 0.9924576984738451,
+                "travel": 0.46746687279153276,
+                "sourceDepth": 0.40792801110652366,
+                "targetDepth": 0.6482873296315229,
+                "u": 0.7055937373543926,
+                "depth": 0.5202880300837089,
+                "offsetX": 0,
+                "status": "moving"
+              },
+              {
+                "id": 23,
+                "radius": 1.0249871910236834,
+                "travel": 0.46142205517141394,
+                "sourceDepth": 0.40911418071363737,
+                "targetDepth": 0.646664000151135,
+                "u": 0.8588284207103429,
+                "depth": 0.5187249066040858,
+                "offsetX": 0,
+                "status": "moving"
+              }
+            ],
+            "inventory": {
+              "source": 0,
+              "moving": 24,
+              "deposited": 0,
+              "total": 24
+            },
+            "water": {
+              "active": true,
+              "rain": true,
+              "front": 0.81,
+              "strength": 1,
+              "tracers": [
+                {
+                  "id": 0,
+                  "lane": 0,
+                  "depth": 0.80352,
+                  "tailDepth": 0.77752,
+                  "u": 0.13115677347716737
+                },
+                {
+                  "id": 1,
+                  "lane": 1,
+                  "depth": 0.80352,
+                  "tailDepth": 0.77752,
+                  "u": 0.3800855200234581
+                },
+                {
+                  "id": 2,
+                  "lane": 2,
+                  "depth": 0.80352,
+                  "tailDepth": 0.77752,
+                  "u": 0.6259294583645578
+                },
+                {
+                  "id": 3,
+                  "lane": 3,
+                  "depth": 0.80352,
+                  "tailDepth": 0.77752,
+                  "u": 0.8621108010142494
+                },
+                {
+                  "id": 4,
+                  "lane": 0,
+                  "depth": 0.19602,
+                  "tailDepth": 0.17002,
+                  "u": 0.14359884891869773
+                },
+                {
+                  "id": 5,
+                  "lane": 1,
+                  "depth": 0.19602,
+                  "tailDepth": 0.17002,
+                  "u": 0.3648556476797781
+                },
+                {
+                  "id": 6,
+                  "lane": 2,
+                  "depth": 0.19602,
+                  "tailDepth": 0.17002,
+                  "u": 0.5922658744343421
+                },
+                {
+                  "id": 7,
+                  "lane": 3,
+                  "depth": 0.19602,
+                  "tailDepth": 0.17002,
+                  "u": 0.830433383788224
+                },
+                {
+                  "id": 8,
+                  "lane": 0,
+                  "depth": 0.39852000000000004,
+                  "tailDepth": 0.37252,
+                  "u": 0.13458810781421218
+                },
+                {
+                  "id": 9,
+                  "lane": 1,
+                  "depth": 0.39852000000000004,
+                  "tailDepth": 0.37252,
+                  "u": 0.38354446603960163
+                },
+                {
+                  "id": 10,
+                  "lane": 2,
+                  "depth": 0.39852000000000004,
+                  "tailDepth": 0.37252,
+                  "u": 0.6273178658209467
+                },
+                {
+                  "id": 11,
+                  "lane": 3,
+                  "depth": 0.39852000000000004,
+                  "tailDepth": 0.37252,
+                  "u": 0.8605864805784534
+                },
+                {
+                  "id": 12,
+                  "lane": 0,
+                  "depth": 0.60102,
+                  "tailDepth": 0.57502,
+                  "u": 0.14716634901155504
+                },
+                {
+                  "id": 13,
+                  "lane": 1,
+                  "depth": 0.60102,
+                  "tailDepth": 0.57502,
+                  "u": 0.36814791836202326
+                },
+                {
+                  "id": 14,
+                  "lane": 2,
+                  "depth": 0.60102,
+                  "tailDepth": 0.57502,
+                  "u": 0.5932858684880992
+                },
+                {
+                  "id": 15,
+                  "lane": 3,
+                  "depth": 0.60102,
+                  "tailDepth": 0.57502,
+                  "u": 0.8285623865074724
+                }
+              ]
+            },
+            "fixedMaterialCount": 24,
+            "waterTrack": {
+              "start": [
+                13.14533129352576,
+                76.60737480876804,
+                -127.32175267724745
+              ],
+              "end": [
+                13.14533129352576,
+                2.0539580146134,
+                -127.32175267724745
+              ]
+            },
+            "buffersStable": true,
+            "notAllSoilMinerals": true,
+            "progressIsNotSoilFormingTime": true
+          },
+          "view": "detail",
+          "labels": [
+            {
+              "text": "淋溶层",
+              "left": 881.24054177691,
+              "top": 435.8226419419547,
+              "right": 1004.2613386277146,
+              "bottom": 475.68138012161546,
+              "fontPx": 27.402882498516764
+            },
+            {
+              "text": "淀积层",
+              "left": 874.4355785328625,
+              "top": 521.1432402965278,
+              "right": 993.5123625894755,
+              "bottom": 559.7241183308705,
+              "fontPx": 26.524353648610628
+            }
+          ],
+          "models": 1,
+          "images": 6,
+          "triangles": 24683,
+          "calls": 148,
+          "geometries": 49,
+          "textures": 405,
+          "hiRes": 6,
+          "engine": "Every Joule 48591dd"
+        },
+        "regions": [
+          {
+            "id": "soil-composition",
+            "screenX": 350.5458839499961,
+            "screenY": 460.0382639707051
+          },
+          {
+            "id": "soil-texture",
+            "screenX": 1059.1313885723857,
+            "screenY": 526.3674726783759
+          },
+          {
+            "id": "soil",
+            "screenX": 537.6390651868458,
+            "screenY": 800.6795047988193
+          }
+        ],
+        "pages": [
+          93,
+          94
+        ],
+        "notes": {},
+        "originalPageCount": 132,
+        "sectionCount": 17,
+        "studyCount": 6,
+        "figureCount": 60
+      }
+    },
+    {
+      "name": "3d-waves-displacement",
+      "state": {
+        "ready": true,
+        "twoD": false,
+        "spread": 31,
+        "turning": false,
+        "figureBusy": false,
+        "active": "waves",
+        "playing": false,
+        "playbackSpeed": 2,
+        "teacher": false,
+        "stored": true,
+        "state": {
+          "phase": 0.62,
+          "selection": 0,
+          "routes": [],
+          "rings": [],
+          "focus": null,
+          "caption": "波形向前传播；橙点表示同一水质点。"
+        },
+        "process": null,
+        "render": {
+          "position": 31,
+          "spread": 31,
+          "busy": false,
+          "figure": "waves",
+          "modelState": "live",
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 6,
+            "labels": 2,
+            "meshes": 8,
+            "imageMappedMeshes": 0,
+            "extent": [
+              175.77273333072662,
+              73.73923154230152,
+              149.03685404768575
+            ],
+            "sceneElevation": 56,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.62,
+            "selection": 0,
+            "kind": "surface-wave",
+            "reference": {
+              "textbookPage": 57,
+              "pdfPage": 62,
+              "figure": "3.20",
+              "quantities": "schematic",
+              "model": "ideal-periodic-deep-water",
+              "includesCurrent": false,
+              "includesBreaking": false,
+              "includesStokesDrift": false,
+              "markerIsRealBuoy": false
+            },
+            "cyclePhase": 0.62,
+            "inspection": "displacement",
+            "observation": {
+              "inspection": "displacement",
+              "phase": 0.62,
+              "points": [
+                {
+                  "id": "surface-water-point",
+                  "depth": 0,
+                  "rest": {
+                    "x": 57,
+                    "height": 19
+                  },
+                  "point": {
+                    "x": 59.38678327990963,
+                    "height": 13.713860995514416
+                  },
+                  "radius": 5.8
+                }
+              ],
+              "displacementVisible": true,
+              "depthsAreSchematic": true,
+              "changesWave": false
+            },
+            "caption": "波形向前传播；橙点表示同一水质点。",
+            "wavePropagates": true,
+            "propagationDirection": "right",
+            "particleAdvection": false,
+            "particleMotion": "closed-orbit",
+            "particle": {
+              "restX": 57,
+              "x": 59.38678327990963,
+              "height": 13.713860995514416
+            },
+            "waveHeight": 11.6,
+            "amplitude": 5.8,
+            "wavelength": 48,
+            "closedVolume": true,
+            "fixedBuffers": true,
+            "surfaceEquation": "monotone-gerstner-inverse",
+            "heightProbes": [
+              {
+                "x": 0,
+                "height": 13.738764728241105
+              },
+              {
+                "x": 25,
+                "height": 20.17661245639069
+              },
+              {
+                "x": 50,
+                "height": 13.428078846312246
+              },
+              {
+                "x": 75,
+                "height": 22.13256794246787
+              },
+              {
+                "x": 100,
+                "height": 13.249786627340768
+              }
+            ],
+            "trackedSurfaceError": 1.6342482922482304e-13,
+            "controls": [
+              "particle-displacement",
+              "depth-comparison",
+              "phase-track"
+            ]
+          },
+          "view": "detail",
+          "labels": [
+            {
+              "text": "波向前传播",
+              "left": 359.50001882247756,
+              "top": 143.45062519606066,
+              "right": 608.0998891840375,
+              "bottom": 199.79992914468082,
+              "fontPx": 38.75250376817387
+            },
+            {
+              "text": "水质点",
+              "left": 866.520736423033,
+              "top": 167.71842626026123,
+              "right": 1055.3194944791696,
+              "bottom": 226.0744060230671,
+              "fontPx": 40.13253345091211
+            }
+          ],
+          "models": 1,
+          "images": 6,
+          "triangles": 24291,
+          "calls": 35,
+          "geometries": 34,
+          "textures": 277,
+          "hiRes": 6,
+          "engine": "Every Joule 48591dd"
+        },
+        "regions": [
+          {
+            "id": "waves",
+            "screenX": 685.4595204576133,
+            "screenY": 762.7627387003645
+          }
+        ],
+        "pages": [
+          61,
+          62
+        ],
+        "notes": {},
+        "originalPageCount": 132,
+        "sectionCount": 17,
+        "studyCount": 6,
+        "figureCount": 60
+      }
+    },
+    {
+      "name": "3d-waves-depth-pair",
+      "state": {
+        "ready": true,
+        "twoD": false,
+        "spread": 31,
+        "turning": false,
+        "figureBusy": false,
+        "active": "waves",
+        "playing": false,
+        "playbackSpeed": 2,
+        "teacher": false,
+        "stored": true,
+        "state": {
+          "phase": 0.62,
+          "selection": 0,
+          "routes": [],
+          "rings": [],
+          "focus": null,
+          "caption": "波形向前传播；橙点表示同一水质点。"
+        },
+        "process": null,
+        "render": {
+          "position": 31,
+          "spread": 31,
+          "busy": false,
+          "figure": "waves",
+          "modelState": "live",
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 6,
+            "labels": 2,
+            "meshes": 8,
+            "imageMappedMeshes": 0,
+            "extent": [
+              175.77273333072662,
+              73.73923154230152,
+              149.03685404768575
+            ],
+            "sceneElevation": 56,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.62,
+            "selection": 0,
+            "kind": "surface-wave",
+            "reference": {
+              "textbookPage": 57,
+              "pdfPage": 62,
+              "figure": "3.20",
+              "quantities": "schematic",
+              "model": "ideal-periodic-deep-water",
+              "includesCurrent": false,
+              "includesBreaking": false,
+              "includesStokesDrift": false,
+              "markerIsRealBuoy": false
+            },
+            "cyclePhase": 0.62,
+            "inspection": "depth-pair",
+            "observation": {
+              "inspection": "depth-pair",
+              "phase": 0.62,
+              "points": [
+                {
+                  "id": "surface-water-point",
+                  "depth": 0,
+                  "rest": {
+                    "x": 57,
+                    "height": 19
+                  },
+                  "point": {
+                    "x": 59.38678327990963,
+                    "height": 13.713860995514416
+                  },
+                  "radius": 5.8
+                },
+                {
+                  "id": "deep-water-point",
+                  "depth": 8,
+                  "rest": {
+                    "x": 57,
+                    "height": 11
+                  },
+                  "point": {
+                    "x": 57.83756952836254,
+                    "height": 9.144989119827642
+                  },
+                  "radius": 2.0353348816347836
+                }
+              ],
+              "displacementVisible": true,
+              "depthsAreSchematic": true,
+              "changesWave": false
+            },
+            "caption": "波形向前传播；橙点表示同一水质点。",
+            "wavePropagates": true,
+            "propagationDirection": "right",
+            "particleAdvection": false,
+            "particleMotion": "closed-orbit",
+            "particle": {
+              "restX": 57,
+              "x": 59.38678327990963,
+              "height": 13.713860995514416
+            },
+            "waveHeight": 11.6,
+            "amplitude": 5.8,
+            "wavelength": 48,
+            "closedVolume": true,
+            "fixedBuffers": true,
+            "surfaceEquation": "monotone-gerstner-inverse",
+            "heightProbes": [
+              {
+                "x": 0,
+                "height": 13.738764728241105
+              },
+              {
+                "x": 25,
+                "height": 20.17661245639069
+              },
+              {
+                "x": 50,
+                "height": 13.428078846312246
+              },
+              {
+                "x": 75,
+                "height": 22.13256794246787
+              },
+              {
+                "x": 100,
+                "height": 13.249786627340768
+              }
+            ],
+            "trackedSurfaceError": 1.6342482922482304e-13,
+            "controls": [
+              "particle-displacement",
+              "depth-comparison",
+              "phase-track"
+            ]
+          },
+          "view": "detail",
+          "labels": [
+            {
+              "text": "波向前传播",
+              "left": 359.5000189997305,
+              "top": 143.45062525414065,
+              "right": 608.0998892790188,
+              "bottom": 199.79992918411253,
+              "fontPx": 38.75250375534908
+            },
+            {
+              "text": "水质点",
+              "left": 866.5207364231958,
+              "top": 167.71842638894574,
+              "right": 1055.319494431838,
+              "bottom": 226.07440613707138,
+              "fontPx": 40.132533440816225
+            }
+          ],
+          "models": 1,
+          "images": 6,
+          "triangles": 24371,
+          "calls": 35,
+          "geometries": 35,
+          "textures": 277,
+          "hiRes": 6,
+          "engine": "Every Joule 48591dd"
+        },
+        "regions": [
+          {
+            "id": "waves",
+            "screenX": 685.4595204388792,
+            "screenY": 762.7627385980755
+          }
+        ],
+        "pages": [
+          61,
+          62
+        ],
+        "notes": {},
+        "originalPageCount": 132,
+        "sectionCount": 17,
+        "studyCount": 6,
+        "figureCount": 60
+      }
+    },
+    {
+      "name": "3d-temperature-surface-compare",
+      "state": {
+        "ready": true,
+        "twoD": false,
+        "spread": 28,
+        "turning": false,
+        "figureBusy": false,
+        "active": "temperature",
+        "playing": false,
+        "playbackSpeed": 2,
+        "teacher": false,
+        "stored": true,
+        "state": {
+          "phase": 0.62,
+          "selection": 2,
+          "routes": [],
+          "rings": [],
+          "focus": null,
+          "caption": "约3100米 · 约1°C"
+        },
+        "process": {
+          "key": "temperature-deep-water-约3100米 · 约1°C",
+          "stage": "沿深度观察海水",
+          "title": "约3100米 · 约1°C",
+          "text": "更深处原曲线变化较小。读数为原图近似，不表示海水正在降温。",
+          "activeStop": 2,
+          "seeking": false
+        },
+        "render": {
+          "position": 28,
+          "spread": 28,
+          "busy": false,
+          "figure": "temperature",
+          "modelState": "live",
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 13,
+            "labels": 20,
+            "meshes": 33,
+            "imageMappedMeshes": 0,
+            "extent": [
+              58.85832768073099,
+              74.59423029365712,
+              29.920907374849918
+            ],
+            "sceneElevation": 25.722148394720346,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.62,
+            "selection": 2,
+            "kind": "temperature-depth-profile",
+            "state": {
+              "phase": 0.62,
+              "stage": "deep-water",
+              "stageIndex": 2,
+              "selection": 2,
+              "activeStop": 2,
+              "depthKm": 3.1,
+              "depthM": 3100,
+              "approxTemperatureC": 1.1475384615384614,
+              "depthReading": "约3100米",
+              "temperatureReading": "约1°C",
+              "caption": "约3100米 · 约1°C",
+              "note": "深层变化较小",
+              "phaseMeaning": "observation-depth",
+              "phaseIsTime": false,
+              "curveIsFixed": true,
+              "newObservations": false,
+              "preciseMeasuredDataset": false,
+              "extrapolatesBelowCurve": false,
+              "source": {
+                "printedPage": 50,
+                "pdfPage": 55,
+                "figure": "3.8",
+                "source": "textbook/page-055.webp",
+                "title": "太平洋西经170°低纬度某个观测站水温随深度变化的曲线",
+                "location": "太平洋西经170°低纬度某个观测站",
+                "modelType": "approximate-reading-of-printed-vertical-profile",
+                "approximateReadGraph": true,
+                "newObservations": false,
+                "preciseMeasuredDataset": false,
+                "appliesToAllOceans": false,
+                "predictsTemperature": false,
+                "phaseIsTime": false,
+                "phaseMeaning": "observation-depth",
+                "stagesAreObservationNotes": true,
+                "thermoclineBoundaryClaimed": false,
+                "temperatureAxisC": [
+                  0,
+                  10,
+                  20,
+                  30
+                ],
+                "depthAxisKm": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6
+                ],
+                "curveMaxDepthKm": 5,
+                "extrapolateBelowCurve": false,
+                "waterColor": "qualitative-warm-to-cool-reading-aid",
+                "horizontalDistanceIsReal": false
+              },
+              "point": [
+                20.754092307692307,
+                26.799999999999997,
+                60.5
+              ],
+              "profilePoint": [
+                20.754092307692307,
+                26.799999999999997,
+                60.5
+              ],
+              "probe": [
+                95,
+                26.799999999999997,
+                62
+              ],
+              "sliceY": 26.799999999999997,
+              "handle": [
+                63.6,
+                -18,
+                70
+              ],
+              "waterColor": [
+                0.6372252421652421,
+                0.7502125071225071,
+                0.7640498005698005
+              ],
+              "complete": false,
+              "units": "approximate-printed-km-and-celsius"
+            },
+            "source": {
+              "printedPage": 50,
+              "pdfPage": 55,
+              "figure": "3.8",
+              "source": "textbook/page-055.webp",
+              "title": "太平洋西经170°低纬度某个观测站水温随深度变化的曲线",
+              "location": "太平洋西经170°低纬度某个观测站",
+              "modelType": "approximate-reading-of-printed-vertical-profile",
+              "approximateReadGraph": true,
+              "newObservations": false,
+              "preciseMeasuredDataset": false,
+              "appliesToAllOceans": false,
+              "predictsTemperature": false,
+              "phaseIsTime": false,
+              "phaseMeaning": "observation-depth",
+              "stagesAreObservationNotes": true,
+              "thermoclineBoundaryClaimed": false,
+              "temperatureAxisC": [
+                0,
+                10,
+                20,
+                30
+              ],
+              "depthAxisKm": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+              ],
+              "curveMaxDepthKm": 5,
+              "extrapolateBelowCurve": false,
+              "waterColor": "qualitative-warm-to-cool-reading-aid",
+              "horizontalDistanceIsReal": false
+            },
+            "inspection": "surface-compare",
+            "observation": {
+              "inspection": "surface-compare",
+              "phase": 0.62,
+              "active": true,
+              "current": [
+                20.754092307692307,
+                26.799999999999997,
+                60.5
+              ],
+              "reference": [
+                82.8,
+                64,
+                60.5
+              ],
+              "referenceAtDepth": [
+                82.8,
+                26.799999999999997,
+                60.5
+              ],
+              "approximateDifferenceC": 25.85246153846154,
+              "curveIsFixed": true,
+              "valuesAreApproximateGraphReads": true,
+              "changesDepth": false
+            },
+            "stage": "deep-water",
+            "stageIndex": 2,
+            "activeStop": 2,
+            "caption": "约3100米 · 约1°C",
+            "depthKm": 3.1,
+            "approxTemperatureC": 1.1475384615384614,
+            "phaseMeaning": "observation-depth",
+            "phaseIsTime": false,
+            "curveIsFixed": true,
+            "approximateReadGraph": true,
+            "preciseMeasuredDataset": false,
+            "extrapolatesBelowCurve": false,
+            "nodeStops": [
+              {
+                "label": "表层",
+                "phase": 0,
+                "selection": 0,
+                "depthKm": 0
+              },
+              {
+                "label": "约1000米",
+                "phase": 0.2,
+                "selection": 1,
+                "depthKm": 1
+              },
+              {
+                "label": "深层",
+                "phase": 1,
+                "selection": 2,
+                "depthKm": 5
+              }
+            ],
+            "nodeWorld": [
+              {
+                "selection": 0,
+                "phase": 0,
+                "depthKm": 0,
+                "point": [
+                  -125.07305803817395,
+                  57.21483910879532,
+                  75.64763750439357
+                ]
+              },
+              {
+                "selection": 1,
+                "phase": 0.2,
+                "depthKm": 1,
+                "point": [
+                  -152.8335975252177,
+                  50.80604150188236,
+                  75.64763750439357
+                ]
+              },
+              {
+                "selection": 2,
+                "phase": 1,
+                "depthKm": 5,
+                "point": [
+                  -156.88041715694345,
+                  26.54306919896354,
+                  75.64763750439357
+                ]
+              }
+            ],
+            "nodeLabelWorld": [
+              {
+                "selection": 0,
+                "text": "表层",
+                "point": [
+                  -160.17700631873782,
+                  9.855678538184097,
+                  80.43901808772384
+                ]
+              },
+              {
+                "selection": 1,
+                "text": "约1000米",
+                "point": [
+                  -138.99580246649958,
+                  10.127328053826949,
+                  80.43901808772384
+                ]
+              },
+              {
+                "selection": 2,
+                "text": "深层",
+                "point": [
+                  -117.81459861426133,
+                  10.398977569469801,
+                  80.43901808772384
+                ]
+              }
+            ],
+            "probeWorld": [
+              -118.67981877676394,
+              38.53325198469008,
+              76.40417128070888
+            ],
+            "curveProbeWorld": [
+              -156.12309749165044,
+              38.053040916521525,
+              75.64763750439357
+            ],
+            "sliceWorld": [
+              -139.35670825156794,
+              38.26807031465777,
+              62.98830564738415
+            ],
+            "curveWorld": [
+              [
+                -125.07305803817395,
+                57.21483910879532,
+                75.64763750439357
+              ],
+              [
+                -126.58406081679352,
+                57.04414125873342,
+                75.64763750439357
+              ],
+              [
+                -128.09506359541308,
+                56.87344340867152,
+                75.64763750439357
+              ],
+              [
+                -129.60606637403265,
+                56.70274555860961,
+                75.64763750439357
+              ],
+              [
+                -131.11706915265222,
+                56.53204770854771,
+                75.64763750439357
+              ],
+              [
+                -132.6817405221136,
+                56.360661557348195,
+                75.64763750439357
+              ],
+              [
+                -134.2821909521362,
+                56.18881653872361,
+                75.64763750439357
+              ],
+              [
+                -135.8110832610364,
+                56.01788925494916,
+                75.64763750439357
+              ],
+              [
+                -137.1610802671305,
+                55.849256308300085,
+                75.64763750439357
+              ],
+              [
+                -138.34393572031658,
+                55.68276695661416,
+                75.64763750439357
+              ],
+              [
+                -139.44741577864414,
+                55.517295596526715,
+                75.64763750439357
+              ],
+              [
+                -140.47820187265688,
+                55.35275653850927,
+                75.64763750439357
+              ],
+              [
+                -141.4429754328984,
+                55.1890640930333,
+                75.64763750439357
+              ],
+              [
+                -142.34841788991238,
+                55.026132570570354,
+                75.64763750439357
+              ],
+              [
+                -143.20121067424245,
+                54.863876281591914,
+                75.64763750439357
+              ],
+              [
+                -144.02145925740373,
+                54.702037372878834,
+                75.64763750439357
+              ],
+              [
+                -144.81495932165166,
+                54.54054151464852,
+                75.64763750439357
+              ],
+              [
+                -145.56692761364027,
+                54.3795783025273,
+                75.64763750439357
+              ],
+              [
+                -146.26258088002368,
+                54.219337332141535,
+                75.64763750439357
+              ],
+              [
+                -146.88713586745595,
+                54.06000819911755,
+                75.64763750439357
+              ],
+              [
+                -147.42580932259114,
+                53.901780499081696,
+                75.64763750439357
+              ],
+              [
+                -147.90287605245268,
+                53.744342906973515,
+                75.64763750439357
+              ],
+              [
+                -148.3528105058634,
+                53.58725328704893,
+                75.64763750439357
+              ],
+              [
+                -148.77612889217636,
+                53.43050501890898,
+                75.64763750439357
+              ],
+              [
+                -149.1733474207446,
+                53.27409148215465,
+                75.64763750439357
+              ],
+              [
+                -149.54498230092116,
+                53.11800605638696,
+                75.64763750439357
+              ],
+              [
+                -149.8915497420591,
+                52.9622421212069,
+                75.64763750439357
+              ],
+              [
+                -150.21356595351153,
+                52.80679305621547,
+                75.64763750439357
+              ],
+              [
+                -150.51154714463144,
+                52.651652241013686,
+                75.64763750439357
+              ],
+              [
+                -150.78600952477194,
+                52.496813055202544,
+                75.64763750439357
+              ],
+              [
+                -151.03746930328606,
+                52.34226887838305,
+                75.64763750439357
+              ],
+              [
+                -151.27427137588026,
+                52.18791268704075,
+                75.64763750439357
+              ],
+              [
+                -151.5032061441865,
+                52.033657394089964,
+                75.64763750439357
+              ],
+              [
+                -151.722458076446,
+                51.87952628377491,
+                75.64763750439357
+              ],
+              [
+                -151.93021164089998,
+                51.72554264033977,
+                75.64763750439357
+              ],
+              [
+                -152.1246513057897,
+                51.57172974802876,
+                75.64763750439357
+              ],
+              [
+                -152.3039615393564,
+                51.41811089108605,
+                75.64763750439357
+              ],
+              [
+                -152.46632680984132,
+                51.26470935375586,
+                75.64763750439357
+              ],
+              [
+                -152.6099315854857,
+                51.11154842028239,
+                75.64763750439357
+              ],
+              [
+                -152.73296033453073,
+                50.95865137490982,
+                75.64763750439357
+              ],
+              [
+                -152.8335975252177,
+                50.80604150188236,
+                75.64763750439357
+              ],
+              [
+                -152.91728975282285,
+                50.65364894846742,
+                75.64763750439357
+              ],
+              [
+                -152.99163535396625,
+                50.50137626579112,
+                75.64763750439357
+              ],
+              [
+                -153.0580464089047,
+                50.34920534388577,
+                75.64763750439357
+              ],
+              [
+                -153.11793499789496,
+                50.19711807278364,
+                75.64763750439357
+              ],
+              [
+                -153.1727132011939,
+                50.045096342517034,
+                75.64763750439357
+              ],
+              [
+                -153.22379309905833,
+                49.89312204311824,
+                75.64763750439357
+              ],
+              [
+                -153.27258677174504,
+                49.74117706461955,
+                75.64763750439357
+              ],
+              [
+                -153.32050629951087,
+                49.589243297053244,
+                75.64763750439357
+              ],
+              [
+                -153.36896376261265,
+                49.437302630451626,
+                75.64763750439357
+              ],
+              [
+                -153.41937124130715,
+                49.285336954846976,
+                75.64763750439357
+              ],
+              [
+                -153.4704624799725,
+                49.1333625100021,
+                75.64763750439357
+              ],
+              [
+                -153.52012939433047,
+                48.98140633215522,
+                75.64763750439357
+              ],
+              [
+                -153.56852132165344,
+                48.82946650605174,
+                75.64763750439357
+              ],
+              [
+                -153.61578759921377,
+                48.6775411164371,
+                75.64763750439357
+              ],
+              [
+                -153.6620775642838,
+                48.525628248056705,
+                75.64763750439357
+              ],
+              [
+                -153.7075405541359,
+                48.37372598565597,
+                75.64763750439357
+              ],
+              [
+                -153.75232590604247,
+                48.22183241398034,
+                75.64763750439357
+              ],
+              [
+                -153.79658295727583,
+                48.06994561777519,
+                75.64763750439357
+              ],
+              [
+                -153.84046104510836,
+                47.91806368178598,
+                75.64763750439357
+              ],
+              [
+                -153.8841095068124,
+                47.766184690758124,
+                75.64763750439357
+              ],
+              [
+                -153.92725055298195,
+                47.61431220734829,
+                75.64763750439357
+              ],
+              [
+                -153.96956669137163,
+                47.46245030340318,
+                75.64763750439357
+              ],
+              [
+                -154.01114770499476,
+                47.31059782745319,
+                75.64763750439357
+              ],
+              [
+                -154.05208337686472,
+                47.158753628028755,
+                75.64763750439357
+              ],
+              [
+                -154.0924634899948,
+                47.00691655366027,
+                75.64763750439357
+              ],
+              [
+                -154.13237782739841,
+                46.85508545287814,
+                75.64763750439357
+              ],
+              [
+                -154.17191617208886,
+                46.70325917421279,
+                75.64763750439357
+              ],
+              [
+                -154.21116830707948,
+                46.551436566194624,
+                75.64763750439357
+              ],
+              [
+                -154.25022401538365,
+                46.39961647735406,
+                75.64763750439357
+              ],
+              [
+                -154.28917308001468,
+                46.247797756221516,
+                75.64763750439357
+              ],
+              [
+                -154.32810528398593,
+                46.09597925132738,
+                75.64763750439357
+              ],
+              [
+                -154.36711041031074,
+                45.94415981120207,
+                75.64763750439357
+              ],
+              [
+                -154.40627824200246,
+                45.792338284376015,
+                75.64763750439357
+              ],
+              [
+                -154.4456985620744,
+                45.6405135193796,
+                75.64763750439357
+              ],
+              [
+                -154.48546115353997,
+                45.488684364743264,
+                75.64763750439357
+              ],
+              [
+                -154.52565579941245,
+                45.3368496689974,
+                75.64763750439357
+              ],
+              [
+                -154.56637228270523,
+                45.18500828067242,
+                75.64763750439357
+              ],
+              [
+                -154.60770038643162,
+                45.03315904829875,
+                75.64763750439357
+              ],
+              [
+                -154.64972989360498,
+                44.881300820406786,
+                75.64763750439357
+              ],
+              [
+                -154.69255058723866,
+                44.72943244552694,
+                75.64763750439357
+              ],
+              [
+                -154.73687805179884,
+                44.57754474626897,
+                75.64763750439357
+              ],
+              [
+                -154.7831743596885,
+                44.42563179654175,
+                75.64763750439357
+              ],
+              [
+                -154.83114902582625,
+                44.27369732182432,
+                75.64763750439357
+              ],
+              [
+                -154.88051156513072,
+                44.12174504759578,
+                75.64763750439357
+              ],
+              [
+                -154.93097149252048,
+                43.96977869933519,
+                75.64763750439357
+              ],
+              [
+                -154.98223832291416,
+                43.817802002521624,
+                75.64763750439357
+              ],
+              [
+                -155.0340215712303,
+                43.66581868263415,
+                75.64763750439357
+              ],
+              [
+                -155.08603075238756,
+                43.513832465151836,
+                75.64763750439357
+              ],
+              [
+                -155.13797538130447,
+                43.36184707555377,
+                75.64763750439357
+              ],
+              [
+                -155.1895649728997,
+                43.20986623931901,
+                75.64763750439357
+              ],
+              [
+                -155.2405090420918,
+                43.057893681926636,
+                75.64763750439357
+              ],
+              [
+                -155.29051710379937,
+                42.90593312885571,
+                75.64763750439357
+              ],
+              [
+                -155.33929867294106,
+                42.75398830558531,
+                75.64763750439357
+              ],
+              [
+                -155.38656326443538,
+                42.60206293759451,
+                75.64763750439357
+              ],
+              [
+                -155.43202039320101,
+                42.45016075036237,
+                75.64763750439357
+              ],
+              [
+                -155.4753795741565,
+                42.29828546936798,
+                75.64763750439357
+              ],
+              [
+                -155.51635032222046,
+                42.146440820090405,
+                75.64763750439357
+              ],
+              [
+                -155.5546421523115,
+                41.99463052800869,
+                75.64763750439357
+              ],
+              [
+                -155.5899645793482,
+                41.84285831860195,
+                75.64763750439357
+              ],
+              [
+                -155.62202711824915,
+                41.691127917349235,
+                75.64763750439357
+              ],
+              [
+                -155.65192995022545,
+                41.53942521439657,
+                75.64763750439357
+              ],
+              [
+                -155.6809731201553,
+                41.387733536633064,
+                75.64763750439357
+              ],
+              [
+                -155.70916593845797,
+                41.236052764652285,
+                75.64763750439357
+              ],
+              [
+                -155.73651771555274,
+                41.084382779047885,
+                75.64763750439357
+              ],
+              [
+                -155.76303776185887,
+                40.932723460413484,
+                75.64763750439357
+              ],
+              [
+                -155.78873538779564,
+                40.78107468934269,
+                75.64763750439357
+              ],
+              [
+                -155.81361990378235,
+                40.629436346429124,
+                75.64763750439357
+              ],
+              [
+                -155.83770062023825,
+                40.477808312266404,
+                75.64763750439357
+              ],
+              [
+                -155.8609868475826,
+                40.326190467448164,
+                75.64763750439357
+              ],
+              [
+                -155.88348789623473,
+                40.17458269256801,
+                75.64763750439357
+              ],
+              [
+                -155.90521307661388,
+                40.02298486821957,
+                75.64763750439357
+              ],
+              [
+                -155.92617169913933,
+                39.87139687499645,
+                75.64763750439357
+              ],
+              [
+                -155.94637307423034,
+                39.71981859349228,
+                75.64763750439357
+              ],
+              [
+                -155.96582651230622,
+                39.56824990430067,
+                75.64763750439357
+              ],
+              [
+                -155.9845413237862,
+                39.41669068801525,
+                75.64763750439357
+              ],
+              [
+                -156.0025268190896,
+                39.26514082522964,
+                75.64763750439357
+              ],
+              [
+                -156.0197923086357,
+                39.11360019653746,
+                75.64763750439357
+              ],
+              [
+                -156.03634710284373,
+                38.96206868253232,
+                75.64763750439357
+              ],
+              [
+                -156.052200512133,
+                38.81054616380784,
+                75.64763750439357
+              ],
+              [
+                -156.06736184692275,
+                38.659032520957645,
+                75.64763750439357
+              ],
+              [
+                -156.08195039696,
+                38.507526224087485,
+                75.64763750439357
+              ],
+              [
+                -156.0960908830696,
+                38.35602567364939,
+                75.64763750439357
+              ],
+              [
+                -156.1098007622877,
+                38.204530645756385,
+                75.64763750439357
+              ],
+              [
+                -156.12309749165044,
+                38.053040916521525,
+                75.64763750439357
+              ],
+              [
+                -156.13599852819397,
+                37.90155626205784,
+                75.64763750439357
+              ],
+              [
+                -156.14852132895442,
+                37.75007645847835,
+                75.64763750439357
+              ],
+              [
+                -156.16068335096793,
+                37.59860128189611,
+                75.64763750439357
+              ],
+              [
+                -156.17250205127064,
+                37.447130508424145,
+                75.64763750439357
+              ],
+              [
+                -156.18399488689872,
+                37.295663914175506,
+                75.64763750439357
+              ],
+              [
+                -156.19517931488826,
+                37.14420127526322,
+                75.64763750439357
+              ],
+              [
+                -156.20607279227548,
+                36.99274236780032,
+                75.64763750439357
+              ],
+              [
+                -156.21669277609644,
+                36.841286967899855,
+                75.64763750439357
+              ],
+              [
+                -156.22705672338734,
+                36.689834851674846,
+                75.64763750439357
+              ],
+              [
+                -156.23718209118428,
+                36.53838579523834,
+                75.64763750439357
+              ],
+              [
+                -156.24708633652344,
+                36.38693957470337,
+                75.64763750439357
+              ],
+              [
+                -156.25678691644094,
+                36.235495966182974,
+                75.64763750439357
+              ],
+              [
+                -156.2663012879729,
+                36.08405474579019,
+                75.64763750439357
+              ],
+              [
+                -156.27564690815552,
+                35.932615689638055,
+                75.64763750439357
+              ],
+              [
+                -156.2848412340249,
+                35.7811785738396,
+                75.64763750439357
+              ],
+              [
+                -156.2939017226172,
+                35.629743174507865,
+                75.64763750439357
+              ],
+              [
+                -156.30284583096855,
+                35.47830926775588,
+                75.64763750439357
+              ],
+              [
+                -156.31169101611508,
+                35.3268766296967,
+                75.64763750439357
+              ],
+              [
+                -156.32045473509297,
+                35.17544503644334,
+                75.64763750439357
+              ],
+              [
+                -156.32915444493833,
+                35.02401426410886,
+                75.64763750439357
+              ],
+              [
+                -156.3378076026873,
+                34.87258408880626,
+                75.64763750439357
+              ],
+              [
+                -156.34643166537603,
+                34.72115428664861,
+                75.64763750439357
+              ],
+              [
+                -156.3550440900407,
+                34.56972463374894,
+                75.64763750439357
+              ],
+              [
+                -156.3636623337174,
+                34.41829490622027,
+                75.64763750439357
+              ],
+              [
+                -156.37230385344228,
+                34.26686488017566,
+                75.64763750439357
+              ],
+              [
+                -156.3809861062515,
+                34.11543433172814,
+                75.64763750439357
+              ],
+              [
+                -156.38972654918118,
+                33.96400303699073,
+                75.64763750439357
+              ],
+              [
+                -156.39854263926748,
+                33.812570772076484,
+                75.64763750439357
+              ],
+              [
+                -156.40745183354656,
+                33.66113731309842,
+                75.64763750439357
+              ],
+              [
+                -156.4164715890545,
+                33.509702436169604,
+                75.64763750439357
+              ],
+              [
+                -156.42561936282752,
+                33.35826591740306,
+                75.64763750439357
+              ],
+              [
+                -156.4349126119017,
+                33.2068275329118,
+                75.64763750439357
+              ],
+              [
+                -156.4443687933132,
+                33.0553870588089,
+                75.64763750439357
+              ],
+              [
+                -156.45400536409818,
+                32.903944271207365,
+                75.64763750439357
+              ],
+              [
+                -156.46383978129276,
+                32.75249894622026,
+                75.64763750439357
+              ],
+              [
+                -156.47388950193312,
+                32.601050859960594,
+                75.64763750439357
+              ],
+              [
+                -156.48405269330837,
+                32.44960131843566,
+                75.64763750439357
+              ],
+              [
+                -156.49421588468363,
+                32.298151776910736,
+                75.64763750439357
+              ],
+              [
+                -156.50437907605888,
+                32.14670223538582,
+                75.64763750439357
+              ],
+              [
+                -156.51454226743414,
+                31.99525269386089,
+                75.64763750439357
+              ],
+              [
+                -156.5247054588094,
+                31.84380315233596,
+                75.64763750439357
+              ],
+              [
+                -156.53486865018465,
+                31.692353610811036,
+                75.64763750439357
+              ],
+              [
+                -156.5450318415599,
+                31.54090406928611,
+                75.64763750439357
+              ],
+              [
+                -156.55519503293516,
+                31.389454527761178,
+                75.64763750439357
+              ],
+              [
+                -156.56535822431044,
+                31.238004986236255,
+                75.64763750439357
+              ],
+              [
+                -156.5755214156857,
+                31.08655544471133,
+                75.64763750439357
+              ],
+              [
+                -156.58568460706095,
+                30.9351059031864,
+                75.64763750439357
+              ],
+              [
+                -156.5958477984362,
+                30.78365636166148,
+                75.64763750439357
+              ],
+              [
+                -156.60601098981147,
+                30.632206820136545,
+                75.64763750439357
+              ],
+              [
+                -156.61617418118672,
+                30.480757278611627,
+                75.64763750439357
+              ],
+              [
+                -156.62633737256198,
+                30.329307737086697,
+                75.64763750439357
+              ],
+              [
+                -156.63650056393723,
+                30.177858195561768,
+                75.64763750439357
+              ],
+              [
+                -156.6466637553125,
+                30.02640865403685,
+                75.64763750439357
+              ],
+              [
+                -156.65682694668774,
+                29.874959112511917,
+                75.64763750439357
+              ],
+              [
+                -156.66699013806303,
+                29.723509570986995,
+                75.64763750439357
+              ],
+              [
+                -156.67715332943828,
+                29.572060029462065,
+                75.64763750439357
+              ],
+              [
+                -156.68731652081354,
+                29.420610487937136,
+                75.64763750439357
+              ],
+              [
+                -156.6974797121888,
+                29.269160946412217,
+                75.64763750439357
+              ],
+              [
+                -156.70764290356405,
+                29.117711404887284,
+                75.64763750439357
+              ],
+              [
+                -156.7178060949393,
+                28.96626186336236,
+                75.64763750439357
+              ],
+              [
+                -156.72796928631456,
+                28.814812321837437,
+                75.64763750439357
+              ],
+              [
+                -156.73813247768982,
+                28.663362780312507,
+                75.64763750439357
+              ],
+              [
+                -156.74829566906507,
+                28.511913238787578,
+                75.64763750439357
+              ],
+              [
+                -156.75845886044036,
+                28.36046369726266,
+                75.64763750439357
+              ],
+              [
+                -156.7686220518156,
+                28.20901415573773,
+                75.64763750439357
+              ],
+              [
+                -156.77878524319087,
+                28.057564614212804,
+                75.64763750439357
+              ],
+              [
+                -156.78894843456612,
+                27.90611507268788,
+                75.64763750439357
+              ],
+              [
+                -156.79911162594138,
+                27.754665531162953,
+                75.64763750439357
+              ],
+              [
+                -156.80927481731663,
+                27.60321598963802,
+                75.64763750439357
+              ],
+              [
+                -156.8194380086919,
+                27.4517664481131,
+                75.64763750439357
+              ],
+              [
+                -156.82960120006715,
+                27.300316906588172,
+                75.64763750439357
+              ],
+              [
+                -156.8397643914424,
+                27.148867365063243,
+                75.64763750439357
+              ],
+              [
+                -156.84992758281766,
+                26.99741782353832,
+                75.64763750439357
+              ],
+              [
+                -156.86009077419294,
+                26.845968282013388,
+                75.64763750439357
+              ],
+              [
+                -156.8702539655682,
+                26.69451874048847,
+                75.64763750439357
+              ],
+              [
+                -156.88041715694345,
+                26.54306919896354,
+                75.64763750439357
+              ]
+            ],
+            "labelWorld": [
+              {
+                "text": "深层变化较小",
+                "point": [
+                  -139.88189731514413,
+                  79.2183977623184,
+                  78.42159468421636
+                ],
+                "width": 40.348468070149565,
+                "height": 5.850527870171686
+              }
+            ],
+            "handleWorld": [
+              -134.22553074484682,
+              15.736877523464857,
+              80.43901808772384
+            ],
+            "phaseTrackWorld": {
+              "start": [
+                -159.23952386558534,
+                15.41607238118187,
+                80.43901808772384
+              ],
+              "end": [
+                -118.8943736708458,
+                15.933500030025398,
+                80.43901808772384
+              ]
+            },
+            "depthTrackWorld": {
+              "start": [
+                -118.92042263347618,
+                57.29374682524396,
+                76.40417128070888
+              ],
+              "end": [
+                -118.53235189684352,
+                27.034884179189312,
+                76.40417128070888
+              ]
+            },
+            "waterBoundsWorld": {
+              "min": [
+                -157.36455895928032,
+                26.536860067177418,
+                51.18637873686541
+              ],
+              "max": [
+                -121.4419945206474,
+                57.26140759719124,
+                72.36932447369392
+              ]
+            },
+            "fixedMeshCount": 33,
+            "geometryBuffersReused": true,
+            "fixedTemperatureProfile": true,
+            "visibleCurrentLabelCount": 1,
+            "axisLabelWorld": [
+              {
+                "text": "0",
+                "point": [
+                  -157.8302438432395,
+                  62.847495242443,
+                  76.40417128070888
+                ]
+              },
+              {
+                "text": "10",
+                "point": [
+                  -145.72669878481764,
+                  63.00272353709606,
+                  76.40417128070888
+                ]
+              },
+              {
+                "text": "20",
+                "point": [
+                  -133.6231537263958,
+                  63.157951831749116,
+                  76.40417128070888
+                ]
+              },
+              {
+                "text": "30",
+                "point": [
+                  -121.51960866797393,
+                  63.31318012640217,
+                  76.40417128070888
+                ]
+              },
+              {
+                "text": "0",
+                "point": [
+                  -164.56087379127527,
+                  56.708406797489715,
+                  76.40417128070888
+                ]
+              },
+              {
+                "text": "1",
+                "point": [
+                  -164.48325964394874,
+                  50.65663426827879,
+                  76.40417128070888
+                ]
+              },
+              {
+                "text": "2",
+                "point": [
+                  -164.4056454966222,
+                  44.604861739067864,
+                  76.40417128070888
+                ]
+              },
+              {
+                "text": "3",
+                "point": [
+                  -164.32803134929569,
+                  38.553089209856935,
+                  76.40417128070888
+                ]
+              },
+              {
+                "text": "4",
+                "point": [
+                  -164.25041720196916,
+                  32.501316680646,
+                  76.40417128070888
+                ]
+              },
+              {
+                "text": "5",
+                "point": [
+                  -164.17280305464263,
+                  26.44954415143507,
+                  76.40417128070888
+                ]
+              },
+              {
+                "text": "6",
+                "point": [
+                  -164.0951889073161,
+                  20.39777162222414,
+                  76.40417128070888
+                ]
+              },
+              {
+                "text": "km",
+                "point": [
+                  -166.90790263705588,
+                  62.73107402145321,
+                  76.40417128070888
+                ]
+              },
+              {
+                "text": "温度 / °C",
+                "point": [
+                  -139.77841178537543,
+                  71.14936772337049,
+                  76.40417128070888
+                ]
+              }
+            ],
+            "meshRoles": [
+              {
+                "role": "fixed-profile-closed-water-volume",
+                "selection": 1,
+                "point": [
+                  -139.40327749885347,
+                  41.89913371903787,
+                  61.777851557242855
+                ]
+              },
+              {
+                "role": "cutaway-base",
+                "point": [
+                  -139.20342107092213,
+                  26.315819568168976,
+                  61.77785537194012
+                ]
+              },
+              {
+                "role": "temperature-axis-label",
+                "point": [
+                  -157.8302438432395,
+                  62.847495242443,
+                  76.40417128070888
+                ]
+              },
+              {
+                "role": "temperature-axis-label",
+                "point": [
+                  -145.72669878481764,
+                  63.00272353709606,
+                  76.40417128070888
+                ]
+              },
+              {
+                "role": "temperature-axis-label",
+                "point": [
+                  -133.6231537263958,
+                  63.157951831749116,
+                  76.40417128070888
+                ]
+              },
+              {
+                "role": "temperature-axis-label",
+                "point": [
+                  -121.51960866797393,
+                  63.31318012640217,
+                  76.40417128070888
+                ]
+              },
+              {
+                "role": "depth-axis-label",
+                "point": [
+                  -164.56087379127527,
+                  56.708406797489715,
+                  76.40417128070888
+                ]
+              },
+              {
+                "role": "depth-axis-label",
+                "point": [
+                  -164.48325964394874,
+                  50.65663426827879,
+                  76.40417128070888
+                ]
+              },
+              {
+                "role": "depth-axis-label",
+                "point": [
+                  -164.4056454966222,
+                  44.604861739067864,
+                  76.40417128070888
+                ]
+              },
+              {
+                "role": "depth-axis-label",
+                "point": [
+                  -164.32803134929569,
+                  38.553089209856935,
+                  76.40417128070888
+                ]
+              },
+              {
+                "role": "depth-axis-label",
+                "point": [
+                  -164.25041720196916,
+                  32.501316680646,
+                  76.40417128070888
+                ]
+              },
+              {
+                "role": "depth-axis-label",
+                "point": [
+                  -164.17280305464263,
+                  26.44954415143507,
+                  76.40417128070888
+                ]
+              },
+              {
+                "role": "depth-axis-label",
+                "point": [
+                  -164.0951889073161,
+                  20.39777162222414,
+                  76.40417128070888
+                ]
+              },
+              {
+                "role": "depth-unit",
+                "point": [
+                  -166.90790263705588,
+                  62.73107402145321,
+                  76.40417128070888
+                ]
+              },
+              {
+                "role": "temperature-unit",
+                "point": [
+                  -139.77841178537543,
+                  71.14936772337049,
+                  76.40417128070888
+                ]
+              },
+              {
+                "role": "moving-observation-depth-slice",
+                "point": [
+                  -139.35670825156794,
+                  38.26807031465777,
+                  62.98830564738415
+                ]
+              },
+              {
+                "role": "fixed-depth-probe-guide",
+                "point": [
+                  -118.7263861834709,
+                  42.164315531894744,
+                  76.40417144249676
+                ]
+              },
+              {
+                "role": "moving-depth-probe",
+                "point": [
+                  -118.67981877676394,
+                  38.53325198469008,
+                  76.40417128070888
+                ]
+              },
+              {
+                "role": "moving-curve-read-point",
+                "point": [
+                  -156.12309749165044,
+                  38.053040916521525,
+                  75.64763750439357
+                ]
+              },
+              {
+                "role": "fixed-depth-stop",
+                "selection": 0,
+                "point": [
+                  -125.07305803817395,
+                  57.21483910879532,
+                  75.64763750439357
+                ]
+              },
+              {
+                "role": "fixed-depth-stop",
+                "selection": 1,
+                "point": [
+                  -152.8335975252177,
+                  50.80604150188236,
+                  75.64763750439357
+                ]
+              },
+              {
+                "role": "fixed-depth-stop",
+                "selection": 2,
+                "point": [
+                  -156.88041715694345,
+                  26.54306919896354,
+                  75.64763750439357
+                ]
+              },
+              {
+                "role": "fixed-current-observation-label",
+                "point": [
+                  -139.88189731514413,
+                  79.2183977623184,
+                  78.42159468421636
+                ]
+              },
+              {
+                "role": "fixed-current-observation-label",
+                "point": [
+                  -139.88189731514413,
+                  79.2183977623184,
+                  78.42159468421636
+                ]
+              },
+              {
+                "role": "fixed-current-observation-label",
+                "point": [
+                  -139.88189731514413,
+                  79.2183977623184,
+                  78.42159468421636
+                ]
+              },
+              {
+                "role": "surface-reference-observation-label",
+                "point": [
+                  -139.88189731514413,
+                  79.2183977623184,
+                  78.42159468421636
+                ]
+              },
+              {
+                "role": "surface-reference-clamp",
+                "point": [
+                  -124.83245418146171,
+                  38.45434426824144,
+                  77.41288298246262
+                ]
+              },
+              {
+                "role": "surface-reference-clamp",
+                "point": [
+                  -156.12309749165044,
+                  38.053040916521525,
+                  77.41288298246262
+                ]
+              },
+              {
+                "role": "depth-shortcut-label",
+                "selection": 0,
+                "point": [
+                  -160.17700631873782,
+                  9.855678538184097,
+                  80.43901808772384
+                ]
+              },
+              {
+                "role": "depth-shortcut-label",
+                "selection": 1,
+                "point": [
+                  -138.99580246649958,
+                  10.127328053826949,
+                  80.43901808772384
+                ]
+              },
+              {
+                "role": "depth-shortcut-label",
+                "selection": 2,
+                "point": [
+                  -117.81459861426133,
+                  10.398977569469801,
+                  80.43901808772384
+                ]
+              },
+              {
+                "role": "observation-phase-rail",
+                "point": [
+                  -139.06694857400865,
+                  15.674786143623669,
+                  80.43901870201825
+                ]
+              },
+              {
+                "role": "observation-phase-handle",
+                "point": [
+                  -134.22553074484682,
+                  15.736877523464859,
+                  80.43901808772384
+                ]
+              }
+            ],
+            "directInteraction": "depth-stops-and-continuous-probe-and-phase-track",
+            "elevatedAbovePage": 25.722148394720346,
+            "fixedStructureCount": 3
+          },
+          "view": "detail",
+          "labels": [
+            {
+              "text": "0",
+              "left": 522.9461468501747,
+              "top": 299.5601228571371,
+              "right": 574.4216339309824,
+              "bottom": 335.77046549329157,
+              "fontPx": 24.82160583929942
+            },
+            {
+              "text": "10",
+              "left": 606.7898285494283,
+              "top": 304.1644587753306,
+              "right": 658.5981120830836,
+              "bottom": 340.6089065024538,
+              "fontPx": 24.982081103269927
+            },
+            {
+              "text": "20",
+              "left": 691.7246878742853,
+              "top": 308.82871749549156,
+              "right": 743.8700990165279,
+              "bottom": 345.51031705762097,
+              "fontPx": 25.144644861137092
+            },
+            {
+              "text": "30",
+              "left": 777.7721659268651,
+              "top": 313.55407647112196,
+              "right": 830.2591209385089,
+              "bottom": 350.4759344793126,
+              "fontPx": 25.309338150775858
+            },
+            {
+              "text": "0",
+              "left": 488.438513763543,
+              "top": 334.4495945254893,
+              "right": 521.2462272044186,
+              "bottom": 370.0494537911204,
+              "fontPx": 24.403129335311636
+            },
+            {
+              "text": "1",
+              "left": 491.5182320833637,
+              "top": 370.91940622364723,
+              "right": 523.8951064880441,
+              "bottom": 406.05175930106634,
+              "fontPx": 24.08266138371471
+            },
+            {
+              "text": "2",
+              "left": 494.51811161516406,
+              "top": 406.4437725066896,
+              "right": 526.4753160786471,
+              "bottom": 441.12073905217136,
+              "fontPx": 23.77050126101573
+            },
+            {
+              "text": "3",
+              "left": 497.4412172494808,
+              "top": 441.05898759673784,
+              "right": 528.9894921020705,
+              "bottom": 475.2922220112499,
+              "fontPx": 23.46633004220586
+            },
+            {
+              "text": "4",
+              "left": 500.2904589835312,
+              "top": 474.7995114799063,
+              "right": 531.4401374597295,
+              "bottom": 508.6002264221642,
+              "fontPx": 23.169844920096146
+            },
+            {
+              "text": "5",
+              "left": 503.0686015841161,
+              "top": 507.6980843337567,
+              "right": 533.8296301397207,
+              "bottom": 541.0770727664341,
+              "fontPx": 22.880758199819166
+            },
+            {
+              "text": "6",
+              "left": 505.77827353606466,
+              "top": 539.7858324941463,
+              "right": 536.160230913416,
+              "bottom": 572.7534883716978,
+              "fontPx": 22.598796367676407
+            },
+            {
+              "text": "km",
+              "left": 462.7100388449697,
+              "top": 296.14550392581407,
+              "right": 510.0524071244157,
+              "bottom": 332.1822320191238,
+              "fontPx": 24.70259587041391
+            },
+            {
+              "text": "温度 / °C",
+              "left": 577.4653422797213,
+              "top": 254.42470757010364,
+              "right": 770.9738935350489,
+              "bottom": 291.66597592490257,
+              "fontPx": 25.52828879159604
+            },
+            {
+              "text": "固定表层参照",
+              "left": 521.1831488827848,
+              "top": 203.84647931761654,
+              "right": 821.0169799819188,
+              "bottom": 247.32238482699117,
+              "fontPx": 29.90895627240666
+            },
+            {
+              "text": "表层",
+              "left": 498.177797236486,
+              "top": 611.3510164939063,
+              "right": 588.0603592627468,
+              "bottom": 644.0939498034727,
+              "fontPx": 22.4447526718802
+            },
+            {
+              "text": "约1000米",
+              "left": 605.156761264738,
+              "top": 621.8664345967244,
+              "right": 747.8512605248569,
+              "bottom": 654.9456139706612,
+              "fontPx": 22.67524392568246
+            },
+            {
+              "text": "深层",
+              "left": 766.7830139501391,
+              "top": 632.6000649423138,
+              "right": 858.5307871600158,
+              "bottom": 666.0224680401975,
+              "fontPx": 22.91051825258158
+            }
+          ],
+          "models": 1,
+          "images": 8,
+          "triangles": 10775,
+          "calls": 80,
+          "geometries": 57,
+          "textures": 270,
+          "hiRes": 6,
+          "engine": "Every Joule 48591dd"
+        },
+        "regions": [
+          {
+            "id": "temperature",
+            "screenX": 688.9494663375381,
+            "screenY": 590.8654074917699
+          }
+        ],
+        "pages": [
+          55,
+          56
+        ],
+        "notes": {},
+        "originalPageCount": 132,
+        "sectionCount": 17,
+        "studyCount": 6,
+        "figureCount": 60
+      }
+    },
+    {
+      "name": "3d-earth-closed",
+      "state": {
+        "ready": true,
+        "twoD": false,
+        "spread": 14,
+        "turning": false,
+        "figureBusy": false,
+        "active": "earth",
+        "playing": false,
+        "playbackSpeed": 2,
+        "teacher": false,
+        "stored": true,
+        "state": {
+          "phase": 0,
+          "selection": 0,
+          "routes": [],
+          "rings": [],
+          "focus": null,
+          "caption": "完整"
+        },
+        "process": null,
+        "render": {
+          "position": 14,
+          "spread": 14,
+          "busy": false,
+          "figure": "earth",
+          "modelState": "live",
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 22,
+            "labels": 4,
+            "meshes": 26,
+            "imageMappedMeshes": 0,
+            "extent": [
+              72.081895975584,
+              48.054595947265625,
+              48.054595947265625
+            ],
+            "sceneElevation": 52.631226106345274,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0,
+            "selection": 0,
+            "kind": "earth-cutaway",
+            "layers": [
+              "crust",
+              "mantle",
+              "outer-core",
+              "inner-core"
+            ],
+            "scale": "schematic",
+            "source": {
+              "figure": "1.34",
+              "printedPage": 22,
+              "pdfPage": 27,
+              "source": "textbook/page-027.webp",
+              "layerOrder": [
+                "地壳",
+                "地幔",
+                "外核",
+                "内核"
+              ],
+              "radiiToScale": false,
+              "depictsSeismicVelocity": false,
+              "extractedShellsAreObservationOnly": true
+            },
+            "selected": 0,
+            "inspection": "closed",
+            "observation": {
+              "inspection": "closed",
+              "coverVisible": true,
+              "removedAzimuthStart": 1.5707963267948966,
+              "removedAzimuthLength": 1.5707963267948966,
+              "observationOnly": true,
+              "changesLayerOrder": false
+            },
+            "focus": "all",
+            "groupedSections": true,
+            "crustThicknessUnchanged": true,
+            "layerGroups": [
+              {
+                "layer": 0,
+                "visible": true,
+                "offset": [
+                  0,
+                  0,
+                  0
+                ],
+                "parts": 6,
+                "labelVisible": true
+              },
+              {
+                "layer": 1,
+                "visible": true,
+                "offset": [
+                  0,
+                  0,
+                  0
+                ],
+                "parts": 6,
+                "labelVisible": false
+              },
+              {
+                "layer": 2,
+                "visible": true,
+                "offset": [
+                  0,
+                  0,
+                  0
+                ],
+                "parts": 6,
+                "labelVisible": false
+              },
+              {
+                "layer": 3,
+                "visible": true,
+                "offset": [
+                  0,
+                  0,
+                  0
+                ],
+                "parts": 4,
+                "labelVisible": false
+              }
+            ]
+          },
+          "view": "detail",
+          "labels": [
+            {
+              "text": "地壳",
+              "left": 890.5905062509779,
+              "top": 255.8085468073215,
+              "right": 1017.0759099371211,
+              "bottom": 306.40270828177853,
+              "fontPx": 34.879308289209014
+            }
+          ],
+          "models": 1,
+          "images": 6,
+          "triangles": 25029,
+          "calls": 38,
+          "geometries": 47,
+          "textures": 143,
+          "hiRes": 6,
+          "engine": "Every Joule 48591dd"
+        },
+        "regions": [
+          {
+            "id": "earth",
+            "screenX": 753.2473072939217,
+            "screenY": 809.3680688627517
+          },
+          {
+            "id": "external-spheres",
+            "screenX": 2651.3099270809935,
+            "screenY": 1092.887396813454
+          }
+        ],
+        "pages": [
+          27,
+          28
+        ],
+        "notes": {},
+        "originalPageCount": 132,
+        "sectionCount": 17,
+        "studyCount": 6,
+        "figureCount": 60
+      }
+    },
+    {
+      "name": "3d-gnss-sat-0",
+      "state": {
+        "ready": true,
+        "twoD": false,
+        "spread": 61,
+        "turning": false,
+        "figureBusy": false,
+        "active": "gnss",
+        "playing": false,
+        "playbackSpeed": 2,
+        "teacher": false,
+        "stored": true,
+        "state": {
+          "phase": 0.62,
+          "selection": 1,
+          "routes": [],
+          "rings": [],
+          "focus": null,
+          "caption": "用户接收卫星信号，获得位置信息。"
+        },
+        "process": {
+          "key": "gnss-1-false",
+          "stage": "卫星定位与通信协同",
+          "title": "用户接收卫星信号，获得位置信息。",
+          "text": "这里只示意信号接收，不推演定位算法。",
+          "activeStop": 1,
+          "seeking": false
+        },
+        "render": {
+          "position": 61,
+          "spread": 61,
+          "busy": false,
+          "figure": "gnss",
+          "modelState": "live",
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 51,
+            "labels": 4,
+            "meshes": 55,
+            "imageMappedMeshes": 0,
+            "extent": [
+              158.47110338618904,
+              123.16262928321596,
+              94.55953180557817
+            ],
+            "sceneElevation": 55.60389592706124,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.62,
+            "selection": 1,
+            "kind": "gnss-three-segments",
+            "stage": 1,
+            "stageIndex": 1,
+            "inspection": "sat-0",
+            "observation": {
+              "inspection": "sat-0",
+              "phase": 0.62,
+              "satellite": 0,
+              "signal": {
+                "id": "nav-0",
+                "kind": "navigation",
+                "start": 0.34,
+                "end": 0.48,
+                "progress": 1,
+                "status": "arrived",
+                "source": [
+                  5,
+                  67,
+                  65
+                ],
+                "target": [
+                  57.93525529225126,
+                  42.02398401789699,
+                  42.31415421273117
+                ],
+                "point": [
+                  57.93525529225126,
+                  42.02398401789699,
+                  42.31415421273117
+                ],
+                "path": [
+                  [
+                    5,
+                    67,
+                    65
+                  ],
+                  [
+                    57.93525529225126,
+                    42.02398401789699,
+                    42.31415421273117
+                  ]
+                ]
+              },
+              "received": true,
+              "lineOfSight": true,
+              "fullGuideIsNotReceivedSignal": true,
+              "direction": "satellite-to-passive-receiver",
+              "changesPositionSolution": false
+            },
+            "mode": 1,
+            "state": {
+              "phase": 0.62,
+              "stage": 1,
+              "stageIndex": 1,
+              "selection": 1,
+              "caption": "用户接收卫星信号，获得位置信息。",
+              "explanation": "这里只示意信号接收，不推演定位算法。",
+              "signals": [
+                {
+                  "id": "monitor-down",
+                  "kind": "monitor-down",
+                  "start": 0.025,
+                  "end": 0.14,
+                  "progress": 1,
+                  "status": "arrived",
+                  "source": [
+                    31,
+                    72,
+                    57
+                  ],
+                  "target": [
+                    32.434920518552374,
+                    44.48928581247144,
+                    37.516865179369056
+                  ],
+                  "point": [
+                    32.434920518552374,
+                    44.48928581247144,
+                    37.516865179369056
+                  ],
+                  "path": [
+                    [
+                      31,
+                      72,
+                      57
+                    ],
+                    [
+                      32.434920518552374,
+                      44.48928581247144,
+                      37.516865179369056
+                    ]
+                  ]
+                },
+                {
+                  "id": "monitor-up",
+                  "kind": "monitor-up",
+                  "start": 0.16,
+                  "end": 0.29,
+                  "progress": 1,
+                  "status": "arrived",
+                  "source": [
+                    32.434920518552374,
+                    44.48928581247144,
+                    37.516865179369056
+                  ],
+                  "target": [
+                    31,
+                    72,
+                    57
+                  ],
+                  "point": [
+                    31,
+                    72,
+                    57
+                  ],
+                  "path": [
+                    [
+                      32.434920518552374,
+                      44.48928581247144,
+                      37.516865179369056
+                    ],
+                    [
+                      31,
+                      72,
+                      57
+                    ]
+                  ]
+                },
+                {
+                  "id": "nav-0",
+                  "kind": "navigation",
+                  "start": 0.34,
+                  "end": 0.48,
+                  "progress": 1,
+                  "status": "arrived",
+                  "source": [
+                    5,
+                    67,
+                    65
+                  ],
+                  "target": [
+                    57.93525529225126,
+                    42.02398401789699,
+                    42.31415421273117
+                  ],
+                  "point": [
+                    57.93525529225126,
+                    42.02398401789699,
+                    42.31415421273117
+                  ],
+                  "path": [
+                    [
+                      5,
+                      67,
+                      65
+                    ],
+                    [
+                      57.93525529225126,
+                      42.02398401789699,
+                      42.31415421273117
+                    ]
+                  ]
+                },
+                {
+                  "id": "nav-1",
+                  "kind": "navigation",
+                  "start": 0.36500000000000005,
+                  "end": 0.505,
+                  "progress": 1,
+                  "status": "arrived",
+                  "source": [
+                    31,
+                    72,
+                    57
+                  ],
+                  "target": [
+                    57.93525529225126,
+                    42.02398401789699,
+                    42.31415421273117
+                  ],
+                  "point": [
+                    57.93525529225126,
+                    42.02398401789699,
+                    42.31415421273117
+                  ],
+                  "path": [
+                    [
+                      31,
+                      72,
+                      57
+                    ],
+                    [
+                      57.93525529225126,
+                      42.02398401789699,
+                      42.31415421273117
+                    ]
+                  ]
+                },
+                {
+                  "id": "nav-2",
+                  "kind": "navigation",
+                  "start": 0.39,
+                  "end": 0.53,
+                  "progress": 1,
+                  "status": "arrived",
+                  "source": [
+                    63,
+                    70,
+                    60
+                  ],
+                  "target": [
+                    57.93525529225126,
+                    42.02398401789699,
+                    42.31415421273117
+                  ],
+                  "point": [
+                    57.93525529225126,
+                    42.02398401789699,
+                    42.31415421273117
+                  ],
+                  "path": [
+                    [
+                      63,
+                      70,
+                      60
+                    ],
+                    [
+                      57.93525529225126,
+                      42.02398401789699,
+                      42.31415421273117
+                    ]
+                  ]
+                },
+                {
+                  "id": "nav-3",
+                  "kind": "navigation",
+                  "start": 0.41500000000000004,
+                  "end": 0.5549999999999999,
+                  "progress": 1,
+                  "status": "arrived",
+                  "source": [
+                    90,
+                    62,
+                    68
+                  ],
+                  "target": [
+                    57.93525529225126,
+                    42.02398401789699,
+                    42.31415421273117
+                  ],
+                  "point": [
+                    57.93525529225126,
+                    42.02398401789699,
+                    42.31415421273117
+                  ],
+                  "path": [
+                    [
+                      90,
+                      62,
+                      68
+                    ],
+                    [
+                      57.93525529225126,
+                      42.02398401789699,
+                      42.31415421273117
+                    ]
+                  ]
+                },
+                {
+                  "id": "rescue-message",
+                  "kind": "communication",
+                  "start": 0.7,
+                  "end": 0.84,
+                  "progress": 0,
+                  "status": "waiting",
+                  "source": [
+                    60.33525529225126,
+                    40.82398401789699,
+                    42.31415421273117
+                  ],
+                  "target": [
+                    69.51577513601586,
+                    34.95703369012439,
+                    27.29752807510366
+                  ],
+                  "point": [
+                    60.33525529225126,
+                    40.82398401789699,
+                    42.31415421273117
+                  ],
+                  "path": []
+                }
+              ],
+              "receivedSignalIds": [
+                "nav-0",
+                "nav-1",
+                "nav-2",
+                "nav-3"
+              ],
+              "positionReady": true,
+              "positionMark": 1,
+              "communicationDelivered": false,
+              "rescue": {
+                "id": "rescue-vehicle",
+                "progress": 0,
+                "position": [
+                  67.33186887834788,
+                  25.289084149553616,
+                  34.48820547656234
+                ],
+                "up": [
+                  0.8996402158561008,
+                  -0.11995202878081343,
+                  0.419832100732847
+                ],
+                "forward": [
+                  -0.18557298171498363,
+                  0.7653192311600321,
+                  0.6163190268635454
+                ],
+                "side": [
+                  0.3952342981976625,
+                  0.6323748771164018,
+                  -0.6662521026760192
+                ]
+              },
+              "front": [
+                59.839999999999996,
+                3,
+                70
+              ],
+              "road": [
+                [
+                  67.33186887834788,
+                  25.289084149553616,
+                  34.48820547656234
+                ],
+                [
+                  67.25129873280227,
+                  25.60763929714326,
+                  34.74276705573054
+                ],
+                [
+                  67.16285447592034,
+                  25.930606140466075,
+                  34.996844924123934
+                ],
+                [
+                  67.06638393974157,
+                  26.257732229916616,
+                  35.25010919942857
+                ],
+                [
+                  66.96175586162157,
+                  26.58874312084565,
+                  35.502221524137475
+                ],
+                [
+                  66.84886173701265,
+                  26.923342949522567,
+                  35.75283671133401
+                ],
+                [
+                  66.72761755864958,
+                  27.26121524175208,
+                  36.00160454391274
+                ],
+                [
+                  66.59796541008387,
+                  27.602023957766814,
+                  36.248171711658934
+                ],
+                [
+                  66.45987488199724,
+                  27.94541477277708,
+                  36.49218386687152
+                ],
+                [
+                  66.3133442810548,
+                  28.291016588005064,
+                  36.733287775681376
+                ],
+                [
+                  66.1584016032617,
+                  28.638443262283236,
+                  36.971133539017295
+                ],
+                [
+                  65.99510524685695,
+                  28.987295549494117,
+                  37.205376854434974
+                ],
+                [
+                  65.82354444367765,
+                  29.33716322242224,
+                  37.43568128787056
+                ],
+                [
+                  65.64383939257887,
+                  29.687627359138173,
+                  37.661720522915225
+                ],
+                [
+                  65.45614108378734,
+                  30.038262763997174,
+                  37.883180554515235
+                ],
+                [
+                  65.26063080885781,
+                  30.388640491862144,
+                  38.09976179414074
+                ],
+                [
+                  65.05751935701807,
+                  30.738330441387067,
+                  38.31118105446285
+                ],
+                [
+                  64.84704590494088,
+                  31.086903981234606,
+                  38.5171733834249
+                ],
+                [
+                  64.62947661316667,
+                  31.433936572032927,
+                  38.71749372024877
+                ],
+                [
+                  64.40510294831459,
+                  31.779010346749732,
+                  38.91191834930501
+                ],
+                [
+                  64.17423975566723,
+                  32.121716612987576,
+                  39.100246131790804
+                ],
+                [
+                  63.937223111514626,
+                  32.461658242456465,
+                  39.28229949967074
+                ],
+                [
+                  63.69440798864814,
+                  32.79845191549346,
+                  39.45792520119184
+                ],
+                [
+                  63.446165771483095,
+                  33.131730191878304,
+                  39.626994792323615
+                ],
+                [
+                  63.19288165938312,
+                  33.46114338321239,
+                  39.78940487353056
+                ],
+                [
+                  62.93495199782025,
+                  33.78636120664062,
+                  39.94507707619633
+                ],
+                [
+                  62.67278157703723,
+                  34.10707420454047,
+                  40.09395780763677
+                ],
+                [
+                  62.406780936925216,
+                  34.422994919814286,
+                  40.23601776783021
+                ],
+                [
+                  62.137363714971116,
+                  34.73385882143686,
+                  40.37125125465175
+                ],
+                [
+                  61.86494407147282,
+                  35.0394249797756,
+                  40.49967527744038
+                ],
+                [
+                  61.58993422289966,
+                  35.3394764957785,
+                  40.62132850110312
+                ],
+                [
+                  61.312742110436474,
+                  35.63382069229884,
+                  40.736270044644264
+                ],
+                [
+                  61.03376922654717,
+                  35.922289079502434,
+                  40.84457815900487
+                ]
+              ]
+            },
+            "caption": "用户接收卫星信号，获得位置信息。",
+            "explanation": "这里只示意信号接收，不推演定位算法。",
+            "source": {
+              "printedPages": [
+                114,
+                116
+              ],
+              "pdfPages": [
+                119,
+                121
+              ],
+              "figure": "6.24",
+              "displayedSatellites": 4,
+              "actualConstellationCount": false,
+              "actualOrbits": false,
+              "positioningAlgorithm": false,
+              "solvedCoordinates": false,
+              "accuracyCalculated": false,
+              "passiveReceiverCanTransmitDistress": false,
+              "independentCommunicationRequired": true,
+              "communicationAvailableAssumed": true,
+              "eachFixRequiresThisMonitoringSequence": false
+            },
+            "segments": [
+              "space",
+              "ground-control",
+              "user"
+            ],
+            "displayedSatellites": 4,
+            "completeStructureAlwaysPresent": true,
+            "constellationCountIsSchematic": true,
+            "communicationRequiredForDistress": true,
+            "passiveReceiverTransmitsDistress": false,
+            "solvedCoordinates": false,
+            "accuracyCalculated": false,
+            "actualOrbits": false,
+            "earthWorld": {
+              "center": [
+                -93.49761525895362,
+                97.05310212342654,
+                -46.73555169606226
+              ],
+              "radius": 30.58214275988368
+            },
+            "satelliteWorld": [
+              {
+                "id": "sat-0",
+                "point": [
+                  -152.42140395806268,
+                  150.67982238369532,
+                  8.868344230998986
+                ]
+              },
+              {
+                "id": "sat-1",
+                "point": [
+                  -116.35024899256197,
+                  157.99170953567352,
+                  -2.2524349544132747
+                ]
+              },
+              {
+                "id": "sat-2",
+                "point": [
+                  -71.84153364611268,
+                  155.6568826972141,
+                  1.9178572401163194
+                ]
+              },
+              {
+                "id": "sat-3",
+                "point": [
+                  -34.19947675554208,
+                  144.9123222713123,
+                  13.03863642552858
+                ]
+              }
+            ],
+            "receiverWorld": [
+              -78.4367744271224,
+              111.13886479254663,
+              -22.667190973317446
+            ],
+            "monitorWorld": [
+              -113.91446588011956,
+              113.93290091322953,
+              -29.33588997689492
+            ],
+            "rescueBaseWorld": [
+              -62.238422321663236,
+              101.19872642069562,
+              -43.54176389662314
+            ],
+            "linkWorld": [
+              {
+                "id": "monitor-down",
+                "kind": "monitor-down",
+                "status": "arrived",
+                "source": [
+                  -116.35024899256197,
+                  157.99170953567352,
+                  -2.2524349544132747
+                ],
+                "target": [
+                  -113.97290214648262,
+                  119.77101753580331,
+                  -29.33588997689492
+                ],
+                "point": [
+                  -113.97290214648262,
+                  119.77101753580331,
+                  -29.33588997689492
+                ],
+                "earthClearance": 4.604350128041103
+              },
+              {
+                "id": "monitor-up",
+                "kind": "monitor-up",
+                "status": "arrived",
+                "source": [
+                  -113.97290214648262,
+                  119.77101753580331,
+                  -29.33588997689492
+                ],
+                "target": [
+                  -116.35024899256197,
+                  157.99170953567352,
+                  -2.2524349544132747
+                ],
+                "point": [
+                  -116.35024899256197,
+                  157.99170953567352,
+                  -2.2524349544132747
+                ],
+                "earthClearance": 4.604350128041103
+              },
+              {
+                "id": "nav-0",
+                "kind": "navigation",
+                "status": "arrived",
+                "source": [
+                  -152.42140395806268,
+                  150.67982238369532,
+                  8.868344230998986
+                ],
+                "target": [
+                  -78.49242801413484,
+                  116.69897586166452,
+                  -22.667190973317446
+                ],
+                "point": [
+                  -78.49242801413484,
+                  116.69897586166452,
+                  -22.667190973317446
+                ],
+                "earthClearance": 3.920059880977178
+              },
+              {
+                "id": "nav-1",
+                "kind": "navigation",
+                "status": "arrived",
+                "source": [
+                  -116.35024899256197,
+                  157.99170953567352,
+                  -2.2524349544132747
+                ],
+                "target": [
+                  -78.49242801413484,
+                  116.69897586166452,
+                  -22.667190973317446
+                ],
+                "point": [
+                  -78.49242801413484,
+                  116.69897586166452,
+                  -22.667190973317446
+                ],
+                "earthClearance": 3.920059880977178
+              },
+              {
+                "id": "nav-2",
+                "kind": "navigation",
+                "status": "arrived",
+                "source": [
+                  -71.84153364611268,
+                  155.6568826972141,
+                  1.9178572401163194
+                ],
+                "target": [
+                  -78.49242801413484,
+                  116.69897586166452,
+                  -22.667190973317446
+                ],
+                "point": [
+                  -78.49242801413484,
+                  116.69897586166452,
+                  -22.667190973317446
+                ],
+                "earthClearance": 3.920059880977178
+              },
+              {
+                "id": "nav-3",
+                "kind": "navigation",
+                "status": "arrived",
+                "source": [
+                  -34.19947675554208,
+                  144.9123222713123,
+                  13.03863642552858
+                ],
+                "target": [
+                  -78.49242801413484,
+                  116.69897586166452,
+                  -22.667190973317446
+                ],
+                "point": [
+                  -78.49242801413484,
+                  116.69897586166452,
+                  -22.667190973317446
+                ],
+                "earthClearance": 3.920059880977178
+              },
+              {
+                "id": "rescue-message",
+                "kind": "communication",
+                "status": "waiting",
+                "source": [
+                  -75.13966529656038,
+                  115.06433469313662,
+                  -22.667190973317446
+                ],
+                "target": [
+                  -62.29685858802631,
+                  107.03684304326939,
+                  -43.54176389662314
+                ],
+                "point": [
+                  -75.13966529656038,
+                  115.06433469313662,
+                  -22.667190973317446
+                ],
+                "earthClearance": 0.8256102898163116
+              }
+            ],
+            "vehicleWorld": {
+              "id": "rescue-vehicle",
+              "progress": 0,
+              "point": [
+                -65.1980349095732,
+                93.56773917498468,
+                -33.54602194972864
+              ],
+              "up": [
+                0.8996402158561008,
+                -0.11995202878081343,
+                0.419832100732847
+              ],
+              "forward": [
+                -0.18557298171498363,
+                0.7653192311600321,
+                0.6163190268635454
+              ]
+            },
+            "roadWorld": [
+              [
+                -65.1980349095732,
+                93.56773917498468,
+                -33.54602194972864
+              ],
+              [
+                -65.3144618332515,
+                94.00941867114267,
+                -33.19215656085123
+              ],
+              [
+                -65.44189537200303,
+                94.45712099123546,
+                -32.83896357706331
+              ],
+              [
+                -65.58054353108668,
+                94.9104931061284,
+                -32.486901566911285
+              ],
+              [
+                -65.73058495076566,
+                95.36915170382927,
+                -32.13644088028519
+              ],
+              [
+                -65.89216633890466,
+                95.83268401587037,
+                -31.788061360619764
+              ],
+              [
+                -66.06540006470398,
+                96.30064896550618,
+                -31.442249843802074
+              ],
+              [
+                -66.25036195818059,
+                96.77257864231464,
+                -31.09949746544231
+              ],
+              [
+                -66.44708935926991,
+                97.24798010190253,
+                -30.760296803357846
+              ],
+              [
+                -66.65557945850992,
+                97.72633748310423,
+                -30.425138887031096
+              ],
+              [
+                -66.87578796814081,
+                98.20711442849432,
+                -30.094510110250496
+              ],
+              [
+                -67.10762815811917,
+                98.6897567874014,
+                -29.76888908694815
+              ],
+              [
+                -67.35097028605972,
+                99.17369557412303,
+                -29.44874349324084
+              ],
+              [
+                -67.60564144358926,
+                99.65835014791932,
+                -29.13452694071941
+              ],
+              [
+                -67.87142583418435,
+                100.14313157582453,
+                -28.826675926992152
+              ],
+              [
+                -68.14806548946609,
+                100.62744613456871,
+                -28.52560690929488
+              ],
+              [
+                -68.43526142238409,
+                101.11069890413236,
+                -28.231713545596733
+              ],
+              [
+                -68.73267520700408,
+                101.5922974028146,
+                -27.945364145062257
+              ],
+              [
+                -69.0399309659996,
+                102.07165521229746,
+                -27.666899366041548
+              ],
+              [
+                -69.35661773872697,
+                102.54819554109372,
+                -27.396630195049028
+              ],
+              [
+                -69.68229219520155,
+                103.02135467598998,
+                -27.134836234611157
+              ],
+              [
+                -70.01648165464476,
+                103.49058527359878,
+                -26.881764321591987
+              ],
+              [
+                -70.35868736174146,
+                103.95535944782216,
+                -26.637627490854584
+              ],
+              [
+                -70.70838796950042,
+                104.41517161376984,
+                -26.402604292111533
+              ],
+              [
+                -71.06504317475684,
+                104.86954105428946,
+                -26.176838460788133
+              ],
+              [
+                -71.42809745094279,
+                105.31801418155318,
+                -25.960438936894036
+              ],
+              [
+                -71.79698382277418,
+                105.76016647288013,
+                -25.753480219480053
+              ],
+              [
+                -72.17112762889812,
+                106.19560406692707,
+                -25.556003038430077
+              ],
+              [
+                -72.54995022119711,
+                106.62396501332611,
+                -25.368015320253107
+              ],
+              [
+                -72.9328725532074,
+                107.04492017557455,
+                -25.189493420311294
+              ],
+              [
+                -73.31931861478795,
+                107.45817379329866,
+                -25.02038359061791
+              ],
+              [
+                -73.7087186755708,
+                107.86346371576197,
+                -24.86060364999898
+              ],
+              [
+                -74.10051230561685,
+                108.26056132354039,
+                -24.710044822024912
+              ]
+            ],
+            "nodeStops": [
+              {
+                "phase": 0,
+                "selection": 0,
+                "label": "卫星与地面"
+              },
+              {
+                "phase": 0.34,
+                "selection": 1,
+                "label": "接收定位"
+              },
+              {
+                "phase": 0.68,
+                "selection": 2,
+                "label": "定位助救援"
+              }
+            ],
+            "nodeWorld": [
+              {
+                "selection": 0,
+                "point": [
+                  -94.27676547712775,
+                  174.89465709107694,
+                  0.5277598419397975
+                ]
+              },
+              {
+                "selection": 0,
+                "point": [
+                  -145.1512569963438,
+                  118.77875072003303,
+                  -6.42272714894284
+                ]
+              },
+              {
+                "selection": 1,
+                "point": [
+                  -42.28920221766293,
+                  119.80834207976314,
+                  -6.42272714894284
+                ]
+              },
+              {
+                "selection": 2,
+                "point": [
+                  -40.50959934129641,
+                  80.90147799269104,
+                  -5.0326297507663185
+                ]
+              }
+            ],
+            "handleWorld": [
+              -75.30182380825747,
+              62.48105595574968,
+              15.818831221881638
+            ],
+            "phaseTrackWorld": {
+              "start": [
+                -145.97083549674576,
+                61.77369886482159,
+                15.818831221881638
+              ],
+              "end": [
+                -31.988558579829146,
+                62.914597398576575,
+                15.818831221881638
+              ]
+            },
+            "geometryBuffersReused": true,
+            "elevatedAbovePage": 55.60389592706124,
+            "directInteraction": "segment-click-and-process-front-drag"
+          },
+          "view": "detail",
+          "labels": [
+            {
+              "text": "卫星星座",
+              "left": 560.0075388914502,
+              "top": 262.49318064654193,
+              "right": 761.9994609856434,
+              "bottom": 310.1425571405565,
+              "fontPx": 32.74924573367125
+            },
+            {
+              "text": "地面监控",
+              "left": 402.1712515355162,
+              "top": 414.32843865658236,
+              "right": 586.9699150701828,
+              "bottom": 457.92196954168327,
+              "fontPx": 29.96167757901072
+            },
+            {
+              "text": "用户接收",
+              "left": 751.0326964241008,
+              "top": 437.6448576848128,
+              "right": 940.788272945995,
+              "bottom": 482.40771163356743,
+              "fontPx": 30.765349130903026
+            },
+            {
+              "text": "通信助援",
+              "left": 753.6456250656626,
+              "top": 551.6131496690728,
+              "right": 936.0101879848326,
+              "bottom": 594.6324824602616,
+              "fontPx": 29.567033286452265
+            }
+          ],
+          "models": 1,
+          "images": 6,
+          "triangles": 23197,
+          "calls": 114,
+          "geometries": 74,
+          "textures": 519,
+          "hiRes": 6,
+          "engine": "Every Joule 48591dd"
+        },
+        "regions": [
+          {
+            "id": "gnss",
+            "screenX": 940.1523948902867,
+            "screenY": 691.0710058231712
+          },
+          {
+            "id": "gis",
+            "screenX": 1190.6742082747671,
+            "screenY": 898.0196157408607
+          }
+        ],
+        "pages": [
+          121,
+          122
+        ],
+        "notes": {},
+        "originalPageCount": 132,
+        "sectionCount": 17,
+        "studyCount": 6,
+        "figureCount": 60
+      }
+    },
+    {
+      "name": "2d-soil-section",
+      "state": {
+        "ready": true,
+        "twoD": true,
+        "spread": 47,
+        "turning": false,
+        "figureBusy": false,
+        "active": "soil",
+        "playing": false,
+        "playbackSpeed": 2,
+        "teacher": false,
+        "stored": true,
+        "state": {
+          "phase": 0.62,
+          "selection": -1,
+          "routes": [],
+          "rings": [],
+          "focus": null,
+          "caption": "图5.17　森林土壤剖面及各土层特点"
+        },
+        "process": {
+          "key": "soil-leaching",
+          "stage": "森林土壤剖面",
+          "title": "部分可移动物质随水下迁",
+          "text": "留意浅色淋溶层中的标记向下移动。这里只表示一部分可移动物质。",
+          "activeStop": 2,
+          "seeking": false
+        },
+        "render": null,
+        "regions": [],
+        "pages": [
+          93,
+          94
+        ],
+        "notes": {},
+        "originalPageCount": 132,
+        "sectionCount": 17,
+        "studyCount": 6,
+        "figureCount": 60
+      }
+    },
+    {
+      "name": "2d-waves-displacement",
+      "state": {
+        "ready": true,
+        "twoD": true,
+        "spread": 31,
+        "turning": false,
+        "figureBusy": false,
+        "active": "waves",
+        "playing": false,
+        "playbackSpeed": 2,
+        "teacher": false,
+        "stored": true,
+        "state": {
+          "phase": 0.62,
+          "selection": 0,
+          "routes": [],
+          "rings": [],
+          "focus": null,
+          "caption": "波形向前传播；橙点表示同一水质点。"
+        },
+        "process": null,
+        "render": null,
+        "regions": [],
+        "pages": [
+          61,
+          62
+        ],
+        "notes": {},
+        "originalPageCount": 132,
+        "sectionCount": 17,
+        "studyCount": 6,
+        "figureCount": 60
+      }
+    },
+    {
+      "name": "2d-waves-depth-pair",
+      "state": {
+        "ready": true,
+        "twoD": true,
+        "spread": 31,
+        "turning": false,
+        "figureBusy": false,
+        "active": "waves",
+        "playing": false,
+        "playbackSpeed": 2,
+        "teacher": false,
+        "stored": true,
+        "state": {
+          "phase": 0.62,
+          "selection": 0,
+          "routes": [],
+          "rings": [],
+          "focus": null,
+          "caption": "波形向前传播；橙点表示同一水质点。"
+        },
+        "process": null,
+        "render": null,
+        "regions": [],
+        "pages": [
+          61,
+          62
+        ],
+        "notes": {},
+        "originalPageCount": 132,
+        "sectionCount": 17,
+        "studyCount": 6,
+        "figureCount": 60
+      }
+    },
+    {
+      "name": "2d-temperature-surface-compare",
+      "state": {
+        "ready": true,
+        "twoD": true,
+        "spread": 28,
+        "turning": false,
+        "figureBusy": false,
+        "active": "temperature",
+        "playing": false,
+        "playbackSpeed": 2,
+        "teacher": false,
+        "stored": true,
+        "state": {
+          "phase": 0.62,
+          "selection": 2,
+          "routes": [],
+          "rings": [],
+          "focus": null,
+          "caption": "约3100米 · 约1°C"
+        },
+        "process": {
+          "key": "temperature-deep-water-约3100米 · 约1°C",
+          "stage": "沿深度观察海水",
+          "title": "约3100米 · 约1°C",
+          "text": "更深处原曲线变化较小。读数为原图近似，不表示海水正在降温。",
+          "activeStop": 2,
+          "seeking": false
+        },
+        "render": null,
+        "regions": [],
+        "pages": [
+          55,
+          56
+        ],
+        "notes": {},
+        "originalPageCount": 132,
+        "sectionCount": 17,
+        "studyCount": 6,
+        "figureCount": 60
+      }
+    },
+    {
+      "name": "2d-earth-closed",
+      "state": {
+        "ready": true,
+        "twoD": true,
+        "spread": 14,
+        "turning": false,
+        "figureBusy": false,
+        "active": "earth",
+        "playing": false,
+        "playbackSpeed": 2,
+        "teacher": false,
+        "stored": true,
+        "state": {
+          "phase": 0,
+          "selection": 0,
+          "routes": [],
+          "rings": [],
+          "focus": null,
+          "caption": "完整"
+        },
+        "process": null,
+        "render": null,
+        "regions": [],
+        "pages": [
+          27,
+          28
+        ],
+        "notes": {},
+        "originalPageCount": 132,
+        "sectionCount": 17,
+        "studyCount": 6,
+        "figureCount": 60
+      }
+    },
+    {
+      "name": "2d-gnss-sat-0",
+      "state": {
+        "ready": true,
+        "twoD": true,
+        "spread": 61,
+        "turning": false,
+        "figureBusy": false,
+        "active": "gnss",
+        "playing": false,
+        "playbackSpeed": 2,
+        "teacher": false,
+        "stored": true,
+        "state": {
+          "phase": 0.62,
+          "selection": 1,
+          "routes": [],
+          "rings": [],
+          "focus": null,
+          "caption": "用户接收卫星信号，获得位置信息。"
+        },
+        "process": {
+          "key": "gnss-1-false",
+          "stage": "卫星定位与通信协同",
+          "title": "用户接收卫星信号，获得位置信息。",
+          "text": "这里只示意信号接收，不推演定位算法。",
+          "activeStop": 1,
+          "seeking": false
+        },
+        "render": null,
+        "regions": [],
+        "pages": [
+          121,
+          122
+        ],
+        "notes": {},
+        "originalPageCount": 132,
+        "sectionCount": 17,
+        "studyCount": 6,
+        "figureCount": 60
+      }
+    }
+  ],
+  "scope": "Six physical observations in five models, real mesh pointer and native SVG keyboard operation. Observation must not be a disguised phase/condition change.",
+  "reviewedEntry": {
+    "path": "/assets/index-D4LALJeW.js",
+    "sha256": "0c70ea4da5b54f5219c4606fa01b6913cf9036f9e556401ad7229f77c435fb57"
+  },
+  "reviewedStyles": [
+    {
+      "path": "/assets/index-CfTBMr01.css",
+      "sha256": "cc5465a410b3a8479f123eeac593a87c2d55493c5d018e38c161f2d66e08a6e0"
+    }
+  ],
+  "reviewedAt": "2026-11-06T05:44:25.533Z",
+  "browser": "156.0.8078.80"
+}

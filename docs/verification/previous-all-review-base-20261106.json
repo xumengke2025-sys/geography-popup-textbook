@@ -1,0 +1,2036 @@
+{
+  "generatedAt": "2026-11-06T04:20:55.138Z",
+  "entry": "src/textbook-main.ts",
+  "referenceCommit": "48591ddc5f0a22e6eb2a5a41c424a426599061ca",
+  "nodeVersion": "v24.15.0",
+  "scope": {
+    "originalPageCount": 132,
+    "spreadCount": 67,
+    "figureCount": 60,
+    "nativeSvgFallbacks": 60,
+    "textbookCropFallbacks": 0
+  },
+  "build": "TypeScript and Vite production build passed before manifest generation",
+  "currentDist": {
+    "fileCount": 281,
+    "bytes": 37908793
+  },
+  "distSha256": {
+    "dist/THREE-LICENSE.txt": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc",
+    "dist/assets/index-BqXd35wy.css": "5ae82f930e633c82e5398aacf4e3aa1c3f7b9570fce8ba498976feb6d78c2617",
+    "dist/assets/index-SsFpYqVD.js": "5e8ccc5e11241a1a928998a3a93bd0e3e5bde15398ac63aaa5cd92089f0d298f",
+    "dist/assets/sound-vOpPkm07-CahB0RyQ.js": "e532f0955093357a5404589b93a952e635770c71ff5fd428dda971a207bb0811",
+    "dist/book.svg": "29cf7d380b31e3c7b404a50c5720ce51edde9c8ed5c83eca9c5ae4c7db56d434",
+    "dist/desk/dark_wood_diff_1k.jpg": "d68da31655bf47024af893156a6a01a6c95bb60f55d97e2dc9bdd47be320e5b5",
+    "dist/desk/dark_wood_nor_gl_1k.jpg": "c42541f1bda0a14b39f120c24407eeba699af8ac85b371c7cef98ffd7d7b13bf",
+    "dist/desk/dark_wood_rough_1k.jpg": "47ea12dbf649109b02eaa164dde9732a74e839957f29ad0ec7f5266b575d1835",
+    "dist/desk/paper.jpg": "756bcd3c97f0a3a477988fab2c5893dcf20ca6fa4705348df786832191f0d296",
+    "dist/desk/sources.json": "f915b35474e3cec3cf3dbc84e8e68dd305e1b61fc009be60c529010829d6740d",
+    "dist/fonts/OFL-sans.txt": "18aabf190848725e2576eefb5c29ba06aac1029d02132252a7f312eac2e50cf3",
+    "dist/fonts/OFL-serif.txt": "18aabf190848725e2576eefb5c29ba06aac1029d02132252a7f312eac2e50cf3",
+    "dist/fonts/sans.woff2": "95e3633b6a98f764ba3adfb54504a0cd4799328c009adf9081d6c1850f9c4c78",
+    "dist/fonts/serif.woff": "e9c4e1beded15e7e66a10dafec0eb0ace43614a8b07ff6a997f882afddcc23ff",
+    "dist/index.html": "16e0380c794189aaab892adfb9b6ae0b2020e1df0f7fe9e57b359dc29110ba61",
+    "dist/textbook/cover-detail.webp": "8914f230787df39745f269f6ce1a8e121a6b5af3d6e97d5822f7c72e8e9abc32",
+    "dist/textbook/page-002.webp": "79595b0805bb84ab9a70454948b9e101914d96ea814d9b847b6fcd7d302f0f39",
+    "dist/textbook/page-003.webp": "f19080a329f6335ac2fe55e2cecca8b73cc95ec9c965f8269988be4c2bb1b97b",
+    "dist/textbook/page-004.webp": "70969dba5c2cd5b3f20266707b168cdb1b726746fd2f9ec585ff8e65b95090d8",
+    "dist/textbook/page-005.webp": "02044ae26a2afd47e71936e3beea712e30a662b467abf888a2d04e8458c3e6f4",
+    "dist/textbook/page-006.webp": "3c571f92c23e8b5bd75ef0c448fda3b7a7aeab0b85865f9877c28df708b8c7cb",
+    "dist/textbook/page-007.webp": "6b6b167d392122797cc345341af2d6f58432173c78d7cbfb2a69d8b0a04bcc65",
+    "dist/textbook/page-008.webp": "f5a2d027db8674c76cb89bb32f31d86fa005df1c413701a94a4a2f1086453b9d",
+    "dist/textbook/page-009.webp": "e082028c44e90f28dfecb7792671343d8641909b613a861f9556916f7fda0f93",
+    "dist/textbook/page-010.webp": "0d43b2a2745c94140957cdc5d7eac7a92ce4107eb5a62bc6f9d0051feee0a28e",
+    "dist/textbook/page-011.webp": "9dcb52a6e831b97392f566ac53f48ea611bbdea975c899a34acd98a99c627dc1",
+    "dist/textbook/page-012.webp": "905934e653f269f3b7fa1e5549f1fa805f277837d62bc3a33e2146e0e9cc3da5",
+    "dist/textbook/page-013.webp": "37ce7d12bf219c6d05c4ea65c6606ff4dfb8abeb796367dd0d8523bb8d2d20c8",
+    "dist/textbook/page-014.webp": "05a5bbeeb33d71e2d1f4f2847bd4591eee69b9acc7c0db69a81bc44225c092c3",
+    "dist/textbook/page-015.webp": "ee5d1405da7a3d71199cd226e8c2ebf1ed5ab5c2e61eb6bf51105c52f5bcd493",
+    "dist/textbook/page-016.webp": "1df5fff76b097d8ad28657fe6b822f123bb74f1010677972c125baf66303ccea",
+    "dist/textbook/page-017.webp": "7614e46eb2908a409b833279cc9da7a7ab67f08ff75dae4ddd0a1bcf6a6d1ca9",
+    "dist/textbook/page-018.webp": "e939a6a6f9adf0cddada6efcaf2edb4038fae4657cbb54a6e962eaa38d385362",
+    "dist/textbook/page-019.webp": "e938755c2cfd59e8bb204f4fda3e3ef45f077032ead3beee3b3a22b78f0cf4e4",
+    "dist/textbook/page-020.webp": "52f3132421c4ce7512c3520f4379bcc72942ecaa29f94c41ab397501c4c583e9",
+    "dist/textbook/page-021.webp": "7fe2093311c4fa0415397cf6929b81115e7fd486ecc914995889562e572e42f8",
+    "dist/textbook/page-022.webp": "c746ac67a0dee7fc494a05fe951fb0babe50f0d71fae0eabc1d9a49f934a6e8e",
+    "dist/textbook/page-023.webp": "522687e71c3dda0f796a59ee9b0d75fc0c33c4651861cd7274fa29f83fd7fc39",
+    "dist/textbook/page-024.webp": "39c8d142a25f3bee85ec777270509bcd51a9b0934abe6409c2134206323afaba",
+    "dist/textbook/page-025.webp": "c199ccf0624e5cf6f832ffd4ca3cb88f559276a5edc31c04082118a8e583b926",
+    "dist/textbook/page-026.webp": "138c958b5305506389e369b952b6872f356ed05ab6cf13ceca0ba6bd37da8065",
+    "dist/textbook/page-027.webp": "134164173cddbc5e1aaa8ef303c682a0452e4965e1e5362c6dd8d1b85ac979c4",
+    "dist/textbook/page-028.webp": "5f1bdff6219d6e432ea1ba9816ac09d34551ab77f764407a1a568b676cf0b9d7",
+    "dist/textbook/page-029.webp": "2d29d90fa0adbc6d2b73d07cd74a5b7f6129783307ea9e26034972419c47b0db",
+    "dist/textbook/page-030.webp": "25e65c26f1ad9462e4eef9535317352959dde761dfd2fe26f4eeaf788e96da9e",
+    "dist/textbook/page-031.webp": "e1ba7c5ffcaec99d84dd440b114c9d52d22a57ed55a098c3dbc1f443cd2a33d1",
+    "dist/textbook/page-032.webp": "e0903e50828b4bcd4d0383233a5b847b427d3b7f0ed27dc4a64d39023726dd7f",
+    "dist/textbook/page-033.webp": "e282f5e4d73e2f3ae0965f0933a9bfdc1427364d81f4bf01997b564778f06039",
+    "dist/textbook/page-034.webp": "3e91c6da3b1f0e0a5efb863e85f4306cca6780b062fd208655b1d96bdf2d0144",
+    "dist/textbook/page-035.webp": "3d78071421edec6d71adcfba10b7be6724641463645f527ec7dceb596220092f",
+    "dist/textbook/page-036.webp": "caae7b25a4cb12500e2337dd8e7b772db47494c292258137f9ef3c3c7fe43eac",
+    "dist/textbook/page-037.webp": "cde203cb6c7c5a11a230d71a850ddd6b9af4b3a27c7bf5e285c6d29f6bc0334a",
+    "dist/textbook/page-038.webp": "5c6665afe145b0aea67f9aca8ef99785bcf1298995187517c398eeb240802986",
+    "dist/textbook/page-039.webp": "b3cf373fd5598ff55613f01c11058e20cefe006d378dbc0b37d2f1d4ffebb408",
+    "dist/textbook/page-040.webp": "d4210b1c80110c5115d20c04fb3eff0d9df7a839b1d794c9c7f2fd975fcd05de",
+    "dist/textbook/page-041.webp": "4a7782091ae91bb7b9ff4631470b752e3ac7d07f41f40bb7526b39e48cc66283",
+    "dist/textbook/page-042.webp": "62ee6c17d07b097e21b2bc1f4f960a0fc140dee91e2e3aeb9970791bd7587a9c",
+    "dist/textbook/page-043.webp": "b67ef69e161053b7a5720462ba22f91df1acfda03eb09b0fc1eeb48b7f3f63dd",
+    "dist/textbook/page-044.webp": "37ca9a63c303b9586e9862607ed63308d335e01060ae38beb39daa1271b60807",
+    "dist/textbook/page-045.webp": "4f1cc100f2dea37e3c778fc2efe8cbbe760b89463e830b4d16cd4adb7d8d3ba5",
+    "dist/textbook/page-046.webp": "60aad1af18d118977079208831c3e850177343b4f6f288c79a3a2e6fcdcc62aa",
+    "dist/textbook/page-047.webp": "bccb1df323ed65a02b0f9fea01d488fa0b908822e78f468cd9101f55db344a96",
+    "dist/textbook/page-048.webp": "ba834baf929956fce474d4cb91dc30e954a6cecff20189487e12de25feb13bb8",
+    "dist/textbook/page-049.webp": "b4541019926973cd273db7af4f1df26cc1b8a6f19e8b59524e6019e6a3f23e42",
+    "dist/textbook/page-050.webp": "1ae99687fdb153f46985ff5f24e74f0a01e9a746626b21e121eec2647f142502",
+    "dist/textbook/page-051.webp": "056f178dc43e9bc9183b4cdefd3d90c5469d1797f484c1a146d2c6ab4d9aaf23",
+    "dist/textbook/page-052.webp": "da0306c5e7390f618edaec6c4ab4d83408b4007c01da129b6b4123493ff03a7d",
+    "dist/textbook/page-053.webp": "a95cf1e4cb6e679d8bfbee8e2bad7435e112e8320dd8261b64421d1843faa7c7",
+    "dist/textbook/page-054.webp": "413106357578b90500ddd2123ecb90db9ff94f46fa935c7c8e41f2cbbebde688",
+    "dist/textbook/page-055.webp": "735f512067aa22b0c94bfa9628dab6fae996ffafbf5529015a4dfda9d45a3435",
+    "dist/textbook/page-056.webp": "20eba75778e2aaf662e5af44d1c9237f8f23dd6950e55ae737eee12a182b6222",
+    "dist/textbook/page-057.webp": "dbcdd5ba579337f1574d3a15fcb0983464a8e7261ac14e04ed3e198896a2424e",
+    "dist/textbook/page-058.webp": "67153b438d85d2b3951b24c88a7d2e3ad6434dfc9de82bfbe75999abb82812f6",
+    "dist/textbook/page-059.webp": "dc09fbaa59f2a1b2e8655756c3727805887ec0129726379f0ae0c797897476c4",
+    "dist/textbook/page-060.webp": "e37b25250fad6b9781f33e0e27cda04197b9e8b7647958259c56832fa23a6b4f",
+    "dist/textbook/page-061.webp": "e24101ef3241f26f3c0b5ddd8b9223ef6939b0c4080a20e560904a3f457fdf8d",
+    "dist/textbook/page-062.webp": "26f118872e4d1ca82a27bd3e73dba1dbd6ccd6b7cf2a4294a532cac6e69fe740",
+    "dist/textbook/page-063.webp": "4d67646fb7effc7402185cbff428bc9bf413120c8335688acdc0759ff788f4f8",
+    "dist/textbook/page-064.webp": "960f679b0a39c254202626cb2e976ece55ea425f96360f2ba1eec0be8604f898",
+    "dist/textbook/page-065.webp": "11ddb9e205685731b7c96f83d2a3aedaa53c0599b4affd56d6784e099b4944c9",
+    "dist/textbook/page-066.webp": "0a897652f9231884f32dc3bb67dea35fd0f37761ba73fc2f6736bdd8dcbc3091",
+    "dist/textbook/page-067.webp": "d7214864f2c2ca7065c7fa33f391780ee0b67ae11b0548d5b8424a3188134b7d",
+    "dist/textbook/page-068.webp": "9dcd49b1056a11bca1e80d39af5b4572c979c25a819b2cc3be9f6848897f7e5a",
+    "dist/textbook/page-069.webp": "3c6276118a95f0040f34c2f5920d9749d4e0ff5c4981ea21a8922033c2bd4be9",
+    "dist/textbook/page-070.webp": "8e7f5a35fba3b51a99a1cb3a8fb2a93fea0a2caafb908d582d32e3e15837f525",
+    "dist/textbook/page-071.webp": "77cd7c6f6f09f4e6b3b2f84563d8d4e195de2de3c097636714d4ecb6694d9d1d",
+    "dist/textbook/page-072.webp": "d94990eac930658d1d8bcb81b23bf22737f907bd5b613e4abb1c1c9f45eade66",
+    "dist/textbook/page-073.webp": "9ba61d1645d0231e3f9395eea46ab8668e4fb1a72e4351072c708759e7621b4d",
+    "dist/textbook/page-074.webp": "b27e9c6bc0b2cafc232dbf8382ade1375c4a4ec854efdf8d471b18aafeecfa9e",
+    "dist/textbook/page-075.webp": "11d287cdb107945ab1bbe5d82eb0aa591a89a565b9834afcf8c7977fbc37c1bb",
+    "dist/textbook/page-076.webp": "d8fb01c96e3d69b64699251fa77e4560fb847ab92eb743a3ba90dd994b71094b",
+    "dist/textbook/page-077.webp": "d6ccac6749c83d1dc480c64ddf123810e60da9ce9d2fee09c22cd2071ed7e188",
+    "dist/textbook/page-078.webp": "7ac735155ad8733cca31b2411cbc48a60969cd371c4989889199d67b35160f9c",
+    "dist/textbook/page-079.webp": "9a6d315024c39cf78de1087e1c7886241b97584ec53968d4bafd928e86bba30f",
+    "dist/textbook/page-080.webp": "2e10edb63714bcc97795d0af03dd97b62dd51f338386764f6c26ef3fc14ea797",
+    "dist/textbook/page-081.webp": "7290eb5f729f1b89359b6021f7df5c28a4a3969635ad6f4d8923a2a5175edf80",
+    "dist/textbook/page-082.webp": "a2e0e561c0dfefd11ed04b681878a3bb47e85f6eade0f1315e5f8ac05b5678e6",
+    "dist/textbook/page-083.webp": "45fa1a6d587892f22f169d32294de4c8dfba0f7cea427ac178835af0bdb5d093",
+    "dist/textbook/page-084.webp": "c2f184c2b40fab4e16958f7cbf13c5a3e292eb31f558b8421392cbda4a0ddb35",
+    "dist/textbook/page-085.webp": "48dba5a7ca99e8a90eb593e327071219cd83a0b6f4ea5c35f1fb6d209921d5a3",
+    "dist/textbook/page-086.webp": "96ff5bca952fe5a67702f21247886adc348b792bcced700b9fa731d8a4e39cdf",
+    "dist/textbook/page-087.webp": "6a3a7928ca734963b94b21d9a1ed7feb837fe51351be36f5ce3163b13888460c",
+    "dist/textbook/page-088.webp": "90f39d71eb2114ae3e220519e93d8f2cf9287117372385314c0a81f060d55b13",
+    "dist/textbook/page-089.webp": "817ac57e9acdc6b8064b99d870100c6a586eb16aff40abd406f14c211cc104fb",
+    "dist/textbook/page-090.webp": "8da9c0d7500012a37be4d91724ab9dc8a62e4d95b03b2b5f728ae442937ef1af",
+    "dist/textbook/page-091.webp": "eb0ff4693bf1d9a90ee85c5d0ce0efb3046053f97c9b62bf3bfd7c50fe9f676e",
+    "dist/textbook/page-092.webp": "96f393b0156a602b8bea63d4974e8a7cad7a4a9fb3ee94db27f1011c61fdb9f7",
+    "dist/textbook/page-093.webp": "018932e34d2dad6b29aff2f0aaed5eb4f0a4da523786cacaf0f4c3fed07fad19",
+    "dist/textbook/page-094.webp": "7d5f0ff4bac70954bf8c98f176bf5324dfdd0b8d37ad4377450f55e7cdef9d96",
+    "dist/textbook/page-095.webp": "625f92183e4f019516dac9e5603900f060098e7586ff02bf7dc44d1624cd0a8a",
+    "dist/textbook/page-096.webp": "ec1b0a53ceff955cd01bd7729e3bc7e765730e0833385cc39b243c85b9c31321",
+    "dist/textbook/page-097.webp": "dd77320de9980565b0077666cdaea5fc87dca9fe2e996dc3e91e45f51841fd6b",
+    "dist/textbook/page-098.webp": "5bf53ad3ee43afa6a83ca4c783cf83bddbdf480560f6feb118314ea4cc7aee37",
+    "dist/textbook/page-099.webp": "a2280235e77e94b5c231dd4882551e8eb4720d50ea6e6a50a7c47257a91876f8",
+    "dist/textbook/page-100.webp": "b49adf2df39d047ea20d8f8ada8c26352bd2669ae15346c5c536bf4503402299",
+    "dist/textbook/page-101.webp": "d15c6cdc02f60640420feddb3cac9c1bdd3fa61ab9948d56977e12fce4e3f288",
+    "dist/textbook/page-102.webp": "2b60087daf8e83c09942ef104520211e762e1ef45184730c1f6589bf2fca4da8",
+    "dist/textbook/page-103.webp": "1bfaada30fe3f02c8fb27188b7812f08f3b6488687e31948130500a2c7ed897e",
+    "dist/textbook/page-104.webp": "a0d16151ba6ac368ab35f069bf7da6574574eddeb5e538f9adfcfa78f960b876",
+    "dist/textbook/page-105.webp": "1e79e9eee31a2bb9faf7e47c6815ddb3a69c84e1d21f627bb260fb5fce8973ec",
+    "dist/textbook/page-106.webp": "d1a74020d961cc2150c49c4db443fa8f4395a9cec05f5501f92b6cd58b3bab2d",
+    "dist/textbook/page-107.webp": "1909f2b120556a5345093e93052fa736541f36df54311054c2277701c81a15ec",
+    "dist/textbook/page-108.webp": "5fa4241f6cb0ffcce7d6ebc076db64197056bf7663e57306cb3ba5fc45fe7127",
+    "dist/textbook/page-109.webp": "3e0e9a2626d5769a7320b4fb70309b10e32be1df6432f5c1f5dc6d290bac0224",
+    "dist/textbook/page-110.webp": "f97a3c41b0b5e6e63ed38e4420f5b3d5ae43ac84989d432db773670509dae642",
+    "dist/textbook/page-111.webp": "0617b09676e3780f267f61d76cff6cd8d997ef1c768012eb49190486b76df270",
+    "dist/textbook/page-112.webp": "532f5ff2e5b8ba2bc76a6baf9ef79f5b16f69b27b5243f4dbd35518b949ae245",
+    "dist/textbook/page-113.webp": "47642f51ef8b57ee1ba83e7c059b9457dfeeca427351a257986340811b95821c",
+    "dist/textbook/page-114.webp": "b16f619a6abf1a377859d4e5332b423f1387eb16a768214481b92ec92c683924",
+    "dist/textbook/page-115.webp": "db0328b5ee4bfd168dd2117ea8a6e07e0cb1f94d47d2e4c0bbce0546ffaf026d",
+    "dist/textbook/page-116.webp": "2f6762fc22f0658fb058258ffd5b5cd20f615c5ea80c175cdfe19bd6d8619775",
+    "dist/textbook/page-117.webp": "d67d5c1776c2b2217458e6758604a369b53051d20c67401c5ec718c0a79268df",
+    "dist/textbook/page-118.webp": "723e83321bf47f28e6f060106012feef69722d17c3a7674d39036f26e1a2f1aa",
+    "dist/textbook/page-119.webp": "5c4dfcae7ca8bfe8fd1d49be50b5b22cc34fd809b792eb4a94d7e8f766523ee1",
+    "dist/textbook/page-120.webp": "ef04243fffeb568d1a392f9eed33131cb2b1612a47127a6ae9c41f5f288c38c4",
+    "dist/textbook/page-121.webp": "860c48eb581b967211774aac4f80424e3930849b35f6f3e0da861684d6e050c6",
+    "dist/textbook/page-122.webp": "06d76f259ccee6eb889f7445bab6fa27b6bd99e4c68955f6fb739624064e1af5",
+    "dist/textbook/page-123.webp": "0ca579bd388157fafc8bc6f4099840b5a1b46ad179b439758001aa609e67cd8f",
+    "dist/textbook/page-124.webp": "51bc8a0742410cee00f09f7bc37aadfc75dcd2ae1720f0fbf45df1124473b0b0",
+    "dist/textbook/page-125.webp": "9f2415d9ba5321abb1f29679d8080c963f8909097aadb4af6c687c4094dafab9",
+    "dist/textbook/page-126.webp": "e42923cf4f0e04ef1ddbaa6bff54d3a7c05b3421f7e7750399a66a91b1935a42",
+    "dist/textbook/page-127.webp": "83d8a09f92deeb3dc19681f7354e0038b1ef9240751f735e2ac0486ecb847706",
+    "dist/textbook/page-128.webp": "9b5dc4aabd712e7b565e98ff7e9cb9a92da19b181e14879c12d704ac10324a19",
+    "dist/textbook/page-129.webp": "674e6619ec0bf2b0e358c4829fa817858776e6382baa2459728730e99e663e27",
+    "dist/textbook/page-130.webp": "730c0ebc507b8dec76aa362f84fa6d494adf140111f7cd3ca62b3114aa7e9b49",
+    "dist/textbook/page-131.webp": "730c0ebc507b8dec76aa362f84fa6d494adf140111f7cd3ca62b3114aa7e9b49",
+    "dist/textbook/page-132.webp": "730c0ebc507b8dec76aa362f84fa6d494adf140111f7cd3ca62b3114aa7e9b49",
+    "dist/textbook/page-133.webp": "730c0ebc507b8dec76aa362f84fa6d494adf140111f7cd3ca62b3114aa7e9b49",
+    "dist/textbook/pages.json": "978e317082e8b6d7c643a4def12021e567933dcb4c5a2a684ecb1043c814a9a3",
+    "dist/textbook/thumb-002.webp": "1fe6195e147d817c2bf6327480cefef1604a54e7a67ea3483c3fd1bd17ece315",
+    "dist/textbook/thumb-003.webp": "3befaba4cc6e1521f929d13a383cb48c8b255c1bce5b59dace863a2b38632c0f",
+    "dist/textbook/thumb-004.webp": "73b3c1a2b26333fad75e93bc6b7d3807702f50af44ebc9010c001eb80b457837",
+    "dist/textbook/thumb-005.webp": "166be7e084f2163de5ccd61199d7e3255d66b7059aed3cfb1bc0546a54a1e53c",
+    "dist/textbook/thumb-006.webp": "ca19d6e45d1881ae2ed3fb6d5255d669091b94b6c88acc105b99dee249ef1356",
+    "dist/textbook/thumb-007.webp": "f42f460e121d728b04849846056ab21fc11565b05e29203228fbdedc8c7f428f",
+    "dist/textbook/thumb-008.webp": "d3563f0c8c6d424ac0f61108985852cfd48a1e00ff8b1d37e5300bd311b9c6e0",
+    "dist/textbook/thumb-009.webp": "a280122c5b2bb6f99df62bd567912d103daed91cd804184be832e2073aa83e4c",
+    "dist/textbook/thumb-010.webp": "f14c063d47e83743d405c7ef2fc283306105f42b0a4fb642cf49eea91c832e9d",
+    "dist/textbook/thumb-011.webp": "df20b19a4ee60d5addcbae087a359e91fffd0bb61fe8ae9073599cf98d136df8",
+    "dist/textbook/thumb-012.webp": "be15ed29ab0e32e4320844edbe6c91f6a3e9b6fb01bc5617bd945976abcbbffd",
+    "dist/textbook/thumb-013.webp": "fb3d22573e4226d26fe8c17965c4eb09fb7bc8976995de8edf28491e585f11cb",
+    "dist/textbook/thumb-014.webp": "dac0a3cf593f7936b07f2e5ef4e16f3d1644164a6441c449b38b231889899d7a",
+    "dist/textbook/thumb-015.webp": "c6fb4e2ce96980af5fe67497d40226d1a0ca3e24c3e08de8479c9d3f32eb0466",
+    "dist/textbook/thumb-016.webp": "79d1873d019f5352289c527be966088ad610523b4a52a8263fbb44b2119ea105",
+    "dist/textbook/thumb-017.webp": "b7b7754bb4c7e6d9eb759cb35c77e090bf77cfc3e8513659a8b4c02fcab46563",
+    "dist/textbook/thumb-018.webp": "4271301a64d26ef20bf4bb5f14cfd63467f56d92eb4f6d43791087fef635207b",
+    "dist/textbook/thumb-019.webp": "5c11cd1119c2ca62feeccc614053703788006e5e1b952ea3671552ac9339b849",
+    "dist/textbook/thumb-020.webp": "e8b7cd4c60a7286afcd5599c4c275c95fb39c9d9597074d29a55c5a0c64e4433",
+    "dist/textbook/thumb-021.webp": "0d9d6548ff8e1484a1a74abd199ade2442d0598e7c6533bd97b5eca25d5101fb",
+    "dist/textbook/thumb-022.webp": "687e006a4f368b104768fd824de1730a6c07291afac26fc8b0a6e920bcb8d319",
+    "dist/textbook/thumb-023.webp": "d82d17d1297652b73bb7ebd1c4f729ccdd2d3be8468914e0bd8e1de224d50078",
+    "dist/textbook/thumb-024.webp": "a29a52824163cc193f97ac0f104da511c0135bb27b8b1aed53767f53e075e691",
+    "dist/textbook/thumb-025.webp": "021b2839bf276ac44c73c08ccf7a8cd05c8484085eb2f9425e736d7c164b8989",
+    "dist/textbook/thumb-026.webp": "9f699d05b9167170bf91e3378d214b5d6678262315a7c7909aac31c324947a47",
+    "dist/textbook/thumb-027.webp": "2d435440bbaa3cf7ad8c8b084ac189b78543122838f42556f9ba349a8b3e468f",
+    "dist/textbook/thumb-028.webp": "5f978538a3ab96d5ba9dacce980e6a143a4194267f45d8cf110f0cbaabb73698",
+    "dist/textbook/thumb-029.webp": "f8bc6a97855b267740601b12acef9d888b2f95ecd7f147527c34cda6abcf6d09",
+    "dist/textbook/thumb-030.webp": "4a2aa1ebd9c320acc6172803071d4c563c7003f77f77cfacf8d22bde9bef725f",
+    "dist/textbook/thumb-031.webp": "cdbee727511c72843528ef8e97a75cc4cfb105aa8c5aad2b1fe4735b864d55f3",
+    "dist/textbook/thumb-032.webp": "5d49f289f5c65f754be19677d68a75a3b51125f9aa675e945b9287b623c34261",
+    "dist/textbook/thumb-033.webp": "0a2c6e8fc7cc2ebbc0bb63da83984e661e81a48feddc37be47952fd472bada57",
+    "dist/textbook/thumb-034.webp": "286a9cf875e4d4e1dfdb5d5d75ce2e9c8ac7f564f0e97aad771b7c709a34eb41",
+    "dist/textbook/thumb-035.webp": "756c60683c8694b873d2b315bcce7236bb754c9e6fa0efc15257b3d32bd55568",
+    "dist/textbook/thumb-036.webp": "1c97a2a1a579da274b54e1d887395937e73fd58b6210ea3ff61254c0a6c335c2",
+    "dist/textbook/thumb-037.webp": "13ea834a3c0ab0b3f3336758dc63ebd8b167ff46754c322f97f2221acff9a76d",
+    "dist/textbook/thumb-038.webp": "2dfe70f3891272d058b086ac9e32c0f67d7d8c35e1b5bd0c704884b88a9c51f8",
+    "dist/textbook/thumb-039.webp": "3b46517e4f9f1811c936a2d8e8a3917b80203b5e29d3d031fff29a742dd513d1",
+    "dist/textbook/thumb-040.webp": "9a3db53778686fb0f20054fea3f5b77b642bd8311bdc094deaeaeb31d3170674",
+    "dist/textbook/thumb-041.webp": "17c525e2bc026d957a64a01eaafb58944323df5ed6a7f8e429203c35f05241cf",
+    "dist/textbook/thumb-042.webp": "f284c7b99a8436967afdfbd0949d1e841a9b09c2e7abc0bb1f54fcb6fd9eb96b",
+    "dist/textbook/thumb-043.webp": "585628753c012b65c4584036fede207d207d8f7a58b8f16fce06d46259a2718a",
+    "dist/textbook/thumb-044.webp": "9f46a01f5fdeb2bc2a2e74e60e625c805cbe0e3288d9696bf276ef7469434f0b",
+    "dist/textbook/thumb-045.webp": "f0649872b1e635c9f7df217f0c5094b4ff814dac5710d76dc2925a7b8b0bb815",
+    "dist/textbook/thumb-046.webp": "306f0a6246e7e40eb0c40404feade11d8e6dab33e90501eddc84bde23b85a67e",
+    "dist/textbook/thumb-047.webp": "219e3d8daaef7cca404b868530b0a46ea18be706ed802f2eaa5ba93a3e8f4c5b",
+    "dist/textbook/thumb-048.webp": "1a9013e42b4451a2d5f9508881ee84ba5bee04681e603804011b4601c345e5b5",
+    "dist/textbook/thumb-049.webp": "34188220001c504eebd91d80ae66018f809a6cf0917c71fcfe49cf84afedaac2",
+    "dist/textbook/thumb-050.webp": "ff46be0cb48f73348e35d23595eefa49781d5daeb612eb41edba5b960ca25694",
+    "dist/textbook/thumb-051.webp": "93760c38c6a8cadd59ce433da42f2d532c7fb4e813fab0a4f9d9d4d10857f49e",
+    "dist/textbook/thumb-052.webp": "c8a7c4f1490fca609e2a34a48e2ffc644ac25d6261ab685d5a2373062fccfe54",
+    "dist/textbook/thumb-053.webp": "eea9955ea58386dcf9f4bf280d0626e72cf1f68877893bb4068d5c0d31eeba94",
+    "dist/textbook/thumb-054.webp": "fdfb9fc70d29654c7328b19ca7f9ee0650610ed8443d24e3865996c7a7e1ab55",
+    "dist/textbook/thumb-055.webp": "e77145f60bc7026fb9bc8f0dd5d754f2df17c70eabb4e570dd00bf50b915111f",
+    "dist/textbook/thumb-056.webp": "97b4fdb3258c3eba061cfd94f4a6099b8efe7b50fd17a0f730f5897b0598a407",
+    "dist/textbook/thumb-057.webp": "a65e1fd6ce30e392b38dbb41a2e5be80517372abb604c6ec72a7e5382d02e4f4",
+    "dist/textbook/thumb-058.webp": "18f58a6e9de1f5c73464cc04bec9841d0bba3e3f5e2f2f8890c016562bedd612",
+    "dist/textbook/thumb-059.webp": "57e3b5fe08e21fa809bd7b68f2892f4aa3e9599c400ea85bb90476f661956650",
+    "dist/textbook/thumb-060.webp": "c86af6acc9d3573ee86da482c2a98bbca41cb8c998fe09150697d262402c63f9",
+    "dist/textbook/thumb-061.webp": "921ee76816ea772de2167096613255b988ae6de062ad9495f298bcb33dbce18b",
+    "dist/textbook/thumb-062.webp": "a255a14b8660bb91917e510221a2fed3c4a894c672049b4f203a72cd479c7af6",
+    "dist/textbook/thumb-063.webp": "f71bb788d48f734ea4e9f1728a9a644d4702c66999a0c231016bac8b536d4e0b",
+    "dist/textbook/thumb-064.webp": "ab40d7ad5c969c51af60890283e7be4dc0629194092b54a62487e9054049e541",
+    "dist/textbook/thumb-065.webp": "08587c6d348d743e5ef0f31054eb8eaec441ca670190c6ea4ce109971cfa098a",
+    "dist/textbook/thumb-066.webp": "32c89b23e318a16568774c0f125d332b3589cc8f56221599f0ecdaf794920ce0",
+    "dist/textbook/thumb-067.webp": "3eb96343cbfb2c91e373468cc9f600f9019c3600726e93308dfb3da68ce63da1",
+    "dist/textbook/thumb-068.webp": "4a967183aa1b293e046ae278b80155459a71d82752fd79cc04e650f6d602b93b",
+    "dist/textbook/thumb-069.webp": "09acb761f2a85e2407c01982c49f6f750aeab15117f96d5b17d47d655b655124",
+    "dist/textbook/thumb-070.webp": "d55c0e8bf9f57b4dc185c87392d152446e8cce80cc88f7df19ec4d80e342b456",
+    "dist/textbook/thumb-071.webp": "c6f23fdc890437c9141fbc2964939263ce345de7e254a1f5c64a0bed4813aa74",
+    "dist/textbook/thumb-072.webp": "1f89cf85baa1dab37ce5a2a6663d24c8a9fc5740aa347b406347789a5f07fc42",
+    "dist/textbook/thumb-073.webp": "8cd312fd33ee99a6b3a10e68f00e8f9be952c56f9ca15a3fe7d2e960e8323eaf",
+    "dist/textbook/thumb-074.webp": "114e1a8d9fea7ba1d7adb5be6fc42572d61f2af0417d1d29aa26504969b36970",
+    "dist/textbook/thumb-075.webp": "d014a9aca5eb296273ea3514501fae4b864dafac252b3369bb1c4ca2eebbe932",
+    "dist/textbook/thumb-076.webp": "e37bfb7c1dccc87d1e7dd37c937eaac9bff0bcc95a1b283888abd38c2d88a511",
+    "dist/textbook/thumb-077.webp": "fac0766eb8caa920d4864b13662e816ccad12eded38f9a0e739ccd0ac46dc8d7",
+    "dist/textbook/thumb-078.webp": "1dbeb924f7430b6f7026dd63f3291b1d7ee97036013b66d8cbad7aea77af8a84",
+    "dist/textbook/thumb-079.webp": "3c421470236d6e001da83ae80e75089c7a09417ed5ed1d1a673d62fe496fbb49",
+    "dist/textbook/thumb-080.webp": "d584f9d3dd53d7ba982661a37332476848fdf177e3e93fb1ecaa6629ebaedd68",
+    "dist/textbook/thumb-081.webp": "be33d09b37d813b41b32ea9ea7f074434b2a85139200696e5bcd0dcb74420238",
+    "dist/textbook/thumb-082.webp": "cab99e5038f1446baed3b4dbed5371a7437b5fc75be639c618f843ab538efa21",
+    "dist/textbook/thumb-083.webp": "445a70b1375ebf9d9b8ec9923edcaf43a708e9accb994d59ce21babfd4253115",
+    "dist/textbook/thumb-084.webp": "93a111a6b0181f964943609682a44206c41bd16227d28997de7efb2833ba73ca",
+    "dist/textbook/thumb-085.webp": "41aa2bedb2f107cd6ea9ac42c632cf694fa50342b420b231969152333fb29b0e",
+    "dist/textbook/thumb-086.webp": "3e4ecd8297b6f8c5e8785881ef2eda4b35a46a994c90f2497fee2c5a4c608f6d",
+    "dist/textbook/thumb-087.webp": "031e7167f95249fcc8f60565baf18384e90bdb7aed5d264f61875eb2359737bf",
+    "dist/textbook/thumb-088.webp": "52e183ae85e963d68af3897996506b6f330090e04fef8fcd296f31097bb0fa84",
+    "dist/textbook/thumb-089.webp": "4b6b9f4345fd6a5a8a350841ef1fea7ec77269f9f7697df132dd033a0104a038",
+    "dist/textbook/thumb-090.webp": "713da28aa264fb4d4a46366e6e314f8a99e0db29de3683cc100a4e190aa4b40d",
+    "dist/textbook/thumb-091.webp": "7aab5d4fef101fb49f4604e0a4ba870fbbd7455036a25ccde54117e4127a391b",
+    "dist/textbook/thumb-092.webp": "3a5e5baafbc86b92a02d5d8dd858b7603edc5d4be1682a4d25d5dfa40324b4e8",
+    "dist/textbook/thumb-093.webp": "60c0f12717e6fb6f17295cb62265722f6731cb2e6fb217d284a3fc4653c8294c",
+    "dist/textbook/thumb-094.webp": "96853a031678ad03d24586171c76a649bf448522b9aba251d8dec1a877964cf7",
+    "dist/textbook/thumb-095.webp": "3263c3346c1947a7590ca8c27c94561b4092984eadb1814cf11a40f6a2877a68",
+    "dist/textbook/thumb-096.webp": "38ff36e9a0e7603787e8a91b88af19c9ee2762ad8463937de17fd6328702198e",
+    "dist/textbook/thumb-097.webp": "835de14df86ebef3d1d7042d996971130cbdcbfc3ff1281dbbe617a3110cb98e",
+    "dist/textbook/thumb-098.webp": "4671ba56274fd52dddcc7d823bf0be3db42a495f7a26674d1ebb13c32204db7c",
+    "dist/textbook/thumb-099.webp": "9fbe60c54771cf2a7f1f2bcf8f14476a64f02d61f6a5be1cf33ff0666e9456d3",
+    "dist/textbook/thumb-100.webp": "bc3297cc60e51d810aec644a4768e135ce3019b8f473c984202e8b138e232575",
+    "dist/textbook/thumb-101.webp": "342ff573d2f43977e10eb04b88e6062db8a56f2af909dd160c7cbdd8459e40e3",
+    "dist/textbook/thumb-102.webp": "0b74df9a9d1f26b1d542d5df8bf8e67b12cdfb698a62c659299d8dc443cf098a",
+    "dist/textbook/thumb-103.webp": "ad6df379a77b01a63ed8765599bc596c2baaf91de469cbdff982534e14e9b83e",
+    "dist/textbook/thumb-104.webp": "af816f24169a12032cb75562498580ccef32e3f9606840a5b3feddabcbcf741c",
+    "dist/textbook/thumb-105.webp": "ce618ff6e7bdd3b0d02e58959796001d447b9195728c693c8a3e5cdd74f96357",
+    "dist/textbook/thumb-106.webp": "8a0bd7e3e50a2b62835fcc4c8ecbc64bdbebb3131891a89ed83a954360dc3969",
+    "dist/textbook/thumb-107.webp": "49087384baf7e96f81dd27bce3e7b294db9e7880ecf67ecdd15a773d55f00da1",
+    "dist/textbook/thumb-108.webp": "5d3f8206f1a20ea66a4d9bdcc790c98a6a0da2ff45d0e66f5bd153d124e9dfde",
+    "dist/textbook/thumb-109.webp": "d9ac86eb43da922a2aa8713e093a841008b929d52fa5a28ff8632b73ad182131",
+    "dist/textbook/thumb-110.webp": "ab49d610c141445f7834d7f6380a449388f3e86057579b91cf4ba52a3775a48f",
+    "dist/textbook/thumb-111.webp": "782eb8ee8d1a07afb30853ae0bc7f91a70065a28137e23cdd9aaf5348d464492",
+    "dist/textbook/thumb-112.webp": "22035b3ca34fe366df09d5fcc083c8141a23aa0925a970d237799813ad7cc8e4",
+    "dist/textbook/thumb-113.webp": "e6999d7e48a431b9809f57c2f7c56a61d07bfffdd33eda329223ab0386eebcf2",
+    "dist/textbook/thumb-114.webp": "357711de04b3d6acda934af88f701176d8637bb5b1440a94e3ef5a2250d160a3",
+    "dist/textbook/thumb-115.webp": "104c8c58f75df002af7c188af1ecb53030af5caf73bb20fd61b4229c5b9b9403",
+    "dist/textbook/thumb-116.webp": "1be2de4d13e949bfc81822fc2b60a121fe1dc1f9399d2bc949ec524d5cc2b591",
+    "dist/textbook/thumb-117.webp": "23d3631c09cea0628ed7ab3254b3de951e7161d05a8006cfb9b056c74345cc5f",
+    "dist/textbook/thumb-118.webp": "54179aee391bed1f0d8c49416270e7f883f8d1bdf64057a32e058d3dd4ee2951",
+    "dist/textbook/thumb-119.webp": "a51345c1e3cf5d845c351c406d7b82c07841674090c5388f50ecebde9432e55f",
+    "dist/textbook/thumb-120.webp": "607957e188adf016ee4f3822d99fba4e0650544daf4994e82ef0240bf36ae49c",
+    "dist/textbook/thumb-121.webp": "0b247aa0db8f129bce89f069a75885a7e7d5ae2abd45a8907e1ff4e1fbb989dc",
+    "dist/textbook/thumb-122.webp": "d99b90964eaae363bf5df991e06823641181c5a68c5860305ced4916185ef58e",
+    "dist/textbook/thumb-123.webp": "6daa21a1a58d33df4db6a61b6f604cfe7a0e811223c94207b755a223cd46223a",
+    "dist/textbook/thumb-124.webp": "bb7016e0ac2dffd6079369276fdb3a925aa9bfba0de62270612be54c7e30cee0",
+    "dist/textbook/thumb-125.webp": "d2c08d7dc5b3135c8d5ed5ab15a105f5cf43628be2e463b0e47068acfa0cf7d4",
+    "dist/textbook/thumb-126.webp": "644e864570ba61dd7b33684c9a33f320eb7ee3e93b355a8c6a5da8979d84a864",
+    "dist/textbook/thumb-127.webp": "13e1987394cc7d2b0f7f26f636ac1bface0491f21b8f5b099d92598ec64d6969",
+    "dist/textbook/thumb-128.webp": "5743e23116fac86332f29da6fbab1aad18c06b28b53081a523d577177145f79a",
+    "dist/textbook/thumb-129.webp": "435d53ccffe035672f2c166f6f450592b5ebe95b151e4d2e981c072ff26888bb",
+    "dist/textbook/thumb-130.webp": "29a7f013f46aa3360f156c39eca4c6b1ca275ddd239f7b7047a92ce6199fcd57",
+    "dist/textbook/thumb-131.webp": "29a7f013f46aa3360f156c39eca4c6b1ca275ddd239f7b7047a92ce6199fcd57",
+    "dist/textbook/thumb-132.webp": "29a7f013f46aa3360f156c39eca4c6b1ca275ddd239f7b7047a92ce6199fcd57",
+    "dist/textbook/thumb-133.webp": "29a7f013f46aa3360f156c39eca4c6b1ca275ddd239f7b7047a92ce6199fcd57"
+  },
+  "sourceSha256": {
+    "src/chapter-diagrams.ts": "061c9eeff8c25b14f937cc78fae89143052eae8cd94cefda3c2e038460529443",
+    "src/chapters.ts": "259a9eac10d1b7cfd846a6d090e615365fd1469f762af0bca4c4c9a334a73071",
+    "src/coast-illustration.ts": "5d8f5e28bd05007422fc6ebc91877c0f3c933ae104356f1532dce2027721dadb",
+    "src/content.ts": "83f3dfbea887c41ba7b4d939e0b42bb7dd8d933fddf1eb394c3714f9c591b1a9",
+    "src/diagram.ts": "49b9887d536ffce3116d5c99acf05b3bd2558818de2bce6621a25c5fdce0bc87",
+    "src/geography-pen.ts": "bbaeaa7362ae931d9cf0b99bd52a241ad1031c068fe22365d9e8723f788292bf",
+    "src/main.ts": "cec2bc6730fe5e34924b9e6bd8e63bd859f84069d2b78c659780cded687cef55",
+    "src/model.ts": "b6fdb8ffebf456c1402a43e9d9ab735a654fd797254634a761274b47f98e3a36",
+    "src/paper.ts": "95b28043f512c6f4945e0c3dfd3d17e1cbcfce789f7d194cedaf4e7edb0cd06b",
+    "src/reference/engine.d.ts": "2ee30694a31e2f292e5718d49ea2fe448a44177e86d28e2a115b7686896aca84",
+    "src/reference/engine.js": "99f65cd705e93683e853dbe8372d046cbc0dd41701b89c1ea39f6a518d9d0c6d",
+    "src/reference/index-Bb-Nc_xU.js": "aa8e865daf824d3a6ab07a8d1d5a1c6bf2e76e5c62fea5305db20b489bae9723",
+    "src/reference/numbers-D7lU_RWT.js": "7d1ec3869047c7c659b62053c5c9bf7ac7c7d2ca202a34cad6f61584d7f263b5",
+    "src/reference/post-CiGSGJXB.js": "8d68d4ab57cc0a1b1357f43a3266465fc9d8af69a3f1da1037f6deedee694367",
+    "src/reference/sound-vOpPkm07.js": "c80d61df7206de503f226729b47f8ac72c1ccb0bf705d194928347539498137d",
+    "src/reference/sourcelist-ugshuCEn.js": "64838a36014e8207cdc65009d3850648e0bfed063c0c9f76daa15eef8fa944d3",
+    "src/reference/stores-BwMXNqO6.d.ts": "1a944b8967895be9f42cc15cb5d0292cbd1982d4454fd3cf85565371dcbb12b9",
+    "src/reference/stores-BwMXNqO6.js": "d11563ef245fa807bf05196b52fdb24864fb153aa09619d8cbb5a20c46746727",
+    "src/reference/three-DMk7AhfD.js": "049c3401ca541de0bbb991e59bcb459cd9ec7e19d3cf964342bbdcfeb76d1ca8",
+    "src/river-illustration.ts": "803795393c3746b0a3d0409c7d9f0d9118ad15c40f57cd2a325316b1d0912cf5",
+    "src/scene.ts": "86237c9b9ceff5c3c6eecda298ab0afd8689bc8c464de5c6fa661949bf963cce",
+    "src/state.ts": "4f059b233b52a2929bd6420e1cb2deb9a60bb593305aa448fa069d144568a691",
+    "src/style.css": "9afbcd8b655dd0cf2cafd085a2b3ce422220dab079e3d260387b34f3ea81ccfc",
+    "src/textbook-aeolian-model.ts": "af4df1270bb86a7164d07149ccc330e1467945dd835aba1e78db0b2f74ec6abf",
+    "src/textbook-air-composition-model.ts": "e9c9dd376acd5203372d2db110f67f61139ea244c01ded36be20ecbfdc6c374f",
+    "src/textbook-air-process-model.ts": "a6043a54f87eb0614e98125df785c7c47edbb1512d6a3bacf34c1b03a99a23cb",
+    "src/textbook-air-process-world.ts": "0cacefcff48affdb615b83cd47de5726d696deacf69f78649aa461ff5493bffc",
+    "src/textbook-astronomy-model.ts": "1e27156bd90d7c6d55fcb36727bb9133725d721d62d983eaa7deb1aa2e596878",
+    "src/textbook-atmosphere-model.ts": "935ac6f1f895004bff9a719a4c8d86de09e2bff0659d77df52f4e086f688bb24",
+    "src/textbook-atmosphere-world.ts": "066dbdee33e4972a6cbcdef7d3fbc85c7076b9a212a4787dc291efc7ad62f7c4",
+    "src/textbook-book.ts": "5c9266aeeefd8e405c1320a520cf2bcc86d0beff32cfb28bdc6090b6af62288c",
+    "src/textbook-breeze.ts": "8cabf112d85b0dd9660ee249e8fe1b29073e6c2bc1accfe789104af17e2057c3",
+    "src/textbook-catalog-additions.ts": "cef08d738efb201f0fe5ed7949c304ccd5b3cfd3cbf4e78d5f85ee122a34b3a4",
+    "src/textbook-catalog.ts": "d59f15d5b5e302639a82f73deb81d4ecde7a735988e3429b70250d9fe2cc3a7c",
+    "src/textbook-coastal-process-model.ts": "47f710860547b030a23e19a15e3dc63e99cc31d2fc38a7cad26541acbe5c85cf",
+    "src/textbook-coastal-process-world.ts": "a17cf59a716f360e121dce86bb0d0c21701f9a458f0a0b5e5ce36cdc016db103",
+    "src/textbook-coastal-world.ts": "2bf82c38a4e99acd94fc070ab8b42d603ba7a76806de26ca8f4c7c72d6847b2c",
+    "src/textbook-cold-wave-model.ts": "506267354d6eb8da8dad7d22b4b5a0f033657bf7bcf1be3cdb18500ba851280b",
+    "src/textbook-cold-wave-world.ts": "1040a3fbf002182f1b7d7ab3299ad7c2521b360bc27a588b3bf8914eebe539be",
+    "src/textbook-current-model.ts": "0fe104604318e3a6bee54fd5633161f483a98ddb37ac505955d4fcf66fadfba1",
+    "src/textbook-current-world.ts": "6a1a151432f5fff6af97aa86205cecea1c3a9ef185ccb3b57f51c6e2a3456958",
+    "src/textbook-delta-model.ts": "b611ea5efabea09833b390c468aca229f6102c92e458a18485d9b190c216b730",
+    "src/textbook-delta-world.ts": "0a0cb52a9deba51b8534cf88ecc44bb48edc3335ba5580c63683318616583714",
+    "src/textbook-desalination-model.ts": "3007d76571121d057d813c3c02700b6313f6930c9a89ca7361cb0b58292361ff",
+    "src/textbook-desk.ts": "8c8da34898b8180b075df45f6c124b7dec39f686e6ef86e8c0b0c06f0cdb3687",
+    "src/textbook-disaster-chain-model.ts": "310cfb7661aed8cbe2331e2ef07a43c2627f720567afad35ee05d763ec5c7e2c",
+    "src/textbook-disaster-chain-world.ts": "e8158cc10198237fb69518f2f3c003eb5178d3cb045782f5efd89cd9d1d80cee",
+    "src/textbook-effects.ts": "f024262e04a476bbf4a6481e40d2e448cae0bd6df99209f0d5b62e09be64e800",
+    "src/textbook-flat-foundation.ts": "f1986c09cc745a9ea1b8ad605da089eaf64d0e8adc1af45a737803f880e51075",
+    "src/textbook-flat-land-extra.ts": "299c6e99273c75dc439f0c85295c65bc11466faefee8f9e0affc66bdc6d1228f",
+    "src/textbook-flat-model.ts": "568ef9175c9b149caf344b8e9c47d331c547d732ead8ad32fb9c62ec7b7f2356",
+    "src/textbook-flat-sky-extra.ts": "bdbe5c43d8ced2cc9f243336c26b1aaf64a5beee03f571af04fffcb2645299bd",
+    "src/textbook-flat-water-risk-extra.ts": "19acb93c9c7a66617d0a9bc4536e63baa4a0b4dce82f4186187c466b6c2a2375",
+    "src/textbook-forest-model.ts": "ebd8551cc813be486d53cd0c440ef23e02fbcf575ce6d97fde0d1d20b9ab1599",
+    "src/textbook-forest-world.ts": "db33ee2d2772ed21421f3d4961249acd573fd41e79fb9d1314d63fd766e8832e",
+    "src/textbook-foundation-process-world.ts": "475422a7e97075f54e5afd90648e62d17d9e95a73526a4fc56377c57f35c98ab",
+    "src/textbook-geometry.ts": "69760d7bef15c423bac1d6cf78dd11d5de496b0fa0a98951a49480ab4c06fb8d",
+    "src/textbook-gis-model.ts": "1777db61ff2975c5ce9ddda7476c6034fbed64adba7b055e4f4223008c877525",
+    "src/textbook-gis-world.ts": "510cca6f70c90d6cc328b6ab3689a569f712fb009aa13a672f253557ba6ca428",
+    "src/textbook-gnss-model.ts": "7656dd6531a2e6f9bd4329793d216b22c340a3c5be141dba4e3d7028c13854c2",
+    "src/textbook-gnss-world.ts": "a37c3212a5fb4bfb8c72bac10a4374bd98b2c4315e3e99d1485fd47886f15ab8",
+    "src/textbook-ground-process-model.ts": "80b6d7ef22a21636af255ed926c5810e8996d514569390508d8f1100ec482976",
+    "src/textbook-haze-model.ts": "39b9f314d81161a01d3831fd705df6dc024ef25d8534ba3d05cc3eb7a415efb5",
+    "src/textbook-haze-world.ts": "22bd0403497a8e98873708b0b0505e22f6027bf983d6260ef4f482e9f2662a4e",
+    "src/textbook-illustration.ts": "4854c39b6b50bedd692ce97666b6601c5c5ba0d35d27c0b6fa516195f7ed890b",
+    "src/textbook-insolation-model.ts": "3b69b615c7a152ed1aa799579fb004e9ee25d5fad6296e256e26ff88b6c82725",
+    "src/textbook-insolation-world.ts": "eff8a031e558260a69b1ba959931f4467148f6ef8e40a60e2f390261dffd5138",
+    "src/textbook-inspection.ts": "3fa077567f9e2e3625fbb516f25f5a9544c50e59e66c31198616be2c81d42148",
+    "src/textbook-karst-model.ts": "2b87ef20e37f122478cda6cc07438c49b6ea73604cfecccc52cdacd113f8cc9f",
+    "src/textbook-karst-world.ts": "47c0b7fd7921a62e9c193207879804a8363a183cd364f973dbe6162226b9895f",
+    "src/textbook-landslide-model.ts": "76b248f12cccef4e95e37fb68d91a760583c58419f311996784f179da9f876a7",
+    "src/textbook-landslide-world.ts": "b4f0cc95542230d20f75e20033d914eeebe972035682828aeb4077a79b2648b7",
+    "src/textbook-main.ts": "fe477f26d1aff972b29887e2fc608b4393c9e1e8af9ad8b05fe6b7fbffafd2d5",
+    "src/textbook-model-input.ts": "71a42158608843aeaa50179b888e8fa5b9f5a34816bd6ae25f5b866a4fa5335c",
+    "src/textbook-models-air.ts": "6f43af291ee8aaa7e925bcc2e00549a4f16072fba6d99d19315b865153a0b058",
+    "src/textbook-models-astronomy.ts": "5ead259ee5f124b12b16a40d74019045ed11456d02c0c06f272430ccfcd70f6a",
+    "src/textbook-models-disasters.ts": "e8c44bb2f31a32b31b99243ec0f0484bdb0a6a271ec55cab2014cf2b02953f44",
+    "src/textbook-models-foundation.ts": "a01bd756298bc1904262e1292d37806fb37fd1e405d41cde490afc7e3da4a56e",
+    "src/textbook-models-land-extra.ts": "b57847ffd247ad85acd8042227f012eb4d82ee55a76720ca2642ac66e41b1733",
+    "src/textbook-models-land.ts": "baff387d5664cc91b641a32b81ca3ceeae9b3542037cd3987ed0016d6c5da7f9",
+    "src/textbook-models-sky-extra.ts": "7aacad3528e665cd1773e506bba21ea29a983009149b61d79f366b3c3b037b89",
+    "src/textbook-models-water-risk-extra.ts": "e1b5a26d06f4e3d609e82c34ca6e96d2b5656e60787f9a19b7696ccb8d5d316d",
+    "src/textbook-models-water.ts": "a15bbc35cafe39a7bc2718b11e44cd2ff442c1fd08c78cb6b3cb19341f548cd6",
+    "src/textbook-playback-policy.ts": "dcac6854b8ab0a935331920638ca9d1a4c10c095e6c6bfd7b3e0237324bac3cd",
+    "src/textbook-playback-rhythm.ts": "2e0d7bbdbdc71624d491d890cace2e54085501aec98a963c755fcc2b119ae524",
+    "src/textbook-pressure-world.ts": "f4654a1b50b8f64ef423aa02bd09d4a4a04d9a2dd1578ef556326a200b358040",
+    "src/textbook-quake-model.ts": "8cdf77ddbf4cca4f031fb135626611e035d7e2e36715bc0baa6bdd3e693a233b",
+    "src/textbook-quake-world.ts": "4c0df239ea80f4ecd52d3e3cbd6689a4c8a42ba08705b1887546eea648988b21",
+    "src/textbook-recovery-model.ts": "9208b9dd3a189913543ae598b2fb7382cc37b603a34579bfcd6c8eb01f9f8498",
+    "src/textbook-recovery-world.ts": "9c3863b9268842bd126b8fe97fc97bffae46bda39801c02bec33c336b93a33c1",
+    "src/textbook-remote-model.ts": "43d8e44d1180fd4126ddb91523f8bd404f9eac7929ee248e2893eb6549e167c3",
+    "src/textbook-remote-world.ts": "781b39fdd7b649e0644e09d887fb24f41ee489c3d85b22eff1491e869e689d71",
+    "src/textbook-river-model.ts": "ec96ae17f1c7c36cfc3af51f415972fd24b43034e3d7edd2bc51352131bd99c2",
+    "src/textbook-river-world.ts": "9f52699b5e1e93b9df5cb5e8a11af72cc4b3775c1d65e9cb48108c0a67c45bde",
+    "src/textbook-salinity-model.ts": "85d12a7ae248057858e1fd224e3515612c72e04139eea900c9ac1a5ab98a9cf6",
+    "src/textbook-salinity-world.ts": "0f1687a796e868d3ad2f5f21d993f31b85194c01ef7cb73b70bb7a847e821a54",
+    "src/textbook-sky-causality-model.ts": "0232b95d0e789582a8c9ff3d645cdd6a02718577a67dcda3b988ef2b4a74436c",
+    "src/textbook-sky-causality-world.ts": "030c040428840bb757f6e493a25d7ca31dae5ac09207a19a3dc414e01e8de158",
+    "src/textbook-slope-model.ts": "c8985473406ee1072e06e7e9ff3b96890269b65a05284677275387db9a728242",
+    "src/textbook-slope-world.ts": "642a93a94b6e571bfacde7c5ec6cbab32fddd3c703b2ae2791f5d650197090e3",
+    "src/textbook-soil-care-model.ts": "c7d86122eb3c1011260bc6dc301cae0f35ced0ac96897cded3ae347e7dd6b238",
+    "src/textbook-soil-profile-model.ts": "f5e38a06ac30934a8f54653b63f8180eb0f763b60505fd8fd62820e747a8061a",
+    "src/textbook-soil-profile-world.ts": "b8c43a99ecd8c3304e23d15b947ad4679d6487ced6839812353ddc1211730dbe",
+    "src/textbook-soil-sorting-model.ts": "2ee5227d0e2a15db0ad8a2c135abb013d53e48a233a754296ac9ab0e644f8c3d",
+    "src/textbook-soil-sorting-world.ts": "232cfcc17bb0ab975267802e92ebc4b74fde50df714cb4525a0e1e899caf5c09",
+    "src/textbook-soil-texture-model.ts": "b4c0e212d74c1de5fe6e551887819096180bf4a45dfafad623b452b390702712",
+    "src/textbook-soil-texture-world.ts": "a1809dce1d38346b9ba5d46a3a744b907ea1c4130f21a54e6178cf61ec5c25dc",
+    "src/textbook-soil-transfer-detail-model.ts": "a931597859a93481cc3db5632eb5e8d1ab271e8d96e34c133a5647ab1c158d89",
+    "src/textbook-solar-heating-model.ts": "7d4d3b7dc2b44ba265a51c497e9f88ea685047fbb59d039e65c10f3952fd155a",
+    "src/textbook-solar-heating-world.ts": "30c83607116255af135b0a374abe68560a77812a0014f721995e3b018407be94",
+    "src/textbook-strata-model.ts": "3eb04293d0cc1ba24102d66ec652736e2e89d664e0f80cea5499120fcc729716",
+    "src/textbook-strata-world.ts": "7372f6258f0aec0c2200b785921134aee75db98085440862c03fbf1590e1c94e",
+    "src/textbook-style.css": "27bfb0bf377f08e1b98d19267c2d1a60b45539cd42acb21211ec52bb1b99ba85",
+    "src/textbook-temperature-model.ts": "1fafd4553c123172e8c1845770916426b96f8a430fafdc935cc60b1667fd2897",
+    "src/textbook-temperature-world.ts": "11afb62ea43f133aed4c2e7fce10ffa161184393ba5c7e590287cf00707152d0",
+    "src/textbook-tide-model.ts": "b2c8c93ba5b342ec7241bbfdc233a27b735a30d9469591cc0a93ac956b942d33",
+    "src/textbook-tide-world.ts": "fc738ccc1685f17e340fb787573a64c5fa929d212dbe0b8ec2d878b65e796543",
+    "src/textbook-timeline.css": "cbe2a5b05136e7144132419b048e236f638a8755cc60ad6e984122353cf8a83a",
+    "src/textbook-timeline.ts": "eb90ca755620679ea12c5346f1552ce76a9d16aeb2434f97d67fbc1bd6d614e1",
+    "src/textbook-typhoon-model.ts": "5cf312b271fb2a7790496e1a18efe8071475c0ac8236c6bfb726bd65b8a3eca0",
+    "src/textbook-typhoon-world.ts": "b19ee97c369de3afa740a8f86903416eff00d47af7988bbec9440ff1a23a436b",
+    "src/textbook-urban-water-model.ts": "b33c509ec0e7f895b2918d3c9fb27fcc00173fa08c6b3a40e3980582146699d1",
+    "src/textbook-urban-water-world.ts": "2887951eb8aae1b6891a14d21a89edf93936b705b5d2d55d10354e64ae21783f",
+    "src/textbook-water-cycle-model.ts": "93217b94774c869ef1c2c54a69e77c5c7cdd45ac1c02d472fb8ff93bea6a80e2",
+    "src/textbook-water-cycle-world.ts": "bc66da4afa58d050bc2265fd76a2a608e597c2a3a8ab32709182a3c085d5c28a",
+    "src/textbook-wave-model.ts": "02f2b9a1b7db70d64fa0216ec0db370088ad5a51c9254f392367d16fb378cb55",
+    "src/textbook-wave-world.ts": "212edebcb566d5d0b4d0b895eaba33b6189ff6e1c74ae7228e3a9eebb78552e6",
+    "src/textbook-workbench.css": "8b38564e95e29f0fdbda082e41d00f11efce457ec4d0c72eedc4fc5c3fe4560b",
+    "src/textbook-workbench.ts": "ab4a5c13876fde3e4fd3886b9f144c55d567f86e7a2414ee82197ba95f1df6f3",
+    "src/vite-env.d.ts": "65996936fbb042915f7b74a200fcdde7e410f32a669b1ab9597cfaa4b0faddb5",
+    "src/water-illustration.ts": "c46edf77173937080516dab49cbb8e7bfc83ae368929fd2edbe5bd20b9a4b1fd"
+  },
+  "checks": {
+    "fullbook-final-review.json": {
+      "sha256": "a5c25df17de0418b89a31f01e88841a85dc5b5a6af963b7c77f99f678c1da24b",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": null,
+      "reviewedStyles": null,
+      "checks": 590,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": null,
+      "labelIssues": 0,
+      "externalRequests": null,
+      "requestFailures": null
+    },
+    "fullbook-phone-final-review.json": {
+      "sha256": "2f68dc3b82abff03c1bff496c5a9c94d0b3137b9e2004f22d8e305a923427354",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": null,
+      "reviewedStyles": null,
+      "checks": 293,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": null,
+      "labelIssues": 0,
+      "externalRequests": null,
+      "requestFailures": null
+    },
+    "fullbook-portable-final-review.json": {
+      "sha256": "2daa4aa7d7ee9028aff450461841d2894e3c4578fb2def7f3e3885274c75965a",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4173",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": null,
+      "reviewedStyles": null,
+      "checks": 100,
+      "errors": 0,
+      "failures": null,
+      "layoutIssues": null,
+      "labelIssues": null,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "fullbook-transaction-edge-final.json": {
+      "sha256": "db1a96efdf1db59f5514bc11e2ac161aff84a6365418de98c4c5ac5d2252f27b",
+      "browser": "153.0.4234.48",
+      "base": "http://127.0.0.1:4173",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": null,
+      "reviewedStyles": null,
+      "checks": 16,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": null,
+      "labelIssues": null,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "fullbook-resource-final.json": {
+      "sha256": "40137a65c0272a591aa71a2fd3e102510530b7e7f29b51fe17f53ebdc0b7f92e",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": null,
+      "reviewedStyles": null,
+      "checks": 11,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": null,
+      "labelIssues": null,
+      "externalRequests": null,
+      "requestFailures": null
+    },
+    "fullbook-breeze-motion-final.json": {
+      "sha256": "0de3b7e9647243f49c086a4242a07009f0a8fc09dcf97a4e8b6d6828a5f15b0d",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4173",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": null,
+      "reviewedStyles": null,
+      "checks": 17,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": null,
+      "labelIssues": null,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "fullbook-mode-entry-final.json": {
+      "sha256": "14780da3df5b176534aef7094e6a57e3a9ac4c97982eaa77696e0a3160410f3f",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": null,
+      "reviewedStyles": null,
+      "checks": 112,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": null,
+      "labelIssues": null,
+      "externalRequests": null,
+      "requestFailures": null
+    },
+    "fullbook-dock-layout-final.json": {
+      "sha256": "3703c4b2f83c6fd280ce32ad5264a9c1d449a5d2248377050baa9c6423d1cac5",
+      "browser": "153.0.4234.48",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": null,
+      "reviewedStyles": null,
+      "checks": 15,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": null,
+      "labelIssues": null,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "fullbook-river-process-final.json": {
+      "sha256": "288a51f685f1e5cb958487b592652be916301714aca664561d4aa04d5af3dd39",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-B2EOZTu1.js",
+        "sha256": "dcbc3320877b03aad27ce73f712ad120e73e98477bf3cf9b7b10055e6ab4297e"
+      },
+      "reviewedStyles": null,
+      "checks": 30,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": null,
+      "labelIssues": null,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "fullbook-astronomy-final.json": {
+      "sha256": "328813590a1ad7864e60cf504739a8efe11e1946d63c120dc739ba66260af6b8",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-B2EOZTu1.js",
+        "sha256": "dcbc3320877b03aad27ce73f712ad120e73e98477bf3cf9b7b10055e6ab4297e"
+      },
+      "reviewedStyles": null,
+      "checks": 54,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": null,
+      "labelIssues": null,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "fullbook-water-rain-final.json": {
+      "sha256": "8f5cca5ac545cb48e147efa1de5696ab56981e4d3fa5241e119f1195e903e0da",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-B2EOZTu1.js",
+        "sha256": "dcbc3320877b03aad27ce73f712ad120e73e98477bf3cf9b7b10055e6ab4297e"
+      },
+      "reviewedStyles": null,
+      "checks": 22,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": null,
+      "labelIssues": null,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "fullbook-gis-final.json": {
+      "sha256": "915ccd915d168f1759f71ce05f7e7e3871dd1a47236499f359632a51e5718466",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-B2EOZTu1.js",
+        "sha256": "dcbc3320877b03aad27ce73f712ad120e73e98477bf3cf9b7b10055e6ab4297e"
+      },
+      "reviewedStyles": null,
+      "checks": 21,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": null,
+      "labelIssues": null,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "current-breeze-motion.json": {
+      "sha256": "7661b1df15dad292b17f89c1cb91e7caba15baf6723e82cf3ad4a873a87bb6f4",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-B2EOZTu1.js",
+        "sha256": "dcbc3320877b03aad27ce73f712ad120e73e98477bf3cf9b7b10055e6ab4297e"
+      },
+      "reviewedStyles": null,
+      "checks": 17,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": null,
+      "labelIssues": null,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "current-haze-process.json": {
+      "sha256": "73c12d503ea0c524ef9e0a57c2101bf33b9151b890a13e528b6bd2d9ad106954",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-DqanBC77.js",
+        "sha256": "1057c74bc0a8fd8b58944af713a5389a7b4d42e5e580f800d76b7c0d9cb4fe47"
+      },
+      "reviewedStyles": null,
+      "checks": 22,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": null,
+      "labelIssues": null,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "current-delta-process.json": {
+      "sha256": "a38e42a7979cd229faa0f21c787ca1c39546b056079c38569f521a00ae9715e4",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-DqanBC77.js",
+        "sha256": "1057c74bc0a8fd8b58944af713a5389a7b4d42e5e580f800d76b7c0d9cb4fe47"
+      },
+      "reviewedStyles": null,
+      "checks": 45,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": null,
+      "labelIssues": null,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "current-soil-sorting.json": {
+      "sha256": "12b8c9573bad25aad145c649405dc219db75096a542b0fb398f17883e224c3fb",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-DqanBC77.js",
+        "sha256": "1057c74bc0a8fd8b58944af713a5389a7b4d42e5e580f800d76b7c0d9cb4fe47"
+      },
+      "reviewedStyles": null,
+      "checks": 51,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": null,
+      "labelIssues": 0,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "current-quake-warning.json": {
+      "sha256": "0b73e57f8aa40b9439943ca39c505ed5948931ce60de701b6d89fc741e9418d1",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-DqanBC77.js",
+        "sha256": "1057c74bc0a8fd8b58944af713a5389a7b4d42e5e580f800d76b7c0d9cb4fe47"
+      },
+      "reviewedStyles": null,
+      "checks": 95,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": null,
+      "labelIssues": null,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "fullbook-direct-model-input-current.json": {
+      "sha256": "a7efcca39839a4964698a93ef41edb4706283c1287858b6f09f07a083cd84c0f",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-DqanBC77.js",
+        "sha256": "1057c74bc0a8fd8b58944af713a5389a7b4d42e5e580f800d76b7c0d9cb4fe47"
+      },
+      "reviewedStyles": null,
+      "checks": 110,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": null,
+      "labelIssues": null,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "current-transaction-interaction.json": {
+      "sha256": "f032e83721c0479a0ba075929162072a7ff47ff777377d25c253b3b2b6b44ce3",
+      "browser": "153.0.4234.48",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-DqanBC77.js",
+        "sha256": "1057c74bc0a8fd8b58944af713a5389a7b4d42e5e580f800d76b7c0d9cb4fe47"
+      },
+      "reviewedStyles": null,
+      "checks": 16,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": null,
+      "labelIssues": null,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "current-model-input.json": {
+      "sha256": "cbdeda8bfefda4b27481bf1c9d0911dcf9d04503ce5da00573282e5ed4cd1dc1",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-CCazHhsT.js",
+        "sha256": "be5d72046416b17af96551ef8c9373f19b165ebe43840e6f763234d13d5923a9"
+      },
+      "reviewedStyles": null,
+      "checks": 110,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": null,
+      "labelIssues": null,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "current-book-transactions.json": {
+      "sha256": "d03c190d9c86cf282a3a9a7be4a14c83d05f272186dbd024a5dce8fe8d1a42d9",
+      "browser": "153.0.4234.48",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-CCazHhsT.js",
+        "sha256": "be5d72046416b17af96551ef8c9373f19b165ebe43840e6f763234d13d5923a9"
+      },
+      "reviewedStyles": null,
+      "checks": 16,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": null,
+      "labelIssues": null,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "current-karst-process.json": {
+      "sha256": "9c7545e88ab0ad8f1252b113e8953a2d84955c56a36d3722d48606d701a5873b",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-CCazHhsT.js",
+        "sha256": "be5d72046416b17af96551ef8c9373f19b165ebe43840e6f763234d13d5923a9"
+      },
+      "reviewedStyles": null,
+      "checks": 66,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": null,
+      "labelIssues": null,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "current-soil-profile.json": {
+      "sha256": "c868307356ed856389a57421798a948201faece5d466ae3aa75b40742076c96e",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-CCazHhsT.js",
+        "sha256": "be5d72046416b17af96551ef8c9373f19b165ebe43840e6f763234d13d5923a9"
+      },
+      "reviewedStyles": null,
+      "checks": 56,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": null,
+      "labelIssues": 0,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "current-disaster-chain.json": {
+      "sha256": "c333a57734097344abbc5e12f64bcc6385bc107fe0b79096d4869fe994aac9b4",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-CCazHhsT.js",
+        "sha256": "be5d72046416b17af96551ef8c9373f19b165ebe43840e6f763234d13d5923a9"
+      },
+      "reviewedStyles": null,
+      "checks": 153,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": null,
+      "labelIssues": null,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "current-wave-process.json": {
+      "sha256": "f66ea523b8208cd9f3909b30f8a4b2dfde7804d281445541f1d598e949fdaf1c",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-DesTAK90.js",
+        "sha256": "8983858ae98d4471fa6b771b90de127902fa99b76c7c9d6553c7696c86c82371"
+      },
+      "reviewedStyles": null,
+      "checks": 66,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": null,
+      "labelIssues": 0,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "current-tide-process.json": {
+      "sha256": "f523c0cc8b62972acc3d5d3b4756e4016792a3d0674b13805d26e1e0fd76e819",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-DesTAK90.js",
+        "sha256": "8983858ae98d4471fa6b771b90de127902fa99b76c7c9d6553c7696c86c82371"
+      },
+      "reviewedStyles": null,
+      "checks": 120,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": null,
+      "labelIssues": 0,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "current-soil-texture.json": {
+      "sha256": "76a39e1438625c8145154c0202ae56e0bac4ede01e40139f50a6b8b9a5ef5503",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-DesTAK90.js",
+        "sha256": "8983858ae98d4471fa6b771b90de127902fa99b76c7c9d6553c7696c86c82371"
+      },
+      "reviewedStyles": null,
+      "checks": 52,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": null,
+      "labelIssues": 0,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "current-water-texture-integration.json": {
+      "sha256": "425a7a80a1560d05e5ec8e5c2b5e9b123a83fd6e1f16c48fdd5ab74ff4bd1fa7",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-DesTAK90.js",
+        "sha256": "8983858ae98d4471fa6b771b90de127902fa99b76c7c9d6553c7696c86c82371"
+      },
+      "reviewedStyles": null,
+      "checks": 40,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": null,
+      "labelIssues": null,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "current-water-texture-transactions.json": {
+      "sha256": "9efbf7676954f2e40ed2024f6084159febbe6cd71e6189188250f5dc1b0f21fb",
+      "browser": "153.0.4234.48",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-DesTAK90.js",
+        "sha256": "8983858ae98d4471fa6b771b90de127902fa99b76c7c9d6553c7696c86c82371"
+      },
+      "reviewedStyles": null,
+      "checks": 16,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": null,
+      "labelIssues": null,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "current-workbench-navigation.json": {
+      "sha256": "cc6ea314c53d124ef108cf3f373b90eaaede60b6b055f8ab5a09723a02ae5f53",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-BS7rZUsE.js",
+        "sha256": "eef71ac68e48300b53b13fd51705eb361b0cc5cfb2b3f5978103f9c4706ced7e"
+      },
+      "reviewedStyles": [
+        {
+          "path": "/assets/index-BDRJ6fJi.css",
+          "sha256": "ec33cde6eb611ad9fd5b174f8b9b9cb94bc132749fc8f563f0b17b039955dec6"
+        }
+      ],
+      "checks": 53,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": 0,
+      "labelIssues": null,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "current-workbench-visual.json": {
+      "sha256": "a5677c50626f605776b37a2f83aa9a9647ae5a2630dbe7f08110d734ab1e168c",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-BS7rZUsE.js",
+        "sha256": "eef71ac68e48300b53b13fd51705eb361b0cc5cfb2b3f5978103f9c4706ced7e"
+      },
+      "reviewedStyles": [
+        {
+          "path": "/assets/index-BDRJ6fJi.css",
+          "sha256": "ec33cde6eb611ad9fd5b174f8b9b9cb94bc132749fc8f563f0b17b039955dec6"
+        }
+      ],
+      "checks": 6,
+      "errors": 0,
+      "failures": null,
+      "layoutIssues": null,
+      "labelIssues": null,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "current-salinity-process.json": {
+      "sha256": "651e6f24b0afc89dc4df5c68f0c618657840ecaf07755332dfd12620817e4460",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-BS7rZUsE.js",
+        "sha256": "eef71ac68e48300b53b13fd51705eb361b0cc5cfb2b3f5978103f9c4706ced7e"
+      },
+      "reviewedStyles": [
+        {
+          "path": "/assets/index-BDRJ6fJi.css",
+          "sha256": "ec33cde6eb611ad9fd5b174f8b9b9cb94bc132749fc8f563f0b17b039955dec6"
+        }
+      ],
+      "checks": 113,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": null,
+      "labelIssues": 0,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "current-coastal-process.json": {
+      "sha256": "0c0d0a10197992633c64a90d3b67a0d17b0199d51a20d5c5145e6519a1b7f418",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-BS7rZUsE.js",
+        "sha256": "eef71ac68e48300b53b13fd51705eb361b0cc5cfb2b3f5978103f9c4706ced7e"
+      },
+      "reviewedStyles": [
+        {
+          "path": "/assets/index-BDRJ6fJi.css",
+          "sha256": "ec33cde6eb611ad9fd5b174f8b9b9cb94bc132749fc8f563f0b17b039955dec6"
+        }
+      ],
+      "checks": 68,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": null,
+      "labelIssues": 0,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "current-landslide-process.json": {
+      "sha256": "00f035f2cea7eb0aebff08247c5a1b715f99d04fbd60f13ac4fbbc039367c237",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-BS7rZUsE.js",
+        "sha256": "eef71ac68e48300b53b13fd51705eb361b0cc5cfb2b3f5978103f9c4706ced7e"
+      },
+      "reviewedStyles": [
+        {
+          "path": "/assets/index-BDRJ6fJi.css",
+          "sha256": "ec33cde6eb611ad9fd5b174f8b9b9cb94bc132749fc8f563f0b17b039955dec6"
+        }
+      ],
+      "checks": 221,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": null,
+      "labelIssues": 0,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "current-strata-process.json": {
+      "sha256": "d15086b8e8f0ac3d058d95b7ddd0132baf376fd953f28e7b6f7a43f2eed5d2bf",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-BS7rZUsE.js",
+        "sha256": "eef71ac68e48300b53b13fd51705eb361b0cc5cfb2b3f5978103f9c4706ced7e"
+      },
+      "reviewedStyles": [
+        {
+          "path": "/assets/index-BDRJ6fJi.css",
+          "sha256": "ec33cde6eb611ad9fd5b174f8b9b9cb94bc132749fc8f563f0b17b039955dec6"
+        }
+      ],
+      "checks": 681,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": null,
+      "labelIssues": 0,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "current-air-remote-process.json": {
+      "sha256": "86609b58057e41b6af84eecd31e233a37723b12498e8d1b0e9769f42ac2c59bc",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-B5r1wEVX.js",
+        "sha256": "c859f7ad73a9a0a6d827b5f89294aa1e3adab21a6ca4284fcd4b747e6f419634"
+      },
+      "reviewedStyles": [
+        {
+          "path": "/assets/index-m17nyHcN.css",
+          "sha256": "cc1fc12068651ae7cf25557eef174b9d35cc1aa21928c4415b728e382dae02c1"
+        }
+      ],
+      "checks": 1082,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": 0,
+      "labelIssues": 0,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "current-process-supplements.json": {
+      "sha256": "527031131b7a507a831258ea42037ad9c15ab69d9c35ef3b1a67f2eb1577f3de",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-B5r1wEVX.js",
+        "sha256": "c859f7ad73a9a0a6d827b5f89294aa1e3adab21a6ca4284fcd4b747e6f419634"
+      },
+      "reviewedStyles": [
+        {
+          "path": "/assets/index-m17nyHcN.css",
+          "sha256": "cc1fc12068651ae7cf25557eef174b9d35cc1aa21928c4415b728e382dae02c1"
+        }
+      ],
+      "checks": 876,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": 0,
+      "labelIssues": null,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "current-vertical-water-process.json": {
+      "sha256": "e2e79a429f8cb40b18cb9be6cdc35fa51744f22d48faa43ce1f34e8edcbff33b",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-B1rhVjcL.js",
+        "sha256": "76714d1628ff40042a947030e33138668c9b0e9a5d612408bfda454657aea676"
+      },
+      "reviewedStyles": [
+        {
+          "path": "/assets/index-BNlCIg7W.css",
+          "sha256": "7dc46979023abf69bb0739abccbdf5b37c1e2a4684645382e091631cf47753e2"
+        }
+      ],
+      "checks": 1580,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": 0,
+      "labelIssues": 0,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "current-ocean-energy-storm.json": {
+      "sha256": "47dde652cf933b2be8b63fc1c94dc2b31614bd979dd4ae21bb2c4fa5148a5881",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-4TxvUbQr.js",
+        "sha256": "160d556683ceddd9523a38b7b3bedf78b0d672c6e5dc47e6e99507518018aaf7"
+      },
+      "reviewedStyles": [
+        {
+          "path": "/assets/index-BNlCIg7W.css",
+          "sha256": "7dc46979023abf69bb0739abccbdf5b37c1e2a4684645382e091631cf47753e2"
+        }
+      ],
+      "checks": 502,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": 0,
+      "labelIssues": 0,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "current-continuous-timeline.json": {
+      "sha256": "70c1c983b37bb0d4a58ef642c37c1f128d40c37703052e5384709434c196c821",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-RQbEqc7g.js",
+        "sha256": "b0de5cf693e263331b876eb02db890dc5992e64b35af5f36075a2ae48716c8db"
+      },
+      "reviewedStyles": [
+        {
+          "path": "/assets/index-BNlCIg7W.css",
+          "sha256": "7dc46979023abf69bb0739abccbdf5b37c1e2a4684645382e091631cf47753e2"
+        }
+      ],
+      "checks": 598,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": 0,
+      "labelIssues": null,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "current-relief-depth-recovery.json": {
+      "sha256": "00495a9617e04226f1847b3f1847c2661b6807e92c69927125396378fa4c95a5",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-RQbEqc7g.js",
+        "sha256": "b0de5cf693e263331b876eb02db890dc5992e64b35af5f36075a2ae48716c8db"
+      },
+      "reviewedStyles": [
+        {
+          "path": "/assets/index-BNlCIg7W.css",
+          "sha256": "7dc46979023abf69bb0739abccbdf5b37c1e2a4684645382e091631cf47753e2"
+        }
+      ],
+      "checks": 461,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": 0,
+      "labelIssues": 0,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "current-astronomy-native.json": {
+      "sha256": "b657eae8d33d917534240672d5434ef9b2ab6c2a7854613741953105b77ea5f2",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-RQbEqc7g.js",
+        "sha256": "b0de5cf693e263331b876eb02db890dc5992e64b35af5f36075a2ae48716c8db"
+      },
+      "reviewedStyles": [
+        {
+          "path": "/assets/index-BNlCIg7W.css",
+          "sha256": "7dc46979023abf69bb0739abccbdf5b37c1e2a4684645382e091631cf47753e2"
+        }
+      ],
+      "checks": 31,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": 0,
+      "labelIssues": 0,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "current-book-completion-fullbook.json": {
+      "sha256": "0a34b1d2295f3c0a56021fb452b27f3cedba343892d18b18b10e682a00963919",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-DeWBg8MI.js",
+        "sha256": "ec96f82b826571539b4f96947cd63429a09bd620f1962d495fa6f718172b7d32"
+      },
+      "reviewedStyles": [
+        {
+          "path": "/assets/index-BNlCIg7W.css",
+          "sha256": "7dc46979023abf69bb0739abccbdf5b37c1e2a4684645382e091631cf47753e2"
+        }
+      ],
+      "checks": 2735,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": 0,
+      "labelIssues": 0,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "current-book-completion-portable.json": {
+      "sha256": "9414ea118525aa4de630643bccf51a7226d739df32e2e057a1cc71b4105bb312",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4173",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-DeWBg8MI.js",
+        "sha256": "ec96f82b826571539b4f96947cd63429a09bd620f1962d495fa6f718172b7d32"
+      },
+      "reviewedStyles": [
+        {
+          "path": "/assets/index-BNlCIg7W.css",
+          "sha256": "7dc46979023abf69bb0739abccbdf5b37c1e2a4684645382e091631cf47753e2"
+        }
+      ],
+      "checks": 98,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": null,
+      "labelIssues": null,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "current-book-completion-recovery.json": {
+      "sha256": "2bf6196191c488b576bbaf1677aa518502728e755c978c916ba154a433750132",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-DeWBg8MI.js",
+        "sha256": "ec96f82b826571539b4f96947cd63429a09bd620f1962d495fa6f718172b7d32"
+      },
+      "reviewedStyles": [
+        {
+          "path": "/assets/index-BNlCIg7W.css",
+          "sha256": "7dc46979023abf69bb0739abccbdf5b37c1e2a4684645382e091631cf47753e2"
+        }
+      ],
+      "checks": 10,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": null,
+      "labelIssues": null,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "current-book-completion-transactions-edge.json": {
+      "sha256": "140b9b6497f737addf4f9a9aa5583683282501d282ea1dbe0f5fd8d2fa2c278b",
+      "browser": "153.0.4234.48",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-DeWBg8MI.js",
+        "sha256": "ec96f82b826571539b4f96947cd63429a09bd620f1962d495fa6f718172b7d32"
+      },
+      "reviewedStyles": [
+        {
+          "path": "/assets/index-BNlCIg7W.css",
+          "sha256": "7dc46979023abf69bb0739abccbdf5b37c1e2a4684645382e091631cf47753e2"
+        }
+      ],
+      "checks": 16,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": null,
+      "labelIssues": null,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "current-book-completion-workspace.json": {
+      "sha256": "3c97060e0b8f2a4ee1d93fea5cc9c4b7175a3c7663c151d2e71d9bf9d2582f23",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-DeWBg8MI.js",
+        "sha256": "ec96f82b826571539b4f96947cd63429a09bd620f1962d495fa6f718172b7d32"
+      },
+      "reviewedStyles": [
+        {
+          "path": "/assets/index-BNlCIg7W.css",
+          "sha256": "7dc46979023abf69bb0739abccbdf5b37c1e2a4684645382e091631cf47753e2"
+        }
+      ],
+      "checks": 6,
+      "errors": 0,
+      "failures": null,
+      "layoutIssues": null,
+      "labelIssues": null,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "previous-book-completion-timeline-20261106.json": {
+      "sha256": "5cf9ac88ae1a88dad12273345c8d2d26e6efa04c1510de4b024a05091524c9eb",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-DeWBg8MI.js",
+        "sha256": "ec96f82b826571539b4f96947cd63429a09bd620f1962d495fa6f718172b7d32"
+      },
+      "reviewedStyles": [
+        {
+          "path": "/assets/index-BNlCIg7W.css",
+          "sha256": "7dc46979023abf69bb0739abccbdf5b37c1e2a4684645382e091631cf47753e2"
+        }
+      ],
+      "checks": 598,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": 0,
+      "labelIssues": null,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "current-continuous-systems.json": {
+      "sha256": "5071ae75e6be2f57bc64064b23c3615aefbff2049d87826b3cb68aea851830b9",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-CekyyFwd.js",
+        "sha256": "973583d5283e308700ee413bfc50c0f7e433ffb4e0d67354922041d403f7edc0"
+      },
+      "reviewedStyles": [
+        {
+          "path": "/assets/index-BNlCIg7W.css",
+          "sha256": "7dc46979023abf69bb0739abccbdf5b37c1e2a4684645382e091631cf47753e2"
+        }
+      ],
+      "checks": 366,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": 0,
+      "labelIssues": null,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "current-book-completion-timeline.json": {
+      "sha256": "bc50d8d0d348b83cce9a4bc081ae2a42e6e81455f0f08afc4f2d3a585f0a74a3",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-CekyyFwd.js",
+        "sha256": "973583d5283e308700ee413bfc50c0f7e433ffb4e0d67354922041d403f7edc0"
+      },
+      "reviewedStyles": [
+        {
+          "path": "/assets/index-BNlCIg7W.css",
+          "sha256": "7dc46979023abf69bb0739abccbdf5b37c1e2a4684645382e091631cf47753e2"
+        }
+      ],
+      "checks": 598,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": 0,
+      "labelIssues": null,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "current-delta-render-cost.json": {
+      "sha256": "658103b7d3d19076feb1c7b60d30bb0a2f977c5ab60426a0b8c808ded8a88e57",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-CekyyFwd.js",
+        "sha256": "973583d5283e308700ee413bfc50c0f7e433ffb4e0d67354922041d403f7edc0"
+      },
+      "reviewedStyles": [
+        {
+          "path": "/assets/index-BNlCIg7W.css",
+          "sha256": "7dc46979023abf69bb0739abccbdf5b37c1e2a4684645382e091631cf47753e2"
+        }
+      ],
+      "checks": 6,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": null,
+      "labelIssues": null,
+      "externalRequests": null,
+      "requestFailures": null
+    },
+    "current-continuous-systems-portable.json": {
+      "sha256": "d00a919ce675398a12089f7b4efccbf8b76ae728a2925a339ff631e953ad2616",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4173",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-CekyyFwd.js",
+        "sha256": "973583d5283e308700ee413bfc50c0f7e433ffb4e0d67354922041d403f7edc0"
+      },
+      "reviewedStyles": [
+        {
+          "path": "/assets/index-BNlCIg7W.css",
+          "sha256": "7dc46979023abf69bb0739abccbdf5b37c1e2a4684645382e091631cf47753e2"
+        }
+      ],
+      "checks": 33,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": null,
+      "labelIssues": null,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "final-current-fullbook-desktop.json": {
+      "sha256": "56375d4a43dc6a4467c75cdf5d871d7b35eb190a61570ef6a7ab4f4a48f1e3bd",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-XB96sSi7.js",
+        "sha256": "349da183c27e3c41cd3a6fff6db079196fc8686fc6f4f1ecb590c3fbc4398489"
+      },
+      "reviewedStyles": [
+        {
+          "path": "/assets/index-BNlCIg7W.css",
+          "sha256": "7dc46979023abf69bb0739abccbdf5b37c1e2a4684645382e091631cf47753e2"
+        }
+      ],
+      "checks": 2806,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": 0,
+      "labelIssues": 0,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "final-current-timeline.json": {
+      "sha256": "d9051be293773c938f67889e2a54dcda5d14471e0849b47e3e5d17ffa197f482",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-CjURQsXs.js",
+        "sha256": "faa5b5d2fecd85ad48ee22efddd84e026d8da99dcfa179475231f7cd127dd276"
+      },
+      "reviewedStyles": [
+        {
+          "path": "/assets/index-BNlCIg7W.css",
+          "sha256": "7dc46979023abf69bb0739abccbdf5b37c1e2a4684645382e091631cf47753e2"
+        }
+      ],
+      "checks": 598,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": 0,
+      "labelIssues": null,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "final-current-collection.json": {
+      "sha256": "9b81636167e6f5537b837361bdf016136939a60291e89c66f087af2c6b5b444d",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-CjURQsXs.js",
+        "sha256": "faa5b5d2fecd85ad48ee22efddd84e026d8da99dcfa179475231f7cd127dd276"
+      },
+      "reviewedStyles": [
+        {
+          "path": "/assets/index-BNlCIg7W.css",
+          "sha256": "7dc46979023abf69bb0739abccbdf5b37c1e2a4684645382e091631cf47753e2"
+        }
+      ],
+      "checks": 80,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": null,
+      "labelIssues": 0,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "final-current-urban-render-cost.json": {
+      "sha256": "49c3c400e98698447aa77cfdd40267e73123b1d16633910004fe1c31122499cd",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-CjURQsXs.js",
+        "sha256": "faa5b5d2fecd85ad48ee22efddd84e026d8da99dcfa179475231f7cd127dd276"
+      },
+      "reviewedStyles": [
+        {
+          "path": "/assets/index-BNlCIg7W.css",
+          "sha256": "7dc46979023abf69bb0739abccbdf5b37c1e2a4684645382e091631cf47753e2"
+        }
+      ],
+      "checks": 45,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": null,
+      "labelIssues": null,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "final-current-native-phone.json": {
+      "sha256": "e0b35cd9efb0798d05d930d78d6e536183386619f53be201bee14a51ab18cf1a",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-zZZdPexU.js",
+        "sha256": "34ee42a1af14e5e86ab56ef68c8d24999dd6965d3813bcbd0128c49de84b55c8"
+      },
+      "reviewedStyles": [
+        {
+          "path": "/assets/index-BNlCIg7W.css",
+          "sha256": "7dc46979023abf69bb0739abccbdf5b37c1e2a4684645382e091631cf47753e2"
+        }
+      ],
+      "checks": 2446,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": 0,
+      "labelIssues": 0,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "final-current-cold-wave-labels.json": {
+      "sha256": "5f2e14dd74defd19172caf7ff546599d80202d0fd602530f92900b324d4a9a86",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-zZZdPexU.js",
+        "sha256": "34ee42a1af14e5e86ab56ef68c8d24999dd6965d3813bcbd0128c49de84b55c8"
+      },
+      "reviewedStyles": [
+        {
+          "path": "/assets/index-BNlCIg7W.css",
+          "sha256": "7dc46979023abf69bb0739abccbdf5b37c1e2a4684645382e091631cf47753e2"
+        }
+      ],
+      "checks": 328,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": null,
+      "labelIssues": 0,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "final-current-portable.json": {
+      "sha256": "72b4e2d17ee9625e8a47dde226cf40b8e460c444c2366791df4e1ec348366970",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4173",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-zZZdPexU.js",
+        "sha256": "34ee42a1af14e5e86ab56ef68c8d24999dd6965d3813bcbd0128c49de84b55c8"
+      },
+      "reviewedStyles": [
+        {
+          "path": "/assets/index-BNlCIg7W.css",
+          "sha256": "7dc46979023abf69bb0739abccbdf5b37c1e2a4684645382e091631cf47753e2"
+        }
+      ],
+      "checks": 33,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": null,
+      "labelIssues": null,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "final-current-insolation.json": {
+      "sha256": "a37f4ffa7dfc5361a7e1d102902b3ec70a72f3b863b94239d93fd91d3b758863",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-CiqUfY83.js",
+        "sha256": "7ed9144ed014548b3015cb89d48e0701f0c74014aa53f934244469e03496b564"
+      },
+      "reviewedStyles": [
+        {
+          "path": "/assets/index-BNlCIg7W.css",
+          "sha256": "7dc46979023abf69bb0739abccbdf5b37c1e2a4684645382e091631cf47753e2"
+        }
+      ],
+      "checks": 232,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": 0,
+      "labelIssues": 0,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "final-current-inventory.json": {
+      "sha256": "f04b8f0de0207be4dda98a7119539dd7a7c13af200223a98d77819c72826275c",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-CiqUfY83.js",
+        "sha256": "7ed9144ed014548b3015cb89d48e0701f0c74014aa53f934244469e03496b564"
+      },
+      "reviewedStyles": [
+        {
+          "path": "/assets/index-BNlCIg7W.css",
+          "sha256": "7dc46979023abf69bb0739abccbdf5b37c1e2a4684645382e091631cf47753e2"
+        }
+      ],
+      "checks": 207,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": 0,
+      "labelIssues": 0,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "completion-current-native-phone.json": {
+      "sha256": "b9c9ab5a44cef8e475dd1d966f60946870485c1a27b3a9733c58314a33cdf66d",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-CiqUfY83.js",
+        "sha256": "7ed9144ed014548b3015cb89d48e0701f0c74014aa53f934244469e03496b564"
+      },
+      "reviewedStyles": [
+        {
+          "path": "/assets/index-BNlCIg7W.css",
+          "sha256": "7dc46979023abf69bb0739abccbdf5b37c1e2a4684645382e091631cf47753e2"
+        }
+      ],
+      "checks": 2434,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": 0,
+      "labelIssues": 0,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "final-current-e2e.json": {
+      "sha256": "ee6964f7c42856dfaaf3f5f11b3eff86b75f28074eefbab2f6d8950db232b99d",
+      "browser": "Chrome via Playwright channel chrome (version not recorded by this fixture)",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-CiqUfY83.js",
+        "sha256": "7ed9144ed014548b3015cb89d48e0701f0c74014aa53f934244469e03496b564"
+      },
+      "reviewedStyles": [
+        {
+          "path": "/assets/index-BNlCIg7W.css",
+          "sha256": "7dc46979023abf69bb0739abccbdf5b37c1e2a4684645382e091631cf47753e2"
+        }
+      ],
+      "checks": 9,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": null,
+      "labelIssues": null,
+      "externalRequests": null,
+      "requestFailures": null
+    },
+    "completion-current-label-clearance.json": {
+      "sha256": "9647865753287dbee7359bd920eb2ce0d43fd1cefbf503b5c216f6eae6dce95b",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4175",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-BVed_P16.js",
+        "sha256": "eaee972aa20e3e5bb386edb7a62afe44465eac8671e2d7e1a004014da58bdc10"
+      },
+      "reviewedStyles": [
+        {
+          "path": "/assets/index-BNlCIg7W.css",
+          "sha256": "7dc46979023abf69bb0739abccbdf5b37c1e2a4684645382e091631cf47753e2"
+        }
+      ],
+      "checks": 169,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": 0,
+      "labelIssues": 0,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "completion-current-portable.json": {
+      "sha256": "a6cb60903b1bdf2964268c65a028832b16cdfe95d2e6f3deb191380472a77803",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4173",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-BVed_P16.js",
+        "sha256": "eaee972aa20e3e5bb386edb7a62afe44465eac8671e2d7e1a004014da58bdc10"
+      },
+      "reviewedStyles": [
+        {
+          "path": "/assets/index-BNlCIg7W.css",
+          "sha256": "7dc46979023abf69bb0739abccbdf5b37c1e2a4684645382e091631cf47753e2"
+        }
+      ],
+      "checks": 42,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": null,
+      "labelIssues": null,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "playback-current-portable.json": {
+      "sha256": "b76d2d3575f1dc00fa821dc3fc75c49012d547805affd533b94bf919bd8da59c",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4173",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-D17MGEoq.js",
+        "sha256": "bb8a3df9ead1c0c6a206f12234bc37826af1dc6c6afb68da5a3b6a34d06b4af9"
+      },
+      "reviewedStyles": [
+        {
+          "path": "/assets/index-C2v-9YPV.css",
+          "sha256": "6acae712c3c97f6d8ea4d953b2535aa24ada9e45b7c9a612f6eacb59d56f6829"
+        }
+      ],
+      "checks": 42,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": null,
+      "labelIssues": null,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "current-playback-speed.json": {
+      "sha256": "2b69cebff2e1f2adf675dfe666bb625e696035b18aa654425b3233e4f0d85b62",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4180",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-DO1mJXaA.js",
+        "sha256": "c7df4d9500d71e033f6d2a172fa63ba4d34678a56edf46df3c278230df637dea"
+      },
+      "reviewedStyles": [
+        {
+          "path": "/assets/index-C2v-9YPV.css",
+          "sha256": "6acae712c3c97f6d8ea4d953b2535aa24ada9e45b7c9a612f6eacb59d56f6829"
+        }
+      ],
+      "checks": 50,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": null,
+      "labelIssues": null,
+      "externalRequests": null,
+      "requestFailures": null
+    },
+    "experience-interactions.json": {
+      "sha256": "7738ca09475c03efa4f0a8fa327cff58e562bfe91e1c19876a4dea18b816e394",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4180",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-DO1mJXaA.js",
+        "sha256": "c7df4d9500d71e033f6d2a172fa63ba4d34678a56edf46df3c278230df637dea"
+      },
+      "reviewedStyles": [
+        {
+          "path": "/assets/index-C2v-9YPV.css",
+          "sha256": "6acae712c3c97f6d8ea4d953b2535aa24ada9e45b7c9a612f6eacb59d56f6829"
+        }
+      ],
+      "checks": 28,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": null,
+      "labelIssues": null,
+      "externalRequests": null,
+      "requestFailures": null
+    },
+    "experience-layout.json": {
+      "sha256": "e9377051e1797954653df384afb47732811a91c5067f73dbe35659df354b500e",
+      "browser": "156.0.8078.80",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-DO1mJXaA.js",
+        "sha256": "c7df4d9500d71e033f6d2a172fa63ba4d34678a56edf46df3c278230df637dea"
+      },
+      "reviewedStyles": [
+        {
+          "path": "/assets/index-C2v-9YPV.css",
+          "sha256": "6acae712c3c97f6d8ea4d953b2535aa24ada9e45b7c9a612f6eacb59d56f6829"
+        }
+      ],
+      "checks": 64,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": null,
+      "labelIssues": 0,
+      "externalRequests": null,
+      "requestFailures": null
+    },
+    "experience-causality.json": {
+      "sha256": "beb2742b061cb6829303adc92a6f4e7ea12f9436e9a8f9d296dd08c2f9e16985",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4180",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-DO1mJXaA.js",
+        "sha256": "c7df4d9500d71e033f6d2a172fa63ba4d34678a56edf46df3c278230df637dea"
+      },
+      "reviewedStyles": [
+        {
+          "path": "/assets/index-C2v-9YPV.css",
+          "sha256": "6acae712c3c97f6d8ea4d953b2535aa24ada9e45b7c9a612f6eacb59d56f6829"
+        }
+      ],
+      "checks": 25,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": null,
+      "labelIssues": null,
+      "externalRequests": null,
+      "requestFailures": null
+    },
+    "experience-portable.json": {
+      "sha256": "d6cb9e70ed58286e0fddc11291eac94473f6fbfc164d6b49707544b394618d98",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4173",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-DO1mJXaA.js",
+        "sha256": "c7df4d9500d71e033f6d2a172fa63ba4d34678a56edf46df3c278230df637dea"
+      },
+      "reviewedStyles": [
+        {
+          "path": "/assets/index-C2v-9YPV.css",
+          "sha256": "6acae712c3c97f6d8ea4d953b2535aa24ada9e45b7c9a612f6eacb59d56f6829"
+        }
+      ],
+      "checks": 42,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": null,
+      "labelIssues": null,
+      "externalRequests": 0,
+      "requestFailures": 0
+    },
+    "polish-targeted.json": {
+      "sha256": "764887868a29cb0503a48e2aba7e9691ef4fa4baf6bf5f1990a83c9c8c4e2b78",
+      "browser": "156.0.8078.80",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-BGFlw9RG.js",
+        "sha256": "03a8ad97cd79c6a94b4a3ea5293ce26b303ce6366ac99ace737199bd61da0d8b"
+      },
+      "reviewedStyles": [
+        {
+          "path": "/assets/index-BqXd35wy.css",
+          "sha256": "5ae82f930e633c82e5398aacf4e3aa1c3f7b9570fce8ba498976feb6d78c2617"
+        }
+      ],
+      "checks": 70,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": null,
+      "labelIssues": null,
+      "externalRequests": null,
+      "requestFailures": null
+    },
+    "polish-speed.json": {
+      "sha256": "c9186dec6816a46a19d579a3b2c45bfb03821b821872bea544c1e754de65e0bf",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4180",
+      "relationshipToBuild": "previous-stable-baseline-only",
+      "reviewedEntry": {
+        "path": "/assets/index-BGFlw9RG.js",
+        "sha256": "03a8ad97cd79c6a94b4a3ea5293ce26b303ce6366ac99ace737199bd61da0d8b"
+      },
+      "reviewedStyles": [
+        {
+          "path": "/assets/index-BqXd35wy.css",
+          "sha256": "5ae82f930e633c82e5398aacf4e3aa1c3f7b9570fce8ba498976feb6d78c2617"
+        }
+      ],
+      "checks": 50,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": null,
+      "labelIssues": null,
+      "externalRequests": null,
+      "requestFailures": null
+    },
+    "polish-final.json": {
+      "sha256": "b24dd8377a44885e49af0340bac52dcf9223871d0934a64d355aae7e0b7a8748",
+      "browser": "156.0.8078.80",
+      "relationshipToBuild": "current-production-targeted-review",
+      "reviewedEntry": {
+        "path": "/assets/index-SsFpYqVD.js",
+        "sha256": "5e8ccc5e11241a1a928998a3a93bd0e3e5bde15398ac63aaa5cd92089f0d298f"
+      },
+      "reviewedStyles": [
+        {
+          "path": "/assets/index-BqXd35wy.css",
+          "sha256": "5ae82f930e633c82e5398aacf4e3aa1c3f7b9570fce8ba498976feb6d78c2617"
+        }
+      ],
+      "checks": 11,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": null,
+      "labelIssues": null,
+      "externalRequests": null,
+      "requestFailures": null
+    },
+    "polish-portable.json": {
+      "sha256": "e562136825cfa87e10f5d6457024d9cc1f7cc4e9097cfdd159bd4aa33926334b",
+      "browser": "156.0.8078.80",
+      "base": "http://127.0.0.1:4173",
+      "relationshipToBuild": "current-production-targeted-review",
+      "reviewedEntry": {
+        "path": "/assets/index-SsFpYqVD.js",
+        "sha256": "5e8ccc5e11241a1a928998a3a93bd0e3e5bde15398ac63aaa5cd92089f0d298f"
+      },
+      "reviewedStyles": [
+        {
+          "path": "/assets/index-BqXd35wy.css",
+          "sha256": "5ae82f930e633c82e5398aacf4e3aa1c3f7b9570fce8ba498976feb6d78c2617"
+        }
+      ],
+      "checks": 42,
+      "errors": 0,
+      "failures": 0,
+      "layoutIssues": null,
+      "labelIssues": null,
+      "externalRequests": 0,
+      "requestFailures": 0
+    }
+  },
+  "previousStableBuild": "docs/verification/previous-workbench-build-20261105.json",
+  "previousProcessBuild": "docs/verification/previous-continuous-timeline-base-20261105.json",
+  "previousTimelineBuild": "docs/verification/previous-continuous-timeline-build-20261105.json",
+  "previousPhysicalProcessBuild": "docs/verification/previous-physical-process-build-20261105.json",
+  "previousVerticalWaterBase": "docs/verification/previous-vertical-water-base-20261105.json",
+  "previousOceanEnergyStormBase": "docs/verification/previous-ocean-energy-storm-base-20261106.json",
+  "previousReliefDepthBase": "docs/verification/previous-relief-depth-base-20261106.json",
+  "previousBookCompletionBase": "docs/verification/previous-book-completion-base-20261106.json",
+  "previousContinuousBookBase": "docs/verification/previous-continuous-book-base-20261106.json",
+  "previousFullbookDelivery": "docs/verification/previous-fullbook-delivery-20261106.json",
+  "previousPlaybackBase": "docs/verification/previous-playback-base-20261106.json",
+  "earlierStableBuild": "docs/verification/previous-stable-build-20261105.json",
+  "lastLabelClearanceReview": "docs/verification/completion-current-label-clearance.json",
+  "lastFullDesktopRepresentativeReview": "docs/verification/final-current-inventory.json",
+  "sourceDeltaSinceFullbookReview": "docs/verification/completion-label-layout-delta.json",
+  "sourceDeltaSincePlaybackBase": "docs/verification/experience-source-delta.json",
+  "previousExperienceBase": "docs/verification/previous-experience-base-20261106.json",
+  "previousPolishBase": "docs/verification/previous-polish-base-20261106.json",
+  "sourceDeltaSincePolishBase": "docs/verification/polish-source-delta.json",
+  "intermediateRepresentativeReview": "docs/verification/experience-inventory.json",
+  "previousDesktopConditionReview": "docs/verification/final-current-fullbook-desktop.json",
+  "verificationScope": "The original D17MGEoq audit inspected 60 demonstrations at three paused samples each. The previous stable DO1mJXaA delivery remains separately fingerprinted. This follow-through refines four scene cameras, independent part inspections, vegetation geometry, material receiving, local hatching and an invertible presentation clock. On BGFlw9RG, 41 rendered states and a physical buttress click passed 70 checks, with 50 separate speed/preference checks; those reports retain BGFlw9RG identity. The final production changes one climate-weathering label, reviewed at three viewports together with menu dismissal, keyboard focus, next-model overview reset and native SVG inspection. A final portable review blocks off-origin HTTP(S). Current reports must match final JS/CSS. Screenshots and software checks do not establish every intermediate frame, all angles, scientific review, real devices or classroom outcomes.",
+  "unitTests": {
+    "passed": 419,
+    "failed": 0,
+    "files": 51,
+    "startTime": 1793937863931,
+    "finalRelevantRerun": {
+      "report": "docs/verification/polish-final-unit.json",
+      "passed": 23,
+      "failed": 0,
+      "files": 3
+    },
+    "scope": "Scientific model and retained logic; not full current UI acceptance"
+  },
+  "limitations": [
+    "Simulated viewports do not verify physical tablet, phone, school PC, or projection hardware.",
+    "Request isolation is not physical disconnection or a fresh Windows machine installation test.",
+    "60 model entry points do not mean every angle, intermediate state, scientific claim, or visual treatment is fully reviewed.",
+    "Earlier Edge, WebGL restoration, specialist-handle and nine-flow E2E reports retain their previous-build status. Current playback review rechecks speed-related teacher isolation and both render modes.",
+    "The 60-image intermediate representative review is not rebound to the final build, and its recorded layout findings remain intact. Final layout checks cover five adjusted models and selected conditions, not every view or frame.",
+    "No classroom learning outcome, long-duration hardware FPS, or persistent renderer book-destruction acceptance.",
+    "Earlier tests/e2e target a superseded interface and are excluded from the standard E2E command. Current acceptance uses tests/current-e2e.",
+    "Original page images preserve layout but do not provide a full searchable or screen-reader-accessible textbook text layer.",
+    "Delta material-pass comparisons are paused desktop samples, not a whole-book draw-call or school-hardware FPS guarantee.",
+    "Earlier city draw-call checks use a frozen default camera and retain all twelve water markers. They are not low-end school-hardware FPS or every camera-angle acceptance."
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "base": "http://127.0.0.1:4180",
+  "checks": [
+    "First scientific phase stays at origin while the model rises",
+    "First playback starts after the model becomes live",
+    "Fresh sessions default to 2×",
+    "The physical cover has a real raycast target",
+    "Physical cover resumes the saved bookmark",
+    "Wind cloth responds to the unified phase",
+    "Reverse seek returns the exact same wind geometry",
+    "Equal-pressure static comparison hides ineffective playback",
+    "Escape folds the model while a control owns focus",
+    "earth: structural content has no meaningless progress/play control",
+    "soil-composition: structural content has no meaningless progress/play control",
+    "density: structural content has no meaningless progress/play control",
+    "geo-time: structural content has no meaningless progress/play control",
+    "habitable: structural content has no meaningless progress/play control",
+    "air-composition: structural content has no meaningless progress/play control",
+    "water-renewal: changing an independent condition starts its process",
+    "desalination: changing an independent condition starts its process",
+    "karst-cave: changing an independent condition starts its process",
+    "soil-factors: changing an independent condition starts its process",
+    "karst-livelihood: changing an independent condition starts its process",
+    "flood: changing an independent condition starts its process",
+    "drought: changing an independent condition starts its process",
+    "disaster-chain: changing an independent condition starts its process",
+    "Quake structure is directly observable without fake progress",
+    "Entering the warning starts at detection, not the final result",
+    "Near/far warning comparison preserves the observation instant",
+    "2D keyboard selection keeps focus on the same physical ground station",
+    "No runtime exceptions during the targeted interaction review"
+  ],
+  "failures": [],
+  "errors": [],
+  "states": [
+    {
+      "id": "water-renewal",
+      "phase": 0
+    },
+    {
+      "id": "desalination",
+      "phase": 0
+    },
+    {
+      "id": "karst-cave",
+      "phase": 0
+    },
+    {
+      "id": "soil-factors",
+      "phase": 0
+    },
+    {
+      "id": "karst-livelihood",
+      "phase": 0
+    },
+    {
+      "id": "flood",
+      "phase": 0
+    },
+    {
+      "id": "drought",
+      "phase": 0
+    },
+    {
+      "id": "disaster-chain",
+      "phase": 0
+    }
+  ],
+  "scope": "Real desktop interactions plus targeted 2D focus; physical touch hardware not exercised",
+  "reviewedEntry": {
+    "path": "/assets/index-DO1mJXaA.js",
+    "sha256": "c7df4d9500d71e033f6d2a172fa63ba4d34678a56edf46df3c278230df637dea"
+  },
+  "reviewedStyles": [
+    {
+      "path": "/assets/index-C2v-9YPV.css",
+      "sha256": "6acae712c3c97f6d8ea4d953b2535aa24ada9e45b7c9a612f6eacb59d56f6829"
+    }
+  ],
+  "reviewedAt": "2026-11-06T03:13:17.345Z",
+  "browser": "156.0.8078.80"
+}

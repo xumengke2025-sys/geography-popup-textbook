@@ -1,0 +1,2473 @@
+{
+  "base": "http://127.0.0.1:4175",
+  "browser": "156.0.8078.80",
+  "checks": [
+    "the workbench reuses source controls without duplicate DOM IDs",
+    "visible DOM tooltips use readable Chinese rather than inherited English control titles",
+    "the persistent directory entry has a visible Chinese action name",
+    "Space on the directory button opens navigation without toggling the experiment",
+    "opening the directory focuses a visible control in its active panel",
+    "tab ArrowRight changes the directory type without turning the book",
+    "tab Home returns to the chapter directory",
+    "Space activates the model-directory tab without hijacking playback",
+    "an empty model search presents one clear empty state without stale results",
+    "directory search filters the actual model list",
+    "Escape from the search input closes the directory and synchronizes its expanded state",
+    "reopening the last model tab never focuses a hidden chapter row",
+    "keyboard model selection follows the normal fold/turn/open transaction and closes navigation",
+    "desktop-live-tide: visible workspace actions fit the viewport, remain exposed and meet touch dimensions",
+    "desktop-live-tide: the book title and top workspace tools do not overlap",
+    "desktop-live-tide: elevated labels remain legible between the workspace header and actual control bar",
+    "Space opens the fast page picker and focuses its native range",
+    "previewing another spread leaves the current page and raised model intact",
+    "desktop-near-cover-thumbnails: every actual page thumbnail fully decodes from a local textbook asset",
+    "Space on the preview confirmation folds the model and commits the intended spread",
+    "workspace busy state clears after the page transaction finishes",
+    "desktop-final-page-thumbnails: every actual page thumbnail fully decodes from a local textbook asset",
+    "closing an uncommitted last-page preview preserves the book and restores trigger focus",
+    "the fast page form maps textbook page 59 to PDF page 64",
+    "Escape closes the top modal even when a page-preview panel was previously open",
+    "rapid +1,+1,+1,-1 requests settle at the final intended spread without a suspended model",
+    "directory current-page highlighting follows same-chapter turns rather than the last chapter boundary",
+    "outside pointer dismissal also synchronizes directory state",
+    "Space on the dedicated play key starts the experiment exactly once",
+    "Space on the same play key pauses rather than double-toggling through the global shortcut",
+    "teacher settings cannot clear the persisted student record",
+    "teacher phase, notes, quality and page changes leave the complete student storage unchanged",
+    "leaving teaching restores the exact student page, raised model, conditions and paused state",
+    "teacher scratch notes never replace student notes",
+    "student quality and reduced-motion controls match the actual restored renderer",
+    "tablet-live-tide: visible workspace actions fit the viewport, remain exposed and meet touch dimensions",
+    "tablet-live-tide: the book title and top workspace tools do not overlap",
+    "tablet-live-tide: elevated labels remain legible between the workspace header and actual control bar",
+    "phone workspace can enter the accessible vector and original-page reader",
+    "phone-vector-tide: visible workspace actions fit the viewport, remain exposed and meet touch dimensions",
+    "phone-vector-tide: the book title and top workspace tools do not overlap",
+    "phone-vector-tide: elevated labels remain legible between the workspace header and actual control bar",
+    "phone directory drawer remains completely inside the viewport",
+    "phone quick-page picker fits the viewport",
+    "phone-tide-thumbnails: every actual page thumbnail fully decodes from a local textbook asset",
+    "phone-360-vector-tide: visible workspace actions fit the viewport, remain exposed and meet touch dimensions",
+    "phone-360-vector-tide: the book title and top workspace tools do not overlap",
+    "phone-360-vector-tide: elevated labels remain legible between the workspace header and actual control bar",
+    "workbench navigation produces no browser exceptions or console errors"
+  ],
+  "failures": [],
+  "errors": [],
+  "states": [
+    {
+      "name": "desktop-live-tide",
+      "layout": {
+        "width": 1366,
+        "height": 768,
+        "overflow": false,
+        "items": [
+          {
+            "id": "desk-header",
+            "left": 0,
+            "right": 1366,
+            "top": 0,
+            "bottom": 86,
+            "width": 1366,
+            "height": 86,
+            "hiddenBy": "visible",
+            "text": "人教版地理必修一笔记原页授课静态设置"
+          },
+          {
+            "id": "cContents",
+            "left": 26,
+            "right": 73,
+            "top": 95,
+            "bottom": 201,
+            "width": 47,
+            "height": 106,
+            "hiddenBy": "visible",
+            "text": "目录"
+          },
+          {
+            "id": "cPrev",
+            "left": 258,
+            "right": 334,
+            "top": 632,
+            "bottom": 680,
+            "width": 76,
+            "height": 48,
+            "hiddenBy": "visible",
+            "text": "上一页"
+          },
+          {
+            "id": "cNext",
+            "left": 928,
+            "right": 1004,
+            "top": 632,
+            "bottom": 680,
+            "width": 76,
+            "height": 48,
+            "hiddenBy": "visible",
+            "text": "下一页"
+          },
+          {
+            "id": "folio-toggle",
+            "left": 1012,
+            "right": 1108,
+            "top": 632,
+            "bottom": 680,
+            "width": 96,
+            "height": 48,
+            "hiddenBy": "visible",
+            "text": "58—59"
+          },
+          {
+            "id": "cPause",
+            "left": 350,
+            "right": 424,
+            "top": 634,
+            "bottom": 678,
+            "width": 74,
+            "height": 44,
+            "hiddenBy": "visible",
+            "text": "暂停"
+          },
+          {
+            "id": "phase",
+            "left": 713,
+            "right": 861,
+            "top": 699,
+            "bottom": 739,
+            "width": 148,
+            "height": 40,
+            "hiddenBy": "visible",
+            "text": ""
+          },
+          {
+            "id": "restart",
+            "left": 925,
+            "right": 991,
+            "top": 699,
+            "bottom": 739,
+            "width": 66,
+            "height": 40,
+            "hiddenBy": "visible",
+            "text": "重放"
+          },
+          {
+            "id": "fold",
+            "left": 996,
+            "right": 1062,
+            "top": 699,
+            "bottom": 739,
+            "width": 66,
+            "height": 40,
+            "hiddenBy": "visible",
+            "text": "收回"
+          },
+          {
+            "id": "desk-notes",
+            "left": 1014,
+            "right": 1090,
+            "top": 20,
+            "bottom": 64,
+            "width": 76,
+            "height": 44,
+            "hiddenBy": "visible",
+            "text": "笔记"
+          },
+          {
+            "id": "desk-settings",
+            "left": 1260,
+            "right": 1336,
+            "top": 20,
+            "bottom": 64,
+            "width": 76,
+            "height": 44,
+            "hiddenBy": "visible",
+            "text": "设置"
+          },
+          {
+            "id": "cTeach",
+            "left": 1178,
+            "right": 1254,
+            "top": 20,
+            "bottom": 64,
+            "width": 76,
+            "height": 44,
+            "hiddenBy": "visible",
+            "text": "授课"
+          }
+        ],
+        "title": {
+          "left": 30,
+          "right": 232.6875,
+          "top": 20,
+          "bottom": 53.59375,
+          "width": 202.6875,
+          "height": 33.59375
+        },
+        "tools": {
+          "left": 1014,
+          "right": 1336,
+          "top": 20,
+          "bottom": 64,
+          "width": 322,
+          "height": 44
+        },
+        "pointerBlockers": [
+          {
+            "id": "cContents",
+            "target": "cContents"
+          },
+          {
+            "id": "cPrev",
+            "target": "cPrev"
+          },
+          {
+            "id": "cNext",
+            "target": "cNext"
+          },
+          {
+            "id": "folio-toggle",
+            "target": "folio-toggle"
+          }
+        ],
+        "dock": {
+          "left": 243,
+          "right": 1123,
+          "top": 621,
+          "bottom": 750,
+          "width": 880,
+          "height": 129
+        },
+        "labels": [
+          {
+            "text": "涨潮",
+            "left": 795.6823472451238,
+            "top": 179.7543391435134,
+            "right": 859.9732236241861,
+            "bottom": 214.37250334762376,
+            "fontPx": 23.84297402137403
+          },
+          {
+            "text": "固定潮尺",
+            "left": 610.1401298116817,
+            "top": 323.94257420407894,
+            "right": 740.2414086267479,
+            "bottom": 358.6362485547632,
+            "fontPx": 23.8833265457609
+          },
+          {
+            "text": "潮间带",
+            "left": 767.6070047360718,
+            "top": 298.6219193050756,
+            "right": 882.3742558189995,
+            "bottom": 335.3474396516126,
+            "fontPx": 25.282061108123294
+          }
+        ]
+      },
+      "state": {
+        "spread": 32,
+        "active": "tides",
+        "playing": true,
+        "teacher": false,
+        "twoD": false,
+        "state": {
+          "phase": 0.058338888888889,
+          "selection": 0,
+          "routes": [],
+          "rings": [],
+          "focus": null,
+          "caption": "涨潮"
+        },
+        "pages": [
+          63,
+          64
+        ],
+        "notes": {},
+        "geometry": {
+          "architecture": "three-dimensional-geometry",
+          "bitmapSurfaces": 0,
+          "solids": 17,
+          "labels": 3,
+          "meshes": 22,
+          "imageMappedMeshes": 0,
+          "extent": [
+            81.25119209289551,
+            40.625596356406376,
+            48.732862458930924
+          ],
+          "sceneElevation": 41.07203158766197,
+          "unfoldProgress": 1,
+          "originalPagePreserved": true,
+          "phase": 0.058338888888889,
+          "selection": 0,
+          "kind": "tide",
+          "fraction": 0.03321604173643605,
+          "waterLevel": 8.145446834058935,
+          "stage": "rising",
+          "caption": "涨潮",
+          "direction": 1,
+          "shoreline": [
+            [
+              47.32952135643417,
+              8.145446834058935,
+              6
+            ],
+            [
+              46.89177382400742,
+              8.145446834058935,
+              7.225
+            ],
+            [
+              46.466369903125134,
+              8.145446834058935,
+              8.45
+            ],
+            [
+              46.06511417710767,
+              8.145446834058935,
+              9.675
+            ],
+            [
+              45.698761231459024,
+              8.145446834058935,
+              10.9
+            ],
+            [
+              45.3765592718864,
+              8.145446834058935,
+              12.125
+            ],
+            [
+              45.105871883885136,
+              8.145446834058935,
+              13.35
+            ],
+            [
+              44.891897231340195,
+              8.145446834058935,
+              14.575
+            ],
+            [
+              44.73749868808809,
+              8.145446834058935,
+              15.8
+            ],
+            [
+              44.64315483796563,
+              8.145446834058935,
+              17.025
+            ],
+            [
+              44.60703029913267,
+              8.145446834058935,
+              18.25
+            ],
+            [
+              44.62516228405834,
+              8.145446834058935,
+              19.475
+            ],
+            [
+              44.69175155755013,
+              8.145446834058935,
+              20.7
+            ],
+            [
+              44.799540845133286,
+              8.145446834058935,
+              21.925
+            ],
+            [
+              44.940259081048005,
+              8.145446834058935,
+              23.15
+            ],
+            [
+              45.10510642475691,
+              8.145446834058935,
+              24.375
+            ],
+            [
+              45.28525290621718,
+              8.145446834058935,
+              25.6
+            ],
+            [
+              45.47232299535837,
+              8.145446834058935,
+              26.825
+            ],
+            [
+              45.658839359156076,
+              8.145446834058935,
+              28.05
+            ],
+            [
+              45.83860151461707,
+              8.145446834058935,
+              29.275
+            ],
+            [
+              46.0069788704968,
+              8.145446834058935,
+              30.5
+            ],
+            [
+              46.16110256326602,
+              8.145446834058935,
+              31.725
+            ],
+            [
+              46.2999462600569,
+              8.145446834058935,
+              32.95
+            ],
+            [
+              46.424292402245996,
+              8.145446834058935,
+              34.175
+            ],
+            [
+              46.53658684778461,
+              8.145446834058935,
+              35.4
+            ],
+            [
+              46.64069117817701,
+              8.145446834058935,
+              36.625
+            ],
+            [
+              46.74154771686426,
+              8.145446834058935,
+              37.85
+            ],
+            [
+              46.84477723872615,
+              8.145446834058935,
+              39.075
+            ],
+            [
+              46.956233161548425,
+              8.145446834058935,
+              40.3
+            ],
+            [
+              47.08153848790711,
+              8.145446834058935,
+              41.525
+            ],
+            [
+              47.225632772204165,
+              8.145446834058935,
+              42.75
+            ],
+            [
+              47.39235586629974,
+              8.145446834058935,
+              43.975
+            ],
+            [
+              47.58409317673926,
+              8.145446834058935,
+              45.2
+            ],
+            [
+              47.801503758472414,
+              8.145446834058935,
+              46.425
+            ],
+            [
+              48.0433479626479,
+              8.145446834058935,
+              47.65
+            ],
+            [
+              48.30642580450173,
+              8.145446834058935,
+              48.875
+            ],
+            [
+              48.585631028925235,
+              8.145446834058935,
+              50.1
+            ],
+            [
+              48.87411936882077,
+              8.145446834058935,
+              51.325
+            ],
+            [
+              49.16358307412635,
+              8.145446834058935,
+              52.55
+            ],
+            [
+              49.44461779332365,
+              8.145446834058935,
+              53.775
+            ],
+            [
+              49.707162647172055,
+              8.145446834058935,
+              55
+            ]
+          ],
+          "shorelineFront": 49.707162647172055,
+          "intertidal": {
+            "lowEdge": 48.627641290737884,
+            "highEdge": 81.12764129073788,
+            "exposedFraction": 0.966783958263564
+          },
+          "boat": {
+            "x": 21.5,
+            "z": 28,
+            "waterline": 8.145446834058935,
+            "keel": 6.995446834058935,
+            "freeboard": 0.95,
+            "draft": 1.15
+          },
+          "gauge": {
+            "x": 33,
+            "z": 47,
+            "bottom": 2.6,
+            "top": 24,
+            "waterMark": 8.145446834058935
+          },
+          "units": "schematic-cycle",
+          "locationSpecific": false,
+          "tideCurrentCalculated": false,
+          "referencePage": 59,
+          "realShoreIntersection": true,
+          "waterVolumeFollowsSeabed": true,
+          "boatDraftFixed": true,
+          "gaugeStationary": true,
+          "shoreSurface": "fixed-sloping-coast",
+          "measuredTideHeight": false,
+          "localTideTimes": false,
+          "arrowsForLocalCurrent": false,
+          "tideDial": {
+            "center": [
+              78.57258216770116,
+              27.143255657933125,
+              -150.65278488565832
+            ],
+            "radiusX": 6.428665813721003,
+            "radiusY": 6.785813914483281
+          },
+          "fixedWaterVertices": 3526,
+          "fixedShorelineVertices": 82,
+          "buffersStable": true
+        },
+        "models": 1,
+        "view": "detail",
+        "modelState": "live",
+        "saved": "{\"version\":2,\"spread\":32,\"figures\":{\"breeze\":{\"phase\":0.5,\"selection\":0},\"tides\":{\"phase\":0.002777777777777778,\"selection\":0}},\"notes\":{},\"quality\":\"中\",\"reduced\":false}",
+        "focus": {
+          "id": "cContents",
+          "text": "目录",
+          "visible": true,
+          "inDirectory": false
+        },
+        "directory": {
+          "hidden": true,
+          "expanded": "false"
+        },
+        "folio": {
+          "hidden": true,
+          "expanded": "false"
+        },
+        "busy": false,
+        "quality": "中",
+        "reduced": false,
+        "renderQuality": "中",
+        "renderReduced": false
+      }
+    },
+    {
+      "name": "desktop-near-cover-thumbnails",
+      "thumbnails": [
+        {
+          "decoded": true,
+          "complete": true,
+          "width": 360,
+          "height": 505,
+          "source": "/textbook/thumb-002.webp"
+        },
+        {
+          "decoded": true,
+          "complete": true,
+          "width": 360,
+          "height": 505,
+          "source": "/textbook/thumb-003.webp"
+        },
+        {
+          "decoded": true,
+          "complete": true,
+          "width": 360,
+          "height": 505,
+          "source": "/textbook/thumb-004.webp"
+        },
+        {
+          "decoded": true,
+          "complete": true,
+          "width": 360,
+          "height": 505,
+          "source": "/textbook/thumb-005.webp"
+        },
+        {
+          "decoded": true,
+          "complete": true,
+          "width": 360,
+          "height": 505,
+          "source": "/textbook/thumb-006.webp"
+        },
+        {
+          "decoded": true,
+          "complete": true,
+          "width": 360,
+          "height": 505,
+          "source": "/textbook/thumb-007.webp"
+        },
+        {
+          "decoded": true,
+          "complete": true,
+          "width": 360,
+          "height": 505,
+          "source": "/textbook/thumb-008.webp"
+        }
+      ]
+    },
+    {
+      "name": "desktop-final-page-thumbnails",
+      "thumbnails": [
+        {
+          "decoded": true,
+          "complete": true,
+          "width": 360,
+          "height": 505,
+          "source": "/textbook/thumb-125.webp"
+        },
+        {
+          "decoded": true,
+          "complete": true,
+          "width": 360,
+          "height": 505,
+          "source": "/textbook/thumb-126.webp"
+        },
+        {
+          "decoded": true,
+          "complete": true,
+          "width": 360,
+          "height": 505,
+          "source": "/textbook/thumb-127.webp"
+        },
+        {
+          "decoded": true,
+          "complete": true,
+          "width": 360,
+          "height": 505,
+          "source": "/textbook/thumb-128.webp"
+        },
+        {
+          "decoded": true,
+          "complete": true,
+          "width": 360,
+          "height": 505,
+          "source": "/textbook/thumb-129.webp"
+        },
+        {
+          "decoded": true,
+          "complete": true,
+          "width": 360,
+          "height": 505,
+          "source": "/textbook/thumb-130.webp"
+        },
+        {
+          "decoded": true,
+          "complete": true,
+          "width": 360,
+          "height": 505,
+          "source": "/textbook/thumb-131.webp"
+        },
+        {
+          "decoded": true,
+          "complete": true,
+          "width": 360,
+          "height": 505,
+          "source": "/textbook/thumb-132.webp"
+        },
+        {
+          "decoded": true,
+          "complete": true,
+          "width": 360,
+          "height": 505,
+          "source": "/textbook/thumb-133.webp"
+        }
+      ]
+    },
+    {
+      "name": "teacher-isolation",
+      "student": {
+        "spread": 32,
+        "active": "tides",
+        "playing": false,
+        "teacher": false,
+        "twoD": false,
+        "state": {
+          "phase": 0.6,
+          "selection": 0,
+          "routes": [],
+          "rings": [],
+          "focus": null,
+          "caption": "落潮"
+        },
+        "pages": [
+          63,
+          64
+        ],
+        "notes": {
+          "32": "学生书签：潮汐工作台导航验证。"
+        },
+        "geometry": {
+          "architecture": "three-dimensional-geometry",
+          "bitmapSurfaces": 0,
+          "solids": 17,
+          "labels": 3,
+          "meshes": 22,
+          "imageMappedMeshes": 0,
+          "extent": [
+            81.25119209289551,
+            40.625596356406376,
+            48.732862458930924
+          ],
+          "sceneElevation": 41.07203158766197,
+          "unfoldProgress": 1,
+          "originalPagePreserved": true,
+          "phase": 0.6,
+          "selection": 0,
+          "kind": "tide",
+          "fraction": 0.9045084971874737,
+          "waterLevel": 17.206888370749724,
+          "stage": "falling",
+          "caption": "落潮",
+          "direction": -1,
+          "shoreline": [
+            [
+              75.64652615859288,
+              17.206888370749724,
+              6
+            ],
+            [
+              75.20877862616614,
+              17.206888370749724,
+              7.225
+            ],
+            [
+              74.78337470528383,
+              17.206888370749724,
+              8.45
+            ],
+            [
+              74.38211897926638,
+              17.206888370749724,
+              9.675
+            ],
+            [
+              74.01576603361774,
+              17.206888370749724,
+              10.9
+            ],
+            [
+              73.6935640740451,
+              17.206888370749724,
+              12.125
+            ],
+            [
+              73.42287668604384,
+              17.206888370749724,
+              13.35
+            ],
+            [
+              73.2089020334989,
+              17.206888370749724,
+              14.575
+            ],
+            [
+              73.0545034902468,
+              17.206888370749724,
+              15.8
+            ],
+            [
+              72.96015964012433,
+              17.206888370749724,
+              17.025
+            ],
+            [
+              72.92403510129138,
+              17.206888370749724,
+              18.25
+            ],
+            [
+              72.94216708621704,
+              17.206888370749724,
+              19.475
+            ],
+            [
+              73.00875635970884,
+              17.206888370749724,
+              20.7
+            ],
+            [
+              73.11654564729199,
+              17.206888370749724,
+              21.925
+            ],
+            [
+              73.2572638832067,
+              17.206888370749724,
+              23.15
+            ],
+            [
+              73.42211122691562,
+              17.206888370749724,
+              24.375
+            ],
+            [
+              73.60225770837589,
+              17.206888370749724,
+              25.6
+            ],
+            [
+              73.78932779751707,
+              17.206888370749724,
+              26.825
+            ],
+            [
+              73.97584416131478,
+              17.206888370749724,
+              28.05
+            ],
+            [
+              74.15560631677577,
+              17.206888370749724,
+              29.275
+            ],
+            [
+              74.32398367265552,
+              17.206888370749724,
+              30.5
+            ],
+            [
+              74.47810736542472,
+              17.206888370749724,
+              31.725
+            ],
+            [
+              74.6169510622156,
+              17.206888370749724,
+              32.95
+            ],
+            [
+              74.7412972044047,
+              17.206888370749724,
+              34.175
+            ],
+            [
+              74.85359164994333,
+              17.206888370749724,
+              35.4
+            ],
+            [
+              74.95769598033571,
+              17.206888370749724,
+              36.625
+            ],
+            [
+              75.05855251902297,
+              17.206888370749724,
+              37.85
+            ],
+            [
+              75.16178204088486,
+              17.206888370749724,
+              39.075
+            ],
+            [
+              75.27323796370713,
+              17.206888370749724,
+              40.3
+            ],
+            [
+              75.39854329006582,
+              17.206888370749724,
+              41.525
+            ],
+            [
+              75.54263757436287,
+              17.206888370749724,
+              42.75
+            ],
+            [
+              75.70936066845844,
+              17.206888370749724,
+              43.975
+            ],
+            [
+              75.90109797889797,
+              17.206888370749724,
+              45.2
+            ],
+            [
+              76.11850856063113,
+              17.206888370749724,
+              46.425
+            ],
+            [
+              76.3603527648066,
+              17.206888370749724,
+              47.65
+            ],
+            [
+              76.62343060666043,
+              17.206888370749724,
+              48.875
+            ],
+            [
+              76.90263583108394,
+              17.206888370749724,
+              50.1
+            ],
+            [
+              77.19112417097948,
+              17.206888370749724,
+              51.325
+            ],
+            [
+              77.48058787628506,
+              17.206888370749724,
+              52.55
+            ],
+            [
+              77.76162259548235,
+              17.206888370749724,
+              53.775
+            ],
+            [
+              78.02416744933076,
+              17.206888370749724,
+              55
+            ]
+          ],
+          "shorelineFront": 78.02416744933076,
+          "intertidal": {
+            "lowEdge": 48.627641290737884,
+            "highEdge": 81.12764129073788,
+            "exposedFraction": 0.09549150281252627
+          },
+          "boat": {
+            "x": 21.5,
+            "z": 28,
+            "waterline": 17.206888370749724,
+            "keel": 16.056888370749725,
+            "freeboard": 0.95,
+            "draft": 1.15
+          },
+          "gauge": {
+            "x": 33,
+            "z": 47,
+            "bottom": 2.6,
+            "top": 24,
+            "waterMark": 17.206888370749724
+          },
+          "units": "schematic-cycle",
+          "locationSpecific": false,
+          "tideCurrentCalculated": false,
+          "referencePage": 59,
+          "realShoreIntersection": true,
+          "waterVolumeFollowsSeabed": true,
+          "boatDraftFixed": true,
+          "gaugeStationary": true,
+          "shoreSurface": "fixed-sloping-coast",
+          "measuredTideHeight": false,
+          "localTideTimes": false,
+          "arrowsForLocalCurrent": false,
+          "tideDial": {
+            "center": [
+              78.57258216770116,
+              27.143255657933125,
+              -150.65278488565832
+            ],
+            "radiusX": 6.428665813721003,
+            "radiusY": 6.785813914483281
+          },
+          "fixedWaterVertices": 3526,
+          "fixedShorelineVertices": 82,
+          "buffersStable": true
+        },
+        "models": 1,
+        "view": "detail",
+        "modelState": "live",
+        "saved": "{\"version\":2,\"spread\":32,\"figures\":{\"breeze\":{\"phase\":0.5,\"selection\":0},\"tides\":{\"phase\":0.6,\"selection\":0}},\"notes\":{\"32\":\"学生书签：潮汐工作台导航验证。\"},\"quality\":\"中\",\"reduced\":false}",
+        "focus": {
+          "id": "desk-notes",
+          "text": "笔记",
+          "visible": true,
+          "inDirectory": false
+        },
+        "directory": {
+          "hidden": true,
+          "expanded": "false"
+        },
+        "folio": {
+          "hidden": true,
+          "expanded": "false"
+        },
+        "busy": false,
+        "quality": "中",
+        "reduced": false,
+        "renderQuality": "中",
+        "renderReduced": false
+      },
+      "teaching": {
+        "spread": 16,
+        "active": null,
+        "playing": false,
+        "teacher": true,
+        "twoD": false,
+        "state": null,
+        "pages": [
+          31,
+          32
+        ],
+        "notes": {
+          "32": "教师演示临时笔记。"
+        },
+        "geometry": null,
+        "models": 0,
+        "view": "detail",
+        "modelState": null,
+        "saved": "{\"version\":2,\"spread\":32,\"figures\":{\"breeze\":{\"phase\":0.5,\"selection\":0},\"tides\":{\"phase\":0.6,\"selection\":0}},\"notes\":{\"32\":\"学生书签：潮汐工作台导航验证。\"},\"quality\":\"中\",\"reduced\":false}",
+        "focus": {
+          "id": "",
+          "text": "大气2",
+          "visible": true,
+          "inDirectory": false
+        },
+        "directory": {
+          "hidden": true,
+          "expanded": "false"
+        },
+        "folio": {
+          "hidden": true,
+          "expanded": "false"
+        },
+        "busy": false,
+        "quality": "低",
+        "reduced": true,
+        "renderQuality": "低",
+        "renderReduced": true
+      },
+      "restored": {
+        "spread": 32,
+        "active": "tides",
+        "playing": false,
+        "teacher": false,
+        "twoD": false,
+        "state": {
+          "phase": 0.6,
+          "selection": 0,
+          "routes": [],
+          "rings": [],
+          "focus": null,
+          "caption": "落潮"
+        },
+        "pages": [
+          63,
+          64
+        ],
+        "notes": {
+          "32": "学生书签：潮汐工作台导航验证。"
+        },
+        "geometry": {
+          "architecture": "three-dimensional-geometry",
+          "bitmapSurfaces": 0,
+          "solids": 17,
+          "labels": 3,
+          "meshes": 22,
+          "imageMappedMeshes": 0,
+          "extent": [
+            81.25119209289551,
+            40.625596356406376,
+            48.732862458930924
+          ],
+          "sceneElevation": 41.07203158766197,
+          "unfoldProgress": 1,
+          "originalPagePreserved": true,
+          "phase": 0.6,
+          "selection": 0,
+          "kind": "tide",
+          "fraction": 0.9045084971874737,
+          "waterLevel": 17.206888370749724,
+          "stage": "falling",
+          "caption": "落潮",
+          "direction": -1,
+          "shoreline": [
+            [
+              75.64652615859288,
+              17.206888370749724,
+              6
+            ],
+            [
+              75.20877862616614,
+              17.206888370749724,
+              7.225
+            ],
+            [
+              74.78337470528383,
+              17.206888370749724,
+              8.45
+            ],
+            [
+              74.38211897926638,
+              17.206888370749724,
+              9.675
+            ],
+            [
+              74.01576603361774,
+              17.206888370749724,
+              10.9
+            ],
+            [
+              73.6935640740451,
+              17.206888370749724,
+              12.125
+            ],
+            [
+              73.42287668604384,
+              17.206888370749724,
+              13.35
+            ],
+            [
+              73.2089020334989,
+              17.206888370749724,
+              14.575
+            ],
+            [
+              73.0545034902468,
+              17.206888370749724,
+              15.8
+            ],
+            [
+              72.96015964012433,
+              17.206888370749724,
+              17.025
+            ],
+            [
+              72.92403510129138,
+              17.206888370749724,
+              18.25
+            ],
+            [
+              72.94216708621704,
+              17.206888370749724,
+              19.475
+            ],
+            [
+              73.00875635970884,
+              17.206888370749724,
+              20.7
+            ],
+            [
+              73.11654564729199,
+              17.206888370749724,
+              21.925
+            ],
+            [
+              73.2572638832067,
+              17.206888370749724,
+              23.15
+            ],
+            [
+              73.42211122691562,
+              17.206888370749724,
+              24.375
+            ],
+            [
+              73.60225770837589,
+              17.206888370749724,
+              25.6
+            ],
+            [
+              73.78932779751707,
+              17.206888370749724,
+              26.825
+            ],
+            [
+              73.97584416131478,
+              17.206888370749724,
+              28.05
+            ],
+            [
+              74.15560631677577,
+              17.206888370749724,
+              29.275
+            ],
+            [
+              74.32398367265552,
+              17.206888370749724,
+              30.5
+            ],
+            [
+              74.47810736542472,
+              17.206888370749724,
+              31.725
+            ],
+            [
+              74.6169510622156,
+              17.206888370749724,
+              32.95
+            ],
+            [
+              74.7412972044047,
+              17.206888370749724,
+              34.175
+            ],
+            [
+              74.85359164994333,
+              17.206888370749724,
+              35.4
+            ],
+            [
+              74.95769598033571,
+              17.206888370749724,
+              36.625
+            ],
+            [
+              75.05855251902297,
+              17.206888370749724,
+              37.85
+            ],
+            [
+              75.16178204088486,
+              17.206888370749724,
+              39.075
+            ],
+            [
+              75.27323796370713,
+              17.206888370749724,
+              40.3
+            ],
+            [
+              75.39854329006582,
+              17.206888370749724,
+              41.525
+            ],
+            [
+              75.54263757436287,
+              17.206888370749724,
+              42.75
+            ],
+            [
+              75.70936066845844,
+              17.206888370749724,
+              43.975
+            ],
+            [
+              75.90109797889797,
+              17.206888370749724,
+              45.2
+            ],
+            [
+              76.11850856063113,
+              17.206888370749724,
+              46.425
+            ],
+            [
+              76.3603527648066,
+              17.206888370749724,
+              47.65
+            ],
+            [
+              76.62343060666043,
+              17.206888370749724,
+              48.875
+            ],
+            [
+              76.90263583108394,
+              17.206888370749724,
+              50.1
+            ],
+            [
+              77.19112417097948,
+              17.206888370749724,
+              51.325
+            ],
+            [
+              77.48058787628506,
+              17.206888370749724,
+              52.55
+            ],
+            [
+              77.76162259548235,
+              17.206888370749724,
+              53.775
+            ],
+            [
+              78.02416744933076,
+              17.206888370749724,
+              55
+            ]
+          ],
+          "shorelineFront": 78.02416744933076,
+          "intertidal": {
+            "lowEdge": 48.627641290737884,
+            "highEdge": 81.12764129073788,
+            "exposedFraction": 0.09549150281252627
+          },
+          "boat": {
+            "x": 21.5,
+            "z": 28,
+            "waterline": 17.206888370749724,
+            "keel": 16.056888370749725,
+            "freeboard": 0.95,
+            "draft": 1.15
+          },
+          "gauge": {
+            "x": 33,
+            "z": 47,
+            "bottom": 2.6,
+            "top": 24,
+            "waterMark": 17.206888370749724
+          },
+          "units": "schematic-cycle",
+          "locationSpecific": false,
+          "tideCurrentCalculated": false,
+          "referencePage": 59,
+          "realShoreIntersection": true,
+          "waterVolumeFollowsSeabed": true,
+          "boatDraftFixed": true,
+          "gaugeStationary": true,
+          "shoreSurface": "fixed-sloping-coast",
+          "measuredTideHeight": false,
+          "localTideTimes": false,
+          "arrowsForLocalCurrent": false,
+          "tideDial": {
+            "center": [
+              78.57258216770116,
+              27.143255657933125,
+              -150.65278488565832
+            ],
+            "radiusX": 6.428665813721003,
+            "radiusY": 6.785813914483281
+          },
+          "fixedWaterVertices": 3526,
+          "fixedShorelineVertices": 82,
+          "buffersStable": true
+        },
+        "models": 1,
+        "view": "detail",
+        "modelState": "live",
+        "saved": "{\"version\":2,\"spread\":32,\"figures\":{\"breeze\":{\"phase\":0.5,\"selection\":0},\"tides\":{\"phase\":0.6,\"selection\":0}},\"notes\":{\"32\":\"学生书签：潮汐工作台导航验证。\"},\"quality\":\"中\",\"reduced\":false}",
+        "focus": {
+          "id": "cTeach",
+          "text": "授课",
+          "visible": true,
+          "inDirectory": false
+        },
+        "directory": {
+          "hidden": true,
+          "expanded": "false"
+        },
+        "folio": {
+          "hidden": true,
+          "expanded": "false"
+        },
+        "busy": false,
+        "quality": "中",
+        "reduced": false,
+        "renderQuality": "中",
+        "renderReduced": false
+      }
+    },
+    {
+      "name": "tablet-live-tide",
+      "layout": {
+        "width": 1024,
+        "height": 768,
+        "overflow": false,
+        "items": [
+          {
+            "id": "desk-header",
+            "left": 0,
+            "right": 1024,
+            "top": 0,
+            "bottom": 86,
+            "width": 1024,
+            "height": 86,
+            "hiddenBy": "visible",
+            "text": "人教版地理必修一笔记原页授课静态设置"
+          },
+          {
+            "id": "cContents",
+            "left": 20,
+            "right": 67,
+            "top": 95,
+            "bottom": 201,
+            "width": 47,
+            "height": 106,
+            "hiddenBy": "visible",
+            "text": "目录"
+          },
+          {
+            "id": "cPrev",
+            "left": 105,
+            "right": 159,
+            "top": 636,
+            "bottom": 684,
+            "width": 54,
+            "height": 48,
+            "hiddenBy": "visible",
+            "text": "上一页"
+          },
+          {
+            "id": "cNext",
+            "left": 764,
+            "right": 818,
+            "top": 636,
+            "bottom": 684,
+            "width": 54,
+            "height": 48,
+            "hiddenBy": "visible",
+            "text": "下一页"
+          },
+          {
+            "id": "folio-toggle",
+            "left": 823,
+            "right": 919,
+            "top": 636,
+            "bottom": 684,
+            "width": 96,
+            "height": 48,
+            "hiddenBy": "visible",
+            "text": "58—59"
+          },
+          {
+            "id": "cPause",
+            "left": 172,
+            "right": 246,
+            "top": 638,
+            "bottom": 682,
+            "width": 74,
+            "height": 44,
+            "hiddenBy": "visible",
+            "text": "播放"
+          },
+          {
+            "id": "phase",
+            "left": 641,
+            "right": 721,
+            "top": 700,
+            "bottom": 740,
+            "width": 80,
+            "height": 40,
+            "hiddenBy": "visible",
+            "text": ""
+          },
+          {
+            "id": "restart",
+            "left": 780,
+            "right": 824,
+            "top": 700,
+            "bottom": 740,
+            "width": 44,
+            "height": 40,
+            "hiddenBy": "visible",
+            "text": "重放"
+          },
+          {
+            "id": "fold",
+            "left": 829,
+            "right": 873,
+            "top": 700,
+            "bottom": 740,
+            "width": 44,
+            "height": 40,
+            "hiddenBy": "visible",
+            "text": "收回"
+          },
+          {
+            "id": "desk-notes",
+            "left": 708,
+            "right": 780,
+            "top": 16,
+            "bottom": 60,
+            "width": 72,
+            "height": 44,
+            "hiddenBy": "visible",
+            "text": "笔记"
+          },
+          {
+            "id": "desk-settings",
+            "left": 930,
+            "right": 1002,
+            "top": 16,
+            "bottom": 60,
+            "width": 72,
+            "height": 44,
+            "hiddenBy": "visible",
+            "text": "设置"
+          },
+          {
+            "id": "cTeach",
+            "left": 856,
+            "right": 928,
+            "top": 16,
+            "bottom": 60,
+            "width": 72,
+            "height": 44,
+            "hiddenBy": "visible",
+            "text": "授课"
+          }
+        ],
+        "title": {
+          "left": 22,
+          "right": 224.6875,
+          "top": 16,
+          "bottom": 49.59375,
+          "width": 202.6875,
+          "height": 33.59375
+        },
+        "tools": {
+          "left": 708,
+          "right": 1002,
+          "top": 16,
+          "bottom": 60,
+          "width": 294,
+          "height": 44
+        },
+        "pointerBlockers": [
+          {
+            "id": "cContents",
+            "target": "cContents"
+          },
+          {
+            "id": "cPrev",
+            "target": "cPrev"
+          },
+          {
+            "id": "cNext",
+            "target": "cNext"
+          },
+          {
+            "id": "folio-toggle",
+            "target": "folio-toggle"
+          }
+        ],
+        "dock": {
+          "left": 92,
+          "right": 932,
+          "top": 626,
+          "bottom": 750,
+          "width": 840,
+          "height": 124
+        },
+        "labels": [
+          {
+            "text": "落潮",
+            "left": 615.2538818574033,
+            "top": 184.08596835279155,
+            "right": 683.4909004274714,
+            "bottom": 220.82897835205904,
+            "fontPx": 25.30644397300542
+          },
+          {
+            "text": "固定潮尺",
+            "left": 406.8869161801492,
+            "top": 336.7860783047696,
+            "right": 544.782106390278,
+            "bottom": 373.5581290274707,
+            "fontPx": 25.31409288881599
+          },
+          {
+            "text": "潮间带",
+            "left": 569.3974833291495,
+            "top": 315.9816907376928,
+            "right": 692.0479183708848,
+            "bottom": 355.22982995104815,
+            "fontPx": 27.018646559918523
+          }
+        ]
+      },
+      "state": {
+        "spread": 32,
+        "active": "tides",
+        "playing": false,
+        "teacher": false,
+        "twoD": false,
+        "state": {
+          "phase": 0.6,
+          "selection": 0,
+          "routes": [],
+          "rings": [],
+          "focus": null,
+          "caption": "落潮"
+        },
+        "pages": [
+          63,
+          64
+        ],
+        "notes": {
+          "32": "学生书签：潮汐工作台导航验证。"
+        },
+        "geometry": {
+          "architecture": "three-dimensional-geometry",
+          "bitmapSurfaces": 0,
+          "solids": 17,
+          "labels": 3,
+          "meshes": 22,
+          "imageMappedMeshes": 0,
+          "extent": [
+            81.25119209289551,
+            40.625596356406376,
+            48.732862458930924
+          ],
+          "sceneElevation": 41.07203158766197,
+          "unfoldProgress": 1,
+          "originalPagePreserved": true,
+          "phase": 0.6,
+          "selection": 0,
+          "kind": "tide",
+          "fraction": 0.9045084971874737,
+          "waterLevel": 17.206888370749724,
+          "stage": "falling",
+          "caption": "落潮",
+          "direction": -1,
+          "shoreline": [
+            [
+              75.64652615859288,
+              17.206888370749724,
+              6
+            ],
+            [
+              75.20877862616614,
+              17.206888370749724,
+              7.225
+            ],
+            [
+              74.78337470528383,
+              17.206888370749724,
+              8.45
+            ],
+            [
+              74.38211897926638,
+              17.206888370749724,
+              9.675
+            ],
+            [
+              74.01576603361774,
+              17.206888370749724,
+              10.9
+            ],
+            [
+              73.6935640740451,
+              17.206888370749724,
+              12.125
+            ],
+            [
+              73.42287668604384,
+              17.206888370749724,
+              13.35
+            ],
+            [
+              73.2089020334989,
+              17.206888370749724,
+              14.575
+            ],
+            [
+              73.0545034902468,
+              17.206888370749724,
+              15.8
+            ],
+            [
+              72.96015964012433,
+              17.206888370749724,
+              17.025
+            ],
+            [
+              72.92403510129138,
+              17.206888370749724,
+              18.25
+            ],
+            [
+              72.94216708621704,
+              17.206888370749724,
+              19.475
+            ],
+            [
+              73.00875635970884,
+              17.206888370749724,
+              20.7
+            ],
+            [
+              73.11654564729199,
+              17.206888370749724,
+              21.925
+            ],
+            [
+              73.2572638832067,
+              17.206888370749724,
+              23.15
+            ],
+            [
+              73.42211122691562,
+              17.206888370749724,
+              24.375
+            ],
+            [
+              73.60225770837589,
+              17.206888370749724,
+              25.6
+            ],
+            [
+              73.78932779751707,
+              17.206888370749724,
+              26.825
+            ],
+            [
+              73.97584416131478,
+              17.206888370749724,
+              28.05
+            ],
+            [
+              74.15560631677577,
+              17.206888370749724,
+              29.275
+            ],
+            [
+              74.32398367265552,
+              17.206888370749724,
+              30.5
+            ],
+            [
+              74.47810736542472,
+              17.206888370749724,
+              31.725
+            ],
+            [
+              74.6169510622156,
+              17.206888370749724,
+              32.95
+            ],
+            [
+              74.7412972044047,
+              17.206888370749724,
+              34.175
+            ],
+            [
+              74.85359164994333,
+              17.206888370749724,
+              35.4
+            ],
+            [
+              74.95769598033571,
+              17.206888370749724,
+              36.625
+            ],
+            [
+              75.05855251902297,
+              17.206888370749724,
+              37.85
+            ],
+            [
+              75.16178204088486,
+              17.206888370749724,
+              39.075
+            ],
+            [
+              75.27323796370713,
+              17.206888370749724,
+              40.3
+            ],
+            [
+              75.39854329006582,
+              17.206888370749724,
+              41.525
+            ],
+            [
+              75.54263757436287,
+              17.206888370749724,
+              42.75
+            ],
+            [
+              75.70936066845844,
+              17.206888370749724,
+              43.975
+            ],
+            [
+              75.90109797889797,
+              17.206888370749724,
+              45.2
+            ],
+            [
+              76.11850856063113,
+              17.206888370749724,
+              46.425
+            ],
+            [
+              76.3603527648066,
+              17.206888370749724,
+              47.65
+            ],
+            [
+              76.62343060666043,
+              17.206888370749724,
+              48.875
+            ],
+            [
+              76.90263583108394,
+              17.206888370749724,
+              50.1
+            ],
+            [
+              77.19112417097948,
+              17.206888370749724,
+              51.325
+            ],
+            [
+              77.48058787628506,
+              17.206888370749724,
+              52.55
+            ],
+            [
+              77.76162259548235,
+              17.206888370749724,
+              53.775
+            ],
+            [
+              78.02416744933076,
+              17.206888370749724,
+              55
+            ]
+          ],
+          "shorelineFront": 78.02416744933076,
+          "intertidal": {
+            "lowEdge": 48.627641290737884,
+            "highEdge": 81.12764129073788,
+            "exposedFraction": 0.09549150281252627
+          },
+          "boat": {
+            "x": 21.5,
+            "z": 28,
+            "waterline": 17.206888370749724,
+            "keel": 16.056888370749725,
+            "freeboard": 0.95,
+            "draft": 1.15
+          },
+          "gauge": {
+            "x": 33,
+            "z": 47,
+            "bottom": 2.6,
+            "top": 24,
+            "waterMark": 17.206888370749724
+          },
+          "units": "schematic-cycle",
+          "locationSpecific": false,
+          "tideCurrentCalculated": false,
+          "referencePage": 59,
+          "realShoreIntersection": true,
+          "waterVolumeFollowsSeabed": true,
+          "boatDraftFixed": true,
+          "gaugeStationary": true,
+          "shoreSurface": "fixed-sloping-coast",
+          "measuredTideHeight": false,
+          "localTideTimes": false,
+          "arrowsForLocalCurrent": false,
+          "tideDial": {
+            "center": [
+              78.57258216770116,
+              27.143255657933125,
+              -150.65278488565832
+            ],
+            "radiusX": 6.428665813721003,
+            "radiusY": 6.785813914483281
+          },
+          "fixedWaterVertices": 3526,
+          "fixedShorelineVertices": 82,
+          "buffersStable": true
+        },
+        "models": 1,
+        "view": "detail",
+        "modelState": "live",
+        "saved": "{\"version\":2,\"spread\":32,\"figures\":{\"breeze\":{\"phase\":0.5,\"selection\":0},\"tides\":{\"phase\":0.6,\"selection\":0}},\"notes\":{\"32\":\"学生书签：潮汐工作台导航验证。\"},\"quality\":\"中\",\"reduced\":false}",
+        "focus": {
+          "id": "cTeach",
+          "text": "授课",
+          "visible": true,
+          "inDirectory": false
+        },
+        "directory": {
+          "hidden": true,
+          "expanded": "false"
+        },
+        "folio": {
+          "hidden": true,
+          "expanded": "false"
+        },
+        "busy": false,
+        "quality": "中",
+        "reduced": false,
+        "renderQuality": "中",
+        "renderReduced": false
+      }
+    },
+    {
+      "name": "phone-vector-tide",
+      "layout": {
+        "width": 390,
+        "height": 844,
+        "overflow": false,
+        "items": [
+          {
+            "id": "desk-header",
+            "left": 0,
+            "right": 390,
+            "top": 0,
+            "bottom": 70,
+            "width": 390,
+            "height": 70,
+            "hiddenBy": "visible",
+            "text": "人教版地理必修一笔记原页授课静态设置"
+          },
+          {
+            "id": "cContents",
+            "left": 12,
+            "right": 56,
+            "top": 76,
+            "bottom": 158.921875,
+            "width": 44,
+            "height": 82.921875,
+            "hiddenBy": "visible",
+            "text": "目录"
+          },
+          {
+            "id": "cPrev",
+            "left": 19,
+            "right": 63,
+            "top": 673.703125,
+            "bottom": 717.703125,
+            "width": 44,
+            "height": 44,
+            "hiddenBy": "visible",
+            "text": "上一页"
+          },
+          {
+            "id": "cNext",
+            "left": 257,
+            "right": 301,
+            "top": 673.703125,
+            "bottom": 717.703125,
+            "width": 44,
+            "height": 44,
+            "hiddenBy": "visible",
+            "text": "下一页"
+          },
+          {
+            "id": "folio-toggle",
+            "left": 305,
+            "right": 371,
+            "top": 673.703125,
+            "bottom": 717.703125,
+            "width": 66,
+            "height": 44,
+            "hiddenBy": "visible",
+            "text": "58—59"
+          },
+          {
+            "id": "cPause",
+            "left": 69,
+            "right": 113,
+            "top": 673.703125,
+            "bottom": 717.703125,
+            "width": 44,
+            "height": 44,
+            "hiddenBy": "visible",
+            "text": "播放"
+          },
+          {
+            "id": "phase",
+            "left": 25,
+            "right": 230,
+            "top": 779,
+            "bottom": 823,
+            "width": 205,
+            "height": 44,
+            "hiddenBy": "visible",
+            "text": ""
+          },
+          {
+            "id": "restart",
+            "left": 236,
+            "right": 280,
+            "top": 779,
+            "bottom": 823,
+            "width": 44,
+            "height": 44,
+            "hiddenBy": "visible",
+            "text": "重放"
+          },
+          {
+            "id": "fold",
+            "left": 281,
+            "right": 325,
+            "top": 779,
+            "bottom": 823,
+            "width": 44,
+            "height": 44,
+            "hiddenBy": "visible",
+            "text": "收回"
+          },
+          {
+            "id": "desk-notes",
+            "left": 242,
+            "right": 286,
+            "top": 13,
+            "bottom": 57,
+            "width": 44,
+            "height": 44,
+            "hiddenBy": "visible",
+            "text": "笔记"
+          },
+          {
+            "id": "desk-settings",
+            "left": 334,
+            "right": 378,
+            "top": 13,
+            "bottom": 57,
+            "width": 44,
+            "height": 44,
+            "hiddenBy": "visible",
+            "text": "设置"
+          },
+          {
+            "id": "cTeach",
+            "left": 288,
+            "right": 332,
+            "top": 13,
+            "bottom": 57,
+            "width": 44,
+            "height": 44,
+            "hiddenBy": "visible",
+            "text": "授课"
+          }
+        ],
+        "title": {
+          "left": 12,
+          "right": 170.5625,
+          "top": 23.796875,
+          "bottom": 46.1875,
+          "width": 158.5625,
+          "height": 22.390625
+        },
+        "tools": {
+          "left": 242,
+          "right": 378,
+          "top": 13,
+          "bottom": 57,
+          "width": 136,
+          "height": 44
+        },
+        "pointerBlockers": [
+          {
+            "id": "cContents",
+            "target": "cContents"
+          },
+          {
+            "id": "cPrev",
+            "target": "cPrev"
+          },
+          {
+            "id": "cNext",
+            "target": "cNext"
+          },
+          {
+            "id": "folio-toggle",
+            "target": "folio-toggle"
+          }
+        ],
+        "dock": {
+          "left": 10,
+          "right": 380,
+          "top": 662.40625,
+          "bottom": 832,
+          "width": 370,
+          "height": 169.59375
+        },
+        "labels": []
+      },
+      "state": {
+        "spread": 32,
+        "active": "tides",
+        "playing": false,
+        "teacher": false,
+        "twoD": true,
+        "state": {
+          "phase": 0.6,
+          "selection": 0,
+          "routes": [],
+          "rings": [],
+          "focus": null,
+          "caption": "落潮"
+        },
+        "pages": [
+          63,
+          64
+        ],
+        "notes": {
+          "32": "学生书签：潮汐工作台导航验证。"
+        },
+        "geometry": null,
+        "models": 0,
+        "view": "detail",
+        "modelState": null,
+        "saved": "{\"version\":2,\"spread\":32,\"figures\":{\"breeze\":{\"phase\":0.5,\"selection\":0},\"tides\":{\"phase\":0.6,\"selection\":0}},\"notes\":{\"32\":\"学生书签：潮汐工作台导航验证。\"},\"quality\":\"中\",\"reduced\":false}",
+        "focus": {
+          "id": "cContents",
+          "text": "目录",
+          "visible": true,
+          "inDirectory": false
+        },
+        "directory": {
+          "hidden": true,
+          "expanded": "false"
+        },
+        "folio": {
+          "hidden": true,
+          "expanded": "false"
+        },
+        "busy": false,
+        "quality": "中",
+        "reduced": false,
+        "renderQuality": "中",
+        "renderReduced": false
+      }
+    },
+    {
+      "name": "phone-tide-thumbnails",
+      "thumbnails": [
+        {
+          "decoded": true,
+          "complete": true,
+          "width": 360,
+          "height": 505,
+          "source": "/textbook/thumb-059.webp"
+        },
+        {
+          "decoded": true,
+          "complete": true,
+          "width": 360,
+          "height": 505,
+          "source": "/textbook/thumb-060.webp"
+        },
+        {
+          "decoded": true,
+          "complete": true,
+          "width": 360,
+          "height": 505,
+          "source": "/textbook/thumb-061.webp"
+        },
+        {
+          "decoded": true,
+          "complete": true,
+          "width": 360,
+          "height": 505,
+          "source": "/textbook/thumb-062.webp"
+        },
+        {
+          "decoded": true,
+          "complete": true,
+          "width": 360,
+          "height": 505,
+          "source": "/textbook/thumb-063.webp"
+        },
+        {
+          "decoded": true,
+          "complete": true,
+          "width": 360,
+          "height": 505,
+          "source": "/textbook/thumb-064.webp"
+        },
+        {
+          "decoded": true,
+          "complete": true,
+          "width": 360,
+          "height": 505,
+          "source": "/textbook/thumb-065.webp"
+        },
+        {
+          "decoded": true,
+          "complete": true,
+          "width": 360,
+          "height": 505,
+          "source": "/textbook/thumb-066.webp"
+        },
+        {
+          "decoded": true,
+          "complete": true,
+          "width": 360,
+          "height": 505,
+          "source": "/textbook/thumb-067.webp"
+        },
+        {
+          "decoded": true,
+          "complete": true,
+          "width": 360,
+          "height": 505,
+          "source": "/textbook/thumb-068.webp"
+        }
+      ]
+    },
+    {
+      "name": "phone-360-vector-tide",
+      "layout": {
+        "width": 360,
+        "height": 800,
+        "overflow": false,
+        "items": [
+          {
+            "id": "desk-header",
+            "left": 0,
+            "right": 360,
+            "top": 0,
+            "bottom": 70,
+            "width": 360,
+            "height": 70,
+            "hiddenBy": "visible",
+            "text": "人教版地理必修一笔记原页授课静态设置"
+          },
+          {
+            "id": "cContents",
+            "left": 12,
+            "right": 56,
+            "top": 76,
+            "bottom": 158,
+            "width": 44,
+            "height": 82,
+            "hiddenBy": "visible",
+            "text": "目录"
+          },
+          {
+            "id": "cPrev",
+            "left": 19,
+            "right": 63,
+            "top": 617.546875,
+            "bottom": 661.546875,
+            "width": 44,
+            "height": 44,
+            "hiddenBy": "visible",
+            "text": "上一页"
+          },
+          {
+            "id": "cNext",
+            "left": 227,
+            "right": 271,
+            "top": 617.546875,
+            "bottom": 661.546875,
+            "width": 44,
+            "height": 44,
+            "hiddenBy": "visible",
+            "text": "下一页"
+          },
+          {
+            "id": "folio-toggle",
+            "left": 275,
+            "right": 341,
+            "top": 617.546875,
+            "bottom": 661.546875,
+            "width": 66,
+            "height": 44,
+            "hiddenBy": "visible",
+            "text": "58—59"
+          },
+          {
+            "id": "cPause",
+            "left": 69,
+            "right": 113,
+            "top": 617.546875,
+            "bottom": 661.546875,
+            "width": 44,
+            "height": 44,
+            "hiddenBy": "visible",
+            "text": "播放"
+          },
+          {
+            "id": "phase",
+            "left": 25,
+            "right": 200,
+            "top": 735,
+            "bottom": 779,
+            "width": 175,
+            "height": 44,
+            "hiddenBy": "visible",
+            "text": ""
+          },
+          {
+            "id": "restart",
+            "left": 206,
+            "right": 250,
+            "top": 735,
+            "bottom": 779,
+            "width": 44,
+            "height": 44,
+            "hiddenBy": "visible",
+            "text": "重放"
+          },
+          {
+            "id": "fold",
+            "left": 251,
+            "right": 295,
+            "top": 735,
+            "bottom": 779,
+            "width": 44,
+            "height": 44,
+            "hiddenBy": "visible",
+            "text": "收回"
+          },
+          {
+            "id": "desk-notes",
+            "left": 219,
+            "right": 263,
+            "top": 13,
+            "bottom": 57,
+            "width": 44,
+            "height": 44,
+            "hiddenBy": "visible",
+            "text": "笔记"
+          },
+          {
+            "id": "desk-settings",
+            "left": 307,
+            "right": 351,
+            "top": 13,
+            "bottom": 57,
+            "width": 44,
+            "height": 44,
+            "hiddenBy": "visible",
+            "text": "设置"
+          },
+          {
+            "id": "cTeach",
+            "left": 263,
+            "right": 307,
+            "top": 13,
+            "bottom": 57,
+            "width": 44,
+            "height": 44,
+            "hiddenBy": "visible",
+            "text": "授课"
+          }
+        ],
+        "title": {
+          "left": 9,
+          "right": 149.25,
+          "top": 24.5,
+          "bottom": 45.5,
+          "width": 140.25,
+          "height": 21
+        },
+        "tools": {
+          "left": 219,
+          "right": 351,
+          "top": 13,
+          "bottom": 57,
+          "width": 132,
+          "height": 44
+        },
+        "pointerBlockers": [
+          {
+            "id": "cContents",
+            "target": "cContents"
+          },
+          {
+            "id": "cPrev",
+            "target": "cPrev"
+          },
+          {
+            "id": "cNext",
+            "target": "cNext"
+          },
+          {
+            "id": "folio-toggle",
+            "target": "folio-toggle"
+          }
+        ],
+        "dock": {
+          "left": 10,
+          "right": 350,
+          "top": 594.109375,
+          "bottom": 788,
+          "width": 340,
+          "height": 193.890625
+        },
+        "labels": []
+      },
+      "state": {
+        "spread": 32,
+        "active": "tides",
+        "playing": false,
+        "teacher": false,
+        "twoD": true,
+        "state": {
+          "phase": 0.6,
+          "selection": 0,
+          "routes": [],
+          "rings": [],
+          "focus": null,
+          "caption": "落潮"
+        },
+        "pages": [
+          63,
+          64
+        ],
+        "notes": {
+          "32": "学生书签：潮汐工作台导航验证。"
+        },
+        "geometry": null,
+        "models": 0,
+        "view": "detail",
+        "modelState": null,
+        "saved": "{\"version\":2,\"spread\":32,\"figures\":{\"breeze\":{\"phase\":0.5,\"selection\":0},\"tides\":{\"phase\":0.6,\"selection\":0}},\"notes\":{\"32\":\"学生书签：潮汐工作台导航验证。\"},\"quality\":\"中\",\"reduced\":false}",
+        "focus": {
+          "id": "folio-toggle",
+          "text": "58—59",
+          "visible": true,
+          "inDirectory": false
+        },
+        "directory": {
+          "hidden": true,
+          "expanded": "false"
+        },
+        "folio": {
+          "hidden": true,
+          "expanded": "false"
+        },
+        "busy": false,
+        "quality": "中",
+        "reduced": false,
+        "renderQuality": "中",
+        "renderReduced": false
+      }
+    }
+  ],
+  "layoutIssues": [],
+  "limitations": [
+    "Touch-screen hardware and screen-reader software were not available; viewport checks use a real desktop browser with native mouse and keyboard input."
+  ],
+  "reviewedEntry": {
+    "path": "/assets/index-DesTAK90.js",
+    "sha256": "8983858ae98d4471fa6b771b90de127902fa99b76c7c9d6553c7696c86c82371"
+  },
+  "reviewedAt": "2026-11-05T10:48:53.758Z",
+  "externalRequests": [],
+  "requestFailures": []
+}

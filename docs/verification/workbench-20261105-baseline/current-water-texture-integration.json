@@ -1,0 +1,523 @@
+{
+  "base": "http://127.0.0.1:4175",
+  "checks": [
+    "waves: selecting an object preserves the shared process time",
+    "waves: the raised geometry reads the same paused scientific phase",
+    "waves: a meaningful edit persists the student condition",
+    "waves: teacher experiments leave the saved student record intact",
+    "waves: leaving teacher mode restores the student's exact condition and pause",
+    "waves: changing to two dimensions preserves condition and pause",
+    "waves: two-dimensional fallback is native SVG without a textbook picture stand-in",
+    "waves: returning to three dimensions keeps the edited two-dimensional state",
+    "waves: the rebuilt geometry uses the restored phase immediately",
+    "waves: refresh restores the bookmark while holding the animation",
+    "waves: slider arrow keys change the process without turning a page",
+    "waves: folding and reopening retains the observation and pause",
+    "waves: repeated model disposal and rebuild does not keep increasing GPU resources",
+    "tides: rising-tide preset seeks to its actual phase and pauses",
+    "tides: the raised geometry reads the same paused scientific phase",
+    "tides: a meaningful edit persists the student condition",
+    "tides: teacher experiments leave the saved student record intact",
+    "tides: leaving teacher mode restores the student's exact condition and pause",
+    "tides: changing to two dimensions preserves condition and pause",
+    "tides: two-dimensional fallback is native SVG without a textbook picture stand-in",
+    "tides: returning to three dimensions keeps the edited two-dimensional state",
+    "tides: the rebuilt geometry uses the restored phase immediately",
+    "tides: refresh restores the bookmark while holding the animation",
+    "tides: slider arrow keys change the process without turning a page",
+    "tides: folding and reopening retains the observation and pause",
+    "tides: repeated model disposal and rebuild does not keep increasing GPU resources",
+    "soil-texture: selecting an object preserves the shared process time",
+    "soil-texture: the raised geometry reads the same paused scientific phase",
+    "soil-texture: a meaningful edit persists the student condition",
+    "soil-texture: teacher experiments leave the saved student record intact",
+    "soil-texture: leaving teacher mode restores the student's exact condition and pause",
+    "soil-texture: changing to two dimensions preserves condition and pause",
+    "soil-texture: two-dimensional fallback is native SVG without a textbook picture stand-in",
+    "soil-texture: returning to three dimensions keeps the edited two-dimensional state",
+    "soil-texture: the rebuilt geometry uses the restored phase immediately",
+    "soil-texture: refresh restores the bookmark while holding the animation",
+    "soil-texture: slider arrow keys change the process without turning a page",
+    "soil-texture: folding and reopening retains the observation and pause",
+    "soil-texture: repeated model disposal and rebuild does not keep increasing GPU resources",
+    "no browser exceptions during shared-mode integration"
+  ],
+  "failures": [],
+  "errors": [],
+  "states": [
+    {
+      "id": "waves",
+      "before": {
+        "active": "waves",
+        "spread": 31,
+        "phase": 0.4,
+        "selection": 1,
+        "playing": false,
+        "teacher": false,
+        "twoD": false,
+        "caption": "追踪同一水质点：它作闭合往复运动，波形继续向前。",
+        "modelPhase": 0.4,
+        "kind": "surface-wave",
+        "architecture": "three-dimensional-geometry",
+        "geometries": 33,
+        "textures": 277,
+        "saved": {
+          "phase": 0.4,
+          "selection": 1
+        }
+      },
+      "restored": {
+        "active": "waves",
+        "spread": 31,
+        "phase": 0.4,
+        "selection": 1,
+        "playing": false,
+        "teacher": false,
+        "twoD": false,
+        "caption": "追踪同一水质点：它作闭合往复运动，波形继续向前。",
+        "modelPhase": 0.4,
+        "kind": "surface-wave",
+        "architecture": "three-dimensional-geometry",
+        "geometries": 33,
+        "textures": 277,
+        "saved": {
+          "phase": 0.4,
+          "selection": 1
+        }
+      },
+      "flat": {
+        "active": "waves",
+        "spread": 31,
+        "phase": 0.4,
+        "selection": 1,
+        "playing": false,
+        "teacher": false,
+        "twoD": true,
+        "caption": "追踪同一水质点：它作闭合往复运动，波形继续向前。",
+        "geometries": 23,
+        "textures": 275,
+        "saved": {
+          "phase": 0.4,
+          "selection": 1
+        }
+      },
+      "raisedAgain": {
+        "active": "waves",
+        "spread": 31,
+        "phase": 0.7,
+        "selection": 1,
+        "playing": false,
+        "teacher": false,
+        "twoD": false,
+        "caption": "追踪同一水质点：它作闭合往复运动，波形继续向前。",
+        "modelPhase": 0.7,
+        "kind": "surface-wave",
+        "architecture": "three-dimensional-geometry",
+        "geometries": 33,
+        "textures": 277,
+        "saved": {
+          "phase": 0.7,
+          "selection": 1
+        }
+      },
+      "refreshed": {
+        "active": "waves",
+        "spread": 31,
+        "phase": 0.7,
+        "selection": 1,
+        "playing": false,
+        "teacher": false,
+        "twoD": false,
+        "caption": "追踪同一水质点：它作闭合往复运动，波形继续向前。",
+        "modelPhase": 0.7,
+        "kind": "surface-wave",
+        "architecture": "three-dimensional-geometry",
+        "geometries": 33,
+        "textures": 277,
+        "saved": {
+          "phase": 0.7,
+          "selection": 1
+        }
+      },
+      "cycles": [
+        {
+          "active": "waves",
+          "spread": 31,
+          "phase": 0.701,
+          "selection": 1,
+          "playing": false,
+          "teacher": false,
+          "twoD": false,
+          "caption": "追踪同一水质点：它作闭合往复运动，波形继续向前。",
+          "modelPhase": 0.701,
+          "kind": "surface-wave",
+          "architecture": "three-dimensional-geometry",
+          "geometries": 33,
+          "textures": 277,
+          "saved": {
+            "phase": 0.701,
+            "selection": 1
+          }
+        },
+        {
+          "active": "waves",
+          "spread": 31,
+          "phase": 0.701,
+          "selection": 1,
+          "playing": false,
+          "teacher": false,
+          "twoD": false,
+          "caption": "追踪同一水质点：它作闭合往复运动，波形继续向前。",
+          "modelPhase": 0.701,
+          "kind": "surface-wave",
+          "architecture": "three-dimensional-geometry",
+          "geometries": 33,
+          "textures": 277,
+          "saved": {
+            "phase": 0.701,
+            "selection": 1
+          }
+        },
+        {
+          "active": "waves",
+          "spread": 31,
+          "phase": 0.701,
+          "selection": 1,
+          "playing": false,
+          "teacher": false,
+          "twoD": false,
+          "caption": "追踪同一水质点：它作闭合往复运动，波形继续向前。",
+          "modelPhase": 0.701,
+          "kind": "surface-wave",
+          "architecture": "three-dimensional-geometry",
+          "geometries": 33,
+          "textures": 277,
+          "saved": {
+            "phase": 0.701,
+            "selection": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "tides",
+      "before": {
+        "active": "tides",
+        "spread": 32,
+        "phase": 0.4,
+        "selection": 1,
+        "playing": false,
+        "teacher": false,
+        "twoD": false,
+        "caption": "涨潮",
+        "modelPhase": 0.4,
+        "kind": "tide",
+        "architecture": "three-dimensional-geometry",
+        "geometries": 49,
+        "textures": 286,
+        "saved": {
+          "phase": 0.4,
+          "selection": 1
+        }
+      },
+      "restored": {
+        "active": "tides",
+        "spread": 32,
+        "phase": 0.4,
+        "selection": 1,
+        "playing": false,
+        "teacher": false,
+        "twoD": false,
+        "caption": "涨潮",
+        "modelPhase": 0.4,
+        "kind": "tide",
+        "architecture": "three-dimensional-geometry",
+        "geometries": 49,
+        "textures": 286,
+        "saved": {
+          "phase": 0.4,
+          "selection": 1
+        }
+      },
+      "flat": {
+        "active": "tides",
+        "spread": 32,
+        "phase": 0.4,
+        "selection": 1,
+        "playing": false,
+        "teacher": false,
+        "twoD": true,
+        "caption": "涨潮",
+        "geometries": 23,
+        "textures": 283,
+        "saved": {
+          "phase": 0.4,
+          "selection": 1
+        }
+      },
+      "raisedAgain": {
+        "active": "tides",
+        "spread": 32,
+        "phase": 0.7,
+        "selection": 1,
+        "playing": false,
+        "teacher": false,
+        "twoD": false,
+        "caption": "落潮",
+        "modelPhase": 0.7,
+        "kind": "tide",
+        "architecture": "three-dimensional-geometry",
+        "geometries": 49,
+        "textures": 286,
+        "saved": {
+          "phase": 0.7,
+          "selection": 1
+        }
+      },
+      "refreshed": {
+        "active": "tides",
+        "spread": 32,
+        "phase": 0.7,
+        "selection": 1,
+        "playing": false,
+        "teacher": false,
+        "twoD": false,
+        "caption": "落潮",
+        "modelPhase": 0.7,
+        "kind": "tide",
+        "architecture": "three-dimensional-geometry",
+        "geometries": 49,
+        "textures": 286,
+        "saved": {
+          "phase": 0.7,
+          "selection": 1
+        }
+      },
+      "cycles": [
+        {
+          "active": "tides",
+          "spread": 32,
+          "phase": 0.701,
+          "selection": 1,
+          "playing": false,
+          "teacher": false,
+          "twoD": false,
+          "caption": "落潮",
+          "modelPhase": 0.701,
+          "kind": "tide",
+          "architecture": "three-dimensional-geometry",
+          "geometries": 49,
+          "textures": 286,
+          "saved": {
+            "phase": 0.701,
+            "selection": 1
+          }
+        },
+        {
+          "active": "tides",
+          "spread": 32,
+          "phase": 0.701,
+          "selection": 1,
+          "playing": false,
+          "teacher": false,
+          "twoD": false,
+          "caption": "落潮",
+          "modelPhase": 0.701,
+          "kind": "tide",
+          "architecture": "three-dimensional-geometry",
+          "geometries": 49,
+          "textures": 286,
+          "saved": {
+            "phase": 0.701,
+            "selection": 1
+          }
+        },
+        {
+          "active": "tides",
+          "spread": 32,
+          "phase": 0.701,
+          "selection": 1,
+          "playing": false,
+          "teacher": false,
+          "twoD": false,
+          "caption": "落潮",
+          "modelPhase": 0.701,
+          "kind": "tide",
+          "architecture": "three-dimensional-geometry",
+          "geometries": 49,
+          "textures": 286,
+          "saved": {
+            "phase": 0.701,
+            "selection": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "soil-texture",
+      "before": {
+        "active": "soil-texture",
+        "spread": 47,
+        "phase": 0.4,
+        "selection": 1,
+        "playing": false,
+        "teacher": false,
+        "twoD": false,
+        "caption": "壤土",
+        "modelPhase": 0.4,
+        "kind": "soil-texture",
+        "architecture": "three-dimensional-geometry",
+        "geometries": 61,
+        "textures": 406,
+        "saved": {
+          "phase": 0.4,
+          "selection": 1
+        }
+      },
+      "restored": {
+        "active": "soil-texture",
+        "spread": 47,
+        "phase": 0.4,
+        "selection": 1,
+        "playing": false,
+        "teacher": false,
+        "twoD": false,
+        "caption": "壤土",
+        "modelPhase": 0.4,
+        "kind": "soil-texture",
+        "architecture": "three-dimensional-geometry",
+        "geometries": 58,
+        "textures": 406,
+        "saved": {
+          "phase": 0.4,
+          "selection": 1
+        }
+      },
+      "flat": {
+        "active": "soil-texture",
+        "spread": 47,
+        "phase": 0.4,
+        "selection": 1,
+        "playing": false,
+        "teacher": false,
+        "twoD": true,
+        "caption": "壤土",
+        "geometries": 23,
+        "textures": 403,
+        "saved": {
+          "phase": 0.4,
+          "selection": 1
+        }
+      },
+      "raisedAgain": {
+        "active": "soil-texture",
+        "spread": 47,
+        "phase": 0.7,
+        "selection": 1,
+        "playing": false,
+        "teacher": false,
+        "twoD": false,
+        "caption": "壤土",
+        "modelPhase": 0.7,
+        "kind": "soil-texture",
+        "architecture": "three-dimensional-geometry",
+        "geometries": 60,
+        "textures": 406,
+        "saved": {
+          "phase": 0.7,
+          "selection": 1
+        }
+      },
+      "refreshed": {
+        "active": "soil-texture",
+        "spread": 47,
+        "phase": 0.7,
+        "selection": 1,
+        "playing": false,
+        "teacher": false,
+        "twoD": false,
+        "caption": "壤土",
+        "modelPhase": 0.7,
+        "kind": "soil-texture",
+        "architecture": "three-dimensional-geometry",
+        "geometries": 60,
+        "textures": 406,
+        "saved": {
+          "phase": 0.7,
+          "selection": 1
+        }
+      },
+      "cycles": [
+        {
+          "active": "soil-texture",
+          "spread": 47,
+          "phase": 0.701,
+          "selection": 1,
+          "playing": false,
+          "teacher": false,
+          "twoD": false,
+          "caption": "壤土",
+          "modelPhase": 0.701,
+          "kind": "soil-texture",
+          "architecture": "three-dimensional-geometry",
+          "geometries": 60,
+          "textures": 406,
+          "saved": {
+            "phase": 0.701,
+            "selection": 1
+          }
+        },
+        {
+          "active": "soil-texture",
+          "spread": 47,
+          "phase": 0.701,
+          "selection": 1,
+          "playing": false,
+          "teacher": false,
+          "twoD": false,
+          "caption": "壤土",
+          "modelPhase": 0.701,
+          "kind": "soil-texture",
+          "architecture": "three-dimensional-geometry",
+          "geometries": 60,
+          "textures": 406,
+          "saved": {
+            "phase": 0.701,
+            "selection": 1
+          }
+        },
+        {
+          "active": "soil-texture",
+          "spread": 47,
+          "phase": 0.701,
+          "selection": 1,
+          "playing": false,
+          "teacher": false,
+          "twoD": false,
+          "caption": "壤土",
+          "modelPhase": 0.701,
+          "kind": "soil-texture",
+          "architecture": "three-dimensional-geometry",
+          "geometries": 60,
+          "textures": 406,
+          "saved": {
+            "phase": 0.701,
+            "selection": 1
+          }
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Desktop browser viewport and real mouse/keyboard events; physical touch hardware was not tested.",
+    "Three reopen cycles verify the new-model transaction sample, not long-duration GPU lifetime or the whole textbook."
+  ],
+  "reviewedEntry": {
+    "path": "/assets/index-DesTAK90.js",
+    "sha256": "8983858ae98d4471fa6b771b90de127902fa99b76c7c9d6553c7696c86c82371"
+  },
+  "reviewedAt": "2026-11-05T10:50:50.839Z",
+  "browser": "156.0.8078.80",
+  "externalRequests": [],
+  "requestFailures": []
+}

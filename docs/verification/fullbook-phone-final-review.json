@@ -1,0 +1,5326 @@
+{
+  "base": "http://127.0.0.1:4175",
+  "browser": "156.0.8078.80",
+  "errors": [],
+  "failures": [],
+  "checks": [
+    "phone enters the two-dimensional reading mode",
+    "all 60 demonstrations have keyboard-accessible menu entries",
+    "cosmic-scale: opens in phone mode",
+    "cosmic-scale/0: valid vector markup",
+    "cosmic-scale/1: valid vector markup",
+    "cosmic-scale/2: valid vector markup",
+    "cosmic-scale/3: valid vector markup",
+    "cosmic-scale: all controls fit the phone viewport",
+    "solar: opens in phone mode",
+    "solar/0: valid vector markup",
+    "solar: all controls fit the phone viewport",
+    "habitable: opens in phone mode",
+    "habitable/0: valid vector markup",
+    "habitable/1: valid vector markup",
+    "habitable/2: valid vector markup",
+    "habitable: all controls fit the phone viewport",
+    "solar-distribution: opens in phone mode",
+    "solar-distribution/0: valid vector markup",
+    "solar-distribution/1: valid vector markup",
+    "solar-distribution/2: valid vector markup",
+    "solar-distribution: all controls fit the phone viewport",
+    "sun: opens in phone mode",
+    "sun/0: valid vector markup",
+    "sun: all controls fit the phone viewport",
+    "solar-activity: opens in phone mode",
+    "solar-activity/0: valid vector markup",
+    "solar-activity/1: valid vector markup",
+    "solar-activity: all controls fit the phone viewport",
+    "history: opens in phone mode",
+    "history/0: valid vector markup",
+    "history/1: valid vector markup",
+    "history: all controls fit the phone viewport",
+    "geo-time: opens in phone mode",
+    "geo-time/0: valid vector markup",
+    "geo-time/1: valid vector markup",
+    "geo-time/2: valid vector markup",
+    "geo-time/3: valid vector markup",
+    "geo-time: all controls fit the phone viewport",
+    "seismic-waves: opens in phone mode",
+    "seismic-waves/0: valid vector markup",
+    "seismic-waves/1: valid vector markup",
+    "seismic-waves: all controls fit the phone viewport",
+    "earth: opens in phone mode",
+    "earth/0: valid vector markup",
+    "earth/1: valid vector markup",
+    "earth/2: valid vector markup",
+    "earth/3: valid vector markup",
+    "earth: all controls fit the phone viewport",
+    "external-spheres: opens in phone mode",
+    "external-spheres/0: valid vector markup",
+    "external-spheres/1: valid vector markup",
+    "external-spheres/2: valid vector markup",
+    "external-spheres: all controls fit the phone viewport",
+    "mars-base: opens in phone mode",
+    "mars-base/0: valid vector markup",
+    "mars-base/1: valid vector markup",
+    "mars-base/2: valid vector markup",
+    "mars-base/3: valid vector markup",
+    "mars-base: all controls fit the phone viewport",
+    "air-composition: opens in phone mode",
+    "air-composition/0: valid vector markup",
+    "air-composition/1: valid vector markup",
+    "air-composition: all controls fit the phone viewport",
+    "atmosphere: opens in phone mode",
+    "atmosphere/0: valid vector markup",
+    "atmosphere/1: valid vector markup",
+    "atmosphere/2: valid vector markup",
+    "atmosphere: all controls fit the phone viewport",
+    "heating: opens in phone mode",
+    "heating/0: valid vector markup",
+    "heating/1: valid vector markup",
+    "heating: all controls fit the phone viewport",
+    "greenhouse: opens in phone mode",
+    "greenhouse/0: valid vector markup",
+    "greenhouse/1: valid vector markup",
+    "greenhouse/2: valid vector markup",
+    "greenhouse: all controls fit the phone viewport",
+    "thermal: opens in phone mode",
+    "thermal/0: valid vector markup",
+    "thermal/1: valid vector markup",
+    "thermal: all controls fit the phone viewport",
+    "breeze: opens in phone mode",
+    "breeze/0: valid vector markup",
+    "breeze/1: valid vector markup",
+    "breeze: all controls fit the phone viewport",
+    "pressure-wind: opens in phone mode",
+    "pressure-wind/0: valid vector markup",
+    "pressure-wind/1: valid vector markup",
+    "pressure-wind: all controls fit the phone viewport",
+    "wind-forces: opens in phone mode",
+    "wind-forces/0: valid vector markup",
+    "wind-forces/1: valid vector markup",
+    "wind-forces/2: valid vector markup",
+    "wind-forces/3: valid vector markup",
+    "wind-forces: all controls fit the phone viewport",
+    "haze: opens in phone mode",
+    "haze/0: valid vector markup",
+    "haze/1: valid vector markup",
+    "haze/2: valid vector markup",
+    "haze: all controls fit the phone viewport",
+    "water: opens in phone mode",
+    "water/0: valid vector markup",
+    "water/1: valid vector markup",
+    "water/2: valid vector markup",
+    "water: all controls fit the phone viewport",
+    "water-renewal: opens in phone mode",
+    "water-renewal/0: valid vector markup",
+    "water-renewal/1: valid vector markup",
+    "water-renewal/2: valid vector markup",
+    "water-renewal: all controls fit the phone viewport",
+    "temperature: opens in phone mode",
+    "temperature/0: valid vector markup",
+    "temperature: all controls fit the phone viewport",
+    "salinity: opens in phone mode",
+    "salinity/0: valid vector markup",
+    "salinity/1: valid vector markup",
+    "salinity/2: valid vector markup",
+    "salinity: all controls fit the phone viewport",
+    "density: opens in phone mode",
+    "density/0: valid vector markup",
+    "density/1: valid vector markup",
+    "density/2: valid vector markup",
+    "density: all controls fit the phone viewport",
+    "waves: opens in phone mode",
+    "waves/0: valid vector markup",
+    "waves: all controls fit the phone viewport",
+    "tides: opens in phone mode",
+    "tides/0: valid vector markup",
+    "tides/1: valid vector markup",
+    "tides/2: valid vector markup",
+    "tides/3: valid vector markup",
+    "tides: all controls fit the phone viewport",
+    "currents: opens in phone mode",
+    "currents/0: valid vector markup",
+    "currents: all controls fit the phone viewport",
+    "desalination: opens in phone mode",
+    "desalination/0: valid vector markup",
+    "desalination/1: valid vector markup",
+    "desalination: all controls fit the phone viewport",
+    "karst: opens in phone mode",
+    "karst/0: valid vector markup",
+    "karst/1: valid vector markup",
+    "karst/2: valid vector markup",
+    "karst/3: valid vector markup",
+    "karst/4: valid vector markup",
+    "karst/5: valid vector markup",
+    "karst: all controls fit the phone viewport",
+    "karst-cave: opens in phone mode",
+    "karst-cave/0: valid vector markup",
+    "karst-cave/1: valid vector markup",
+    "karst-cave: all controls fit the phone viewport",
+    "river-valley: opens in phone mode",
+    "river-valley/0: valid vector markup",
+    "river-valley/1: valid vector markup",
+    "river-valley: all controls fit the phone viewport",
+    "river: opens in phone mode",
+    "river/0: valid vector markup",
+    "river/1: valid vector markup",
+    "river/2: valid vector markup",
+    "river: all controls fit the phone viewport",
+    "delta: opens in phone mode",
+    "delta/0: valid vector markup",
+    "delta/1: valid vector markup",
+    "delta/2: valid vector markup",
+    "delta: all controls fit the phone viewport",
+    "aeolian: opens in phone mode",
+    "aeolian/0: valid vector markup",
+    "aeolian/1: valid vector markup",
+    "aeolian/2: valid vector markup",
+    "aeolian/3: valid vector markup",
+    "aeolian: all controls fit the phone viewport",
+    "coastal-landform: opens in phone mode",
+    "coastal-landform/0: valid vector markup",
+    "coastal-landform/1: valid vector markup",
+    "coastal-landform/2: valid vector markup",
+    "coastal-landform/3: valid vector markup",
+    "coastal-landform: all controls fit the phone viewport",
+    "slope: opens in phone mode",
+    "slope/0: valid vector markup",
+    "slope/1: valid vector markup",
+    "slope: all controls fit the phone viewport",
+    "terrain-observation: opens in phone mode",
+    "terrain-observation/0: valid vector markup",
+    "terrain-observation/1: valid vector markup",
+    "terrain-observation/2: valid vector markup",
+    "terrain-observation/3: valid vector markup",
+    "terrain-observation: all controls fit the phone viewport",
+    "karst-livelihood: opens in phone mode",
+    "karst-livelihood/0: valid vector markup",
+    "karst-livelihood/1: valid vector markup",
+    "karst-livelihood/2: valid vector markup",
+    "karst-livelihood/3: valid vector markup",
+    "karst-livelihood: all controls fit the phone viewport",
+    "forest: opens in phone mode",
+    "forest/0: valid vector markup",
+    "forest/1: valid vector markup",
+    "forest/2: valid vector markup",
+    "forest: all controls fit the phone viewport",
+    "vegetation: opens in phone mode",
+    "vegetation/0: valid vector markup",
+    "vegetation/1: valid vector markup",
+    "vegetation/2: valid vector markup",
+    "vegetation/3: valid vector markup",
+    "vegetation/4: valid vector markup",
+    "vegetation/5: valid vector markup",
+    "vegetation/6: valid vector markup",
+    "vegetation: all controls fit the phone viewport",
+    "soil-composition: opens in phone mode",
+    "soil-composition/0: valid vector markup",
+    "soil-composition/1: valid vector markup",
+    "soil-composition/2: valid vector markup",
+    "soil-composition: all controls fit the phone viewport",
+    "soil-texture: opens in phone mode",
+    "soil-texture/0: valid vector markup",
+    "soil-texture/1: valid vector markup",
+    "soil-texture/2: valid vector markup",
+    "soil-texture: all controls fit the phone viewport",
+    "soil: opens in phone mode",
+    "soil/0: valid vector markup",
+    "soil/1: valid vector markup",
+    "soil/2: valid vector markup",
+    "soil/3: valid vector markup",
+    "soil/4: valid vector markup",
+    "soil/5: valid vector markup",
+    "soil: all controls fit the phone viewport",
+    "soil-factors: opens in phone mode",
+    "soil-factors/0: valid vector markup",
+    "soil-factors/1: valid vector markup",
+    "soil-factors/2: valid vector markup",
+    "soil-factors/3: valid vector markup",
+    "soil-factors: all controls fit the phone viewport",
+    "soil-care: opens in phone mode",
+    "soil-care/0: valid vector markup",
+    "soil-care/1: valid vector markup",
+    "soil-care/2: valid vector markup",
+    "soil-care: all controls fit the phone viewport",
+    "urban-waterlogging: opens in phone mode",
+    "urban-waterlogging/0: valid vector markup",
+    "urban-waterlogging/1: valid vector markup",
+    "urban-waterlogging/2: valid vector markup",
+    "urban-waterlogging: all controls fit the phone viewport",
+    "flood: opens in phone mode",
+    "flood/0: valid vector markup",
+    "flood/1: valid vector markup",
+    "flood: all controls fit the phone viewport",
+    "drought: opens in phone mode",
+    "drought/0: valid vector markup",
+    "drought/1: valid vector markup",
+    "drought: all controls fit the phone viewport",
+    "typhoon: opens in phone mode",
+    "typhoon/0: valid vector markup",
+    "typhoon: all controls fit the phone viewport",
+    "cold-wave: opens in phone mode",
+    "cold-wave/0: valid vector markup",
+    "cold-wave/1: valid vector markup",
+    "cold-wave: all controls fit the phone viewport",
+    "earthquake: opens in phone mode",
+    "earthquake/0: valid vector markup",
+    "earthquake: all controls fit the phone viewport",
+    "slide: opens in phone mode",
+    "slide/0: valid vector markup",
+    "slide/1: valid vector markup",
+    "slide: all controls fit the phone viewport",
+    "disaster-chain: opens in phone mode",
+    "disaster-chain/0: valid vector markup",
+    "disaster-chain/1: valid vector markup",
+    "disaster-chain: all controls fit the phone viewport",
+    "mitigation: opens in phone mode",
+    "mitigation/0: valid vector markup",
+    "mitigation/1: valid vector markup",
+    "mitigation: all controls fit the phone viewport",
+    "remote: opens in phone mode",
+    "remote/0: valid vector markup",
+    "remote/1: valid vector markup",
+    "remote/2: valid vector markup",
+    "remote/3: valid vector markup",
+    "remote: all controls fit the phone viewport",
+    "gnss: opens in phone mode",
+    "gnss/0: valid vector markup",
+    "gnss/1: valid vector markup",
+    "gnss/2: valid vector markup",
+    "gnss: all controls fit the phone viewport",
+    "gis: opens in phone mode",
+    "gis/0: valid vector markup",
+    "gis/1: valid vector markup",
+    "gis: all controls fit the phone viewport",
+    "warehouse: opens in phone mode",
+    "warehouse/0: valid vector markup",
+    "warehouse/1: valid vector markup",
+    "warehouse/2: valid vector markup",
+    "warehouse: all controls fit the phone viewport",
+    "original page remains readable through enlargement",
+    "no phone browser exceptions"
+  ],
+  "states": [
+    {
+      "id": "cosmic-scale",
+      "selection": 0,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "地月系",
+          "left": 23.203125,
+          "right": 86.29686737060547,
+          "top": 185,
+          "bottom": 215.00001525878906,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "太阳系",
+          "left": 111.44375610351562,
+          "right": 174.53749084472656,
+          "top": 160.4562530517578,
+          "bottom": 190.4562530517578,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "银河系",
+          "left": 200.26876831054688,
+          "right": 263.362548828125,
+          "top": 133.57501220703125,
+          "bottom": 163.57501220703125,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "可观测宇宙",
+          "left": 271.5687561035156,
+          "right": 376.7250061035156,
+          "top": 104.94062805175781,
+          "bottom": 134.9406280517578,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "cosmic-scale",
+      "selection": 1,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "地月系",
+          "left": 23.203125,
+          "right": 86.29686737060547,
+          "top": 185,
+          "bottom": 215.00001525878906,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "太阳系",
+          "left": 111.44375610351562,
+          "right": 174.53749084472656,
+          "top": 160.4562530517578,
+          "bottom": 190.4562530517578,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "银河系",
+          "left": 200.26876831054688,
+          "right": 263.362548828125,
+          "top": 133.57501220703125,
+          "bottom": 163.57501220703125,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "可观测宇宙",
+          "left": 271.5687561035156,
+          "right": 376.7250061035156,
+          "top": 104.94062805175781,
+          "bottom": 134.9406280517578,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "cosmic-scale",
+      "selection": 2,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "地月系",
+          "left": 23.203125,
+          "right": 86.29686737060547,
+          "top": 185,
+          "bottom": 215.00001525878906,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "太阳系",
+          "left": 111.44375610351562,
+          "right": 174.53749084472656,
+          "top": 160.4562530517578,
+          "bottom": 190.4562530517578,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "银河系",
+          "left": 200.26876831054688,
+          "right": 263.362548828125,
+          "top": 133.57501220703125,
+          "bottom": 163.57501220703125,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "可观测宇宙",
+          "left": 271.5687561035156,
+          "right": 376.7250061035156,
+          "top": 104.94062805175781,
+          "bottom": 134.9406280517578,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "cosmic-scale",
+      "selection": 3,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "地月系",
+          "left": 23.203125,
+          "right": 86.29686737060547,
+          "top": 185,
+          "bottom": 215.00001525878906,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "太阳系",
+          "left": 111.44375610351562,
+          "right": 174.53749084472656,
+          "top": 160.4562530517578,
+          "bottom": 190.4562530517578,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "银河系",
+          "left": 200.26876831054688,
+          "right": 263.362548828125,
+          "top": 133.57501220703125,
+          "bottom": 163.57501220703125,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "可观测宇宙",
+          "left": 271.5687561035156,
+          "right": 376.7250061035156,
+          "top": 104.94062805175781,
+          "bottom": 134.9406280517578,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "solar",
+      "selection": 0,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 262.3125,
+      "invalid": false
+    },
+    {
+      "id": "habitable",
+      "selection": 0,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "适宜温度",
+          "left": 71.12501525878906,
+          "right": 155.25001525878906,
+          "top": 45.91875076293945,
+          "bottom": 75.91874694824219,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "habitable",
+      "selection": 1,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "液态水",
+          "left": 281.49688720703125,
+          "right": 344.5906066894531,
+          "top": 201.3625030517578,
+          "bottom": 231.3625030517578,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "habitable",
+      "selection": 2,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "大气",
+          "left": 239.41876220703125,
+          "right": 281.48126220703125,
+          "top": 44.75,
+          "bottom": 74.75,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "solar-distribution",
+      "selection": 0,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "等宽光束",
+          "left": 53.59375,
+          "right": 137.71875,
+          "top": 35.400001525878906,
+          "bottom": 65.4000015258789,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "低纬度",
+          "left": 218.38436889648438,
+          "right": 281.4781188964844,
+          "top": 206.62188720703125,
+          "bottom": 236.62188720703125,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "solar-distribution",
+      "selection": 1,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "等宽光束",
+          "left": 53.59375,
+          "right": 137.71875,
+          "top": 35.400001525878906,
+          "bottom": 65.4000015258789,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "中纬度",
+          "left": 218.38436889648438,
+          "right": 281.4781188964844,
+          "top": 206.62188720703125,
+          "bottom": 236.62188720703125,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "solar-distribution",
+      "selection": 2,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "等宽光束",
+          "left": 53.59375,
+          "right": 137.71875,
+          "top": 35.400001525878906,
+          "bottom": 65.4000015258789,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "高纬度",
+          "left": 218.38436889648438,
+          "right": 281.4781188964844,
+          "top": 206.62188720703125,
+          "bottom": 236.62188720703125,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "sun",
+      "selection": 0,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 320.28125,
+      "invalid": false
+    },
+    {
+      "id": "solar-activity",
+      "selection": 0,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "太阳活动",
+          "left": 26.712507247924805,
+          "right": 110.8375072479248,
+          "top": 56.437503814697266,
+          "bottom": 86.4375,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "地球磁场",
+          "left": 258.125,
+          "right": 342.2500305175781,
+          "top": 51.17812728881836,
+          "bottom": 81.1781234741211,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "solar-activity",
+      "selection": 1,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "太阳活动",
+          "left": 26.712507247924805,
+          "right": 110.8375072479248,
+          "top": 56.437503814697266,
+          "bottom": 86.4375,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "地球磁场",
+          "left": 258.125,
+          "right": 342.2500305175781,
+          "top": 51.17812728881836,
+          "bottom": 81.1781234741211,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "极光",
+          "left": 309.5437316894531,
+          "right": 351.6062316894531,
+          "top": 186.7531280517578,
+          "bottom": 216.7531280517578,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "history",
+      "selection": 0,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 166.078125,
+      "invalid": false
+    },
+    {
+      "id": "history",
+      "selection": 1,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 166.078125,
+      "invalid": false
+    },
+    {
+      "id": "geo-time",
+      "selection": 0,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "前寒武纪",
+          "left": 152.9375,
+          "right": 237.0625,
+          "top": 35.984375,
+          "bottom": 65.984375,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "蓝细菌",
+          "left": 163.453125,
+          "right": 226.546875,
+          "top": 104.94062805175781,
+          "bottom": 134.9406280517578,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "geo-time",
+      "selection": 1,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "古生代",
+          "left": 163.453125,
+          "right": 226.546875,
+          "top": 35.984375,
+          "bottom": 65.984375,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "海生动物",
+          "left": 103.8499984741211,
+          "right": 187.97500610351562,
+          "top": 91.5,
+          "bottom": 121.5,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "geo-time",
+      "selection": 2,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "中生代",
+          "left": 163.453125,
+          "right": 226.546875,
+          "top": 35.984375,
+          "bottom": 65.984375,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "恐龙",
+          "left": 173.38438415527344,
+          "right": 215.44688415527344,
+          "top": 64.03437805175781,
+          "bottom": 94.03437805175781,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "geo-time",
+      "selection": 3,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "新生代",
+          "left": 163.453125,
+          "right": 226.546875,
+          "top": 35.984375,
+          "bottom": 65.984375,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "哺乳动物",
+          "left": 152.9375,
+          "right": 237.0625,
+          "top": 67.5406265258789,
+          "bottom": 97.5406265258789,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "seismic-waves",
+      "selection": 0,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "固体",
+          "left": 99.16873931884766,
+          "right": 141.2312469482422,
+          "top": 49.42500305175781,
+          "bottom": 79.42500305175781,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "液体",
+          "left": 247.60000610351562,
+          "right": 289.6625061035156,
+          "top": 49.42500305175781,
+          "bottom": 79.42500305175781,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "P波",
+          "left": 34.5703125,
+          "right": 69.0859375,
+          "top": 190.84376525878906,
+          "bottom": 220.84376525878906,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "S波",
+          "left": 225.26565551757812,
+          "right": 258.2344055175781,
+          "top": 190.84376525878906,
+          "bottom": 220.84376525878906,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "seismic-waves",
+      "selection": 1,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "固体",
+          "left": 99.16873931884766,
+          "right": 141.2312469482422,
+          "top": 49.42500305175781,
+          "bottom": 79.42500305175781,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "固体",
+          "left": 247.60000610351562,
+          "right": 289.6625061035156,
+          "top": 49.42500305175781,
+          "bottom": 79.42500305175781,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "P波",
+          "left": 34.5703125,
+          "right": 69.0859375,
+          "top": 190.84376525878906,
+          "bottom": 220.84376525878906,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "S波",
+          "left": 225.26565551757812,
+          "right": 258.2344055175781,
+          "top": 190.84376525878906,
+          "bottom": 220.84376525878906,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "earth",
+      "selection": 0,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 231.265625,
+      "invalid": false
+    },
+    {
+      "id": "earth",
+      "selection": 1,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 231.265625,
+      "invalid": false
+    },
+    {
+      "id": "earth",
+      "selection": 2,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 231.265625,
+      "invalid": false
+    },
+    {
+      "id": "earth",
+      "selection": 3,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 231.265625,
+      "invalid": false
+    },
+    {
+      "id": "external-spheres",
+      "selection": 0,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "大气圈",
+          "left": 258.12188720703125,
+          "right": 321.2156066894531,
+          "top": 46.50312805175781,
+          "bottom": 76.50312805175781,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "水圈",
+          "left": 289.09063720703125,
+          "right": 331.15313720703125,
+          "top": 199.60939025878906,
+          "bottom": 229.60939025878906,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "生物圈",
+          "left": 116.703125,
+          "right": 179.796875,
+          "top": 111.3687515258789,
+          "bottom": 141.36874389648438,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "岩石圈",
+          "left": 49.5,
+          "right": 112.59374237060547,
+          "top": 200.77813720703125,
+          "bottom": 230.77813720703125,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "external-spheres",
+      "selection": 1,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "大气圈",
+          "left": 258.12188720703125,
+          "right": 321.2156066894531,
+          "top": 46.50312805175781,
+          "bottom": 76.50312805175781,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "水圈",
+          "left": 289.09063720703125,
+          "right": 331.15313720703125,
+          "top": 199.60939025878906,
+          "bottom": 229.60939025878906,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "生物圈",
+          "left": 116.703125,
+          "right": 179.796875,
+          "top": 111.3687515258789,
+          "bottom": 141.36874389648438,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "岩石圈",
+          "left": 49.5,
+          "right": 112.59374237060547,
+          "top": 200.77813720703125,
+          "bottom": 230.77813720703125,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "external-spheres",
+      "selection": 2,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "大气圈",
+          "left": 258.12188720703125,
+          "right": 321.2156066894531,
+          "top": 46.50312805175781,
+          "bottom": 76.50312805175781,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "水圈",
+          "left": 289.09063720703125,
+          "right": 331.15313720703125,
+          "top": 199.60939025878906,
+          "bottom": 229.60939025878906,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "生物圈",
+          "left": 116.703125,
+          "right": 179.796875,
+          "top": 111.3687515258789,
+          "bottom": 141.36874389648438,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "岩石圈",
+          "left": 49.5,
+          "right": 112.59374237060547,
+          "top": 200.77813720703125,
+          "bottom": 230.77813720703125,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "mars-base",
+      "selection": 0,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "乘员舱",
+          "left": 64.109375,
+          "right": 127.20311737060547,
+          "top": 162.79376220703125,
+          "bottom": 192.79376220703125,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "植物舱",
+          "left": 163.453125,
+          "right": 226.546875,
+          "top": 48.84062576293945,
+          "bottom": 78.84062194824219,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "生保舱",
+          "left": 262.796875,
+          "right": 325.890625,
+          "top": 162.79376220703125,
+          "bottom": 192.79376220703125,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "资源舱",
+          "left": 163.453125,
+          "right": 226.546875,
+          "top": 212.46563720703125,
+          "bottom": 242.46563720703125,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "mars-base",
+      "selection": 1,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "乘员舱",
+          "left": 64.109375,
+          "right": 127.20311737060547,
+          "top": 162.79376220703125,
+          "bottom": 192.79376220703125,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "植物舱",
+          "left": 163.453125,
+          "right": 226.546875,
+          "top": 48.84062576293945,
+          "bottom": 78.84062194824219,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "生保舱",
+          "left": 262.796875,
+          "right": 325.890625,
+          "top": 162.79376220703125,
+          "bottom": 192.79376220703125,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "资源舱",
+          "left": 163.453125,
+          "right": 226.546875,
+          "top": 212.46563720703125,
+          "bottom": 242.46563720703125,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "mars-base",
+      "selection": 2,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "乘员舱",
+          "left": 64.109375,
+          "right": 127.20311737060547,
+          "top": 162.79376220703125,
+          "bottom": 192.79376220703125,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "植物舱",
+          "left": 163.453125,
+          "right": 226.546875,
+          "top": 48.84062576293945,
+          "bottom": 78.84062194824219,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "生保舱",
+          "left": 262.796875,
+          "right": 325.890625,
+          "top": 162.79376220703125,
+          "bottom": 192.79376220703125,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "资源舱",
+          "left": 163.453125,
+          "right": 226.546875,
+          "top": 212.46563720703125,
+          "bottom": 242.46563720703125,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "mars-base",
+      "selection": 3,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "乘员舱",
+          "left": 64.109375,
+          "right": 127.20311737060547,
+          "top": 162.79376220703125,
+          "bottom": 192.79376220703125,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "植物舱",
+          "left": 163.453125,
+          "right": 226.546875,
+          "top": 48.84062576293945,
+          "bottom": 78.84062194824219,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "生保舱",
+          "left": 262.796875,
+          "right": 325.890625,
+          "top": 162.79376220703125,
+          "bottom": 192.79376220703125,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "资源舱",
+          "left": 163.453125,
+          "right": 226.546875,
+          "top": 212.46563720703125,
+          "bottom": 242.46563720703125,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "air-composition",
+      "selection": 0,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "氮 78%",
+          "left": 245.76406860351562,
+          "right": 314.8734436035156,
+          "top": 54.10000228881836,
+          "bottom": 84.0999984741211,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "氧 21%",
+          "left": 246.58438110351562,
+          "right": 314.0531311035156,
+          "top": 86.82500457763672,
+          "bottom": 116.82501220703125,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "其他 1%",
+          "left": 241.93592834472656,
+          "right": 318.7015686035156,
+          "top": 119.55000305175781,
+          "bottom": 149.5500030517578,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "air-composition",
+      "selection": 1,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "氮 78%",
+          "left": 245.76406860351562,
+          "right": 314.8734436035156,
+          "top": 54.10000228881836,
+          "bottom": 84.0999984741211,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "氧 21%",
+          "left": 246.58438110351562,
+          "right": 314.0531311035156,
+          "top": 86.82500457763672,
+          "bottom": 116.82501220703125,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "其他 1%",
+          "left": 241.93592834472656,
+          "right": 318.7015686035156,
+          "top": 119.55000305175781,
+          "bottom": 149.5500030517578,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "水汽与杂质",
+          "left": 230.66249084472656,
+          "right": 335.8187561035156,
+          "top": 197.85626220703125,
+          "bottom": 227.85626220703125,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "atmosphere",
+      "selection": 0,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 500,
+      "invalid": false
+    },
+    {
+      "id": "atmosphere",
+      "selection": 1,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 500,
+      "invalid": false
+    },
+    {
+      "id": "atmosphere",
+      "selection": 2,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 500,
+      "invalid": false
+    },
+    {
+      "id": "heating",
+      "selection": 0,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 251,
+      "invalid": false
+    },
+    {
+      "id": "heating",
+      "selection": 1,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 251,
+      "invalid": false
+    },
+    {
+      "id": "greenhouse",
+      "selection": 0,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "太阳短波",
+          "left": 48.334381103515625,
+          "right": 132.45938110351562,
+          "top": 22.543750762939453,
+          "bottom": 52.54375076293945,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "地面长波",
+          "left": 148.84689331054688,
+          "right": 232.97189331054688,
+          "top": 214.80313110351562,
+          "bottom": 244.80313110351562,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "greenhouse",
+      "selection": 1,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "太阳短波",
+          "left": 48.334381103515625,
+          "right": 132.45938110351562,
+          "top": 22.543750762939453,
+          "bottom": 52.54375076293945,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "地面长波",
+          "left": 148.84689331054688,
+          "right": 232.97189331054688,
+          "top": 214.80313110351562,
+          "bottom": 244.80313110351562,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "大气逆辐射",
+          "left": 248.19374084472656,
+          "right": 353.3500061035156,
+          "top": 149.9375,
+          "bottom": 179.93751525878906,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "greenhouse",
+      "selection": 2,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "太阳短波",
+          "left": 48.334381103515625,
+          "right": 132.45938110351562,
+          "top": 22.543750762939453,
+          "bottom": 52.54375076293945,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "地面长波",
+          "left": 148.84689331054688,
+          "right": 232.97189331054688,
+          "top": 214.80313110351562,
+          "bottom": 244.80313110351562,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "大气逆辐射",
+          "left": 248.19374084472656,
+          "right": 353.3500061035156,
+          "top": 149.9375,
+          "bottom": 179.93751525878906,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "thermal",
+      "selection": 0,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "B · 冷",
+          "left": 61.67655944824219,
+          "right": 114.44218444824219,
+          "top": 213.0500030517578,
+          "bottom": 243.0500030517578,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "A · 暖",
+          "left": 167.109375,
+          "right": 221.890625,
+          "top": 213.0500030517578,
+          "bottom": 243.0500030517578,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "C · 冷",
+          "left": 275.3312683105469,
+          "right": 328.5500183105469,
+          "top": 213.0500030517578,
+          "bottom": 243.0500030517578,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "thermal",
+      "selection": 1,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "B · 冷",
+          "left": 61.67655944824219,
+          "right": 114.44218444824219,
+          "top": 213.0500030517578,
+          "bottom": 243.0500030517578,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "A · 暖",
+          "left": 167.109375,
+          "right": 221.890625,
+          "top": 213.0500030517578,
+          "bottom": 243.0500030517578,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "C · 冷",
+          "left": 275.3312683105469,
+          "right": 328.5500183105469,
+          "top": 213.0500030517578,
+          "bottom": 243.0500030517578,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "低压",
+          "left": 67.02812957763672,
+          "right": 109.09062957763672,
+          "top": 42.41250228881836,
+          "bottom": 72.4124984741211,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "高压",
+          "left": 67.02812957763672,
+          "right": 109.09062957763672,
+          "top": 142.9250030517578,
+          "bottom": 172.9250030517578,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "高压",
+          "left": 173.96873474121094,
+          "right": 216.03123474121094,
+          "top": 42.41250228881836,
+          "bottom": 72.4124984741211,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "低压",
+          "left": 173.96873474121094,
+          "right": 216.03123474121094,
+          "top": 142.9250030517578,
+          "bottom": 172.9250030517578,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "低压",
+          "left": 280.9093933105469,
+          "right": 322.9718933105469,
+          "top": 42.41250228881836,
+          "bottom": 72.4124984741211,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "高压",
+          "left": 280.9093933105469,
+          "right": 322.9718933105469,
+          "top": 142.9250030517578,
+          "bottom": 172.9250030517578,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "breeze",
+      "selection": 0,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "陆地 · 较暖",
+          "left": 58.79844284057617,
+          "right": 160.56406784057617,
+          "top": 196.10311889648438,
+          "bottom": 226.10313415527344,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "海洋 · 较冷",
+          "left": 230.60470581054688,
+          "right": 332.3703308105469,
+          "top": 196.10311889648438,
+          "bottom": 226.10313415527344,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "高压",
+          "left": 105.59687805175781,
+          "right": 147.6593780517578,
+          "top": 73.96875,
+          "bottom": 103.96875,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "低压",
+          "left": 240.58749389648438,
+          "right": 282.6499938964844,
+          "top": 73.96875,
+          "bottom": 103.96875,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "低压",
+          "left": 105.59687805175781,
+          "right": 147.6593780517578,
+          "top": 141.75625610351562,
+          "bottom": 171.75625610351562,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "高压",
+          "left": 240.58749389648438,
+          "right": 282.6499938964844,
+          "top": 141.75625610351562,
+          "bottom": 171.75625610351562,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "breeze",
+      "selection": 1,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "陆地 · 较暖",
+          "left": 58.79844284057617,
+          "right": 160.56406784057617,
+          "top": 196.10311889648438,
+          "bottom": 226.10313415527344,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "海洋 · 较冷",
+          "left": 230.60470581054688,
+          "right": 332.3703308105469,
+          "top": 196.10311889648438,
+          "bottom": 226.10313415527344,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "高压",
+          "left": 105.59687805175781,
+          "right": 147.6593780517578,
+          "top": 73.96875,
+          "bottom": 103.96875,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "低压",
+          "left": 240.58749389648438,
+          "right": 282.6499938964844,
+          "top": 73.96875,
+          "bottom": 103.96875,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "低压",
+          "left": 105.59687805175781,
+          "right": 147.6593780517578,
+          "top": 141.75625610351562,
+          "bottom": 171.75625610351562,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "高压",
+          "left": 240.58749389648438,
+          "right": 282.6499938964844,
+          "top": 141.75625610351562,
+          "bottom": 171.75625610351562,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "pressure-wind",
+      "selection": 0,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "相对高压",
+          "left": 34.89375305175781,
+          "right": 119.01874542236328,
+          "top": 42.99687576293945,
+          "bottom": 72.99687194824219,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "相对低压",
+          "left": 270.3968811035156,
+          "right": 354.5218811035156,
+          "top": 42.99687576293945,
+          "bottom": 72.99687194824219,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "同一水平面",
+          "left": 142.421875,
+          "right": 247.578125,
+          "top": 190.84376525878906,
+          "bottom": 220.84376525878906,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 210.375,
+      "invalid": false
+    },
+    {
+      "id": "pressure-wind",
+      "selection": 1,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "气压相同",
+          "left": 152.9375,
+          "right": 237.0625,
+          "top": 42.99687576293945,
+          "bottom": 72.99687194824219,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "同一水平面",
+          "left": 142.421875,
+          "right": 247.578125,
+          "top": 190.84376525878906,
+          "bottom": 220.84376525878906,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 210.375,
+      "invalid": false
+    },
+    {
+      "id": "wind-forces",
+      "selection": 0,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "高压 → 低压",
+          "left": 137.0390625,
+          "right": 252.96095275878906,
+          "top": 34.23125076293945,
+          "bottom": 64.23124694824219,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "气压梯度力",
+          "left": 252.86875915527344,
+          "right": 358.0249938964844,
+          "top": 145.8468780517578,
+          "bottom": 175.8468780517578,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "风向",
+          "left": 270.390625,
+          "right": 312.4530944824219,
+          "top": 97.92813110351562,
+          "bottom": 127.92813110351562,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "wind-forces",
+      "selection": 1,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "高压 → 低压",
+          "left": 137.0390625,
+          "right": 252.96095275878906,
+          "top": 34.23125076293945,
+          "bottom": 64.23124694824219,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "气压梯度力",
+          "left": 252.86875915527344,
+          "right": 358.0249938964844,
+          "top": 145.8468780517578,
+          "bottom": 175.8468780517578,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "偏向力",
+          "left": 60.01874923706055,
+          "right": 123.11249542236328,
+          "top": 135.328125,
+          "bottom": 165.328125,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "风向",
+          "left": 214.29061889648438,
+          "right": 256.3531188964844,
+          "top": 203.70001220703125,
+          "bottom": 233.70001220703125,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "wind-forces",
+      "selection": 2,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "高压 → 低压",
+          "left": 137.0390625,
+          "right": 252.96095275878906,
+          "top": 34.23125076293945,
+          "bottom": 64.23124694824219,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "气压梯度力",
+          "left": 252.86875915527344,
+          "right": 358.0249938964844,
+          "top": 145.8468780517578,
+          "bottom": 175.8468780517578,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "偏向力",
+          "left": 67.03125,
+          "right": 130.125,
+          "top": 161.625,
+          "bottom": 191.62501525878906,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "摩擦力",
+          "left": 121.37812805175781,
+          "right": 184.47186279296875,
+          "top": 82.734375,
+          "bottom": 112.734375,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "风向",
+          "left": 255.78123474121094,
+          "right": 297.84375,
+          "top": 203.11563110351562,
+          "bottom": 233.11563110351562,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "wind-forces",
+      "selection": 3,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "高压 → 低压",
+          "left": 137.0390625,
+          "right": 252.96095275878906,
+          "top": 34.23125076293945,
+          "bottom": 64.23124694824219,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "气压梯度力",
+          "left": 252.86875915527344,
+          "right": 358.0249938964844,
+          "top": 145.8468780517578,
+          "bottom": 175.8468780517578,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "偏向力",
+          "left": 67.03125,
+          "right": 130.125,
+          "top": 86.24063110351562,
+          "bottom": 116.24063110351562,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "摩擦力",
+          "left": 121.37812805175781,
+          "right": 184.47186279296875,
+          "top": 182.078125,
+          "bottom": 212.07814025878906,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "风向",
+          "left": 255.78123474121094,
+          "right": 297.84375,
+          "top": 57.02187728881836,
+          "bottom": 87.02188110351562,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "haze",
+      "selection": 0,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "排放",
+          "left": 60.015625,
+          "right": 102.078125,
+          "top": 217.14064025878906,
+          "bottom": 247.14064025878906,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "积聚",
+          "left": 196.17498779296875,
+          "right": 238.23748779296875,
+          "top": 61.696876525878906,
+          "bottom": 91.6968765258789,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "haze",
+      "selection": 1,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "排放",
+          "left": 60.015625,
+          "right": 102.078125,
+          "top": 217.14064025878906,
+          "bottom": 247.14064025878906,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "扩散",
+          "left": 196.17498779296875,
+          "right": 238.23748779296875,
+          "top": 30.140625,
+          "bottom": 60.140625,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "haze",
+      "selection": 2,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "排放",
+          "left": 60.015625,
+          "right": 102.078125,
+          "top": 217.14064025878906,
+          "bottom": 247.14064025878906,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "减少排放",
+          "left": 175.14376831054688,
+          "right": 259.2687683105469,
+          "top": 61.696876525878906,
+          "bottom": 91.6968765258789,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "water",
+      "selection": 0,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 217.71875,
+      "invalid": false
+    },
+    {
+      "id": "water",
+      "selection": 1,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 217.71875,
+      "invalid": false
+    },
+    {
+      "id": "water",
+      "selection": 2,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 217.71875,
+      "invalid": false
+    },
+    {
+      "id": "water-renewal",
+      "selection": 0,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "补给",
+          "left": 51.834381103515625,
+          "right": 93.89688110351562,
+          "top": 43.58125305175781,
+          "bottom": 73.58125305175781,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "取用",
+          "left": 301.3625183105469,
+          "right": 343.4250183105469,
+          "top": 194.93438720703125,
+          "bottom": 224.93438720703125,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "可用淡水",
+          "left": 152.9375,
+          "right": 237.0625,
+          "top": 208.95938110351562,
+          "bottom": 238.95938110351562,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "water-renewal",
+      "selection": 1,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "补给",
+          "left": 51.834381103515625,
+          "right": 93.89688110351562,
+          "top": 43.58125305175781,
+          "bottom": 73.58125305175781,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "取用",
+          "left": 301.3625183105469,
+          "right": 343.4250183105469,
+          "top": 194.93438720703125,
+          "bottom": 224.93438720703125,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "可用淡水",
+          "left": 152.9375,
+          "right": 237.0625,
+          "top": 208.95938110351562,
+          "bottom": 238.95938110351562,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "water-renewal",
+      "selection": 2,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "补给",
+          "left": 51.834381103515625,
+          "right": 93.89688110351562,
+          "top": 43.58125305175781,
+          "bottom": 73.58125305175781,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "取用",
+          "left": 301.3625183105469,
+          "right": 343.4250183105469,
+          "top": 194.93438720703125,
+          "bottom": 224.93438720703125,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "污染水体",
+          "left": 152.9375,
+          "right": 237.0625,
+          "top": 208.95938110351562,
+          "bottom": 238.95938110351562,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "temperature",
+      "selection": 0,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 500,
+      "invalid": false
+    },
+    {
+      "id": "salinity",
+      "selection": 0,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "海水量",
+          "left": 99.75625610351562,
+          "right": 162.84999084472656,
+          "top": 85.0718765258789,
+          "bottom": 115.0718765258789,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "盐类保留",
+          "left": 69.37187194824219,
+          "right": 153.4968719482422,
+          "top": 212.46563720703125,
+          "bottom": 242.46563720703125,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "盐度升高",
+          "left": 247.6062469482422,
+          "right": 331.73126220703125,
+          "top": 212.46563720703125,
+          "bottom": 242.46563720703125,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "salinity",
+      "selection": 1,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "海水量",
+          "left": 99.75625610351562,
+          "right": 162.84999084472656,
+          "top": 85.0718765258789,
+          "bottom": 115.0718765258789,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "盐类保留",
+          "left": 69.37187194824219,
+          "right": 153.4968719482422,
+          "top": 212.46563720703125,
+          "bottom": 242.46563720703125,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "盐度降低",
+          "left": 247.6062469482422,
+          "right": 331.73126220703125,
+          "top": 212.46563720703125,
+          "bottom": 242.46563720703125,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "salinity",
+      "selection": 2,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "海水量",
+          "left": 99.75625610351562,
+          "right": 162.84999084472656,
+          "top": 85.0718765258789,
+          "bottom": 115.0718765258789,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "盐类保留",
+          "left": 69.37187194824219,
+          "right": 153.4968719482422,
+          "top": 212.46563720703125,
+          "bottom": 242.46563720703125,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "盐度降低",
+          "left": 247.6062469482422,
+          "right": 331.73126220703125,
+          "top": 212.46563720703125,
+          "bottom": 242.46563720703125,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "density",
+      "selection": 0,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "等体积比较",
+          "left": 142.421875,
+          "right": 247.578125,
+          "top": 26.634376525878906,
+          "bottom": 56.634376525878906,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "对照",
+          "left": 75.20938110351562,
+          "right": 117.27188110351562,
+          "top": 213.0500030517578,
+          "bottom": 243.0500030517578,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "条件相同",
+          "left": 254.03439331054688,
+          "right": 338.1593933105469,
+          "top": 213.0500030517578,
+          "bottom": 243.0500030517578,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "density",
+      "selection": 1,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "等体积比较",
+          "left": 142.421875,
+          "right": 247.578125,
+          "top": 26.634376525878906,
+          "bottom": 56.634376525878906,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "对照",
+          "left": 75.20938110351562,
+          "right": 117.27188110351562,
+          "top": 213.0500030517578,
+          "bottom": 243.0500030517578,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "温度降低",
+          "left": 254.03439331054688,
+          "right": 338.1593933105469,
+          "top": 213.0500030517578,
+          "bottom": 243.0500030517578,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "density",
+      "selection": 2,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "等体积比较",
+          "left": 142.421875,
+          "right": 247.578125,
+          "top": 26.634376525878906,
+          "bottom": 56.634376525878906,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "对照",
+          "left": 75.20938110351562,
+          "right": 117.27188110351562,
+          "top": 213.0500030517578,
+          "bottom": 243.0500030517578,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "盐度增加",
+          "left": 254.03439331054688,
+          "right": 338.1593933105469,
+          "top": 213.0500030517578,
+          "bottom": 243.0500030517578,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "waves",
+      "selection": 0,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 88.0625,
+      "invalid": false
+    },
+    {
+      "id": "tides",
+      "selection": 0,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 500,
+      "invalid": false
+    },
+    {
+      "id": "tides",
+      "selection": 1,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 500,
+      "invalid": false
+    },
+    {
+      "id": "tides",
+      "selection": 2,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 500,
+      "invalid": false
+    },
+    {
+      "id": "tides",
+      "selection": 3,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 500,
+      "invalid": false
+    },
+    {
+      "id": "currents",
+      "selection": 0,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 470.296875,
+      "invalid": false
+    },
+    {
+      "id": "desalination",
+      "selection": 0,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "海冰",
+          "left": 49.49687957763672,
+          "right": 91.55937957763672,
+          "top": 88.578125,
+          "bottom": 118.578125,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "盐水收集",
+          "left": 249.359375,
+          "right": 333.4844055175781,
+          "top": 218.8937530517578,
+          "bottom": 248.8937530517578,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "重力排盐",
+          "left": 249.359375,
+          "right": 333.4844055175781,
+          "top": 33.0625,
+          "bottom": 63.0625,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "desalination",
+      "selection": 1,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "海冰",
+          "left": 49.49687957763672,
+          "right": 91.55937957763672,
+          "top": 88.578125,
+          "bottom": 118.578125,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "盐水收集",
+          "left": 249.359375,
+          "right": 333.4844055175781,
+          "top": 218.8937530517578,
+          "bottom": 248.8937530517578,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "破碎离心",
+          "left": 249.359375,
+          "right": 333.4844055175781,
+          "top": 33.0625,
+          "bottom": 63.0625,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "karst",
+      "selection": 0,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 343.96875,
+      "invalid": false
+    },
+    {
+      "id": "karst",
+      "selection": 1,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 343.96875,
+      "invalid": false
+    },
+    {
+      "id": "karst",
+      "selection": 2,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 343.96875,
+      "invalid": false
+    },
+    {
+      "id": "karst",
+      "selection": 3,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 343.96875,
+      "invalid": false
+    },
+    {
+      "id": "karst",
+      "selection": 4,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 343.96875,
+      "invalid": false
+    },
+    {
+      "id": "karst",
+      "selection": 5,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 343.96875,
+      "invalid": false
+    },
+    {
+      "id": "karst-cave",
+      "selection": 0,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "溶洞",
+          "left": 173.96873474121094,
+          "right": 216.03123474121094,
+          "top": 34.81562805175781,
+          "bottom": 64.81562805175781,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "karst-cave",
+      "selection": 1,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "溶洞",
+          "left": 173.96873474121094,
+          "right": 216.03123474121094,
+          "top": 34.81562805175781,
+          "bottom": 64.81562805175781,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "石钟乳",
+          "left": 163.453125,
+          "right": 226.546875,
+          "top": 104.35624694824219,
+          "bottom": 134.3562469482422,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "石笋",
+          "left": 173.96873474121094,
+          "right": 216.03123474121094,
+          "top": 201.3625030517578,
+          "bottom": 231.3625030517578,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "river-valley",
+      "selection": 0,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "山地 V 形谷",
+          "left": 140.046875,
+          "right": 249.95310974121094,
+          "top": 211.29689025878906,
+          "bottom": 241.29689025878906,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "岸坡陡",
+          "left": 59.43437194824219,
+          "right": 122.52812194824219,
+          "top": 102.01875305175781,
+          "bottom": 132.0187530517578,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "谷底狭窄",
+          "left": 232.41250610351562,
+          "right": 316.5375061035156,
+          "top": 158.11875915527344,
+          "bottom": 188.11875915527344,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "river-valley",
+      "selection": 1,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "平原槽形谷",
+          "left": 142.421875,
+          "right": 247.578125,
+          "top": 211.29689025878906,
+          "bottom": 241.29689025878906,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "冲积平原",
+          "left": 48.91874694824219,
+          "right": 133.0437469482422,
+          "top": 125.39375305175781,
+          "bottom": 155.3937530517578,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "宽而浅",
+          "left": 242.92813110351562,
+          "right": 306.0218811035156,
+          "top": 158.11875915527344,
+          "bottom": 188.11875915527344,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "river",
+      "selection": 0,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 207.21875,
+      "invalid": false
+    },
+    {
+      "id": "river",
+      "selection": 1,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 207.21875,
+      "invalid": false
+    },
+    {
+      "id": "river",
+      "selection": 2,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 207.21875,
+      "invalid": false
+    },
+    {
+      "id": "delta",
+      "selection": 0,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "冲积平原",
+          "left": 152.9375,
+          "right": 237.0625,
+          "top": 215.9718780517578,
+          "bottom": 245.9718780517578,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "泥沙搬运",
+          "left": 44.24375915527344,
+          "right": 128.36875915527344,
+          "top": 68.125,
+          "bottom": 98.125,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "由粗到细",
+          "left": 262.21563720703125,
+          "right": 346.34063720703125,
+          "top": 162.79376220703125,
+          "bottom": 192.79376220703125,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "delta",
+      "selection": 1,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "河口沉积",
+          "left": 152.9375,
+          "right": 237.0625,
+          "top": 215.9718780517578,
+          "bottom": 245.9718780517578,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "河流入海",
+          "left": 44.24375915527344,
+          "right": 128.36875915527344,
+          "top": 68.125,
+          "bottom": 98.125,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "泥沙堆积",
+          "left": 262.21563720703125,
+          "right": 346.34063720703125,
+          "top": 162.79376220703125,
+          "bottom": 192.79376220703125,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "delta",
+      "selection": 2,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "三角洲",
+          "left": 163.453125,
+          "right": 226.546875,
+          "top": 215.9718780517578,
+          "bottom": 245.9718780517578,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "分流河道",
+          "left": 44.24375915527344,
+          "right": 128.36875915527344,
+          "top": 68.125,
+          "bottom": 98.125,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "岸线推进",
+          "left": 262.21563720703125,
+          "right": 346.34063720703125,
+          "top": 162.79376220703125,
+          "bottom": 192.79376220703125,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "aeolian",
+      "selection": 0,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "风蚀蘑菇",
+          "left": 152.9375,
+          "right": 237.0625,
+          "top": 211.88125610351562,
+          "bottom": 241.88125610351562,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "下部侵蚀较强",
+          "left": 223.06875610351562,
+          "right": 349.2562255859375,
+          "top": 125.9781265258789,
+          "bottom": 155.97811889648438,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "主风向",
+          "left": 37.81250762939453,
+          "right": 100.90625,
+          "top": 35.984375,
+          "bottom": 65.984375,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "aeolian",
+      "selection": 1,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "雅丹",
+          "left": 173.96873474121094,
+          "right": 216.03123474121094,
+          "top": 211.88125610351562,
+          "bottom": 241.88125610351562,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "垄脊顺着主风向",
+          "left": 121.390625,
+          "right": 268.609375,
+          "top": 36.56875228881836,
+          "bottom": 66.5687484741211,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "沟槽",
+          "left": 293.765625,
+          "right": 335.8280944824219,
+          "top": 183.8312530517578,
+          "bottom": 213.8312530517578,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "aeolian",
+      "selection": 2,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "新月形沙丘",
+          "left": 142.421875,
+          "right": 247.578125,
+          "top": 215.9718780517578,
+          "bottom": 245.9718780517578,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "迎风坡缓",
+          "left": 68.20314025878906,
+          "right": 152.32814025878906,
+          "top": 148.7687530517578,
+          "bottom": 178.7687530517578,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "背风坡陡",
+          "left": 244.6843719482422,
+          "right": 328.80938720703125,
+          "top": 182.66250610351562,
+          "bottom": 212.66250610351562,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "aeolian",
+      "selection": 3,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "植被固沙",
+          "left": 152.9375,
+          "right": 237.0625,
+          "top": 215.9718780517578,
+          "bottom": 245.9718780517578,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "根系固定",
+          "left": 68.20314025878906,
+          "right": 152.32814025878906,
+          "top": 148.7687530517578,
+          "bottom": 178.7687530517578,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "风沙受阻",
+          "left": 244.6843719482422,
+          "right": 328.80938720703125,
+          "top": 182.66250610351562,
+          "bottom": 212.66250610351562,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "coastal-landform",
+      "selection": 0,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "海蚀崖",
+          "left": 163.453125,
+          "right": 226.546875,
+          "top": 215.9718780517578,
+          "bottom": 245.9718780517578,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "海蚀平台",
+          "left": 114.953125,
+          "right": 199.078125,
+          "top": 141.171875,
+          "bottom": 171.171875,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "海浪侵蚀",
+          "left": 35.47813415527344,
+          "right": 119.60313415527344,
+          "top": 23.12812614440918,
+          "bottom": 53.12812805175781,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "coastal-landform",
+      "selection": 1,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "海蚀拱桥",
+          "left": 152.9375,
+          "right": 237.0625,
+          "top": 215.9718780517578,
+          "bottom": 245.9718780517578,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "海浪贯通",
+          "left": 150.60000610351562,
+          "right": 234.72500610351562,
+          "top": 55.26875305175781,
+          "bottom": 85.26875305175781,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "岩石海岸",
+          "left": 35.47813415527344,
+          "right": 119.60313415527344,
+          "top": 23.12812614440918,
+          "bottom": 53.12812805175781,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "coastal-landform",
+      "selection": 2,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "海蚀柱",
+          "left": 163.453125,
+          "right": 226.546875,
+          "top": 215.9718780517578,
+          "bottom": 245.9718780517578,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "海浪侵蚀",
+          "left": 150.60000610351562,
+          "right": 234.72500610351562,
+          "top": 55.26875305175781,
+          "bottom": 85.26875305175781,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "岩石海岸",
+          "left": 35.47813415527344,
+          "right": 119.60313415527344,
+          "top": 23.12812614440918,
+          "bottom": 53.12812805175781,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "coastal-landform",
+      "selection": 3,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "海滩",
+          "left": 173.96873474121094,
+          "right": 216.03123474121094,
+          "top": 215.9718780517578,
+          "bottom": 245.9718780517578,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "海岸堆积",
+          "left": 252.28125,
+          "right": 336.4062805175781,
+          "top": 55.26875305175781,
+          "bottom": 85.26875305175781,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "陆地",
+          "left": 56.509376525878906,
+          "right": 98.5718765258789,
+          "top": 23.12812614440918,
+          "bottom": 53.12812805175781,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "slope",
+      "selection": 0,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 228.859375,
+      "invalid": false
+    },
+    {
+      "id": "slope",
+      "selection": 1,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 228.859375,
+      "invalid": false
+    },
+    {
+      "id": "terrain-observation",
+      "selection": 0,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "绝对高度",
+          "left": 25.54375457763672,
+          "right": 109.66874694824219,
+          "top": 35.984375,
+          "bottom": 65.984375,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "海平面",
+          "left": 267.4718933105469,
+          "right": 330.56561279296875,
+          "top": 211.29689025878906,
+          "bottom": 241.29689025878906,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "山顶",
+          "left": 151.76251220703125,
+          "right": 193.82501220703125,
+          "top": 35.984375,
+          "bottom": 65.984375,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "terrain-observation",
+      "selection": 1,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "相对高度",
+          "left": 266.3062744140625,
+          "right": 350.4312744140625,
+          "top": 31.309375762939453,
+          "bottom": 61.30937576293945,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "较高处",
+          "left": 116.703125,
+          "right": 179.796875,
+          "top": 32.478126525878906,
+          "bottom": 62.478126525878906,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "较低处",
+          "left": 224.22811889648438,
+          "right": 287.3218688964844,
+          "top": 84.48750305175781,
+          "bottom": 114.48751068115234,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "terrain-observation",
+      "selection": 2,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "垂直距离",
+          "left": 65.28126525878906,
+          "right": 149.40626525878906,
+          "top": 113.70625305175781,
+          "bottom": 143.7062530517578,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "水平距离",
+          "left": 152.35311889648438,
+          "right": 236.4781036376953,
+          "top": 206.62188720703125,
+          "bottom": 236.62188720703125,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "坡度",
+          "left": 216.04376220703125,
+          "right": 258.10626220703125,
+          "top": 162.20938110351562,
+          "bottom": 192.20938110351562,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "terrain-observation",
+      "selection": 3,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "北",
+          "left": 44.234375,
+          "right": 65.265625,
+          "top": 211.88125610351562,
+          "bottom": 241.88125610351562,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "南",
+          "left": 323.5656433105469,
+          "right": 344.5968933105469,
+          "top": 211.88125610351562,
+          "bottom": 241.88125610351562,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "阳坡",
+          "left": 225.97811889648438,
+          "right": 268.0406188964844,
+          "top": 176.81875610351562,
+          "bottom": 206.81875610351562,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "阴坡",
+          "left": 103.84375762939453,
+          "right": 145.90626525878906,
+          "top": 126.5625,
+          "bottom": 156.5625,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "karst-livelihood",
+      "selection": 0,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "植被保护",
+          "left": 152.9375,
+          "right": 237.0625,
+          "top": 218.8937530517578,
+          "bottom": 248.8937530517578,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "坡陡土薄",
+          "left": 44.24375915527344,
+          "right": 128.36875915527344,
+          "top": 37.15312576293945,
+          "bottom": 67.15312194824219,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "裂隙发育",
+          "left": 246.4375,
+          "right": 330.5625305175781,
+          "top": 184.41561889648438,
+          "bottom": 214.41563415527344,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "karst-livelihood",
+      "selection": 1,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "植被破坏",
+          "left": 152.9375,
+          "right": 237.0625,
+          "top": 218.8937530517578,
+          "bottom": 248.8937530517578,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "水土流失",
+          "left": 44.24375915527344,
+          "right": 128.36875915527344,
+          "top": 37.15312576293945,
+          "bottom": 67.15312194824219,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "岩石裸露",
+          "left": 246.4375,
+          "right": 330.5625305175781,
+          "top": 184.41561889648438,
+          "bottom": 214.41563415527344,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "karst-livelihood",
+      "selection": 2,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "晴时易旱",
+          "left": 152.9375,
+          "right": 237.0625,
+          "top": 218.8937530517578,
+          "bottom": 248.8937530517578,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "裂隙渗漏",
+          "left": 44.24375915527344,
+          "right": 128.36875915527344,
+          "top": 37.15312576293945,
+          "bottom": 67.15312194824219,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "峰丛洼地",
+          "left": 246.4375,
+          "right": 330.5625305175781,
+          "top": 184.41561889648438,
+          "bottom": 214.41563415527344,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "karst-livelihood",
+      "selection": 3,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "山顶水源林",
+          "left": 142.421875,
+          "right": 247.578125,
+          "top": 26.634376525878906,
+          "bottom": 56.634376525878906,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "坡地经济林",
+          "left": 250.53125,
+          "right": 355.6875,
+          "top": 37.15312576293945,
+          "bottom": 67.15312194824219,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "洼地粮食作物",
+          "left": 87.49374389648438,
+          "right": 213.68124389648438,
+          "top": 189.09063720703125,
+          "bottom": 219.09063720703125,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "forest",
+      "selection": 0,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 284.9375,
+      "invalid": false
+    },
+    {
+      "id": "forest",
+      "selection": 1,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 284.9375,
+      "invalid": false
+    },
+    {
+      "id": "forest",
+      "selection": 2,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 284.9375,
+      "invalid": false
+    },
+    {
+      "id": "vegetation",
+      "selection": 0,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "热带雨林",
+          "left": 152.9375,
+          "right": 237.0625,
+          "top": 215.9718780517578,
+          "bottom": 245.9718780517578,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "层次丰富",
+          "left": 62.943756103515625,
+          "right": 147.06875610351562,
+          "top": 33.64687728881836,
+          "bottom": 63.646873474121094,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "藤本、板根",
+          "left": 238.84375,
+          "right": 344,
+          "top": 48.25625228881836,
+          "bottom": 78.2562484741211,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "vegetation",
+      "selection": 1,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "常绿阔叶林",
+          "left": 142.421875,
+          "right": 247.578125,
+          "top": 215.9718780517578,
+          "bottom": 245.9718780517578,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "常绿",
+          "left": 83.9749984741211,
+          "right": 126.0374984741211,
+          "top": 33.64687728881836,
+          "bottom": 63.646873474121094,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "革质叶片",
+          "left": 249.359375,
+          "right": 333.4844055175781,
+          "top": 48.25625228881836,
+          "bottom": 78.2562484741211,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "vegetation",
+      "selection": 2,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "落叶阔叶林",
+          "left": 142.421875,
+          "right": 247.578125,
+          "top": 215.9718780517578,
+          "bottom": 245.9718780517578,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "春夏发叶",
+          "left": 62.943756103515625,
+          "right": 147.06875610351562,
+          "top": 33.64687728881836,
+          "bottom": 63.646873474121094,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "秋冬落叶",
+          "left": 249.359375,
+          "right": 333.4844055175781,
+          "top": 48.25625228881836,
+          "bottom": 78.2562484741211,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "vegetation",
+      "selection": 3,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "亚寒带针叶林",
+          "left": 131.90625,
+          "right": 258.09375,
+          "top": 215.9718780517578,
+          "bottom": 245.9718780517578,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "针状叶",
+          "left": 73.45938110351562,
+          "right": 136.55313110351562,
+          "top": 33.64687728881836,
+          "bottom": 63.646873474121094,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "抗寒抗旱",
+          "left": 249.359375,
+          "right": 333.4844055175781,
+          "top": 48.25625228881836,
+          "bottom": 78.2562484741211,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "vegetation",
+      "selection": 4,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "热带草原",
+          "left": 152.9375,
+          "right": 237.0625,
+          "top": 215.9718780517578,
+          "bottom": 245.9718780517578,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "湿季葱绿",
+          "left": 62.943756103515625,
+          "right": 147.06875610351562,
+          "top": 33.64687728881836,
+          "bottom": 63.646873474121094,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "干季枯黄",
+          "left": 249.359375,
+          "right": 333.4844055175781,
+          "top": 48.25625228881836,
+          "bottom": 78.2562484741211,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "vegetation",
+      "selection": 5,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "温带草原",
+          "left": 152.9375,
+          "right": 237.0625,
+          "top": 215.9718780517578,
+          "bottom": 245.9718780517578,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "夏绿冬枯",
+          "left": 62.943756103515625,
+          "right": 147.06875610351562,
+          "top": 33.64687728881836,
+          "bottom": 63.646873474121094,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "草本较低",
+          "left": 249.359375,
+          "right": 333.4844055175781,
+          "top": 48.25625228881836,
+          "bottom": 78.2562484741211,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "vegetation",
+      "selection": 6,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "荒漠植被",
+          "left": 152.9375,
+          "right": 237.0625,
+          "top": 215.9718780517578,
+          "bottom": 245.9718780517578,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "旱生灌木",
+          "left": 62.943756103515625,
+          "right": 147.06875610351562,
+          "top": 33.64687728881836,
+          "bottom": 63.646873474121094,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "稀疏、耐旱",
+          "left": 238.84375,
+          "right": 344,
+          "top": 48.25625228881836,
+          "bottom": 78.2562484741211,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "soil-composition",
+      "selection": 0,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "矿物质",
+          "left": 46.578125,
+          "right": 109.67186737060547,
+          "top": 51.17812728881836,
+          "bottom": 81.1781234741211,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "有机质",
+          "left": 251.10935974121094,
+          "right": 314.203125,
+          "top": 51.17812728881836,
+          "bottom": 81.1781234741211,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "水分",
+          "left": 98.00000762939453,
+          "right": 140.06251525878906,
+          "top": 211.29689025878906,
+          "bottom": 241.29689025878906,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "空气",
+          "left": 252.2750244140625,
+          "right": 294.3375244140625,
+          "top": 211.29689025878906,
+          "bottom": 241.29689025878906,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "soil-composition",
+      "selection": 1,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "矿物质",
+          "left": 46.578125,
+          "right": 109.67186737060547,
+          "top": 51.17812728881836,
+          "bottom": 81.1781234741211,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "有机质",
+          "left": 251.10935974121094,
+          "right": 314.203125,
+          "top": 51.17812728881836,
+          "bottom": 81.1781234741211,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "水分",
+          "left": 98.00000762939453,
+          "right": 140.06251525878906,
+          "top": 211.29689025878906,
+          "bottom": 241.29689025878906,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "空气",
+          "left": 252.2750244140625,
+          "right": 294.3375244140625,
+          "top": 211.29689025878906,
+          "bottom": 241.29689025878906,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "soil-composition",
+      "selection": 2,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "矿物质",
+          "left": 46.578125,
+          "right": 109.67186737060547,
+          "top": 51.17812728881836,
+          "bottom": 81.1781234741211,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "有机质",
+          "left": 251.10935974121094,
+          "right": 314.203125,
+          "top": 51.17812728881836,
+          "bottom": 81.1781234741211,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "水分",
+          "left": 98.00000762939453,
+          "right": 140.06251525878906,
+          "top": 211.29689025878906,
+          "bottom": 241.29689025878906,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "soil-texture",
+      "selection": 0,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "相同降水",
+          "left": 152.9375,
+          "right": 237.0625,
+          "top": 28.387500762939453,
+          "bottom": 58.38750076293945,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "砂土",
+          "left": 45.406253814697266,
+          "right": 87.46875762939453,
+          "top": 204.86874389648438,
+          "bottom": 234.86875915527344,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "壤土",
+          "left": 173.96873474121094,
+          "right": 216.03123474121094,
+          "top": 204.86874389648438,
+          "bottom": 234.86875915527344,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "黏土",
+          "left": 302.53125,
+          "right": 344.5937194824219,
+          "top": 204.86874389648438,
+          "bottom": 234.86875915527344,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "soil-texture",
+      "selection": 1,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "相同降水",
+          "left": 152.9375,
+          "right": 237.0625,
+          "top": 28.387500762939453,
+          "bottom": 58.38750076293945,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "砂土",
+          "left": 45.406253814697266,
+          "right": 87.46875762939453,
+          "top": 204.86874389648438,
+          "bottom": 234.86875915527344,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "壤土",
+          "left": 173.96873474121094,
+          "right": 216.03123474121094,
+          "top": 204.86874389648438,
+          "bottom": 234.86875915527344,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "黏土",
+          "left": 302.53125,
+          "right": 344.5937194824219,
+          "top": 204.86874389648438,
+          "bottom": 234.86875915527344,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "soil-texture",
+      "selection": 2,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "相同降水",
+          "left": 152.9375,
+          "right": 237.0625,
+          "top": 28.387500762939453,
+          "bottom": 58.38750076293945,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "砂土",
+          "left": 45.406253814697266,
+          "right": 87.46875762939453,
+          "top": 204.86874389648438,
+          "bottom": 234.86875915527344,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "壤土",
+          "left": 173.96873474121094,
+          "right": 216.03123474121094,
+          "top": 204.86874389648438,
+          "bottom": 234.86875915527344,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "黏土",
+          "left": 302.53125,
+          "right": 344.5937194824219,
+          "top": 204.86874389648438,
+          "bottom": 234.86875915527344,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "soil",
+      "selection": 0,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 381.234375,
+      "invalid": false
+    },
+    {
+      "id": "soil",
+      "selection": 1,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 381.234375,
+      "invalid": false
+    },
+    {
+      "id": "soil",
+      "selection": 2,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 381.234375,
+      "invalid": false
+    },
+    {
+      "id": "soil",
+      "selection": 3,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 381.234375,
+      "invalid": false
+    },
+    {
+      "id": "soil",
+      "selection": 4,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 381.234375,
+      "invalid": false
+    },
+    {
+      "id": "soil",
+      "selection": 5,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 381.234375,
+      "invalid": false
+    },
+    {
+      "id": "soil-factors",
+      "selection": 0,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "岩石风化",
+          "left": 152.9375,
+          "right": 237.0625,
+          "top": 216.55624389648438,
+          "bottom": 246.55625915527344,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "成土母质",
+          "left": 65.86563110351562,
+          "right": 149.99063110351562,
+          "top": 65.203125,
+          "bottom": 95.203125,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "土壤",
+          "left": 275.0656433105469,
+          "right": 317.1281433105469,
+          "top": 60.52812576293945,
+          "bottom": 90.52812194824219,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "soil-factors",
+      "selection": 1,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "吸收",
+          "left": 173.96873474121094,
+          "right": 216.03123474121094,
+          "top": 216.55624389648438,
+          "bottom": 246.55625915527344,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "枯落与分解",
+          "left": 55.350006103515625,
+          "right": 160.50625610351562,
+          "top": 65.203125,
+          "bottom": 95.203125,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "养分归还",
+          "left": 240.59375,
+          "right": 324.7187805175781,
+          "top": 73.3843765258789,
+          "bottom": 103.3843765258789,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "soil-factors",
+      "selection": 2,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "温度与降水",
+          "left": 142.421875,
+          "right": 247.578125,
+          "top": 216.55624389648438,
+          "bottom": 246.55625915527344,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "风化",
+          "left": 27.875,
+          "right": 69.9375,
+          "top": 154.6125030517578,
+          "bottom": 184.6125030517578,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "淋溶",
+          "left": 275.0656433105469,
+          "right": 317.1281433105469,
+          "top": 121.88749694824219,
+          "bottom": 151.88751220703125,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "soil-factors",
+      "selection": 3,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "时间积累",
+          "left": 152.9375,
+          "right": 237.0625,
+          "top": 216.55624389648438,
+          "bottom": 246.55625915527344,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "土层增厚",
+          "left": 65.86563110351562,
+          "right": 149.99063110351562,
+          "top": 65.203125,
+          "bottom": 95.203125,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "层次分化",
+          "left": 254.03439331054688,
+          "right": 338.1593933105469,
+          "top": 60.52812576293945,
+          "bottom": 90.52812194824219,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "soil-care",
+      "selection": 0,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "蒸发返盐",
+          "left": 152.9375,
+          "right": 237.0625,
+          "top": 48.84062576293945,
+          "bottom": 78.84062194824219,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "土壤水盐",
+          "left": 152.9375,
+          "right": 237.0625,
+          "top": 208.37501525878906,
+          "bottom": 238.37501525878906,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "soil-care",
+      "selection": 1,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "淋洗排盐",
+          "left": 152.9375,
+          "right": 237.0625,
+          "top": 48.84062576293945,
+          "bottom": 78.84062194824219,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "土壤水盐",
+          "left": 152.9375,
+          "right": 237.0625,
+          "top": 208.37501525878906,
+          "bottom": 238.37501525878906,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "soil-care",
+      "selection": 2,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "覆盖保水",
+          "left": 152.9375,
+          "right": 237.0625,
+          "top": 48.84062576293945,
+          "bottom": 78.84062194824219,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "土壤水盐",
+          "left": 152.9375,
+          "right": 237.0625,
+          "top": 208.37501525878906,
+          "bottom": 238.37501525878906,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "urban-waterlogging",
+      "selection": 0,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "降水",
+          "left": 106.18125915527344,
+          "right": 148.24375915527344,
+          "top": 31.309375762939453,
+          "bottom": 61.30937576293945,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "地表径流",
+          "left": 244.10000610351562,
+          "right": 328.2250061035156,
+          "top": 96.7593765258789,
+          "bottom": 126.7593765258789,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "排水",
+          "left": 306.0375061035156,
+          "right": 348.1000061035156,
+          "top": 211.29689025878906,
+          "bottom": 241.29689025878906,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "urban-waterlogging",
+      "selection": 1,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "降水",
+          "left": 106.18125915527344,
+          "right": 148.24375915527344,
+          "top": 31.309375762939453,
+          "bottom": 61.30937576293945,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "地表径流",
+          "left": 244.10000610351562,
+          "right": 328.2250061035156,
+          "top": 96.7593765258789,
+          "bottom": 126.7593765258789,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "排水",
+          "left": 306.0375061035156,
+          "right": 348.1000061035156,
+          "top": 211.29689025878906,
+          "bottom": 241.29689025878906,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "下渗",
+          "left": 112.60938262939453,
+          "right": 154.67189025878906,
+          "top": 164.546875,
+          "bottom": 194.54689025878906,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "urban-waterlogging",
+      "selection": 2,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "降水",
+          "left": 106.18125915527344,
+          "right": 148.24375915527344,
+          "top": 31.309375762939453,
+          "bottom": 61.30937576293945,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "地表径流",
+          "left": 244.10000610351562,
+          "right": 328.2250061035156,
+          "top": 96.7593765258789,
+          "bottom": 126.7593765258789,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "排水",
+          "left": 306.0375061035156,
+          "right": 348.1000061035156,
+          "top": 211.29689025878906,
+          "bottom": 241.29689025878906,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "下渗",
+          "left": 112.60938262939453,
+          "right": 154.67189025878906,
+          "top": 164.546875,
+          "bottom": 194.54689025878906,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "雨水花园",
+          "left": 157.61251831054688,
+          "right": 241.73751831054688,
+          "top": 98.51249694824219,
+          "bottom": 128.5124969482422,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "flood",
+      "selection": 0,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "河道",
+          "left": 145.33438110351562,
+          "right": 187.39688110351562,
+          "top": 213.63436889648438,
+          "bottom": 243.63438415527344,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "低洼聚落",
+          "left": 249.94375610351562,
+          "right": 334.0687561035156,
+          "top": 213.63436889648438,
+          "bottom": 243.63438415527344,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "flood",
+      "selection": 1,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "河道",
+          "left": 145.33438110351562,
+          "right": 187.39688110351562,
+          "top": 213.63436889648438,
+          "bottom": 243.63438415527344,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "低洼聚落",
+          "left": 249.94375610351562,
+          "right": 334.0687561035156,
+          "top": 213.63436889648438,
+          "bottom": 243.63438415527344,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "连续强降水",
+          "left": 134.82501220703125,
+          "right": 239.9812469482422,
+          "top": 28.387500762939453,
+          "bottom": 58.38750076293945,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "drought",
+      "selection": 0,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "水分充足",
+          "left": 102.09687805175781,
+          "right": 186.2218780517578,
+          "top": 27.803125381469727,
+          "bottom": 57.803123474121094,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "农作物",
+          "left": 93.32814025878906,
+          "right": 156.42189025878906,
+          "top": 211.88125610351562,
+          "bottom": 241.88125610351562,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "水源",
+          "left": 273.3125,
+          "right": 315.3749694824219,
+          "top": 211.88125610351562,
+          "bottom": 241.88125610351562,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "drought",
+      "selection": 1,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "土壤缺水",
+          "left": 102.09687805175781,
+          "right": 186.2218780517578,
+          "top": 27.803125381469727,
+          "bottom": 57.803123474121094,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "农作物",
+          "left": 93.32814025878906,
+          "right": 156.42189025878906,
+          "top": 211.88125610351562,
+          "bottom": 241.88125610351562,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "水源",
+          "left": 273.3125,
+          "right": 315.3749694824219,
+          "top": 211.88125610351562,
+          "bottom": 241.88125610351562,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "typhoon",
+      "selection": 0,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 177.15625,
+      "invalid": false
+    },
+    {
+      "id": "cold-wave",
+      "selection": 0,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "冷空气",
+          "left": 61.1875,
+          "right": 124.28124237060547,
+          "top": 48.84062576293945,
+          "bottom": 78.84062194824219,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "暖空气",
+          "left": 274.484375,
+          "right": 337.578125,
+          "top": 48.84062576293945,
+          "bottom": 78.84062194824219,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "推进前",
+          "left": 163.453125,
+          "right": 226.546875,
+          "top": 211.29689025878906,
+          "bottom": 241.29689025878906,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "cold-wave",
+      "selection": 1,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "冷空气",
+          "left": 61.1875,
+          "right": 124.28124237060547,
+          "top": 48.84062576293945,
+          "bottom": 78.84062194824219,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "暖空气",
+          "left": 274.484375,
+          "right": 337.578125,
+          "top": 48.84062576293945,
+          "bottom": 78.84062194824219,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "冷空气推进",
+          "left": 142.421875,
+          "right": 247.578125,
+          "top": 211.29689025878906,
+          "bottom": 241.29689025878906,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "earthquake",
+      "selection": 0,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 241.125,
+      "invalid": false
+    },
+    {
+      "id": "slide",
+      "selection": 0,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 500,
+      "invalid": false
+    },
+    {
+      "id": "slide",
+      "selection": 1,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 500,
+      "invalid": false
+    },
+    {
+      "id": "disaster-chain",
+      "selection": 0,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "旱灾",
+          "left": 63.521881103515625,
+          "right": 105.58438110351562,
+          "top": 36.56875228881836,
+          "bottom": 66.5687484741211,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "淡水短缺",
+          "left": 54.178131103515625,
+          "right": 138.30313110351562,
+          "top": 95.00625610351562,
+          "bottom": 125.00625610351562,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "作物受影响",
+          "left": 79.89375305175781,
+          "right": 185.0500030517578,
+          "top": 212.46563720703125,
+          "bottom": 242.46563720703125,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "disaster-chain",
+      "selection": 1,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "地震",
+          "left": 278.5718994140625,
+          "right": 320.6344299316406,
+          "top": 31.309375762939453,
+          "bottom": 61.30937576293945,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "滑坡堵河",
+          "left": 200.8562469482422,
+          "right": 284.98126220703125,
+          "top": 209.54376220703125,
+          "bottom": 239.54376220703125,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "mitigation",
+      "selection": 0,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 128.46875,
+      "invalid": false
+    },
+    {
+      "id": "mitigation",
+      "selection": 1,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 128.46875,
+      "invalid": false
+    },
+    {
+      "id": "remote",
+      "selection": 0,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 214.625,
+      "invalid": false
+    },
+    {
+      "id": "remote",
+      "selection": 1,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 214.625,
+      "invalid": false
+    },
+    {
+      "id": "remote",
+      "selection": 2,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 214.625,
+      "invalid": false
+    },
+    {
+      "id": "remote",
+      "selection": 3,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 214.625,
+      "invalid": false
+    },
+    {
+      "id": "gnss",
+      "selection": 0,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "卫星星座",
+          "left": 145.34063720703125,
+          "right": 229.46563720703125,
+          "top": 28.387500762939453,
+          "bottom": 58.38750076293945,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "地面监控",
+          "left": 54.178131103515625,
+          "right": 138.30313110351562,
+          "top": 200.19375610351562,
+          "bottom": 230.19375610351562,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "用户接收",
+          "left": 259.8781433105469,
+          "right": 344.0031433105469,
+          "top": 182.078125,
+          "bottom": 212.07814025878906,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "gnss",
+      "selection": 1,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "卫星星座",
+          "left": 145.34063720703125,
+          "right": 229.46563720703125,
+          "top": 28.387500762939453,
+          "bottom": 58.38750076293945,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "地面监控",
+          "left": 54.178131103515625,
+          "right": 138.30313110351562,
+          "top": 200.19375610351562,
+          "bottom": 230.19375610351562,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "用户接收",
+          "left": 259.8781433105469,
+          "right": 344.0031433105469,
+          "top": 182.078125,
+          "bottom": 212.07814025878906,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "gnss",
+      "selection": 2,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "卫星星座",
+          "left": 145.34063720703125,
+          "right": 229.46563720703125,
+          "top": 28.387500762939453,
+          "bottom": 58.38750076293945,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "地面监控",
+          "left": 54.178131103515625,
+          "right": 138.30313110351562,
+          "top": 200.19375610351562,
+          "bottom": 230.19375610351562,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "用户接收",
+          "left": 259.8781433105469,
+          "right": 344.0031433105469,
+          "top": 182.078125,
+          "bottom": 212.07814025878906,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "定位助救援",
+          "left": 229.49375915527344,
+          "right": 334.6499938964844,
+          "top": 218.8937530517578,
+          "bottom": 248.8937530517578,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "gis",
+      "selection": 0,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 440.90625,
+      "invalid": false
+    },
+    {
+      "id": "gis",
+      "selection": 1,
+      "native": false,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [],
+      "width": 374,
+      "height": 440.90625,
+      "invalid": false
+    },
+    {
+      "id": "warehouse",
+      "selection": 0,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "近河低地",
+          "left": 49.50312805175781,
+          "right": 133.62811279296875,
+          "top": 55.853126525878906,
+          "bottom": 85.8531265258789,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "路网节点",
+          "left": 152.9375,
+          "right": 237.0625,
+          "top": 113.12187194824219,
+          "bottom": 143.1218719482422,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "偏远山地",
+          "left": 249.94375610351562,
+          "right": 334.0687561035156,
+          "top": 33.64687728881836,
+          "bottom": 63.646873474121094,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "受灾聚落",
+          "left": 247.6062469482422,
+          "right": 331.73126220703125,
+          "top": 213.0500030517578,
+          "bottom": 243.0500030517578,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "warehouse",
+      "selection": 1,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "近河低地",
+          "left": 49.50312805175781,
+          "right": 133.62811279296875,
+          "top": 55.853126525878906,
+          "bottom": 85.8531265258789,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "路网节点",
+          "left": 152.9375,
+          "right": 237.0625,
+          "top": 113.12187194824219,
+          "bottom": 143.1218719482422,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "偏远山地",
+          "left": 249.94375610351562,
+          "right": 334.0687561035156,
+          "top": 33.64687728881836,
+          "bottom": 63.646873474121094,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "受灾聚落",
+          "left": 247.6062469482422,
+          "right": 331.73126220703125,
+          "top": 213.0500030517578,
+          "bottom": 243.0500030517578,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    },
+    {
+      "id": "warehouse",
+      "selection": 2,
+      "native": true,
+      "small": [],
+      "outside": [],
+      "pairs": [],
+      "labels": [
+        {
+          "text": "近河低地",
+          "left": 49.50312805175781,
+          "right": 133.62811279296875,
+          "top": 55.853126525878906,
+          "bottom": 85.8531265258789,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "路网节点",
+          "left": 152.9375,
+          "right": 237.0625,
+          "top": 113.12187194824219,
+          "bottom": 143.1218719482422,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "偏远山地",
+          "left": 249.94375610351562,
+          "right": 334.0687561035156,
+          "top": 33.64687728881836,
+          "bottom": 63.646873474121094,
+          "px": 21.037499999999998
+        },
+        {
+          "text": "受灾聚落",
+          "left": 247.6062469482422,
+          "right": 331.73126220703125,
+          "top": 213.0500030517578,
+          "bottom": 243.0500030517578,
+          "px": 21.037499999999998
+        }
+      ],
+      "width": 374,
+      "height": 227.90625,
+      "invalid": false
+    }
+  ],
+  "labelIssues": []
+}

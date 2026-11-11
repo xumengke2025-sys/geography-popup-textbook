@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-05",
+  "scope": "工作台改版新增的四张本地材质；来源仅依据下列已有清单、脚本及许可证，不包含来源推断。",
+  "assets": [
+    {
+      "path": "/desk/dark_wood_diff_1k.jpg",
+      "role": "暗木桌面颜色贴图",
+      "bytes": 754754,
+      "sha256": "d68da31655bf47024af893156a6a01a6c95bb60f55d97e2dc9bdd47be320e5b5",
+      "source": "https://polyhaven.com/a/dark_wood",
+      "downloadUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/dark_wood/dark_wood_diff_1k.jpg",
+      "license": "CC0-1.0",
+      "originalLocalPath": "D:/ai项目/AI实验室/public/textures/dark_wood/dark_wood_diff_1k.jpg",
+      "provenanceEvidence": "D:/ai项目/AI实验室/public/textures/sources.json",
+      "copyVerification": "源文件与当前文件的 SHA256 一致"
+    },
+    {
+      "path": "/desk/dark_wood_nor_gl_1k.jpg",
+      "role": "暗木桌面 OpenGL 法线贴图",
+      "bytes": 344338,
+      "sha256": "c42541f1bda0a14b39f120c24407eeba699af8ac85b371c7cef98ffd7d7b13bf",
+      "source": "https://polyhaven.com/a/dark_wood",
+      "downloadUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/dark_wood/dark_wood_nor_gl_1k.jpg",
+      "license": "CC0-1.0",
+      "originalLocalPath": "D:/ai项目/AI实验室/public/textures/dark_wood/dark_wood_nor_gl_1k.jpg",
+      "provenanceEvidence": "D:/ai项目/AI实验室/public/textures/sources.json",
+      "copyVerification": "源文件与当前文件的 SHA256 一致"
+    },
+    {
+      "path": "/desk/dark_wood_rough_1k.jpg",
+      "role": "暗木桌面粗糙度贴图",
+      "bytes": 574415,
+      "sha256": "47ea12dbf649109b02eaa164dde9732a74e839957f29ad0ec7f5266b575d1835",
+      "source": "https://polyhaven.com/a/dark_wood",
+      "downloadUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/dark_wood/dark_wood_rough_1k.jpg",
+      "license": "CC0-1.0",
+      "originalLocalPath": "D:/ai项目/AI实验室/public/textures/dark_wood/dark_wood_rough_1k.jpg",
+      "provenanceEvidence": "D:/ai项目/AI实验室/public/textures/sources.json",
+      "copyVerification": "源文件与当前文件的 SHA256 一致"
+    },
+    {
+      "path": "/desk/paper.jpg",
+      "role": "纸面控件的暖色纸纤维底纹",
+      "bytes": 483747,
+      "sha256": "756bcd3c97f0a3a477988fab2c5893dcf20ca6fa4705348df786832191f0d296",
+      "source": "https://github.com/Vincentwei1021/mg-styles-15",
+      "sourceRepositoryPath": "demos/05-cel-boil/assets/paper_base.jpg",
+      "originalLocalPath": "D:/ai项目/ai动画/VibeVideo项目/reference-sources/github-expansion-20261013/Vincentwei1021--mg-styles-15/demos/05-cel-boil/assets/paper_base.jpg",
+      "upstreamTexture": {
+        "provider": "ambientCG",
+        "asset": "Paper001",
+        "sourceRepositoryPath": "assets/textures/paper/Paper001_4K_color.jpg",
+        "license": "CC0-1.0",
+        "evidence": "demos/05-cel-boil/tools/gen_paper.py 的首段说明明确写明 ambientCG Paper001 (CC0)"
+      },
+      "license": "MIT（来源仓库）；底层 ambientCG Paper001 纹理为 CC0，依据为生成脚本说明",
+      "licenseEvidence": "D:/ai项目/ai动画/VibeVideo项目/reference-sources/github-expansion-20261013/Vincentwei1021--mg-styles-15/LICENSE",
+      "provenanceEvidence": "D:/ai项目/ai动画/VibeVideo项目/reference-sources/github-expansion-20261013/Vincentwei1021--mg-styles-15/demos/05-cel-boil/tools/gen_paper.py",
+      "processingRecordedInSource": "生成脚本从 Paper001_4K_color.jpg 提取高频纤维，裁切缩放并加入暖米色、轻微边缘明暗与纸张斑驳，输出 paper_base.jpg；本项目直接复制该输出文件。",
+      "copyVerification": "源文件与当前文件的 SHA256 一致",
+      "repositoryLicenseNotice": "MIT License\n\nCopyright (c) 2026 Vincentwei1021\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE."
+    }
+  ],
+  "verificationScope": "已核对四个本地源文件与复制文件的 SHA256，并读取指定来源清单、纸纹生成脚本及仓库 LICENSE；未在本任务中重新下载或核验远端当前版本。"
+}

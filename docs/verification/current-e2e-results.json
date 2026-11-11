@@ -1,0 +1,519 @@
+{
+  "config": {
+    "argv": [
+      "D:\\docker\\node.exe",
+      "D:\\ai项目\\20261104_3d课本\\node_modules\\@playwright\\test\\cli.js",
+      "test"
+    ],
+    "configFile": "D:\\ai项目\\20261104_3d课本\\playwright.config.ts",
+    "rootDir": "D:/ai项目/20261104_3d课本/tests/current-e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/ai项目/20261104_3d课本/output/playwright/current-e2e-artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "D:/ai项目/20261104_3d课本/tests/current-e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 90000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "D:\\ai项目\\20261104_3d课本\\output\\playwright\\current-e2e-artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "D:\\ai项目\\20261104_3d课本\\tests\\current-e2e",
+        "snapshotDir": "D:\\ai项目\\20261104_3d课本\\tests\\current-e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 90000,
+        "use": {
+          "baseURL": "http://127.0.0.1:4175",
+          "viewport": {
+            "width": 1366,
+            "height": 900
+          },
+          "channel": "chrome",
+          "actionTimeout": 15000,
+          "navigationTimeout": 30000,
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "output/playwright/current-e2e-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "accessibility-mobile.spec.ts",
+      "file": "accessibility-mobile.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "减少动态效果与键盘",
+          "file": "accessibility-mobile.spec.ts",
+          "line": 3,
+          "column": 6,
+          "specs": [
+            {
+              "title": "键盘可进入目录和演示，减少动态时节点直接定位且条件保持暂停",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 9962,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-05T21:09:51.363Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "reviewed-resources",
+                          "contentType": "application/json",
+                          "body": "eyJiYXNlIjoiaHR0cDovLzEyNy4wLjAuMTo0MTc1IiwicmV2aWV3ZWRFbnRyeSI6eyJwYXRoIjoiL2Fzc2V0cy9pbmRleC1DaXFVZlk4My5qcyIsInNoYTI1NiI6IjdlZDkxNDRlZDAxNDU0OGIzMDE1Y2I4OWQ0OGUwNzAxZjBjNzQwMTRhYTUzZjkzNDI0NDQ2OWUwMzQ5NmI1NjQifSwicmV2aWV3ZWRTdHlsZXMiOlt7InBhdGgiOiIvYXNzZXRzL2luZGV4LUJObENJZzdXLmNzcyIsInNoYTI1NiI6IjdkYzQ2OTc5MDIzYWJmNjliYjA3MzlhYmNjYmRmNWIzN2MxZTJhNDY4NDY0NTM4MmUwOTE2MzFjZjQ3NzUzZTIifV19"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "46d8450af46a0f79b05f-c0c604c0a486e3ae955e",
+              "file": "accessibility-mobile.spec.ts",
+              "line": 5,
+              "column": 3
+            }
+          ]
+        },
+        {
+          "title": "手机原页与原生 SVG",
+          "file": "accessibility-mobile.spec.ts",
+          "line": 41,
+          "column": 6,
+          "specs": [
+            {
+              "title": "手机默认二维原页，SVG 实体节点可触摸并可向前和向后定位",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 4959,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-05T21:10:02.668Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "reviewed-resources",
+                          "contentType": "application/json",
+                          "body": "eyJiYXNlIjoiaHR0cDovLzEyNy4wLjAuMTo0MTc1IiwicmV2aWV3ZWRFbnRyeSI6eyJwYXRoIjoiL2Fzc2V0cy9pbmRleC1DaXFVZlk4My5qcyIsInNoYTI1NiI6IjdlZDkxNDRlZDAxNDU0OGIzMDE1Y2I4OWQ0OGUwNzAxZjBjNzQwMTRhYTUzZjkzNDI0NDQ2OWUwMzQ5NmI1NjQifSwicmV2aWV3ZWRTdHlsZXMiOlt7InBhdGgiOiIvYXNzZXRzL2luZGV4LUJObENJZzdXLmNzcyIsInNoYTI1NiI6IjdkYzQ2OTc5MDIzYWJmNjliYjA3MzlhYmNjYmRmNWIzN2MxZTJhNDY4NDY0NTM4MmUwOTE2MzFjZjQ3NzUzZTIifV19"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "46d8450af46a0f79b05f-ad4d64010f8f5193da22",
+              "file": "accessibility-mobile.spec.ts",
+              "line": 43,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "process.spec.ts",
+      "file": "process.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "海陆风连续播放、暂停、昼夜节点与回拖同步改变旁注",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 15071,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T21:10:07.650Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "reviewed-resources",
+                      "contentType": "application/json",
+                      "body": "eyJiYXNlIjoiaHR0cDovLzEyNy4wLjAuMTo0MTc1IiwicmV2aWV3ZWRFbnRyeSI6eyJwYXRoIjoiL2Fzc2V0cy9pbmRleC1DaXFVZlk4My5qcyIsInNoYTI1NiI6IjdlZDkxNDRlZDAxNDU0OGIzMDE1Y2I4OWQ0OGUwNzAxZjBjNzQwMTRhYTUzZjkzNDI0NDQ2OWUwMzQ5NmI1NjQifSwicmV2aWV3ZWRTdHlsZXMiOlt7InBhdGgiOiIvYXNzZXRzL2luZGV4LUJObENJZzdXLmNzcyIsInNoYTI1NiI6IjdkYzQ2OTc5MDIzYWJmNjliYjA3MzlhYmNjYmRmNWIzN2MxZTJhNDY4NDY0NTM4MmUwOTE2MzFjZjQ3NzUzZTIifV19"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "37e4c99d8313ab3db5d7-c732b88d7f3654a1769c",
+          "file": "process.spec.ts",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "刷新恢复个人书签、演示条件及笔记，并保持暂停",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 18266,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T21:10:22.731Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "reviewed-resources",
+                      "contentType": "application/json",
+                      "body": "eyJiYXNlIjoiaHR0cDovLzEyNy4wLjAuMTo0MTc1IiwicmV2aWV3ZWRFbnRyeSI6eyJwYXRoIjoiL2Fzc2V0cy9pbmRleC1DaXFVZlk4My5qcyIsInNoYTI1NiI6IjdlZDkxNDRlZDAxNDU0OGIzMDE1Y2I4OWQ0OGUwNzAxZjBjNzQwMTRhYTUzZjkzNDI0NDQ2OWUwMzQ5NmI1NjQifSwicmV2aWV3ZWRTdHlsZXMiOlt7InBhdGgiOiIvYXNzZXRzL2luZGV4LUJObENJZzdXLmNzcyIsInNoYTI1NiI6IjdkYzQ2OTc5MDIzYWJmNjliYjA3MzlhYmNjYmRmNWIzN2MxZTJhNDY4NDY0NTM4MmUwOTE2MzFjZjQ3NzUzZTIifV19"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "37e4c99d8313ab3db5d7-15cf03ffd38151c6f4ef",
+          "file": "process.spec.ts",
+          "line": 36,
+          "column": 1
+        },
+        {
+          "title": "教师演示的进度、翻页和临时笔记不覆盖个人状态",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 20261,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T21:10:41.010Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "reviewed-resources",
+                      "contentType": "application/json",
+                      "body": "eyJiYXNlIjoiaHR0cDovLzEyNy4wLjAuMTo0MTc1IiwicmV2aWV3ZWRFbnRyeSI6eyJwYXRoIjoiL2Fzc2V0cy9pbmRleC1DaXFVZlk4My5qcyIsInNoYTI1NiI6IjdlZDkxNDRlZDAxNDU0OGIzMDE1Y2I4OWQ0OGUwNzAxZjBjNzQwMTRhYTUzZjkzNDI0NDQ2OWUwMzQ5NmI1NjQifSwicmV2aWV3ZWRTdHlsZXMiOlt7InBhdGgiOiIvYXNzZXRzL2luZGV4LUJObENJZzdXLmNzcyIsInNoYTI1NiI6IjdkYzQ2OTc5MDIzYWJmNjliYjA3MzlhYmNjYmRmNWIzN2MxZTJhNDY4NDY0NTM4MmUwOTE2MzFjZjQ3NzUzZTIifV19"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "37e4c99d8313ab3db5d7-c8b63b71846c5671aab6",
+          "file": "process.spec.ts",
+          "line": 61,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "reading.spec.ts",
+      "file": "reading.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "整册封面与目录保留六章、十七节、六研究和六十个演示",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7070,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T21:11:01.322Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "reviewed-resources",
+                      "contentType": "application/json",
+                      "body": "eyJiYXNlIjoiaHR0cDovLzEyNy4wLjAuMTo0MTc1IiwicmV2aWV3ZWRFbnRyeSI6eyJwYXRoIjoiL2Fzc2V0cy9pbmRleC1DaXFVZlk4My5qcyIsInNoYTI1NiI6IjdlZDkxNDRlZDAxNDU0OGIzMDE1Y2I4OWQ0OGUwNzAxZjBjNzQwMTRhYTUzZjkzNDI0NDQ2OWUwMzQ5NmI1NjQifSwicmV2aWV3ZWRTdHlsZXMiOlt7InBhdGgiOiIvYXNzZXRzL2luZGV4LUJObENJZzdXLmNzcyIsInNoYTI1NiI6IjdkYzQ2OTc5MDIzYWJmNjliYjA3MzlhYmNjYmRmNWIzN2MxZTJhNDY4NDY0NTM4MmUwOTE2MzFjZjQ3NzUzZTIifV19"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dd28b817daae9d948764-3be8f604b58c651c3a20",
+          "file": "reading.spec.ts",
+          "line": 3,
+          "column": 1
+        },
+        {
+          "title": "翻页、正文跳转和放大原页使用同一教材页码",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 15822,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T21:11:08.402Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "reviewed-resources",
+                      "contentType": "application/json",
+                      "body": "eyJiYXNlIjoiaHR0cDovLzEyNy4wLjAuMTo0MTc1IiwicmV2aWV3ZWRFbnRyeSI6eyJwYXRoIjoiL2Fzc2V0cy9pbmRleC1DaXFVZlk4My5qcyIsInNoYTI1NiI6IjdlZDkxNDRlZDAxNDU0OGIzMDE1Y2I4OWQ0OGUwNzAxZjBjNzQwMTRhYTUzZjkzNDI0NDQ2OWUwMzQ5NmI1NjQifSwicmV2aWV3ZWRTdHlsZXMiOlt7InBhdGgiOiIvYXNzZXRzL2luZGV4LUJObENJZzdXLmNzcyIsInNoYTI1NiI6IjdkYzQ2OTc5MDIzYWJmNjliYjA3MzlhYmNjYmRmNWIzN2MxZTJhNDY4NDY0NTM4MmUwOTE2MzFjZjQ3NzUzZTIifV19"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "dd28b817daae9d948764-e4f1762805a944d96e28",
+          "file": "reading.spec.ts",
+          "line": 26,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "resilience.spec.ts",
+      "file": "resilience.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "WebGL 不可用时仍能翻阅、放大原页并操作二维环流",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5995,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T21:11:24.261Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "reviewed-resources",
+                      "contentType": "application/json",
+                      "body": "eyJiYXNlIjoiaHR0cDovLzEyNy4wLjAuMTo0MTc1IiwicmV2aWV3ZWRFbnRyeSI6eyJwYXRoIjoiL2Fzc2V0cy9pbmRleC1DaXFVZlk4My5qcyIsInNoYTI1NiI6IjdlZDkxNDRlZDAxNDU0OGIzMDE1Y2I4OWQ0OGUwNzAxZjBjNzQwMTRhYTUzZjkzNDI0NDQ2OWUwMzQ5NmI1NjQifSwicmV2aWV3ZWRTdHlsZXMiOlt7InBhdGgiOiIvYXNzZXRzL2luZGV4LUJObENJZzdXLmNzcyIsInNoYTI1NiI6IjdkYzQ2OTc5MDIzYWJmNjliYjA3MzlhYmNjYmRmNWIzN2MxZTJhNDY4NDY0NTM4MmUwOTE2MzFjZjQ3NzUzZTIifV19"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c1cdccb29e536012e9c2-242c731a37d081d62145",
+          "file": "resilience.spec.ts",
+          "line": 3,
+          "column": 1
+        },
+        {
+          "title": "实际丢失 WebGL 上下文后保留条件并继续二维阅读",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 15056,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-05T21:11:30.270Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "reviewed-resources",
+                      "contentType": "application/json",
+                      "body": "eyJiYXNlIjoiaHR0cDovLzEyNy4wLjAuMTo0MTc1IiwicmV2aWV3ZWRFbnRyeSI6eyJwYXRoIjoiL2Fzc2V0cy9pbmRleC1DaXFVZlk4My5qcyIsInNoYTI1NiI6IjdlZDkxNDRlZDAxNDU0OGIzMDE1Y2I4OWQ0OGUwNzAxZjBjNzQwMTRhYTUzZjkzNDI0NDQ2OWUwMzQ5NmI1NjQifSwicmV2aWV3ZWRTdHlsZXMiOlt7InBhdGgiOiIvYXNzZXRzL2luZGV4LUJObENJZzdXLmNzcyIsInNoYTI1NiI6IjdkYzQ2OTc5MDIzYWJmNjliYjA3MzlhYmNjYmRmNWIzN2MxZTJhNDY4NDY0NTM4MmUwOTE2MzFjZjQ3NzUzZTIifV19"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c1cdccb29e536012e9c2-6ba096fbfbddf1b8190a",
+          "file": "resilience.spec.ts",
+          "line": 32,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-05T21:09:49.796Z",
+    "duration": 124493.807,
+    "expected": 9,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

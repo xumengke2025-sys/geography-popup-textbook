@@ -1,0 +1,2556 @@
+{
+  "base": "http://127.0.0.1:4175",
+  "browser": "156.0.8078.80",
+  "errors": [],
+  "failures": [],
+  "checks": [
+    "cosmic-scale: repeated opening and closing returns to the same texture count",
+    "cosmic-scale: no retained model geometries after closing",
+    "breeze: repeated opening and closing returns to the same texture count",
+    "breeze: no retained model geometries after closing",
+    "vegetation: repeated opening and closing returns to the same texture count",
+    "vegetation: no retained model geometries after closing",
+    "gnss: repeated opening and closing returns to the same texture count",
+    "gnss: no retained model geometries after closing",
+    "a second traversal of all 60 models does not increase the final texture count",
+    "all models release their geometry after both complete traversals",
+    "no browser exceptions"
+  ],
+  "samples": [
+    {
+      "label": "baseline",
+      "spread": 0,
+      "geometries": 11,
+      "textures": 28,
+      "images": 3,
+      "hiRes": 4,
+      "models": 0
+    },
+    {
+      "label": "cosmic-scale/0/open",
+      "spread": 4,
+      "geometries": 49,
+      "textures": 41,
+      "images": 8,
+      "hiRes": 4,
+      "models": 1
+    },
+    {
+      "label": "cosmic-scale/0/closed",
+      "spread": 4,
+      "geometries": 12,
+      "textures": 37,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "cosmic-scale/1/open",
+      "spread": 4,
+      "geometries": 49,
+      "textures": 41,
+      "images": 8,
+      "hiRes": 6,
+      "models": 1
+    },
+    {
+      "label": "cosmic-scale/1/closed",
+      "spread": 4,
+      "geometries": 12,
+      "textures": 37,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "cosmic-scale/2/open",
+      "spread": 4,
+      "geometries": 49,
+      "textures": 41,
+      "images": 8,
+      "hiRes": 6,
+      "models": 1
+    },
+    {
+      "label": "cosmic-scale/2/closed",
+      "spread": 4,
+      "geometries": 12,
+      "textures": 37,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "cosmic-scale/3/open",
+      "spread": 4,
+      "geometries": 49,
+      "textures": 41,
+      "images": 8,
+      "hiRes": 6,
+      "models": 1
+    },
+    {
+      "label": "cosmic-scale/3/closed",
+      "spread": 4,
+      "geometries": 12,
+      "textures": 37,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "cosmic-scale/4/open",
+      "spread": 4,
+      "geometries": 49,
+      "textures": 41,
+      "images": 8,
+      "hiRes": 6,
+      "models": 1
+    },
+    {
+      "label": "cosmic-scale/4/closed",
+      "spread": 4,
+      "geometries": 12,
+      "textures": 37,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "breeze/0/open",
+      "spread": 22,
+      "geometries": 70,
+      "textures": 50,
+      "images": 6,
+      "hiRes": 4,
+      "models": 1
+    },
+    {
+      "label": "breeze/0/closed",
+      "spread": 22,
+      "geometries": 12,
+      "textures": 44,
+      "images": 6,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "breeze/1/open",
+      "spread": 22,
+      "geometries": 70,
+      "textures": 50,
+      "images": 6,
+      "hiRes": 6,
+      "models": 1
+    },
+    {
+      "label": "breeze/1/closed",
+      "spread": 22,
+      "geometries": 12,
+      "textures": 44,
+      "images": 6,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "breeze/2/open",
+      "spread": 22,
+      "geometries": 70,
+      "textures": 50,
+      "images": 6,
+      "hiRes": 6,
+      "models": 1
+    },
+    {
+      "label": "breeze/2/closed",
+      "spread": 22,
+      "geometries": 12,
+      "textures": 44,
+      "images": 6,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "breeze/3/open",
+      "spread": 22,
+      "geometries": 70,
+      "textures": 50,
+      "images": 6,
+      "hiRes": 6,
+      "models": 1
+    },
+    {
+      "label": "breeze/3/closed",
+      "spread": 22,
+      "geometries": 12,
+      "textures": 44,
+      "images": 6,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "breeze/4/open",
+      "spread": 22,
+      "geometries": 70,
+      "textures": 50,
+      "images": 6,
+      "hiRes": 6,
+      "models": 1
+    },
+    {
+      "label": "breeze/4/closed",
+      "spread": 22,
+      "geometries": 12,
+      "textures": 44,
+      "images": 6,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "vegetation/0/open",
+      "spread": 45,
+      "geometries": 70,
+      "textures": 54,
+      "images": 6,
+      "hiRes": 2,
+      "models": 1
+    },
+    {
+      "label": "vegetation/0/closed",
+      "spread": 45,
+      "geometries": 12,
+      "textures": 51,
+      "images": 6,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "vegetation/1/open",
+      "spread": 45,
+      "geometries": 70,
+      "textures": 54,
+      "images": 6,
+      "hiRes": 6,
+      "models": 1
+    },
+    {
+      "label": "vegetation/1/closed",
+      "spread": 45,
+      "geometries": 12,
+      "textures": 51,
+      "images": 6,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "vegetation/2/open",
+      "spread": 45,
+      "geometries": 70,
+      "textures": 54,
+      "images": 6,
+      "hiRes": 6,
+      "models": 1
+    },
+    {
+      "label": "vegetation/2/closed",
+      "spread": 45,
+      "geometries": 12,
+      "textures": 51,
+      "images": 6,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "vegetation/3/open",
+      "spread": 45,
+      "geometries": 70,
+      "textures": 54,
+      "images": 6,
+      "hiRes": 6,
+      "models": 1
+    },
+    {
+      "label": "vegetation/3/closed",
+      "spread": 45,
+      "geometries": 12,
+      "textures": 51,
+      "images": 6,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "vegetation/4/open",
+      "spread": 45,
+      "geometries": 70,
+      "textures": 54,
+      "images": 6,
+      "hiRes": 6,
+      "models": 1
+    },
+    {
+      "label": "vegetation/4/closed",
+      "spread": 45,
+      "geometries": 12,
+      "textures": 51,
+      "images": 6,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "gnss/0/open",
+      "spread": 61,
+      "geometries": 36,
+      "textures": 61,
+      "images": 6,
+      "hiRes": 4,
+      "models": 1
+    },
+    {
+      "label": "gnss/0/closed",
+      "spread": 61,
+      "geometries": 12,
+      "textures": 58,
+      "images": 6,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "gnss/1/open",
+      "spread": 61,
+      "geometries": 36,
+      "textures": 61,
+      "images": 6,
+      "hiRes": 6,
+      "models": 1
+    },
+    {
+      "label": "gnss/1/closed",
+      "spread": 61,
+      "geometries": 12,
+      "textures": 58,
+      "images": 6,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "gnss/2/open",
+      "spread": 61,
+      "geometries": 36,
+      "textures": 61,
+      "images": 6,
+      "hiRes": 6,
+      "models": 1
+    },
+    {
+      "label": "gnss/2/closed",
+      "spread": 61,
+      "geometries": 12,
+      "textures": 58,
+      "images": 6,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "gnss/3/open",
+      "spread": 61,
+      "geometries": 36,
+      "textures": 61,
+      "images": 6,
+      "hiRes": 6,
+      "models": 1
+    },
+    {
+      "label": "gnss/3/closed",
+      "spread": 61,
+      "geometries": 12,
+      "textures": 58,
+      "images": 6,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "gnss/4/open",
+      "spread": 61,
+      "geometries": 36,
+      "textures": 61,
+      "images": 6,
+      "hiRes": 6,
+      "models": 1
+    },
+    {
+      "label": "gnss/4/closed",
+      "spread": 61,
+      "geometries": 12,
+      "textures": 58,
+      "images": 6,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/cosmic-scale/closed",
+      "spread": 4,
+      "geometries": 12,
+      "textures": 58,
+      "images": 6,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/solar/closed",
+      "spread": 4,
+      "geometries": 12,
+      "textures": 58,
+      "images": 6,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/habitable/closed",
+      "spread": 6,
+      "geometries": 12,
+      "textures": 65,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/solar-distribution/closed",
+      "spread": 7,
+      "geometries": 12,
+      "textures": 73,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/sun/closed",
+      "spread": 7,
+      "geometries": 12,
+      "textures": 73,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/solar-activity/closed",
+      "spread": 8,
+      "geometries": 12,
+      "textures": 79,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/history/closed",
+      "spread": 10,
+      "geometries": 12,
+      "textures": 84,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/geo-time/closed",
+      "spread": 11,
+      "geometries": 12,
+      "textures": 92,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/seismic-waves/closed",
+      "spread": 13,
+      "geometries": 12,
+      "textures": 97,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/earth/closed",
+      "spread": 14,
+      "geometries": 12,
+      "textures": 105,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/external-spheres/closed",
+      "spread": 14,
+      "geometries": 12,
+      "textures": 105,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/mars-base/closed",
+      "spread": 16,
+      "geometries": 12,
+      "textures": 110,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/air-composition/closed",
+      "spread": 17,
+      "geometries": 12,
+      "textures": 118,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/atmosphere/closed",
+      "spread": 18,
+      "geometries": 12,
+      "textures": 124,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/heating/closed",
+      "spread": 20,
+      "geometries": 12,
+      "textures": 129,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/greenhouse/closed",
+      "spread": 20,
+      "geometries": 12,
+      "textures": 129,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/thermal/closed",
+      "spread": 21,
+      "geometries": 12,
+      "textures": 137,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/breeze/closed",
+      "spread": 22,
+      "geometries": 12,
+      "textures": 137,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/pressure-wind/closed",
+      "spread": 22,
+      "geometries": 12,
+      "textures": 137,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/wind-forces/closed",
+      "spread": 22,
+      "geometries": 12,
+      "textures": 137,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/haze/closed",
+      "spread": 24,
+      "geometries": 12,
+      "textures": 142,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/water/closed",
+      "spread": 26,
+      "geometries": 12,
+      "textures": 149,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/water-renewal/closed",
+      "spread": 27,
+      "geometries": 12,
+      "textures": 157,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/temperature/closed",
+      "spread": 28,
+      "geometries": 12,
+      "textures": 163,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/salinity/closed",
+      "spread": 29,
+      "geometries": 12,
+      "textures": 169,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/density/closed",
+      "spread": 30,
+      "geometries": 12,
+      "textures": 175,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/waves/closed",
+      "spread": 31,
+      "geometries": 12,
+      "textures": 181,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/tides/closed",
+      "spread": 32,
+      "geometries": 12,
+      "textures": 187,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/currents/closed",
+      "spread": 33,
+      "geometries": 12,
+      "textures": 193,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/desalination/closed",
+      "spread": 35,
+      "geometries": 12,
+      "textures": 198,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/karst/closed",
+      "spread": 36,
+      "geometries": 12,
+      "textures": 206,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/karst-cave/closed",
+      "spread": 37,
+      "geometries": 12,
+      "textures": 212,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/river-valley/closed",
+      "spread": 37,
+      "geometries": 12,
+      "textures": 212,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/river/closed",
+      "spread": 38,
+      "geometries": 12,
+      "textures": 218,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/delta/closed",
+      "spread": 38,
+      "geometries": 12,
+      "textures": 218,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/aeolian/closed",
+      "spread": 39,
+      "geometries": 12,
+      "textures": 224,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/coastal-landform/closed",
+      "spread": 40,
+      "geometries": 12,
+      "textures": 230,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/slope/closed",
+      "spread": 41,
+      "geometries": 12,
+      "textures": 236,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/terrain-observation/closed",
+      "spread": 41,
+      "geometries": 12,
+      "textures": 236,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/karst-livelihood/closed",
+      "spread": 43,
+      "geometries": 12,
+      "textures": 241,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/forest/closed",
+      "spread": 44,
+      "geometries": 12,
+      "textures": 249,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/vegetation/closed",
+      "spread": 45,
+      "geometries": 12,
+      "textures": 249,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/soil-composition/closed",
+      "spread": 47,
+      "geometries": 12,
+      "textures": 254,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/soil-texture/closed",
+      "spread": 47,
+      "geometries": 12,
+      "textures": 254,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/soil/closed",
+      "spread": 47,
+      "geometries": 12,
+      "textures": 254,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/soil-factors/closed",
+      "spread": 48,
+      "geometries": 12,
+      "textures": 262,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/soil-care/closed",
+      "spread": 50,
+      "geometries": 12,
+      "textures": 267,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/urban-waterlogging/closed",
+      "spread": 51,
+      "geometries": 12,
+      "textures": 275,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/flood/closed",
+      "spread": 53,
+      "geometries": 12,
+      "textures": 280,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/drought/closed",
+      "spread": 54,
+      "geometries": 12,
+      "textures": 288,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/typhoon/closed",
+      "spread": 54,
+      "geometries": 12,
+      "textures": 288,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/cold-wave/closed",
+      "spread": 55,
+      "geometries": 12,
+      "textures": 294,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/earthquake/closed",
+      "spread": 56,
+      "geometries": 12,
+      "textures": 300,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/slide/closed",
+      "spread": 57,
+      "geometries": 12,
+      "textures": 306,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/disaster-chain/closed",
+      "spread": 57,
+      "geometries": 12,
+      "textures": 306,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/mitigation/closed",
+      "spread": 58,
+      "geometries": 12,
+      "textures": 312,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/remote/closed",
+      "spread": 60,
+      "geometries": 12,
+      "textures": 317,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/gnss/closed",
+      "spread": 61,
+      "geometries": 12,
+      "textures": 319,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/gis/closed",
+      "spread": 61,
+      "geometries": 12,
+      "textures": 319,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-0/warehouse/closed",
+      "spread": 63,
+      "geometries": 12,
+      "textures": 324,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/cosmic-scale/closed",
+      "spread": 4,
+      "geometries": 12,
+      "textures": 324,
+      "images": 6,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/solar/closed",
+      "spread": 4,
+      "geometries": 12,
+      "textures": 324,
+      "images": 6,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/habitable/closed",
+      "spread": 6,
+      "geometries": 12,
+      "textures": 324,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/solar-distribution/closed",
+      "spread": 7,
+      "geometries": 12,
+      "textures": 326,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/sun/closed",
+      "spread": 7,
+      "geometries": 12,
+      "textures": 326,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/solar-activity/closed",
+      "spread": 8,
+      "geometries": 12,
+      "textures": 326,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/history/closed",
+      "spread": 10,
+      "geometries": 12,
+      "textures": 324,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/geo-time/closed",
+      "spread": 11,
+      "geometries": 12,
+      "textures": 326,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/seismic-waves/closed",
+      "spread": 13,
+      "geometries": 12,
+      "textures": 324,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/earth/closed",
+      "spread": 14,
+      "geometries": 12,
+      "textures": 326,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/external-spheres/closed",
+      "spread": 14,
+      "geometries": 12,
+      "textures": 326,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/mars-base/closed",
+      "spread": 16,
+      "geometries": 12,
+      "textures": 324,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/air-composition/closed",
+      "spread": 17,
+      "geometries": 12,
+      "textures": 326,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/atmosphere/closed",
+      "spread": 18,
+      "geometries": 12,
+      "textures": 326,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/heating/closed",
+      "spread": 20,
+      "geometries": 12,
+      "textures": 324,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/greenhouse/closed",
+      "spread": 20,
+      "geometries": 12,
+      "textures": 324,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/thermal/closed",
+      "spread": 21,
+      "geometries": 12,
+      "textures": 326,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/breeze/closed",
+      "spread": 22,
+      "geometries": 12,
+      "textures": 326,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/pressure-wind/closed",
+      "spread": 22,
+      "geometries": 12,
+      "textures": 326,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/wind-forces/closed",
+      "spread": 22,
+      "geometries": 12,
+      "textures": 326,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/haze/closed",
+      "spread": 24,
+      "geometries": 12,
+      "textures": 324,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/water/closed",
+      "spread": 26,
+      "geometries": 12,
+      "textures": 324,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/water-renewal/closed",
+      "spread": 27,
+      "geometries": 12,
+      "textures": 326,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/temperature/closed",
+      "spread": 28,
+      "geometries": 12,
+      "textures": 326,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/salinity/closed",
+      "spread": 29,
+      "geometries": 12,
+      "textures": 326,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/density/closed",
+      "spread": 30,
+      "geometries": 12,
+      "textures": 326,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/waves/closed",
+      "spread": 31,
+      "geometries": 12,
+      "textures": 326,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/tides/closed",
+      "spread": 32,
+      "geometries": 12,
+      "textures": 326,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/currents/closed",
+      "spread": 33,
+      "geometries": 12,
+      "textures": 326,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/desalination/closed",
+      "spread": 35,
+      "geometries": 12,
+      "textures": 324,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/karst/closed",
+      "spread": 36,
+      "geometries": 12,
+      "textures": 326,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/karst-cave/closed",
+      "spread": 37,
+      "geometries": 12,
+      "textures": 326,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/river-valley/closed",
+      "spread": 37,
+      "geometries": 12,
+      "textures": 326,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/river/closed",
+      "spread": 38,
+      "geometries": 12,
+      "textures": 326,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/delta/closed",
+      "spread": 38,
+      "geometries": 12,
+      "textures": 326,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/aeolian/closed",
+      "spread": 39,
+      "geometries": 12,
+      "textures": 326,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/coastal-landform/closed",
+      "spread": 40,
+      "geometries": 12,
+      "textures": 326,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/slope/closed",
+      "spread": 41,
+      "geometries": 12,
+      "textures": 326,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/terrain-observation/closed",
+      "spread": 41,
+      "geometries": 12,
+      "textures": 326,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/karst-livelihood/closed",
+      "spread": 43,
+      "geometries": 12,
+      "textures": 324,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/forest/closed",
+      "spread": 44,
+      "geometries": 12,
+      "textures": 326,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/vegetation/closed",
+      "spread": 45,
+      "geometries": 12,
+      "textures": 326,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/soil-composition/closed",
+      "spread": 47,
+      "geometries": 12,
+      "textures": 324,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/soil-texture/closed",
+      "spread": 47,
+      "geometries": 12,
+      "textures": 324,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/soil/closed",
+      "spread": 47,
+      "geometries": 12,
+      "textures": 324,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/soil-factors/closed",
+      "spread": 48,
+      "geometries": 12,
+      "textures": 326,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/soil-care/closed",
+      "spread": 50,
+      "geometries": 12,
+      "textures": 324,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/urban-waterlogging/closed",
+      "spread": 51,
+      "geometries": 12,
+      "textures": 326,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/flood/closed",
+      "spread": 53,
+      "geometries": 12,
+      "textures": 324,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/drought/closed",
+      "spread": 54,
+      "geometries": 12,
+      "textures": 326,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/typhoon/closed",
+      "spread": 54,
+      "geometries": 12,
+      "textures": 326,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/cold-wave/closed",
+      "spread": 55,
+      "geometries": 12,
+      "textures": 326,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/earthquake/closed",
+      "spread": 56,
+      "geometries": 12,
+      "textures": 326,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/slide/closed",
+      "spread": 57,
+      "geometries": 12,
+      "textures": 326,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/disaster-chain/closed",
+      "spread": 57,
+      "geometries": 12,
+      "textures": 326,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/mitigation/closed",
+      "spread": 58,
+      "geometries": 12,
+      "textures": 326,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/remote/closed",
+      "spread": 60,
+      "geometries": 12,
+      "textures": 324,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/gnss/closed",
+      "spread": 61,
+      "geometries": 12,
+      "textures": 326,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/gis/closed",
+      "spread": 61,
+      "geometries": 12,
+      "textures": 326,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    },
+    {
+      "label": "round-1/warehouse/closed",
+      "spread": 63,
+      "geometries": 12,
+      "textures": 324,
+      "images": 8,
+      "hiRes": 6,
+      "models": 0
+    }
+  ],
+  "rounds": [
+    [
+      {
+        "label": "round-0/cosmic-scale/closed",
+        "spread": 4,
+        "geometries": 12,
+        "textures": 58,
+        "images": 6,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/solar/closed",
+        "spread": 4,
+        "geometries": 12,
+        "textures": 58,
+        "images": 6,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/habitable/closed",
+        "spread": 6,
+        "geometries": 12,
+        "textures": 65,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/solar-distribution/closed",
+        "spread": 7,
+        "geometries": 12,
+        "textures": 73,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/sun/closed",
+        "spread": 7,
+        "geometries": 12,
+        "textures": 73,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/solar-activity/closed",
+        "spread": 8,
+        "geometries": 12,
+        "textures": 79,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/history/closed",
+        "spread": 10,
+        "geometries": 12,
+        "textures": 84,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/geo-time/closed",
+        "spread": 11,
+        "geometries": 12,
+        "textures": 92,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/seismic-waves/closed",
+        "spread": 13,
+        "geometries": 12,
+        "textures": 97,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/earth/closed",
+        "spread": 14,
+        "geometries": 12,
+        "textures": 105,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/external-spheres/closed",
+        "spread": 14,
+        "geometries": 12,
+        "textures": 105,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/mars-base/closed",
+        "spread": 16,
+        "geometries": 12,
+        "textures": 110,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/air-composition/closed",
+        "spread": 17,
+        "geometries": 12,
+        "textures": 118,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/atmosphere/closed",
+        "spread": 18,
+        "geometries": 12,
+        "textures": 124,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/heating/closed",
+        "spread": 20,
+        "geometries": 12,
+        "textures": 129,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/greenhouse/closed",
+        "spread": 20,
+        "geometries": 12,
+        "textures": 129,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/thermal/closed",
+        "spread": 21,
+        "geometries": 12,
+        "textures": 137,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/breeze/closed",
+        "spread": 22,
+        "geometries": 12,
+        "textures": 137,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/pressure-wind/closed",
+        "spread": 22,
+        "geometries": 12,
+        "textures": 137,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/wind-forces/closed",
+        "spread": 22,
+        "geometries": 12,
+        "textures": 137,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/haze/closed",
+        "spread": 24,
+        "geometries": 12,
+        "textures": 142,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/water/closed",
+        "spread": 26,
+        "geometries": 12,
+        "textures": 149,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/water-renewal/closed",
+        "spread": 27,
+        "geometries": 12,
+        "textures": 157,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/temperature/closed",
+        "spread": 28,
+        "geometries": 12,
+        "textures": 163,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/salinity/closed",
+        "spread": 29,
+        "geometries": 12,
+        "textures": 169,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/density/closed",
+        "spread": 30,
+        "geometries": 12,
+        "textures": 175,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/waves/closed",
+        "spread": 31,
+        "geometries": 12,
+        "textures": 181,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/tides/closed",
+        "spread": 32,
+        "geometries": 12,
+        "textures": 187,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/currents/closed",
+        "spread": 33,
+        "geometries": 12,
+        "textures": 193,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/desalination/closed",
+        "spread": 35,
+        "geometries": 12,
+        "textures": 198,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/karst/closed",
+        "spread": 36,
+        "geometries": 12,
+        "textures": 206,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/karst-cave/closed",
+        "spread": 37,
+        "geometries": 12,
+        "textures": 212,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/river-valley/closed",
+        "spread": 37,
+        "geometries": 12,
+        "textures": 212,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/river/closed",
+        "spread": 38,
+        "geometries": 12,
+        "textures": 218,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/delta/closed",
+        "spread": 38,
+        "geometries": 12,
+        "textures": 218,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/aeolian/closed",
+        "spread": 39,
+        "geometries": 12,
+        "textures": 224,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/coastal-landform/closed",
+        "spread": 40,
+        "geometries": 12,
+        "textures": 230,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/slope/closed",
+        "spread": 41,
+        "geometries": 12,
+        "textures": 236,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/terrain-observation/closed",
+        "spread": 41,
+        "geometries": 12,
+        "textures": 236,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/karst-livelihood/closed",
+        "spread": 43,
+        "geometries": 12,
+        "textures": 241,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/forest/closed",
+        "spread": 44,
+        "geometries": 12,
+        "textures": 249,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/vegetation/closed",
+        "spread": 45,
+        "geometries": 12,
+        "textures": 249,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/soil-composition/closed",
+        "spread": 47,
+        "geometries": 12,
+        "textures": 254,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/soil-texture/closed",
+        "spread": 47,
+        "geometries": 12,
+        "textures": 254,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/soil/closed",
+        "spread": 47,
+        "geometries": 12,
+        "textures": 254,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/soil-factors/closed",
+        "spread": 48,
+        "geometries": 12,
+        "textures": 262,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/soil-care/closed",
+        "spread": 50,
+        "geometries": 12,
+        "textures": 267,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/urban-waterlogging/closed",
+        "spread": 51,
+        "geometries": 12,
+        "textures": 275,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/flood/closed",
+        "spread": 53,
+        "geometries": 12,
+        "textures": 280,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/drought/closed",
+        "spread": 54,
+        "geometries": 12,
+        "textures": 288,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/typhoon/closed",
+        "spread": 54,
+        "geometries": 12,
+        "textures": 288,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/cold-wave/closed",
+        "spread": 55,
+        "geometries": 12,
+        "textures": 294,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/earthquake/closed",
+        "spread": 56,
+        "geometries": 12,
+        "textures": 300,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/slide/closed",
+        "spread": 57,
+        "geometries": 12,
+        "textures": 306,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/disaster-chain/closed",
+        "spread": 57,
+        "geometries": 12,
+        "textures": 306,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/mitigation/closed",
+        "spread": 58,
+        "geometries": 12,
+        "textures": 312,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/remote/closed",
+        "spread": 60,
+        "geometries": 12,
+        "textures": 317,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/gnss/closed",
+        "spread": 61,
+        "geometries": 12,
+        "textures": 319,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/gis/closed",
+        "spread": 61,
+        "geometries": 12,
+        "textures": 319,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-0/warehouse/closed",
+        "spread": 63,
+        "geometries": 12,
+        "textures": 324,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      }
+    ],
+    [
+      {
+        "label": "round-1/cosmic-scale/closed",
+        "spread": 4,
+        "geometries": 12,
+        "textures": 324,
+        "images": 6,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/solar/closed",
+        "spread": 4,
+        "geometries": 12,
+        "textures": 324,
+        "images": 6,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/habitable/closed",
+        "spread": 6,
+        "geometries": 12,
+        "textures": 324,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/solar-distribution/closed",
+        "spread": 7,
+        "geometries": 12,
+        "textures": 326,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/sun/closed",
+        "spread": 7,
+        "geometries": 12,
+        "textures": 326,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/solar-activity/closed",
+        "spread": 8,
+        "geometries": 12,
+        "textures": 326,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/history/closed",
+        "spread": 10,
+        "geometries": 12,
+        "textures": 324,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/geo-time/closed",
+        "spread": 11,
+        "geometries": 12,
+        "textures": 326,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/seismic-waves/closed",
+        "spread": 13,
+        "geometries": 12,
+        "textures": 324,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/earth/closed",
+        "spread": 14,
+        "geometries": 12,
+        "textures": 326,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/external-spheres/closed",
+        "spread": 14,
+        "geometries": 12,
+        "textures": 326,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/mars-base/closed",
+        "spread": 16,
+        "geometries": 12,
+        "textures": 324,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/air-composition/closed",
+        "spread": 17,
+        "geometries": 12,
+        "textures": 326,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/atmosphere/closed",
+        "spread": 18,
+        "geometries": 12,
+        "textures": 326,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/heating/closed",
+        "spread": 20,
+        "geometries": 12,
+        "textures": 324,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/greenhouse/closed",
+        "spread": 20,
+        "geometries": 12,
+        "textures": 324,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/thermal/closed",
+        "spread": 21,
+        "geometries": 12,
+        "textures": 326,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/breeze/closed",
+        "spread": 22,
+        "geometries": 12,
+        "textures": 326,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/pressure-wind/closed",
+        "spread": 22,
+        "geometries": 12,
+        "textures": 326,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/wind-forces/closed",
+        "spread": 22,
+        "geometries": 12,
+        "textures": 326,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/haze/closed",
+        "spread": 24,
+        "geometries": 12,
+        "textures": 324,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/water/closed",
+        "spread": 26,
+        "geometries": 12,
+        "textures": 324,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/water-renewal/closed",
+        "spread": 27,
+        "geometries": 12,
+        "textures": 326,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/temperature/closed",
+        "spread": 28,
+        "geometries": 12,
+        "textures": 326,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/salinity/closed",
+        "spread": 29,
+        "geometries": 12,
+        "textures": 326,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/density/closed",
+        "spread": 30,
+        "geometries": 12,
+        "textures": 326,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/waves/closed",
+        "spread": 31,
+        "geometries": 12,
+        "textures": 326,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/tides/closed",
+        "spread": 32,
+        "geometries": 12,
+        "textures": 326,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/currents/closed",
+        "spread": 33,
+        "geometries": 12,
+        "textures": 326,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/desalination/closed",
+        "spread": 35,
+        "geometries": 12,
+        "textures": 324,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/karst/closed",
+        "spread": 36,
+        "geometries": 12,
+        "textures": 326,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/karst-cave/closed",
+        "spread": 37,
+        "geometries": 12,
+        "textures": 326,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/river-valley/closed",
+        "spread": 37,
+        "geometries": 12,
+        "textures": 326,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/river/closed",
+        "spread": 38,
+        "geometries": 12,
+        "textures": 326,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/delta/closed",
+        "spread": 38,
+        "geometries": 12,
+        "textures": 326,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/aeolian/closed",
+        "spread": 39,
+        "geometries": 12,
+        "textures": 326,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/coastal-landform/closed",
+        "spread": 40,
+        "geometries": 12,
+        "textures": 326,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/slope/closed",
+        "spread": 41,
+        "geometries": 12,
+        "textures": 326,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/terrain-observation/closed",
+        "spread": 41,
+        "geometries": 12,
+        "textures": 326,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/karst-livelihood/closed",
+        "spread": 43,
+        "geometries": 12,
+        "textures": 324,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/forest/closed",
+        "spread": 44,
+        "geometries": 12,
+        "textures": 326,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/vegetation/closed",
+        "spread": 45,
+        "geometries": 12,
+        "textures": 326,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/soil-composition/closed",
+        "spread": 47,
+        "geometries": 12,
+        "textures": 324,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/soil-texture/closed",
+        "spread": 47,
+        "geometries": 12,
+        "textures": 324,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/soil/closed",
+        "spread": 47,
+        "geometries": 12,
+        "textures": 324,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/soil-factors/closed",
+        "spread": 48,
+        "geometries": 12,
+        "textures": 326,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/soil-care/closed",
+        "spread": 50,
+        "geometries": 12,
+        "textures": 324,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/urban-waterlogging/closed",
+        "spread": 51,
+        "geometries": 12,
+        "textures": 326,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/flood/closed",
+        "spread": 53,
+        "geometries": 12,
+        "textures": 324,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/drought/closed",
+        "spread": 54,
+        "geometries": 12,
+        "textures": 326,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/typhoon/closed",
+        "spread": 54,
+        "geometries": 12,
+        "textures": 326,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/cold-wave/closed",
+        "spread": 55,
+        "geometries": 12,
+        "textures": 326,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/earthquake/closed",
+        "spread": 56,
+        "geometries": 12,
+        "textures": 326,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/slide/closed",
+        "spread": 57,
+        "geometries": 12,
+        "textures": 326,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/disaster-chain/closed",
+        "spread": 57,
+        "geometries": 12,
+        "textures": 326,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/mitigation/closed",
+        "spread": 58,
+        "geometries": 12,
+        "textures": 326,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/remote/closed",
+        "spread": 60,
+        "geometries": 12,
+        "textures": 324,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/gnss/closed",
+        "spread": 61,
+        "geometries": 12,
+        "textures": 326,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/gis/closed",
+        "spread": 61,
+        "geometries": 12,
+        "textures": 326,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      },
+      {
+        "label": "round-1/warehouse/closed",
+        "spread": 63,
+        "geometries": 12,
+        "textures": 324,
+        "images": 8,
+        "hiRes": 6,
+        "models": 0
+      }
+    ]
+  ]
+}

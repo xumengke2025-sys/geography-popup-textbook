@@ -1,0 +1,266 @@
+{
+  "base": "http://127.0.0.1:4175",
+  "checks": [
+    "0/0: comparison is made with model time frozen",
+    "0/0: scientific state and all water destinations are unchanged",
+    "0/0: all physical objects, identities and geometry are retained",
+    "0/0: text labels keep their readable double-sided material",
+    "0/0: the complete city scene fits the 120 draw-call target",
+    "0/550: comparison is made with model time frozen",
+    "0/550: scientific state and all water destinations are unchanged",
+    "0/550: all physical objects, identities and geometry are retained",
+    "0/550: text labels keep their readable double-sided material",
+    "0/550: the complete city scene fits the 120 draw-call target",
+    "0/1000: comparison is made with model time frozen",
+    "0/1000: scientific state and all water destinations are unchanged",
+    "0/1000: all physical objects, identities and geometry are retained",
+    "0/1000: text labels keep their readable double-sided material",
+    "0/1000: the complete city scene fits the 120 draw-call target",
+    "1/0: comparison is made with model time frozen",
+    "1/0: scientific state and all water destinations are unchanged",
+    "1/0: all physical objects, identities and geometry are retained",
+    "1/0: text labels keep their readable double-sided material",
+    "1/0: the complete city scene fits the 120 draw-call target",
+    "1/550: comparison is made with model time frozen",
+    "1/550: scientific state and all water destinations are unchanged",
+    "1/550: all physical objects, identities and geometry are retained",
+    "1/550: text labels keep their readable double-sided material",
+    "1/550: the complete city scene fits the 120 draw-call target",
+    "1/1000: comparison is made with model time frozen",
+    "1/1000: scientific state and all water destinations are unchanged",
+    "1/1000: all physical objects, identities and geometry are retained",
+    "1/1000: text labels keep their readable double-sided material",
+    "1/1000: the complete city scene fits the 120 draw-call target",
+    "2/0: comparison is made with model time frozen",
+    "2/0: scientific state and all water destinations are unchanged",
+    "2/0: all physical objects, identities and geometry are retained",
+    "2/0: text labels keep their readable double-sided material",
+    "2/0: the complete city scene fits the 120 draw-call target",
+    "2/550: comparison is made with model time frozen",
+    "2/550: scientific state and all water destinations are unchanged",
+    "2/550: all physical objects, identities and geometry are retained",
+    "2/550: text labels keep their readable double-sided material",
+    "2/550: the complete city scene fits the 120 draw-call target",
+    "2/1000: comparison is made with model time frozen",
+    "2/1000: scientific state and all water destinations are unchanged",
+    "2/1000: all physical objects, identities and geometry are retained",
+    "2/1000: text labels keep their readable double-sided material",
+    "2/1000: the complete city scene fits the 120 draw-call target"
+  ],
+  "failures": [],
+  "errors": [],
+  "states": [
+    {
+      "selection": 0,
+      "phase": 0,
+      "before": {
+        "calls": 98,
+        "triangles": 15545
+      },
+      "after": {
+        "calls": 66,
+        "triangles": 14117
+      },
+      "waterCount": 12,
+      "inventory": {
+        "air": 12,
+        "surface": 0,
+        "soil": 0,
+        "storage": 0,
+        "drain": 0,
+        "collected": 0
+      }
+    },
+    {
+      "selection": 0,
+      "phase": 0.55,
+      "before": {
+        "calls": 100,
+        "triangles": 15633
+      },
+      "after": {
+        "calls": 68,
+        "triangles": 14205
+      },
+      "waterCount": 12,
+      "inventory": {
+        "air": 0,
+        "surface": 12,
+        "soil": 0,
+        "storage": 0,
+        "drain": 0,
+        "collected": 0
+      }
+    },
+    {
+      "selection": 0,
+      "phase": 1,
+      "before": {
+        "calls": 102,
+        "triangles": 15643
+      },
+      "after": {
+        "calls": 70,
+        "triangles": 14215
+      },
+      "waterCount": 12,
+      "inventory": {
+        "air": 0,
+        "surface": 8,
+        "soil": 0,
+        "storage": 0,
+        "drain": 0,
+        "collected": 4
+      }
+    },
+    {
+      "selection": 1,
+      "phase": 0,
+      "before": {
+        "calls": 152,
+        "triangles": 19769
+      },
+      "after": {
+        "calls": 93,
+        "triangles": 18017
+      },
+      "waterCount": 12,
+      "inventory": {
+        "air": 12,
+        "surface": 0,
+        "soil": 0,
+        "storage": 0,
+        "drain": 0,
+        "collected": 0
+      }
+    },
+    {
+      "selection": 1,
+      "phase": 0.55,
+      "before": {
+        "calls": 154,
+        "triangles": 19857
+      },
+      "after": {
+        "calls": 95,
+        "triangles": 18105
+      },
+      "waterCount": 12,
+      "inventory": {
+        "air": 0,
+        "surface": 4,
+        "soil": 8,
+        "storage": 0,
+        "drain": 0,
+        "collected": 0
+      }
+    },
+    {
+      "selection": 1,
+      "phase": 1,
+      "before": {
+        "calls": 156,
+        "triangles": 19873
+      },
+      "after": {
+        "calls": 97,
+        "triangles": 18121
+      },
+      "waterCount": 12,
+      "inventory": {
+        "air": 0,
+        "surface": 2,
+        "soil": 6,
+        "storage": 0,
+        "drain": 0,
+        "collected": 4
+      }
+    },
+    {
+      "selection": 2,
+      "phase": 0,
+      "before": {
+        "calls": 140,
+        "triangles": 20185
+      },
+      "after": {
+        "calls": 87,
+        "triangles": 18453
+      },
+      "waterCount": 12,
+      "inventory": {
+        "air": 12,
+        "surface": 0,
+        "soil": 0,
+        "storage": 0,
+        "drain": 0,
+        "collected": 0
+      }
+    },
+    {
+      "selection": 2,
+      "phase": 0.55,
+      "before": {
+        "calls": 142,
+        "triangles": 20311
+      },
+      "after": {
+        "calls": 89,
+        "triangles": 18579
+      },
+      "waterCount": 12,
+      "inventory": {
+        "air": 0,
+        "surface": 4,
+        "soil": 0,
+        "storage": 8,
+        "drain": 0,
+        "collected": 0
+      }
+    },
+    {
+      "selection": 2,
+      "phase": 1,
+      "before": {
+        "calls": 144,
+        "triangles": 20331
+      },
+      "after": {
+        "calls": 91,
+        "triangles": 18599
+      },
+      "waterCount": 12,
+      "inventory": {
+        "air": 0,
+        "surface": 1,
+        "soil": 4,
+        "storage": 3,
+        "drain": 0,
+        "collected": 4
+      }
+    }
+  ],
+  "screenshots": [
+    "output/playwright/urban-double-0.png",
+    "output/playwright/urban-front-0.png",
+    "output/playwright/urban-double-1.png",
+    "output/playwright/urban-front-1.png",
+    "output/playwright/urban-double-2.png",
+    "output/playwright/urban-front-2.png"
+  ],
+  "scope": "Actual Chrome GPU submission counts at identical camera and paused scientific states, for every independent city condition. Back-face passes only; no meshes or water markers are removed. No claim of school-hardware FPS or physical-tablet testing.",
+  "reviewedEntry": {
+    "path": "/assets/index-CjURQsXs.js",
+    "sha256": "faa5b5d2fecd85ad48ee22efddd84e026d8da99dcfa179475231f7cd127dd276"
+  },
+  "reviewedStyles": [
+    {
+      "path": "/assets/index-BNlCIg7W.css",
+      "sha256": "7dc46979023abf69bb0739abccbdf5b37c1e2a4684645382e091631cf47753e2"
+    }
+  ],
+  "reviewedAt": "2026-11-05T20:29:59.690Z",
+  "browser": "156.0.8078.80",
+  "externalRequests": [],
+  "requestFailures": []
+}

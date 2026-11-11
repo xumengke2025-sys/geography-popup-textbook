@@ -1,0 +1,195 @@
+{
+  "base": "http://127.0.0.1:4175",
+  "browser": "156.0.8078.80",
+  "artifacts": "work/book-completion-20261106/context-recovery-after",
+  "checks": [
+    {
+      "label": "automatic 2-D fallback preserves the active model and phase, paused",
+      "passed": true
+    },
+    {
+      "label": "fold completes after real context loss",
+      "passed": true
+    },
+    {
+      "label": "page navigation completes in fallback without a stranded model",
+      "passed": true
+    },
+    {
+      "label": "an in-flight fold resolves when the context is lost",
+      "passed": true
+    },
+    {
+      "label": "an in-flight page turn settles at its requested destination",
+      "passed": true
+    },
+    {
+      "label": "context restoration leaves the reader paused in 2-D until requested",
+      "passed": true
+    },
+    {
+      "label": "explicit 3-D return rebuilds the same paused observation after restoration",
+      "passed": true
+    },
+    {
+      "label": "navigation after a mode-switch request remains the final destination",
+      "passed": true
+    },
+    {
+      "label": "a later model selection supersedes the old figure captured by mode switching",
+      "passed": true
+    },
+    {
+      "label": "no browser exceptions during context recovery and intent supersession",
+      "passed": true
+    }
+  ],
+  "failures": [],
+  "errors": [],
+  "states": [
+    {
+      "name": "lost-context-fold",
+      "state": {
+        "twoD": true,
+        "spread": 22,
+        "turning": false,
+        "figureBusy": false,
+        "active": null,
+        "playing": false,
+        "render": {
+          "spread": 22,
+          "position": 22,
+          "busy": false,
+          "models": 0,
+          "modelState": null
+        }
+      }
+    },
+    {
+      "name": "lost-context-navigation",
+      "state": {
+        "twoD": true,
+        "spread": 23,
+        "turning": false,
+        "figureBusy": false,
+        "active": null,
+        "playing": false,
+        "render": {
+          "spread": 22,
+          "position": 22,
+          "busy": false,
+          "models": 0,
+          "modelState": null
+        }
+      }
+    },
+    {
+      "name": "context-lost-during-fold",
+      "state": {
+        "twoD": true,
+        "spread": 22,
+        "turning": false,
+        "figureBusy": false,
+        "active": null,
+        "playing": false,
+        "render": {
+          "spread": 22,
+          "position": 22,
+          "busy": false,
+          "models": 0,
+          "modelState": null
+        }
+      }
+    },
+    {
+      "name": "context-lost-during-page-turn",
+      "state": {
+        "twoD": true,
+        "spread": 23,
+        "turning": false,
+        "figureBusy": false,
+        "active": null,
+        "playing": false,
+        "render": {
+          "spread": 23,
+          "position": 23,
+          "busy": false,
+          "models": 0,
+          "modelState": null
+        }
+      }
+    },
+    {
+      "name": "context-restore-return-3d",
+      "state": {
+        "twoD": false,
+        "spread": 22,
+        "turning": false,
+        "figureBusy": false,
+        "active": "breeze",
+        "playing": false,
+        "phase": 0.5,
+        "render": {
+          "spread": 22,
+          "position": 22,
+          "busy": false,
+          "models": 1,
+          "modelState": "live",
+          "phase": 0.5,
+          "selection": 0
+        }
+      }
+    },
+    {
+      "name": "mode-switch-then-navigation",
+      "state": {
+        "twoD": true,
+        "spread": 23,
+        "turning": false,
+        "figureBusy": false,
+        "active": null,
+        "playing": false,
+        "render": {
+          "spread": 22,
+          "position": 22,
+          "busy": false,
+          "models": 0,
+          "modelState": null
+        }
+      }
+    },
+    {
+      "name": "mode-switch-then-other-model",
+      "state": {
+        "twoD": true,
+        "spread": 60,
+        "turning": false,
+        "figureBusy": false,
+        "active": "remote",
+        "playing": true,
+        "phase": 0,
+        "render": {
+          "spread": 22,
+          "position": 22,
+          "busy": false,
+          "models": 0,
+          "modelState": null
+        }
+      }
+    }
+  ],
+  "scope": "Real WEBGL_lose_context, original UI controls, one browser page; no engine monkey-patching.",
+  "reviewedEntry": {
+    "path": "/assets/index-DeWBg8MI.js",
+    "sha256": "ec96f82b826571539b4f96947cd63429a09bd620f1962d495fa6f718172b7d32"
+  },
+  "reviewedStyles": [
+    {
+      "path": "/assets/index-BNlCIg7W.css",
+      "sha256": "7dc46979023abf69bb0739abccbdf5b37c1e2a4684645382e091631cf47753e2"
+    }
+  ],
+  "reviewedAt": "2026-11-05T18:52:08.601Z",
+  "externalRequests": [],
+  "requestFailures": []
+}

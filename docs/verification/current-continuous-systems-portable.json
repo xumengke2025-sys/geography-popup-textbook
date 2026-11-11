@@ -1,0 +1,1030 @@
+{
+  "base": "http://127.0.0.1:4173",
+  "checks": [
+    "breeze: local package accepts paused reverse scrubbing",
+    "breeze: reversed phase reproduces the same 3-D state",
+    "breeze: local package includes synchronized Chinese explanations",
+    "breeze: options follow the continuous playhead",
+    "breeze: same localhost origin restores the saved observation paused",
+    "breeze: folding removes the current explanation",
+    "cold-wave: local package accepts paused reverse scrubbing",
+    "cold-wave: reversed phase reproduces the same 3-D state",
+    "cold-wave: local package includes synchronized Chinese explanations",
+    "cold-wave: geometry survives beginning and endpoint",
+    "cold-wave: local observer responds after arrival",
+    "cold-wave: options follow the continuous playhead",
+    "cold-wave: same localhost origin restores the saved observation paused",
+    "cold-wave: folding removes the current explanation",
+    "urban-waterlogging: local package accepts paused reverse scrubbing",
+    "urban-waterlogging: reversed phase reproduces the same 3-D state",
+    "urban-waterlogging: local package includes synchronized Chinese explanations",
+    "urban-waterlogging: geometry survives beginning and endpoint",
+    "urban-waterlogging: no rainfall marker is lost",
+    "urban-waterlogging: options follow the continuous playhead",
+    "urban-waterlogging: same localhost origin restores the saved observation paused",
+    "urban-waterlogging: folding removes the current explanation",
+    "gnss: local package accepts paused reverse scrubbing",
+    "gnss: reversed phase reproduces the same 3-D state",
+    "gnss: local package includes synchronized Chinese explanations",
+    "gnss: geometry survives beginning and endpoint",
+    "gnss: complete communication and rescue are retained",
+    "gnss: options follow the continuous playhead",
+    "gnss: same localhost origin restores the saved observation paused",
+    "gnss: folding removes the current explanation",
+    "cold-wave/phone: built-in SVG shares the playhead without image replacements",
+    "urban-waterlogging/phone: built-in SVG shares the playhead without image replacements",
+    "gnss/phone: built-in SVG shares the playhead without image replacements"
+  ],
+  "failures": [],
+  "errors": [],
+  "states": [
+    {
+      "id": "breeze",
+      "first": {
+        "id": "breeze",
+        "phase": 0,
+        "selection": 1,
+        "playing": false,
+        "twoD": false,
+        "process": {
+          "key": "breeze-0-land-false",
+          "stage": "夜间",
+          "title": "陆风吹向海洋",
+          "text": "陆地相对较冷，海上空气上升；近地面空气由陆地流向海洋，高空反向返回。",
+          "activeStop": 0,
+          "seeking": false
+        },
+        "model": {
+          "phase": 0
+        },
+        "nodes": [
+          {
+            "index": 0,
+            "pressed": true
+          },
+          {
+            "index": 1,
+            "pressed": false
+          },
+          {
+            "index": 2,
+            "pressed": false
+          },
+          {
+            "index": 3,
+            "pressed": false
+          }
+        ],
+        "svg": null
+      },
+      "middle": {
+        "id": "breeze",
+        "phase": 0.5,
+        "selection": 0,
+        "playing": false,
+        "twoD": false,
+        "process": {
+          "key": "breeze-2-sea-true",
+          "stage": "午后",
+          "title": "海风吹向陆地",
+          "text": "陆地相对较暖，空气上升；近地面空气由海洋流向陆地，高空反向返回。",
+          "activeStop": 2,
+          "seeking": false
+        },
+        "model": {
+          "phase": 0.5
+        },
+        "nodes": [
+          {
+            "index": 0,
+            "pressed": false
+          },
+          {
+            "index": 1,
+            "pressed": false
+          },
+          {
+            "index": 2,
+            "pressed": true
+          },
+          {
+            "index": 3,
+            "pressed": false
+          }
+        ],
+        "svg": null
+      },
+      "last": {
+        "id": "breeze",
+        "phase": 1,
+        "selection": 1,
+        "playing": false,
+        "twoD": false,
+        "process": {
+          "key": "breeze-0-land-false",
+          "stage": "夜间",
+          "title": "陆风吹向海洋",
+          "text": "陆地相对较冷，海上空气上升；近地面空气由陆地流向海洋，高空反向返回。",
+          "activeStop": 0,
+          "seeking": false
+        },
+        "model": {
+          "phase": 1
+        },
+        "nodes": [
+          {
+            "index": 0,
+            "pressed": true
+          },
+          {
+            "index": 1,
+            "pressed": false
+          },
+          {
+            "index": 2,
+            "pressed": false
+          },
+          {
+            "index": 3,
+            "pressed": false
+          }
+        ],
+        "svg": null
+      },
+      "reverse": {
+        "id": "breeze",
+        "phase": 0.5,
+        "selection": 0,
+        "playing": false,
+        "twoD": false,
+        "process": {
+          "key": "breeze-2-sea-true",
+          "stage": "午后",
+          "title": "海风吹向陆地",
+          "text": "陆地相对较暖，空气上升；近地面空气由海洋流向陆地，高空反向返回。",
+          "activeStop": 2,
+          "seeking": false
+        },
+        "model": {
+          "phase": 0.5
+        },
+        "nodes": [
+          {
+            "index": 0,
+            "pressed": false
+          },
+          {
+            "index": 1,
+            "pressed": false
+          },
+          {
+            "index": 2,
+            "pressed": true
+          },
+          {
+            "index": 3,
+            "pressed": false
+          }
+        ],
+        "svg": null
+      },
+      "restored": {
+        "id": "breeze",
+        "phase": 0.5,
+        "selection": 0,
+        "playing": false,
+        "twoD": false,
+        "process": {
+          "key": "breeze-2-sea-true",
+          "stage": "午后",
+          "title": "海风吹向陆地",
+          "text": "陆地相对较暖，空气上升；近地面空气由海洋流向陆地，高空反向返回。",
+          "activeStop": 2,
+          "seeking": false
+        },
+        "model": {
+          "phase": 0.5
+        },
+        "nodes": [
+          {
+            "index": 0,
+            "pressed": false
+          },
+          {
+            "index": 1,
+            "pressed": false
+          },
+          {
+            "index": 2,
+            "pressed": true
+          },
+          {
+            "index": 3,
+            "pressed": false
+          }
+        ],
+        "svg": null
+      }
+    },
+    {
+      "id": "cold-wave",
+      "first": {
+        "id": "cold-wave",
+        "phase": 0,
+        "selection": 0,
+        "playing": false,
+        "twoD": false,
+        "process": {
+          "key": "cold-wave-0",
+          "stage": "同一地点，冷空气过境",
+          "title": "到来前",
+          "text": "先看同一观察点：风旗垂下，冷热柱尚未下降。",
+          "activeStop": 0,
+          "seeking": false
+        },
+        "model": {
+          "phase": 0,
+          "stage": "before",
+          "geometryBuffersReused": true,
+          "observerWarmth": 1,
+          "flagExtension": 1.3
+        },
+        "nodes": [
+          {
+            "index": 0,
+            "pressed": true
+          },
+          {
+            "index": 1,
+            "pressed": false
+          },
+          {
+            "index": 2,
+            "pressed": false
+          },
+          {
+            "index": 3,
+            "pressed": false
+          }
+        ],
+        "svg": null
+      },
+      "middle": {
+        "id": "cold-wave",
+        "phase": 0.5,
+        "selection": 2,
+        "playing": false,
+        "twoD": false,
+        "process": {
+          "key": "cold-wave-2",
+          "stage": "同一地点，冷空气过境",
+          "title": "到达观察点",
+          "text": "前缘越过观察点，风旗伸展，冷热柱随之下降。",
+          "activeStop": 2,
+          "seeking": false
+        },
+        "model": {
+          "phase": 0.5,
+          "stage": "arriving",
+          "geometryBuffersReused": true,
+          "observerWarmth": 0.9907240897509657,
+          "flagExtension": 1.698179335457442
+        },
+        "nodes": [
+          {
+            "index": 0,
+            "pressed": false
+          },
+          {
+            "index": 1,
+            "pressed": false
+          },
+          {
+            "index": 2,
+            "pressed": true
+          },
+          {
+            "index": 3,
+            "pressed": false
+          }
+        ],
+        "svg": null
+      },
+      "last": {
+        "id": "cold-wave",
+        "phase": 1,
+        "selection": 3,
+        "playing": false,
+        "twoD": false,
+        "process": {
+          "key": "cold-wave-3",
+          "stage": "同一地点，冷空气过境",
+          "title": "推进后",
+          "text": "同一观察点已降温，保留结果，可回拖比较。",
+          "activeStop": 3,
+          "seeking": false
+        },
+        "model": {
+          "phase": 1,
+          "stage": "covered",
+          "geometryBuffersReused": true,
+          "observerWarmth": 0.24,
+          "flagExtension": 12.100000000000001
+        },
+        "nodes": [
+          {
+            "index": 0,
+            "pressed": false
+          },
+          {
+            "index": 1,
+            "pressed": false
+          },
+          {
+            "index": 2,
+            "pressed": false
+          },
+          {
+            "index": 3,
+            "pressed": true
+          }
+        ],
+        "svg": null
+      },
+      "reverse": {
+        "id": "cold-wave",
+        "phase": 0.5,
+        "selection": 2,
+        "playing": false,
+        "twoD": false,
+        "process": {
+          "key": "cold-wave-2",
+          "stage": "同一地点，冷空气过境",
+          "title": "到达观察点",
+          "text": "前缘越过观察点，风旗伸展，冷热柱随之下降。",
+          "activeStop": 2,
+          "seeking": false
+        },
+        "model": {
+          "phase": 0.5,
+          "stage": "arriving",
+          "geometryBuffersReused": true,
+          "observerWarmth": 0.9907240897509657,
+          "flagExtension": 1.698179335457442
+        },
+        "nodes": [
+          {
+            "index": 0,
+            "pressed": false
+          },
+          {
+            "index": 1,
+            "pressed": false
+          },
+          {
+            "index": 2,
+            "pressed": true
+          },
+          {
+            "index": 3,
+            "pressed": false
+          }
+        ],
+        "svg": null
+      },
+      "restored": {
+        "id": "cold-wave",
+        "phase": 0.5,
+        "selection": 2,
+        "playing": false,
+        "twoD": false,
+        "process": {
+          "key": "cold-wave-2",
+          "stage": "同一地点，冷空气过境",
+          "title": "到达观察点",
+          "text": "前缘越过观察点，风旗伸展，冷热柱随之下降。",
+          "activeStop": 2,
+          "seeking": false
+        },
+        "model": {
+          "phase": 0.5,
+          "stage": "arriving",
+          "geometryBuffersReused": true,
+          "observerWarmth": 0.9907240897509657,
+          "flagExtension": 1.698179335457442
+        },
+        "nodes": [
+          {
+            "index": 0,
+            "pressed": false
+          },
+          {
+            "index": 1,
+            "pressed": false
+          },
+          {
+            "index": 2,
+            "pressed": true
+          },
+          {
+            "index": 3,
+            "pressed": false
+          }
+        ],
+        "svg": null
+      }
+    },
+    {
+      "id": "urban-waterlogging",
+      "first": {
+        "id": "urban-waterlogging",
+        "phase": 0,
+        "selection": 2,
+        "playing": false,
+        "twoD": false,
+        "process": {
+          "key": "urban-water-2-0",
+          "stage": "雨水花园",
+          "title": "同一场雨，从这里出发",
+          "text": "同一场雨、同一组水滴，比较三种地面。",
+          "activeStop": 0,
+          "seeking": false
+        },
+        "model": {
+          "phase": 0,
+          "stage": "rainfall",
+          "geometryBuffersReused": true,
+          "inventory": {
+            "air": 12,
+            "surface": 0,
+            "soil": 0,
+            "storage": 0,
+            "drain": 0,
+            "collected": 0
+          },
+          "packetCount": 12
+        },
+        "nodes": [
+          {
+            "index": 0,
+            "pressed": true
+          },
+          {
+            "index": 1,
+            "pressed": false
+          },
+          {
+            "index": 2,
+            "pressed": false
+          },
+          {
+            "index": 3,
+            "pressed": false
+          },
+          {
+            "index": 4,
+            "pressed": false
+          }
+        ],
+        "svg": null
+      },
+      "middle": {
+        "id": "urban-waterlogging",
+        "phase": 0.5,
+        "selection": 2,
+        "playing": false,
+        "twoD": false,
+        "process": {
+          "key": "urban-water-2-2",
+          "stage": "雨水花园",
+          "title": "土壤与洼地留水",
+          "text": "洼地与土体暂存雨水，部分水延后排出。",
+          "activeStop": 2,
+          "seeking": false
+        },
+        "model": {
+          "phase": 0.5,
+          "stage": "temporary-storage",
+          "geometryBuffersReused": true,
+          "inventory": {
+            "air": 0,
+            "surface": 4,
+            "soil": 0,
+            "storage": 8,
+            "drain": 0,
+            "collected": 0
+          },
+          "packetCount": 12
+        },
+        "nodes": [
+          {
+            "index": 0,
+            "pressed": false
+          },
+          {
+            "index": 1,
+            "pressed": false
+          },
+          {
+            "index": 2,
+            "pressed": true
+          },
+          {
+            "index": 3,
+            "pressed": false
+          },
+          {
+            "index": 4,
+            "pressed": false
+          }
+        ],
+        "svg": null
+      },
+      "last": {
+        "id": "urban-waterlogging",
+        "phase": 1,
+        "selection": 2,
+        "playing": false,
+        "twoD": false,
+        "process": {
+          "key": "urban-water-2-4",
+          "stage": "雨水花园",
+          "title": "每一滴都保留去向",
+          "text": "洼地、土壤和收集池保留这批雨水的去向；可回拖比较。",
+          "activeStop": 4,
+          "seeking": false
+        },
+        "model": {
+          "phase": 1,
+          "stage": "retained-endpoints",
+          "geometryBuffersReused": true,
+          "inventory": {
+            "air": 0,
+            "surface": 1,
+            "soil": 4,
+            "storage": 3,
+            "drain": 0,
+            "collected": 4
+          },
+          "packetCount": 12
+        },
+        "nodes": [
+          {
+            "index": 0,
+            "pressed": false
+          },
+          {
+            "index": 1,
+            "pressed": false
+          },
+          {
+            "index": 2,
+            "pressed": false
+          },
+          {
+            "index": 3,
+            "pressed": false
+          },
+          {
+            "index": 4,
+            "pressed": true
+          }
+        ],
+        "svg": null
+      },
+      "reverse": {
+        "id": "urban-waterlogging",
+        "phase": 0.5,
+        "selection": 2,
+        "playing": false,
+        "twoD": false,
+        "process": {
+          "key": "urban-water-2-2",
+          "stage": "雨水花园",
+          "title": "土壤与洼地留水",
+          "text": "洼地与土体暂存雨水，部分水延后排出。",
+          "activeStop": 2,
+          "seeking": false
+        },
+        "model": {
+          "phase": 0.5,
+          "stage": "temporary-storage",
+          "geometryBuffersReused": true,
+          "inventory": {
+            "air": 0,
+            "surface": 4,
+            "soil": 0,
+            "storage": 8,
+            "drain": 0,
+            "collected": 0
+          },
+          "packetCount": 12
+        },
+        "nodes": [
+          {
+            "index": 0,
+            "pressed": false
+          },
+          {
+            "index": 1,
+            "pressed": false
+          },
+          {
+            "index": 2,
+            "pressed": true
+          },
+          {
+            "index": 3,
+            "pressed": false
+          },
+          {
+            "index": 4,
+            "pressed": false
+          }
+        ],
+        "svg": null
+      },
+      "restored": {
+        "id": "urban-waterlogging",
+        "phase": 0.5,
+        "selection": 2,
+        "playing": false,
+        "twoD": false,
+        "process": {
+          "key": "urban-water-2-2",
+          "stage": "雨水花园",
+          "title": "土壤与洼地留水",
+          "text": "洼地与土体暂存雨水，部分水延后排出。",
+          "activeStop": 2,
+          "seeking": false
+        },
+        "model": {
+          "phase": 0.5,
+          "stage": "temporary-storage",
+          "geometryBuffersReused": true,
+          "inventory": {
+            "air": 0,
+            "surface": 4,
+            "soil": 0,
+            "storage": 8,
+            "drain": 0,
+            "collected": 0
+          },
+          "packetCount": 12
+        },
+        "nodes": [
+          {
+            "index": 0,
+            "pressed": false
+          },
+          {
+            "index": 1,
+            "pressed": false
+          },
+          {
+            "index": 2,
+            "pressed": true
+          },
+          {
+            "index": 3,
+            "pressed": false
+          },
+          {
+            "index": 4,
+            "pressed": false
+          }
+        ],
+        "svg": null
+      }
+    },
+    {
+      "id": "gnss",
+      "first": {
+        "id": "gnss",
+        "phase": 0,
+        "selection": 0,
+        "playing": false,
+        "twoD": false,
+        "process": {
+          "key": "gnss-0-false",
+          "stage": "卫星定位与通信协同",
+          "title": "地面监控联系卫星，维持系统运行。",
+          "text": "空间、地面监控、用户三部分始终保留。",
+          "activeStop": 0,
+          "seeking": false
+        },
+        "model": {
+          "phase": 0,
+          "stage": 0,
+          "geometryBuffersReused": true,
+          "communicationDelivered": false,
+          "vehicleProgress": 0
+        },
+        "nodes": [
+          {
+            "index": 0,
+            "pressed": true
+          },
+          {
+            "index": 1,
+            "pressed": false
+          },
+          {
+            "index": 2,
+            "pressed": false
+          }
+        ],
+        "svg": null
+      },
+      "middle": {
+        "id": "gnss",
+        "phase": 0.5,
+        "selection": 1,
+        "playing": false,
+        "twoD": false,
+        "process": {
+          "key": "gnss-1-false",
+          "stage": "卫星定位与通信协同",
+          "title": "用户接收卫星信号，获得位置信息。",
+          "text": "这里只示意信号接收，不推演定位算法。",
+          "activeStop": 1,
+          "seeking": false
+        },
+        "model": {
+          "phase": 0.5,
+          "stage": 1,
+          "geometryBuffersReused": true,
+          "communicationDelivered": false,
+          "vehicleProgress": 0
+        },
+        "nodes": [
+          {
+            "index": 0,
+            "pressed": false
+          },
+          {
+            "index": 1,
+            "pressed": true
+          },
+          {
+            "index": 2,
+            "pressed": false
+          }
+        ],
+        "svg": null
+      },
+      "last": {
+        "id": "gnss",
+        "phase": 1,
+        "selection": 2,
+        "playing": false,
+        "twoD": false,
+        "process": {
+          "key": "gnss-2-true",
+          "stage": "卫星定位与通信协同",
+          "title": "救援方依据收到的位置前往目标。",
+          "text": "定位接收与求救通信分开，通信设备须具备发送能力。",
+          "activeStop": 2,
+          "seeking": false
+        },
+        "model": {
+          "phase": 1,
+          "stage": 2,
+          "geometryBuffersReused": true,
+          "communicationDelivered": true,
+          "vehicleProgress": 1
+        },
+        "nodes": [
+          {
+            "index": 0,
+            "pressed": false
+          },
+          {
+            "index": 1,
+            "pressed": false
+          },
+          {
+            "index": 2,
+            "pressed": true
+          }
+        ],
+        "svg": null
+      },
+      "reverse": {
+        "id": "gnss",
+        "phase": 0.5,
+        "selection": 1,
+        "playing": false,
+        "twoD": false,
+        "process": {
+          "key": "gnss-1-false",
+          "stage": "卫星定位与通信协同",
+          "title": "用户接收卫星信号，获得位置信息。",
+          "text": "这里只示意信号接收，不推演定位算法。",
+          "activeStop": 1,
+          "seeking": false
+        },
+        "model": {
+          "phase": 0.5,
+          "stage": 1,
+          "geometryBuffersReused": true,
+          "communicationDelivered": false,
+          "vehicleProgress": 0
+        },
+        "nodes": [
+          {
+            "index": 0,
+            "pressed": false
+          },
+          {
+            "index": 1,
+            "pressed": true
+          },
+          {
+            "index": 2,
+            "pressed": false
+          }
+        ],
+        "svg": null
+      },
+      "restored": {
+        "id": "gnss",
+        "phase": 0.5,
+        "selection": 1,
+        "playing": false,
+        "twoD": false,
+        "process": {
+          "key": "gnss-1-false",
+          "stage": "卫星定位与通信协同",
+          "title": "用户接收卫星信号，获得位置信息。",
+          "text": "这里只示意信号接收，不推演定位算法。",
+          "activeStop": 1,
+          "seeking": false
+        },
+        "model": {
+          "phase": 0.5,
+          "stage": 1,
+          "geometryBuffersReused": true,
+          "communicationDelivered": false,
+          "vehicleProgress": 0
+        },
+        "nodes": [
+          {
+            "index": 0,
+            "pressed": false
+          },
+          {
+            "index": 1,
+            "pressed": true
+          },
+          {
+            "index": 2,
+            "pressed": false
+          }
+        ],
+        "svg": null
+      }
+    },
+    {
+      "phone": {
+        "id": "cold-wave",
+        "phase": 0.5,
+        "selection": 2,
+        "playing": false,
+        "twoD": true,
+        "process": {
+          "key": "cold-wave-2",
+          "stage": "同一地点，冷空气过境",
+          "title": "到达观察点",
+          "text": "前缘越过观察点，风旗伸展，冷热柱随之下降。",
+          "activeStop": 2,
+          "seeking": false
+        },
+        "model": null,
+        "nodes": [
+          {
+            "index": 0,
+            "pressed": false
+          },
+          {
+            "index": 1,
+            "pressed": false
+          },
+          {
+            "index": 2,
+            "pressed": true
+          },
+          {
+            "index": 3,
+            "pressed": false
+          }
+        ],
+        "svg": {
+          "images": 0,
+          "packets": 0,
+          "phase": 0.5
+        }
+      }
+    },
+    {
+      "phone": {
+        "id": "urban-waterlogging",
+        "phase": 0.5,
+        "selection": 2,
+        "playing": false,
+        "twoD": true,
+        "process": {
+          "key": "urban-water-2-2",
+          "stage": "雨水花园",
+          "title": "土壤与洼地留水",
+          "text": "洼地与土体暂存雨水，部分水延后排出。",
+          "activeStop": 2,
+          "seeking": false
+        },
+        "model": null,
+        "nodes": [
+          {
+            "index": 0,
+            "pressed": false
+          },
+          {
+            "index": 1,
+            "pressed": false
+          },
+          {
+            "index": 2,
+            "pressed": true
+          },
+          {
+            "index": 3,
+            "pressed": false
+          },
+          {
+            "index": 4,
+            "pressed": false
+          }
+        ],
+        "svg": {
+          "images": 0,
+          "packets": 12,
+          "phase": 0.5
+        }
+      }
+    },
+    {
+      "phone": {
+        "id": "gnss",
+        "phase": 0.5,
+        "selection": 1,
+        "playing": false,
+        "twoD": true,
+        "process": {
+          "key": "gnss-1-false",
+          "stage": "卫星定位与通信协同",
+          "title": "用户接收卫星信号，获得位置信息。",
+          "text": "这里只示意信号接收，不推演定位算法。",
+          "activeStop": 1,
+          "seeking": false
+        },
+        "model": null,
+        "nodes": [
+          {
+            "index": 0,
+            "pressed": false
+          },
+          {
+            "index": 1,
+            "pressed": true
+          },
+          {
+            "index": 2,
+            "pressed": false
+          }
+        ],
+        "svg": {
+          "images": 0,
+          "packets": 0,
+          "phase": 0.5
+        }
+      }
+    }
+  ],
+  "screenshots": [
+    "output/playwright/continuous-systems-portable-phone.png"
+  ],
+  "scope": "Portable localhost 4173, production assets with all nonlocal HTTP(S) blocked; same-origin persistence, three new continuous models and sea-breeze, native phone SVG. Not physical network disconnection or fresh Windows extraction.",
+  "reviewedEntry": {
+    "path": "/assets/index-CekyyFwd.js",
+    "sha256": "973583d5283e308700ee413bfc50c0f7e433ffb4e0d67354922041d403f7edc0"
+  },
+  "reviewedStyles": [
+    {
+      "path": "/assets/index-BNlCIg7W.css",
+      "sha256": "7dc46979023abf69bb0739abccbdf5b37c1e2a4684645382e091631cf47753e2"
+    }
+  ],
+  "reviewedAt": "2026-11-05T19:35:36.501Z",
+  "browser": "156.0.8078.80",
+  "externalRequests": [],
+  "requestFailures": []
+}

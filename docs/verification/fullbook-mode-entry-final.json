@@ -1,0 +1,1023 @@
+{
+  "base": "http://127.0.0.1:4175",
+  "browser": "156.0.8078.80",
+  "errors": [],
+  "failures": [],
+  "checks": [
+    "desktop-default: loads the expected stable JavaScript bundle index-CLrFDn8f.js",
+    "desktop-default: loads the expected stable stylesheet index-BCj34vQg.css",
+    "desktop-default: starts with a fresh isolated storage context",
+    "desktop-default: direct figure entry finishes without busy transaction residue",
+    "desktop-default: selects the requested/default 3-D mode",
+    "desktop-default: initial playback state is paused",
+    "desktop-default: actual pointer and hover media match the emulated input device",
+    "desktop-default: respects the isolated reduced-motion preference",
+    "desktop-default: initializes the live Three.js scene",
+    "desktop-default: the paused entry remains paused without advancing its phase",
+    "desktop-default: no unhandled browser exception",
+    "desktop-default: no failed resource request",
+    "desktop-default: no browser console errors",
+    "phone-default: loads the expected stable JavaScript bundle index-CLrFDn8f.js",
+    "phone-default: loads the expected stable stylesheet index-BCj34vQg.css",
+    "phone-default: starts with a fresh isolated storage context",
+    "phone-default: direct figure entry finishes without busy transaction residue",
+    "phone-default: selects the requested/default 2-D mode",
+    "phone-default: initial playback state is paused",
+    "phone-default: actual pointer and hover media match the emulated input device",
+    "phone-default: respects the isolated reduced-motion preference",
+    "phone-default: uses the interactive SVG reading representation without a renderer",
+    "phone-default: the SVG demonstration is visibly rendered",
+    "phone-default: playback advances the model phase",
+    "phone-default: SVG circulation transforms visibly advance during playback",
+    "phone-default: no unhandled browser exception",
+    "phone-default: no failed resource request",
+    "phone-default: no browser console errors",
+    "desktop-explicit-2d: loads the expected stable JavaScript bundle index-CLrFDn8f.js",
+    "desktop-explicit-2d: loads the expected stable stylesheet index-BCj34vQg.css",
+    "desktop-explicit-2d: starts with a fresh isolated storage context",
+    "desktop-explicit-2d: direct figure entry finishes without busy transaction residue",
+    "desktop-explicit-2d: selects the requested/default 2-D mode",
+    "desktop-explicit-2d: initial playback state is paused",
+    "desktop-explicit-2d: actual pointer and hover media match the emulated input device",
+    "desktop-explicit-2d: respects the isolated reduced-motion preference",
+    "desktop-explicit-2d: uses the interactive SVG reading representation without a renderer",
+    "desktop-explicit-2d: the SVG demonstration is visibly rendered",
+    "desktop-explicit-2d: the paused entry remains paused without advancing its phase",
+    "desktop-explicit-2d: no unhandled browser exception",
+    "desktop-explicit-2d: no failed resource request",
+    "desktop-explicit-2d: no browser console errors",
+    "phone-explicit-3d: loads the expected stable JavaScript bundle index-CLrFDn8f.js",
+    "phone-explicit-3d: loads the expected stable stylesheet index-BCj34vQg.css",
+    "phone-explicit-3d: starts with a fresh isolated storage context",
+    "phone-explicit-3d: direct figure entry finishes without busy transaction residue",
+    "phone-explicit-3d: selects the requested/default 3-D mode",
+    "phone-explicit-3d: initial playback state is paused",
+    "phone-explicit-3d: actual pointer and hover media match the emulated input device",
+    "phone-explicit-3d: respects the isolated reduced-motion preference",
+    "phone-explicit-3d: initializes the live Three.js scene",
+    "phone-explicit-3d: the paused entry remains paused without advancing its phase",
+    "phone-explicit-3d: no unhandled browser exception",
+    "phone-explicit-3d: no failed resource request",
+    "phone-explicit-3d: no browser console errors",
+    "desktop-explicit-3d: loads the expected stable JavaScript bundle index-CLrFDn8f.js",
+    "desktop-explicit-3d: loads the expected stable stylesheet index-BCj34vQg.css",
+    "desktop-explicit-3d: starts with a fresh isolated storage context",
+    "desktop-explicit-3d: direct figure entry finishes without busy transaction residue",
+    "desktop-explicit-3d: selects the requested/default 3-D mode",
+    "desktop-explicit-3d: initial playback state is paused",
+    "desktop-explicit-3d: actual pointer and hover media match the emulated input device",
+    "desktop-explicit-3d: respects the isolated reduced-motion preference",
+    "desktop-explicit-3d: initializes the live Three.js scene",
+    "desktop-explicit-3d: the paused entry remains paused without advancing its phase",
+    "desktop-explicit-3d: no unhandled browser exception",
+    "desktop-explicit-3d: no failed resource request",
+    "desktop-explicit-3d: no browser console errors",
+    "desktop-play: loads the expected stable JavaScript bundle index-CLrFDn8f.js",
+    "desktop-play: loads the expected stable stylesheet index-BCj34vQg.css",
+    "desktop-play: starts with a fresh isolated storage context",
+    "desktop-play: direct figure entry finishes without busy transaction residue",
+    "desktop-play: selects the requested/default 3-D mode",
+    "desktop-play: initial playback state is playing",
+    "desktop-play: actual pointer and hover media match the emulated input device",
+    "desktop-play: respects the isolated reduced-motion preference",
+    "desktop-play: initializes the live Three.js scene",
+    "desktop-play: playback advances the model phase",
+    "desktop-play: Three.js circulation advances during playback",
+    "desktop-play: no unhandled browser exception",
+    "desktop-play: no failed resource request",
+    "desktop-play: no browser console errors",
+    "reduced-motion: loads the expected stable JavaScript bundle index-CLrFDn8f.js",
+    "reduced-motion: loads the expected stable stylesheet index-BCj34vQg.css",
+    "reduced-motion: starts with a fresh isolated storage context",
+    "reduced-motion: direct figure entry finishes without busy transaction residue",
+    "reduced-motion: selects the requested/default 3-D mode",
+    "reduced-motion: initial playback state is paused",
+    "reduced-motion: actual pointer and hover media match the emulated input device",
+    "reduced-motion: respects the isolated reduced-motion preference",
+    "reduced-motion: initializes the live Three.js scene",
+    "reduced-motion: the paused entry remains paused without advancing its phase",
+    "reduced-motion: no unhandled browser exception",
+    "reduced-motion: no failed resource request",
+    "reduced-motion: no browser console errors",
+    "webgl-unavailable: loads the expected stable JavaScript bundle index-CLrFDn8f.js",
+    "webgl-unavailable: loads the expected stable stylesheet index-BCj34vQg.css",
+    "webgl-unavailable: starts with a fresh isolated storage context",
+    "webgl-unavailable: direct figure entry finishes without busy transaction residue",
+    "webgl-unavailable: selects the requested/default 2-D mode",
+    "webgl-unavailable: initial playback state is paused",
+    "webgl-unavailable: actual pointer and hover media match the emulated input device",
+    "webgl-unavailable: respects the isolated reduced-motion preference",
+    "webgl-unavailable: uses the interactive SVG reading representation without a renderer",
+    "webgl-unavailable: the SVG demonstration is visibly rendered",
+    "webgl-unavailable: startup WebGL failure was actually injected",
+    "webgl-unavailable: records the expected caught WebGL initialization failure",
+    "webgl-unavailable: simulated fallback emits only the expected WebGL failure logs",
+    "webgl-unavailable: the paused entry remains paused without advancing its phase",
+    "webgl-unavailable: no unhandled browser exception",
+    "webgl-unavailable: no failed resource request",
+    "all isolated entry checks finish without an unhandled browser exception"
+  ],
+  "scenarios": [
+    {
+      "id": "desktop-default",
+      "query": "figure=breeze",
+      "viewport": {
+        "width": 698,
+        "height": 900
+      },
+      "touch": false,
+      "reduced": false,
+      "simulatedWebGLFailure": false,
+      "pageErrors": [],
+      "consoleErrors": [],
+      "requestFailures": [],
+      "initialStorageKeys": [],
+      "observedDocumentStorageKeys": [],
+      "states": [
+        {
+          "at": "initial",
+          "ready": true,
+          "active": "breeze",
+          "twoD": false,
+          "playing": false,
+          "spread": 22,
+          "turning": false,
+          "figureBusy": false,
+          "phase": 0.5,
+          "modelState": "live",
+          "rendererPresent": true,
+          "flowPhase": 0,
+          "sceneHidden": false,
+          "svgPresent": false,
+          "svgAria": null,
+          "svgTransforms": [],
+          "reducedCheckbox": false,
+          "viewport": {
+            "width": 698,
+            "height": 900
+          },
+          "media": {
+            "coarse": false,
+            "noHover": false,
+            "reduced": false
+          },
+          "simulatedWebGLCalls": 0,
+          "entryScripts": [
+            "http://127.0.0.1:4175/assets/index-CLrFDn8f.js"
+          ],
+          "entryStyles": [
+            "http://127.0.0.1:4175/assets/index-BCj34vQg.css"
+          ],
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36"
+        },
+        {
+          "at": "paused-after-350ms",
+          "ready": true,
+          "active": "breeze",
+          "twoD": false,
+          "playing": false,
+          "spread": 22,
+          "turning": false,
+          "figureBusy": false,
+          "phase": 0.5,
+          "modelState": "live",
+          "rendererPresent": true,
+          "flowPhase": 0,
+          "sceneHidden": false,
+          "svgPresent": false,
+          "svgAria": null,
+          "svgTransforms": [],
+          "reducedCheckbox": false,
+          "viewport": {
+            "width": 698,
+            "height": 900
+          },
+          "media": {
+            "coarse": false,
+            "noHover": false,
+            "reduced": false
+          },
+          "simulatedWebGLCalls": 0,
+          "entryScripts": [
+            "http://127.0.0.1:4175/assets/index-CLrFDn8f.js"
+          ],
+          "entryStyles": [
+            "http://127.0.0.1:4175/assets/index-BCj34vQg.css"
+          ],
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36"
+        }
+      ],
+      "screenshot": "output/playwright/mode-entry-desktop-default.png"
+    },
+    {
+      "id": "phone-default",
+      "query": "figure=breeze",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "touch": true,
+      "reduced": false,
+      "simulatedWebGLFailure": false,
+      "pageErrors": [],
+      "consoleErrors": [],
+      "requestFailures": [],
+      "initialStorageKeys": [],
+      "observedDocumentStorageKeys": [],
+      "states": [
+        {
+          "at": "initial",
+          "ready": true,
+          "active": "breeze",
+          "twoD": true,
+          "playing": false,
+          "spread": 22,
+          "turning": false,
+          "figureBusy": false,
+          "phase": 0.5,
+          "modelState": null,
+          "rendererPresent": false,
+          "flowPhase": null,
+          "sceneHidden": true,
+          "svgPresent": true,
+          "svgAria": "午后，近地面海洋 → 陆地，高空陆地 → 海洋",
+          "svgTransforms": [
+            "translate(130 176.00000000000009) rotate(-90.0000000000001)",
+            "translate(174.45155580739396 113.64960186040581) rotate(-31.31723318920744)",
+            "translate(287.00684624328346 80.4736479578158) rotate(-5.14387647459891)",
+            "translate(415.00000000000006 91.99553583290947) rotate(16.423013229801725)",
+            "translate(498.5415979493225 142.82404609741008) rotate(54.51373709428167)",
+            "translate(498.5415979493227 209.17595390258975) rotate(125.48626290571816)",
+            "translate(414.9999999999998 260.00446416709065) rotate(163.57698677019832)",
+            "translate(287.0068462432838 271.5263520421842) rotate(-174.85612352540116)",
+            "translate(174.4515558073942 238.35039813959435) rotate(-148.68276681079269)"
+          ],
+          "reducedCheckbox": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "media": {
+            "coarse": true,
+            "noHover": true,
+            "reduced": false
+          },
+          "simulatedWebGLCalls": 0,
+          "entryScripts": [
+            "http://127.0.0.1:4175/assets/index-CLrFDn8f.js"
+          ],
+          "entryStyles": [
+            "http://127.0.0.1:4175/assets/index-BCj34vQg.css"
+          ],
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36"
+        },
+        {
+          "at": "playback-start",
+          "ready": true,
+          "active": "breeze",
+          "twoD": true,
+          "playing": true,
+          "spread": 22,
+          "turning": false,
+          "figureBusy": false,
+          "phase": 0.5006591666666668,
+          "modelState": null,
+          "rendererPresent": false,
+          "flowPhase": null,
+          "sceneHidden": true,
+          "svgPresent": true,
+          "svgAria": "午后，近地面海洋 → 陆地，高空陆地 → 海洋",
+          "svgTransforms": [
+            "translate(130.0798434836539 173.1882025044974) rotate(-86.74888081609328)",
+            "translate(178.0529651581888 111.5218414506142) rotate(-29.846601460696984)",
+            "translate(292.44468200077574 80.02552737689962) rotate(-4.279567684139651)",
+            "translate(419.7298383784466 93.4367356809849) rotate(17.475506028654213)",
+            "translate(500.35029500514986 145.48021294841047) rotate(57.00536224434625)",
+            "translate(496.58284422868053 211.80423776692567) rotate(127.88100181359438)",
+            "translate(410.19031813789934 261.37506181451784) rotate(164.60577965106296)",
+            "translate(281.59673983666096 270.9979456009754) rotate(-173.98530849284737)",
+            "translate(170.97247377054444 236.17023485617486) rotate(-147.15626616406087)"
+          ],
+          "reducedCheckbox": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "media": {
+            "coarse": true,
+            "noHover": true,
+            "reduced": false
+          },
+          "simulatedWebGLCalls": 0,
+          "entryScripts": [
+            "http://127.0.0.1:4175/assets/index-CLrFDn8f.js"
+          ],
+          "entryStyles": [
+            "http://127.0.0.1:4175/assets/index-BCj34vQg.css"
+          ],
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36"
+        },
+        {
+          "at": "after-900ms",
+          "ready": true,
+          "active": "breeze",
+          "twoD": true,
+          "playing": true,
+          "spread": 22,
+          "turning": false,
+          "figureBusy": false,
+          "phase": 0.5082283333333346,
+          "modelState": null,
+          "rendererPresent": false,
+          "flowPhase": null,
+          "sceneHidden": true,
+          "svgPresent": true,
+          "svgAria": "午后，近地面海洋 → 陆地，高空陆地 → 海洋",
+          "svgTransforms": [
+            "translate(142.30716277411597 141.65688449666067) rotate(-53.4416546474482)",
+            "translate(227.11972485776985 91.37996748512636) rotate(-15.964734214776163)",
+            "translate(355.3919999297503 80.69770413420694) rotate(5.528532501734394)",
+            "translate(467.10396489633456 114.60844418593065) rotate(31.985937399440214)",
+            "translate(509.98434980946246 177.24497549420016) rotate(91.4402499049773)",
+            "translate(463.9689460058868 239.2989689323723) rotate(149.3405226945478)",
+            "translate(350.5888723295499 271.73467131740875) rotate(175.23950468410675)",
+            "translate(222.89592533276732 259.37505702067347) rotate(-163.1140639205738)",
+            "translate(140.63905406436288 208.00332693342096) rotate(-124.39517756704542)"
+          ],
+          "reducedCheckbox": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "media": {
+            "coarse": true,
+            "noHover": true,
+            "reduced": false
+          },
+          "simulatedWebGLCalls": 0,
+          "entryScripts": [
+            "http://127.0.0.1:4175/assets/index-CLrFDn8f.js"
+          ],
+          "entryStyles": [
+            "http://127.0.0.1:4175/assets/index-BCj34vQg.css"
+          ],
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36"
+        }
+      ],
+      "screenshot": "output/playwright/mode-entry-phone-default.png"
+    },
+    {
+      "id": "desktop-explicit-2d",
+      "query": "figure=breeze&2d",
+      "viewport": {
+        "width": 698,
+        "height": 900
+      },
+      "touch": false,
+      "reduced": false,
+      "simulatedWebGLFailure": false,
+      "pageErrors": [],
+      "consoleErrors": [],
+      "requestFailures": [],
+      "initialStorageKeys": [],
+      "observedDocumentStorageKeys": [],
+      "states": [
+        {
+          "at": "initial",
+          "ready": true,
+          "active": "breeze",
+          "twoD": true,
+          "playing": false,
+          "spread": 22,
+          "turning": false,
+          "figureBusy": false,
+          "phase": 0.5,
+          "modelState": null,
+          "rendererPresent": false,
+          "flowPhase": null,
+          "sceneHidden": true,
+          "svgPresent": true,
+          "svgAria": "午后，近地面海洋 → 陆地，高空陆地 → 海洋",
+          "svgTransforms": [
+            "translate(130 176.00000000000009) rotate(-90.0000000000001)",
+            "translate(174.45155580739396 113.64960186040581) rotate(-31.31723318920744)",
+            "translate(287.00684624328346 80.4736479578158) rotate(-5.14387647459891)",
+            "translate(415.00000000000006 91.99553583290947) rotate(16.423013229801725)",
+            "translate(498.5415979493225 142.82404609741008) rotate(54.51373709428167)",
+            "translate(498.5415979493227 209.17595390258975) rotate(125.48626290571816)",
+            "translate(414.9999999999998 260.00446416709065) rotate(163.57698677019832)",
+            "translate(287.0068462432838 271.5263520421842) rotate(-174.85612352540116)",
+            "translate(174.4515558073942 238.35039813959435) rotate(-148.68276681079269)"
+          ],
+          "reducedCheckbox": false,
+          "viewport": {
+            "width": 698,
+            "height": 900
+          },
+          "media": {
+            "coarse": false,
+            "noHover": false,
+            "reduced": false
+          },
+          "simulatedWebGLCalls": 0,
+          "entryScripts": [
+            "http://127.0.0.1:4175/assets/index-CLrFDn8f.js"
+          ],
+          "entryStyles": [
+            "http://127.0.0.1:4175/assets/index-BCj34vQg.css"
+          ],
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36"
+        },
+        {
+          "at": "paused-after-350ms",
+          "ready": true,
+          "active": "breeze",
+          "twoD": true,
+          "playing": false,
+          "spread": 22,
+          "turning": false,
+          "figureBusy": false,
+          "phase": 0.5,
+          "modelState": null,
+          "rendererPresent": false,
+          "flowPhase": null,
+          "sceneHidden": true,
+          "svgPresent": true,
+          "svgAria": "午后，近地面海洋 → 陆地，高空陆地 → 海洋",
+          "svgTransforms": [
+            "translate(130 176.00000000000009) rotate(-90.0000000000001)",
+            "translate(174.45155580739396 113.64960186040581) rotate(-31.31723318920744)",
+            "translate(287.00684624328346 80.4736479578158) rotate(-5.14387647459891)",
+            "translate(415.00000000000006 91.99553583290947) rotate(16.423013229801725)",
+            "translate(498.5415979493225 142.82404609741008) rotate(54.51373709428167)",
+            "translate(498.5415979493227 209.17595390258975) rotate(125.48626290571816)",
+            "translate(414.9999999999998 260.00446416709065) rotate(163.57698677019832)",
+            "translate(287.0068462432838 271.5263520421842) rotate(-174.85612352540116)",
+            "translate(174.4515558073942 238.35039813959435) rotate(-148.68276681079269)"
+          ],
+          "reducedCheckbox": false,
+          "viewport": {
+            "width": 698,
+            "height": 900
+          },
+          "media": {
+            "coarse": false,
+            "noHover": false,
+            "reduced": false
+          },
+          "simulatedWebGLCalls": 0,
+          "entryScripts": [
+            "http://127.0.0.1:4175/assets/index-CLrFDn8f.js"
+          ],
+          "entryStyles": [
+            "http://127.0.0.1:4175/assets/index-BCj34vQg.css"
+          ],
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36"
+        }
+      ],
+      "screenshot": "output/playwright/mode-entry-desktop-explicit-2d.png"
+    },
+    {
+      "id": "phone-explicit-3d",
+      "query": "figure=breeze&3d",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "touch": true,
+      "reduced": false,
+      "simulatedWebGLFailure": false,
+      "pageErrors": [],
+      "consoleErrors": [],
+      "requestFailures": [],
+      "initialStorageKeys": [],
+      "observedDocumentStorageKeys": [],
+      "states": [
+        {
+          "at": "initial",
+          "ready": true,
+          "active": "breeze",
+          "twoD": false,
+          "playing": false,
+          "spread": 22,
+          "turning": false,
+          "figureBusy": false,
+          "phase": 0.5,
+          "modelState": "live",
+          "rendererPresent": true,
+          "flowPhase": 0,
+          "sceneHidden": false,
+          "svgPresent": false,
+          "svgAria": null,
+          "svgTransforms": [],
+          "reducedCheckbox": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "media": {
+            "coarse": true,
+            "noHover": true,
+            "reduced": false
+          },
+          "simulatedWebGLCalls": 0,
+          "entryScripts": [
+            "http://127.0.0.1:4175/assets/index-CLrFDn8f.js"
+          ],
+          "entryStyles": [
+            "http://127.0.0.1:4175/assets/index-BCj34vQg.css"
+          ],
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36"
+        },
+        {
+          "at": "paused-after-350ms",
+          "ready": true,
+          "active": "breeze",
+          "twoD": false,
+          "playing": false,
+          "spread": 22,
+          "turning": false,
+          "figureBusy": false,
+          "phase": 0.5,
+          "modelState": "live",
+          "rendererPresent": true,
+          "flowPhase": 0,
+          "sceneHidden": false,
+          "svgPresent": false,
+          "svgAria": null,
+          "svgTransforms": [],
+          "reducedCheckbox": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "media": {
+            "coarse": true,
+            "noHover": true,
+            "reduced": false
+          },
+          "simulatedWebGLCalls": 0,
+          "entryScripts": [
+            "http://127.0.0.1:4175/assets/index-CLrFDn8f.js"
+          ],
+          "entryStyles": [
+            "http://127.0.0.1:4175/assets/index-BCj34vQg.css"
+          ],
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36"
+        }
+      ],
+      "screenshot": "output/playwright/mode-entry-phone-explicit-3d.png"
+    },
+    {
+      "id": "desktop-explicit-3d",
+      "query": "figure=breeze&3d",
+      "viewport": {
+        "width": 698,
+        "height": 900
+      },
+      "touch": false,
+      "reduced": false,
+      "simulatedWebGLFailure": false,
+      "pageErrors": [],
+      "consoleErrors": [],
+      "requestFailures": [],
+      "initialStorageKeys": [],
+      "observedDocumentStorageKeys": [],
+      "states": [
+        {
+          "at": "initial",
+          "ready": true,
+          "active": "breeze",
+          "twoD": false,
+          "playing": false,
+          "spread": 22,
+          "turning": false,
+          "figureBusy": false,
+          "phase": 0.5,
+          "modelState": "live",
+          "rendererPresent": true,
+          "flowPhase": 0,
+          "sceneHidden": false,
+          "svgPresent": false,
+          "svgAria": null,
+          "svgTransforms": [],
+          "reducedCheckbox": false,
+          "viewport": {
+            "width": 698,
+            "height": 900
+          },
+          "media": {
+            "coarse": false,
+            "noHover": false,
+            "reduced": false
+          },
+          "simulatedWebGLCalls": 0,
+          "entryScripts": [
+            "http://127.0.0.1:4175/assets/index-CLrFDn8f.js"
+          ],
+          "entryStyles": [
+            "http://127.0.0.1:4175/assets/index-BCj34vQg.css"
+          ],
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36"
+        },
+        {
+          "at": "paused-after-350ms",
+          "ready": true,
+          "active": "breeze",
+          "twoD": false,
+          "playing": false,
+          "spread": 22,
+          "turning": false,
+          "figureBusy": false,
+          "phase": 0.5,
+          "modelState": "live",
+          "rendererPresent": true,
+          "flowPhase": 0,
+          "sceneHidden": false,
+          "svgPresent": false,
+          "svgAria": null,
+          "svgTransforms": [],
+          "reducedCheckbox": false,
+          "viewport": {
+            "width": 698,
+            "height": 900
+          },
+          "media": {
+            "coarse": false,
+            "noHover": false,
+            "reduced": false
+          },
+          "simulatedWebGLCalls": 0,
+          "entryScripts": [
+            "http://127.0.0.1:4175/assets/index-CLrFDn8f.js"
+          ],
+          "entryStyles": [
+            "http://127.0.0.1:4175/assets/index-BCj34vQg.css"
+          ],
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36"
+        }
+      ],
+      "screenshot": "output/playwright/mode-entry-desktop-explicit-3d.png"
+    },
+    {
+      "id": "desktop-play",
+      "query": "figure=breeze&3d&play",
+      "viewport": {
+        "width": 698,
+        "height": 900
+      },
+      "touch": false,
+      "reduced": false,
+      "simulatedWebGLFailure": false,
+      "pageErrors": [],
+      "consoleErrors": [],
+      "requestFailures": [],
+      "initialStorageKeys": [],
+      "observedDocumentStorageKeys": [],
+      "states": [
+        {
+          "at": "initial",
+          "ready": true,
+          "active": "breeze",
+          "twoD": false,
+          "playing": true,
+          "spread": 22,
+          "turning": false,
+          "figureBusy": false,
+          "phase": 0.5177750000000017,
+          "modelState": "live",
+          "rendererPresent": true,
+          "flowPhase": 0.20399062088154118,
+          "sceneHidden": false,
+          "svgPresent": false,
+          "svgAria": null,
+          "svgTransforms": [],
+          "reducedCheckbox": false,
+          "viewport": {
+            "width": 698,
+            "height": 900
+          },
+          "media": {
+            "coarse": false,
+            "noHover": false,
+            "reduced": false
+          },
+          "simulatedWebGLCalls": 0,
+          "entryScripts": [
+            "http://127.0.0.1:4175/assets/index-CLrFDn8f.js"
+          ],
+          "entryStyles": [
+            "http://127.0.0.1:4175/assets/index-BCj34vQg.css"
+          ],
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36"
+        },
+        {
+          "at": "playback-start",
+          "ready": true,
+          "active": "breeze",
+          "twoD": false,
+          "playing": true,
+          "spread": 22,
+          "turning": false,
+          "figureBusy": false,
+          "phase": 0.5177750000000017,
+          "modelState": "live",
+          "rendererPresent": true,
+          "flowPhase": 0.20399062088154118,
+          "sceneHidden": false,
+          "svgPresent": false,
+          "svgAria": null,
+          "svgTransforms": [],
+          "reducedCheckbox": false,
+          "viewport": {
+            "width": 698,
+            "height": 900
+          },
+          "media": {
+            "coarse": false,
+            "noHover": false,
+            "reduced": false
+          },
+          "simulatedWebGLCalls": 0,
+          "entryScripts": [
+            "http://127.0.0.1:4175/assets/index-CLrFDn8f.js"
+          ],
+          "entryStyles": [
+            "http://127.0.0.1:4175/assets/index-BCj34vQg.css"
+          ],
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36"
+        },
+        {
+          "at": "after-900ms",
+          "ready": true,
+          "active": "breeze",
+          "twoD": false,
+          "playing": true,
+          "spread": 22,
+          "turning": false,
+          "figureBusy": false,
+          "phase": 0.5254483333333362,
+          "modelState": "live",
+          "rendererPresent": true,
+          "flowPhase": 0.2937660906166404,
+          "sceneHidden": false,
+          "svgPresent": false,
+          "svgAria": null,
+          "svgTransforms": [],
+          "reducedCheckbox": false,
+          "viewport": {
+            "width": 698,
+            "height": 900
+          },
+          "media": {
+            "coarse": false,
+            "noHover": false,
+            "reduced": false
+          },
+          "simulatedWebGLCalls": 0,
+          "entryScripts": [
+            "http://127.0.0.1:4175/assets/index-CLrFDn8f.js"
+          ],
+          "entryStyles": [
+            "http://127.0.0.1:4175/assets/index-BCj34vQg.css"
+          ],
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36"
+        }
+      ],
+      "screenshot": "output/playwright/mode-entry-desktop-play.png"
+    },
+    {
+      "id": "reduced-motion",
+      "query": "figure=breeze&3d&play",
+      "viewport": {
+        "width": 698,
+        "height": 900
+      },
+      "touch": false,
+      "reduced": true,
+      "simulatedWebGLFailure": false,
+      "pageErrors": [],
+      "consoleErrors": [],
+      "requestFailures": [],
+      "initialStorageKeys": [],
+      "observedDocumentStorageKeys": [],
+      "states": [
+        {
+          "at": "initial",
+          "ready": true,
+          "active": "breeze",
+          "twoD": false,
+          "playing": false,
+          "spread": 22,
+          "turning": false,
+          "figureBusy": false,
+          "phase": 0.5,
+          "modelState": "live",
+          "rendererPresent": true,
+          "flowPhase": 0,
+          "sceneHidden": false,
+          "svgPresent": false,
+          "svgAria": null,
+          "svgTransforms": [],
+          "reducedCheckbox": true,
+          "viewport": {
+            "width": 698,
+            "height": 900
+          },
+          "media": {
+            "coarse": false,
+            "noHover": false,
+            "reduced": true
+          },
+          "simulatedWebGLCalls": 0,
+          "entryScripts": [
+            "http://127.0.0.1:4175/assets/index-CLrFDn8f.js"
+          ],
+          "entryStyles": [
+            "http://127.0.0.1:4175/assets/index-BCj34vQg.css"
+          ],
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36"
+        },
+        {
+          "at": "paused-after-350ms",
+          "ready": true,
+          "active": "breeze",
+          "twoD": false,
+          "playing": false,
+          "spread": 22,
+          "turning": false,
+          "figureBusy": false,
+          "phase": 0.5,
+          "modelState": "live",
+          "rendererPresent": true,
+          "flowPhase": 0,
+          "sceneHidden": false,
+          "svgPresent": false,
+          "svgAria": null,
+          "svgTransforms": [],
+          "reducedCheckbox": true,
+          "viewport": {
+            "width": 698,
+            "height": 900
+          },
+          "media": {
+            "coarse": false,
+            "noHover": false,
+            "reduced": true
+          },
+          "simulatedWebGLCalls": 0,
+          "entryScripts": [
+            "http://127.0.0.1:4175/assets/index-CLrFDn8f.js"
+          ],
+          "entryStyles": [
+            "http://127.0.0.1:4175/assets/index-BCj34vQg.css"
+          ],
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36"
+        }
+      ],
+      "screenshot": "output/playwright/mode-entry-reduced-motion.png"
+    },
+    {
+      "id": "webgl-unavailable",
+      "query": "figure=breeze",
+      "viewport": {
+        "width": 698,
+        "height": 900
+      },
+      "touch": false,
+      "reduced": false,
+      "simulatedWebGLFailure": true,
+      "pageErrors": [],
+      "consoleErrors": [
+        "THREE.WebGLRenderer: Error creating WebGL context.",
+        "Error: Error creating WebGL context.\n    at new md (http://127.0.0.1:4175/assets/index-CLrFDn8f.js:3824:19842)\n    at Bx (http://127.0.0.1:4175/assets/index-CLrFDn8f.js:5117:8248)\n    at new vT (http://127.0.0.1:4175/assets/index-CLrFDn8f.js:5397:130571)\n    at eO (http://127.0.0.1:4175/assets/index-CLrFDn8f.js:5428:8241)\n    at http://127.0.0.1:4175/assets/index-CLrFDn8f.js:5428:13842\n    at http://127.0.0.1:4175/assets/index-CLrFDn8f.js:5428:14063"
+      ],
+      "requestFailures": [],
+      "initialStorageKeys": [],
+      "observedDocumentStorageKeys": [],
+      "states": [
+        {
+          "at": "initial",
+          "ready": true,
+          "active": "breeze",
+          "twoD": true,
+          "playing": false,
+          "spread": 22,
+          "turning": false,
+          "figureBusy": false,
+          "phase": 0.5,
+          "modelState": null,
+          "rendererPresent": false,
+          "flowPhase": null,
+          "sceneHidden": true,
+          "svgPresent": true,
+          "svgAria": "午后，近地面海洋 → 陆地，高空陆地 → 海洋",
+          "svgTransforms": [
+            "translate(130 176.00000000000009) rotate(-90.0000000000001)",
+            "translate(174.45155580739396 113.64960186040581) rotate(-31.31723318920744)",
+            "translate(287.00684624328346 80.4736479578158) rotate(-5.14387647459891)",
+            "translate(415.00000000000006 91.99553583290947) rotate(16.423013229801725)",
+            "translate(498.5415979493225 142.82404609741008) rotate(54.51373709428167)",
+            "translate(498.5415979493227 209.17595390258975) rotate(125.48626290571816)",
+            "translate(414.9999999999998 260.00446416709065) rotate(163.57698677019832)",
+            "translate(287.0068462432838 271.5263520421842) rotate(-174.85612352540116)",
+            "translate(174.4515558073942 238.35039813959435) rotate(-148.68276681079269)"
+          ],
+          "reducedCheckbox": false,
+          "viewport": {
+            "width": 698,
+            "height": 900
+          },
+          "media": {
+            "coarse": false,
+            "noHover": false,
+            "reduced": false
+          },
+          "simulatedWebGLCalls": 2,
+          "entryScripts": [
+            "http://127.0.0.1:4175/assets/index-CLrFDn8f.js"
+          ],
+          "entryStyles": [
+            "http://127.0.0.1:4175/assets/index-BCj34vQg.css"
+          ],
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36"
+        },
+        {
+          "at": "paused-after-350ms",
+          "ready": true,
+          "active": "breeze",
+          "twoD": true,
+          "playing": false,
+          "spread": 22,
+          "turning": false,
+          "figureBusy": false,
+          "phase": 0.5,
+          "modelState": null,
+          "rendererPresent": false,
+          "flowPhase": null,
+          "sceneHidden": true,
+          "svgPresent": true,
+          "svgAria": "午后，近地面海洋 → 陆地，高空陆地 → 海洋",
+          "svgTransforms": [
+            "translate(130 176.00000000000009) rotate(-90.0000000000001)",
+            "translate(174.45155580739396 113.64960186040581) rotate(-31.31723318920744)",
+            "translate(287.00684624328346 80.4736479578158) rotate(-5.14387647459891)",
+            "translate(415.00000000000006 91.99553583290947) rotate(16.423013229801725)",
+            "translate(498.5415979493225 142.82404609741008) rotate(54.51373709428167)",
+            "translate(498.5415979493227 209.17595390258975) rotate(125.48626290571816)",
+            "translate(414.9999999999998 260.00446416709065) rotate(163.57698677019832)",
+            "translate(287.0068462432838 271.5263520421842) rotate(-174.85612352540116)",
+            "translate(174.4515558073942 238.35039813959435) rotate(-148.68276681079269)"
+          ],
+          "reducedCheckbox": false,
+          "viewport": {
+            "width": 698,
+            "height": 900
+          },
+          "media": {
+            "coarse": false,
+            "noHover": false,
+            "reduced": false
+          },
+          "simulatedWebGLCalls": 2,
+          "entryScripts": [
+            "http://127.0.0.1:4175/assets/index-CLrFDn8f.js"
+          ],
+          "entryStyles": [
+            "http://127.0.0.1:4175/assets/index-BCj34vQg.css"
+          ],
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36"
+        }
+      ],
+      "screenshot": "output/playwright/mode-entry-webgl-unavailable.png"
+    }
+  ],
+  "expectedConsoleErrors": [
+    {
+      "scenario": "webgl-unavailable",
+      "message": "THREE.WebGLRenderer: Error creating WebGL context."
+    },
+    {
+      "scenario": "webgl-unavailable",
+      "message": "Error: Error creating WebGL context.\n    at new md (http://127.0.0.1:4175/assets/index-CLrFDn8f.js:3824:19842)\n    at Bx (http://127.0.0.1:4175/assets/index-CLrFDn8f.js:5117:8248)\n    at new vT (http://127.0.0.1:4175/assets/index-CLrFDn8f.js:5397:130571)\n    at eO (http://127.0.0.1:4175/assets/index-CLrFDn8f.js:5428:8241)\n    at http://127.0.0.1:4175/assets/index-CLrFDn8f.js:5428:13842\n    at http://127.0.0.1:4175/assets/index-CLrFDn8f.js:5428:14063"
+    }
+  ],
+  "scope": "Isolated entry-mode checks only; no full-book or 17-item coastal-motion rerun.",
+  "environment": {
+    "runner": "scripts/run-visual-review.mjs",
+    "channel": "chrome",
+    "headless": true,
+    "target": "stable dist preview",
+    "expectedBundle": "index-CLrFDn8f.js",
+    "expectedStylesheet": "index-BCj34vQg.css",
+    "allContextsFresh": true,
+    "realUserStorageAccessed": false,
+    "productionFilesChanged": false
+  },
+  "boundaries": [
+    "Phone pointer/hover/touch behavior is Chromium device emulation, not a physical touchscreen test.",
+    "Reduced-motion preference is emulated inside one fresh browser context; no OS preference or real user bookmark is changed.",
+    "WebGL startup failure is simulated by returning null from canvas getContext for WebGL modes; canvas 2-D remains available.",
+    "This checks only stable dist preview at http://127.0.0.1:4175; a subsequent rebuilt or portable artifact is outside this run."
+  ]
+}

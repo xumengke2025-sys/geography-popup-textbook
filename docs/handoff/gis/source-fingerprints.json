@@ -1,0 +1,10 @@
+[
+  {
+    "path": "src/textbook-gis-world.ts",
+    "sha256": "6334348f579b6dcb2a8f0fb52de22895b7c8b3207878afa702fe3fee6fbd956d"
+  },
+  {
+    "path": "tests/gis-registration-world.test.ts",
+    "sha256": "b43f4b232ddf1360a46e0577d86978f8e38c98b9c3d42b93bfb8653a9bd591c5"
+  }
+]

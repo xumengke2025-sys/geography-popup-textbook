@@ -1,0 +1,167 @@
+{
+  "base": "http://127.0.0.1:4180",
+  "checks": [
+    "solar-activity/1/80: requested condition and paused phase",
+    "solar-activity/1/520: requested condition and paused phase",
+    "solar-activity/1/920: requested condition and paused phase",
+    "mars-base/1/80: requested condition and paused phase",
+    "mars-base/1/520: requested condition and paused phase",
+    "mars-base/1/920: requested condition and paused phase",
+    "mars-base/2/80: requested condition and paused phase",
+    "mars-base/2/520: requested condition and paused phase",
+    "mars-base/2/920: requested condition and paused phase",
+    "greenhouse/1/80: requested condition and paused phase",
+    "greenhouse/1/520: requested condition and paused phase",
+    "greenhouse/1/920: requested condition and paused phase",
+    "greenhouse/2/80: requested condition and paused phase",
+    "greenhouse/2/520: requested condition and paused phase",
+    "greenhouse/2/920: requested condition and paused phase",
+    "soil-factors/0/80: requested condition and paused phase",
+    "soil-factors/0/520: requested condition and paused phase",
+    "soil-factors/0/920: requested condition and paused phase",
+    "soil-factors/1/80: requested condition and paused phase",
+    "soil-factors/1/520: requested condition and paused phase",
+    "soil-factors/1/920: requested condition and paused phase",
+    "soil-factors/2/80: requested condition and paused phase",
+    "soil-factors/2/520: requested condition and paused phase",
+    "soil-factors/2/920: requested condition and paused phase",
+    "No runtime exceptions"
+  ],
+  "failures": [],
+  "errors": [],
+  "states": [
+    {
+      "id": "solar-activity",
+      "selection": 1,
+      "phase": 0.08
+    },
+    {
+      "id": "solar-activity",
+      "selection": 1,
+      "phase": 0.52
+    },
+    {
+      "id": "solar-activity",
+      "selection": 1,
+      "phase": 0.92
+    },
+    {
+      "id": "mars-base",
+      "selection": 1,
+      "phase": 0.08
+    },
+    {
+      "id": "mars-base",
+      "selection": 1,
+      "phase": 0.52
+    },
+    {
+      "id": "mars-base",
+      "selection": 1,
+      "phase": 0.92
+    },
+    {
+      "id": "mars-base",
+      "selection": 2,
+      "phase": 0.08
+    },
+    {
+      "id": "mars-base",
+      "selection": 2,
+      "phase": 0.52
+    },
+    {
+      "id": "mars-base",
+      "selection": 2,
+      "phase": 0.92
+    },
+    {
+      "id": "greenhouse",
+      "selection": 1,
+      "phase": 0.08
+    },
+    {
+      "id": "greenhouse",
+      "selection": 1,
+      "phase": 0.52
+    },
+    {
+      "id": "greenhouse",
+      "selection": 1,
+      "phase": 0.92
+    },
+    {
+      "id": "greenhouse",
+      "selection": 2,
+      "phase": 0.08
+    },
+    {
+      "id": "greenhouse",
+      "selection": 2,
+      "phase": 0.52
+    },
+    {
+      "id": "greenhouse",
+      "selection": 2,
+      "phase": 0.92
+    },
+    {
+      "id": "soil-factors",
+      "selection": 0,
+      "phase": 0.08
+    },
+    {
+      "id": "soil-factors",
+      "selection": 0,
+      "phase": 0.52
+    },
+    {
+      "id": "soil-factors",
+      "selection": 0,
+      "phase": 0.92
+    },
+    {
+      "id": "soil-factors",
+      "selection": 1,
+      "phase": 0.08
+    },
+    {
+      "id": "soil-factors",
+      "selection": 1,
+      "phase": 0.52
+    },
+    {
+      "id": "soil-factors",
+      "selection": 1,
+      "phase": 0.92
+    },
+    {
+      "id": "soil-factors",
+      "selection": 2,
+      "phase": 0.08
+    },
+    {
+      "id": "soil-factors",
+      "selection": 2,
+      "phase": 0.52
+    },
+    {
+      "id": "soil-factors",
+      "selection": 2,
+      "phase": 0.92
+    }
+  ],
+  "scope": "Eight selected causal conditions, three paused samples each; screenshots require visual judgment, not continuous animation or classroom acceptance",
+  "reviewedEntry": {
+    "path": "/assets/index-DO1mJXaA.js",
+    "sha256": "c7df4d9500d71e033f6d2a172fa63ba4d34678a56edf46df3c278230df637dea"
+  },
+  "reviewedStyles": [
+    {
+      "path": "/assets/index-C2v-9YPV.css",
+      "sha256": "6acae712c3c97f6d8ea4d953b2535aa24ada9e45b7c9a612f6eacb59d56f6829"
+    }
+  ],
+  "reviewedAt": "2026-11-06T03:10:01.174Z",
+  "browser": "156.0.8078.80"
+}

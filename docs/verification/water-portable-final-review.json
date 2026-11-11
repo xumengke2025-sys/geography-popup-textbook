@@ -1,0 +1,1034 @@
+{
+  "generatedAt": "2026-11-05T02:56:14.659Z",
+  "browser": "independent headless Chrome session",
+  "base": "http://127.0.0.1:4173",
+  "errors": [],
+  "consoleErrors": [],
+  "states": [
+    {
+      "name": "desktop-land-sea",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "screenshot": "output/playwright/portable-water-final-desktop-land-sea.png",
+      "labelMetrics": {
+        "count": 5,
+        "minimumFontPx": 33.316912408301974,
+        "overlaps": []
+      },
+      "diagnostics": {
+        "ready": true,
+        "twoD": false,
+        "spread": 26,
+        "turning": false,
+        "figureBusy": false,
+        "active": "water",
+        "playing": false,
+        "teacher": false,
+        "stored": true,
+        "state": {
+          "phase": 0.25,
+          "selection": 0,
+          "routes": [
+            {
+              "points": [
+                [
+                  0.8,
+                  0.61
+                ],
+                [
+                  0.8,
+                  0.22
+                ]
+              ]
+            },
+            {
+              "points": [
+                [
+                  0.61,
+                  0.135
+                ],
+                [
+                  0.39,
+                  0.135
+                ]
+              ]
+            },
+            {
+              "points": [
+                [
+                  0.28,
+                  0.19
+                ],
+                [
+                  0.28,
+                  0.43
+                ]
+              ]
+            },
+            {
+              "points": [
+                [
+                  0.28,
+                  0.46
+                ],
+                [
+                  0.39,
+                  0.48
+                ],
+                [
+                  0.49,
+                  0.55
+                ],
+                [
+                  0.61,
+                  0.6
+                ],
+                [
+                  0.73,
+                  0.64
+                ]
+              ]
+            },
+            {
+              "points": [
+                [
+                  0.21,
+                  0.54
+                ],
+                [
+                  0.21,
+                  0.6
+                ]
+              ]
+            },
+            {
+              "points": [
+                [
+                  0.29,
+                  0.615
+                ],
+                [
+                  0.35,
+                  0.68
+                ]
+              ]
+            }
+          ],
+          "rings": [],
+          "focus": null,
+          "caption": "海陆间循环"
+        },
+        "render": {
+          "position": 26,
+          "spread": 26,
+          "busy": false,
+          "figure": "water",
+          "modelState": "live",
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 57,
+            "labels": 8,
+            "meshes": 65,
+            "imageMappedMeshes": 0,
+            "extent": [
+              171.0889105738795,
+              64.51406381937579,
+              51.22562866210937
+            ],
+            "sceneElevation": 56,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.25,
+            "selection": 0,
+            "kind": "water-cycle",
+            "cycles": 3,
+            "terrain": "closed-heightfield",
+            "groundwater": "section-view",
+            "physicalFlowRate": false
+          },
+          "view": "detail",
+          "labels": [
+            {
+              "text": "蒸发",
+              "left": 1143.4996768278259,
+              "top": 574.3862597292608,
+              "right": 1223.6088505023147,
+              "bottom": 628.6537644764953,
+              "fontPx": 35.8768503606717
+            },
+            {
+              "text": "水汽输送",
+              "left": 707.6092803921764,
+              "top": 231.33864453276044,
+              "right": 860.2026548814001,
+              "bottom": 283.0234971823362,
+              "fontPx": 34.16943036277508
+            },
+            {
+              "text": "降水",
+              "left": 542.238458642157,
+              "top": 283.6088987325205,
+              "right": 616.631564379782,
+              "bottom": 334.0042284257504,
+              "fontPx": 33.316912408301974
+            },
+            {
+              "text": "地表径流",
+              "left": 587.577497036371,
+              "top": 567.0908270300732,
+              "right": 740.0229918005773,
+              "bottom": 618.7255913856915,
+              "fontPx": 34.13631643510317
+            },
+            {
+              "text": "地下径流",
+              "left": 514.0003813815624,
+              "top": 683.365055205352,
+              "right": 667.9330587088383,
+              "bottom": 735.5035426871714,
+              "fontPx": 34.46933339075839
+            }
+          ],
+          "models": 1,
+          "images": 6,
+          "triangles": 28907,
+          "calls": 144,
+          "geometries": 89,
+          "textures": 237,
+          "hiRes": 6,
+          "engine": "Every Joule 48591dd"
+        },
+        "regions": [
+          {
+            "id": "water",
+            "screenX": 734.9947675016548,
+            "screenY": 837.8110373837874
+          }
+        ],
+        "pages": [
+          51,
+          52
+        ],
+        "notes": {},
+        "originalPageCount": 132,
+        "sectionCount": 17,
+        "figureCount": 25
+      },
+      "camera": null,
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36"
+    },
+    {
+      "name": "desktop-land",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "screenshot": "output/playwright/portable-water-final-desktop-land.png",
+      "labelMetrics": {
+        "count": 3,
+        "minimumFontPx": 32.99034722722717,
+        "overlaps": []
+      },
+      "diagnostics": {
+        "ready": true,
+        "twoD": false,
+        "spread": 26,
+        "turning": false,
+        "figureBusy": false,
+        "active": "water",
+        "playing": false,
+        "teacher": false,
+        "stored": true,
+        "state": {
+          "phase": 0.25,
+          "selection": 1,
+          "routes": [
+            {
+              "points": [
+                [
+                  0.19,
+                  0.48
+                ],
+                [
+                  0.19,
+                  0.425
+                ]
+              ]
+            },
+            {
+              "points": [
+                [
+                  0.17,
+                  0.316
+                ],
+                [
+                  0.17,
+                  0.22
+                ]
+              ]
+            },
+            {
+              "points": [
+                [
+                  0.28,
+                  0.19
+                ],
+                [
+                  0.28,
+                  0.43
+                ]
+              ]
+            },
+            {
+              "points": [
+                [
+                  0.1,
+                  0.51
+                ],
+                [
+                  0.1,
+                  0.57
+                ]
+              ]
+            }
+          ],
+          "rings": [],
+          "focus": null,
+          "caption": "陆地内循环"
+        },
+        "render": {
+          "position": 26,
+          "spread": 26,
+          "busy": false,
+          "figure": "water",
+          "modelState": "live",
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 57,
+            "labels": 8,
+            "meshes": 65,
+            "imageMappedMeshes": 0,
+            "extent": [
+              171.0889105738795,
+              64.51406381937579,
+              51.22562866210937
+            ],
+            "sceneElevation": 56,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.25,
+            "selection": 1,
+            "kind": "water-cycle",
+            "cycles": 3,
+            "terrain": "closed-heightfield",
+            "groundwater": "section-view",
+            "physicalFlowRate": false
+          },
+          "view": "detail",
+          "labels": [
+            {
+              "text": "降水",
+              "left": 542.2394953184388,
+              "top": 283.609777380493,
+              "right": 616.6321895634946,
+              "bottom": 334.00482832069207,
+              "fontPx": 33.31672812157607
+            },
+            {
+              "text": "蒸发",
+              "left": 690.9081856516837,
+              "top": 475.09928469344044,
+              "right": 767.867952774302,
+              "bottom": 527.233320486182,
+              "fontPx": 34.46639032964583
+            },
+            {
+              "text": "蒸腾",
+              "left": 231.95875516367738,
+              "top": 322.47322536161107,
+              "right": 305.6226757430805,
+              "bottom": 372.37459091540006,
+              "fontPx": 32.99034722722717
+            }
+          ],
+          "models": 1,
+          "images": 6,
+          "triangles": 28479,
+          "calls": 140,
+          "geometries": 91,
+          "textures": 239,
+          "hiRes": 6,
+          "engine": "Every Joule 48591dd"
+        },
+        "regions": [
+          {
+            "id": "water",
+            "screenX": 734.9945744885525,
+            "screenY": 837.8090760321145
+          }
+        ],
+        "pages": [
+          51,
+          52
+        ],
+        "notes": {},
+        "originalPageCount": 132,
+        "sectionCount": 17,
+        "figureCount": 25
+      },
+      "camera": null,
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36"
+    },
+    {
+      "name": "desktop-sea",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "screenshot": "output/playwright/portable-water-final-desktop-sea.png",
+      "labelMetrics": {
+        "count": 2,
+        "minimumFontPx": 35.14633142297587,
+        "overlaps": []
+      },
+      "diagnostics": {
+        "ready": true,
+        "twoD": false,
+        "spread": 26,
+        "turning": false,
+        "figureBusy": false,
+        "active": "water",
+        "playing": false,
+        "teacher": false,
+        "stored": true,
+        "state": {
+          "phase": 0.25,
+          "selection": 2,
+          "routes": [
+            {
+              "points": [
+                [
+                  0.8,
+                  0.61
+                ],
+                [
+                  0.8,
+                  0.22
+                ]
+              ]
+            },
+            {
+              "points": [
+                [
+                  0.78,
+                  0.2
+                ],
+                [
+                  0.78,
+                  0.54
+                ]
+              ]
+            }
+          ],
+          "rings": [],
+          "focus": null,
+          "caption": "海上内循环"
+        },
+        "render": {
+          "position": 26,
+          "spread": 26,
+          "busy": false,
+          "figure": "water",
+          "modelState": "live",
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 57,
+            "labels": 8,
+            "meshes": 65,
+            "imageMappedMeshes": 0,
+            "extent": [
+              171.0889105738795,
+              64.51406381937579,
+              51.22562866210937
+            ],
+            "sceneElevation": 56,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.25,
+            "selection": 2,
+            "kind": "water-cycle",
+            "cycles": 3,
+            "terrain": "closed-heightfield",
+            "groundwater": "section-view",
+            "physicalFlowRate": false
+          },
+          "view": "detail",
+          "labels": [
+            {
+              "text": "蒸发",
+              "left": 1143.4958264863508,
+              "top": 574.3883316394213,
+              "right": 1223.6046600698678,
+              "bottom": 628.6556060024488,
+              "fontPx": 35.876698051112676
+            },
+            {
+              "text": "降水",
+              "left": 1159.722484820921,
+              "top": 458.6635814897101,
+              "right": 1238.2004877581776,
+              "bottom": 511.82609960849715,
+              "fontPx": 35.14633142297587
+            }
+          ],
+          "models": 1,
+          "images": 6,
+          "triangles": 28299,
+          "calls": 138,
+          "geometries": 92,
+          "textures": 240,
+          "hiRes": 6,
+          "engine": "Every Joule 48591dd"
+        },
+        "regions": [
+          {
+            "id": "water",
+            "screenX": 734.9945745115688,
+            "screenY": 837.809075584661
+          }
+        ],
+        "pages": [
+          51,
+          52
+        ],
+        "notes": {},
+        "originalPageCount": 132,
+        "sectionCount": 17,
+        "figureCount": 25
+      },
+      "camera": null,
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36"
+    },
+    {
+      "name": "tablet-land-sea",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "screenshot": "output/playwright/portable-water-final-tablet-land-sea.png",
+      "labelMetrics": {
+        "count": 5,
+        "minimumFontPx": 23.72557468543108,
+        "overlaps": []
+      },
+      "diagnostics": {
+        "ready": true,
+        "twoD": false,
+        "spread": 26,
+        "turning": false,
+        "figureBusy": false,
+        "active": "water",
+        "playing": false,
+        "teacher": false,
+        "stored": true,
+        "state": {
+          "phase": 0.25,
+          "selection": 0,
+          "routes": [
+            {
+              "points": [
+                [
+                  0.8,
+                  0.61
+                ],
+                [
+                  0.8,
+                  0.22
+                ]
+              ]
+            },
+            {
+              "points": [
+                [
+                  0.61,
+                  0.135
+                ],
+                [
+                  0.39,
+                  0.135
+                ]
+              ]
+            },
+            {
+              "points": [
+                [
+                  0.28,
+                  0.19
+                ],
+                [
+                  0.28,
+                  0.43
+                ]
+              ]
+            },
+            {
+              "points": [
+                [
+                  0.28,
+                  0.46
+                ],
+                [
+                  0.39,
+                  0.48
+                ],
+                [
+                  0.49,
+                  0.55
+                ],
+                [
+                  0.61,
+                  0.6
+                ],
+                [
+                  0.73,
+                  0.64
+                ]
+              ]
+            },
+            {
+              "points": [
+                [
+                  0.21,
+                  0.54
+                ],
+                [
+                  0.21,
+                  0.6
+                ]
+              ]
+            },
+            {
+              "points": [
+                [
+                  0.29,
+                  0.615
+                ],
+                [
+                  0.35,
+                  0.68
+                ]
+              ]
+            }
+          ],
+          "rings": [],
+          "focus": null,
+          "caption": "海陆间循环"
+        },
+        "render": {
+          "position": 26,
+          "spread": 26,
+          "busy": false,
+          "figure": "water",
+          "modelState": "live",
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 57,
+            "labels": 8,
+            "meshes": 65,
+            "imageMappedMeshes": 0,
+            "extent": [
+              171.0889105738795,
+              64.51406381937579,
+              51.22562866210937
+            ],
+            "sceneElevation": 56,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.25,
+            "selection": 0,
+            "kind": "water-cycle",
+            "cycles": 3,
+            "terrain": "closed-heightfield",
+            "groundwater": "section-view",
+            "physicalFlowRate": false
+          },
+          "view": "detail",
+          "labels": [
+            {
+              "text": "蒸发",
+              "left": 811.9040706716062,
+              "top": 436.6790633434399,
+              "right": 868.6341817751404,
+              "bottom": 475.1091386071245,
+              "fontPx": 25.406549757658162
+            },
+            {
+              "text": "水汽输送",
+              "left": 503.19269531202656,
+              "top": 193.03723898275052,
+              "right": 611.6553235809902,
+              "bottom": 229.77458081578675,
+              "fontPx": 24.287464878507283
+            },
+            {
+              "text": "降水",
+              "left": 385.41283596222803,
+              "top": 229.90376428000482,
+              "right": 438.38950932945704,
+              "bottom": 265.7911881739342,
+              "fontPx": 23.72557468543108
+            },
+            {
+              "text": "地表径流",
+              "left": 417.8670256509547,
+              "top": 431.691324824651,
+              "right": 526.2322861101824,
+              "bottom": 468.3956872382603,
+              "fontPx": 24.265661817886123
+            },
+            {
+              "text": "地下径流",
+              "left": 365.67090172246435,
+              "top": 514.2496063774855,
+              "right": 475.0138994730963,
+              "bottom": 551.2851378736673,
+              "fontPx": 24.484601378031275
+            }
+          ],
+          "models": 1,
+          "images": 6,
+          "triangles": 28907,
+          "calls": 144,
+          "geometries": 92,
+          "textures": 240,
+          "hiRes": 6,
+          "engine": "Every Joule 48591dd"
+        },
+        "regions": [
+          {
+            "id": "water",
+            "screenX": 522.7999447376574,
+            "screenY": 627.3092946635896
+          }
+        ],
+        "pages": [
+          51,
+          52
+        ],
+        "notes": {},
+        "originalPageCount": 132,
+        "sectionCount": 17,
+        "figureCount": 25
+      },
+      "camera": null,
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36"
+    },
+    {
+      "name": "tablet-land",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "screenshot": "output/playwright/portable-water-final-tablet-land.png",
+      "labelMetrics": {
+        "count": 3,
+        "minimumFontPx": 23.50867996567606,
+        "overlaps": []
+      },
+      "diagnostics": {
+        "ready": true,
+        "twoD": false,
+        "spread": 26,
+        "turning": false,
+        "figureBusy": false,
+        "active": "water",
+        "playing": false,
+        "teacher": false,
+        "stored": true,
+        "state": {
+          "phase": 0.25,
+          "selection": 1,
+          "routes": [
+            {
+              "points": [
+                [
+                  0.19,
+                  0.48
+                ],
+                [
+                  0.19,
+                  0.425
+                ]
+              ]
+            },
+            {
+              "points": [
+                [
+                  0.17,
+                  0.316
+                ],
+                [
+                  0.17,
+                  0.22
+                ]
+              ]
+            },
+            {
+              "points": [
+                [
+                  0.28,
+                  0.19
+                ],
+                [
+                  0.28,
+                  0.43
+                ]
+              ]
+            },
+            {
+              "points": [
+                [
+                  0.1,
+                  0.51
+                ],
+                [
+                  0.1,
+                  0.57
+                ]
+              ]
+            }
+          ],
+          "rings": [],
+          "focus": null,
+          "caption": "陆地内循环"
+        },
+        "render": {
+          "position": 26,
+          "spread": 26,
+          "busy": false,
+          "figure": "water",
+          "modelState": "live",
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 57,
+            "labels": 8,
+            "meshes": 65,
+            "imageMappedMeshes": 0,
+            "extent": [
+              171.0889105738795,
+              64.51406381937579,
+              51.22562866210937
+            ],
+            "sceneElevation": 56,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.25,
+            "selection": 1,
+            "kind": "water-cycle",
+            "cycles": 3,
+            "terrain": "closed-heightfield",
+            "groundwater": "section-view",
+            "physicalFlowRate": false
+          },
+          "view": "detail",
+          "labels": [
+            {
+              "text": "降水",
+              "left": 385.41951182575264,
+              "top": 229.91189089732188,
+              "right": 438.39339134698554,
+              "bottom": 265.797422185899,
+              "fontPx": 23.724323463003756
+            },
+            {
+              "text": "蒸发",
+              "left": 491.33608665804593,
+              "top": 366.3130240922229,
+              "right": 546.0006026483809,
+              "bottom": 403.34382524696593,
+              "fontPx": 24.481474096746773
+            },
+            {
+              "text": "蒸腾",
+              "left": 164.22538113795986,
+              "top": 257.4957195355128,
+              "right": 216.71775176960153,
+              "bottom": 293.0550673827539,
+              "fontPx": 23.50867996567606
+            }
+          ],
+          "models": 1,
+          "images": 6,
+          "triangles": 28479,
+          "calls": 140,
+          "geometries": 92,
+          "textures": 240,
+          "hiRes": 6,
+          "engine": "Every Joule 48591dd"
+        },
+        "regions": [
+          {
+            "id": "water",
+            "screenX": 522.7994580918972,
+            "screenY": 627.2983311411365
+          }
+        ],
+        "pages": [
+          51,
+          52
+        ],
+        "notes": {},
+        "originalPageCount": 132,
+        "sectionCount": 17,
+        "figureCount": 25
+      },
+      "camera": null,
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36"
+    },
+    {
+      "name": "tablet-sea",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "screenshot": "output/playwright/portable-water-final-tablet-sea.png",
+      "labelMetrics": {
+        "count": 2,
+        "minimumFontPx": 24.927487659897256,
+        "overlaps": []
+      },
+      "diagnostics": {
+        "ready": true,
+        "twoD": false,
+        "spread": 26,
+        "turning": false,
+        "figureBusy": false,
+        "active": "water",
+        "playing": false,
+        "teacher": false,
+        "stored": true,
+        "state": {
+          "phase": 0.25,
+          "selection": 2,
+          "routes": [
+            {
+              "points": [
+                [
+                  0.8,
+                  0.61
+                ],
+                [
+                  0.8,
+                  0.22
+                ]
+              ]
+            },
+            {
+              "points": [
+                [
+                  0.78,
+                  0.2
+                ],
+                [
+                  0.78,
+                  0.54
+                ]
+              ]
+            }
+          ],
+          "rings": [],
+          "focus": null,
+          "caption": "海上内循环"
+        },
+        "render": {
+          "position": 26,
+          "spread": 26,
+          "busy": false,
+          "figure": "water",
+          "modelState": "live",
+          "geometry": {
+            "architecture": "three-dimensional-geometry",
+            "bitmapSurfaces": 0,
+            "solids": 57,
+            "labels": 8,
+            "meshes": 65,
+            "imageMappedMeshes": 0,
+            "extent": [
+              171.0889105738795,
+              64.51406381937579,
+              51.22562866210937
+            ],
+            "sceneElevation": 56,
+            "unfoldProgress": 1,
+            "originalPagePreserved": true,
+            "phase": 0.25,
+            "selection": 2,
+            "kind": "water-cycle",
+            "cycles": 3,
+            "terrain": "closed-heightfield",
+            "groundwater": "section-view",
+            "physicalFlowRate": false
+          },
+          "view": "detail",
+          "labels": [
+            {
+              "text": "蒸发",
+              "left": 811.887104497441,
+              "top": 436.6760831832791,
+              "right": 868.614006264926,
+              "bottom": 475.1039843806076,
+              "fontPx": 25.405112458233827
+            },
+            {
+              "text": "降水",
+              "left": 823.8725730500196,
+              "top": 354.68220151010826,
+              "right": 879.5329896735597,
+              "bottom": 392.3876450292806,
+              "fontPx": 24.927487659897256
+            }
+          ],
+          "models": 1,
+          "images": 6,
+          "triangles": 28299,
+          "calls": 138,
+          "geometries": 92,
+          "textures": 240,
+          "hiRes": 6,
+          "engine": "Every Joule 48591dd"
+        },
+        "regions": [
+          {
+            "id": "water",
+            "screenX": 522.7994572435105,
+            "screenY": 627.2983120280394
+          }
+        ],
+        "pages": [
+          51,
+          52
+        ],
+        "notes": {},
+        "originalPageCount": 132,
+        "sectionCount": 17,
+        "figureCount": 25
+      },
+      "camera": null,
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36"
+    }
+  ],
+  "limits": [
+    "Tablet is a desktop browser viewport, not a physical touch tablet.",
+    "Top typhoon inspection uses a developer-only top camera.",
+    "Visual judgments are recorded separately after inspecting the screenshots."
+  ],
+  "externalRequests": [],
+  "requestFailures": []
+}
