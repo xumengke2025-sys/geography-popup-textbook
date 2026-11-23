@@ -81,6 +81,23 @@ describe('vegetation observes existing structures without changing a type into a
     }
   });
 
+  it('releases each leaf from its retained tree crown, with continuous contact under seeking', () => {
+    const { motion, meshes, root } = fixture('vegetation');
+    const leaves = meshes.filter(mesh => mesh.userData.vegetationPart === 'retained-fallen-leaf');
+    leaves.forEach((leaf, i) => {
+      const release = .29 + i / 12 * .37;
+      motion.update(release, 2, 1 / 60, false); root.updateMatrixWorld(true);
+      const crown = meshes.find(mesh => mesh.userData.vegetationPart === 'crown'
+        && mesh.userData.vegetationHabit === 'deciduous' && mesh.userData.vegetationTree === leaf.userData.sourceTree)!;
+      const vertex = new Three.Vector3().fromBufferAttribute(crown.geometry.attributes.position, leaf.userData.sourceCrownVertex);
+      crown.localToWorld(vertex);
+      expect(leaf.position.distanceTo(vertex)).toBeLessThan(1e-5);
+      const start = leaf.position.clone();
+      motion.update(release + 1e-6, 2, 1 / 60, false);
+      expect(leaf.position.distanceTo(start)).toBeLessThan(.001);
+    });
+  });
+
   it('leaves fallen material on the same ground at season end and restores it on reverse seeking', () => {
     const { motion, meshes } = fixture('vegetation');
     const leaves = meshes.filter(mesh => mesh.userData.vegetationPart === 'retained-fallen-leaf');

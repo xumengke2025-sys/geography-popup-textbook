@@ -52,21 +52,22 @@ export function deltaMainPoint(q: number): DeltaPoint {
 /** Unequal, bent distributaries retain an explicitly non-universal shape. */
 export function deltaBranchPoint(branch: number, q: number): DeltaPoint {
   const t = Math.max(0, Math.min(1.14, q)), [dx, dv] = spread[branch];
-  return [DELTA_MOUTH[0] + dx * t + .022 * Math.sin(t * Math.PI) * (branch === 1 ? -1 : .7), DELTA_MOUTH[1] + dv * t];
+  return [DELTA_MOUTH[0] + dx * t + (.023 * Math.sin(t * Math.PI * 2.6 + branch * 1.7) + .012 * Math.sin(t * Math.PI * 5.1 + branch)) * Math.sin(t * Math.PI), DELTA_MOUTH[1] + dv * t];
 }
 
 function frontContour(fronts: readonly number[]): DeltaPoint[] {
   const out: DeltaPoint[] = [];
-  // A connected envelope is sampled in polar order for a quiet paper outline.
-  // The surface itself uses the union of three lobes rather than this outline.
+  // Adjacent dispersal lobes overlap into a common alluvial apron. A small
+  // shore sinuosity breaks the ideal curves while preserving monotonic growth.
   for (let i = 0; i <= 72; i++) {
-    const angle = -1.2 + 2.4 * i / 72;
+    const angle = -Math.PI / 2 + Math.PI * i / 72;
     let reach = 0;
     for (let j = 0; j < 3; j++) {
-      const tip = deltaBranchPoint(j, fronts[j]), dx = tip[0] - DELTA_MOUTH[0], dv = tip[1] - DELTA_MOUTH[1];
-      const direction = Math.atan2(dx, dv), taper = Math.exp(-(((angle - direction) / .39) ** 2));
-      reach = Math.max(reach, Math.hypot(dx, dv) * taper);
+      const [dx, dv] = spread[j];
+      const direction = Math.atan2(dx, dv), taper = Math.exp(-(((angle - direction) / .86) ** 2));
+      reach = Math.max(reach, Math.hypot(dx, dv) * fronts[j] * taper);
     }
+    reach *= 1 + .036*Math.sin(13*angle) + .017*Math.cos(29*angle) + .009*Math.sin(43*angle);
     out.push([DELTA_MOUTH[0] + Math.sin(angle) * reach, DELTA_MOUTH[1] + Math.cos(angle) * reach]);
   }
   return out;
@@ -112,15 +113,36 @@ export function evaluateDeltaDeposition(phase: number): DeltaDepositionState {
  * independently and its bed is permanent once the contributing parcel lands.
  * Its exaggerated relief makes accumulation readable, not a water-depth map. */
 export function deltaBedHeight(state: DeltaDepositionState, u: number, v: number): number {
-  if (v < DELTA_MOUTH[1] - .018) return DELTA_BASE;
-  let fill = 0;
-  for (let i = 0; i < 3; i++) {
-    const q = (v - DELTA_MOUTH[1]) / spread[i][1];
-    if (q < -.04 || q > state.branches[i].front + .06) continue;
-    const center = deltaBranchPoint(i, Math.max(0, q)), width = .042 + .045 * Math.sqrt(Math.max(0, q));
-    const lateral = 1 - smooth(width * .40, width, Math.abs(u - center[0]));
-    const distal = 1 - smooth(state.branches[i].front - .065, state.branches[i].front + .035, q);
-    fill = Math.max(fill, lateral * distal);
-  }
+  if (v < DELTA_MOUTH[1] - .015) return DELTA_BASE;
+  const dx = u - DELTA_MOUTH[0], dv = Math.max(0,v - DELTA_MOUTH[1]);
+  const last = state.shoreline.length - 1;
+  const index = (Math.atan2(dx,dv)/Math.PI+.5)*last;
+  const i = Math.min(last-1,Math.floor(index)), fraction=index-i;
+  const a=state.shoreline[i], b=state.shoreline[i+1];
+  const reach=Math.hypot(a[0]+(b[0]-a[0])*fraction-DELTA_MOUTH[0],a[1]+(b[1]-a[1])*fraction-DELTA_MOUTH[1]);
+  const fill=1-smooth(.935,1.18,Math.hypot(dx,dv)/Math.max(reach,.001));
   return DELTA_BASE + (DELTA_TOP - DELTA_BASE) * fill;
+}
+
+/** Channel-incised sand and paired natural levees. The scalar is fixed per
+ * sampling point; the live mass envelope still comes solely from landed grains. */
+export function deltaSandTopography(u: number, v: number) {
+  const distance = Math.min(...spread.map(([, dv], branch) => {
+    const q = Math.max(0, Math.min(1.03, (v - DELTA_MOUTH[1]) / dv));
+    return Math.hypot(u - deltaBranchPoint(branch, q)[0], (v - DELTA_MOUTH[1] - q * dv) * .60);
+  }));
+  const bank = .7 * Math.exp(-(((distance - .018) / .012) ** 2));
+  const cut = 2.12 * Math.exp(-((distance / .013) ** 2));
+  const overbank = .21 * Math.sin(u * 130 + v * 27 + Math.sin(v * 32)) + .14 * Math.sin(v * 115 - u * 43);
+  return bank - cut + overbank;
+}
+export function deltaSurfaceHeight(state: DeltaDepositionState, u: number, v: number, detail = deltaSandTopography(u, v)) {
+  const bed = deltaBedHeight(state, u, v);
+  return bed + detail * (bed - DELTA_BASE) / (DELTA_TOP - DELTA_BASE);
+}
+export const DELTA_WATER = 6.34;
+
+export function deltaPoolPoint(id: number): [number,number,number] {
+  const angle = id * 2.399963, r = Math.sqrt((id + .5) / DELTA_GRAIN_COUNT) * 5.53;
+  return [49 + r * Math.cos(angle), 22.85 - .13 * r, -2.5 + r * Math.sin(angle)];
 }

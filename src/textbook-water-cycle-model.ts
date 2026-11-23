@@ -1,3 +1,4 @@
+import { drawingGrip } from './textbook-drawing-grip';
 /** PEP Geography I, pp.46–47 / fig.3.2, checked against page-051/052.webp.
  * Six persistent marks follow selected possible routes. Their number, sizes,
  * timing and separation are explanatory, never a water-budget measurement. */
@@ -38,12 +39,27 @@ export const waterCycleCoastX = (z: number) => 64 + 1.8 * Math.sin((z - 8) / 42 
 export const waterCycleRiverZ = (x: number) => 24 + .43 * (x - 23) + 2 * Math.sin(clamp((x - 23) / 44) * Math.PI);
 export const waterCycleRiverLevel = (x: number) => 8 + 18 * (1 - clamp((x - 23) / 44)) ** 2.3;
 
+// The inland ridge breaks into two spurs separated by the upper catchment.
+// Heights are illustrative and all route endpoints still use this field.
+const ridges = [
+  { crest: [12.5, 18], width: [8, 7], height: 20.5 },
+  { crest: [23.5, 14], width: [9.5, 5.4], height: 16 },
+  { crest: [30, 23.8], width: [12, 8], height: 11 },
+  { crest: [15, 33.8], width: [8.4, 7.7], height: 22.8 },
+  { crest: [36.2, 40], width: [14, 9.7], height: 12.4 },
+];
+
 /** The same valley is cut into the land height field and filled by the river.
  * Coordinates are teaching geometry; no coast or measured elevation is used. */
 export function waterCycleTerrainHeight(x: number, z: number) {
   const coast = waterCycleCoastX(z), u = clamp((x - 4) / (coast - 4));
-  const raw = 8.2 + 6.6 * (1 - u) + 16 * Math.exp(-((x - 18) ** 2 / 95 + (z - 20) ** 2 / 100))
-    + 9 * Math.exp(-((x - 35) ** 2 / 105 + (z - 24) ** 2 / 110));
+  const slopes = ridges.map(({ crest: [cx, cz], width: [rx, rz], height }) =>
+    height * Math.exp(-(((x - cx + .19 * (z - cz)) / rx) ** 2 + ((z - cz) / rz) ** 2)));
+  const range = Math.hypot(...slopes);
+  const foothills = 3.25 * (1 - u) ** .67;
+  const ridgelines = 1.45 * Math.sin(x * .47 + Math.sin(z * .31) * 2) + .58 * Math.sin((z - x * .73) * 1.12);
+  const shoreFade = ease((coast - x) / 12);
+  const raw = 8.08 + foothills + shoreFade * (range + ridgelines * clamp(range / 13 + .12));
   // River sections share one X and one level. Cutting by nearest sloping
   // segment shifted the downstream bank and could leave water above it.
   // This cross-section distance gives both banks the exact same water level.
@@ -284,7 +300,7 @@ export function waterCycleSvg(phase: number, selection = 0): string {
   return `<svg class="flat-model-svg flat-explanation-svg" viewBox="0 0 660 520" role="img" aria-label="${state.cycle}：${state.caption}；六个符号只作示踪" data-water-cycle-phase="${state.phase}" data-water-cycle-selection="${state.selection}" data-water-cycle-stage="${state.stage}" data-water-cycle-state='${diagnostics}'>
   <g font-family="FieldSerif,SimSun,serif" fill="#303a40" stroke-linejoin="round" stroke-linecap="round">${scene}
   <path d="M${start.join(' ')}L${end.join(' ')}" stroke="#aa9c7d" stroke-width="2"/>
-  <ellipse data-water-cycle-role="phase-handle" cx="${handle[0]}" cy="${handle[1]}" rx="9" ry="7" fill="#e9d9b7" stroke="#7d806b"/>
+  <ellipse data-water-cycle-role="phase-handle" cx="${handle[0]}" cy="${handle[1]}" rx="9" ry="7" fill="#e9d9b7" stroke="#7d806b"/>${drawingGrip('推拉水循环示踪尺',start,end,state.phase)}
   <text x="330" y="507" text-anchor="middle" font-size="32">示踪数量不表示水量</text>
   </g></svg>`;
 }

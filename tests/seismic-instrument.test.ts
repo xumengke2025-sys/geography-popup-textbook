@@ -53,6 +53,29 @@ describe('guided two-channel seismic instrument',()=>{
     [p,s].forEach((m,i)=>expect(m.geometry.attributes.position.array).toBe(arrays[i]));
     expect(meshes).toHaveLength(count);
   });
+  it('keeps the eccentric studs inside their orthogonal slots through three turns in either direction',()=>{
+    const {motion,meshes,root}=fixture(),s=1.5;
+    const part=(name:string)=>meshes.find(m=>m.name===name)!;
+    const pins=['pressure-eccentric','shear-eccentric'].map(name=>{
+      const mesh=part(name),pos=mesh.geometry.getAttribute('position'),end=new Three.Box3();
+      for(let i=0;i<pos.count;i++)if(pos.getZ(i)>1.8*s)end.expandByPoint(new Three.Vector3().fromBufferAttribute(pos,i));
+      expect(end.isEmpty()).toBe(false);return {mesh,center:end.getCenter(new Three.Vector3())};
+    });
+    const handle=part('seismic-handgrip'),specimen=part('specimen-water-meniscus');
+    expect(handle.userData.modelInput.dial.turns).toBe(3);
+    for(const phase of [0,.07,.22,.5,1,.22,0]){
+      motion.update(phase,0,0,true);root.updateMatrixWorld(true);
+      const [p,q]=pins.map(({mesh,center})=>mesh.localToWorld(center.clone()));
+      const base=part('vertical-yoke-slot').position,side=part('horizontal-yoke-slot').parent!;
+      const x=part('vertical-yoke-slot').parent!.position.x-2.5*s;
+      expect(p.x).toBeCloseTo(x,4);expect(Math.abs(p.y-14*s)).toBeLessThan(2.2*s);
+      expect(q.y).toBeCloseTo(29*s+side.position.y,4);expect(Math.abs(q.x+2.5*s)).toBeLessThan(3.54*s);
+      expect(base.y).toBe(0);expect(handle.rotation.z).toBeCloseTo(phase*Math.PI*6);
+      expect(specimen.visible).toBe(true);motion.update(phase,1,0,true);expect(specimen.visible).toBe(false);
+    }
+    motion.inspect!('particle-14');motion.inspect!('overview');motion.update(.5,0,0,true);
+    expect(meshes.filter(m=>m.name==='tracked-particle-ring').every(m=>!m.visible)).toBe(true);
+  });
   it('connects drive heads to the first particle and exposes native phase, medium and fixed-identity tracking operations',()=>{
     const {meshes,motion}=fixture();motion.update(.23,0,0,true);
     const state=evaluateSeismicParticles(.23,0),drive=meshes.filter(m=>m.name==='demonstration-drive-link');

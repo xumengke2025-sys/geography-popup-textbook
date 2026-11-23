@@ -1,6 +1,9 @@
 import { THREE as T } from './reference/engine.js';
 import { LIFT_MARGIN, type ModelMotion, type TextbookGeometry, type Vec3 } from './textbook-geometry';
 import { phaseTrackPoint, type PhaseTrack } from './textbook-model-input';
+import { applyEarthScan, type EarthScan } from './textbook-earth-scan';
+import { mountFieldInstrument } from './textbook-field-instruments';
+import { chamferedPlateGeometry, createInstrumentParts, turnedShaftGeometry } from './textbook-instrument-parts';
 import { buildUrbanSpecimen } from './textbook-urban-specimen';
 import type { SolidMaterialRole } from './textbook-solid-materials';
 import { evaluateUrbanWater, URBAN_WATER_LABELS, URBAN_WATER_LAYOUT, URBAN_WATER_REFERENCE,
@@ -16,8 +19,16 @@ export function buildUrbanWaterWorld(b: TextbookGeometry, options: { sectionWind
   const solid = (geometry: any, color: string, role: string, _hatch = .07) => {
     // Use the same physical material/reveal path as the rest of the book.
     // The former local paper override flattened every manufactured fitting.
-    const substance:SolidMaterialRole=/water-packet/.test(role)?'water':/drain|inlet|collector/.test(role)?'steel':/soil|garden-(?:gravel|sand|fill|mulch)/.test(role)?'rock':/foundation/.test(role)?'wood':/phase|condition-tab/.test(role)?'brass':'ivory';
+    const aggregate = /gravel|sand|fill|permeable-paver/.test(role);
+    const paving = /pavement/.test(role);
+    const soil = /soil|mulch/.test(role);
+    const substance:SolidMaterialRole=/water-packet/.test(role)?'water':/drain|inlet|collector/.test(role)?'steel':(soil||aggregate||paving)?'rock':/foundation/.test(role)?'wood':/phase|condition-tab/.test(role)?'brass':'ivory';
     const mesh = b.mesh(geometry, color, false,true,substance);
+    if ((soil || aggregate || paving) && !mesh.material.userData.earthScan) {
+      const scan: EarthScan = soil ? 'loam' : 'alluvium';
+      const span = /gravel/.test(role) ? 8 : /sand/.test(role) ? 3.6 : paving ? 4.3 : soil ? 11 : 7;
+      applyEarthScan(mesh.material, scan, span * s);
+    }
     mesh.userData.urbanRole = role; return mesh;
   };
   const input = (mesh: any, selection: number, label: string) => {
@@ -35,7 +46,9 @@ export function buildUrbanWaterWorld(b: TextbookGeometry, options: { sectionWind
     const data = urbanWaterPrismMesh(expose ? { ...definition, front: 51 } : definition), positions: number[] = [];
     for (let i = 0; i < data.positions.length; i += 3) positions.push(...p(data.positions.slice(i, i + 3)));
     const geometry = new T.BufferGeometry(); geometry.setAttribute('position', new T.Float32BufferAttribute(positions, 3));
-    geometry.setIndex(data.indices); geometry.computeVertexNormals(); return geometry;
+    geometry.setIndex(data.indices);
+    const flat = geometry.toNonIndexed();
+    geometry.dispose(); flat.computeVertexNormals(); return flat;
   };
   const commonRoles = new Set(['foundation', 'drain-floor', 'drain-back', 'drain-front-lip',
     'surface-inlet-back', 'surface-inlet-left', 'surface-inlet-right', 'collector-floor',
@@ -77,29 +90,22 @@ export function buildUrbanWaterWorld(b: TextbookGeometry, options: { sectionWind
       mesh.userData.urbanSelection = selection; mesh.userData.sectionDefinition = definition; return mesh;
     }));
   buildUrbanSpecimen(b,p,s);
-  for (const at of URBAN_WATER_LAYOUT.houses) {
-    const start = b.meshes.length;
-    b.house(p(at), 11 * s, 9.5 * s);
-    for (const mesh of b.meshes.slice(start)) mesh.userData.urbanRole = 'paper-house';
-  }
-  // The open planted depression is deliberately clear of any full top slab.
-  // Stems are solid narrow prisms, leaves are thick folded paper diamonds.
+  const street = mountFieldInstrument(b, 'urban-waterlogging', s, p([0, 0, 0]));
   const plants: any[] = [];
-  for (const [i, x] of [41, 49, 58].entries()) {
-    const height = 10 + i % 2 * 2;
-    const stem = solid(new T.CylinderGeometry(.17 * s, .23 * s, height * s, 6), '#859779', 'garden-plant-stem', .025);
-    stem.position.set(...p([x, 16.9 + height / 2, 30])); plants.push(stem);
-    for (const side of [-1, 1]) {
-      const leaf = solid(new T.OctahedronGeometry(1, 0), '#a6b299', 'garden-paper-leaf', .05);
-      leaf.scale.set(2.7 * s, .4 * s, 1.3 * s); leaf.rotation.z = side * .62;
-      leaf.position.set(...p([x + side * 1.8, 20.3 + (side > 0 ? 2 : 0), 30])); plants.push(leaf);
+  for (const [group, meshes] of street) {
+    for (const mesh of meshes) {
+      mesh.userData.urbanRole = group;
+      if (group.startsWith('garden-')) plants.push(mesh);
+      if (group === 'garden-cut-gravel' && options.sectionWindow) mesh.position.z -= 5 * s;
+      if (group === 'footway') {
+        const mat=mesh.material;
+        if (!Array.isArray(mat) && !mat.userData.earthScan) applyEarthScan(mat,'outcrop',3.5*s);
+      }
+      if (group.includes('gravel') || group.includes('pebbles')) {
+        const mat=mesh.material;
+        if (!Array.isArray(mat) && !mat.userData.earthScan) applyEarthScan(mat, 'alluvium', 5 * s);
+      }
     }
-  }
-  // A few fixed gravel faces make the lowest garden layer distinguishable
-  // from planting soil. They never stand for water or a measured pore volume.
-  for (const [i, x] of [39, 44, 49, 54, 60].entries()) {
-    const mesh = solid(new T.IcosahedronGeometry(.72 * s, 0), '#c5c9b6', 'garden-gravel-face', .05);
-    mesh.position.set(...p([x, 4.1 + i % 2 * 1.4, 56.45])); plants.push(mesh);
   }
   const tokenGeometry = new T.IcosahedronGeometry(1.05 * s, 1);
   let state = evaluateUrbanWater(0, 0);
@@ -110,34 +116,46 @@ export function buildUrbanWaterWorld(b: TextbookGeometry, options: { sectionWind
   });
   const leaderRing = solid(new T.TorusGeometry(1.45 * s, .095 * s, 5, 24), '#b39664', 'tracked-water-ring', .025);
   leaderRing.userData.urbanPacketId = state.packets[0].id;
-  const surfaceLabel = b.label('地表余水', p(URBAN_WATER_LAYOUT.surfaceLabel), 29 * s, 7.8 * s);
-  const storageLabel = b.label('洼地暂存', p(URBAN_WATER_LAYOUT.storageLabel), 29 * s, 7.8 * s);
-  const collectorLabel = b.label('排出', p(URBAN_WATER_LAYOUT.collectorLabel), 18 * s, 7.8 * s);
+  const surfaceLabel = b.label('地表余水', p(URBAN_WATER_LAYOUT.surfaceLabel), 33.5 * s, 9.3 * s);
+  const storageLabel = b.label('洼地暂存', p(URBAN_WATER_LAYOUT.storageLabel), 33.5 * s, 9.3 * s);
+  const collectorLabel = b.label('排出', p(URBAN_WATER_LAYOUT.collectorLabel), 21 * s, 9.3 * s);
   for (const mesh of [surfaceLabel, storageLabel, collectorLabel]) mesh.userData.urbanRole = 'process-label';
   inspect(collectorLabel, 'collected', '观察收集池及已排出水');
   const tags = URBAN_WATER_LABELS.map((label, selection) => {
     const at = URBAN_WATER_LAYOUT.conditionLabels[selection];
-    const geometry = new T.BoxGeometry(24 * s, 8.8 * s, .6 * s); geometry.translate(...p(at));
-    const tab = input(solid(geometry, '#e9e1ca', 'condition-tab', .035), selection, `重放${label}地面条件`);
-    tab.userData.urbanSelection = selection;
-    const text = input(b.label(label, p([at[0], at[1], at[2] + .45]), 20 * s, 7.8 * s), selection,
-      `重放${label}地面条件`);
-    text.userData.urbanRole = 'condition-label'; text.userData.urbanSelection = selection;
-    return { tab, text };
+    const tilt = -.52;
+    const key = { kind: 'select', selection, keepPhase: true, label: '切换' + label + '，保留当前雨程' };
+    const tag = (mesh: any, role: string) => {
+      mesh.userData.modelInput = key;
+      mesh.userData.urbanRole = role;
+      mesh.userData.urbanSelection = selection;
+      return mesh;
+    };
+    const bezelGeometry = chamferedPlateGeometry([-13*s,-5.17*s,-.85*s],[13*s,5.17*s,.32*s],.34*s);
+    const bezel = tag(b.mesh(bezelGeometry, '#8f724b', false, true, 'brass'), 'condition-bezel');
+    bezel.position.set(...p(at)); bezel.rotation.x = tilt;
+    const ceramic = chamferedPlateGeometry([-12.45*s,-4.62*s,.31*s],[12.45*s,4.62*s,.84*s],.10*s);
+    const tab = tag(b.mesh(ceramic, '#e2d5b9', false, true, 'ivory'), 'condition-tab');
+    tab.position.copy(bezel.position); tab.rotation.x = tilt;
+    const text = tag(b.label(label, p([at[0], at[1] - .89 * Math.sin(tilt), at[2] + .89 * Math.cos(tilt)]), 23.2*s, 8.1*s, {appearance:'engraved'}),'condition-label');
+    text.rotation.x = tilt; text.userData.labelMount = 'surface';
+    return { tab, text, bezel };
   });
   const track: PhaseTrack = { start: p(URBAN_WATER_LAYOUT.track.start), end: p(URBAN_WATER_LAYOUT.track.end) };
-  const railGeometry = new T.BoxGeometry(76 * s, .28 * s, .6 * s); railGeometry.translate(...p([50, -20, 76]));
-  const rail = solid(railGeometry, '#b6ab8e', 'phase-rail', .035);
-  rail.userData.modelInput = { kind: 'phase-track', track, label: '拖动纸签，回看同一场雨的连续去向' };
-  const handleShape = new T.Shape();
-  [[-2.7, 0], [0, 1.9], [2.7, 0], [0, -1.9]].forEach(([x, y], i) =>
-    i ? handleShape.lineTo(x * s, y * s) : handleShape.moveTo(x * s, y * s));
-  handleShape.closePath();
-  const handleGeometry = new T.ExtrudeGeometry(handleShape, { depth: .7 * s, bevelEnabled: false });
-  handleGeometry.translate(0, 0, -.35 * s);
-  const handle = solid(handleGeometry, '#e0cd9f', 'phase-handle', .04);
+  const parts = createInstrumentParts(b);
+  for (const z of [75.4, 77.2]) parts.shaft(p([11.1,-21.25,z]),p([89.1,-21.25,z]),.39*s,'steel');
+  for (const x of [10.8,89.2]) parts.casting(p([x-.75,-23.05,74.65]),p([x+.75,-20.53,78]),'brass',.15*s);
+  const rail = parts.plate(p([10,-23.45,73.88]),p([90,-22.94,78.35]),'brass');
+  rail.userData.urbanRole = 'phase-rail';
+  rail.userData.modelInput = { kind:'phase-track',track,label:'推拉试验尺，观察同一场雨' };
+  const handleGeometry = turnedShaftGeometry([0,-1.6*s,0],[0,1.65*s,0],
+    [[1.3,-.01],[1.68,.10],[1.71,.21],[.92,.34],[.88,.47],[1.94,.71],[2.07,.84],[1.93,.96],[1.67,1]].map(([r,t])=>[r*s,t] as const));
+  const handle = b.mesh(handleGeometry,'#477278',false,true,'enamel');
+  handle.userData.urbanRole = 'phase-handle';
   handle.userData.smallPointTarget = true;
-  handle.userData.modelInput = { kind: 'phase-track', track, label: '拖动观察进度；排出的水停留在收集池' };
+  handle.userData.modelInput = rail.userData.modelInput;
+  const carriage = b.mesh(chamferedPlateGeometry([-2.75*s,-2.47*s,-1.35*s],[2.75*s,-1.23*s,2.14*s],.23*s),'#b08b52',false,true,'brass');
+  carriage.userData.modelInput = rail.userData.modelInput;
   const fixedMeshCount = b.meshes.length, buffers = b.meshes.map(mesh => mesh.geometry.attributes.position.array);
   const motion: ModelMotion = {
     inspect(target) { if (['overview', 'drain', 'collected'].includes(target) || /^packet-(?:[0-9]|1[01])$/.test(target)) inspection = target; },
@@ -151,7 +169,7 @@ export function buildUrbanWaterWorld(b: TextbookGeometry, options: { sectionWind
       surfaceLabel.visible = !options.compactControls&&inspection==='overview'&&state.selection !== 2 && state.phase >= .3;
       storageLabel.visible = !options.compactControls&&inspection==='overview'&&state.selection === 2 && state.phase >= .3;
       collectorLabel.visible = (!options.compactControls||inspection==='collected')&&['overview','collected','drain'].includes(inspection)&&state.inventory.drain + state.inventory.collected > 0;
-      collectorLabel.scale.setScalar(.5);
+
       packets.forEach((mesh, i) => {
         const packet = state.packets[i]; mesh.position.set(...p(packet.point));
         mesh.scale.setScalar(inspection === `packet-${i}` ? 1.5 : 1.18);
@@ -170,14 +188,15 @@ export function buildUrbanWaterWorld(b: TextbookGeometry, options: { sectionWind
         const focused = inspection === 'drain' && /drain|inlet/.test(role) || inspection === 'collected' && /collector/.test(role);
         b.outline(mesh, focused ? .76 : .3);
       }
-      if (state.selection === 2) for (const mesh of plants) b.outline(mesh, .25);
-      tags.forEach(({ tab, text }, i) => {
-        tab.visible=text.visible=!options.compactControls&&inspection==='overview';
+      tags.forEach(({ tab, text, bezel }, i) => {
+        tab.visible=text.visible=bezel.visible=inspection==='overview';
+        tab.position.y=bezel.position.y - (i===state.selection ? .23*s : 0);
+        text.position.y=tab.position.y - .89*s*Math.sin(tab.rotation.x);
         tab.userData.active = text.userData.active = i === state.selection;
         b.outline(tab, i === state.selection ? .62 : .27);
       });
       if (state.phase > 0 && leaderRing.visible) b.contour(state.packets[trackedIndex].trace.map(p), inspection === 'overview' ? .38 : .65);
-      handle.position.set(...phaseTrackPoint(state.phase, track)); b.outline(handle, .53);
+      handle.position.set(...phaseTrackPoint(state.phase, track)); carriage.position.copy(handle.position);
     },
     focusBounds: () => {
       if(inspection==='drain')return {min:p([60,0,49]),max:p([116,30,69])};
@@ -203,10 +222,10 @@ export function buildUrbanWaterWorld(b: TextbookGeometry, options: { sectionWind
         packetWorld: packets.map((mesh, i) => ({ id: state.packets[i].id, point: meshWorld(mesh), compartment: state.packets[i].compartment })),
         conditionWorld: tags.map(({ text }, selection) => ({ selection, point: meshWorld(text) })),
         handleWorld: meshWorld(handle), phaseTrackWorld: { start: world(track.start), end: world(track.end) },
-        fixedMeshCount, geometryBuffersReused: b.meshes.length === fixedMeshCount && b.meshes.every((mesh, i) => mesh.geometry.attributes.position.array === buffers[i]),
+        fixedMeshCount, geometryBuffersReused: buffers.every((buffer, i) => b.meshes[i]?.geometry.attributes.position.array === buffer),
         openGardenSection: state.selection === 2, noFullGardenTopSlab: true,
         visibleRoles: b.meshes.filter(mesh => mesh.visible).map(mesh => mesh.userData.urbanRole),
-        directInteraction: 'condition-replay-packet-inspection-and-front-phase-track', originalPagePreserved: true, elevatedAbovePage: rise,
+        directInteraction: 'porcelain-condition-keys-retain-phase-and-sliding-rain-gauge', originalPagePreserved: true, elevatedAbovePage: rise,
         sectionWindow: !!options.sectionWindow, omittedFrontSliceIsSchematic: !!options.sectionWindow,
       };
     },

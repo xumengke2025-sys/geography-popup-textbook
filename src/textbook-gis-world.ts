@@ -1,7 +1,8 @@
 import { THREE as T } from './reference/engine.js';
 import { LIFT_MARGIN, type TextbookGeometry, type ModelMotion, type Vec3 } from './textbook-geometry';
 import { GIS_COUNTS, GIS_REGIONS, GIS_REFERENCE, evaluateGis, type GisPoint } from './textbook-gis-model';
-import { chamferedPlateGeometry, turnedShaftGeometry, mergeInstrumentGeometry } from './textbook-instrument-parts';
+import { chamferedPlateGeometry, turnedShaftGeometry, turnedSleeveGeometry, mergeInstrumentGeometry } from './textbook-instrument-parts';
+import { gisComparator } from './textbook-gis-comparator';
 import type { SolidMaterialRole } from './textbook-solid-materials';
 
 /** A registration instrument, not a surveying machine. Its two original map
@@ -11,6 +12,7 @@ export function buildGisWorld(b: TextbookGeometry): ModelMotion {
   const scale=b.width/100, back=-LIFT_MARGIN-75*scale, rise=40*scale;
   b.root.position.set(0,rise,-8*scale);
   const p=(x:number,y:number,z:number):Vec3=>[x*scale,y*scale,back+z*scale];
+  const moveComparator=gisComparator(b,scale,p);
   const point=([u,v]:GisPoint,y=0,z=0):Vec3=>p(7+u*86,y,v*54+z);
   const footprint=(path:readonly GisPoint[])=>path.map(q=>{const c=point(q);return[c[0],c[2]]as[number,number]});
   const border:readonly GisPoint[]=[[0,0],[1,0],[1,1],[0,1]];
@@ -32,18 +34,18 @@ export function buildGisWorld(b: TextbookGeometry): ModelMotion {
   // rear seats and diagonal rails lie OUTSIDE x=7..93, the moving map field.
   const feet:[Vec3,Vec3][]=[],seats:[Vec3,Vec3][]=[];
   for(const x of[3,97]){
-    feet.push([p(x-1.7,.2,-15),p(x+1.7,1.6,85)]);
+    feet.push([p(x-1.7,.2,-15),p(x+1.7,1.6,93)]);
     seats.push([p(x-1.35,1.6,-14.2),p(x+1.35,37.6,-11.8)]);
-    rod(p(x,37.25,-12),p(x,5.05,0),.46*scale,steel,'steel','external-registration-guide');
-    rod(p(x,2.6,0),p(x,2.6,12),.44*scale,steel,'steel','lower-slide-rail');
-    for(const z of[-12.6,82.5])rod(p(x,1.6,z),p(x,1.84,z),.72*scale,brass,'brass','flush-runner-fastener');
+    rod(p(x,37,-12),p(x,4.8,0),.46*scale,steel,'steel','external-registration-guide');
+    rod(p(x,3,0),p(x,3,12),.44*scale,steel,'steel','lower-slide-rail');
+    for(const z of[-12.6,90.5])rod(p(x,1.6,z),p(x,1.84,z),.72*scale,brass,'brass','flush-runner-fastener');
   }
   bars(feet,enamel,'enamel','paired-open-runners');bars(seats,enamel,'enamel','rear-guide-seats');
   // This cross member is a useful process control, not a third information
   // layer. Dragging its carriage seeks the very same scientific phase.
-  plate(p(2.2,1.55,79.6),p(97.8,2.4,84.2),enamel,'enamel','timeline-crossmember');
-  rod(p(9,2.9,82),p(91,2.9,82),.38*scale,steel,'steel','phase-control-rail');
-  const track={start:p(9,3.2,82),end:p(91,3.2,82)};
+  plate(p(2.2,1.55,87.6),p(97.8,2.4,92.2),enamel,'enamel','timeline-crossmember');
+  rod(p(9,2.9,90),p(91,2.9,90),.38*scale,steel,'steel','phase-control-rail');
+  const track={start:p(9,3.2,90),end:p(91,3.2,90)};
   const handle=plate(p(-2.4,-.75,-1.7),p(2.4,.75,1.7),brass,'brass','phase-carriage');
   // Geometry above was authored with p() for the common map origin; this one
   // local carriage instead centres its geometry and moves along a root track.
@@ -51,7 +53,7 @@ export function buildGisWorld(b: TextbookGeometry): ModelMotion {
   handle.userData.modelInput={kind:'phase-track',track,label:'拖动滑柄，对位图层并逐区统计'};
   handle.userData.interactionFeedback=false;
   const tickBoxes:[Vec3,Vec3][]=[];
-  for(let i=0;i<=20;i++)tickBoxes.push([p(9+i*4.1,2.41,80),p(9.13+i*4.1,2.44,i%5===0?81.1:80.65)]);
+  for(let i=0;i<=20;i++)tickBoxes.push([p(9+i*4.1,2.41,88),p(9.13+i*4.1,2.44,i%5===0?89.1:88.65)]);
   bars(tickBoxes,brass,'brass','uncalibrated-process-ticks');
 
   // Both carriers are thin sheet frames, with a narrow brass reveal. All
@@ -60,8 +62,32 @@ export function buildGisWorld(b: TextbookGeometry): ModelMotion {
     const outer=bars([[p(5.4,-.26,-1.6),p(94.6,.25,-.35)],[p(5.4,-.26,54.35),p(94.6,.25,55.6)],
       [p(5.4,-.26,-.35),p(6.65,.25,54.35)],[p(93.35,-.26,-.35),p(94.6,.25,54.35)]],enamel,'enamel',`${name}-thin-frame`);
     const reveal=bars([[p(6.5,.18,-.34),p(93.5,.3,0)],[p(6.5,.18,54),p(93.5,.3,54.34)]],brass,'brass',`${name}-edge-reveal`);
-    const lugs=bars([[p(2,-.7,-1),p(6.2,.3,1)],[p(93.8,-.7,-1),p(98,.3,1)]],brass,'brass',`${name}-registration-lugs`);
-    return[outer,reveal,lugs];
+    // Bored carriages follow the scientific layer axes, rather than solid
+    // blocks pierced by a nearby rail. Bridges attach at the sleeve wall.
+    const lugs=bars([[p(3.7,-.55,-.6),p(6.2,.25,.6)],[p(93.8,-.55,-.6),p(96.3,.25,.6)]],brass,'brass',`${name}-registration-lugs`);
+    const axis=new T.Vector3(0,name==='station'?-32.2:0,12).normalize();
+    const sleeves=tag(b.mesh(mergeInstrumentGeometry([3,97].map(x=>{
+      const center=new T.Vector3(...p(x,0,0)),half=axis.clone().multiplyScalar(1.35*scale);
+      return turnedSleeveGeometry(center.clone().sub(half).toArray() as Vec3,center.clone().add(half).toArray() as Vec3,
+        [[.86*scale,0],[.92*scale,.12],[.74*scale,.24],[.74*scale,.76],[.92*scale,.88],[.86*scale,1]],.49*scale);
+    })),brass,false,true,'brass'),`${name}-bored-carriages`);
+    // Two register pins on the lower frame enter bored eyes on the upper
+    // frame. Both sit outside the printed map and share its moving origin.
+    const pins:any[]=[];
+    for(const x of [13,87]){
+      const z=57.1;
+      pins.push(chamferedPlateGeometry(p(x-1.08,-.24,54.8),p(x+1.08,.24,z-.8),.15*scale));
+      if(name==='administrative'){
+        pins.push(turnedShaftGeometry(p(x,-.23,z),p(x,2.57,z),[
+          [1.62*scale,0],[1.77*scale,.08],[1.77*scale,.17],[.91*scale,.23],
+          [.91*scale,.66],[.78*scale,.76],[.21*scale,1]]));
+      }else{
+        pins.push(turnedSleeveGeometry(p(x,-.35,z),p(x,.84,z),[
+          [1.57*scale,0],[1.86*scale,.15],[1.86*scale,.63],[1.58*scale,1]],1.30*scale));
+      }
+    }
+    const registers=tag(b.mesh(mergeInstrumentGeometry(pins),brass,false,true,'brass'),`${name}-registration-datums`);
+    return[outer,reveal,lugs,sleeves,registers];
   };
   const lowerParts=carrier('administrative'),upperParts=carrier('station');
   const base=tag(b.prism(footprint(border),0,.3*scale,'#e2d8c3',false),'region-paper');base.renderOrder=1;
@@ -77,31 +103,55 @@ export function buildGisWorld(b: TextbookGeometry): ModelMotion {
   vellum.onBeforeCompile=(shader:any,renderer:any)=>{compileVellum.call(vellum,shader,renderer);shader.fragmentShader=shader.fragmentShader.replace('gl_FragColor.a = uSurfAlpha;','gl_FragColor.a = uSurfAlpha * opacity;')};
   vellum.customProgramCacheKey=()=> 'gis-tracing-sheet-opacity-v1';
   sheet.material=vellum;sheet.renderOrder=3;sheet.raycast=()=>{};
-  const profile=[[0,-.12],[.32,-.1],[.51,.1],[.52,.37],[.31,.8],[0,1.5]].map(([r,y])=>new T.Vector2(r*scale,y*scale));
-  const dropGeometry=new T.LatheGeometry(profile,10),neutral=b.materialFor('enamel','#648d9d');
+  const profile=[[0,-.12],[.50,-.1],[.68,.1],[.70,.37],[.50,.8],[.16,1.38],[0,1.50]].map(([r,y])=>new T.Vector2(r*scale,y*scale));
+  const dropGeometry=new T.LatheGeometry(profile,24),neutral=b.materialFor('enamel','#648d9d');
   const stationMaterials=GIS_REGIONS.map(region=>b.materialFor('enamel',region.stationColor));
   const stations=evaluateGis(0).stations.map(station=>{
     const mesh=tag(b.mesh(dropGeometry,'#648d9d',false),'rain-station');mesh.renderOrder=4;
     mesh.userData.stationId=station.id;mesh.userData.region=station.region;if(station.region!==null)inspectRegion(mesh,station.region);return{station,mesh};
   });
+  const stationSettings=evaluateGis(0).stations.map(station=>turnedSleeveGeometry(
+    point(station.point,.29),point(station.point,.60),[[.84*scale,0],[.90*scale,.24],[.84*scale,.85],[.75*scale,1]],.46*scale));
+  upperParts.push(tag(b.mesh(mergeInstrumentGeometry(stationSettings),brass,false,true,'brass'),'brass-station-settings'));
   // These inscriptions are fixed to actual lips and sockets. They never turn
   // into free billboard cards as the maps approach one another.
   const inscription=(text:string,at:Vec3,w:number,h:number,role:string)=>{
     const m=tag(b.label(text,at,w*scale,h*scale,{appearance:'engraved'}),role);
     m.userData.labelMount='surface';m.rotation.x=-Math.PI/2;m.renderOrder=5;return m;
   };
-  const regionCodes=GIS_REGIONS.map(region=>inspectRegion(inscription(String(region.id),point(region.label,1),5.8,5.8,'region-code'),region.id));
-  const stationLip=plate(p(29,-.2,-6.8),p(71,.22,-1.6),'#e3ddc9','ivory','station-name-lip');upperParts.push(stationLip);
-  const regionLip=plate(p(29,-.2,-6.8),p(71,.22,-1.6),'#e3ddc9','ivory','region-name-lip');lowerParts.push(regionLip);
-  const stationTitle=inscription('雨量站',p(50,.26,-4.2),18,4.2,'station-title');
-  const regionTitle=inscription('行政区',p(50,.26,-4.2),18,4.2,'region-title');
+  const regionCodes=GIS_REGIONS.map(region=>inspectRegion(inscription(String(region.id),point(region.label,1),11.4,11.4,'region-code'),region.id));
+  // Offset index tabs stay attached to the back edges. Sloping each tab
+  // towards the reader keeps its face legible when the carriers meet.
+  const tabAngle=-.67, tabY=3.75;
+  const titleTab=(text:string,x:number,z:number,role:string,parts:any[])=>{
+    const geom=chamferedPlateGeometry([-12*scale,-4.55*scale,-.26*scale],[12*scale,4.55*scale,.26*scale],.14*scale);
+    geom.rotateX(tabAngle);geom.translate(...p(x,tabY,z));
+    const lip=tag(b.mesh(geom,'#e3ddc9',false,true,'ivory'),role+'-name-lip');parts.push(lip);
+    const label=inscription(text,p(x,tabY,z),21.9,8.55,role+'-title');
+    label.rotation.x=tabAngle;
+    return {label,lip,x,z};
+  };
+  const stationTab=titleTab('雨量站',83,-.35,'station',upperParts);
+  const regionTab=titleTab('行政区',-4,35,'region',lowerParts);
   const countBed=plate(p(7,-.2,57),p(93,.65,64.8),enamel,'enamel','result-counter-bed');lowerParts.push(countBed);
   const counts=GIS_REGIONS.map((region,i)=>{
     const x=21+i*29;
-    const socket=inspectRegion(plate(p(x-12,.65,58),p(x+12,1.05,63.8),'#e3ddc9','ivory','count-socket'),region.id);
+    const slope = .42, centerZ = 62.2, front = 65.9, rear = 58.5;
+    const faceHeight = (z:number) => .74 + (front-z)*slope;
+    const block = chamferedPlateGeometry(p(x-12,.65,rear),p(x+12,1.05,front),.07*scale);
+    const vertices = block.attributes.position;
+    for(let j=0;j<vertices.count;j++){
+      const z = (vertices.getZ(j)-back)/scale;
+      const fraction = (vertices.getY(j)/scale-.65)/.4;
+      vertices.setY(j,(.65+fraction*(faceHeight(z)-.65))*scale);
+    }
+    block.computeVertexNormals();
+    const socket=inspectRegion(tag(b.mesh(block,'#e3ddc9',false,true,'ivory'),'count-socket'),region.id);
     socket.userData.region=region.id;lowerParts.push(socket);
-    const label=inspectRegion(inscription(`${region.id}区 —`,p(x,1.1,61),21,4.5,'derived-count'),region.id);
-    label.userData.region=region.id;return{label,value:-2,x};
+    const labelY=faceHeight(centerZ)+.12;
+    const label=inspectRegion(inscription(`${region.id}区 —`,p(x,labelY,centerZ),24,7.25,'derived-count'),region.id);
+    label.rotation.x+=Math.atan(slope);
+    label.userData.region=region.id;return{label,value:-2,x,labelY,centerZ};
   });
   const setCount=(entry:typeof counts[number],region:number,count:number|null)=>{
     const next=count??-1;if(entry.value===next)return;entry.value=next;
@@ -115,7 +165,7 @@ export function buildGisWorld(b: TextbookGeometry): ModelMotion {
     inspect(target){if(target==='overview'||/^region-[012]$/.test(target))inspection=target},
     inspectTargets:()=>[{target:'overview',label:'整体'},...GIS_REGIONS.map(region=>({target:`region-${region.id-1}`,label:`${region.id}区`}))],
     update(phase){
-      state=evaluateGis(phase);const inspectedRegion=inspection==='overview'?null:Number(inspection.slice(-1))+1;
+      state=evaluateGis(phase);moveComparator(state);const inspectedRegion=inspection==='overview'?null:Number(inspection.slice(-1))+1;
       const lower=state.layers.regions,upper=state.layers.stations;
       base.position.set(0,lower.y*scale,lower.z*scale);
       lowerParts.forEach(m=>m.position.set(0,lower.y*scale,lower.z*scale));upperParts.forEach(m=>m.position.set(0,upper.y*scale,upper.z*scale));
@@ -128,18 +178,17 @@ export function buildGisWorld(b: TextbookGeometry): ModelMotion {
       stations.forEach(({mesh},i)=>{
         const station=state.stations[i];mesh.position.set(...point(station.point,upper.y+.62,upper.z));
         mesh.material=station.counted&&station.region!==null?stationMaterials[station.region-1]:neutral;
-        const inspected=inspectedRegion===station.region,pulse=Math.sin(station.match*Math.PI),r=1+pulse*.28+(inspected?.2:0);
+        const inspected=inspectedRegion!==null && inspectedRegion===station.region,pulse=Math.sin(station.match*Math.PI),r=1+pulse*.28+(inspected?.2:0);
         mesh.scale.set(r,1+pulse*.18,r);
         if(pulse>.01||inspected){const c=point(station.point,upper.y+.7,upper.z);b.contour(Array.from({length:25},(_,k):Vec3=>{const a=k/24*Math.PI*2,rr=(1.4+pulse*.35)*scale;return[c[0]+Math.cos(a)*rr,c[1],c[2]+Math.sin(a)*rr]}),inspected?.78:.7)}
       });
       regionCodes.forEach((label,i)=>{label.visible=state.phase<.4;label.position.set(...point(GIS_REGIONS[i].label,lower.y+.65,lower.z))});
-      // The two source titles occupy separate real lips before contact; the
-      // administrative lip is hidden once the transparent carrier seats.
-      stationTitle.position.set(...p(50,upper.y+.26,upper.z-4.2));regionTitle.position.set(...p(50,lower.y+.26,lower.z-4.2));
-      regionTitle.visible=regionLip.visible=state.overlay<.94;
-      counts.forEach((entry,i)=>{entry.label.position.set(...p(entry.x,lower.y+1.1,lower.z+61));setCount(entry,state.counts[i].id,state.counts[i].visible?state.counts[i].count:null)});
+      for(const [tab,layer] of [[stationTab,upper],[regionTab,lower]] as const){
+        tab.label.position.set(...p(tab.x,layer.y+tabY-.31*Math.sin(tabAngle),layer.z+tab.z+.31*Math.cos(tabAngle)));
+      }
+      counts.forEach((entry,i)=>{entry.label.position.set(...p(entry.x,lower.y+entry.labelY,lower.z+entry.centerZ));setCount(entry,state.counts[i].id,state.counts[i].visible?state.counts[i].count:null)});
     },
-    focusBounds:()=>({min:p(-1,0,-21),max:p(101,42,86)}),
+    focusBounds:()=>({min:p(-17,-1,-21),max:p(102,44,97)}),
     describe:()=>({kind:'gis-spatial-overlay',phase:state.phase,stage:state.stage,assembled:state.overlay>=.999,inspection,
       source:GIS_REFERENCE,geometricLayers:2,stationMeshCount:stations.length,oneStationSet:true,
       counts:state.counts.map(r=>({region:r.id,count:r.count})),derivedTotals:GIS_COUNTS,membershipMethod:'point-in-polygon',activeRegion:state.activeRegion,

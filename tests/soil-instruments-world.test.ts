@@ -2,6 +2,7 @@ import { describe, expect, it, vi } from 'vitest';
 import * as T from 'three';
 vi.mock('../src/reference/engine.js', async () => ({ THREE: await import('three') }));
 import { buildSoilPoreInstrument } from '../src/textbook-soil-pore-world';
+import { poreNetwork } from '../src/textbook-soil-pore-network';
 import { buildSoilTextureWorld } from '../src/textbook-soil-texture-world';
 import { evaluateSoilPores } from '../src/textbook-ground-process-model';
 import { evaluateSoilTexture, SOIL_TEXTURE_GRAINS } from '../src/textbook-soil-texture-model';
@@ -35,24 +36,47 @@ describe('soil-composition is one retained specimen with complementary pore fill
     let fixedVolume = 0;
     for (const mode of [0, 1, 2, 0]) {
       motion.update(.5, mode); const state = evaluateSoilPores(mode);
-      for (let i = 0; i < 5; i++) {
-        const w = volume(pores[0][i]), a = volume(pores[1][i]);
-        expect(w / (w + a)).toBeCloseTo(state.water, 5);
-        if (!fixedVolume) fixedVolume = w + a; expect(w + a).toBeCloseTo(fixedVolume, 2);
-      }
+      expect(pores.every(parts => parts.length === 1)).toBe(true);
+      const w=volume(pores[0][0]),a=volume(pores[1][0]);
+      expect(w/(w+a)).toBeCloseTo(state.water,5);
+      if(!fixedVolume)fixedVolume=w+a;
+      expect(w+a).toBeCloseTo(fixedVolume,2);
+      expect(motion.describe().measuredWaterVolume/motion.describe().totalVoidVolume).toBeCloseTo(w/(w+a),5);
       expect(grains.map(m => [m.position.toArray(), Array.from(m.geometry.attributes.position.array)])).toEqual(original);
       expect(motion.describe()).toMatchObject({ ...state, solidsStationary: true, samePores: true });
     }
   });
-  it('keeps organic pieces embedded and provides a physical three-stop control', () => {
+  it('opens five irregular windows into one manifold with four recessed connecting throats',()=>{
+    const net=poreNetwork(),counts=new Map<string,number>(),linked=new Map<number,Set<number>>();
+    for(let i=0;i<net.triangles.length;i+=3)for(let j=0;j<3;j++){
+      const a=net.triangles[i+j],b=net.triangles[i+(j+1)%3],key=a<b?a+','+b:b+','+a;
+      counts.set(key,(counts.get(key)??0)+1);
+      if(!linked.has(a))linked.set(a,new Set());linked.get(a)!.add(b);
+    }
+    const seen=new Set([0]),queue=[0];
+    for(let i=0;i<queue.length;i++)for(const j of linked.get(queue[i])!){
+      if(!seen.has(j)){seen.add(j);queue.push(j);}
+    }
+    expect(seen.size).toBe(linked.size);
+    expect([...counts.values()].every(n=>n===2)).toBe(true);
+    const open=net.windows.map(w=>Number.isFinite(w.minY));
+    expect(open.filter((o,i)=>o&&!open[i-1])).toHaveLength(5);
+    const narrow=net.windows.filter(w=>w.x>26&&w.x<73&&w.ry<1.65);
+    expect(narrow.length).toBeGreaterThan(5);
+    expect(narrow.every(w=>!Number.isFinite(w.maxY))).toBe(true);
+  });
+  it('keeps embedded organics and labels and allows a reversible three-position control', () => {
     const { motion, meshes } = fixture(buildSoilPoreInstrument);
     expect(meshes.filter(m => m.userData.soilPoreRole === 'organic')).toHaveLength(15);
-    expect(meshes.filter(m => m.userData.kind === 'text-label')).toHaveLength(0);
-    for (const mode of [0, 1, 2]) {
-      motion.update(0, mode);
-      const control = meshes.filter(m => m.userData.soilPoreRole === 'moisture-knob');
-      expect(control.length).toBeGreaterThan(0);
-      expect(control.every(m => m.userData.modelInput.selection === (mode + 1) % 3)).toBe(true);
+    expect(meshes.filter(m=>m.userData.text).map(m=>m.userData.text)).toEqual(['矿物质','有机质','孔隙水','孔隙空气']);
+    const controls=meshes.filter(m=>m.userData.soilPoreRole==='moisture-dial');
+    expect(controls.length).toBeGreaterThan(2);
+    expect(controls.every(m=>m.userData.modelInput.kind==='indexed-dial'&&m.userData.modelInput.keepPhase)).toBe(true);
+    expect(controls[0].userData.modelInput.stops.map((x:{selection:number})=>x.selection)).toEqual([0,1,2]);
+    for(const n of [0,2,1,0]){
+      motion.update(.43,n);
+      expect(controls.some(m=>m.userData.dialReading===n)).toBe(true);
+      expect(motion.describe()).toMatchObject({actualPoreCount:1,visibleChambers:5,connectedPassage:true});
     }
   });
 });

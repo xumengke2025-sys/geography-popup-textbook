@@ -2,7 +2,8 @@ import { THREE as T } from './reference/engine.js';
 import { LIFT_MARGIN, type ModelMotion, type TextbookGeometry, type Vec3 } from './textbook-geometry';
 import { chamferedPlateGeometry, mergeInstrumentGeometry, turnedShaftGeometry } from './textbook-instrument-parts';
 import { GEOLOGICAL_INTERVALS, geologicalInterval } from './textbook-sky-causality-model';
-import type { SolidMaterialRole } from './textbook-solid-materials';
+import { createSolidMaterial, type SolidMaterialRole } from './textbook-solid-materials';
+import { applyEarthScan } from './textbook-earth-scan';
 
 /** Four hinged interpretative casts, not a life-size reconstruction or four
  * equally long eras. The separate ruler retains the textbook's real spans. */
@@ -57,6 +58,27 @@ export function buildGeologicalSpecimenWorld(b: TextbookGeometry): ModelMotion {
     }
     const g = new T.BufferGeometry(); g.setAttribute('position', new T.Float32BufferAttribute(positions, 3)); g.setIndex(indices); g.computeVertexNormals(); return g;
   };
+  const slate = createSolidMaterial(b.pop ?? {}, 'rock', '#869181');
+  const finish = slate.onBeforeCompile;
+  slate.onBeforeCompile = (shader:any,renderer:any) => {
+    finish.call(slate,shader,renderer);
+    shader.vertexShader=shader.vertexShader
+      .replace('#include <common>','#include <common>\nvarying vec3 vFolioRock;')
+      .replace('#include <begin_vertex>','#include <begin_vertex>\nvFolioRock=position;');
+    shader.fragmentShader=shader.fragmentShader
+      .replace('#include <common>','#include <common>\nvarying vec3 vFolioRock;')
+      .replace('#include <color_fragment>',`#include <color_fragment>
+        vec2 p=vFolioRock.xy;
+        float strike=p.y*.87-p.x*.30+sin(p.x*.48)*.24+sin(p.y*.23+p.x*.13)*.62;
+        float split=abs(fract(strike*.27+.5)-.5);
+        float bedding=1.-smoothstep(.014,.043+fwidth(strike*.27),split);
+        float cloud=sin(p.x*.31+sin(p.y*.28))*cos(p.y*.49-p.x*.16);
+        float grain=sin(dot(p,vec2(42.7,17.1)))*cos(dot(p,vec2(12.1,33.7)));
+        float grainWeight=1.-smoothstep(.5,2.6,fwidth(p.x*42.7+p.y*17.1));
+        diffuseColor.rgb*=.96+.065*cloud-.12*bedding+.036*grain*grainWeight;`);
+  };
+  slate.customProgramCacheKey=()=> 'folio-laminated-slate-v1';
+  applyEarthScan(slate, 'outcrop', 12);
   const inscription = (text: string, width: number, height: number, parent: any, at: Vec3, horizontal = false) => {
     let texture: any;
     if (typeof document !== 'undefined') {
@@ -92,9 +114,19 @@ export function buildGeologicalSpecimenWorld(b: TextbookGeometry): ModelMotion {
     // of strata asserting that every place preserves all four periods.
     const outline = [[.4, 1.2], [1.8, .2], [22.6, .3], [24.1, 1.5], [23.8, 35.8], [22.6, 38.4], [18.8, 39], [4, 38.5], [.3, 36.8]];
     for (let layer = 0; layer < 3; layer++) {
-      const face = outline.map(([x, y], n) => [x + (layer - 1) * .09 * Math.sin(n * 1.8), y + layer * .10]);
-      mesh(extrude(polygon(face), .65, -1.95 + layer * .65, .10), 'rock', 'laminated-rock-leaf', g,
+      const face = outline.flatMap(([x, y], n) => {
+        const [ex, ey] = outline[(n + 1) % outline.length];
+        const dx = ex - x, dy = ey - y, length = Math.hypot(dx, dy);
+        const divisions = Math.max(1, Math.round(length / 1.85));
+        return Array.from({length: divisions}, (_, j) => {
+          const f = j / divisions, seed = j * 3.941 + n * 7.7 + i * 2.42;
+          const cleft = j ? .12 + .42 * (.5 + .5 * Math.sin(seed)) ** 3 + .15*Math.sin(seed*1.7+layer) : 0;
+          return [x + f*dx - dy/length*cleft + (layer-1)*.10, y + f*dy + dx/length*cleft + layer*.10];
+        });
+      });
+      const slab=mesh(extrude(polygon(face), .65, -1.95 + layer * .65, .10), 'rock', 'laminated-rock-leaf', g,
         ['#61655b', '#74786b', '#697369'][layer]);
+      if(layer===2)slab.material=slate;
     }
     for (const x of [2.6, 21.6]) {
       plate([x, 2.3, .5], [2.4, 3.4, .52], 'brass', 'specimen-retaining-lip', g);
@@ -107,48 +139,116 @@ export function buildGeologicalSpecimenWorld(b: TextbookGeometry): ModelMotion {
       relief = 'stromatolite-laminations';
       // A section through successive domed microbial laminae, directly based
       // on textbook fig.1.25. The layered rock is not a giant blue-green cell.
-      const laminae: any[][] = [[], []];
-      const profile = (x: number, k: number) => 8 + k * 1.55 + (3.2 + .14 * k) *
-        (Math.exp(-(((x - 6) / 3.3) ** 2)) + .82 * Math.exp(-(((x - 14.8) / 4.5) ** 2)));
-      for (let k = 0; k < 11; k++) {
-        const top = Array.from({ length: 41 }, (_, j) => { const x = 2 + j / 40 * 20; return [x, profile(x, k)]; });
-        const bottom = [...top].reverse().map(([x]) => [x, profile(x, k) - 1.22]);
-        laminae[k % 2].push(extrude(polygon([...top, ...bottom]), .9 + k * .05, .18, .10));
+      // Each mineral band occupies the space between two successive mat
+      // surfaces. Later beds accumulate around three unequal mound crests.
+      const bands: any[][] = [[], [], [], []];
+      const height = (x: number, t: number) => {
+        const dome = 4.2*Math.exp(-(((x-6.5)/2.8)**2)) + 8.2*Math.exp(-(((x-12.9)/4.5)**2))
+          + 3.3*Math.exp(-(((x-19.2)/2.6)**2));
+        return 8 + 12*t + dome*(.08+.92*t) + .32*Math.sin(x*1.6+t*1.1)*t + .17*Math.cos(2.6*x-t);
+      };
+      const palette=['#997950','#cab183','#a69062','#dcc49b'];
+      const sequence=[0,1,2,3,2,1,0,1,3,2,1,3,2,0,1];
+      const levels=[0,.1,.18,.22,.32,.36,.45,.49,.57,.64,.68,.77,.84,.87,.96,1];
+      for(let j=0;j<sequence.length;j++){
+        const contour=(t:number)=>Array.from({length:49},(_,n)=>{
+          const x=2.2+19.6*n/48;
+          return [x,height(x,t)];
+        });
+        const bed=polygon([...contour(levels[j+1]),...contour(levels[j]).reverse()]);
+        bands[sequence[j]].push(extrude(bed,1.15+.14*Math.sin(j*1.3),.08,.045));
       }
-      laminae.forEach((parts, j) => mesh(mergeInstrumentGeometry(parts), 'rock', 'stromatolite-section-laminae', g, j ? '#b2a17c' : '#d0bb91'));
+      bands.forEach((parts,j)=>{
+        const bed = mesh(mergeInstrumentGeometry(parts),'rock','stromatolite-section-laminae',g,palette[j]);
+        applyEarthScan(bed.material, 'outcrop', 7);
+      });
+      const surface=new T.Shape();
+      const cap=Array.from({length:65},(_,n)=>{const x=2.2+19.6*n/64;return [x,height(x,1)]});
+      [...cap.map(([x,y])=>[x,y+.52]),...cap.reverse()].forEach(([x,y],n)=>n?surface.lineTo(x,y):surface.moveTo(x,y));
+      surface.closePath();
+      mesh(extrude(surface,1.42,.08,.045),'rock','microbial-mat-surface',g,'#829478');
       inscription('叠层石', 11, 3.1, g, [12, 34, .24]);
     } else if (i === 1) {
       relief = 'trilobite-relief';
       mesh(shellDome(12, 27.1, 7.2, 5.2, 2.0), 'ivory', 'trilobite-cephalic-shield', g, '#bdac86');
+      const thorax=carvedLoft([[12,10.9,2.1,.32],[12,13.2,4.65,.53],[12,18,5.1,.60],
+        [12,23.2,5.95,.63],[12,25.1,4.8,.45]],.40,36,32);
+      mesh(thorax,'rock','trilobite-thoracic-bed',g,'#9b8964');
+      const cheeks:any[]=[];
+      for(const side of [-1,1]){
+        const cheek=new T.Shape();
+        cheek.moveTo(12+side*5.3,28.3);
+        cheek.quadraticCurveTo(12+side*7.7,27.0,12+side*7.25,24.2);
+        cheek.quadraticCurveTo(12+side*7.05,22.5,12+side*8.3,21.0);
+        cheek.quadraticCurveTo(12+side*5.7,22.3,12+side*4.6,24.0);
+        cheek.closePath();
+        cheeks.push(extrude(cheek,.62,.24,.09));
+      }
+      mesh(mergeInstrumentGeometry(cheeks),'rock','trilobite-genal-spines',g,'#ae9673');
       const tail = new T.Shape(); tail.moveTo(7, 12); tail.quadraticCurveTo(7.2, 7.1, 12, 6.4);
       tail.quadraticCurveTo(16.8, 7.1, 17, 12); tail.closePath();
       mesh(extrude(tail, 1, .15, .18), 'ivory', 'trilobite-pygidium', g);
-      const ribs: any[] = [], axis: any[] = [];
-      for (let k = 0; k < 11; k++) {
-        const y = 12 + k * 1.18, w = 4.5 + .14 * k;
-        for (const side of [-1, 1]) {
-          const rib = new T.Shape(); rib.moveTo(12 + side * 1.6, y + .9);
-          rib.quadraticCurveTo(12 + side * (w * .7), y + 1.5, 12 + side * w, y + .5);
-          rib.lineTo(12 + side * (w + .45), y - .6); rib.quadraticCurveTo(12 + side * (w * .7), y + .25, 12 + side * 1.6, y + .05); rib.closePath();
-          ribs.push(extrude(rib, .68, .8, .12));
-        }
-        axis.push(extrude(polygon([[10.5, y], [13.5, y], [13.25, y + .82], [10.75, y + .82]]), 1.05, 1.0, .18));
+      inscription('三叶虫', 11, 3.1, g, [12, 35.5, .24]);
+      const tailGrooves:any[]=[];
+      for(let j=0;j<4;j++){
+        const y=8.1+j*.91,w=1.7+j*.56;
+        tailGrooves.push(curve([[12-w,y+.53],[11.3,y],[12,y-.21],[12.7,y],[12+w,y+.53]],.095,1.48));
       }
-      mesh(mergeInstrumentGeometry(ribs), 'ivory', 'trilobite-paired-pleural-segments', g, '#c9ba91');
-      mesh(mergeInstrumentGeometry(axis), 'ivory', 'trilobite-articulated-axis', g);
+      mesh(mergeInstrumentGeometry(tailGrooves),'rock','pygidial-furrows',g,'#8a785d');
+      const ribs: any[] = [], axis: any[] = [];
+      for(let k=0;k<11;k++){
+        const y=11.7+k*1.17,w=4.8+.14*k;
+        // The side ribs roll down from the axial lobe and sweep backwards
+        // to a pointed free margin. Raking light can follow each convex rib.
+        for(const side of [-1,1]){
+          const vertices:number[]=[],indices:number[]=[];
+          const lengthSteps=12,arcSteps=10;
+          for(let j=0;j<=lengthSteps;j++){
+            const t=j/lengthSteps;
+            const x=12+side*(1.35+(w-1.35)*t);
+            const center=y+.55+.52*Math.sin(Math.PI*t)-1.17*t*t;
+            const crown=.24+1.64*(1-t*t);
+            const half=.52*(1-.76*t**3);
+            for(let q=0;q<=arcSteps;q++){
+              const theta=q*Math.PI/arcSteps;
+              vertices.push(x,center+half*Math.cos(theta),crown+.62*(1-t*.7)*Math.sin(theta));
+              if(j<lengthSteps&&q<arcSteps){
+                const a=j*(arcSteps+1)+q,b=a+arcSteps+1;
+                if(side>0)indices.push(a,a+1,b,b,a+1,b+1);
+                else indices.push(a,b,a+1,b,b+1,a+1);
+              }
+            }
+          }
+          const rib=new T.BufferGeometry();
+          rib.setAttribute('position',new T.Float32BufferAttribute(vertices,3));
+          rib.setIndex(indices);rib.computeVertexNormals();ribs.push(rib);
+        }
+        const segment=new T.SphereGeometry(1,20,10);
+        segment.scale(1.95+.024*k,.78,1.12);
+        segment.translate(12,y+.55,1.65);
+        axis.push(segment);
+      }
+      mesh(mergeInstrumentGeometry(ribs), 'ivory', 'trilobite-paired-pleural-segments', g, '#c8af80');
+      mesh(mergeInstrumentGeometry(axis), 'ivory', 'trilobite-articulated-axis', g, '#d3bd94');
       mesh(carvedLoft([[12, 23.5, .6, .4], [12, 27.4, 1.7, .9], [12, 30.6, .7, .4]], 1.85, 24), 'ivory', 'trilobite-glabella', g);
-      for (const side of [-1, 1]) mesh(curve([[12 + side * 3.3, 26.0], [12 + side * 3.9, 27], [12 + side * 3.4, 28.4]], .22, 1.83),
-        'rock', 'trilobite-eye-ridge', g, '#7d7154');
+      for(const side of [-1,1]){
+        const eye=new T.SphereGeometry(1,20,12);
+        eye.scale(.54,1.32,.38);eye.rotateZ(side*.29);eye.translate(12+side*3.52,27.25,1.92);
+        mesh(eye,'rock','trilobite-eye-ridge',g,'#806f4e');
+        mesh(curve([[12+side*1.8,29.65],[12+side*2.8,29.15],[12+side*3.52,28.4]],.11,2.02),
+          'ivory','trilobite-palpebral-ridge',g,'#c9b58e');
+      }
     } else if (i === 2) {
       relief = 'long-neck-dinosaur-cast';
+      inscription('蜥脚类', 10, 3.1, g, [8.3, 34.5, .24]);
       const dinoParts = [
-        carvedLoft([[7.4, 20, .12, .1], [9.2, 20.3, 2.0, 1.6], [12.7, 20.8, 2.9, 2.3], [16.3, 21, 2.0, 1.6], [17.5, 21.2, .2, .1]], .65),
+        carvedLoft([[7.4, 20, .12, .1], [9.2, 20.3, 2.0, 1.6], [12.7, 20.8, 3.35, 2.45], [16.3, 21, 2.0, 1.6], [17.5, 21.2, .2, .1]], .65),
         carvedLoft([[14.9, 21.3, 1.7, 1.1], [17.3, 23, 1.15, .9], [17.7, 27.1, .75, .65], [18.2, 30.8, .55, .5], [19.7, 32.5, .45, .4]], .8),
         carvedLoft([[19.1, 32.0, .15, .2], [19.8, 32.6, .8, .7], [21.2, 32.4, .6, .55], [22.0, 32.1, .25, .3]], .8, 28),
         carvedLoft([[8.7, 20.1, 1.4, 1.1], [6.4, 18.2, .9, .65], [4.2, 16.1, .50, .35], [2, 15.3, .18, .15], [.8, 15.7, .025, .025]], .7),
         carvedLoft([[10, 19.2, 1.0, .65], [9.3, 15.6, .7, .5], [9.9, 12, .48, .4], [9.4, 8.1, .62, .45], [10.5, 7.8, .14, .1]], .4),
         carvedLoft([[15.5, 20.2, .9, .7], [16.3, 16.1, .65, .5], [15.8, 12.2, .42, .35], [16.2, 8.1, .6, .45], [17.1, 7.9, .1, .1]], .35),
-        carvedLoft([[9.2, 19.4, 1.1, .7], [8.2, 16.4, .72, .55], [8.6, 12.9, .45, .42], [7.3, 8.7, .67, .5], [8.2, 8.3, .12, .1]], 1.35),
+        carvedLoft([[9.2, 19.4, 1.1, .7], [8.2, 16.4, 1.0, .70], [8.3, 12.9, .65, .55], [8.0, 9.5, .79, .64], [9.0, 9.3, .19, .16]], 1.35),
         carvedLoft([[15.7, 20.4, .95, .7], [14.6, 16.9, .65, .52], [14.7, 13, .43, .38], [13.7, 8.7, .65, .45], [14.6, 8.4, .1, .1]], 1.5),
       ];
       mesh(mergeInstrumentGeometry(dinoParts), 'ivory', 'dinosaur-continuous-sculpted-cast', g, '#c5b591');
@@ -161,27 +261,42 @@ export function buildGeologicalSpecimenWorld(b: TextbookGeometry): ModelMotion {
       mesh(extrude(eye, .08, 1.55, .02), 'rock', 'dinosaur-eye-mark', g, '#514c38');
     } else {
       relief = 'mammal-and-broadleaf-casts';
+      inscription('猛犸象', 10, 3.1, g, [17, 33.7, .24]);
       const mammalParts = [
-        carvedLoft([[3.8, 22.2, .15, .1], [6.1, 22.2, 3.6, 2.2], [10.4, 22.2, 4.3, 2.8], [14.9, 22, 3.6, 2.3], [17, 22.3, .15, .1]], .75),
+        carvedLoft([[3.8, 22.2, .15, .1], [6.1, 21.5, 3.4, 2.0], [10.4, 22.2, 4.6, 2.9], [14.9, 23.0, 4.15, 2.6], [17, 22.3, .15, .1]], .75),
         carvedLoft([[15.4, 21.4, .2, .15], [17.4, 23.2, 2.8, 2.2], [19.6, 23.5, 2.1, 1.65], [20.5, 21.8, .5, .45]], 1.05),
         carvedLoft([[19.8, 22.7, 1.1, .8], [20.8, 19.7, .9, .7], [21, 15.8, .65, .5], [20.7, 12.7, .38, .3], [19.4, 13.6, .08, .08]], 1.3),
-        carvedLoft([[6.8, 20.5, 1.2, .8], [6.9, 16.3, .85, .6], [6.2, 12.7, .70, .5], [6.6, 9.0, .85, .55], [7.6, 8.7, .1, .1]], .4),
-        carvedLoft([[14.7, 20.6, 1.0, .7], [15.9, 16.4, .8, .6], [15.4, 12.7, .6, .5], [16, 9.2, .8, .55], [17.1, 8.8, .1, .1]], .35),
-        carvedLoft([[7.9, 20.1, 1.1, .8], [7.2, 16.1, .85, .65], [8.1, 12.9, .6, .5], [7.4, 9.3, .85, .60], [8.4, 8.9, .1, .1]], 1.6),
-        carvedLoft([[14.4, 20.5, 1.1, .8], [13.5, 16.2, .8, .6], [13.8, 12.6, .6, .48], [13.1, 9.4, .85, .55], [14.3, 9.0, .1, .1]], 1.7),
+        carvedLoft([[6.8, 20.5, 1.2, .8], [6.9, 17.3, 1.30, .83], [6.55, 14.8, .98, .72], [6.6, 12.2, 1.05, .75], [7.8, 12, .24, .22]], .4),
+        carvedLoft([[14.7, 20.6, 1.0, .7], [15.8, 17.4, 1.10, .82], [15.8, 14.9, .95, .69], [16, 12.2, 1, .72], [17.2, 12, .24, .22]], .35),
+        carvedLoft([[7.9, 20.1, 1.1, .8], [7.4, 17.5, 1.25, .84], [8.25, 15, .95, .69], [7.6, 12.4, 1.06, .75], [8.8, 12.2, .24, .23]], 1.6),
+        carvedLoft([[14.4, 20.5, 1.1, .8], [13.55, 17.4, 1.15, .84], [13.7, 15, .95, .69], [13.1, 12.3, 1.0, .73], [14.4, 12.1, .24, .22]], 1.7),
         carvedLoft([[4.4, 23, .40, .30], [3.5, 20, .25, .20], [2.6, 18.5, .13, .1]], .6, 24),
       ];
-      mesh(mergeInstrumentGeometry(mammalParts), 'ivory', 'mammal-continuous-sculpted-cast', g, '#c7b58f');
+      mesh(mergeInstrumentGeometry(mammalParts), 'ivory', 'mammal-continuous-sculpted-cast', g, '#c2a989');
+      const locks:any[]=[];
+      // Follow the outward elliptical flank, so the tapered locks stay in contact.
+      for(let row=0;row<2;row++) for(let j=0;j<8;j++){
+        const x=6.7+j*1.0+row*.33,y=22.7-row*1.55+.34*Math.sin(j*.91);
+        const depth=.75+2.65*Math.sqrt(Math.max(.12,1-((x-10.4)/7.1)**2-((y-22.2)/4.6)**2));
+        locks.push(carvedLoft([[x,y,.12,.10],[x+.07,y-.44,.20,.12],[x-.24,y-1.17,.035,.04]],depth,8,7));
+      }
+      mesh(mergeInstrumentGeometry(locks),'rock','mammoth-flank-coat',g,'#998366');
       const tusks = [carvedLoft([[18.9, 21.1, .4, .35], [20.6, 19.7, .34, .28], [22.6, 20, .23, .2], [23.1, 21.7, .03, .03]], 2.6, 32)];
       const ear = new T.Shape(); ear.moveTo(16.9, 23.9); ear.bezierCurveTo(13.7, 25, 13.5, 20.5, 16.2, 19.4); ear.quadraticCurveTo(18.3, 21, 16.9, 23.9); ear.closePath();
-      mesh(extrude(ear, .45, 3.1, .10), 'rock', 'mammal-ear-relief', g, '#b5a580');
+      mesh(extrude(ear, .45, 3.1, .10), 'rock', 'mammal-ear-relief', g, '#9c8469');
       mesh(mergeInstrumentGeometry(tusks), 'ivory', 'curved-mammal-tusk', g);
       // A separate broadleaf cast states the plant association; it is not a
       // claim that every species pictured is unique to this geological era.
       const leaf = new T.Shape(); leaf.moveTo(6, 29); leaf.bezierCurveTo(1.7, 32, 4.4, 35.3, 11.2, 36.7);
       leaf.bezierCurveTo(11.7, 32.6, 10.5, 29.8, 6, 29); leaf.closePath();
       mesh(extrude(leaf, .65, .25, .12), 'ivory', 'broadleaf-impression', g, '#c6c2a2');
-      mesh(curve([[5.3, 28.7], [7, 31.4], [10.5, 36]], .10, 1.08), 'rock', 'broadleaf-central-vein', g, '#7b8067');
+      const veins=[curve([[5.3,28.7],[7,31.4],[10.5,36]],.10,1.08)];
+      for(let j=0;j<4;j++){
+        const x=6.5+j*.74,y=30.7+j*.99;
+        veins.push(curve([[x,y],[x-.65,y+.58],[x-.91,y+1.37]],.052,1.04),
+          curve([[x,y],[x+1.0,y+.12],[x+1.82,y+.65]],.052,1.04));
+      }
+      mesh(mergeInstrumentGeometry(veins),'rock','broadleaf-central-vein',g,'#747c60');
     }
     const input = { kind: 'select', selection: i, label: `展开${GEOLOGICAL_INTERVALS[i].label}代表标本；标本宽度不表示持续时间` };
     const specimenMeshes = b.meshes.slice(first); specimenMeshes.forEach(m => { m.userData.modelInput = input; m.userData.geologicalSelection = i; });
@@ -225,7 +340,11 @@ export function buildGeologicalSpecimenWorld(b: TextbookGeometry): ModelMotion {
       const interval = geologicalInterval(selected);
       selectionPointer.position.x = 2 + 106 * (interval.start + interval.end) / 2;
     },
-    focusBounds: () => ({ min: [0, -s, back - 2 * s], max: [110 * s, 50 * s, back + 58 * s] }),
+    overviewBounds: () => ({ min: [0, -s, back - 2 * s], max: [110 * s, 50 * s, back + 58 * s] }),
+    focusBounds: () => {
+      const center=14+27*selected;
+      return { min:[(center-25)*s,0,back+20*s], max:[(center+25)*s,49*s,back+55*s] };
+    },
     describe: () => ({ kind: 'geological-time', selected, boundaryMa: [4600, 541, 252, 66, 0], interval: geologicalInterval(selected),
       representativeAssemblages: true, transitionIsBiologicalSimulation: false, equalDuration: false,
       widthUsesRealDuration: true, phaseMeaning: 'static-period-comparison',

@@ -41,7 +41,7 @@ describe('instrument profiles cover content without inventing a common pedestal'
 describe('low instrument supports are independent rigid assemblies',()=>{
   it('attaches under actual solids, ignores labels and preserves scientific transforms',()=>{
     const {g,natural,label}=fixture(),before=transforms([g.root,natural,label]);
-    const assembly=createInstrumentAssembly(g,instrumentProfile('tides')!);
+    const assembly=createInstrumentAssembly(g,instrumentProfile('water')!);
     expect(assembly.diagnostics.attachmentBounds).toEqual([{min:[10,0,-155],max:[90,12,-105]}]);
     expect(assembly.diagnostics.extent!.max[1]).toBeLessThanOrEqual(0);
     for(const progress of [0,.25,1,.6,0,1]){
@@ -93,8 +93,14 @@ describe('low instrument supports are independent rigid assemblies',()=>{
     const host=g as unknown as {mesh:(geom:Three.BufferGeometry)=>Three.Mesh};
     const control=host.mesh(new Three.BoxGeometry(160,4,90).translate(50,-20,-130));
     control.userData.instrumentPart='machined-plate';
-    const assembly=createInstrumentAssembly(g,instrumentProfile('tides')!);
+    const assembly=createInstrumentAssembly(g,instrumentProfile('water')!);
     expect(assembly.diagnostics.attachmentBounds).toEqual([{min:[10,0,-155],max:[90,12,-105]}]);
+  });
+  it('lets authored ocean instruments carry their own fitted frames',()=>{
+    for(const id of ['waves','tides','currents']){
+      const {g}=fixture(),assembly=createInstrumentAssembly(g,instrumentProfile(id)!);
+      expect(assembly.diagnostics.parts,id).toBe(0);
+    }
   });
   it('keeps every family and rotating long skid below the scientific attachment plane',()=>{
     for(const profile of Object.values(INSTRUMENT_PROFILES)){

@@ -89,7 +89,8 @@ export async function dragProgress(page: Page, fraction: number) {
   const box = await slider.boundingBox();
   if (!box) throw new Error('The progress slider is not visible');
   const current = Number(await slider.inputValue()) / 1000;
-  const inset = Math.min(8, box.width / 10), usable = box.width - 2 * inset;
+  // Chromium maps the value between the two centres of the 21px index dial.
+  const inset = 10.5, usable = box.width - 2 * inset;
   const x = (phase: number) => box.x + inset + usable * phase;
   await page.mouse.move(x(current), box.y + box.height / 2);
   await page.mouse.down();

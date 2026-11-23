@@ -1,3 +1,5 @@
+import { seismicEccentrics } from './textbook-seismic-eccentrics';
+import { seismicSpecimens } from './textbook-seismic-specimens';
 import { THREE as T } from './reference/engine.js';
 import { LIFT_MARGIN, type ModelMotion, type TextbookGeometry, type Vec3 } from './textbook-geometry';
 import { evaluateSeismicParticles } from './textbook-ground-process-model';
@@ -68,15 +70,17 @@ export function buildSeismicInstrumentWorld(b: TextbookGeometry): ModelMotion {
   const label = (text:string,at:Vec3,w:number,h=4.8) => b.label(text,p(...at),w*s,h*s);
   label('固体',[29,3.5,15],14);
   const liquidLabel = label('液体',[69,3.5,15],14), solidLabel = label('固体',[69,3.5,15],14);
-  label('P 波',[5,18.6,6],10,4.5); label('S 波',[5,36.1,6],10,4.5);
+  label('P 波',[13.3,18.7,4.3],10,4.5); label('S 波',[13.3,36.1,4.3],10,4.5);
   // The material-selector lever rotates at its actual low pivot and toggles
   // the existing two conditions. It never adds a third medium or new physics.
   turned([91,.2,10],[91,2.5,10],[[1.8,0],[1.8,.2],[1.1,.4],[1.1,1]],'brass','material-selector-socket');
   const selector = new T.Group(); selector.position.set(...p(91,2.5,10)); b.root.add(selector);
   const lever = part(turnedShaftGeometry([0,0,0],[0,3.7*s,0],[[.28*s,0],[.28*s,1]]),'steel','material-selector-lever',selector);
   const leverTip = part(new T.SphereGeometry(.8*s,16,10),'brass','material-selector-grip',selector); leverTip.position.y=3.7*s;
-  const mediumInput = {kind:'select',selection:1,toggleTo:0,label:'切换右侧固体与液体'};
+  const mediumInput = {kind:'select',selection:1,toggleTo:0,keepPhase:true,label:'切换右侧固体与液体'};
   [rightKey,liquidLabel,solidLabel,lever,leverTip].forEach(m=>{m.userData.modelInput=mediumInput;});
+
+  const showSpecimen=seismicSpecimens(b,s,p,mediumInput);
 
   // The first bead and its crosshead share exactly the same displacement.
   // A telescoping cosmetic rod cannot silently invent a different waveform.
@@ -95,13 +99,14 @@ export function buildSeismicInstrumentWorld(b: TextbookGeometry): ModelMotion {
     return moving;
   });
 
+  const driveEccentrics=seismicEccentrics(b,s,p,drivers);
   const rows = heights.map((height,row) => start.particles.map(q => {
     const g = row ? new T.SphereGeometry(.88*s,18,12)
       : turnedShaftGeometry([-.9*s,0,0],[.9*s,0,0],[[.77*s,0],[1.03*s,.15],[1.03*s,.3],[.86*s,.42],[.86*s,.65],[1.03*s,.75],[1.03*s,.9],[.77*s,1]]);
     const bead = part(g,row?'enamel':'brass',row?'shear-particle':'compression-particle');
     bead.userData.seismicParticleId=q.id; bead.userData.seismicWave=row?'S':'P';
     bead.userData.seismicEquilibrium=p(q.restX,height);
-    bead.userData.modelInput={kind:'inspect',target:`particle-${q.id}`,label:`追踪第${q.id+1}个质点：振动位置与平衡位置`};
+    bead.userData.modelInput={kind:'inspect',target:`particle-${q.id}`,toggleTo:'overview',label:`追踪第${q.id+1}个质点：振动位置与平衡位置`};
     if(row) {
       const carrier = mergeInstrumentGeometry([
         turnedShaftGeometry([0,0,-3*s],[0,0,0],[[.25*s,0],[.25*s,1]]),
@@ -125,22 +130,28 @@ export function buildSeismicInstrumentWorld(b: TextbookGeometry): ModelMotion {
     g.setAttribute('position',new T.BufferAttribute(vertices,3));g.setIndex(indices);return g;
   };
   const couplings=heights.map((_,row)=>part(tube(),row?'steel':'brass',row?'shear-couplings':'compression-coils'));
+  const helix=Array.from({length:segments+1},(_,j)=>{
+    const u=j/segments,a=u*4*Math.PI,taper=Math.min(1,4*u,4*(1-u));
+    return {u,depth:Math.cos(a)*taper,radial:Math.sin(a)*taper};
+  });
+  const ring=Array.from({length:sides},(_,k)=>[Math.cos(k*2*Math.PI/sides),Math.sin(k*2*Math.PI/sides)]);
   const updateCouplings=(row:number,liquid:boolean)=>{
-    const attr=couplings[row].geometry.attributes.position;
+    const geometry=couplings[row].geometry,attr=geometry.attributes.position;
+    const radius=(row?.22:.68)*s,wire=(row?.105:.115)*s;
     for(let bond=0;bond<bonds;bond++){
-      const a=rows[row][bond].position,c=rows[row][bond+1].position,axis=c.clone().sub(a).normalize();
-      const n=new T.Vector3(0,0,1),v=new T.Vector3().crossVectors(axis,n).normalize();
-      const absent=row===1&&liquid&&bond>=9;
-      for(let j=0;j<=segments;j++){
-        const u=j/segments,angle=u*Math.PI*4,radius=(row?.16:.42)*s*Math.sin(Math.PI*u);
-        const center=a.clone().lerp(c,u).addScaledVector(n,Math.cos(angle)*radius).addScaledVector(v,Math.sin(angle)*radius);
-        for(let k=0;k<sides;k++){
-          const q=absent?a:center.clone().addScaledVector(n,Math.cos(k/sides*Math.PI*2)*.065*s).addScaledVector(v,Math.sin(k/sides*Math.PI*2)*.065*s);
-          attr.setXYZ(bond*(segments+1)*sides+j*sides+k,q.x,q.y,q.z);
+      const a=rows[row][bond].position,c=rows[row][bond+1].position;
+      const dx=c.x-a.x,dy=c.y-a.y,length=Math.hypot(dx,dy);
+      const nx=dy/length,ny=-dx/length,absent=row===1&&liquid&&bond>=9;
+      let index=bond*(segments+1)*sides;
+      for(const h of helix){
+        const x=a.x+h.u*dx+nx*h.radial*radius,y=a.y+h.u*dy+ny*h.radial*radius,z=a.z+h.depth*radius;
+        for(const [rz,rv] of ring){
+          if(absent)attr.setXYZ(index++,a.x,a.y,a.z);
+          else attr.setXYZ(index++,x+nx*rv*wire,y+ny*rv*wire,z+rz*wire);
         }
       }
     }
-    attr.needsUpdate=true;couplings[row].geometry.computeVertexNormals();couplings[row].geometry.computeBoundingSphere();
+    attr.needsUpdate=true;geometry.computeVertexNormals();geometry.computeBoundingSphere();
   };
   // Physical phase rail with a true native scrub target and a quiet, unitless
   // scale. Its position belongs to observation progress, not wave travel.
@@ -154,9 +165,11 @@ export function buildSeismicInstrumentWorld(b: TextbookGeometry): ModelMotion {
   const handle=part(turnedShaftGeometry([0,-.6*s,0],[0,.8*s,0],[[1.45*s,0],[1.8*s,.18],[1.8*s,.7],[1.55*s,1]]),'brass','phase-handle');
   handle.userData.modelInput={kind:'phase-track',track,label:'拖动滑钮，对比纵波与横波的同一振动相位'};
   const tracking=heights.map(()=>part(new T.TorusGeometry(1.35*s,.12*s,6,36),'brass','tracked-particle-ring'));
-  let state=start,tracked=6;
+  let state=start,tracked:number|null=null,lastPhase=-1,lastLiquid=false;
   const update=(phase:number,selection:number)=>{
-    state=evaluateSeismicParticles(phase,selection);
+    const changed=lastPhase!==phase||lastLiquid!==(selection===0);
+    if(changed)state=evaluateSeismicParticles(phase,selection);
+    lastPhase=phase;lastLiquid=state.liquid;showSpecimen(state.liquid);driveEccentrics(state.phase);
     liquidLabel.visible=state.liquid;solidLabel.visible=!state.liquid;
     rightKey.material=b.materialFor(state.liquid?'water':'ivory',state.liquid?finish.water:finish.ivory);
     selector.rotation.z=state.liquid?-.45:.45;
@@ -165,15 +178,16 @@ export function buildSeismicInstrumentWorld(b: TextbookGeometry): ModelMotion {
       mesh.material=b.materialFor(kind&&!q.transmittedS?'steel':kind?'enamel':'brass',kind&&!q.transmittedS?'#bcc7c1':kind?finish.enamel:finish.brass);
     }));
     const first=state.particles[0];drivers[0].position.x=first.pDx*s;drivers[1].position.y=first.sDy*s;
-    updateCouplings(0,state.liquid);updateCouplings(1,state.liquid);
+    if(changed){updateCouplings(0,state.liquid);updateCouplings(1,state.liquid);}
     handle.position.set(...phaseTrackPoint(state.phase,track));
     heights.forEach((height,row)=>{
+      b.trace([p(15,height+5.7,3),p(row&&state.liquid?47:86,height+5.7,3)],state.phase,2,'flow',1,.65);
+      tracking[row].visible=tracked!==null;if(tracked===null)return;
       const bead=rows[row][tracked],rest=p(state.particles[tracked].restX,height);
       tracking[row].position.copy(bead.position);tracking[row].position.z+=.2*s;
       b.contour([[rest[0]-.65*s,rest[1],rest[2]+1.1*s],[rest[0]+.65*s,rest[1],rest[2]+1.1*s]],.45);
       b.contour([[rest[0],rest[1]-.65*s,rest[2]+1.1*s],[rest[0],rest[1]+.65*s,rest[2]+1.1*s]],.45);
       b.contour([rest,bead.position.toArray()],.38);
-      b.trace([p(15,height+5.7,3),p(row&&state.liquid?47:86,height+5.7,3)],state.phase,2,'flow',1,.65);
     });
     // Discontinuous reference ticks are behind the medium, never a barrier.
     for(let y=6;y<38;y+=4)b.contour([p(49.15,y,-3.8),p(49.15,y+1.5,-3.8)],.26);
@@ -183,11 +197,11 @@ export function buildSeismicInstrumentWorld(b: TextbookGeometry): ModelMotion {
     }
   };
   return {update,
-    inspect(target){const match=/^particle-(\d+)$/.exec(target);if(match)tracked=Math.max(0,Math.min(19,+match[1]));},
-    inspectTargets:()=>[{target:'particle-6',label:'追踪固体质点'},{target:'particle-14',label:'追踪右侧介质质点'}],
-    focusBounds:()=>({min:p(-2,-8,-10),max:p(101,42,23)}),
+    inspect(target){if(target==='overview'){tracked=null;return;}const match=/^particle-(\d+)$/.exec(target);if(match)tracked=Math.max(0,Math.min(19,+match[1]));},
+    inspectTargets:()=>[{target:'overview',label:'整体介质'},{target:'particle-6',label:'追踪固体质点'},{target:'particle-14',label:'追踪右侧介质质点'}],
+    focusBounds:()=>({min:p(-10,-8,-11),max:p(101,42,23)}),
     describe:()=>({kind:'seismic-medium',...state,pTransmits:true,sTransmitsAcrossBoundary:!state.liquid,
-      fixedEquilibriumMarks:true,velocityIsMeasured:false,trackedParticleId:tracked,
+      fixedEquilibriumMarks:true,velocityIsMeasured:false,trackedParticleId:tracked,inspection:tracked===null?'overview':`particle-${tracked}`,crankRevolutions:state.phase*3,
       specimenConstruction:'open-two-channel-guided-wave-bench',phaseHandle:handle.position.toArray(),
       fixedParticleIdentities:true,continuousPLinksAcrossBoundary:true,shearLinksInLiquid:false,
       apparatusDrivesDemonstrationNotEarthquakes:true,measuredMaterialProperties:false})};

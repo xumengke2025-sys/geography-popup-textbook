@@ -1,3 +1,4 @@
+import { drawingGrip } from './textbook-drawing-grip';
 import { evaluateWave, waveParticleAt, WAVE_GEOMETRY, WAVE_REFERENCE } from './textbook-wave-model';
 
 /** Checked against PDF pages 65–67. Fig.3.26 is a satellite image of plankton
@@ -26,8 +27,8 @@ export const CURRENT_LAYOUT = {
   coast: [[4, 8], [18, 8], [20, 18], [17.5, 31], [20.5, 43], [18, 55], [4, 55]] as [number, number][],
   track: { start: [12, 1, 66] as CurrentPoint, end: [88, 1, 66] as CurrentPoint },
   labels: [[14, -8, 69], [50, -8, 69], [86, -8, 69]] as CurrentPoint[],
-  waveCenter: [78, 21, 54] as CurrentPoint,
-  waveLabel: [78, 30, 54] as CurrentPoint,
+  waveCenter: [78, 20, 7.8] as CurrentPoint,
+  waveLabel: [78, 30, 7.8] as CurrentPoint,
 } as const;
 const clamp = (n: number) => Math.max(0, Math.min(1, Number.isFinite(n) ? n : 0));
 const cubic = (t: number): CurrentPoint => {
@@ -57,6 +58,15 @@ export function currentPathTangent(input: number): CurrentPoint {
   const dx = b[0] - a[0], dz = b[2] - a[2], length = Math.hypot(dx, dz) || 1;
   return [dx / length, 0, dz / length];
 }
+/** Fixed direction inlays sit beside the tracer lanes so every particle
+ * remains visible as it passes the arrow. Both views use this footprint. */
+export const CURRENT_ARROWS = [.36, .76].map(progress => {
+  const [x, y, z] = currentPathPoint(progress, 8);
+  const [dx, , dz] = currentPathTangent(progress);
+  return [[3.8, 0], [.3, -2.1], [.6, -.72], [-3.4, -.72],
+    [-3.4, .72], [.6, .72], [.3, 2.1]].map(([along, across]): CurrentPoint =>
+    [x + dx * along - dz * across, y, z + dz * along + dx * across]);
+});
 export const CURRENT_SAMPLES = Array.from({ length: CURRENT_SAMPLE_COUNT }, (_, index) => {
   const row = index % 4, laneIndex = Math.floor(index / 4), lane = (laneIndex - 1) * 3;
   const startProgress = .02 + row * .045, endProgress = startProgress + CURRENT_TRAVEL;
@@ -112,7 +122,7 @@ function prism(footprint: readonly [number, number][], bottom: number, top: numb
   for (let i = 0; i < count; i++) { const next = (i + 1) % count; indices.push(i, i + count, next, next, i + count, next + count); }
   return { positions, indices };
 }
-export const currentSeaMesh = () => prism([[4, 8], [97, 8], [97, 55], [4, 55]], .8, 8.5);
+export const currentSeaMesh = () => prism([[97, 31], [97, 55], ...CURRENT_LAYOUT.coast.slice(1, 6).reverse(), [97, 8]], .8, 8.5);
 export const currentCoastMesh = () => prism(CURRENT_LAYOUT.coast, .8, 12.8);
 /** A closed thin paper ribbon is solely a teaching guide to the local flow. */
 export function currentRibbonMesh(): CurrentMeshData {
@@ -134,7 +144,7 @@ export function currentRibbonMesh(): CurrentMeshData {
 }
 
 export function currentProject([x, y, z]: CurrentPoint): [number, number] {
-  return [35 + x * 5.7 + (z - 32) * .4, 300 - y * 4.2 + (z - 32) * 1.6];
+  return [36 + x * 6.1 - (z - 32) * .75, 236 - y * 3.3 + (z - 32) * 3.7];
 }
 const n = (value: number) => Number(value.toFixed(5));
 const xy = (point: CurrentPoint) => currentProject(point).map(n).join(',');
@@ -147,36 +157,43 @@ const svgPoint = (point: CurrentPoint, radius: number, color: string, attrs = ''
  * vector geometry. No satellite image is sampled into the supplemental model. */
 export function oceanCurrentSvg(phase: number): string {
   const state = evaluateOceanCurrent(phase), sea = CURRENT_LAYOUT.sea;
-  let body = polygon([[4, sea.top, 8], [97, sea.top, 8], [97, sea.top, 55], [4, sea.top, 55]], '#a9c8cb')
-    + polygon([[4, sea.bottom, 55], [97, sea.bottom, 55], [97, sea.top, 55], [4, sea.top, 55]], '#9bb9be')
+  let body = polygon([[4, sea.top, 8], [97, sea.top, 8], [97, sea.top, 55], [4, sea.top, 55]], 'url(#current-sea)')
+    + polygon([[4, sea.bottom, 55], [97, sea.bottom, 55], [97, sea.top, 55], [4, sea.top, 55]], 'url(#current-section)')
     + polygon([[97, sea.bottom, 55], [97, sea.bottom, 8], [97, sea.top, 8], [97, sea.top, 55]], '#90afb5');
   body += polygon(CURRENT_LAYOUT.coast.map(([x, z]) => [x, 12.8, z] as CurrentPoint), '#c7bea0');
   body += polygon([[4, .8, 55], [18, .8, 55], [18, 12.8, 55], [4, 12.8, 55]], '#b8aa8d');
+  const shore = CURRENT_LAYOUT.coast.slice(1, 6);
+  for (let i = 1; i < shore.length; i++) {
+    const [ax, az] = shore[i - 1], [bx, bz] = shore[i];
+    body += polygon([[ax, sea.top, az], [bx, sea.top, bz], [bx, 12.8, bz], [ax, 12.8, az]], i % 2 ? '#a8946b' : '#bcaa83');
+  }
+  for (const offset of [2, 4.6, 8]) {
+    body += line(shore.map(([x, z]) => [x - offset, 12.8, z]), '#ac9d78', .85);
+  }
+  body += line([[4, 1.4, 55], [97, 1.4, 55], [97, 1.4, 8]], '#af8951', 2);
   const ribbon = [...Array.from({ length: 65 }, (_, i) => { const p = currentPathPoint(i / 64, -5.3); return [p[0], 8.8, p[2]] as CurrentPoint; }),
     ...Array.from({ length: 65 }, (_, i) => { const p = currentPathPoint(1 - i / 64, 5.3); return [p[0], 8.8, p[2]] as CurrentPoint; })];
-  body += polygon(ribbon, '#a1c0c2', .45);
-  for (const t of [.38, .73]) {
-    const c = currentPathPoint(t), tangent = currentPathTangent(t), side: CurrentPoint = [-tangent[2], 0, tangent[0]];
-    body += line([[c[0] - tangent[0] * 2 + side[0], 9.0, c[2] - tangent[2] * 2 + side[2]], c,
-      [c[0] - tangent[0] * 2 - side[0], 9.0, c[2] - tangent[2] * 2 - side[2]]], '#507e89', 1.4);
-  }
+  body += polygon(ribbon, '#a6d6d2', .65);
+  for (const arrow of CURRENT_ARROWS) body += polygon(arrow, '#315c62', .65);
   const tracked = state.samples[0];
   body += `<g data-current-origin="${tracked.id}" data-model-selection="0" role="button" tabindex="0" aria-label="回到这组水体的起点">${svgPoint(tracked.origin, 9, '#f0ead9')}</g>`;
   body += `<g data-current-destination="${tracked.id}" data-model-selection="2" role="button" tabindex="0" aria-label="查看这组水体的末位置">${svgPoint(tracked.destination, 9, '#cbd4c6')}</g>`;
-  body += line(state.trace, '#a37d4c', 1.1);
-  for (const sample of state.samples) body += `<g data-current-sample="${sample.id}" data-current-progress="${sample.progress}" data-position='${JSON.stringify(sample.point)}' data-model-selection="1" role="button" tabindex="0" aria-label="追踪同一组定向前移的水体">${svgPoint(sample.point, sample.index === 0 ? 6.8 : 5.3, sample.color)}</g>`;
+  body += line(state.trace, '#926438', 2.3);
+  for (const sample of state.samples) body += `<g data-current-sample="${sample.id}" data-current-progress="${sample.progress}" data-position='${JSON.stringify(sample.point)}' data-model-selection="1" role="button" tabindex="0" aria-label="追踪同一组定向前移的水体">${svgPoint(sample.point, sample.index === 0 ? 6.8 : 5.3, sample.index === 0 ? 'url(#current-brass)' : '#32666e')}</g>`;
+  const [orbitX, orbitY] = currentProject(CURRENT_LAYOUT.waveCenter);
+  body += `<g transform="translate(${466 - orbitX} ${53 - orbitY})"><rect x="${orbitX - 30}" y="${orbitY - 23}" width="215" height="46" rx="23" fill="#f4eddd" stroke="#b59e76"/>`;
   body += line(CURRENT_WAVE_ORBIT, '#96866c', 1);
   const [wx, wy] = currentProject(state.comparison.point);
   body += `<circle data-current-wave-reference="true" data-position='${JSON.stringify(state.comparison.point)}' cx="${n(wx)}" cy="${n(wy)}" r="4.2" fill="#c6ac7c" stroke="#806f52" stroke-width="1"/>`;
-  const [wlx, wly] = currentProject(CURRENT_LAYOUT.waveLabel);
-  body += `<text x="${n(wlx)}" y="${n(wly)}" text-anchor="middle" font-size="25" fill="#374444" paint-order="stroke" stroke="#f7f1e3" stroke-width="4">往复参照</text>`;
+  const wlx = orbitX + 103, wly = orbitY + 7;
+  body += `<text x="${n(wlx)}" y="${n(wly)}" text-anchor="middle" font-size="25" fill="#374444" paint-order="stroke" stroke="#f7f1e3" stroke-width="4">往复参照</text></g>`;
   body += line([CURRENT_LAYOUT.track.start, CURRENT_LAYOUT.track.end], '#a59b85', 1.2);
   const handle: CurrentPoint = [12 + 76 * state.phase, 1, 66], [hx, hy] = currentProject(handle);
-  body += `<path data-current-handle="true" d="M${n(hx - 9)} ${n(hy)}l9-6 9 6-9 6Z" fill="#e1d1ab" stroke="#8e8064" stroke-width="1.2"/>`;
+  body += `<path data-current-handle="true" d="M${n(hx - 9)} ${n(hy)}l9-6 9 6-9 6Z" fill="#e1d1ab" stroke="#8e8064" stroke-width="1.2"/>${drawingGrip('推拉洋流示踪尺',currentProject([12,1,66]),currentProject([88,1,66]),state.phase)}`;
   CURRENT_STOPS.forEach((stop, i) => {
     const [x, y] = currentProject(CURRENT_LAYOUT.labels[i]);
     body += `<g data-current-node="${i}" data-model-selection="${i}" role="button" tabindex="0" aria-label="${stop.label}"><text x="${n(x)}" y="${n(y)}" text-anchor="middle" font-size="25" fill="#374444" paint-order="stroke" stroke="#f7f1e3" stroke-width="4">${stop.label}</text></g>`;
   });
   const diagnostics = JSON.stringify({ phase: state.phase, stageIndex: state.stageIndex, samples: state.samples.map(sample => ({ id: sample.id, progress: sample.progress, point: sample.point })), comparison: { point: state.comparison.point, closedOrbit: true } });
-  return `<svg xmlns="http://www.w3.org/2000/svg" class="flat-model-svg flat-explanation-svg" viewBox="0 0 700 430" role="group" data-current-phase="${state.phase}" data-current-stage="${state.stage}" data-current-state='${diagnostics}' data-current-not-georeferenced="true" aria-label="${state.caption} 局部海域教学示意，不是实际海岸或实测洋流路径。小圆轨道为理想波浪同一水质点的往复参照。"><title>洋流：追踪同一组定向前移的水体</title><g stroke-linejoin="round" stroke-linecap="round" font-family="FieldSerif,SimSun,serif">${body}</g></svg>`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" class="flat-model-svg flat-explanation-svg" viewBox="0 0 700 430" role="group" data-current-phase="${state.phase}" data-current-stage="${state.stage}" data-current-state='${diagnostics}' data-current-not-georeferenced="true" aria-label="${state.caption} 局部海域教学示意，不是实际海岸或实测洋流路径。小圆轨道为理想波浪同一水质点的往复参照。"><title>洋流：追踪同一组定向前移的水体</title><defs><linearGradient id="current-brass" x2=".45" y2="1"><stop stop-color="#fff0b6"/><stop offset=".38" stop-color="#ddb770"/><stop offset="1" stop-color="#886637"/></linearGradient><linearGradient id="current-sea" x2=".32" y2="1"><stop stop-color="#d8e8dc"/><stop offset=".48" stop-color="#a4c9c6"/><stop offset="1" stop-color="#7aa9ac"/></linearGradient><linearGradient id="current-section" x2="0" y2="1"><stop stop-color="#81afb1"/><stop offset="1" stop-color="#486e78"/></linearGradient></defs><g stroke-linejoin="round" stroke-linecap="round" font-family="FieldSerif,SimSun,serif">${body}</g></svg>`;
 }

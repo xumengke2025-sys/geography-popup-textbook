@@ -1,7 +1,9 @@
 import { THREE as T } from './reference/engine.js';
 import { LIFT_MARGIN, type ModelMotion, type TextbookGeometry, type Vec3 } from './textbook-geometry';
+import { hydrologyCore, handValve, meniscusGeometry, wetGlassFill } from './textbook-hydrology-cutaway';
 import { phaseTrackPoint } from './textbook-model-input';
 import { createSoilInstrument } from './textbook-soil-instrument-parts';
+import { finishTextureColumn } from './textbook-soil-column-surface';
 import { createSoilSpecimenFinish } from './textbook-soil-specimen-finish';
 import { evaluateSoilTexture, soilTextureWaterU, SOIL_TEXTURE_COLLECTOR_FLOOR, SOIL_TEXTURE_COLLECTOR_RANGE, SOIL_TEXTURE_GRAINS,
   SOIL_TEXTURE_REFERENCE, SOIL_TEXTURE_TYPES, SOIL_TEXTURE_WATER_COUNT } from './textbook-soil-texture-model';
@@ -15,7 +17,7 @@ export function buildSoilTextureWorld(b: TextbookGeometry): ModelMotion {
   const centers = [18, 50, 82].map(x => x * s), floor = top - SOIL_TEXTURE_COLLECTOR_FLOOR * height;
   const point = (sample: number, u: number, d: number, v = 1): Vec3 => [centers[sample] + (u - .5) * width, top - d * height, z0 + v * depth];
   const kit = createSoilInstrument(b, s), { parts, solid, plate, pipe, bearing, finish, nozzle, openBox, fixedLabel } = kit;
-  const select = (i: number) => ({ kind: 'select', selection: i, label: `观察${SOIL_TEXTURE_TYPES[i].name}，保留同一场降水进度` });
+  const select = (i: number) => ({ kind: 'select', selection: i, keepPhase:true, label: `观察${SOIL_TEXTURE_TYPES[i].name}，保留同一场降水进度` });
   const action = (mesh: any, i: number, role: string) => {
     mesh.userData.soilTextureRole = role; mesh.userData.soilTextureSample = i;
     mesh.userData.modelInput = select(i); mesh.userData.interactionFeedback = false; return mesh;
@@ -37,18 +39,30 @@ export function buildSoilTextureWorld(b: TextbookGeometry): ModelMotion {
 
   const grainBase = new T.IcosahedronGeometry(1, 1), grainVertices = grainBase.attributes.position;
   const columns = SOIL_TEXTURE_TYPES.map((type, index) => {
+    const front = z0 + depth * .903, leftEdge = centers[index] - width * .5;
+    const topAt = (x:number) => top - s*(.21 + .15*Math.sin((x-leftEdge)/s*1.1)+.09*Math.sin((x-leftEdge)/s*2.3));
+    const core = solid(hydrologyCore([leftEdge,bottom,z0+.08*s],[leftEdge+width,top,front],topAt,type.id),'#ffffff','land','porous-specimen-core');
+    core.material = createSoilSpecimenFinish(b.pop,'#ffffff',index+1,(index===0?.72:index===1?.77:.65)*s,index===0?'alluvium':'loam');
+    core.material.vertexColors=true;action(core,index,'porous-specimen-core');
+    const face=finishTextureColumn(b,core,index,s,leftEdge,bottom,width,height,front,topAt);
+    face.details.forEach(m=>action(m,index,'retained-soil-detail'));
     const vertices: number[] = [], colors: number[] = [], normals: number[] = [];
-    const grainColors = [type.color, type.side, ['#ddd0ac', '#b39c78', '#be967c'][index]].map(c => new T.Color(c));
+    const grainColors = [
+      ['#c8b797','#93856e','#d0c3a2'],['#846848','#695238','#9c805c'],['#ac8873','#997761','#ad8873'],
+    ][index].map(c => new T.Color(c));
     for (const grain of SOIL_TEXTURE_GRAINS[index]) {
-      const center = point(index, grain.u, grain.depth, grain.v), radius = grain.radius * width;
-      const angle = Math.sin(grain.id * 1.93) * 2.7, ca = Math.cos(angle), sa = Math.sin(angle), color = grainColors[grain.shade];
-      const flatten = .62 + .30 * (Math.sin(grain.id * 2.317) * .5 + .5);
+      const center = point(index, grain.u, grain.depth, grain.v), radius = grain.radius * width * [.74,.8,.86][index];
+      // Large individual specks are exposed clasts in sand or mixed loam;
+      // the finer clay fraction remains enclosed in cohesive aggregates.
+      if(grain.v>.75)center[2]=face.cut(center[0],center[1])-(index===2?.42:.16)*radius;
+      const angle = Math.sin(grain.id * 1.93) * (index===2?.26:2.7), ca = Math.cos(angle), sa = Math.sin(angle), color = grainColors[grain.shade];
+      const flatten = (index===2?.12:.49) + (index===2?.07:.30) * (Math.sin(grain.id * 2.317) * .5 + .5);
       for (let j = 0; j < grainVertices.count; j++) {
         const ox = grainVertices.getX(j), oy = grainVertices.getY(j), oz = grainVertices.getZ(j);
         const relief = .91 + .08 * Math.cos(ox * 7 + oy * 5 - oz * 9 + grain.id * 1.71) ** 2;
-        const x = ox * radius * relief, y = oy * radius * flatten * relief, z = oz * radius * .77 * relief;
+        const x = ox * radius * relief*(index===2?1.32:index===0?.57:1), y = oy * radius * flatten * relief*(index===0?.61:1), z = oz * radius * (index===2?.43:index===0?.36:.58) * relief;
         vertices.push(center[0] + x * ca - y * sa, center[1] + y * ca + x * sa, center[2] + z);
-        const n = new T.Vector3(ox, oy / flatten, oz / .77).normalize();
+        const n = new T.Vector3(ox, oy / flatten, oz / .52).normalize();
         normals.push(n.x * ca - n.y * sa, n.y * ca + n.x * sa, n.z);
         const tint = .94 + .06 * (Math.sin(grain.id * 7.13) * .5 + .5);
         colors.push(color.r * tint, color.g * tint, color.b * tint);
@@ -57,7 +71,7 @@ export function buildSoilTextureWorld(b: TextbookGeometry): ModelMotion {
     const geometry = new T.BufferGeometry(); geometry.setAttribute('position', new T.Float32BufferAttribute(vertices, 3));
     geometry.setAttribute('color', new T.Float32BufferAttribute(colors, 3)); geometry.setAttribute('normal', new T.Float32BufferAttribute(normals, 3));
     const grains = b.mesh(geometry, '#ffffff', false, true, 'rock');
-    grains.material = createSoilSpecimenFinish(b.pop, '#ffffff', index + 1, s); grains.material.vertexColors = true;
+    grains.material = createSoilSpecimenFinish(b.pop, '#ffffff', index + 1, index === 2 ? .55 * s : s, index === 0 ? 'alluvium' : 'loam'); grains.material.vertexColors = true;
     action(grains, index, 'soil-grains'); grains.userData.grainCount = SOIL_TEXTURE_GRAINS[index].length; grains.userData.grainStride = grainVertices.count;
     const x = centers[index], left = x - width / 2, right = x + width / 2;
     // A real U shell holds the retained back and side faces; its front is the
@@ -88,13 +102,15 @@ export function buildSoilTextureWorld(b: TextbookGeometry): ModelMotion {
       pipe([xx, floor - 1.9 * s, zz], [xx, bottom, zz], .48 * s);
       bearing([xx, bottom - 2 * s, zz], [0, 1, 0], .77 * s, 1.6 * s);
     }
-    const pool = solid(new T.BoxGeometry(width * .84, 1, depth * .88), '#79a6af', 'water', 'collected-water');
+    const pool = solid(meniscusGeometry(width * .84, 1, depth * .88), '#79a6af', 'water', 'collected-water');
+    wetGlassFill(pool,b,.64);
     pool.userData.soilTextureRole = 'collected-water'; pool.userData.soilTextureSample = index;
     pool.userData.castShadow = false;
     const cup = openBox(left + .5 * s, right - .5 * s, floor, bottom - 3.3 * s, z0 + depth * .09, z1 + .6 * s,
       '#d8d3bb', 'ivory', `receiving-cup-${index}`, true, true, .45 * s);
     for (const m of cup) { m.userData.soilTextureRole = 'collector'; m.userData.soilTextureSample = index; }
-    const reservoir = solid(new T.BoxGeometry(width * .84, 1, depth * .75), '#9bbdc2', 'water', 'equal-rain-reservoir');
+    const reservoir = solid(meniscusGeometry(width * .84, 1, depth * .75), '#9bbdc2', 'water', 'equal-rain-reservoir');
+    wetGlassFill(reservoir,b,.61);
     reservoir.userData.soilTextureRole = 'rain-reservoir'; reservoir.userData.soilTextureSample = index; reservoir.userData.castShadow = false;
     const tray = openBox(left - .7 * s, right + .7 * s, top + 11.0 * s, top + 16.8 * s, z0 - .15 * s, z1 + .55 * s,
       '#d8d3bb', 'ivory', `equal-rain-cell-${index}`, true, false, .42 * s);
@@ -108,7 +124,13 @@ export function buildSoilTextureWorld(b: TextbookGeometry): ModelMotion {
     plate([x - 6 * s, floor - 2.2 * s, z1 + 5.15 * s], [x + 6 * s, floor + .9 * s, z1 + 5.55 * s], '#a88b50', 'brass', 'sample-nameplate-seat');
     const label = fixedLabel(type.name, [x, floor - .55 * s, z1 + 5.6 * s], 10.7 * s, 2.7 * s);
     action(label, index, 'sample-label');
-    return { index, grains, pool, reservoir, label, left, right };
+    for(let tick=0;tick<=6;tick++){
+      const y=floor+height*SOIL_TEXTURE_COLLECTOR_RANGE*tick/6;
+      pipe([right-1.1*s,y,z1+.68*s],[right-(tick%3?2.1:3.35)*s,y,z1+.68*s],.093*s,'#705e3e','brass');
+    }
+    const float=solid(new T.TorusGeometry(.56*s,.115*s,7,20),'#8c643b','brass','collection-float');
+    float.rotation.x=Math.PI/2;
+    return { index, grains, pool, reservoir, label, left, right, float };
   });
   grainBase.dispose();
   const dropBase = new T.IcosahedronGeometry(1, 1), dropPositions = dropBase.attributes.position;
@@ -127,6 +149,10 @@ export function buildSoilTextureWorld(b: TextbookGeometry): ModelMotion {
   handle.userData.modelInput = { kind: 'phase-track', track, label: '上下拖动水滴，对照同一场降水' };
   const tag = parts.knob([50 * s, top + 18 * s, z0 + 2 * s], [0, 1, 0], 2.1 * s, 2.4 * s);
   tag.traverse((m: any) => { if (m.isMesh) { m.userData.soilTextureRole = 'replay-tag'; m.userData.modelInput = { kind: 'replay', label: '重新播放同一场示意降水' }; } });
+  const valveAt:Vec3=[34*s,top+9.8*s,z1+4.1*s];
+  pipe([valveAt[0],valveAt[1],z0+2*s],valveAt,.72*s,'#8d774e','brass');
+  bearing([valveAt[0],valveAt[1],z1+.35*s],[0,0,1],1.4*s,3.6*s);
+  const turnValve=handValve(b,s,valveAt,4.85,'转动供水阀轮，三柱同时接受同一场示意降水；反转可倒回');
   finish();
   let state = evaluateSoilTexture(0), previousPhase = -1, previousSelection = -1;
   return {
@@ -135,6 +161,7 @@ export function buildSoilTextureWorld(b: TextbookGeometry): ModelMotion {
         state = evaluateSoilTexture(phase, selection);
         for (const column of columns) {
           const sample = state.samples[column.index], poolHeight = height * SOIL_TEXTURE_COLLECTOR_RANGE * sample.collected;
+          column.float.position.set(column.right-3.45*s,floor+poolHeight+.12*s,z1-.85*s);
           column.pool.visible = sample.collected > 0; column.pool.scale.y = Math.max(.001, poolHeight);
           column.pool.position.set(centers[column.index], floor + poolHeight / 2, z0 + depth * .56);
           const reserveHeight = 4.8 * s * sample.reservoir;
@@ -151,6 +178,7 @@ export function buildSoilTextureWorld(b: TextbookGeometry): ModelMotion {
           }
           position.needsUpdate = true; geometry.computeVertexNormals(); geometry.computeBoundingSphere(); mesh.userData.portions = sample.portions;
         }
+        turnValve(state.phase);
         handle.position.set(...phaseTrackPoint(state.phase, track)); previousPhase = phase; previousSelection = selection;
       }
       // Only a fine underline marks the current comparison object.

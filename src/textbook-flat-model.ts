@@ -1,3 +1,5 @@
+import { pressureDrawing } from './textbook-pneumatic-drawings';
+import { completeFlatApparatus } from './textbook-flat-apparatus';
 import type { Figure } from './textbook-catalog';
 import { pageUrl } from './textbook-catalog';
 import { effectSvg } from './textbook-effects';
@@ -35,6 +37,10 @@ import { integratedSvg } from './textbook-integrated-model';
 /** A separate reading-mode demonstration. The textbook page is never painted
  * over. This SVG is the WebGL fallback, not the source of the 3D geometry. */
 export function flatModelSvg(f: Figure, phase: number, selection: number, inspection = 'overview') {
+  const drawing=drawFigure(f,phase,selection,inspection);
+  return completeFlatApparatus(drawing,f,phase,selection,inspection);
+}
+function drawFigure(f: Figure, phase: number, selection: number, inspection: string) {
   if (f.extension) return integratedSvg(f.effect, phase, selection, inspection);
   if (f.effect === 'gnss') return gnssSvg(phase, selection, inspection);
   if (f.effect === 'urban-waterlogging') return urbanWaterSvg(phase, selection, inspection);
@@ -58,13 +64,13 @@ export function flatModelSvg(f: Figure, phase: number, selection: number, inspec
   if (f.effect === 'current') return oceanCurrentSvg(phase);
   if (f.effect === 'radiation') return solarHeatingSvg(phase);
   if (f.effect === 'typhoon') return typhoonSvg(phase);
-  if (f.effect === 'orbit') return solarSystemSvg(phase, selection);
+  if (f.effect === 'orbit') return solarSystemSvg(phase, selection, inspection);
   if (f.effect === 'spheres') return earthLayersSvg(selection, inspection);
   if (f.effect === 'temperature') return temperatureProfileSvg(phase, inspection);
   if (f.effect === 'slope') return slopeReliefSvg(phase);
   if (f.effect === 'rescue') return recoverySvg(phase, selection);
-  const vector = flatFoundation(f, phase, selection)
-    ?? flatSkyExtra(f, phase, selection)
+  const vector = flatFoundation(f, phase, selection, inspection)
+    ?? flatSkyExtra(f, phase, selection, inspection)
     ?? flatLandExtra(f, phase, selection, inspection)
     ?? flatWaterRiskExtra(f, phase, selection);
   if (vector) return vector;
@@ -86,34 +92,36 @@ function breezeSvg(phase: number) {
     return `<path d="M-13-5 0 0-13 5" transform="translate(${x} ${y}) rotate(${angle})"/>`;
   }).join('');
   const daylight = Math.cos((phase - .5) * Math.PI * 2) > 0;
-  const warm = s.direction > 0 ? '#ca9b76' : '#8faebb', cool = s.direction < 0 ? '#ca9b76' : '#8faebb';
-  return `<svg class="flat-model-svg flat-explanation-svg" viewBox="0 0 640 390" role="img" aria-label="${s.stage}，近地面${s.ground}，高空${s.upper}">
-  <path d="M48 300H320V354H48Z" fill="#d8c8aa"/><path d="M320 300H594V354H320Z" fill="#abc9cb"/>
-  <path d="M48 300 108 262 151 280 193 278 230 294 320 300" fill="#e7deca" stroke="#546260" stroke-width="1.2"/>
-  <path d="M199 300v-21h29v21m-35-21 20-13 21 13m-22 21v-12h7v12" fill="#f9f4e7" stroke="#506361" stroke-width="1.3"/>
-  <path d="M362 315h42m20 0h35m22 0h49m-142 19h38m24 0h44m22 0h30" stroke="#668d96" fill="none"/>
-  <path d="M320 300V354M48 354H594" stroke="#586b68" fill="none"/>
-  <g stroke="${warm}" stroke-width="4"><path d="M253 316v-${8 + s.strength * 22}"/></g><g stroke="${cool}" stroke-width="4"><path d="M388 316v-${8 + s.strength * 22}"/></g>
-  ${text(174, 339, `陆地 · ${s.direction > 0 ? '较暖' : s.direction < 0 ? '较冷' : '同温'}`)}${text(468, 339, `海洋 · ${s.direction < 0 ? '较暖' : s.direction > 0 ? '较冷' : '同温'}`)}
-  <ellipse cx="320" cy="176" rx="190" ry="97" stroke="#567e80" stroke-width="1.2" stroke-opacity="${s.strength * .5}" fill="none"/>
-  <g fill="none" stroke="#356f78" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" opacity="${s.strength}">${particles}</g>
-  ${text(203, 130, landHigh)}${text(434, 130, seaHigh)}${text(203, 246, landLow)}${text(434, 246, seaLow)}
-  <g stroke="#99aca7" stroke-width="1" stroke-dasharray="4 7"><path d="M260 123H378M260 239H378"/></g>
-  ${daylight ? '<g fill="#cfad6a" stroke="#b59761"><circle cx="566" cy="45" r="15"/><path d="M566 20v-8m0 66v-8m25-25h8m-66 0h8m7-18-6-6m42 42 6 6m0-48-6 6m-36 36-6 6"/></g>' : '<path d="M580 28a21 21 0 1 0 0 35 24 24 0 0 1 0-35" fill="#a1b8c2"/>'}
-  </svg>`;
+  const dark = daylight ? '#b39963' : '#f5cf76';
+  const plate=(x:number,y:number,label:string,w=67) => `<g transform="translate(${x} ${y})"><rect x="${-w/2}" y="-15" width="${w}" height="30" rx="3" fill="#a18b5f" stroke="#776343"/><rect x="${-w/2+2}" y="-13" width="${w-4}" height="26" rx="2" fill="#e8dfc8"/>${text(0,7,label,21)}</g>`;
+  const key=(x:number,label:string,i:number)=>`<g data-model-selection="${i}" data-specimen-key tabindex="0" role="button" aria-label="观察${label}" transform="translate(${x} 385)">${plate(0,0,label,64)}</g>`;
+  const dialAngle=(.25-phase)*Math.PI*2;
+  const ticks=Array.from({length:36},(_,i)=>`<path d="M30 0h${i%3===0?-5:-2}" transform="rotate(${10*i})"/>`).join('');
+  return `<svg class="flat-model-svg coastal-weather-drawing" viewBox="0 0 640 422" role="group" aria-label="${s.stage}，近地面${s.ground}，高空${s.upper}">
+    <style>@media(max-width:480px){.coastal-weather-drawing text{font-size:28px}}</style>
+    <defs><linearGradient id="breeze-water" x2="0" y2="1"><stop stop-color="#aac1ad"/><stop offset=".37" stop-color="#749a98"/><stop offset="1" stop-color="#527780"/></linearGradient>
+    <linearGradient id="breeze-wood" x2="0" y2="1"><stop stop-color="#89714e"/><stop offset=".23" stop-color="#5d4938"/><stop offset=".74" stop-color="#876c4c"/><stop offset="1" stop-color="#564439"/></linearGradient>
+    <pattern id="breeze-stone" width="61" height="13" patternUnits="userSpaceOnUse"><path d="M-6 10 Q13 5 29 8t38-5m-53 10 3-4m39-6 2-2" fill="none" stroke="#b3a187" stroke-width="1.5"/></pattern></defs>
+    <g fill="none" stroke="#8c7853" stroke-width="2.4"><path d="M91 303V62m466 242V62M91 103h126m340 0H427M91 212h126m340 0H427"/></g>
+    <ellipse cx="320" cy="176" rx="190" ry="97" stroke="#71948e" stroke-width="1.5" stroke-opacity="${s.strength*.75}" fill="none"/>
+    <g fill="none" stroke="#356f78" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" opacity="${s.strength}">${particles}</g>
+    ${plate(211,103,landHigh)}${plate(429,103,seaHigh)}${plate(211,212,landLow)}${plate(429,212,seaLow)}
+    <path d="M41 353V307L68 293 92 257 108 246 125 255 142 281 164 272 187 288 214 285 232 298 260 292 286 299 306 298 324 307 335 320 352 325V354Z" fill="#9c9077" stroke="#786d58"/>
+    <path d="M41 307L68 293 92 257 108 246 125 255 142 281 164 272 187 288 214 285 232 298 260 292 286 299 306 298 324 307 335 320 316 314 297 307 263 304 241 307 223 302 202 300 184 302 163 290 143 292 126 275 114 265 104 271 88 286 68 300Z" fill="#818768"/>
+    <path d="M41 316l37-17 26-20 23 9 17 13 30-2 29 12 30-2 23 4 28-3 31 8 35 7v30H41Z" fill="url(#breeze-stone)"/>
+    <path d="M327 311q15-2 28 0t27 0 35 0 34 0 34 0 31 0 69 0v43H350l-16-15Z" fill="url(#breeze-water)"/>
+    <path d="M353 321q15 4 29 0t34-1m28 12q10 3 21 0t22-1m22-13q14 4 31-1m-147 22q13 2 26-1" fill="none" stroke="#c3c9b6" opacity=".8"/>
+    <g transform="translate(271 297)"><path d="M-12 0l5-42H7L12 0Z" fill="#dfd8c1" stroke="#675e4b"/><path d="M-9-16l1-9H8l1 9Z" fill="#aa705a"/><path d="M-12-42h24v-3h-24z" fill="#626454"/><path d="M-7-45v-12H7v12Z" fill="${dark}" stroke="#54625a"/><path d="M-10-57l10-8 10 8ZM-3 0v-9h6v9" fill="#5e6357"/><path d="M-3-45v-12m6 0v12" stroke="#5f6257"/></g>
+    <path d="M48 354h540l-6 12H55Z" fill="#b19866"/><path d="M55 366h527v37H55Z" fill="url(#breeze-wood)"/><path d="M61 399h515" stroke="#c5a56c"/>
+    ${plate(157,384,'陆地·'+(s.direction>0?'较暖':s.direction<0?'较冷':'同温'),126)}${plate(466,384,'海洋·'+(s.direction<0?'较暖':s.direction>0?'较冷':'同温'),126)}
+    ${key(275,'白天',0)}${key(351,'夜晚',1)}
+    <g transform="translate(574 70)" data-model-crank="1" data-radius="34" role="slider" tabindex="0" aria-label="转动昼夜盘" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${Math.round(phase*100)}">
+      <circle r="41" fill="#8a754e" stroke="#594c38" stroke-width="2"/><circle r="36" fill="#e3dbc2" stroke="#b49a68" stroke-width="3"/><path d="M-25 0a25 25 0 0 1 50 0" fill="#dfcb91"/><path d="M-25 0a25 25 0 0 0 50 0" fill="#99ada6"/><g stroke="#635b48" stroke-width="1.3">${ticks}</g>
+      <line x2="${Math.cos(dialAngle)*32}" y2="${Math.sin(dialAngle)*32}" stroke="#455958" stroke-width="2.5"/><circle cx="${Math.cos(dialAngle)*32}" cy="${Math.sin(dialAngle)*32}" r="6" fill="#c6a971" stroke="#725b3b"/><circle r="3" fill="#695f4a"/></g>
+    </svg>`;
+
 }
 
-function pressureSvg(phase: number, selection: number) {
-  const difference = selection === 0;
-  const arrows = difference ? Array.from({length: 3}, (_, j) => Array.from({length: 4}, (_, i) => {
-    const x = 100 + ((phase * 2 + i / 4) % 1) * 440, y = 135 + j * 60;
-    return `<path d="M${x - 14} ${y}h28m-8-6 8 6-8 6"/>`;
-  }).join('')).join('') : '';
-  return `<svg class="flat-model-svg flat-explanation-svg" viewBox="0 0 640 360" role="img" aria-label="${difference ? '同一高度，气流从高压侧流向低压侧' : '同一高度，气压相同，这一理想化风分量为零'}">
-  <path d="M60 106H580V288H60Z" fill="#e8e2d2"/>
-  <g stroke="#b4b5a6" stroke-width="1">${[115, 215, 320, 425, 525].map(x => `<path d="M${x} 113V283"/>`).join('')}</g>
-  ${difference ? text(118, 77, '相对高压') + text(521, 77, '相对低压') : text(320, 77, '气压相同')}
-  <g stroke="#3e7580" stroke-width="2" fill="none">${arrows}</g>
-  ${text(320, 330, '同一水平面')}
-  </svg>`;
+function pressureSvg(phase:number,selection:number) {
+  return pressureDrawing(phase,selection);
 }

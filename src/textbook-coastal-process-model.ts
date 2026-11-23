@@ -9,8 +9,14 @@ export const COASTAL_PROCESS_REFERENCE = Object.freeze({
 
 export const COASTAL_PROCESS_GEOMETRY = Object.freeze({
   minX: 7, maxX: 93, backZ: 4, coreFrontZ: 19, initialFrontZ: 29,
-  platformFrontZ: 58, seaHeight: 2.25, maxUndercut: 9.05,
+  platformFrontZ: 58, seaHeight: 3.15, maxUndercut: 9.05,
 });
+export const coastalArchProfile: ReadonlyArray<readonly [number,number]> = [[-14,0],[-13,6],[-11.8,11],[-12.1,13.3],[-9.7,16.1],[-7.6,16.7],
+    [-5.8,18.7],[-2.5,18.1],[-.8,19.2],[3.2,17.9],[5.4,18.2],[8.9,16],
+    [10.8,13.3],[10.3,10.5],[12.3,7.8],[12.8,3.3],[14,0],[7.1,0],
+    [6.1,3.4],[6.7,6.7],[5.3,9.2],[3,11.8],[.4,12.2],[-1.4,11.4],[-3.2,11.6],
+    [-5.1,9.2],[-5.8,7],[-6.9,6.4],[-6.7,3.1],[-7.7,0]];
+
 export type CoastalPoint = [number, number, number];
 export interface CoastalMeshData { positions: number[]; indices: number[]; }
 export interface CoastalCollapseBlock {
@@ -35,16 +41,21 @@ const collapseEnds = [.75, .82, .88];
 const finalAngles = [1.35, 1.43, 1.32];
 const notchWeights = [0, 0, .83, 1, .78, 0, 0];
 
-export const coastalShoreOffset = (x: number) => .52 * Math.sin(x * .15) + .28 * Math.sin(x * .37);
-export const coastalRockTop = (x: number) => 27 + 1.1 * Math.sin(x * .16) + .45 * Math.cos(x * .38);
+export const coastalShoreOffset = (x: number) => 2.05*Math.sin(x*.085)+.82*Math.sin(x*.24)+.32*Math.cos(x*.51);
+export const coastalRockTop = (x: number) => 25.8+2.1*Math.sin(x*.13)+1.25*Math.cos(x*.31)+.52*Math.sin(x*.68);
 /** The gently seaward-sloping platform never moves or grows during collapse. */
 export const coastalPlatformHeight = (z: number) => 3.82 - .027 * (z - G.backZ);
 
 function blockRestPoint(x: number, layer: number, front: boolean, undercut: number): CoastalPoint {
+  // Both neighbours meet on the same inclined joint. The cut leans through
+  // the thickness of the cliff instead of splitting the shore into cuboids.
+  const reach = Math.sin(Math.PI*(x-G.minX)/(G.maxX-G.minX));
+  const jointX = front ? x+reach*(2.4*Math.sin(x*.09)+(layer/6-.5)*4.1) : x;
   const back = G.coreFrontZ + coastalShoreOffset(x);
-  const z = front ? G.initialFrontZ + coastalShoreOffset(x) - undercut * notchWeights[layer] : back;
+  const crownLip = layer>=5 ? (layer-4)*(.48+.57*Math.sin(x*.21)) : 0;
+  const z = front ? G.initialFrontZ + coastalShoreOffset(x) + crownLip - undercut * notchWeights[layer] : back;
   const heights = [coastalPlatformHeight(z), 4.05, 5.05, 6.45, 8.25, 10.4, coastalRockTop(x)];
-  return [x, heights[layer], z];
+  return [jointX, heights[layer], z];
 }
 
 /** A y-monotone section is joined through matching vertices. Every body has
@@ -167,8 +178,10 @@ export function coastalProcessSvg(progress: number): string {
     return faces.sort((a, b) => a.order - b.order).map(f => path(f.points, f.shade ? '#a99b84' : color, 'none')).join('');
   };
   let body = path([[3, .8, 2], [97, .8, 2], [97, .8, 61], [3, .8, 61]], '#b8b2a2');
-  body += path([[3, G.seaHeight, 25], [97, G.seaHeight, 25], [97, G.seaHeight, 61], [3, G.seaHeight, 61]], '#a7c6ce', 'none');
-  body += meshFaces(coastalPlatformGeometry(), '#c4b59b') + meshFaces(coastalCoreGeometry(), '#b7a991');
+  body += meshFaces(coastalPlatformGeometry(), '#c4b59b');
+  const waterline=G.backZ+(3.82-G.seaHeight)/.027;
+  body += '<g opacity=".69">'+path([[3,G.seaHeight,waterline],[97,G.seaHeight,waterline],[97,G.seaHeight,61],[3,G.seaHeight,61]],'#84b3b9','none')+'</g>';
+  body += meshFaces(coastalCoreGeometry(), '#b7a991');
   for (const block of state.blocks) {
     body += `<g data-coastal-block="${block.id}" data-state="${block.state}" data-fall="${fmt(block.fall)}">` + meshFaces(coastalBlockGeometry(state, block.id), '#c4b39a');
     body += coastalBlockContours(state, block.id).map(points => wire(points, '#625d52', 1.1)).join('') + '</g>';

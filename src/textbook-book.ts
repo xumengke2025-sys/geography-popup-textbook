@@ -1,29 +1,32 @@
 import { THREE as T, createRenderer, createStage, createBook, createLight, Popout, createPost, PaperTone, LiquidGlass } from './reference/engine.js';
 import { TextbookIllustration, LIFT_MARGIN } from './textbook-illustration';
+import { SpecimenCloth } from './textbook-specimen-cloth';
 import { dressDesk } from './textbook-desk';
 import { pdfAt, pageUrl, SPREADS, figuresAt, spreadAt, type Figure } from './textbook-catalog';
-import { isPhaseInput, phaseDialPoint, phaseFromDialPoint, phaseTrackPoint, phaseFromTrackPoint, type PhaseInput, type ModelInput, type ModelInputChange } from './textbook-model-input';
+import { advanceCrank, isDragInput, isPhaseInput, nearestDialStop, phaseDialPoint, phaseFromSpatialDialPoint, phaseTrackPoint, phaseFromTrackPoint, type PhaseInput, type DragInput, type IndexedDial, type ModelInput, type ModelInputChange } from './textbook-model-input';
 import { fitModelViewport, measureProjectedLabel } from './textbook-framing';
-import { BookCameraMotion, blendCameraPose, observationCameraArc, type CameraPose } from './textbook-camera-motion';
+import { BookCameraMotion, blendCameraPose, lessonObservationAngle, observationCameraArc, type CameraPose } from './textbook-camera-motion';
 import { INSTRUMENT_LIGHT_LAYER } from './textbook-solid-materials';
+import { loadSolarInstrument } from './textbook-solar-instrument';
+import { loadFieldInstrument } from './textbook-field-instruments';
 import { createInstrumentStudio } from './textbook-instrument-studio';
 
 const contentW=250*612.28302/858.89801,offsetX=(190-contentW)/2;
 export const rectMm=(f:Figure)=>({x:offsetX+f.rect[0]*contentW,y:f.rect[1]*250,w:f.rect[2]*contentW,h:f.rect[3]*250});
 type Entry={figure:Figure;pop:any;art:TextbookIllustration;phase:number;selection:number};
-type GrabOffset={x:number;y:number};
+type GrabOffset={x:number;y:number;z:number};
 
 /** Original Every Joule renderer, now turning the actual textbook's pages. */
 export class TextbookBook {
   renderer:any;scene:any;camera:any;book:any;
-  reduced=false;running=false;quality='中';processNoteInset=0;controlInset=170;
+  reduced=false;running=false;quality='中';processNoteInset=0;processNoteLeftInset=0;controlInset=170;
   onFigure:(f:Figure)=>void=()=>{};onOpen:()=>void=()=>{};onNavigate:(n:number)=>void=()=>{};onRead:(pdf:number)=>void=()=>{};onHover:(f:Figure|null)=>void=()=>{};onLost=()=>{};
   onModelInput:(change:ModelInputChange)=>void=()=>{};
   private stage:any;private post:any;private glass:any;private observer:ResizeObserver;
   private images=new Map<number,HTMLImageElement>();private pending=new Map<number,Promise<HTMLImageElement>>();
   private entry:Entry|null=null;private dead=false;private contextLost=false;private busy=false;private zoomSide:'left'|'right'|null=null;
   private focus=new T.Vector3(105,0,0);private ray=new T.Raycaster();private mouse=new T.Vector2();private orbit=0;private elevation=1.1;private zoom=1;
-  private drag:{id:number;x:number;y:number;moved:boolean;hit:ReturnType<TextbookBook['pick']>;model:ReturnType<TextbookBook['pickModel']>;phaseOffset?:GrabOffset}|null=null;
+  private drag:{id:number;x:number;y:number;moved:boolean;hit:ReturnType<TextbookBook['pick']>;model:ReturnType<TextbookBook['pickModel']>;phaseOffset?:GrabOffset;crank?:{angle:number;phase:number}}|null=null;
   private modelHover:any=null;
   private cue:HTMLDivElement;private cuePoint:any=null;private cueUntil=0;
   private inkAmount=-1;private shadowTime=0;private prevShadow='';private shadowRevision=0;
@@ -38,6 +41,8 @@ export class TextbookBook {
   private observing=false;
   private observationTime=0;
   private observationBase={orbit:0,elevation:.72};
+  specimenLighting = true;
+  private cloth: SpecimenCloth;
   private desk:ReturnType<typeof dressDesk>;
   private instrumentStudio:ReturnType<typeof createInstrumentStudio>;
   constructor(private host:HTMLElement){
@@ -62,6 +67,7 @@ export class TextbookBook {
     // reflected fill. The former blue window flattened brass into pale yellow.
     // Printed pages retain their independent contrast shader above.
     this.stage.key.color.set('#ffecd0');this.stage.key.intensity=3.2;
+    this.cloth = new SpecimenCloth(this.scene, this.stage.key);
     this.stage.key.shadow.normalBias=.18;
     for(const l of [this.stage.key,this.stage.hemi,...this.stage.spill])l.layers.enableAll();
     // The source stage's window is behind the open book. Collect a restrained
@@ -124,20 +130,28 @@ export class TextbookBook {
   }
   async openFigure(f:Figure,phase=0,selection=0,current=()=>true){
     await this.closeFigure();if(!current())return;
-    await this.load(f.pdf);if(this.dead||!current())return;
+    await Promise.all([this.load(f.pdf), f.effect === 'solar-activity' ? loadSolarInstrument() : loadFieldInstrument(f.id)]);
+    if(this.dead||!current())return;
     this.openingPose=this.cameraMotion.pose;this.paperPose=this.cameraMotion.pose;
     this.closingPose=null;this.paperZoomSide=this.zoomSide;this.paperZoom=this.zoom;
-    this.zoomSide=null;this.sceneView='detail';this.orbit=f.effect==='solar-distribution'?-.07:.48;this.elevation=f.effect==='karst-cave'?.26:.72;this.zoom=1;
+    this.zoomSide=null;this.sceneView='detail';this.resetObservation(f.id);
     const r=rectMm(f),pop=new Popout(this.renderer,{frame:this.frame(f),printRect:{x0:-8,x1:r.w+8,y0:LIFT_MARGIN-8,y1:LIFT_MARGIN+r.h+8},pxPerMm:5,cab:new T.Vector2(0,1)});
     pop.instrumentEnvironment=this.instrumentStudio.texture;
     this.scene.add(pop.group);const art=new TextbookIllustration(f,pop,r.w,r.h);
+    const floorBounds = art.geometry.bounds.clone().translate(art.geometry.root.position);
+    pop.group.updateWorldMatrix(true, false);
+    this.cloth.seat(pop.group.matrixWorld, floorBounds);
     this.entry={figure:f,pop,art,phase,selection};const res=this.renderer.getDrawingBufferSize(new T.Vector2());pop.setResolution(res.x,res.y);
     // The page itself supplies the print image. No generated print replaces it.
     this.scene.updateMatrixWorld(true);pop.set('print');if(this.reduced)pop.set('live');else pop.draw();
     this.inkAmount=-1;this.book.invalidatePage(spreadAt(f.pdf),f.pdf%2?'left':'right');
   }
   setFigure(phase:number,selection:number){if(this.entry){this.entry.phase=phase;this.entry.selection=selection}}
-  setSceneView(view:'book'|'detail'){this.setAutoOrbit(false);this.sceneView=view;this.zoomSide=null;this.zoom=1;this.orbit=this.entry?.figure.effect==='solar-distribution'?-.07:.48;this.elevation=this.entry?.figure.effect==='karst-cave'?.26:.72}
+  private resetObservation(id?:string){
+    const angle=lessonObservationAngle(id);
+    this.orbit=angle.orbit;this.elevation=angle.elevation;this.zoom=1;
+  }
+  setSceneView(view:'book'|'detail'){this.setAutoOrbit(false);this.sceneView=view;this.zoomSide=null;this.resetObservation(this.entry?.figure.id)}
   setAutoOrbit(enabled:boolean){
     this.observing=enabled&&!!this.entry&&this.entry.pop.state==='live'&&!this.closing&&!this.busy&&!this.drag&&!this.reduced&&this.sceneView==='detail'&&this.zoomSide===null&&this.contextAvailable;
     if(this.observing){this.observationTime=0;this.observationBase={orbit:this.orbit,elevation:this.elevation}}
@@ -156,6 +170,7 @@ export class TextbookBook {
     this.closingPose=this.cameraMotion.pose;this.openingPose=null;
     if(this.reduced)e.pop.set('print');else if(e.pop.state!=='print')await e.pop.undraw();
     if(this.entry!==e)return;
+    this.cloth.reset(); this.setDeskVisible(true);
     this.entry=null;this.zoomSide=this.paperZoomSide;this.zoom=this.paperZoom;
     this.closingPose=null;this.paperPose=null;
     this.scene.remove(e.pop.group);this.book.invalidatePage(spreadAt(e.figure.pdf),e.figure.pdf%2?'left':'right');
@@ -179,6 +194,7 @@ export class TextbookBook {
     // Page turns and popout promises must finish even while the 2-D reader is
     // visible. Their CPU transitions do not need a WebGL render or print pass.
     const draw=render&&this.contextAvailable;
+    if (e && e.pop.state !== 'live' && this.cloth.seated) this.setDeskVisible(true);
     if(e)e.pop.update(dt,draw?this.scene:undefined);
     if(!draw)return;
     if(this.observing){
@@ -206,10 +222,12 @@ export class TextbookBook {
       target.copy(centre);direction=new T.Vector3(Math.sin(this.orbit)*(e.figure.effect==='solar-distribution'?1.8:.8),this.elevation*(e.figure.effect==='vegetation'&&e.selection>=4?.68:1),1).normalize();
       const right=new T.Vector3().crossVectors(new T.Vector3(0,1,0),direction).normalize(),up=new T.Vector3().crossVectors(direction,right).normalize();
       const corners:any[]=[];
-      for(const x of [localBounds.min.x,localBounds.max.x])for(const y of [localBounds.min.y,localBounds.max.y])for(const z of [localBounds.min.z,localBounds.max.z])corners.push(new T.Vector3(x,y,z).applyMatrix4(e.pop.group.matrixWorld).sub(centre));
-      const fit=fitModelViewport(corners.map(p=>[p.dot(right),p.dot(up),p.dot(direction)]),this.host.clientWidth,this.host.clientHeight,this.camera.fov,86+this.processNoteInset,this.controlInset);
+      const landmarks = this.sceneView === 'detail' ? e.art.framingPoints : null;
+      if (landmarks) for (const p of landmarks) corners.push(p.applyMatrix4(e.pop.group.matrixWorld).sub(centre));
+      else for(const x of [localBounds.min.x,localBounds.max.x])for(const y of [localBounds.min.y,localBounds.max.y])for(const z of [localBounds.min.z,localBounds.max.z])corners.push(new T.Vector3(x,y,z).applyMatrix4(e.pop.group.matrixWorld).sub(centre));
+      const fit=fitModelViewport(corners.map(p=>[p.dot(right),p.dot(up),p.dot(direction)]),this.host.clientWidth,this.host.clientHeight,this.camera.fov,86+this.processNoteInset,this.controlInset,this.processNoteLeftInset);
       distance=fit.distance*this.zoom;
-      target.addScaledVector(up,-fit.shift*this.zoom);
+      target.addScaledVector(up,-fit.shift*this.zoom).addScaledVector(right,-fit.shiftX*this.zoom);
       // The complete book is a deliberate overview, not the first half of an
       // experiment zoom. Using the future model's entire bounds here during
       // lift made every illustration retreat before it could rise.
@@ -233,14 +251,19 @@ export class TextbookBook {
     }else if(e?.pop.state==='live')this.openingPose=null;
     if(e&&this.closingPose&&this.paperPose)
       destination=blendCameraPose(this.closingPose,this.paperPose,1-e.art.unfoldProgress);
-    const pose=this.cameraMotion.step(destination,dt,this.reduced,this.drag?12:9);
+    // A new observation note can change the framing while the pointer is on
+    // a crank or rail. Keep its projection fixed until the reader lets go.
+    const holdingControl=isDragInput(this.drag?.model?.input);
+    const pose=holdingControl?this.cameraMotion.pose:this.cameraMotion.step(destination,dt,this.reduced,this.drag?12:9);
     this.focus.fromArray(pose.focus);this.camera.position.fromArray(pose.position);
     this.camera.lookAt(this.focus);this.camera.updateMatrixWorld();this.stage.update(this.camera);
     // Labels remain small paper objects, but face the reader. Projecting a
     // vertical label from an overhead camera was flattening Chinese into slits.
     if(e){const frameRotation=new T.Quaternion().setFromRotationMatrix(e.pop.group.matrixWorld);e.art.faceLabels(frameRotation.invert().multiply(this.camera.quaternion))}
+    this.cloth.update(!!e && this.specimenLighting && this.viewingDetail, e?.art.unfoldProgress ?? 0, dt, this.reduced);
+    this.setDeskVisible(!this.cloth.seated);
     this.updateCue();
-    const key=[this.book.position,e?.pop.state,this.zoomSide,this.quality,e?.phase,e?.selection,this.shadowRevision].join(':');this.shadowTime+=dt;
+    const key=[this.cloth.seated,this.book.position,e?.pop.state,this.zoomSide,this.quality,e?.phase,e?.selection,this.shadowRevision].join(':');this.shadowTime+=dt;
     // Raised specimens now contain working sliders, cutaways and probes. The
     // print-era cache key left their shadows at an earlier scientific pose.
     // Refresh motion at a bounded rate; the static book remains cached.
@@ -248,6 +271,12 @@ export class TextbookBook {
     this.renderer.shadowMap.needsUpdate=this.busy||forming||
       (key!==this.prevShadow||!!e&&this.running)&&this.shadowTime>=1/20;
     if(this.renderer.shadowMap.needsUpdate){this.prevShadow=key;this.shadowTime=0}this.post.render(dt);
+  }
+  private setDeskVisible(visible: boolean) {
+    if (this.book.group.visible !== visible) this.prevShadow = '';
+    this.book.group.visible = visible;
+    this.stage.pad.visible = visible;
+    this.stage.desk.visible = visible;
   }
   private fitView(points:any[],direction:any,target:any){
     const forward=direction.clone().normalize(),right=new T.Vector3().crossVectors(new T.Vector3(0,1,0),forward).normalize(),up=new T.Vector3().crossVectors(forward,right).normalize();
@@ -261,6 +290,7 @@ export class TextbookBook {
     return distance;
   }
   private pick(x:number,y:number){
+    if (this.cloth.seated) return null;
     const r=this.host.getBoundingClientRect();this.mouse.set((x-r.left)/r.width*2-1,-(y-r.top)/r.height*2+1);this.ray.setFromCamera(this.mouse,this.camera);
     if(this.book.position<.1)return this.ray.intersectObject(this.book.group,true).length?{cover:true}:null;
     const p=this.book.hitTest(this.ray);if(!p)return null;
@@ -278,7 +308,7 @@ export class TextbookBook {
     // target. A nearer solid still occludes them; no invisible scene planes.
     const rect=this.host.getBoundingClientRect();
     for(const mesh of meshes){
-      if(!isPhaseInput(mesh.userData.modelInput)&&!(mesh.userData.modelInput&&mesh.userData.smallPointTarget))continue;
+      if(!isDragInput(mesh.userData.modelInput)&&!(mesh.userData.modelInput&&mesh.userData.smallPointTarget))continue;
       if(!mesh.geometry.boundingSphere)mesh.geometry.computeBoundingSphere();
       const sphere=mesh.geometry.boundingSphere,world=sphere.center.clone().applyMatrix4(mesh.matrixWorld),screen=world.clone().project(this.camera);
       if(screen.z<-1||screen.z>1)continue;
@@ -295,7 +325,7 @@ export class TextbookBook {
     if(this.modelHover)this.modelHover.userData.modelHovered=true;
     this.renderer.domElement.title='';
     this.cue.hidden=!hit?.input;
-    if(hit?.input){this.cue.querySelector('span')!.textContent=hit.input.label.split('；')[0];this.cueUntil=performance.now()+3200;this.cue.dataset.action=isPhaseInput(hit.input)?'drag':'observe'}
+    if(hit?.input){this.cue.querySelector('span')!.textContent=hit.input.label.split('；')[0];this.cueUntil=performance.now()+3200;this.cue.dataset.action=isDragInput(hit.input)?'drag':'observe'}
   }
   private updateCue(){
     if(!this.modelHover||!this.cuePoint||this.entry?.pop.state!=='live'||performance.now()>this.cueUntil){this.cue.hidden=true;return}
@@ -315,21 +345,47 @@ export class TextbookBook {
   }
   inspect(target:string){if(this.entry){this.entry.art.inspect(target);if(target!=='overview')this.sceneView='detail';this.zoom=1;this.shadowRevision++}}
   get inspectTargets(){return this.entry?.art.inspectTargets??[]}
-  private pointOnPhaseControl(x:number,y:number,input:PhaseInput){
+  private pointOnPhaseControl(x:number,y:number,input:DragInput){
     if(!this.entry)return null;
     this.setRay(x,y);
     const root=this.entry.art.geometry.root;
     root.updateWorldMatrix(true,false);
-    const z=input.kind==='phase-dial'?input.dial.center[2]:input.track.start[2];
-    const plane=new T.Plane(new T.Vector3(0,0,1),-z).applyMatrix4(root.matrixWorld);
+    const z=input.kind==='phase-track'?input.track.start[2]:input.dial.center[2];
+    const plane=new T.Plane(new T.Vector3(0,0,1),-z);
+    if(input.kind==='phase-dial'&&input.dial.plane==='yz')plane.set(new T.Vector3(1,0,0),-input.dial.center[0]);
+    if(input.kind==='phase-track' && input.track.start[2]!==input.track.end[2]){
+      const start=new T.Vector3(...input.track.start),end=new T.Vector3(...input.track.end);
+      const axis=end.clone().sub(start).normalize(),middle=start.clone().lerp(end,.5);
+      const normal=root.worldToLocal(this.camera.getWorldPosition(new T.Vector3())).sub(middle);
+      normal.addScaledVector(axis,-normal.dot(axis));
+      if(normal.lengthSq()<1e-10)return null;
+      plane.setFromNormalAndCoplanarPoint(normal.normalize(),middle);
+    }
+    plane.applyMatrix4(root.matrixWorld);
     const world=this.ray.ray.intersectPlane(plane,new T.Vector3());
     return world?root.worldToLocal(world):null;
   }
   private dragPhaseControl(x:number,y:number,input:PhaseInput,offset?:GrabOffset,commit=false){
     const local=this.pointOnPhaseControl(x,y,input);if(!local||!this.entry)return;
+    if(input.kind==='phase-dial'&&input.dial.turns&&this.drag?.crank){
+      const crank=this.drag.crank;
+      const angle=phaseFromSpatialDialPoint([local.x,local.y,local.z],input.dial,crank.angle);
+      crank.phase=advanceCrank(crank.phase,crank.angle,angle,input.dial.turns);crank.angle=angle;
+      this.onModelInput({phase:crank.phase,commit});return;
+    }
     const px=local.x+(offset?.x??0),py=local.y+(offset?.y??0);
-    const phase=input.kind==='phase-dial'?phaseFromDialPoint(px,py,input.dial,this.entry.phase):phaseFromTrackPoint(px,py,input.track,this.entry.phase);
+    const phase=input.kind==='phase-dial'?phaseFromSpatialDialPoint([px,py,local.z+(offset?.z??0)],input.dial,this.entry.phase):phaseFromTrackPoint(px,py,input.track,this.entry.phase,local.z+(offset?.z??0));
     this.onModelInput({phase,commit});
+  }
+  private setDialStop(x:number,y:number,input:IndexedDial,tap:boolean,commit:boolean){
+    if(!this.entry)return;
+    const local=this.pointOnPhaseControl(x,y,input);
+    const at=local?nearestDialStop(local.x,local.y,input):null;
+    const current=input.stops.findIndex(stop=>'selection' in stop
+      ?stop.selection===this.entry!.selection:stop.inspection===this.entry!.art.inspection);
+    const choice=tap&&(input.toggleOnTap||(input.advanceAtHub&&at===null))?(current+1)%input.stops.length:at;
+    if(choice!==null && choice!==current)this.onModelInput({...input.stops[choice],keepPhase:input.keepPhase,commit});
+    else if(commit)this.onModelInput({commit:true});
   }
   private down=(e:PointerEvent)=>{
     if(this.busy||this.drag||e.button!==0)return;
@@ -339,31 +395,44 @@ export class TextbookBook {
     if(isPhaseInput(model?.input)&&this.entry){
       const input=model.input,local=this.pointOnPhaseControl(e.clientX,e.clientY,input);
       const at=input.kind==='phase-dial'?phaseDialPoint(this.entry.phase,input.dial):phaseTrackPoint(this.entry.phase,input.track);
-      if(local)this.drag.phaseOffset={x:at[0]-local.x,y:at[1]-local.y};
+      if(local&&input.kind==='phase-dial'&&input.dial.turns)
+        this.drag.crank={angle:phaseFromSpatialDialPoint([local.x,local.y,local.z],input.dial,0),phase:this.entry.phase};
+      if(local)this.drag.phaseOffset={x:at[0]-local.x,y:at[1]-local.y,z:at[2]-local.z};
     }
     this.setModelHover(model);if(model?.input)model.object.userData.modelPressed=true;
     this.renderer.domElement.setPointerCapture(e.pointerId);
-    if(isPhaseInput(model?.input)){this.running=false;this.onModelInput({phase:this.entry!.phase,commit:false});this.renderer.domElement.style.cursor='grabbing'}
+    if(isDragInput(model?.input)){
+      const engage=model.input.kind==='phase-track'?model.input.engage:undefined;
+      this.running=false;
+      this.onModelInput({selection:engage&&this.entry?.selection===engage.from?engage.to:undefined,keepPhase:true,commit:false});
+      this.renderer.domElement.style.cursor='grabbing';
+    }
   };
   private move=(e:PointerEvent)=>{
     const p=this.drag;if(p){
       if(e.pointerId!==p.id)return;
       if(Math.hypot(e.clientX-p.x,e.clientY-p.y)>6)p.moved=true;
       if(isPhaseInput(p.model?.input)){if(p.moved)this.dragPhaseControl(e.clientX,e.clientY,p.model.input,p.phaseOffset);return}
+      if(p.model?.input?.kind==='indexed-dial'){
+        if(p.moved&&!p.model.input.toggleOnTap)this.setDialStop(e.clientX,e.clientY,p.model.input,false,false);
+        return;
+      }
       if(p.moved&&this.entry){this.orbit=Math.max(-.8,Math.min(.8,this.orbit+(e.clientX-p.x)*.006));this.elevation=Math.max(.44,Math.min(1.45,this.elevation+(e.clientY-p.y)*.008));p.x=e.clientX;p.y=e.clientY}
     }else if(!this.busy){
       const model=this.pickModel(e.clientX,e.clientY);this.setModelHover(model);
       const hit=model?null:this.pick(e.clientX,e.clientY);
-      this.renderer.domElement.style.cursor=isPhaseInput(model?.input)?'grab':model?.input?'pointer':hit?.figure||hit?.corner||hit?.cover?'pointer':this.entry?'grab':'default';this.onHover(hit?.figure??null);
+      this.renderer.domElement.style.cursor=isDragInput(model?.input)?'grab':model?.input?'pointer':hit?.figure||hit?.corner||hit?.cover?'pointer':this.entry?'grab':'default';this.onHover(hit?.figure??null);
     }
   };
   private up=(e:PointerEvent)=>{
-    const p=this.drag;if(!p||e.pointerId!==p.id)return;this.drag=null;
+    const p=this.drag;if(!p||e.pointerId!==p.id)return;
     const input=p.model?.input;if(p.model)p.model.object.userData.modelPressed=false;
     if(isPhaseInput(input)){
       if(p.moved)this.dragPhaseControl(e.clientX,e.clientY,input,p.phaseOffset,true);else if(this.entry)this.onModelInput({phase:this.entry.phase,commit:true});
+    }else if(input?.kind==='indexed-dial'){
+      this.setDialStop(e.clientX,e.clientY,input,!p.moved,true);
     }else if(!p.moved&&input?.kind==='select'&&this.entry&&!this.busy){
-      this.onModelInput({selection:this.entry.selection===input.selection?(input.toggleTo??input.selection):input.selection,commit:true});
+      this.onModelInput({selection:this.entry.selection===input.selection?(input.toggleTo??input.selection):input.selection,keepPhase:input.keepPhase,commit:true});
     }else if(!p.moved&&input?.kind==='inspect'&&this.entry&&!this.busy){
       const current=this.entry.art.inspection;
       this.onModelInput({inspection:current===input.target?(input.toggleTo??input.target):input.target,commit:true});
@@ -373,14 +442,16 @@ export class TextbookBook {
       const hit=this.pick(e.clientX,e.clientY);
       if(hit){if(hit.cover)this.onOpen();else if(hit.corner)this.onNavigate(this.book.openSpread+(hit.side==='left'?-1:1));else if(hit.figure)this.onFigure(hit.figure);else{const pdf=pdfAt(hit.k,hit.side);if(pdf)this.onRead(pdf)}}
     }
-    this.renderer.domElement.style.cursor=isPhaseInput(input)?'grab':this.entry?'grab':'default';
+    this.drag=null;
+    this.renderer.domElement.style.cursor=isDragInput(input)?'grab':this.entry?'grab':'default';
     if(this.renderer.domElement.hasPointerCapture(e.pointerId))this.renderer.domElement.releasePointerCapture(e.pointerId);
   };
-  private cancel=()=>{const p=this.drag;this.drag=null;if(p?.model)p.model.object.userData.modelPressed=false;if(isPhaseInput(p?.model?.input)&&this.entry)this.onModelInput({phase:this.entry.phase,commit:true});if(p&&this.renderer.domElement.hasPointerCapture(p.id))this.renderer.domElement.releasePointerCapture(p.id);this.setModelHover(null)};
+  private cancel=()=>{const p=this.drag;this.drag=null;if(p?.model)p.model.object.userData.modelPressed=false;if(isDragInput(p?.model?.input)&&this.entry)this.onModelInput({commit:true});if(p&&this.renderer.domElement.hasPointerCapture(p.id))this.renderer.domElement.releasePointerCapture(p.id);this.setModelHover(null)};
   private double=(e:MouseEvent)=>{if(this.pickModel(e.clientX,e.clientY))return;const h=this.pick(e.clientX,e.clientY);if(h&&!h.figure&&!h.cover){this.setAutoOrbit(false);this.zoomSide=this.zoomSide?null:h.side}};
   private wheel=(e:WheelEvent)=>{if(this.entry||this.zoomSide){this.setAutoOrbit(false);e.preventDefault();this.zoom=Math.min(1.5,Math.max(.7,this.zoom+e.deltaY*.0005))}};
   private lost=(e:Event)=>{e.preventDefault();this.setAutoOrbit(false);this.contextLost=true;this.running=false;this.cancel();this.onLost()};private restored=()=>{this.contextLost=false;this.prevShadow='';this.book.invalidatePage(this.book.openSpread??1,'left');this.book.invalidatePage(this.book.openSpread??1,'right')};
   get regions(){const k=this.book.openSpread;if(!k)return[];const r=this.host.getBoundingClientRect();return figuresAt(k).map(f=>{const b=rectMm(f),p=this.book.pageToWorld(k,f.pdf%2?'left':'right',f.marker?offsetX+f.marker[0]*contentW:b.x+b.w/2,f.marker?f.marker[1]*250:b.y+b.h/2);p.project(this.camera);return{id:f.id,screenX:r.left+(p.x+1)/2*r.width,screenY:r.top+(1-p.y)/2*r.height}})}
+  get viewingDetail(){return this.sceneView==='detail'&&this.zoomSide===null}
   get processBounds(){
     const e=this.entry;if(!e||e.pop.state!=='live'||e.art.unfoldProgress<.98)return null;
     const bounds=e.art.bounds,rect=this.host.getBoundingClientRect();
@@ -401,9 +472,9 @@ export class TextbookBook {
       return{text:m.userData.text,...measureProjectedLabel(corners,m.userData.fontRatio)};
     });
   }
-  get stats(){return{position:this.book.position,spread:this.book.openSpread,busy:this.busy,figure:this.entry?.figure.id??null,modelState:this.entry?.pop.state??null,geometry:this.entry?.art.diagnostics??null,view:this.sceneView,camera:{...this.cameraMotion.pose,autoOrbit:this.autoOrbit,orbit:this.orbit,elevation:this.elevation,transition:this.closingPose?'returning-to-page':this.openingPose?'following-lift':'observing'},labels:this.labelLayout,models:this.entry?1:0,images:this.images.size,triangles:this.renderer.info.render.triangles,calls:this.renderer.info.render.calls,geometries:this.renderer.info.memory.geometries,textures:this.renderer.info.memory.textures,hiRes:this.book.stats().hiRes,engine:'Every Joule 48591dd'}}
+  get stats(){return{position:this.book.position,spread:this.book.openSpread,busy:this.busy,figure:this.entry?.figure.id??null,modelState:this.entry?.pop.state??null,geometry:this.entry?.art.diagnostics??null,view:this.sceneView,specimenCloth:this.cloth.seated,camera:{...this.cameraMotion.pose,autoOrbit:this.autoOrbit,orbit:this.orbit,elevation:this.elevation,transition:this.closingPose?'returning-to-page':this.openingPose?'following-lift':'observing'},labels:this.labelLayout,models:this.entry?1:0,images:this.images.size,triangles:this.renderer.info.render.triangles,calls:this.renderer.info.render.calls,geometries:this.renderer.info.memory.geometries,textures:this.renderer.info.memory.textures,hiRes:this.book.stats().hiRes,engine:'Every Joule 48591dd'}}
   dispose(){
-    this.dead=true;this.observer.disconnect();this.reduced=true;this.closeFigure();this.desk.dispose();
+    this.dead=true;this.observer.disconnect();this.reduced=true;this.closeFigure();this.desk.dispose();this.cloth.dispose();
     const canvas=this.renderer.domElement;for(const[name,fn]of[['pointerdown',this.down],['pointermove',this.move],['pointerup',this.up],['pointercancel',this.cancel],['lostpointercapture',this.cancel],['dblclick',this.double],['wheel',this.wheel],['webglcontextlost',this.lost],['webglcontextrestored',this.restored]]as const)canvas.removeEventListener(name,fn);
     this.book.dispose();this.post.composer.dispose();this.scene.traverse((o:any)=>{o.geometry?.dispose();for(const m of Array.isArray(o.material)?o.material:o.material?[o.material]:[]){m.map?.dispose();m.normalMap?.dispose();m.roughnessMap?.dispose();m.dispose()}});this.scene.environment?.dispose();this.instrumentStudio.dispose();this.renderer.dispose();this.images.clear();canvas.remove();this.cue.remove();
   }

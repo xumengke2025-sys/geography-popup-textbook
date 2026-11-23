@@ -1,3 +1,4 @@
+import { surveyRailDrawing } from './textbook-survey-rail-drawing';
 /** Textbook p.114 / PDF p.119 / fig.6.21, verified against the local page.
  * This is the passive optical example in that drawing: sunlight reaches a
  * ground target and reflected light reaches the sensor. The twelve tiles are
@@ -134,7 +135,7 @@ function svgBox(center: RemotePoint, size: RemotePoint, color: string) {
     + poly([v(-1, -1, 1), v(1, -1, 1), v(1, 1, 1), v(-1, 1, 1)], color);
 }
 const svgLabel = (value: string, at: RemotePoint) => {
-  const [x, y] = remoteProject(at); return `<text x="${n(x)}" y="${n(y)}" text-anchor="middle" font-size="23" fill="#303a40" paint-order="stroke" stroke="#f7f1e3" stroke-width="4">${value}</text>`;
+  const [x, y] = remoteProject(at); return `<text x="${n(x)}" y="${n(y)}" text-anchor="middle" font-size="23" fill="#303a40" paint-order="stroke" stroke="#efe1bd" stroke-width="4">${value}</text>`;
 };
 const svgNode = (selection: number, body: string) => `<g data-model-selection="${selection}" data-remote-node="${selection}" role="button" tabindex="0" aria-label="查看${REMOTE_PROCESS_STOPS[selection].label}" style="cursor:pointer">${body}</g>`;
 
@@ -144,7 +145,13 @@ export function remoteSensingSvg(phase: number): string {
   const s = evaluateRemoteSensing(phase);
   const cells = (kind: 'sensor' | 'receiver' | 'processor' | 'result', visible: 'captured' | 'received' | 'processed' | 'output', size: number) =>
     s.samples.filter(sample => sample[visible]).map(sample => `<g data-remote-copy="${visible}" data-sample-id="${sample.id}" data-tone="${sample.tone}">${svgBox(sample[kind], [size, size, .35], sample.color)}</g>`).join('');
-  let body = svgBox([50, .6, 36], [98, 1.2, 48], '#dfd6bd');
+  let body = svgBox([50,-1.55,35],[99,3.1,58],'#6a4d36')+svgBox([50,.12,35],[98.3,.42,57.2],'#9e824e')
+    +svgBox([50,.49,35],[97.5,.46,56.3],'#536356');
+  for(const [x,z,y] of [[31,6.4,54],[6,13.5,58]]){
+    body+=path([[x,1,z],[x,y,z]],'#654d33',7)+path([[x,1,z],[x,y,z]],'#b09b67',3.5);
+  }
+  body+=path([[31,54,6.4],[31,54,12]],'#ab9059',5)+path([[6,58,13.5],[5,61,18],[5,61,29]],'#96794c',4);
+  body+=svgBox([18.5,1.3,33.4],[32,1.4,27.5],'#9b9569');
   const [sunX, sunY] = remoteProject(REMOTE_LAYOUT.sun);
   body += `<g fill="#cfb27a" stroke="#aa925f"><circle cx="${n(sunX)}" cy="${n(sunY)}" r="12"/>${Array.from({ length: 8 }, (_, i) => {
     const a = i * Math.PI / 4; return `<path d="M${n(sunX + Math.cos(a) * 17)} ${n(sunY + Math.sin(a) * 17)}l${n(Math.cos(a) * 6)} ${n(Math.sin(a) * 6)}"/>`;
@@ -157,20 +164,20 @@ export function remoteSensingSvg(phase: number): string {
     acquisition += `<path d="M${n(tx)} ${n(ty)}V${n(topY)}" stroke="#7b7963" stroke-width="2"/><path d="M${n(topX - 10)} ${n(topY + 27)} ${n(topX)} ${n(topY)} ${n(topX + 10)} ${n(topY + 27)}Z" fill="#94a18b" stroke="#63735f"/>`;
   }
   for (const x of [20, 42]) {
-    acquisition += svgBox([x, 54.5, 12], [12, .8, 9], '#97afaf');
+    acquisition += svgBox([x, 54.5, 12], [12, .8, 9], '#41606b');
     for (let i = 0; i < 4; i++) acquisition += path([[x - 4.5 + i * 3, 55, 7.5], [x - 4.5 + i * 3, 55, 16.5]], '#647f80', .65);
   }
-  acquisition += svgBox([31, 54, 12], [8.5, 7, 6], '#e8e3d4') + svgBox([31, 49.8, 15], [4.2, 2.4, 4], '#6c817d');
+  acquisition += svgBox([31, 54, 12], [8.5, 7, 6], '#62755e') + svgBox([31, 49.8, 15], [4.2, 2.4, 4], '#6c817d');
   acquisition += cells('sensor', 'captured', 1.52) + svgLabel('获取', [23, 3, 61]);
   body += svgNode(0, acquisition);
   const [dx, dy] = remoteProject(REMOTE_LAYOUT.dish);
-  body += svgNode(1, svgBox([48, 5, 43], [12, 8, 10], '#e7e1d2')
+  body += svgNode(1, svgBox([48, 5, 43], [12, 8, 10], '#a1845e')
     + svgBox([48, 9.6, 48], [9, 7, .5], '#d3d7c8')
     + path([[48, 9, 38], REMOTE_LAYOUT.dish], '#6f786c', 3)
     + `<ellipse cx="${n(dx)}" cy="${n(dy)}" rx="21" ry="9" fill="#e8e6d8" stroke="#677466" stroke-width="1.2" transform="rotate(-25 ${n(dx)} ${n(dy)})"/>`
     + path([[45, 18, 38], [49, 23, 35], [51, 17, 38]], '#677466', 1.2)
     + cells('receiver', 'received', 1.52) + svgLabel('传输', [48, 3, 61]));
-  body += svgNode(2, svgBox([69, 12, 40], [14, 20, 7], '#e5e0d1')
+  body += svgNode(2, svgBox([69, 12, 40], [14, 20, 7], '#9a7655')
     + svgBox([69, 16.6, 44.1], [10.2, 7.3, .4], '#c6cec2')
     + svgBox([69, 2, 49], [14, 1, 5], '#c6bba6')
     + cells('processor', 'processed', 1.72) + svgLabel('处理', [70, 3, 61]));
@@ -185,8 +192,7 @@ export function remoteSensingSvg(phase: number): string {
     const packet = sample[kind];
     if (packet.active) body += `<g data-remote-packet="${kind}" data-sample-id="${sample.id}" data-progress="${n(packet.progress)}">${svgBox(packet.point, [1.15, 1.15, .7], kind === 'acquisition' ? '#ba9b66' : sample.color)}</g>`;
   }
-  const handle = lerp(REMOTE_LAYOUT.trackStart, REMOTE_LAYOUT.trackEnd, s.phase), [hx, hy] = remoteProject(handle);
-  body += path([REMOTE_LAYOUT.trackStart, REMOTE_LAYOUT.trackEnd], '#a49c85', 1.3)
-    + `<path data-remote-handle="true" d="M${n(hx - 9)} ${n(hy)}l9-7 9 7-9 7Z" fill="#d7c7a6" stroke="#7a7762" stroke-width="1.2"/>`;
+  body+=surveyRailDrawing(remoteProject(REMOTE_LAYOUT.trackStart),remoteProject(REMOTE_LAYOUT.trackEnd),s.phase,
+    REMOTE_LAYOUT.trackEnd[0]-REMOTE_LAYOUT.trackStart[0],'移动遥感记录头','data-remote-handle="true"');
   return `<svg xmlns="http://www.w3.org/2000/svg" class="flat-model-svg flat-explanation-svg" viewBox="0 0 710 420" role="group" data-remote-phase="${n(s.phase)}" data-remote-stage="${s.stage}" data-remote-captured="${s.counts.captured}" data-remote-received="${s.counts.received}" data-remote-processed="${s.counts.processed}" data-remote-output="${s.counts.output}" aria-label="${s.caption} 被动光学遥感示例，十二个样本为教学设定，不作自动识别或灾害预报。"><title>卫星遥感信息链</title><g stroke-linejoin="round" stroke-linecap="round" font-family="FieldSerif,SimSun,serif">${body}</g></svg>`;
 }

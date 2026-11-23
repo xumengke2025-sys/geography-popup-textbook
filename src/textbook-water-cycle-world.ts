@@ -2,10 +2,10 @@ import { createSpecimenMaterial } from './textbook-solid-materials';
 import { THREE as T } from './reference/engine.js';
 import { LIFT_MARGIN, type ModelMotion, type TextbookGeometry, type Vec3 } from './textbook-geometry';
 import { phaseTrackPoint, type PhaseTrack } from './textbook-model-input';
-import { evaluateWaterCycle, waterCycleDiagnostics, waterCycleCoastX, waterCycleTerrainHeight,
-  waterCycleRiverSection, waterCycleRiverZ, waterCycleLandMesh, waterCycleSeaMesh, waterCycleRiverMesh,
-  waterCyclePathPoint, WATER_CYCLE_LAYOUT as L, WATER_CYCLE_CLOUD_PARTS, WATER_CYCLE_PLANTS,
-  WATER_CYCLE_LABELS, WATER_CYCLE_REFERENCE, type WaterCycleMesh, type WaterCyclePoint } from './textbook-water-cycle-model';
+import { mountFieldInstrument } from './textbook-field-instruments';
+import { finishWaterCycleSurfaces } from './textbook-water-cycle-surfaces';
+import { evaluateWaterCycle, waterCycleDiagnostics, waterCyclePathPoint, WATER_CYCLE_LAYOUT as L,
+  WATER_CYCLE_LABELS, WATER_CYCLE_REFERENCE, type WaterCyclePoint } from './textbook-water-cycle-model';
 
 /** A real, closed watershed floats above the untouched textbook. Six marks
  * retain their identities from source to destination; nothing respawns.
@@ -27,59 +27,25 @@ export function buildWaterCycleWorld(b: TextbookGeometry): ModelMotion {
   const solid = (geometry: any, color: string, name: string, hatch = .08) => {
     const mesh = role(b.mesh(geometry, color, false), name); mesh.material = paper(color, hatch); return mesh;
   };
-  const geometryFrom = (data: WaterCycleMesh) => {
-    const positions: number[] = [];
-    for (let i = 0; i < data.positions.length; i += 3) positions.push(...p(data.positions.slice(i, i + 3) as unknown as WaterCyclePoint));
-    const geometry = new T.BufferGeometry(); geometry.setAttribute('position', new T.Float32BufferAttribute(positions, 3));
-    geometry.setIndex(data.indices); geometry.computeVertexNormals(); return geometry;
-  };
   const local = (geometry: any) => { geometry.scale(scale, scale, scale); return geometry; };
-  const land = solid(geometryFrom(waterCycleLandMesh()), '#bac0a3', 'closed-land-solid', .11);
-  const sea = solid(geometryFrom(waterCycleSeaMesh()), '#a7c8cb', 'closed-sea-solid', .035);
-  const river = solid(geometryFrom(waterCycleRiverMesh()), '#79a9b0', 'river-fitted-to-valley', .025);
+  const parts = mountFieldInstrument(b, 'water', scale, p([0, 0, 0]));
+  const land = role(parts.get('land')![0], 'closed-land-solid');
+  const sea = role(parts.get('sea')![0], 'closed-sea-solid');
+  const river = role(parts.get('river')![0], 'river-fitted-to-valley');
+  finishWaterCycleSurfaces(b,land,sea,river,scale,back);
+  for (const [group,selection,label] of [['land',1,'陆地内循环'],['sea',2,'海上内循环'],['river',0,'海陆间循环']] as const) {
+    for(const mesh of parts.get(group)!) mesh.userData.modelInput={kind:'select',selection,keepPhase:true,label:'沿水路追踪'+label};
+  }
   land.userData.originalPageGeometry = false;
 
-  // The river is embedded into the same elevation field. Quiet contours
-  // describe its banks, the cut face and the sea; no flat model image is used.
-  for (const side of ['leftZ', 'rightZ'] as const) b.stroke(Array.from({ length: 65 }, (_, i) => {
-    const section = waterCycleRiverSection(23 + 44 * i / 64); return p([section.x, section.level + .05, section[side]]);
-  }), .34);
-  for (const z of [8, 50]) {
-    b.stroke(Array.from({ length: 51 }, (_, i) => {
-      const x = 4 + (waterCycleCoastX(z) - 4) * i / 50; return p([x, waterCycleTerrainHeight(x, z), z]);
-    }), .47);
-    b.stroke([p([4, .4, z]), p([waterCycleCoastX(z), .4, z])], .35);
-  }
-  for (const z of [8, 50]) for (const x of [4, waterCycleCoastX(z)])
-    b.stroke([p([x, .4, z]), p([x, waterCycleTerrainHeight(x, z), z])], .35);
-  b.stroke(Array.from({ length: 41 }, (_, i) => { const z = 8 + 42 * i / 40; return p([waterCycleCoastX(z), 8.1, z]); }), .46);
-  b.stroke([p([waterCycleCoastX(50), 8.02, 50]), p([97, 8.02, 50]), p([97, .8, 50])], .4);
-  for (const z of [15, 25, 45]) b.stroke(Array.from({ length: 21 }, (_, i) => p([73 + i, 8.09, z + .25 * Math.sin(i * .4)])), .18);
-  // Three small plants occupy actual ground; their tops are the start of
-  // the transpiration marks in the land-only selection.
-  WATER_CYCLE_PLANTS.forEach(([x, z], i) => {
-    const y = waterCycleTerrainHeight(x, z);
-    b.tree(p([x, y, z]), 4.8 * scale, i === 1 ? 'broad' : 'pine', '#82977a');
-  });
-  // Thin stratification only on the exposed front cut face. It avoids
-  // implying that groundwater travels through a visible pipe.
-  for (const height of [3.2, 6.2]) b.stroke(Array.from({ length: 26 }, (_, i) => p([5 + i * 2.1, height + .12 * Math.sin(i * .7), 50.05])), .16);
-
-  const makeCloud = (parts: readonly (readonly [number, number, number, number])[], center: WaterCyclePoint, name: string) => {
-    const vertices: number[] = [], indices: number[] = [];
-    parts.forEach(([x, y, z, radius]) => {
-      const geometry = new T.SphereGeometry(radius, 18, 10); geometry.scale(1, .54, .66);
-      geometry.translate(x - center[0], y - center[1], z - center[2]);
-      const offset = vertices.length / 3;
-      vertices.push(...Array.from(geometry.attributes.position.array) as number[]);
-      indices.push(...(Array.from(geometry.index!.array) as number[]).map(index => index + offset)); geometry.dispose();
-    });
-    const geometry = new T.BufferGeometry(); geometry.setAttribute('position', new T.Float32BufferAttribute(vertices, 3));
-    geometry.setIndex(indices); geometry.computeVertexNormals();
-    const mesh = solid(local(geometry), '#f1edde', name, .02); mesh.position.set(...p(center)); return mesh;
+  const cloud = (group: string, center: WaterCyclePoint, name: string) => {
+    const mesh = role(parts.get(group)![0], name), pivot = p(center);
+    mesh.geometry.translate(-pivot[0], -pivot[1], -pivot[2]);
+    mesh.position.set(...pivot);
+    return mesh;
   };
-  const landCloud = makeCloud(WATER_CYCLE_CLOUD_PARTS.land, [32, 50, 37], 'condensed-land-cloud');
-  const seaCloud = makeCloud(WATER_CYCLE_CLOUD_PARTS.sea, [82, 50, 36], 'condensed-sea-cloud');
+  const landCloud = cloud('land-cloud', [32, 50, 37], 'condensed-land-cloud');
+  const seaCloud = cloud('sea-cloud', [82, 50, 36], 'condensed-sea-cloud');
 
   const liquidGeometry = local(new T.SphereGeometry(1.03, 14, 9));
   const vaporGeometry = local(new T.OctahedronGeometry(1.35, 0));
@@ -102,18 +68,15 @@ export function buildWaterCycleWorld(b: TextbookGeometry): ModelMotion {
     mesh: role(b.label(label.text, p(label.at), label.width * scale, 9.2 * scale), 'process-label') }));
 
   const track: PhaseTrack = { start: p(L.trackStart), end: p(L.trackEnd) };
-  const railGeometry = new T.BoxGeometry(76 * scale, .22 * scale, .36 * scale);
-  const rail = solid(railGeometry, '#afa184', 'phase-rail', .02); rail.position.set(...p([50, -11, 66]));
-  rail.userData.modelInput = { kind: 'phase-track', track, label: '拖动水循环过程纸签' };
-  const shape = new T.Shape();
-  [[-2.7, 2.4], [2.7, 2.4], [2.7, -.7], [0, -2.7], [-2.7, -.7]].forEach(([x, y], i) =>
-    i ? shape.lineTo(x * scale, y * scale) : shape.moveTo(x * scale, y * scale));
-  shape.closePath();
-  const handleGeometry = new T.ExtrudeGeometry(shape, { depth: .65 * scale, bevelEnabled: false });
-  handleGeometry.translate(0, 0, -.325 * scale);
-  const handle = solid(handleGeometry, '#d4bc88', 'phase-handle', .045);
+  const cursor = parts.get('cursor')!;
+  const handle = role(cursor.find(mesh => mesh.userData.blenderColor === '#467c89')!, 'phase-handle');
   handle.userData.smallPointTarget = true;
-  handle.userData.modelInput = { kind: 'phase-track', track, label: '拖动纸签，追踪同一组水的去向' };
+  const action = { kind: 'phase-track', track, label: '拖动黄铜游标，追踪同一组水的去向' };
+  for (const mesh of cursor) {
+    mesh.geometry.translate(-track.start[0], -track.start[1], -track.start[2]);
+    mesh.userData.modelInput = action;
+  }
+  for (const mesh of parts.get('rail')!) role(mesh, 'phase-rail').userData.modelInput = action;
   const legend = role(b.label('◇ 水汽示踪', p([54, -3, 69]), 38 * scale, 9.2 * scale), 'symbol-legend');
   legend.raycast = () => {};
   const fixedMeshCount = b.meshes.length, buffers = b.meshes.map(mesh => mesh.geometry.attributes.position.array);
@@ -136,7 +99,8 @@ export function buildWaterCycleWorld(b: TextbookGeometry): ModelMotion {
           cloud.visible = amount > .001; cloud.scale.setScalar(.15 + .85 * amount);
         }
         labels.forEach(({ definition, mesh }) => { mesh.visible = state.labels.some(label => label.id === definition.id); });
-        handle.position.set(...phaseTrackPoint(state.phase, track));
+        const position = phaseTrackPoint(state.phase, track);
+        cursor.forEach(mesh => mesh.position.set(...position));
         legend.visible = state.samples.some(sample => sample.medium === 'vapor');
       }
       // Trails are a partial record of the same finite movement, never a

@@ -1,6 +1,7 @@
 import { THREE as T } from './reference/engine.js';
 import { createSpecimenMaterial } from './textbook-solid-materials';
 import { LIFT_MARGIN, type ModelMotion, type TextbookGeometry, type Vec3 } from './textbook-geometry';
+import { botanicalBark, botanicalFloor } from './textbook-botanical-specimens';
 import { buildForestInstrument } from './textbook-forest-instrument';
 import { evaluateForest, forestPartMeshData, FOREST_LAYOUT, FOREST_PARTS, FOREST_PLANTS,
   FOREST_REFERENCE, FOREST_STOPS, type ForestPart, type ForestMeshData } from './textbook-forest-model';
@@ -51,27 +52,21 @@ export function buildForestWorld(b: TextbookGeometry): ModelMotion {
     mesh.userData.forestPartIds = parts.map(part => part.id); return mesh;
   });
 
-  // Continuous floor and thin cut edge seated in the specimen tray. The tiny
-  // surface relief is authored, not a measured field elevation.
-  const ground: ForestMeshData = { positions: [], indices: [] }, nx = 30, nz = 14;
-  const height = (x: number, z: number) => 1.4 + .045 * Math.sin(x * .51) * Math.sin(z * .43);
-  for (let j = 0; j <= nz; j++) for (let i = 0; i <= nx; i++) {
-    const x = 3 + i / nx * 81, z = 18 + j / nz * 39;
-    ground.positions.push(x, height(x, z), z);
-    if (i < nx && j < nz) { const a = j * (nx + 1) + i; ground.indices.push(a, a + nx + 1, a + 1, a + 1, a + nx + 1, a + nx + 2); }
+  const floor=botanicalFloor(b,p([3,1.4,18]),p([84,1.4,57]),scale);
+  floor.ground.userData.forestRole='forest-floor';floor.cut.userData.forestRole='soil-plinth';
+  const treeBark=botanicalBark(b,scale,'#817053');
+  for (const mesh of plantMeshes) {
+    if (mesh.userData.forestRole==='plant-stems'&&mesh.userData.forestLayer!==2) mesh.material=treeBark;
+    if (mesh.userData.forestRole==='plant-crowns') {
+      const a=mesh.geometry.attributes.position,colors:number[]=[];
+      for(let k=0;k<a.count;k++){
+        const x=a.getX(k)/scale,z=(a.getZ(k)-back)/scale,y=a.getY(k)/scale;
+        const f=.46+.20*Math.sin(.79*x+.33*z)+.14*Math.cos(.63*z+.28*y)+.21*(y/52);
+        colors.push(.50+.57*f,.64+.49*f,.39+.51*f);
+      }
+      mesh.geometry.setAttribute('color',new T.Float32BufferAttribute(colors,3));mesh.material.vertexColors=true;
+    }
   }
-  solid(meshData(ground), '#9c9d78', 'forest-floor');
-  const edge: ForestMeshData = { positions: [], indices: [] }, perimeter: Vec3[] = [];
-  for (let i = 0; i <= nx; i++) perimeter.push([3 + i / nx * 81, 0, 18]);
-  for (let j = 1; j <= nz; j++) perimeter.push([84, 0, 18 + j / nz * 39]);
-  for (let i = nx - 1; i >= 0; i--) perimeter.push([3 + i / nx * 81, 0, 57]);
-  for (let j = nz - 1; j > 0; j--) perimeter.push([3, 0, 18 + j / nz * 39]);
-  perimeter.forEach(([x, , z], i) => {
-    const [xx, , zz] = perimeter[(i + 1) % perimeter.length], k = edge.positions.length / 3;
-    edge.positions.push(x, .04, z, xx, .04, zz, xx, height(xx, zz), zz, x, height(x, z), z);
-    edge.indices.push(k, k + 1, k + 2, k, k + 2, k + 3);
-  });
-  solid(meshData(edge), '#9b8464', 'soil-plinth');
   // Short root flares meet the same thin soil floor. They explain the actual
   // trunk/ground contact without making another plinth or a decorative frame.
   const rootData: ForestMeshData[] = [];
@@ -82,6 +77,7 @@ export function buildForestWorld(b: TextbookGeometry): ModelMotion {
       kind: 'rod', role: 'branch', color: '#806b51', start, end, radius: .45, topRadius: .065 }));
   }
   const roots = solid(meshData(merge(rootData)), '#806b51', 'specimen-root-contacts');
+  roots.material=treeBark;
   roots.userData.rootContact = 'same-trunk-same-floor';
   const apparatus = buildForestInstrument(b, p, scale), area = FOREST_LAYOUT.observation;
   const sheetGeometry = new T.BoxGeometry((area.maxX - area.minX) * scale, .035 * scale, (area.maxZ - area.minZ) * scale);
@@ -108,7 +104,7 @@ export function buildForestWorld(b: TextbookGeometry): ModelMotion {
   let state = evaluateForest(0);
   const motion: ModelMotion = {
     update(phase) {
-      state = evaluateForest(phase); apparatus.update(state.observationHeight, state.selection);
+      state = evaluateForest(phase); apparatus.update(state.observationHeight, state.selection, state.relativeLight);
       sheet.position.y = state.observationHeight * scale;
       sheet.material.opacity = Math.fround(.012 + state.relativeLight * .018);
       apparatus.handle.userData.forestRelativeLight = state.relativeLight;

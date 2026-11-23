@@ -147,7 +147,18 @@ export function buildReliefCutSurface(x0: number, x1: number, z0: number, z1: nu
  * floor and the narrow-V / broad-shallow distinction remain explicit. */
 export function riverValleySurfaceHeight(u: number, v: number, plain: boolean) {
   const center = .5 + .035 * Math.sin(v * 4), bed = 3.4 - 1.3 * v, distance = u - center, q = Math.abs(distance), side = Math.sign(distance);
-  if (plain) return bed + 3.5 * ease(.12, .43, q) + .16 * Math.sin(v * 8 + side) * ease(.18, .44, q);
-  const flank = clamp(q / .44), ridge = .11 * Math.sin(v * 8.5 + side * 1.1) + .045 * Math.cos(v * 17 - q * 11);
-  return bed + 28 * flank * (1 + ridge * ease(.035, .32, q)) + 1.15 * Math.sin(v * 18 + flank * 5 + side) * Math.sin(Math.PI * flank) * ease(.018, .08, q);
+  if (plain) return bed + .84 * ease(.033, .081, q) + 3.5 * ease(.12, .43, q) + .22 * Math.sin(v * 8 + side) * ease(.18, .44, q);
+  const flank = clamp((q - .013) / .427), ridge = .11 * Math.sin(v * 8.5 + side * 1.1) + .045 * Math.cos(v * 17 - q * 11);
+  const spur = Math.sin(v * 28 + flank * 6 + side * 3 + .74 * Math.sin(flank * 11 + v * 12));
+  const ravine = Math.exp(-7 * spur * spur);
+  return bed + 28 * flank * (1 + ridge * ease(.035, .32, q))
+    + (2.4 * Math.sin(v * 18 + flank * 5 + side) - 2.65 * ravine) * Math.sin(Math.PI * flank) * ease(.018, .14, q);
+}
+
+export function valleySection(phase: number, plain: boolean) {
+  const v = .2 + .65 * clamp(Number.isFinite(phase) ? phase : 0);
+  const middle = .5 + .035 * Math.sin(v * 4);
+  return { v, probes: [.27, middle, .73].map((u, i) => ({
+    u, height: riverValleySurfaceHeight(u, v, plain) + (i === 1 ? .52 : 0),
+  })) };
 }

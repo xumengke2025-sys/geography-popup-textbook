@@ -1,3 +1,5 @@
+import { mountSoundingHoist } from './textbook-sounding-hoist';
+import { applyEarthScan } from './textbook-earth-scan';
 import { THREE as T } from './reference/engine.js';
 import { LIFT_MARGIN, type ModelMotion, type TextbookGeometry, type Vec3 } from './textbook-geometry';
 import { phaseTrackPoint, type PhaseTrack } from './textbook-model-input';
@@ -122,6 +124,7 @@ export function buildAtmosphereWorld(b: TextbookGeometry): ModelMotion {
   terrainIndices.push(0, 2, 1, 0, 3, 2, end, end + 1, end + 2, end, end + 2, end + 3);
   const terrain = select(shape(terrainVertices, terrainIndices, '#c8c7ad', 'ground-relief'), 0);
 
+  applyEarthScan(terrain.material,'outcrop',14*scale);applyEarthScan(ground.material,'alluvium',10*scale);
   const arrows: { mesh: any; outline: readonly AtmospherePoint[]; layer: number }[] = [];
   const arrow = (id: string, path: readonly AtmospherePoint[], layer: number) => {
     const a: AirArrow = { id, path, reveal: 1, width: .95, thickness: .58, color: '#789c97', tip: path[path.length - 1] };
@@ -162,7 +165,7 @@ export function buildAtmosphereWorld(b: TextbookGeometry): ModelMotion {
   });
   parts.plate(p(32,97.2,47.8),p(74,106,49.2),'brass');
   finish(parts.casting(p(32.5,97.7,49.2),p(73.5,105.5,49.5),'ivory',.15*scale),'ivory','#e3ddc9');
-  tag('气温变化示意', [53,101.6,49.7],40,7.3,'profile-label');
+  tag('探空气温示意', [53,101.6,49.7],40,7.3,'profile-label');
   // These short axis tags must remain readable in the whole-book tablet view.
   // Increase the physical paper, not only its texture resolution; the label
   // centres and the fixed camera bounds stay unchanged.
@@ -209,12 +212,13 @@ export function buildAtmosphereWorld(b: TextbookGeometry): ModelMotion {
   const probeRing = mesh(new T.TorusGeometry(1.48 * scale, .20 * scale, 8, 24), '#a88b50', 'probe-collar',undefined,'brass');
   probeRing.userData.modelInput = handle.userData.modelInput;
 
+  const hoist=mountSoundingHoist(b,p,scale,track);
   let state = evaluateAtmosphere(0), lastPhase = -1;
   return {
     update(phase) {
       const next = evaluateAtmosphere(phase);
       if (next.phase !== lastPhase) {
-        state = next; lastPhase = next.phase;
+        state = next; lastPhase = next.phase;hoist(next.phase,next.probe[1]);
         handle.position.set(...point(state.handle));
         probe.position.set(...p(state.probe[0], state.probe[1], 49));
         probeRing.position.set(...p(state.probe[0], state.probe[1], 49.3));
@@ -254,8 +258,8 @@ export function buildAtmosphereWorld(b: TextbookGeometry): ModelMotion {
         handleWorld: handle.getWorldPosition(new T.Vector3()).toArray(),
         profilePointWorld: world(state.profilePoint), phaseTrack: track,
         phaseTrackWorld: { start: world(ATMOSPHERE_TRACK.start), end: world(ATMOSPHERE_TRACK.end) },
-        controls: ['vertical-phase-track', 'height-bookmarks'], measuredValues: false,
-        instrument: { family:'guided-height-comparator', guideRods:2, linkedCarriage:true,
+        controls: ['vertical-phase-track', 'height-bookmarks','sounding-winch'], measuredValues: false,
+        instrument: { family:'guided-height-comparator',modelBalloon:true,handWound:true, guideRods:2, linkedCarriage:true,
           scaleUnits:'none', openObservationWindow:true, paperMaterialOverride:false,
           construction:'single-bed-guided-comparator', supportedCurveEnds:2, mountedLayerTablets:3 } };
     },

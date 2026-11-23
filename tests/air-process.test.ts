@@ -7,6 +7,9 @@ import { AIR_PROCESS_REFERENCE, AIR_PROCESS_STOPS, airArrowMeshData, airGroundHe
 vi.mock('../src/reference/engine.js', async () => ({ THREE: await import('three') }));
 import { buildAirProcessWorld } from '../src/textbook-air-process-world';
 
+import { loadFieldInstrument } from '../src/textbook-field-instruments';
+await Promise.all(['thermal','heating'].map(loadFieldInstrument));
+
 function fixture(effect: AirProcessEffect) {
   const meshes: Three.Mesh[] = [], contours: Vec3[][] = [], root = new Three.Group();
   const b = {

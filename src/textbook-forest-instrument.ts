@@ -42,6 +42,17 @@ export function buildForestInstrument(b: TextbookGeometry, p: (v: readonly numbe
   part(mergeInstrumentGeometry(rods), 'steel', 'paired-observation-guides');
   part(mergeInstrumentGeometry(caps), 'brass', 'guide-end-stops');
 
+  // A graduated wedge of coloured glass is bolted beside the left guide.
+  // Its travelling index is geared to the same observation height, so a
+  // reader can compare the model's relative illumination without a lux scale.
+  plate([-2.3,2.1,60.7],[-.77,44.8,62.3],'brass','optical-comparator-column');
+  for(let i=0;i<12;i++) {
+    const low=3.25+i*3.26, tone=new T.Color('#62694f').lerp(new T.Color('#e2cb89'),i/11);
+    const cell=b.mesh(chamferedPlateGeometry(p([-2.12,low,62.32]),p([-.85,low+3.14,62.62]),.04*s),
+      '#'+tone.getHexString(),false,false,'enamel');cell.name='相对明暗玻璃阶';meshes.push(cell);
+  }
+  const lightIndex=plate([-2.42,-.15,62.55],[-.63,.15,62.79],'ivory','relative-light-index',true);
+  lightIndex.userData.valueMeaning='qualitative-light';
   // A narrow relative-position scale, not a numbered metre or light meter.
   plate([92.1, 2, 63.72], [93.75, 45.7, 64.22], 'ivory', 'relative-height-scale');
   const ticks: any[] = [];
@@ -104,9 +115,9 @@ export function buildForestInstrument(b: TextbookGeometry, p: (v: readonly numbe
   plate([96.55, .3, 63.9], [97.25, 46.4, 64.38], 'brass', 'nameplate-support-spine');
   const labels = FOREST_STOPS.map((stop, i) => {
     const [, y] = FOREST_LAYOUT.labels[i];
-    plate([97.1, y - 3, 63.83], [116.3, y + 3, 64.48], 'brass', 'layer-nameplate-mount');
-    plate([97.4, y - 2.7, 64.49], [116, y + 2.7, 64.66], 'ivory', 'layer-nameplate-face');
-    const label = b.label(stop.label, p(FOREST_LAYOUT.labels[i]), 18 * s, 5.2 * s, { appearance: 'engraved', ink: '#35443a' });
+    plate([97.1, y - 3.6, 63.83], [116.3, y + 3.6, 64.48], 'brass', 'layer-nameplate-mount');
+    plate([97.4, y - 3.34, 64.49], [116, y + 3.34, 64.66], 'ivory', 'layer-nameplate-face');
+    const label = b.label(stop.label, p(FOREST_LAYOUT.labels[i]), 18 * s, 6.2 * s, { appearance: 'engraved', ink: '#35443a' });
     label.name = 'forest-layer-inscription'; label.userData.forestRole = 'layer-label';
     label.userData.labelMount = 'surface'; label.userData.forestLayer = i;
     label.userData.modelInput = { kind: 'select', selection: i, label: `观察${stop.label}` };
@@ -117,7 +128,8 @@ export function buildForestInstrument(b: TextbookGeometry, p: (v: readonly numbe
   const index = plate([94.05, -.65, 64.5], [95.45, .65, 64.74], 'enamel', 'active-layer-index');
   return {
     meshes, frame, handle, labels,
-    update(height: number, selection: number) {
+    update(height: number, selection: number, light: number) {
+      lightIndex.userData.relativeLight=light;
       moving.forEach(mesh => { mesh.position.y = height * s; });
       handle.position.set(...p([91, height, 64]));
       screw.rotation.y = -height / pitch * Math.PI * 2;

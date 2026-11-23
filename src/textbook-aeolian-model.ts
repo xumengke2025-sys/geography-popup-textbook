@@ -67,3 +67,29 @@ export function evaluateAeolian(phase: number, selection = 0): AeolianState {
     independentForms: true, processIsSchematic: true, playback: 'once',
   };
 }
+
+/** Model-space transport lanes. The stone divides the sand stream near its
+ * base; yardang grooves guide it, and dune grains rise over the windward face. */
+export function aeolianTransportPoint(x: number, depth: number, height: number, selection: number, duneOffset: number): [number, number, number] {
+  const along = 26 + 69 * x;
+  let across = 7 + 39 * depth;
+  if (selection === 0) {
+    const side = across < 26 ? -1 : 1;
+    across += side * 6.6 * Math.exp(-(((along - 57) / 11) ** 2))
+      * Math.exp(-(((across - 26) / 7.5) ** 2));
+  } else if (selection === 1) {
+    // Interior groove axes fall between successive streamlined bedrock ridges.
+    const slots = [14.5, 22.65, 31.3, 40.0];
+    const groove = slots.reduce((best, z) => Math.abs(z - across) < Math.abs(best - across) ? z : best);
+    across += (groove - across) * Math.max(0, Math.min(1, (along - 26) / 7, (96 - along) / 9));
+  } else {
+    const q = (across - 26) / 16.3, span = Math.max(0, 1 - q*q);
+    const crest = 57 + 24*q*q + .69*Math.sin(q*5) + duneOffset;
+    const upwind = along < crest;
+    const run = (upwind ? 26 : 8.7) * Math.max(.003, span**.75);
+    const slope = Math.max(0, 1 - Math.abs(along - crest) / run);
+    const surface = 1 + 10.5*span**.78*slope**(upwind ? 1.52 : 1);
+    height = Math.max(height, surface + .45);
+  }
+  return [along, height, across];
+}

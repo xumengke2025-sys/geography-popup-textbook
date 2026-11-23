@@ -1,3 +1,4 @@
+import { drawingGrip } from './textbook-drawing-grip';
 /** Fig.4.22, printed p.77 / PDF p.82. The diagram remains on the book page.
  * This supplemental relief is a hand-constrained teaching approximation,
  * not a surveyed DEM and not a reconstruction of every small contour. */
@@ -224,7 +225,7 @@ export function slopeReliefSvg(input: number): string {
   }
   body += polyline([SLOPE_LAYOUT.track.start, SLOPE_LAYOUT.track.end], '#9b8c6d', 1.3);
   const [hx, hy] = slopeProject([14 + 72 * state.phase, 1, 91]);
-  body += `<path data-slope-handle="true" d="M${n(hx - 8)} ${n(hy)}l8-5 8 5-8 5Z" fill="#ddc99e" stroke="#8c7653" stroke-width="1.2"/>`;
+  body += `<path data-slope-handle="true" d="M${n(hx - 8)} ${n(hy)}l8-5 8 5-8 5Z" fill="#ddc99e" stroke="#8c7653" stroke-width="1.2"/>${drawingGrip('推拉剖面尺',slopeProject(SLOPE_LAYOUT.track.start),slopeProject(SLOPE_LAYOUT.track.end),state.phase)}`;
   SLOPE_STOPS.forEach((stop, index) => { body += `<g data-slope-node="${index}" data-model-selection="${index}" role="button" tabindex="0" aria-label="${stop.label}">${svgText(stop.label, SLOPE_LAYOUT.labels[index])}</g>`; });
   const diagnostics = JSON.stringify({ phase: state.phase, stageIndex: state.stageIndex, points: state.points, relativeHeightM: state.relativeHeightM, phaseMeaning: state.phaseMeaning, surveyedDEM: false, sourceContourIntervalM: null });
   return `<svg xmlns="http://www.w3.org/2000/svg" class="flat-model-svg flat-explanation-svg" viewBox="0 0 700 420" role="img" aria-label="图4.22约束的教学近似立体地形；竖向夸张，观察抬升不是地形演化" data-slope-state='${diagnostics}' data-slope-original-map-preserved="true"><title>${state.caption}</title><desc>已读甲879.0米、乙885.4米，乙高6.4米。保留中央沟谷与右支沟关系；其他高度和辅助等高线为固定教学插值，不是精确地形复原。</desc>${body}</svg>`;

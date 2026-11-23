@@ -1,3 +1,4 @@
+import { drawingGrip } from './textbook-drawing-grip';
 /** PEP Geography I, printed p.103 / PDF p.108, fig.6.5, visually checked.
  * One idealized mature Northern Hemisphere typhoon is opened at the front.
  * Progress reveals simultaneous structures; it is not genesis or a life cycle. */
@@ -208,7 +209,7 @@ export function typhoonSvg(phase: number): string {
     scene += `<g data-model-selection="${label.selection}" role="button" tabindex="0" aria-label="观察${label.text}" style="cursor:pointer"><rect x="${num(x - width / 2)}" y="${num(y - 22)}" width="${num(width)}" height="39" rx="2" fill="#f7f1e3"/><text x="${x}" y="${num(y + 7)}" font-size="30" text-anchor="middle">${label.text}</text></g>`;
   }
   const start = typhoonProject(TYPHOON_LAYOUT.track.start), end = typhoonProject(TYPHOON_LAYOUT.track.end), handle = typhoonProject(state.handle);
-  scene += `<path d="M${start.join(' ')}L${end.join(' ')}" fill="none" stroke="#9c947b" stroke-width="2"/><path data-typhoon-handle="true" d="M${num(handle[0] - 9)} ${num(handle[1] - 5)}h18v7l-9 7-9-7Z" fill="#d4bd8b" stroke="#8e805f"/>`;
+  scene += `<path d="M${start.join(' ')}L${end.join(' ')}" fill="none" stroke="#9c947b" stroke-width="2"/><path data-typhoon-handle="true" d="M${num(handle[0] - 9)} ${num(handle[1] - 5)}h18v7l-9 7-9-7Z" fill="#d4bd8b" stroke="#8e805f"/>${drawingGrip('推拉台风观测尺',start,end,state.phase)}`;
   const data = JSON.stringify(typhoonDiagnostics(state)).replace(/&/g, '&amp;').replace(/'/g, '&#39;');
   return `<svg xmlns="http://www.w3.org/2000/svg" class="flat-model-svg flat-explanation-svg" viewBox="0 0 620 500" role="group" aria-label="北半球典型成熟台风，同一结构剖切：${state.caption}。进度是讲解顺序，不是形成过程。" data-typhoon-phase="${state.phase}" data-typhoon-stage="${state.stage}" data-typhoon-selection="${state.selection}" data-typhoon-state='${data}'><g fill="#303a40" font-family="FieldSerif,SimSun,serif" stroke-linejoin="round" stroke-linecap="round">${scene}</g></svg>`;
 }

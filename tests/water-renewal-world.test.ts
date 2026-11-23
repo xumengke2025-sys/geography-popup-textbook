@@ -4,6 +4,10 @@ import { evaluateWaterRenewal } from '../src/textbook-water-renewal-model';
 vi.mock('../src/reference/engine.js', async () => ({ THREE: await import('three') }));
 import { buildWaterRenewalWorld } from '../src/textbook-water-renewal-world';
 
+import { loadFieldInstrument } from '../src/textbook-field-instruments';
+
+await loadFieldInstrument('water-renewal');
+
 function fixture() {
   const root = new T.Group(), meshes: T.Mesh[] = [], materials = new Map<string, T.MeshStandardMaterial>();
   const b: any = { width: 300, height: 160, root, meshes,

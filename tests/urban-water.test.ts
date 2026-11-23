@@ -1,4 +1,4 @@
-import { describe, expect, it, vi } from 'vitest';
+import { beforeAll, describe, expect, it, vi } from 'vitest';
 import * as Three from 'three';
 import { evaluateUrbanWater, URBAN_WATER_LAYOUT, URBAN_WATER_ORIGINS, URBAN_WATER_PACKET_COUNT,
   URBAN_WATER_REFERENCE, URBAN_WATER_STOPS, urbanWaterPacketPath, urbanWaterPrismMesh,
@@ -8,6 +8,9 @@ import { LIFT_MARGIN, type TextbookGeometry, type Vec3 } from '../src/textbook-g
 
 vi.mock('../src/reference/engine.js', async () => ({ THREE: await import('three') }));
 import { buildUrbanWaterWorld } from '../src/textbook-urban-water-world';
+
+import { loadFieldInstrument } from '../src/textbook-field-instruments';
+beforeAll(() => loadFieldInstrument('urban-waterlogging'));
 
 function fixture() {
   const root = new Three.Group(), meshes: Three.Mesh[] = [];
@@ -199,13 +202,19 @@ describe('a finite, source-bounded urban rainfall comparison', () => {
 });
 
 describe('the same finite rainfall state drives the actual raised city', () => {
-  it('uses physical sections, paper houses, persistent water solids and condition replay targets', () => {
+  it('uses scanned sections, two roofed street buildings, persistent water and in-place surface controls', () => {
     const { meshes, motion } = fixture();
     const tokens = meshes.filter(mesh => mesh.userData.urbanRole === 'water-packet'); expect(tokens).toHaveLength(12);
     expect(new Set(tokens.map(mesh => mesh.userData.urbanPacketId)).size).toBe(12);
-    expect(meshes.filter(mesh => mesh.userData.urbanRole === 'paper-house')).toHaveLength(2);
+    for (const name of ['terrace-house','pump-house']) {
+      const parts=meshes.filter(mesh=>mesh.userData.urbanRole===name);
+      expect(parts.length).toBeGreaterThan(6);
+      expect(parts.map(mesh=>mesh.userData.blenderColor)).toEqual(expect.arrayContaining(['#3f5960','#56646a','#739084']));
+    }
+    expect((meshes.find(mesh=>mesh.userData.urbanRole==='garden-gravel')?.material as Three.Material).userData.earthScan).toBe('alluvium');
+    expect((meshes.find(mesh=>mesh.userData.urbanRole==='garden-planting-soil')?.material as Three.Material).userData.earthScan).toBe('loam');
     expect(meshes.filter(mesh => mesh.userData.urbanRole === 'condition-tab').map(mesh => mesh.userData.modelInput))
-      .toEqual([0, 1, 2].map(selection => ({ kind: 'replay', selection, label: `重放${['硬化', '透水', '花园'][selection]}地面条件` })));
+      .toEqual([0, 1, 2].map(selection => ({ kind: 'select', selection, keepPhase:true, label: `切换${['硬化', '透水', '花园'][selection]}，保留当前雨程` })));
     const labels = meshes.filter(mesh => mesh.userData.kind === 'text-label');
     expect(labels).toHaveLength(6); expect(labels.every(mesh => mesh.userData.labelSize[1] >= 7.8 * 3)).toBe(true);
     expect(motion.describe!()).toMatchObject({ kind: 'urban-rainfall-partition', sameRainInput: true,
@@ -253,7 +262,7 @@ describe('the same finite rainfall state drives the actual raised city', () => {
     }
   });
 
-  it('lets the front paper tab seek along its local track in both directions', () => {
+  it('lets the front carriage seek along its local track in both directions', () => {
     const { meshes } = fixture(), handle = meshes.find(mesh => mesh.userData.urbanRole === 'phase-handle')!;
     const { kind, track } = handle.userData.modelInput;
     expect(kind).toBe('phase-track'); expect(track.start[2]).toBe(track.end[2]); expect(handle.userData.smallPointTarget).toBe(true);

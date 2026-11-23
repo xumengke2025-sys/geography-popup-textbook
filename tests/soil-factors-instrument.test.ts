@@ -49,10 +49,40 @@ describe('retained soil specimen', () => {
         }
         expect([...edges.values()].every(n=>n===2)).toBe(true);
         if (layerIndex > 0) {
-          const below = layers[layerIndex - 1].geometry.attributes.position, topOffset = 43 * 11;
+          const below = layers[layerIndex - 1].geometry.attributes.position, topOffset = 85 * 11;
           for (let i = 0; i < topOffset; i++) for (const axis of ['getX','getY','getZ'] as const) expect(a[axis](i)).toBeCloseTo(below[axis](i + topOffset), 5);
         }
       });
+    }
+  });
+  it('branches each exposed root from its parent curve and retains actual recessed pore walls', () => {
+    const { motion, meshes, root } = specimen();
+    for (const phase of [0,.5,1,.5,0]) {
+      motion.update(phase,3,1/60,false); root.updateMatrixWorld(true);
+      const roots = meshes.filter(m=>m.userData.soilFactorsPart==='continuous-profile-root');
+      const paths = roots.map(mesh => (mesh.geometry as Three.TubeGeometry).parameters.path);
+      const branchesPerRoot = 5;
+      const pathsPerRoot = 1 + 2 * branchesPerRoot;
+      expect(paths).toHaveLength(3 * pathsPerRoot);
+      for (let offset = 0; offset < paths.length; offset += pathsPerRoot) {
+        const mainRoot = paths[offset];
+        for (let j = 0; j < branchesPerRoot; j++) {
+          const branchIndex = offset + 1 + 2 * j;
+          const branch = paths[branchIndex], fineRoot = paths[branchIndex + 1];
+          expect(branch.getPoint(0).distanceTo(mainRoot.getPoint(.68 + j * .064))).toBeLessThan(1e-8);
+          expect(fineRoot.getPoint(0).distanceTo(branch.getPoint(.55))).toBeLessThan(1e-8);
+        }
+      }
+      const surface = meshes.find(m=>m.userData.soilFactorsPart==='weathered-parent-material')!;
+      const positions = surface.geometry.attributes.position;
+      const frontOffset = 85*11*2+85*25;
+      let deepest = 0;
+      for(let y=1;y<24;y++)for(let x=1;x<84;x++) {
+        const k=frontOffset+y*85+x;
+        const z=positions.getZ(k), before=positions.getZ(k-1), after=positions.getZ(k+1);
+        deepest=Math.max(deepest,(before+after)/2-z);
+      }
+      expect(deepest).toBeGreaterThan(.12);
     }
   });
   it('keeps all five factors independent, preserves the existing slope branch, and restores exact specimen geometry', () => {
@@ -73,7 +103,7 @@ describe('retained soil specimen', () => {
     const { motion, meshes } = specimen(); motion.update(0,0,1/60,false);
     const labels = meshes.filter(m=>m.userData.soilFactorsPart==='inset-factor-text');
     expect(labels.map(m=>m.userData.text)).toEqual(['母质','生物','气候','时间']);
-    expect(labels.every(m=>m.userData.labelMount==='surface'&&m.userData.modelInput.kind==='replay')).toBe(true);
+    expect(labels.every(m=>m.userData.labelMount==='surface'&&m.userData.modelInput.kind==='select'&&m.userData.modelInput.keepPhase)).toBe(true);
     const positions = new Set(meshes.flatMap(m=>[m.geometry.attributes.position.array]));
     // Both reusable particle shapes become resident on the first biology pass.
     motion.update(.5,1,1/60,false); meshes.forEach(m=>positions.add(m.geometry.attributes.position.array));

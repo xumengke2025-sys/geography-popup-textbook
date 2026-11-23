@@ -1,7 +1,14 @@
 import { INTEGRATED_INSPECTIONS, type IntegratedEffect } from './textbook-integrated-model';
 /** Observation choices never alter the scientific condition or playhead. */
 export function inspectionTargets(effect: string, selection: number) {
+  if (effect === 'seismic-waves') return [{target:'overview',label:'整体介质'}, {target:'particle-6',label:'左侧固体质点'}, {target:'particle-14',label:'右侧介质质点'}];
+  if (effect === 'water-renewal') return [{target:'overview',label:'整座水槽'}, {target:'supply',label:'补给入口'}, {target:'storage',label:'储水与初始参照'}, {target:'receiver',label:'取用与接收'}, {target:'sample',label:'水质样本'}];
+  if (effect === 'mars-base') return [{target:'overview',label:'整座基地'}, ...['乘员舱','植物舱','生保舱','资源舱'].map((label,i)=>({target:'mars-shell-'+i,label}))];
+  if (effect === 'air-composition') return [{target:'overview',label:'整体'}, {target:'counting-face',label:'干洁空气计数板'}];
   if (effect in INTEGRATED_INSPECTIONS) return INTEGRATED_INSPECTIONS[effect as IntegratedEffect];
+  if (effect === 'orbit') return [
+    { target: 'overview', label: '整座行星仪' }, { target: 'train', label: '轮系剖视' },
+  ];
   if (effect === 'soil') return [
     { target: 'overview', label: '合拢土柱' }, { target: 'section', label: '剖开半柱' },
   ];

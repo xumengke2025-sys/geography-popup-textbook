@@ -1,8 +1,10 @@
+import { drawLabelSlip } from './textbook-label-slip';
 import { THREE as T } from './reference/engine.js';
 import { GeographyPen } from './geography-pen';
 import { FIELD_PALETTE, FIELD_VISUAL_THEME } from './textbook-visual-theme';
 import { createSolidMaterial, inferSolidMaterialRole, INSTRUMENT_LIGHT_LAYER, type SolidMaterialRole } from './textbook-solid-materials';
 import { buildMiniatureHouse } from './textbook-miniature-architecture';
+import { buildCrownSurface } from './textbook-natural-form-geometry';
 
 export type Vec3 = [number, number, number];
 export const LIFT_MARGIN = 96;
@@ -10,6 +12,7 @@ export const PALETTE = FIELD_PALETTE;
 export interface ModelMotion {
   update(phase: number, selection: number, dt: number, reduced: boolean): void;
   describe?(): Record<string, unknown>;
+  framingPoints?(): readonly Vec3[] | null;
   focusBounds?(): { min: Vec3; max: Vec3 };
   /** Optional complete apparatus envelope, distinct from a selected specimen.
    * Older lessons retain their existing focusBounds behavior in both views. */
@@ -19,8 +22,13 @@ export interface ModelMotion {
 }
 type Stroke = { points: any[]; width: number };
 
-/** Geometry is in millimetres in the original Popout frame. No diagram bitmap
- * is sampled or mapped onto the model. Only small text labels use textures. */
+export interface SurfaceFinish {
+  metalness?: number;
+  roughness?: number;
+  vertexColors?: boolean;
+}
+
+/** Geometry is in millimetres in the original Popout frame. */
 export class TextbookGeometry {
   readonly root = new T.Group();
   readonly pen: GeographyPen;
@@ -54,13 +62,16 @@ export class TextbookGeometry {
   material(color: string) {
     return this.materialFor(inferSolidMaterialRole(color), color);
   }
-  materialFor(role: SolidMaterialRole, color = PALETTE.paper) {
-    const key = `${role}:${color}`;
+  materialFor(role: SolidMaterialRole, color = PALETTE.paper, finish?: SurfaceFinish) {
+    const key = finish ? [role, color, finish.roughness, finish.metalness, !!finish.vertexColors].join(':') : `${role}:${color}`;
     let mat = this.materials.get(key);
     if (!mat) {
       mat = role === 'paper'
         ? this.pop.paper({ color, ...FIELD_VISUAL_THEME.material, seed: this.materials.size + 3 })
         : createSolidMaterial(this.pop, role, color);
+      if (finish?.roughness !== undefined) mat.roughness = finish.roughness;
+      if (finish?.metalness !== undefined) mat.metalness = finish.metalness;
+      if (finish?.vertexColors) mat.vertexColors = true;
       mat.side = T.DoubleSide;
       mat.userData.materialRole = role;
       this.materials.set(key, mat);
@@ -71,8 +82,8 @@ export class TextbookGeometry {
     this.pen.stroke(points, width, closed);
     for (const p of points) this.inkBounds.expandByPoint(this.v(p));
   }
-  mesh(geometry: any, color = PALETTE.paper, edges = true, volume = true, role: SolidMaterialRole = inferSolidMaterialRole(color)) {
-    const mesh = this.pop.addSurface(new T.Mesh(geometry, this.materialFor(role, color)), this.root);
+  mesh(geometry: any, color = PALETTE.paper, edges = true, volume = true, role: SolidMaterialRole = inferSolidMaterialRole(color), finish?: SurfaceFinish) {
+    const mesh = this.pop.addSurface(new T.Mesh(geometry, this.materialFor(role, color, finish)), this.root);
     mesh.layers.enable(INSTRUMENT_LIGHT_LAYER);
     mesh.userData.kind = volume ? 'solid-geometry' : 'geometric-surface';
     mesh.userData.materialRole = role;
@@ -181,7 +192,11 @@ export class TextbookGeometry {
   }
   label(text: string, at: Vec3, w: number, h = w / Math.max(3, text.length) * 1.15, options: { appearance?: 'paper' | 'engraved' | 'dial'; ink?: string } = {}) {
     const canvas = document.createElement('canvas');
-    canvas.width = Math.max(256, Math.ceil(w * 24)); canvas.height = Math.max(64, Math.ceil(h * 24));
+    const rawWidth=Math.max(256,Math.ceil(w*24)), rawHeight=Math.max(64,Math.ceil(h*24));
+    const paper=!options.appearance||options.appearance==='paper';
+    const scale=paper?Math.min(1,192/rawHeight,1536/rawWidth):1;
+    canvas.width=Math.max(1,Math.round(rawWidth*scale));
+    canvas.height=Math.max(1,Math.round(rawHeight*scale));
     const c = canvas.getContext('2d')!;
     const label = FIELD_VISUAL_THEME.labels;
     const engraved = options.appearance === 'engraved';
@@ -198,31 +213,29 @@ export class TextbookGeometry {
         c.beginPath(); c.moveTo(canvas.width * (.5 + Math.cos(angle) * inner), canvas.height * (.5 - Math.sin(angle) * inner));
         c.lineTo(canvas.width * (.5 + Math.cos(angle) * .479), canvas.height * (.5 - Math.sin(angle) * .479)); c.stroke();
       }
-    } else if (!engraved) {
-    c.fillStyle = label.paper; c.fillRect(0, 0, canvas.width, canvas.height);
-    // The same quiet paper slip throughout the atlas: a thin cut edge, a
-    // slightly warmer foot, and crisp type. No extra caption or badge is added.
-    c.fillStyle = label.foot; c.fillRect(0, canvas.height - 2, canvas.width, 2);
-    c.strokeStyle = label.edge; c.lineWidth = 1;
-    c.strokeRect(.5, .5, canvas.width - 1, canvas.height - 1);
     }
-    c.fillStyle = options.ink ?? label.ink;
-    let fontSize = Math.floor(canvas.height * (dial ? .27 : .69));
-    c.font = `500 ${fontSize}px FieldSans, 'Microsoft YaHei', sans-serif`;
-    // A label is measured before drawing: the canvas must never silently clip
-    // Chinese characters or force the renderer to squeeze them horizontally.
-    if (c.measureText(text).width > canvas.width * .90) {
-      fontSize = Math.floor(fontSize * canvas.width * .90 / c.measureText(text).width);
-      c.font = `500 ${fontSize}px FieldSans, 'Microsoft YaHei', sans-serif`;
+    let fontRatio:number;
+    if(!engraved&&!dial){
+      fontRatio=drawLabelSlip(canvas,text,options.ink);
+    }else{
+      c.fillStyle=options.ink??label.ink;
+      let size=Math.floor(canvas.height*(dial?.395:.69));
+      c.font=`500 ${size}px FieldSans, 'Microsoft YaHei', sans-serif`;
+      if(c.measureText(text).width>canvas.width*.90){
+        size=Math.floor(size*canvas.width*.90/c.measureText(text).width);
+        c.font=`500 ${size}px FieldSans, 'Microsoft YaHei', sans-serif`;
+      }
+      c.textAlign='center';c.textBaseline='middle';
+      c.fillText(text,canvas.width/2,canvas.height*(dial?.69:.53));
+      fontRatio=size/canvas.height;
     }
-    c.textAlign = 'center'; c.textBaseline = 'middle'; c.fillText(text, canvas.width / 2, canvas.height * (dial ? .74 : .53));
     const texture = new T.CanvasTexture(canvas); texture.colorSpace = T.SRGBColorSpace; texture.anisotropy = 8;
     this.labelTextures.push(texture);
     // Instrument inscriptions belong to the real dial below, rather than
     // another paper rectangle floating in front of its machined face.
     const material = engraved || dial ? new T.MeshBasicMaterial({ transparent: true, toneMapped: false })
       : this.pop.paper({ hatch: 0, shade: .025 });
-    material.map = texture; material.side = T.DoubleSide;
+    material.map = texture; material.side = T.DoubleSide; material.alphaTest=.015;
     if (engraved || dial) {
       material.alphaTest = .015;
       material.forceSinglePass = true;
@@ -242,11 +255,31 @@ export class TextbookGeometry {
       material.customProgramCacheKey = () => 'fieldbook-instrument-inscription-v2';
       this.pop.paperMats?.push(material);
     }
+    if(paper){
+      // The reference paper finish normally fills a whole sheet. Retain the
+      // sampled edge alpha as well as its reveal to avoid dark mipmap fringes.
+      const shadePaper=material.onBeforeCompile;
+      material.onBeforeCompile=(shader:any,renderer:any)=>{
+        shadePaper.call(material,shader,renderer);
+        shader.fragmentShader=shader.fragmentShader.replace('gl_FragColor.a = uSurfAlpha;',
+          'gl_FragColor.a = diffuseColor.a * uSurfAlpha;');
+      };
+      material.customProgramCacheKey=()=> 'fieldbook-caption-slip-v1';
+    }
     material.userData.visualTheme = FIELD_VISUAL_THEME.id;
     const g = dial ? new T.CircleGeometry(w / 2, 64) : new T.PlaneGeometry(w, h);
     const mesh = this.pop.addSurface(new T.Mesh(g, material), this.root); mesh.userData.kind = 'text-label';
-    mesh.userData.text = text; mesh.userData.fontRatio = fontSize / canvas.height;
-    if (engraved || dial) { mesh.userData.labelAppearance = options.appearance; mesh.userData.castShadow = false; mesh.castShadow = false; }
+    mesh.userData.text = text; mesh.userData.fontRatio = fontRatio;
+    // Name slips and printed characters annotate the specimen. Their camera-
+    // facing rectangles must not cast dark rectangular bars on the cloth.
+    mesh.castShadow = mesh.userData.castShadow = false;
+    if (engraved || dial) {
+      // Ink sits on a carrier with a transparent reveal material. Drawing the
+      // carrier first prevents the page beneath it from fringing thin strokes.
+      mesh.renderOrder = 3;
+      mesh.userData.labelAppearance = options.appearance;
+
+    }
     mesh.position.set(...at);
     this.meshes.push(mesh); this.labelCount++;
     return mesh;
@@ -296,9 +329,14 @@ export class TextbookGeometry {
         this.stroke([[x - r, yy - h * .18, z], [x, yy + h * .26, z], [x + r, yy - h * .18, z]], .5);
       }
     } else {
-      // A shaded crown, rather than three full wireframe great circles, keeps
-      // miniature trees solid and lets the scientific overlays remain legible.
-      this.sphere([x, y + h * .78, z], h * .25, color, false, [1.15, .95, .9]);
+      const surface = buildCrownSurface('deciduous', Math.sin(x + z) * 5);
+      const canopy = new T.BufferGeometry();
+      canopy.setAttribute('position',new T.Float32BufferAttribute(surface.positions,3));
+      canopy.setIndex(surface.indices);
+      canopy.scale(h*.28,h*.39,h*.25);
+      canopy.translate(x,y+h*.76,z);
+      canopy.computeVertexNormals();
+      this.mesh(canopy,color,false,true,'plant');
       this.stroke([[x, y + h * .52, z], [x + h * .13, y + h * .8, z]], .4);
     }
   }
@@ -380,7 +418,10 @@ export class TextbookGeometry {
     if (assembling) {
       this.outlines.length = 0;
       for (const mesh of this.meshes) {
-        if (!mesh.visible || mesh.userData.kind === 'text-label' || mesh.userData.instrumentAssembly) continue;
+        // Imported parts have authored solid silhouettes. Turning every
+        // cut edge of a scanned outcrop or milled gear into dynamic ink
+        // retessellates tens of thousands of hidden seams per frame.
+        if (!mesh.visible || mesh.userData.kind === 'text-label' || mesh.userData.instrumentAssembly || mesh.userData.blenderPart) continue;
         const reveal = mesh.geometry.getAttribute('aFieldRevealStart')?.getX(0) ?? 0;
         if ((mesh.userData.formationProgress ?? 0) <= reveal) continue;
         // Round silhouettes are drawn by their original ink once seated;

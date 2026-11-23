@@ -1,3 +1,7 @@
+import { floodBasinWorld } from './textbook-flood-basin-world';
+import { createSoilSpecimenFinish } from './textbook-soil-specimen-finish';
+import { mountDroughtCrops, mountDroughtSoil } from './textbook-drought-soil';
+import { mountDroughtRecorder } from './textbook-hydrology-recorders';
 import { THREE as T } from './reference/engine.js';
 import { PALETTE as C, LIFT_MARGIN, type TextbookGeometry, type ModelMotion, type Vec3 } from './textbook-geometry';
 import { buildDisasterChainWorld } from './textbook-disaster-chain-world';
@@ -52,9 +56,17 @@ function lowCloud(w: World, x: number, z: number, y: number, width = 19) { w.b.c
 function crop(w: World, x: number, z: number, y: number, color = C.green) {
   const { b, p, s } = w, stem = b.mesh(new T.CylinderGeometry(.11 * s, .14 * s, 7 * s, 5), color, false);
   set(stem, p(x, z, y + 3.5));
-  const leaves = [-1, 1].map(side => {
-    const g = new T.ConeGeometry(1.3 * s, 4.2 * s, 3); g.rotateZ(side * .95); g.translate(side * 1.1 * s, 1.5 * s, 0);
-    const m = b.mesh(g, color, false); set(m, p(x, z, y + 2)); return m;
+  const leaves = [-1,1].map(side=>{
+    const verts:number[]=[],indices:number[]=[];
+    const twist=.22*Math.sin(x*.43+z*.32),length=3.8+.75*Math.sin(x*.29+z*.4);
+    for(let j=0;j<=9;j++){
+      const t=j/9,spread=.45*Math.sin(Math.PI*t)**.64;
+      const cx=side*t*length,cy=3.0*Math.sin(t*Math.PI*.70)-1.45*t*t;
+      for(const lane of [-1,0,1])verts.push(cx*s,(cy+(lane===0?.17*Math.sin(Math.PI*t):0))*s,(twist*t+lane*spread)*s);
+      if(j<9){const k=j*3;indices.push(k,k+3,k+1,k+1,k+3,k+4,k+1,k+4,k+2,k+2,k+4,k+5);}
+    }
+    const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(verts,3));g.setIndex(indices);g.computeVertexNormals();
+    const m=b.mesh(g,color,false);set(m,p(x,z,y+2.8));m.rotation.y=.35*Math.sin(.75*x+.32*z);return m;
   });
   return { stem, leaves, origin: p(x, z, y) };
 }
@@ -74,7 +86,7 @@ function setField(w: World, plants: ReturnType<typeof field>, severity: number, 
  * The permanent buffer can hold two clipped triangles per source triangle;
  * changing water level never allocates a new geometry or floods high ground. */
 function inundationSurface(w: World, height: (x: number, z: number) => number, x0 = 4, x1 = 96, z0 = 9, z1 = 65) {
-  const { b, p, s } = w, nx = 40, nz = 24;
+  const { b, p, s } = w, nx = 68, nz = 44;
   const triangles: Vec3[][] = [];
   for (let j = 0; j < nz; j++) for (let i = 0; i < nx; i++) {
     const at = (dx: number, dz: number) => { const q = p(x0 + (x1 - x0) * (i + dx) / nx, z0 + (z1 - z0) * (j + dz) / nz); q[1] = height(q[0], q[2]); return q; };
@@ -84,9 +96,9 @@ function inundationSurface(w: World, height: (x: number, z: number) => number, x
   const g = new T.BufferGeometry(), attr = new T.Float32BufferAttribute(new Float32Array(triangles.length * 18), 3);
   const normals = new Float32Array(triangles.length * 18); for (let i = 1; i < normals.length; i += 3) normals[i] = 1;
   g.setAttribute('position', attr); g.setAttribute('normal', new T.Float32BufferAttribute(normals, 3));
-  const mesh = b.mesh(g, C.sea, false, false); let lastLevel = NaN;
+  const mesh = b.mesh(g, '#668b88', false, false,'water'); const clear=new T.Color('#547e82'), silty=new T.Color('#84958b'); let lastLevel = NaN;
   return { mesh, set(level: number) {
-    if (level === lastLevel) return; lastLevel = level; const h = level * s; let cursor = 0;
+    if (level === lastLevel) return; lastLevel = level; mesh.material.color.copy(clear).lerp(silty,ease((level-2.9)/4.5)); const h = level * s; let cursor = 0;
     for (const triangle of triangles) {
       const polygon: Vec3[] = [];
       for (let i = 0; i < 3; i++) {
@@ -94,9 +106,13 @@ function inundationSurface(w: World, height: (x: number, z: number) => number, x
         if (aWet) polygon.push([a[0], h + .08 * s, a[2]]);
         if (aWet !== cWet) { const q = (h - a[1]) / (c[1] - a[1]); polygon.push([a[0] + (c[0] - a[0]) * q, h + .08 * s, a[2] + (c[2] - a[2]) * q]); }
       }
-      for (let i = 1; i < polygon.length - 1; i++) for (const q of [polygon[0], polygon[i], polygon[i + 1]]) attr.setXYZ(cursor++, ...q);
+      for (let i = 1; i < polygon.length - 1; i++) for(const q of [polygon[0],polygon[i],polygon[i+1]]){
+        attr.setXYZ(cursor,...q);
+        const nx=.045*Math.sin(.32*q[0]/s+.7*q[2]/s),nz=.034*Math.sin(.20*q[0]/s-.73*q[2]/s);
+        g.attributes.normal.setXYZ(cursor++,nx,1,nz);
+      }
     }
-    attr.needsUpdate = true; g.setDrawRange(0, cursor);
+    attr.needsUpdate = true; g.attributes.normal.needsUpdate=true; g.setDrawRange(0, cursor);
     // Unused buffer capacity must not add an unrelated origin to camera fits.
     if (!g.boundingBox) g.boundingBox = new T.Box3();
     if (!g.boundingSphere) g.boundingSphere = new T.Sphere();
@@ -106,76 +122,40 @@ function inundationSurface(w: World, height: (x: number, z: number) => number, x
 }
 
 function buildFlood(b: TextbookGeometry): ModelMotion {
-  const w = world(b), { s, p, box, label } = w;
-  const height = (x: number, z: number) => {
-    const u = x / s, v = (z - p(0, 0)[2]) / s;
-    return (2 + 11 * Math.exp(-((u - 18) ** 2 / 330 + (v - 12) ** 2 / 530)) + 3 * Math.min(1, Math.abs(u - 51) / 11)) * s;
-  };
-  b.terrain(4 * s, 96 * s, p(0, 9)[2], p(0, 65)[2], height, C.green, 40, 24);
-  const channel = [p(43, 10, 5), p(47, 24, 3), p(51, 38, 2.8), p(48, 51, 2.8), p(53, 65, 2.7)];
-  const river = b.tube(channel, 2.5 * s, C.water);
-  const settlementStart = b.meshes.length;
-  for (const [x, z] of [[66, 41], [76, 46], [67, 55]]) b.house(p(x, z, height(x * s, p(0, z)[2]) / s), 6 * s, 5 * s);
-  const settlementMeshes = b.meshes.slice(settlementStart);
-  box(70, 60, 43, 3, 5.1, 5.6, C.rock);
-  const flood = inundationSurface(w, height); flood.set(2.9);
-  const cloudStart = b.meshes.length; lowCloud(w, 27, 17, 39, 24); lowCloud(w, 58, 15, 41, 22);
-  const clouds = b.meshes.slice(cloudStart);
-  label('河道', 43, 65, 9, 13, 6.2); label('低洼聚落', 81, 60, 17, 23.4, 6.2);
-  const rainLabel = label('连续强降水', 48, 8, 49, 30, 6.2);
-  const route = [p(26, 21, 15), p(33, 31, 8), p(46, 39, 4), p(52, 61, 3.4)];
-  const replay = { kind: 'replay' as const, selection: 1, label: '从降雨开始观察汇流与淹水' };
-  [...settlementMeshes, ...clouds, river, rainLabel].forEach(mesh => { mesh.userData.modelInput = replay; });
-  let state = evaluateFloodSequence(0, 0);
-  return {
-    update(phase, selection) {
-      state = evaluateFloodSequence(phase, selection); flood.set(state.waterLevel);
-      flood.mesh.visible = state.rise > 0; rainLabel.visible = state.heavyRain;
-      b.trace(channel.map(q => [q[0], Math.max(q[1], state.waterLevel * s + .15 * s), q[2]]), phase, state.heavyRain ? 6 : 3);
-      if (state.heavyRain) {
-        rain(w, phase, 15, 63, 20, 34, 14, 14);
-        if (state.runoff > 0) b.trace(route, phase, 4, 'flow', 1, state.runoff);
-      }
-    },
-    focusBounds: () => ({ min: p(1, 4, 0), max: p(99, 71, 54) }),
-    describe: () => ({ kind: 'floodplain-inundation', ...state, cause: state.heavyRain ? 'sustained-heavy-rain' : 'baseline', terrainClippedWater: true, settlementsOnLowland: true, eventTimeAndLevel: 'schematic' }),
-  };
+  return floodBasinWorld(b);
 }
 
 function buildDrought(b: TextbookGeometry): ModelMotion {
   const w = world(b), { s, p, box, label } = w;
-  box(50, 39, 91, 54, 0, 7, C.land);
-  const plot = box(31, 40, 43, 34, 7, 7.7, C.green);
-  const plants = field(w, 15, 30, 7.7, 6, 4), wet = b.material(C.green), dry = b.material(C.gold), earth = b.material(C.land);
-  plants.forEach(plant => { plant.stem.scale.x = plant.stem.scale.z = 1.7; plant.leaves.forEach(leaf => { leaf.scale.x = leaf.scale.z = 1.25; }); });
+  // The cistern has a real open cut. Its lowest remaining water stays visible
+  // through the missing front wall as the supply recedes below ground level.
+  const ground=b.prism([[4.5,12],[95.5,12],[95.5,66],[88,66],[88,29],[66,29],[66,66],[4.5,66]].map(([x,z]):[number,number]=>{
+    const q=p(x,z);return [q[0],q[2]];
+  }),0,7*s,C.land,false);
+  ground.material=createSoilSpecimenFinish(b.pop,'#9b8769',1,s,'loam');
+  const soil=mountDroughtSoil(b,p,s);
+  const crops=mountDroughtCrops(b,p);
   // Sectional water source remains visible beside the cultivated ground.
   box(77, 43, 24, 29, 1, 2, C.rock); box(66, 43, 1, 30, 2, 12, C.paper); box(88, 43, 1, 30, 2, 12, C.paper); box(77, 29, 23, 1, 2, 12, C.paper);
-  const source = w.movingBox(20, 1, 26, C.sea);
+  const source = w.movingBox(20, 1, 26, '#658b87');
   b.house(p(84, 14, 7), 8 * s, 6 * s);
-  const crackPaths: Vec3[][] = [
-    [p(11, 58, 7.8), p(22, 54, 7.8), p(29, 59, 7.8), p(40, 55, 7.8)],
-    [p(22, 54, 7.8), p(25, 48, 7.8), p(35, 45, 7.8)],
-    [p(47, 22, 7.8), p(39, 28, 7.8), p(43, 38, 7.8)],
-  ];
   label('农作物', 29, 61, 15, 14); label('水源', 78, 61, 15, 10);
-  const shortage = label('土壤缺水', 35, 16, 24, 18), normal = label('水分充足', 35, 16, 24, 18);
+  const shortage = label('土壤缺水', 35, 22, 20, 18), normal = label('水分充足', 35, 22, 20, 18);
   const droughtInput = { kind: 'replay' as const, selection: 1, label: '从少雨开始观察土壤、水源和作物响应' };
-  [plot, source, shortage, ...plants.flatMap(plant => [plant.stem, ...plant.leaves])].forEach(mesh => { mesh.userData.modelInput = droughtInput; });
+  [...soil.members, crops.mesh, source, shortage].forEach(mesh => { mesh.userData.modelInput = droughtInput; });
   normal.userData.modelInput = { kind: 'select', selection: 0, label: '对照水分充足状态' };
+  const recorder=mountDroughtRecorder(b,p,s);
   let state = evaluateDroughtSequence(0, 0);
   return {
     update(phase, selection) {
-      state = evaluateDroughtSequence(phase, selection);
-      plot.material = state.soilDeficit > .35 ? earth : wet;
-      setField(w, plants, state.cropStress, wet, dry);
+      recorder(phase,selection); state = evaluateDroughtSequence(phase, selection);
+      soil.update(state.soilDeficit);
+      crops.update(state.cropStress);
       const level = state.sourceLevel; source.scale.y = level; set(source, p(77, 43, 2 + level / 2)); b.outline(source, .5);
       shortage.visible = state.lowRain && state.soilDeficit > .1; normal.visible = !state.lowRain;
-      if (state.soilDeficit > .12) crackPaths.forEach(path => {
-        const start = path[0], out = path.map(q => [start[0] + (q[0] - start[0]) * state.soilDeficit, q[1], start[2] + (q[2] - start[2]) * state.soilDeficit] as Vec3);
-        b.contour(out, .8 * state.soilDeficit);
-      });
       if (selection !== 1) rain(w, phase, 17, 48, 33, 29, 9, 7);
     },
+    focusBounds: () => ({min:p(2,9,-3),max:p(98,78,33)}),
     describe: () => ({ kind: 'drought-effects', ...state, severity: state.soilDeficit, lowPrecipitation: state.lowRain, sourceStorage: 'decreases-with-drought', soilWater: 'decreases-with-drought', cropsAffected: state.cropStress > .38 }),
   };
 }

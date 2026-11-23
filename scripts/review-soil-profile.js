@@ -91,7 +91,7 @@ async page => {
   const clickLayer = async layer => {
     await settleCamera(); const hit = await target({ role: 'layer', layer });
     const before = await read(); await page.mouse.move(hit.x, hit.y); await frames();
-    check(await page.locator('#scene canvas').getAttribute('title') === hit.label, `layer ${layer}: actual solid exposes its click hint`);
+    check(await page.locator('.model-touch-cue').isVisible() && await page.locator('.model-touch-cue span').textContent() === hit.label.split('；')[0], `layer ${layer}: actual solid exposes its click hint`);
     await page.mouse.click(hit.x, hit.y); await frames();
     const selection = before.selection === layer ? -1 : layer;
     await page.waitForFunction(n => window.textbookDiagnostics.state.selection === n, selection);
@@ -185,10 +185,12 @@ async page => {
   check(svg.images === 0 && svg.materials.length === 24 && svg.role === 'group', 'fallback is an accessible native vector column with 24 material markers');
   check(svg.materials.every((p, i) => p.status === production[i].status && ['u', 'depth', 'offset'].every(k => Math.abs(p[k] - production[i][k]) < .0000006)), 'all vector material coordinates and deposit states match the actual Three.js geometry');
   check(svg.aria.includes('不代表全部土壤矿物质') && svg.aria.includes('不表示真实成土年限'), 'fallback states the limited scope and uncalibrated timescale');
-  const layerControl = n => page.locator(`.flat-model-svg [data-soil-profile-part="layer"][data-model-selection="${n}"]`);
+  // The visible layer name remains the extraction control after adding the
+  // independent front-half inspection. The wrapper itself is not actionable.
+  const layerControl = n => page.locator(`.flat-model-svg [data-soil-profile-part="label"][data-model-selection="${n}"]`);
   const phaseBefore = (await read()).phase;
-  await layerControl(2).click(); await frames(); check((await read()).selection === 2 && (await read()).phase === phaseBefore, 'vector layer click extracts only that layer without restarting the rain');
-  await layerControl(2).click(); await frames(); check((await read()).selection === -1, 'clicking the vector layer again restores the whole column');
+  await layerControl(2).locator('text').click(); await frames(); check((await read()).selection === 2 && (await read()).phase === phaseBefore, 'vector layer click extracts only that layer without restarting the rain');
+  await layerControl(2).locator('text').click(); await frames(); check((await read()).selection === -1, 'clicking the vector layer again restores the whole column');
   await layerControl(3).focus(); await page.keyboard.press('Enter'); await frames();
   check((await read()).selection === 3 && await layerControl(3).evaluate(el => el === document.activeElement), 'Enter extracts a vector layer and preserves keyboard focus');
   await page.keyboard.press('Space'); await frames();

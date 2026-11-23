@@ -1,3 +1,4 @@
+import { drawingGrip } from './textbook-drawing-grip';
 /** PEP Geography I, printed p.104 / PDF p.109, visually checked.
  * A cutaway makes invisible cold air legible. Coordinates and the relative
  * warmth indicator are teaching settings, never a forecast or thermometer. */
@@ -82,13 +83,23 @@ export function coldWaveLocalResponse(x: number, frontX: number) {
 /** A shallow, closed wedge: its top slopes down into a zero-height nose. */
 export function coldWaveWedgeMesh(frontX: number, segments = 20): ColdWaveMesh {
   const l = COLD_WAVE_LAYOUT, positions: number[] = [], indices: number[] = [];
+  const across = 6, stride = 2*(across+1);
   for (let i = 0; i <= segments; i++) {
-    const x = mix(l.sourceX, frontX, i / segments), h = coldAirDepthAt(x, frontX), y = l.ground + .12;
-    positions.push(x, y, l.farZ, x, y + h, l.farZ, x, y + h, l.nearZ, x, y, l.nearZ);
-    if (i < segments) for (let j = 0; j < 4; j++) { const a = i * 4 + j, b = i * 4 + (j + 1) % 4; indices.push(a, b, b + 4, a, b + 4, a + 4); }
+    const x = mix(l.sourceX, frontX, i/segments), depth = coldAirDepthAt(x, frontX), floor = l.ground + .12;
+    for (const top of [true, false]) for (let j=0; j<=across; j++) {
+      const v = top ? j/across : 1-j/across;
+      const wave = Math.sin(Math.PI*v)*(.051*Math.sin(x*.13+v*3.5)+.039*Math.sin(x*.27-v*6.3));
+      positions.push(x, floor+(top ? depth*(1+wave) : 0), mix(l.farZ,l.nearZ,v));
+    }
+    if (i < segments) for (let j=0;j<stride;j++) {
+      const a = i*stride+j, b = i*stride+(j+1)%stride;
+      indices.push(a,b,b+stride,a,b+stride,a+stride);
+    }
   }
-  indices.push(0, 3, 2, 0, 2, 1); const end = segments * 4;
-  indices.push(end, end + 1, end + 2, end, end + 2, end + 3);
+  for (let j=0;j<across;j++) {
+    const a=j,b=j+1,c=stride-2-j,d=stride-1-j,end=segments*stride;
+    indices.push(a,d,c,a,c,b, end+a,end+b,end+c,end+a,end+c,end+d);
+  }
   return { positions, indices };
 }
 function flagMesh(phase: number, wind: number, segments = 10) {
@@ -116,17 +127,33 @@ function plantMesh(base: ColdWavePoint, height: number, wind: number) {
     if (i < points.length - 1) for (let j = 0; j < sides; j++) { const a = i * sides + j, b = i * sides + (j + 1) % sides; indices.push(a, b + sides, b, a, a + sides, b + sides); }
   }
   for (let j = 1; j < sides - 1; j++) { indices.push(0, j, j + 1); const k = (points.length - 1) * sides; indices.push(k, k + j + 1, k + j); }
-  const leaves = [-1, 1].map((direction, i) => {
-    const at = points[i + 3], tip: ColdWavePoint = [at[0] + direction * 3.5 + wind * 1.2, at[1] + 2 - wind * .8, at[2] + direction * 1.1];
-    const middle = point(at, tip, .52);
-    return { positions: [...at, middle[0], middle[1], middle[2] - .8, ...tip, middle[0], middle[1], middle[2] + .8], indices: [0, 1, 2, 0, 2, 3, 0, 2, 1, 0, 3, 2] };
+  const leaves = Array.from({length:6},(_,i)=>{
+    const side = i%2===0 ? -1 : 1, at=points[i], reach=(4.2-i*.32);
+    const vertices:number[]=[], faces:number[]=[];
+    // Two folded leaf blades meet along a midrib. The base follows the stalk
+    // and the elastic deflection increases toward the drooping tip.
+    for (let j=0;j<=5;j++) {
+      const u=j/5, fold=Math.sin(Math.PI*u);
+      const x=at[0]+(side*reach+wind*1.9)*u, y=at[1]+3.4*Math.sin(u*2.22)-wind*.83*u*u;
+      const z=at[2]+side*(i%3===0?-1:1)*u*1.64;
+      vertices.push(x,y-fold*.38,z-fold*.58,x,y,z,x,y-fold*.32,z+fold*.58);
+      if (j) {const k=3*j;faces.push(k-3,k,k-2,k-2,k,k+1,k-2,k+1,k-1,k-1,k+1,k+2);}
+    }
+    return { positions:vertices, indices:faces };
   });
   return { mesh: merge([{ positions, indices }, ...leaves]), points, top: points[points.length - 1], lean: 4.6 * wind };
 }
 function flowMesh(frontX: number, z: number) {
   const start = frontX - 23, end = frontX - 10, width = .48;
-  return coldWavePrism([[start, z - width], [end - 2.9, z - width], [end - 2.9, z - 1.55], [end, z],
-    [end - 2.9, z + 1.55], [end - 2.9, z + width], [start, z + width]], 4.1, 4.55);
+  const arrow=coldWavePrism([[start,z-width],[end-2.9,z-width],[end-2.9,z-1.55],[end,z],
+    [end-2.9,z+1.55],[end-2.9,z+width],[start,z+width]],0,.42);
+  // Place the suspended tracers inside the approaching air. Each arrow
+  // descends with the local cold layer toward its narrowing leading edge.
+  for(let i=0;i<arrow.positions.length;i+=3) {
+    const depth=coldAirDepthAt(arrow.positions[i],frontX);
+    arrow.positions[i+1]+=COLD_WAVE_LAYOUT.ground+.53+depth*(.28+(z-31)*.009);
+  }
+  return arrow;
 }
 export function evaluateColdWave(input: number) {
   const l = COLD_WAVE_LAYOUT, phase = clamp(input), frontX = mix(l.frontStart, l.frontEnd, phase);
@@ -178,12 +205,33 @@ export function coldWaveSvg(phase: number, _selection?: number): string {
     }
     const attrs = selection === undefined ? '' : ` data-model-selection="${selection}" tabindex="0" role="button" aria-label="观察${COLD_WAVE_STOPS[selection].label}"`;
     scene.push(`<g data-cold-wave-part="${role}"${attrs} opacity="${opacity}">${faces.sort((a, b) => a.depth - b.depth).map(f =>
-      `<polygon points="${polygon(f.points)}" fill="${colorMix(color, '#626c65', f.shade)}" stroke="${opacity < 1 ? '#6e929c' : '#7a8071'}" stroke-width=".55" stroke-linejoin="round"/>`).join('')}</g>`);
+      `<polygon points="${polygon(f.points)}" fill="${colorMix(color, '#626c65', f.shade)}" stroke="${opacity < 1 || role.startsWith('plant-') ? 'none' : colorMix(color,'#626c65',f.shade)}" stroke-width=".55" stroke-linejoin="round"/>`).join('')}</g>`);
   };
   for (const part of COLD_WAVE_PARTS.filter(p => p.id === 'land-base' || p.id === 'field-bed')) draw(part.mesh, part.color, part.id, 0);
+  const underside = (z:number,offset:number) => Array.from({length:49},(_,i):ColdWavePoint => {
+    const x=5+i*87/48;return [x,offset+.19*Math.sin(x*.26)+.079*Math.sin(x*.73),z];
+  });
+  const path=(points:readonly ColdWavePoint[],ink:string,width:number) =>
+    `<polyline points="${polygon(points)}" stroke="${ink}" stroke-width="${width}" stroke-linejoin="round" fill="none"/>`;
+  scene.push(path(underside(72,-.24),'#927759',1.1),path(underside(72,1.42),'#998368',1.7));
+  for (let row=0;row<5;row++) {
+    const z=48+3.12*row;
+    scene.push(path([[29,3.44,z],[44,3.44,z+.21],[60,3.44,z],[84,3.44,z+.13]],'#8e8468',1.5));
+  }
   draw(s.geometry.wedge, '#a7c0cd', 'cold-air-wedge', 1, .4);
   for (const [i, mesh] of s.geometry.flows.entries()) draw(mesh, '#739aa4', `flow-${i}`, 1);
-  for (const part of COLD_WAVE_PARTS.filter(p => p.id !== 'land-base' && p.id !== 'field-bed')) draw(part.mesh, part.color, part.id, part.id.startsWith('gauge') ? 3 : 0);
+  for (const part of COLD_WAVE_PARTS.filter(p => p.id === 'pole' || p.id.startsWith('gauge'))) draw(part.mesh, part.color, part.id, part.id.startsWith('gauge') ? 3 : 2);
+  for (const x of [78.6,87.4]) for (const z of [31.2,38.8]) draw(coldWaveBox([x-.21,3,z-.21],[x+.21,6.6,z+.21]),'#cdc6ae','screen-leg',0);
+  draw(coldWaveBox([78.2,6.6,30.9],[87.8,12.3,39.1]),'#ceccb9','house',0);
+  for(let j=0;j<7;j++) {
+    const y=7.1+j*.68;scene.push(path([[78.2,y,30.9],[78.2,y,39.2],[87.9,y,39.2]],'#808479',1.25));
+  }
+  const canopy=(y:number, ink:string) => {
+    const top:ColdWavePoint[]=[[77.3,y,30],[88.7,y,30],[88.7,y+1.43,35],[77.3,y+1.43,35]];
+    const slope:ColdWavePoint[]=[top[3],top[2],[88.7,y,40],[77.3,y,40]];
+    scene.push(`<polygon points="${polygon(top)}" fill="${ink}" stroke="#64675b"/><polygon points="${polygon(slope)}" fill="${ink}" stroke="#64675b"/>`);
+  };
+  canopy(12.63,'#c9c5b3'); canopy(13.8,'#89958e');
   for (const plant of s.plants) draw(plant.mesh, '#7f9575', `plant-${plant.id}`, 2);
   draw(s.geometry.gaugeFill, s.observation.indicatorColor, 'relative-warmth', 3);
   draw(s.geometry.flag, '#bc8a6a', 'wind-flag', 2);
@@ -193,10 +241,21 @@ export function coldWaveSvg(phase: number, _selection?: number): string {
   });
   scene.push(`<polyline points="${polygon(frontTop)}" fill="none" stroke="#6f909a" stroke-width="1.7" stroke-linejoin="round"/>`);
   for (const label of COLD_WAVE_LABELS) {
-    const [x, y] = coldWaveProject(label.at), width = Math.max(label.width * 4.1, label.text.length * 30 + 14);
-    scene.push(`<g data-model-selection="${label.selection}" tabindex="0" role="button" aria-label="观察${COLD_WAVE_STOPS[label.selection].label}"><rect x="${num(x - width / 2)}" y="${num(y - 25)}" width="${num(width)}" height="46" rx="1.5" fill="#f7f2e5"/><text x="${x}" y="${num(y + 10)}" text-anchor="middle" font-size="30" fill="#475b57">${label.text}</text></g>`);
+    const [x,y]=coldWaveProject(label.at), width=label.text.length*19+19;
+    scene.push(`<g class="cold-reading" data-model-selection="${label.selection}" tabindex="0" role="button" aria-label="观察${COLD_WAVE_STOPS[label.selection].label}"><rect x="${x-width/2}" y="${y-15}" width="${width}" height="28" rx="3" fill="#e7dfcc" style="--plate-left:${x-label.text.length*14.5-8}px;--plate-width:${label.text.length*29+16}px" stroke="#aa956c"/><text x="${x}" y="${y+6}" text-anchor="middle" font-size="18" fill="#494d40">${label.text}</text></g>`);
   }
-  const [hx, hy] = coldWaveProject(s.handle), [fx, fy] = coldWaveProject(s.front);
-  scene.push(`<path d="M${fx} ${fy}L${hx} ${hy - 25}" fill="none" stroke="#7a8b82" stroke-width="1"/><g data-cold-wave-part="front-pull-tab" data-phase="${s.phase}" data-model-selection="2" tabindex="0" role="button" aria-label="定位到冷空气到达观察点"><rect x="${hx - 38}" y="${hy - 25}" width="76" height="46" rx="1.5" fill="#e2d3b4" stroke="#a5997f"/><text x="${hx}" y="${hy + 10}" text-anchor="middle" font-size="30" fill="#475b57">前缘</text></g>`);
-  return `<svg xmlns="http://www.w3.org/2000/svg" class="flat-model-svg cold-wave-svg" viewBox="0 0 640 430" role="img" aria-label="冷空气推进后同一观察点降温与风响应的立体剖面示意，冷热与方向均为教学示意" data-kind="cold-wave" data-phase="${s.phase}" data-stage="${s.stage}" data-selection="${s.selection}" data-front-x="${num(s.frontX)}" data-warmth="${num(s.observation.warmth)}"><title>同一观察点：${s.caption}</title>${scene.join('')}</svg>`;
+  const [hx,hy]=coldWaveProject(s.handle), [fx,fy]=coldWaveProject(s.front);
+  const [railStart]=coldWaveProject(COLD_WAVE_LAYOUT.track.start), [railEnd]=coldWaveProject(COLD_WAVE_LAYOUT.track.end);
+  scene.push(`<g stroke="#837b65" stroke-width="3"><path d="M${railStart-6} ${hy-2}H${railEnd+6}m0 7H${railStart-6}"/></g>
+    <path d="M${fx} ${fy}L${hx} ${hy-6}" stroke="#9d7550" stroke-width="2.4" fill="none"/>
+    <g data-cold-wave-part="front-pull-tab" data-phase="${s.phase}" data-model-selection="2" tabindex="0" role="button" aria-label="定位到冷空气到达观察点">
+      <rect x="${hx-15}" y="${hy-5}" width="30" height="12" rx="3" fill="#b39b65" stroke="#776447"/>
+      <ellipse cx="${hx}" cy="${hy-5}" rx="11" ry="8" fill="#4b808b" stroke="#314f54"/><path d="M${hx-6} ${hy-7}q6-4 11 0" stroke="#acc2b7" fill="none"/></g>
+    ${drawingGrip('推移冷空气前缘',coldWaveProject(COLD_WAVE_LAYOUT.track.start),coldWaveProject(COLD_WAVE_LAYOUT.track.end),s.phase)}`);
+  const names=['到来前','接近','到达','推进后'];
+  scene.push(`<rect x="53" y="392" width="524" height="32" rx="3" fill="#786248" stroke="#524431"/>`);
+  names.forEach((name,i)=>{
+    scene.push(`<g transform="translate(${126+i*126} 408)" data-specimen-key data-model-selection="${i}" tabindex="0" role="button" aria-label="${COLD_WAVE_STOPS[i].label}"><rect x="-53" y="-13" width="106" height="26" rx="2" fill="${i===s.selection?'#ddd1ab':'#e9e0c9'}" stroke="#aa986e"/><text text-anchor="middle" y="6" font-size="18" fill="#4b4436">${name}</text></g>`);
+  });
+  return `<svg xmlns="http://www.w3.org/2000/svg" class="flat-model-svg cold-wave-svg" viewBox="0 0 640 430" role="img" aria-label="冷空气推进后同一观察点降温与风响应的立体剖面示意，冷热与方向均为教学示意" data-kind="cold-wave" data-phase="${s.phase}" data-stage="${s.stage}" data-selection="${s.selection}" data-front-x="${num(s.frontX)}" data-warmth="${num(s.observation.warmth)}"><title>同一观察点：${s.caption}</title><style>@media(max-width:480px){.cold-wave-svg text{font-size:28px}.cold-reading rect{x:var(--plate-left);width:var(--plate-width)}}</style>${scene.join('')}</svg>`;
 }

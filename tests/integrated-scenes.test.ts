@@ -1,4 +1,4 @@
-import { describe, expect, it, vi } from 'vitest';
+import { beforeAll, describe, expect, it, vi } from 'vitest';
 import * as Three from 'three';
 import { BASIN_ACCUMULATION_STOPS, INTEGRATED_CONTROLS, INTEGRATED_REFERENCES,
   QUAKE_FLAGS, QUAKE_LAYOUT, basinFloodLevel, basinGround, confirmedRoute, evaluateBasin,
@@ -14,6 +14,9 @@ import { buildIntegratedWorld, INTEGRATED_INSPECTIONS } from '../src/textbook-in
 
 /** Real Three buffers, meshes and transforms. Only the browser text canvas and
  * ink renderer are replaced; the production terrain/solid constructors run. */
+import { loadFieldInstrument } from '../src/textbook-field-instruments';
+beforeAll(() => loadFieldInstrument('city-rain-system'));
+
 function fixture(effect: string) {
   const root = new Three.Group(), meshes: Three.Mesh[] = [];
   const b: any = {
@@ -109,12 +112,12 @@ describe('source-bounded cross-chapter model states', () => {
     const actions = quakeResponseActions(13, .3);
     expect(actions.find(action => action.id === 'send')!.enabled).toBe(false);
     expect(actions.find(action => action.id === 'verify')!.enabled).toBe(false);
-    for (const selection of [0, 1, 3, 7, 15]) {
+    for (const selection of Array.from({length:16},(_,i)=>i)) {
       const byId = Object.fromEntries(quakeResponseActions(selection, 1).map(action => [action.id, action]));
-      expect(byId.send.selection).toBe(selection | 1); expect(byId.send.replay).toBe(false);
+      expect(byId.send.selection).toBe(selection ^ 1); expect(byId.send.replay).toBe(false);
       expect(byId.verify.selection).toBe(selection ^ 2); expect(byId.verify.replay).toBe(false);
       expect(byId.layers.selection).toBe(selection ^ 8);
-      expect(byId['warehouse-a'].selection).toBe(selection & ~4); expect(byId['warehouse-a'].replay).toBe(true);
+      expect(byId['warehouse-a'].selection).toBe(selection & ~4); expect(byId['warehouse-a'].replay).toBe(false);
       expect(byId['warehouse-b'].selection).toBe(selection | 4);
     }
   });

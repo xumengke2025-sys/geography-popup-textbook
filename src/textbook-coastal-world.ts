@@ -15,15 +15,7 @@ export function buildBreeze(b: TextbookGeometry): ModelMotion {
   b.root.position.set(shift, rise, -retreat);
   const at = (x: number, z: number, y = 0): Vec3 => [x * s, y * s, back + z * s];
   const parts = createInstrumentParts(b);
-  const { coast, ground } = buildCoastalSpecimen(b, s, back);
-
-  // White walls and lightly lifted grey eaves are part of the coast, not UI ornament.
-  for (const [x, z, w, h] of [[17, 31, 8.2, 5.4], [28, 29, 6.6, 4.6]])
-    b.house(at(x, z, ground(x, z) + .06), w * s, h * s, '#f0eadb');
-  const jettyX = coast(48);
-  b.box(at(jettyX - 1.5, 45.8, 2.9), at(jettyX + 10, 49, 3.45), '#eee5d4');
-  for (const x of [jettyX + 3, jettyX + 8]) for (const z of [46.1, 48.7]) b.cylinder(at(x, z, .3), at(x, z, 3.5), .13 * s, '#7e8171');
-  for (let j = 0; j < 9; j++) b.stroke([at(jettyX - 1 + j * 1.2, 45.9, 3.48), at(jettyX - 1 + j * 1.2, 48.9, 3.48)], .23);
+  const specimen = buildCoastalSpecimen(b, s, back);
 
   const low = 13, high = 67, airZ = 43;
   // A rounded spatial circuit, with a separate return path over the coast.
@@ -48,14 +40,20 @@ export function buildBreeze(b: TextbookGeometry): ModelMotion {
     return mesh;
   });
   // Two horizontal comparison levels. There are no inter-height pressure arrows.
+  const inscription = (text: string, x: number, z: number, h: number, w: number, height: number, angle = 0) => {
+    const mesh = b.label(text, at(x,z,h), w*s, height*s, { appearance: 'engraved', ink: '#403b2d' });
+    mesh.rotation.x = angle; mesh.userData.labelMount = 'surface'; return mesh;
+  };
   const tags = [-1, 0, 1].map(direction => {
-    const landLow = direction > 0 ? '低压' : direction < 0 ? '高压' : '近似相等';
-    const seaLow = direction > 0 ? '高压' : direction < 0 ? '低压' : '近似相等';
-    return [[landLow, 27, low + 16], [seaLow, 75, low + 16], [seaLow, 28, high - 10], [landLow, 74, high - 10]]
-      .map(([text, x, y]) => b.label(String(text), at(Number(x), airZ + .6, Number(y)), (direction === 0 ? 22 : 14) * s, 5.8 * s));
+    const land = direction > 0 ? '低压' : direction < 0 ? '高压' : '相近';
+    const sea = direction > 0 ? '高压' : direction < 0 ? '低压' : '相近';
+    return [inscription(land,26,18.87,29,13.6,4.9), inscription(sea,74,18.87,29,13.6,4.9),
+      inscription(sea,26,18.87,57,13.6,4.9), inscription(land,74,18.87,57,13.6,4.9)];
   });
-  const landTags = ['陆地 · 较冷', '陆地 · 同温', '陆地 · 较暖'].map(text => b.label(text, at(20, 76, 2.5), 25 * s, 5.8 * s));
-  const seaTags = ['海洋 · 较暖', '海洋 · 同温', '海洋 · 较冷'].map(text => b.label(text, at(80, 76, 2.5), 25 * s, 5.8 * s));
+  const tilt = 29*Math.PI/180;
+  const heatPlate = (text: string,x: number) => inscription(text,x,72+Math.sin(tilt)*.71,1.1+Math.cos(tilt)*.71,25.8,5.4,tilt-Math.PI/2);
+  const landTags = ['陆地·较冷','陆地·同温','陆地·较暖'].map(t=>heatPlate(t,20));
+  const seaTags = ['海洋·较暖','海洋·同温','海洋·较冷'].map(t=>heatPlate(t,80));
   // Matched, mechanically guided comparison indices. They show relative
   // warmth without inventing a thermometer calibration or a physical air pipe.
   const heating = [20, 80].map(x => {
@@ -134,7 +132,7 @@ export function buildBreeze(b: TextbookGeometry): ModelMotion {
   const hand=b.mesh(handGeometry,'#424b4b',false,true,'steel');hand.position.set(...center);
   hand.userData.interactionFeedback=false;
   parts.knob(at(106,53.5,26),[0,0,1],.86*s,.62*s);
-  b.label('昼夜',at(106,54,11),13*s,4.8*s);
+  inscription('昼夜',106,52.79,22.1,8.2,2.7);
   const sky = phaseDialPoint(.5,dial);
   const daylightInput:ModelInput={kind:'phase-dial',dial,label:'拖动日月，观察风向变化'};
   dialPlate.userData.modelInput=daylightInput;face.userData.modelInput=daylightInput;hand.userData.modelInput=daylightInput;
@@ -153,7 +151,7 @@ export function buildBreeze(b: TextbookGeometry): ModelMotion {
   moon.userData.modelInput=daylightInput;moon.userData.daylightHandle=true;
   moon.userData.smallPointTarget=true;
   moon.userData.interactionFeedback=false;
-  const foot = at(coast(54) - 4, 54, 3.5), top: Vec3 = [foot[0], 15.6 * s, foot[2]];
+  const foot = at(specimen.flagCoast - 4, 54, 3.5), top: Vec3 = [foot[0], 15.6 * s, foot[2]];
   parts.bearing([foot[0],foot[1]+.45*s,foot[2]],[0,1,0],1*s,.9*s);
   b.cylinder(foot, top, .13 * s, '#6d786e'); b.stroke([foot, top], .54); b.sphere(top, .22 * s, '#e7dcc4', false);
   const cloth = new T.PlaneGeometry(9.1 * s, 2.6 * s, 28, 6); cloth.translate(4.55 * s, 0, 0);
@@ -172,6 +170,7 @@ export function buildBreeze(b: TextbookGeometry): ModelMotion {
         flowPhase = ((flowPhase + step * direction * strength) % 1 + 1) % 1;
       }
       const daylight = Math.cos((phase - .5) * Math.PI * 2) > 0;
+      specimen.update(daylight,state.land,state.sea);
       const celestial=phaseDialPoint(phase,dial),offset=b.v(celestial).sub(b.v(sky));
       sun.position.copy(offset);moon.position.copy(offset);
       hand.rotation.z=(phase-.25)*Math.PI*2-Math.PI/2;
@@ -208,7 +207,7 @@ export function buildBreeze(b: TextbookGeometry): ModelMotion {
           const t=j/32,u=((k/4+flowPhase+.018+t*.175*(direction||1))%1+1)%1;
           const p=curve.getPoint(u),tangent=curve.getTangent(u).multiplyScalar(direction||1);
           const normal=new T.Vector3(-tangent.y,tangent.x,0).normalize();
-          const radius=(t<.72?.46:1.45*(1-t)/.28)*s*Math.min(1,strength*2);
+          const radius=(t<.70?.62:2.1*(1-t)/.30)*s*Math.min(1,strength*2);
           for(let side=0;side<radial;side++){
             const angle=side/radial*Math.PI*2,q=p.clone().addScaledVector(normal,Math.cos(angle)*radius);
             q.z+=Math.sin(angle)*radius;a.setXYZ(j*radial+side,q.x,q.y,q.z);
@@ -218,13 +217,10 @@ export function buildBreeze(b: TextbookGeometry): ModelMotion {
       }
       if (strength > .018) {
         b.contour(curve.getPoints(96).map((p: any) => p.toArray()), .25);
-        for (const depth of [-15, 0, 12]) {
-          if (depth) b.contour(curve.getPoints(80).map((p: any) => [p.x, p.y, p.z + depth * s]), .17);
-          for (let j = 0; j < 7; j++) {
-          const t = ((flowPhase + j / 7 + depth * .017) % 1 + 1) % 1;
-          const a = curve.getPoint(t), tangent = curve.getTangent(t).multiplyScalar(direction), tail = a.clone().addScaledVector(tangent, -1.75 * s * strength);
-          a.z += depth * s; tail.z += depth * s; b.flow.push({ points: [tail, a], width: depth ? .62 : 1.05 });
-          }
+        for (let j = 0; j < 7; j++) {
+          const t = (flowPhase + j / 7) % 1;
+          const a = curve.getPoint(t), tangent = curve.getTangent(t).multiplyScalar(direction);
+          b.flow.push({ points: [a.clone().addScaledVector(tangent, -1.75*s*strength), a], width: 1.05 });
         }
       }
       for (const height of [low + 16, high - 10]) for (let i = 0; i < 8; i++)
@@ -245,13 +241,13 @@ export function buildBreeze(b: TextbookGeometry): ModelMotion {
         [0, 29, 58, 87, 116, 145, 174], [28, 57, 86, 115, 144, 173, 202]])
         b.contour(ids.map(j => [a.getX(j) + flag.position.x, a.getY(j) + flag.position.y, a.getZ(j) + flag.position.z]), .52);
     },
-    describe: () => ({ kind: 'sea-breeze', layout: 'land-left-sea-right', scene: 'coastal-paper-world',
+    describe: () => ({ kind: 'sea-breeze', layout: 'land-left-sea-right', scene: 'blender-lighthouse-weather-bench',
       selected: state.direction > 0 ? 'day' : state.direction < 0 ? 'night' : 'transition',
       groundX: -state.direction, upperX: state.direction, strength: state.strength, pressure: state.pressure,
       continuousDayNight: true, flowPhase, flowRate: .10 * state.direction * state.strength,
       flagArea: surfaceArea(cloth), panels: 1, sameHeightGuides: 2, elevatedAbovePage: rise, sourceFootprint: [b.width, b.height], sceneDepth: front - back,
       directInteraction:'drag-daylight-handle',daylightControlIsSchematic:true,visualConstruction:'coastal-thermal-instrument',relativeHeatGauges:2,
-      specimenConstruction:'fitted-relief-with-common-height-field',mechanicalHeatIndices:2,
+      specimenConstruction:'carved-headland-and-tidal-shelf',mechanicalHeatIndices:2,
       heatIndexPositions:heating.map(h=>h.index.position.y/s) }),
     focusBounds: () => ({ min: [-3 * s, -8 * s, back - 3 * s], max: [125 * s, 74 * s, front + 18 * s] }),
   };

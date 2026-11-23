@@ -13,7 +13,7 @@ describe('one astronomy state for solid and vector observations', () => {
     const first = evaluateSolarSystem(.371);
     evaluateSolarSystem(.9); evaluateSolarSystem(.001);
     expect(evaluateSolarSystem(.371)).toEqual(first);
-    first.bodies.forEach(body => expect(Math.hypot(body.point[0], body.point[2] / .58)).toBeCloseTo(body.radius, 11));
+    first.bodies.forEach(body => expect(Math.hypot(body.point[0], body.point[2])).toBeCloseTo(body.radius, 11));
   });
   it('extracts the selected intact shell without changing its radius or reversing its layers', () => {
     for (const selection of [0, 1, 2, 3]) {
@@ -35,7 +35,10 @@ describe('one astronomy state for solid and vector observations', () => {
       const svg = solarSystemSvg(.43, selected);
       expect(svg).toContain(`data-model-selection="${selected}"`);
       expect(svg).toContain(`"selected":${selected}`);
-      expect([...svg.matchAll(/role="button" tabindex="0"/g)]).toHaveLength(9);
+      expect([...svg.matchAll(/data-model-selection="[0-8]"/g)]).toHaveLength(9);
+      for (const view of [svg, solarSystemSvg(.43, selected, 'train')]) {
+        for (const part of ['selector','lever','crank']) expect(view).toContain(`data-orrery-control="${part}"`);
+      }
     }
     for (const selection of [0, 1, 2, 3]) {
       const svg = earthLayersSvg(selection);
@@ -46,3 +49,4 @@ describe('one astronomy state for solid and vector observations', () => {
     }
   });
 });
+

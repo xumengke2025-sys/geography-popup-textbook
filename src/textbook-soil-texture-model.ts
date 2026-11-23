@@ -42,8 +42,9 @@ export const SOIL_TEXTURE_GRAINS: readonly SoilTextureGrain[][] = SOIL_TEXTURE_T
   const grains: SoilTextureGrain[] = [];
   for (let layer = 0; layer < 2; layer++) for (let row = 0; row < sample.rows; row++) for (let column = 0; column < sample.columns; column++) {
     const id = grains.length, mixed = index === 1 ? [.98, .67, .47][id % 3] : .90 + seed(id + index * 71) * .10;
-    grains.push(Object.freeze({ id, u: (column + .5) / sample.columns + Math.sin(row * 1.7) * [.004, .002, .001][index],
-      depth: (row + .5) / sample.rows, v: layer === 0 ? .94 : .31,
+    grains.push(Object.freeze({ id, u: (column + .5 + (seed(id + 381) - .5) * .38) / sample.columns,
+      depth: (row + .5 + (seed(id + 113) - .5) * .77) / sample.rows,
+      v: (layer === 0 ? .883 : .38) + (seed(id + 201) - .5) * .051,
       radius: sample.grainRadius * mixed, shade: id % 3 }));
   }
   return Object.freeze(grains) as unknown as SoilTextureGrain[];
@@ -110,7 +111,7 @@ const polygon = (p: [number, number][]) => p.map(pair).join(' ');
 /** The SVG is a live vector view of the same finite portions and fixed grains. */
 export function soilTextureSvg(phase: number, selection = 0): string {
   const state = evaluateSoilTexture(phase, selection), project = soilTextureProject;
-  const action = (i: number) => `data-model-selection="${i}" role="button" tabindex="0" aria-label="观察${SOIL_TEXTURE_TYPES[i].name}，保留同一场降水进度" aria-pressed="${state.selection === i}"`;
+  const action = (i: number) => `data-model-selection="${i}" role="button" tabindex="0" data-specimen-key="" data-keep-phase="" aria-label="观察${SOIL_TEXTURE_TYPES[i].name}，保留同一场降水进度" aria-pressed="${state.selection === i}"`;
   let body = '';
   // A single equal-rain reservoir feeds the three columns, and visibly empties.
   body += '<path d="M38 42H611V69H38Z" fill="#f1ecdd" stroke="#777565" stroke-width="1.2"/>';
@@ -121,9 +122,14 @@ export function soilTextureSvg(phase: number, selection = 0): string {
   }
   for (const sample of state.samples) {
     const i = sample.index, type = SOIL_TEXTURE_TYPES[i], left = project(i, 0, 0), right = project(i, 1, 0), bottom = project(i, 1, 1), back = project(i, 1, 0, 0), bottomBack = project(i, 1, 1, 0);
-    body += `<g ${action(i)} data-soil-texture-part="sample" data-soil-texture-sample="${i}"><polygon points="${polygon([right, back, bottomBack, bottom])}" fill="${type.side}" opacity=".40" stroke="#797262" stroke-width=".8"/><rect x="${number(left[0])}" y="${number(left[1])}" width="134" height="164" fill="#eee6d5" stroke="#797262" stroke-width="1"/>`;
+    body += `<g ${action(i)} data-soil-texture-part="sample" data-soil-texture-sample="${i}"><polygon points="${polygon([right, back, bottomBack, bottom])}" fill="${type.side}" opacity=".40" stroke="#797262" stroke-width=".8"/><rect x="${number(left[0])}" y="${number(left[1])}" width="134" height="164" fill="${['#b09166','#7d6348','#a17860'][i]}" stroke="#716049" stroke-width="1"/>`;
+    for(let k=0;k<140;k++){
+      const u=.014+seed(k+i*173)*.972,d=.012+seed(k+519+i*67)*.976;
+      const p=project(i,u,d,1),r=.38+seed(k+909)*[1.1,.95,.66][i];
+      body+=`<ellipse cx="${number(p[0])}" cy="${number(p[1])}" rx="${number(r)}" ry="${number(r*.7)}" fill="${k%3?'#544332':'#d5b58c'}" opacity=".5"/>`;
+    }
     for (const grain of SOIL_TEXTURE_GRAINS[i].filter(p => p.v > .5)) {
-      const p = project(i, grain.u, grain.depth, 1), r = grain.radius * 134;
+      const p = project(i, grain.u, grain.depth, 1), r = grain.radius * 134 * [.72,.85,.86][i];
       const outline = Array.from({ length: 7 }, (_, j): [number, number] => { const a = j / 7 * Math.PI * 2, variation = .9 + seed(grain.id * 7 + j) * .15; return [p[0] + Math.cos(a) * r * variation, p[1] + Math.sin(a) * r * .77 * variation]; });
       body += `<polygon data-soil-texture-grain="${i}-${grain.id}" points="${polygon(outline)}" fill="${grain.shade === 1 ? type.side : type.color}" stroke="#77694f" stroke-width="${i === 2 ? .35 : .55}"/>`;
     }
@@ -131,6 +137,7 @@ export function soilTextureSvg(phase: number, selection = 0): string {
     const a = project(i, .05, 1.10), z = project(i, .95, SOIL_TEXTURE_COLLECTOR_FLOOR);
     const levelY = project(i, 0, sample.collectorLevelDepth)[1];
     body += `<path d="M${number(a[0])},${number(a[1])}V${number(z[1] + 2)}H${number(z[0])}V${number(a[1])}" fill="#f1ecdd" stroke="#797565" stroke-width="1.1"/>`;
+    for(let tick=0;tick<=6;tick++)body+=`<path d="M${number(z[0]-1)} ${number(z[1]-tick*5.3)}h-${tick%3?5:10}" stroke="#615540" stroke-width=".9"/>`;
     if (sample.collected > 0) body += `<rect data-soil-texture-collection="${i}" data-fraction="${number(sample.collected)}" x="${number(a[0] + 2)}" y="${number(levelY)}" width="${number(z[0] - a[0] - 4)}" height="${number(z[1] - levelY)}" fill="#89adb5"/>`;
     for (const water of sample.portions) {
       if (water.status === 'waiting' || water.status === 'collected') continue;

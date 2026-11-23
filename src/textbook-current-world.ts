@@ -1,9 +1,10 @@
+import { mountFieldInstrument, mountScrewDrive } from './textbook-field-instruments';
+import { applyEarthScan } from './textbook-earth-scan';
 import { createSpecimenMaterial } from './textbook-solid-materials';
 import { THREE as T } from './reference/engine.js';
 import { LIFT_MARGIN, type ModelMotion, type TextbookGeometry, type Vec3 } from './textbook-geometry';
-import { phaseTrackPoint, type PhaseTrack } from './textbook-model-input';
-import { CURRENT_LAYOUT, CURRENT_REFERENCE, CURRENT_SAMPLES, CURRENT_STOPS, CURRENT_WAVE_ORBIT,
-  currentCoastMesh, currentPathPoint, currentPathTangent, currentRibbonMesh, currentSeaMesh,
+import { CURRENT_LAYOUT, CURRENT_REFERENCE, CURRENT_SAMPLES, CURRENT_STOPS,
+  CURRENT_ARROWS, currentPathPoint, currentRibbonMesh,
   evaluateOceanCurrent, type CurrentMeshData, type CurrentPoint } from './textbook-current-model';
 
 /** A raised local sea window, not a map of the satellite image. Thick paper
@@ -35,14 +36,13 @@ export function buildCurrentWorld(b: TextbookGeometry): ModelMotion {
   const input = (mesh: any, selection: number, label: string) => {
     mesh.userData.modelInput = { kind: 'select', selection, label }; return mesh;
   };
-  const sea = solid(geometryFrom(currentSeaMesh()), '#a9c8cb', 'closed-sea-solid', .045);
-  const coast = solid(geometryFrom(currentCoastMesh()), '#c7bea0', 'abstract-coast-solid', .12);
-  const ribbon = solid(geometryFrom(currentRibbonMesh()), '#a1c0c2', 'open-direction-guide', .025);
-  coast.userData.notGeoreferenced = true; ribbon.userData.isActualRoute = false;
-  b.stroke(CURRENT_LAYOUT.coast.map(([x, z]) => p([x, 12.85, z])), .48, true);
-  b.stroke([[4, .8, 55], [97, .8, 55], [97, 8.5, 55], [4, 8.5, 55]].map(p), .47);
-  b.stroke([[97, 8.5, 55], [97, 8.5, 8], [4, 8.5, 8]].map(p), .32);
-  for (const y of [3, 5.6]) b.stroke([[18, y, 55.04], [97, y, 55.04]].map(p), .15);
+  const parts = mountFieldInstrument(b, 'currents', scale, p([0,0,0]));
+  const sea = role(parts.get('sea')![0], 'closed-sea-solid');
+  const coast = role(parts.get('coast')![0], 'abstract-coast-solid');
+  applyEarthScan(coast.material, 'outcrop', 9 * scale);
+  const ribbon = solid(geometryFrom(currentRibbonMesh()), '#7fa9ad', 'open-direction-guide', .025);
+  coast.userData.notGeoreferenced = true;
+  ribbon.userData.isActualRoute = false;
   for (const side of [-5.3, 5.3]) b.stroke(Array.from({ length: 65 }, (_, i) => {
     const point = currentPathPoint(i / 64, side); return p([point[0], 8.86, point[2]]);
   }), .2);
@@ -52,22 +52,27 @@ export function buildCurrentWorld(b: TextbookGeometry): ModelMotion {
     b.stroke([[x - 2, 8.55, z], [x, 8.57, z + .2], [x + 2.3, 8.55, z]].map(p), .17);
 
   const arrowVertices: number[] = [], arrowIndices: number[] = [];
-  for (const t of [.38, .73]) {
-    const point = currentPathPoint(t), tangent = currentPathTangent(t), nx = -tangent[2], nz = tangent[0];
-    const triangle: CurrentPoint[] = [point,
-      [point[0] - tangent[0] * 2.1 + nx * .9, 9.05, point[2] - tangent[2] * 2.1 + nz * .9],
-      [point[0] - tangent[0] * 2.1 - nx * .9, 9.05, point[2] - tangent[2] * 2.1 - nz * .9]];
-    const k = arrowVertices.length / 3;
-    for (const y of [8.93, 9.1]) for (const q of triangle) arrowVertices.push(q[0], y, q[2]);
-    arrowIndices.push(k, k + 1, k + 2, k + 3, k + 5, k + 4);
-    for (let j = 0; j < 3; j++) { const next = (j + 1) % 3; arrowIndices.push(k + j, k + next, k + j + 3, k + next, k + next + 3, k + j + 3); }
+  for (const arrow of CURRENT_ARROWS) {
+    const base = arrowVertices.length / 3, count = arrow.length;
+    const faces = T.ShapeUtils.triangulateShape(arrow.map(([x, , z]) => new T.Vector2(x, z)), []);
+    for (const height of [8.5, 8.84]) {
+      for (const [x, , z] of arrow) arrowVertices.push(x, height, z);
+    }
+    for (const [a, c, d] of faces) {
+      arrowIndices.push(base + a, base + c, base + d, base + count + d, base + count + c, base + count + a);
+    }
+    for (let i = 0; i < count; i++) {
+      const a = base + i, c = base + (i + 1) % count;
+      arrowIndices.push(a, a + count, c, c, a + count, c + count);
+    }
   }
-  const direction = solid(geometryFrom({ positions: arrowVertices, indices: arrowIndices }), '#648f98', 'fixed-direction-marks', .025);
+  const direction = solid(geometryFrom({ positions: arrowVertices, indices: arrowIndices }), '#315c62', 'fixed-direction-marks');
   input(direction, 1, '沿示意流向追踪同一组水体');
 
-  const tokenGeometry = new T.CylinderGeometry(1.2 * scale, 1.2 * scale, .62 * scale, 16);
+  const tokenGeometry = new T.LatheGeometry([[0,-.28],[1.02,-.28],[1.18,-.19],[1.18,.17],[1.02,.28],[0,.28]]
+    .map(([r, y]) => new T.Vector2(r * scale, y * scale)), 20);
   const tokens = CURRENT_SAMPLES.map(sample => {
-    const mesh = input(solid(tokenGeometry, sample.color, 'water-tracer', .035), 1, '追踪同一组定向前移的水体');
+    const mesh = input(solid(tokenGeometry, sample.index === 0 ? '#b3925a' : '#427980', 'water-tracer', .035), 1, '追踪同一组定向前移的水体');
     mesh.userData.currentSampleId = sample.id; mesh.userData.currentSampleIndex = sample.index;
     mesh.userData.smallPointTarget = true;
     if (sample.index === 0) mesh.scale.set(1.22, 1.22, 1.22);
@@ -76,7 +81,7 @@ export function buildCurrentWorld(b: TextbookGeometry): ModelMotion {
   const bookmarkGeometry = new T.TorusGeometry(2.0 * scale, .16 * scale, 6, 32);
   bookmarkGeometry.rotateX(Math.PI / 2);
   const first = CURRENT_SAMPLES[0];
-  const origin = input(solid(bookmarkGeometry, '#b69a69', 'origin-bookmark', .035), 0, '回到这组水体的起点');
+  const origin = input(solid(bookmarkGeometry, '#b3925a', 'origin-bookmark', .035), 0, '回到这组水体的起点');
   const destination = input(solid(bookmarkGeometry, '#93a59a', 'destination-bookmark', .035), 2, '保留并对照这组水体的末位置');
   origin.position.set(...p(first.origin)); destination.position.set(...p(first.destination));
   origin.userData.currentSampleId = destination.userData.currentSampleId = first.id;
@@ -84,31 +89,25 @@ export function buildCurrentWorld(b: TextbookGeometry): ModelMotion {
 
   // The comparison is the existing ideal-wave orbit, rendered as a small
   // reference above the water. It is not an extra current in the sea window.
-  b.stroke(CURRENT_WAVE_ORBIT.map(p), .35);
   const waveReference = solid(new T.SphereGeometry(.75 * scale, 16, 10), '#c6ac7c', 'wave-reference-particle', .035);
   waveReference.userData.motionReference = 'existing-ideal-wave-closed-orbit';
-  const waveLabel = role(b.label('往复参照', p(CURRENT_LAYOUT.waveLabel), 28 * scale, 7.8 * scale), 'comparison-label');
+  const waveLabel = role(b.label('往复参照', p(CURRENT_LAYOUT.waveLabel), 32 * scale, 9.2 * scale), 'comparison-label');
 
-  const track: PhaseTrack = { start: p(CURRENT_LAYOUT.track.start), end: p(CURRENT_LAYOUT.track.end) };
-  const railGeometry = new T.BoxGeometry(76 * scale, .28 * scale, .65 * scale);
-  railGeometry.translate(...p([50, 1, 66]));
-  const rail = solid(railGeometry, '#b9ad91', 'phase-rail', .04);
-  rail.userData.modelInput = { kind: 'phase-track', track, label: '拖动纸签，回看同一组水体的定向移动' };
-  const handleShape = new T.Shape();
-  [[-2.7, 0], [0, 1.9], [2.7, 0], [0, -1.9]].forEach(([x, y], i) =>
-    i ? handleShape.lineTo(x * scale, y * scale) : handleShape.moveTo(x * scale, y * scale));
-  handleShape.closePath();
-  const handleGeometry = new T.ExtrudeGeometry(handleShape, { depth: .7 * scale, bevelEnabled: false });
-  handleGeometry.translate(0, 0, -.35 * scale);
-  const handle = solid(handleGeometry, '#e1d1ab', 'phase-handle', .045);
+  const drive = mountScrewDrive('currents', parts, (x, y, z) => p([x, y, z]), '拖动黄铜游标对照起点与末位置');
+  const { track } = drive;
+  const handle = role(drive.handle, 'phase-handle');
   handle.userData.smallPointTarget = true;
-  handle.userData.modelInput = { kind: 'phase-track', track, label: '拖动观察进度；末位置停留，不自动回卷' };
   const labels = CURRENT_STOPS.map((stop, i) => {
-    const label = role(b.label(stop.label, p(CURRENT_LAYOUT.labels[i]), 22 * scale, 7.8 * scale), 'process-label');
+    const label = role(b.label(stop.label,p([14+i*36,-.56,71.32]),18.9*scale,7.8*scale,
+      { appearance: 'engraved', ink: '#443b2b' }), 'process-label');
+    label.rotation.x = -.82;
+    label.userData.labelMount = 'surface';
     return input(label, i, stop.label);
   });
   let state = evaluateOceanCurrent(0);
-  const fixedMeshCount = b.meshes.length, buffers = b.meshes.map(mesh => mesh.geometry.attributes.position.array);
+  const fixedMeshCount = b.meshes.length;
+  // The book mounts additional fittings after the model constructor returns.
+  const buffers = b.meshes.map(mesh => ({ mesh, positions: mesh.geometry.attributes.position.array }));
   const fixedStructures = [sea, coast, ribbon, direction];
   const motion: ModelMotion = {
     update(phase, _selection, _dt, _reduced) {
@@ -119,12 +118,12 @@ export function buildCurrentWorld(b: TextbookGeometry): ModelMotion {
         b.outline(mesh, i === 0 ? .49 : .27);
       });
       waveReference.position.set(...p(state.comparison.point));
-      handle.position.set(...phaseTrackPoint(state.phase, track));
+      drive.move(state.phase);
       labels.forEach((label, i) => { label.userData.currentActive = i === state.stageIndex; });
       if (state.phase > 0) b.contour(state.trace.map(p), .37);
       b.outline(handle, .56);
     },
-    focusBounds: () => ({ min: p([-2, -14, 4]), max: p([104, 36, 76]) }),
+    focusBounds: () => ({ min: p([-2, -14, 4]), max: p([104, 36, 77]) }),
     describe: () => {
       b.root.updateWorldMatrix(true, true);
       const world = (point: Vec3): Vec3 => b.v(point).applyMatrix4(b.root.matrixWorld).toArray() as Vec3;
@@ -143,7 +142,7 @@ export function buildCurrentWorld(b: TextbookGeometry): ModelMotion {
         tracerWorld: tokens.map((mesh, i) => ({ id: state.samples[i].id, point: meshWorld(mesh), progress: state.samples[i].progress })),
         waveReferenceWorld: meshWorld(waveReference),
         handleWorld: meshWorld(handle), phaseTrackWorld: { start: world(track.start), end: world(track.end) },
-        fixedMeshCount, geometryBuffersReused: b.meshes.length === fixedMeshCount && b.meshes.every((mesh, i) => mesh.geometry.attributes.position.array === buffers[i]),
+        fixedMeshCount, geometryBuffersReused: buffers.every(({ mesh, positions }, i) => b.meshes[i] === mesh && mesh.geometry.attributes.position.array === positions),
         allTracersVisible: tokens.every(mesh => mesh.visible), fixedStructureCount: fixedStructures.length,
         meshRoles: b.meshes.map(mesh => ({ role: mesh.userData.currentRole, sampleId: mesh.userData.currentSampleId, point: meshWorld(mesh) })),
         directInteraction: 'tracer-and-endpoint-select-and-phase-track',

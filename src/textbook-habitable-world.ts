@@ -1,3 +1,4 @@
+import { geographicLand, paintSolarHemisphere } from './textbook-geographical-globes';
 import { THREE as T } from './reference/engine.js';
 import { LIFT_MARGIN, type ModelMotion, type TextbookGeometry, type Vec3 } from './textbook-geometry';
 import { chamferedPlateGeometry, mergeInstrumentGeometry, turnedShaftGeometry } from './textbook-instrument-parts';
@@ -34,50 +35,57 @@ export function buildHabitableWorld(b: TextbookGeometry): ModelMotion {
     return [c[0] + r * Math.cos(h) * Math.sin(a), c[1] + r * Math.sin(h), c[2] + r * Math.cos(h) * Math.cos(a)];
   };
 
-  // A compact three-footed casting, not a presentation platform. The single
-  // meridian bears both polar journals and has actual end collars.
-  add(chamferedPlateGeometry([38, 1.1, 25], [70, 3.4, 47], 1.3), 'enamel', 'cast-tripod-foot');
-  for (const [x, z] of [[41, 28], [67, 28], [54, 44]]) rod([x, .1, z], [x, 1.3, z], 2.15, 'steel', 'levelling-foot');
-  add(turnedShaftGeometry([54, 3.4, 36], [54, 8.6, 36], [[5.3, 0], [5.3, .12], [3.2, .24], [2.2, .8], [3, 1]]), 'brass', 'turned-bearing-neck');
-  const meridian = Array.from({ length: 83 }, (_, i): Vec3 => { const a = Math.PI / 2 + Math.PI * i / 82; return [c[0] + Math.cos(a) * 26.8, c[1] + Math.sin(a) * 26.8, c[2]]; });
-  select(tube(meridian, .76, 'brass', 'open-bearing-meridian'), 0, '沿子午托架查看地球的温度条件');
+  // Turned walnut stock, fine brass stringing and three rising scroll legs
+  // carry the horizon ring. Its empty centre keeps the whole globe visible.
+  const footProfile:readonly (readonly [number,number])[]=[[21,0],[22.3,.06],[22.5,.13],[22,.23],[20.6,.34],[20.4,.49],[21.8,.62],[21.6,.72],[20.2,.82],[19.6,.97],[19.5,1]];
+  add(turnedShaftGeometry([54,.75,38],[54,4.3,38],footProfile),'wood','turned-walnut-plinth','#68452f');
+  for(const [y,r] of [[1.28,22.5],[3.16,21.75]])add(turnedShaftGeometry([54,y,38],[54,y+.19,38],[[r,0],[r+.08,.4],[r,1]]),'brass','inlaid-stringing');
+  for(const [x,z] of [[40,29],[68,29],[54,53]])add(turnedShaftGeometry([x,.06,z],[x,1.2,z],[[1.9,0],[2.1,.15],[1.75,.48],[1.95,.88],[1.9,1]]),'brass','levelling-foot');
+  add(turnedShaftGeometry([54,4.25,36],[54,8.8,36],[[5.6,0],[5.8,.08],[4.65,.20],[3.54,.38],[2.9,.56],[2.45,.74],[3.3,.91],[3.4,1]]),'brass','turned-bearing-neck');
+  const horizonY=31.9;
+  const annulus=new T.LatheGeometry([[26.35,-.41],[28.5,-.41],[28.83,-.23],[28.83,.18],[28.55,.4],[26.35,.4],[26.35,-.41]].map(([r,y])=>new T.Vector2(r,y)),144);
+  annulus.translate(54,horizonY,36);add(annulus,'brass','horizon-stock');
+  const horizonMarks:any[]=[];
+  for(let i=0;i<120;i++){const a=i*Math.PI/60,r=i%10===0?26.44:i%5===0?27.04:27.69;
+    const at=(r:number):Vec3=>[54+r*Math.cos(a),horizonY+.43,36+r*Math.sin(a)];
+    horizonMarks.push(rodGeo(at(r),at(28.25),i%5===0?.065:.037));}
+  add(mergeInstrumentGeometry(horizonMarks),'enamel','azimuth-divisions','#524637');
+  for(const a of [28,151,269].map(q=>q*Math.PI/180)){
+    const at=(r:number,y:number):Vec3=>[54+r*Math.cos(a),y,36+r*Math.sin(a)];
+    const route=[at(16.7,4.1),at(20.2,6.65),at(22.3,13.2),at(22.5,20.8),at(25.1,25.6),at(27.4,27.9),at(27.4,horizonY-.25)];
+    tube(route,1.02,'brass','curved-horizon-support');
+    add(turnedShaftGeometry(at(16.7,4.1),at(16.7,5.95),[[2.14,0],[2.2,.14],[1.8,.42],[1.35,.8],[1.42,1]]),'brass','leg-socket');
+    add(turnedShaftGeometry(at(27.4,28.6),at(27.4,horizonY-.3),[[1.1,0],[1.4,.23],[1.1,.5],[1.25,.83],[1.55,1]]),'brass','ring-seat');
+  }
+  // A flat meridian limb has a face wide enough to carry real index marks.
+  // The narrow bevel catches window light along both edges of the casting.
+  const arc = new T.Shape(), topAngle=Math.PI/2, bottomAngle=topAngle+Math.PI;
+  arc.absarc(0,0,28.6,topAngle,bottomAngle,false);
+  arc.absarc(0,0,25.45,bottomAngle,topAngle,true);
+  arc.closePath();
+  const limb = new T.ExtrudeGeometry(arc,{depth:1,bevelEnabled:true,bevelThickness:.16,bevelSize:.20,bevelSegments:2,curveSegments:72});
+  limb.translate(c[0],c[1],c[2]-.5);
+  select(add(limb,'brass','open-bearing-meridian'),0,'沿子午托架查看地球的温度条件');
   for (const y of [9.2, 60.8]) {
     add(turnedShaftGeometry([54, y - 1.4, 36], [54, y + 1.4, 36], [[1.9, 0], [2.5, .13], [2.5, .33], [1.7, .43], [1.7, .6], [2.5, .7], [2.5, .9], [1.9, 1]]), 'brass', 'polar-bearing-collar');
     rod([54, y - 2.4, 36], [54, y + 2.4, 36], .7, 'steel', 'polar-journal');
   }
   const divisions: any[] = [];
-  for (let i = 0; i <= 18; i++) { const a = Math.PI / 2 + Math.PI * i / 18, r0 = 26.1, r1 = i % 3 === 0 ? 27.7 : 27.05;
-    divisions.push(rodGeo([54 + Math.cos(a) * r0, 35 + Math.sin(a) * r0, 36.72], [54 + Math.cos(a) * r1, 35 + Math.sin(a) * r1, 36.72], .055)); }
-  add(mergeInstrumentGeometry(divisions), 'steel', 'ungraduated-alignment-divisions');
+  for (let i=1;i<60;i++) {
+    const a=topAngle+Math.PI*i/60, r0=i%5===0?26.0:27.05, r1=28.14;
+    const point=(r:number):Vec3=>[c[0]+Math.cos(a)*r,c[1]+Math.sin(a)*r,c[2]+.67];
+    divisions.push(rodGeo(point(r0),point(r1),i%5===0?.105:.055));
+  }
+  add(mergeInstrumentGeometry(divisions),'enamel','ungraduated-alignment-divisions','#514230');
 
   const ocean = select(sphere(radius, 'continuous-ocean-surface', 'water'), 1, '点海面查看液态水，水位于同一地球表面');
   ocean.userData.waterOnEarth = true;
-  // Hand-authored schematic coast polygons; no bitmap and no rectangular
-  // sphere patches. Subdivision projects every triangle back onto the sphere.
-  const continents: [number, number][][] = [
-    [[-17,36],[-7,37],[3,35],[13,33],[25,32],[34,29],[43,12],[51,11],[44,1],[40,-12],[34,-24],[19,-35],[12,-28],[9,-12],[1,5],[-10,6],[-17,15]],
-    [[-10,36],[-10,44],[-1,49],[-5,56],[7,58],[11,69],[24,71],[34,62],[42,58],[55,64],[74,70],[100,76],[130,70],[160,60],[164,51],[142,44],[131,32],[121,24],[109,20],[103,3],[97,11],[86,20],[78,8],[70,23],[56,28],[48,30],[40,40],[29,42],[23,38],[16,42],[12,45],[3,43]],
-    [[-81,12],[-70,11],[-58,6],[-49,-1],[-36,-6],[-42,-22],[-52,-33],[-67,-54],[-73,-46],[-71,-28],[-76,-11]],
-    [[-167,65],[-150,70],[-128,71],[-111,69],[-95,72],[-78,60],[-57,53],[-63,46],[-80,26],[-87,15],[-98,18],[-109,31],[-124,43],[-133,56],[-151,59]],
-    [[113,-22],[120,-18],[130,-12],[138,-17],[145,-15],[153,-26],[148,-38],[135,-35],[126,-34],[115,-35]],
-    [[-52,60],[-44,61],[-24,72],[-26,82],[-47,83],[-62,76]],
-    [[47,-13],[50,-17],[49,-25],[44,-24],[44,-18]],
-  ];
-  const landVertices: number[] = [];
-  const landPoint = (q: [number, number]) => surface(q[0], q[1], radius + .25 + .025 * Math.sin(q[0] * .17) * Math.cos(q[1] * .11));
-  const subdivide = (a: [number,number], d: [number,number], e: [number,number], depth: number) => {
-    if (!depth) { landVertices.push(...landPoint(a), ...landPoint(d), ...landPoint(e)); return; }
-    const mid = (x: [number,number], y: [number,number]): [number,number] => [(x[0]+y[0])/2,(x[1]+y[1])/2];
-    const ad=mid(a,d),de=mid(d,e),ea=mid(e,a);subdivide(a,ad,ea,depth-1);subdivide(ad,d,de,depth-1);subdivide(ea,de,e,depth-1);subdivide(ad,de,ea,depth-1);
-  };
-  for (const polygon of continents) for (const indices of T.ShapeUtils.triangulateShape(polygon.map(([x,y])=>new T.Vector2(x,y)), [])) subdivide(polygon[indices[0]],polygon[indices[1]],polygon[indices[2]],4);
-  const landGeo = new T.BufferGeometry();landGeo.setAttribute('position',new T.Float32BufferAttribute(landVertices,3));
-  // Radial normals make the separately triangulated coastline one continuous
-  // curved surface. Fine subdivisions keep chord interiors above the ocean.
-  const normals=landVertices.map((value,i)=>value-c[i%3]);
-  for(let i=0;i<normals.length;i+=3){const n=Math.hypot(normals[i],normals[i+1],normals[i+2]);normals[i]/=n;normals[i+1]/=n;normals[i+2]/=n;}
-  landGeo.setAttribute('normal',new T.Float32BufferAttribute(normals,3));
-  const land = add(landGeo, 'land', 'organic-curved-continents');land.userData.coastline = 'schematic-organic-polygons';
+  const sunward:Vec3=[-.84,0,Math.sqrt(1-.84**2)];
+  paintSolarHemisphere(ocean.geometry,sunward,'#4f8f91','#28494d');ocean.material.color.set('#ffffff');ocean.material.vertexColors=true;
+  const landGeo=geographicLand(radius+.25,c,true);
+  paintSolarHemisphere(landGeo,sunward,'#ceb782','#796b52');
+  const land=add(landGeo,'land','organic-curved-continents','#ffffff');land.material.vertexColors=true;land.material.roughness=.56;
+  land.userData.coastline='Natural Earth 1:110m Land';
   // Fine geographical graticule remains on the sphere, not floating rings.
   const graticule: any[]=[];
   for(const lat of[-40,0,40])graticule.push(new T.TubeGeometry(new T.CatmullRomCurve3(Array.from({length:97},(_,i)=>new T.Vector3(...surface(i/96*360,lat,radius+.045)))),96,.022,4,false));
@@ -87,9 +95,23 @@ export function buildHabitableWorld(b: TextbookGeometry): ModelMotion {
   // Atmosphere is ONE translucent enclosing surface with clouds on the same
   // Earth; thickness exaggerated. It is not a mechanically detached torus.
   const atmosphere = select(sphere(radius * 1.075, 'single-atmosphere-envelope', 'air'), 2, '点大气包络观察大气条件');
-  const airMaterial = atmosphere.material.clone();atmosphere.material=airMaterial;airMaterial.opacity=.12;airMaterial.depthWrite=false;
-  if(airMaterial.userData.uniforms)airMaterial.userData.uniforms={...airMaterial.userData.uniforms};
-  atmosphere.geometry.addEventListener('dispose',()=>airMaterial.dispose());
+  // Keep the registered Popout material: clone() drops onBeforeCompile and
+  // makes this envelope ignore formation/retraction alpha.
+  const airMaterial = atmosphere.material; airMaterial.transparent=true;
+  airMaterial.opacity=.055; airMaterial.depthWrite=false; airMaterial.side=T.FrontSide;
+  // All solid geometry is registered with Popout for the shared reveal.
+  // Render the enclosing translucent layer after its opaque surface evidence.
+  atmosphere.renderOrder=2;
+  // The envelope's centre is clear glass. Picking its rim still leaves the
+  // water and land underneath accessible through the clear viewing window.
+  const airRaycast=atmosphere.raycast,airHits:any[]=[],airNormal=new T.Vector3();
+  atmosphere.raycast=function(ray:any,out:any[]){
+    airHits.length=0;airRaycast.call(this,ray,airHits);
+    const hit=airHits[0];if(!hit?.face)return;
+    airNormal.copy(hit.face.normal).transformDirection(this.matrixWorld);
+    if(Math.abs(airNormal.dot(ray.ray.direction))<.32)out.push(hit);
+  };
+  atmosphere.castShadow=false; atmosphere.receiveShadow=false;
   const cloudParts:any[]=[];
   for(const [lon,lat,len]of[[-36,24,18],[27,45,14],[80,17,23],[-12,-28,17],[137,-11,12]]){
     const path=Array.from({length:18},(_,i)=>surface(lon+(i/17-.5)*len,lat+Math.sin(i/17*Math.PI)*1.5,radius*1.045));
@@ -103,6 +125,9 @@ export function buildHabitableWorld(b: TextbookGeometry): ModelMotion {
   for(let i=0;i<3;i++){
     const lat=8+i*12,path=Array.from({length:35},(_,j)=>surface(-51+j/34*31,lat,radius+.25));
     heatLines.push(select(tube(path,.095,'brass','temperature-surface-observation'),0,'查看适宜温度条件；弧线是观察标记，不是等温线'));
+    const end=path[0],start=end.map((v,i)=>v+sunward[i]*9.6) as Vec3;
+    const ray=select(rod(start,end,.10,'ivory','incident-light-to-surface'),0,'入射光到达同一地球表面；不表示实测热收支');
+    ray.userData.surfaceContact=end; ray.userData.observationOnly=true; heatLines.push(ray);
   }
   for(let i=0;i<4;i++){
     const path=Array.from({length:40},(_,j)=>surface(-53+j/39*18,4+i*3+Math.sin(j/39*Math.PI*3)*.55,radius+.23));
@@ -113,31 +138,53 @@ export function buildHabitableWorld(b: TextbookGeometry): ModelMotion {
   // Native options are fixed into the same foot, not loose floating labels.
   const selectors:any[]=[];
   for(let i=0;i<3;i++){
-    const x=43+i*11;
-    const m=select(rod([x,3.4,43],[x,4.1,43],2.4,'brass','condition-selector'),i,`查看${NAMES[i]}`);selectors.push(m);
+    const x=43+i*11,start=owned.length;
+    const m=select(rod([x,3.95,52.4],[x,4.72,52.4],3.02,'brass','condition-selector'),i,`查看${NAMES[i]}`);selectors.push(m);
     // Three distinctive inset motifs: sun, wave, atmosphere arc. No numeric
     // scales or invented measurements are implied by the detents.
-    if(i===0){for(let k=0;k<8;k++){const a=k*Math.PI/4;rod([x+Math.cos(a)*1.1,4.15,43+Math.sin(a)*1.1],[x+Math.cos(a)*1.65,4.15,43+Math.sin(a)*1.65],.07,'enamel','temperature-selector-mark');}}
-    else for(let row=0;row<(i===1?2:3);row++){const points=Array.from({length:14},(_,j):Vec3=>[x-1.55+j/13*3.1,4.15,42.2+row*.65+(i===1?Math.sin(j/13*Math.PI*2)*.16:Math.sin(j/13*Math.PI)*.45)]);tube(points,.07,'enamel','condition-selector-mark');}
+    if(i===0){for(let k=0;k<8;k++){const a=k*Math.PI/4;rod([x+Math.cos(a)*1.1,4.77,52.4+Math.sin(a)*1.1],[x+Math.cos(a)*1.65,4.77,52.4+Math.sin(a)*1.65],.07,'enamel','temperature-selector-mark');}}
+    else for(let row=0;row<(i===1?2:3);row++){const points=Array.from({length:14},(_,j):Vec3=>[x-1.55+j/13*3.1,4.77,51.6+row*.65+(i===1?Math.sin(j/13*Math.PI*2)*.16:Math.sin(j/13*Math.PI)*.45)]);tube(points,.07,'enamel','condition-selector-mark');}
+    for(const piece of owned.slice(start))select(piece,i,'查看'+NAMES[i]);
   }
   const pointer=rod([0,0,0],[0,.0,2.0],.15,'enamel','selected-condition-pointer');
+  tube([[70.4,3.6,46.3],[72.7,4.5,46.9],[75.4,6.5,47.25],[75.8,8.05,47.3]],1.10,'brass','selector-bracket');
+  const dialCenter:Vec3=[75.8,8.05,49.1],dialRadius=3.4;
+  const dial={center:p(dialCenter),radiusX:dialRadius*s,radiusY:dialRadius*s};
+  const selector={kind:'indexed-dial',dial,start:Math.PI*.83,step:-Math.PI/3,stops:[0,1,2].map(selection=>({selection})),advanceAtHub:true,label:'转动三档选择柄，查看温度、水和大气'};
+  add(turnedShaftGeometry([75.8,8.05,46.9],[75.8,8.05,49.05],[[3.85,0],[4,.12],[3.64,.36],[3.91,.79],[3.83,1]]),'brass','selector-bezel').userData.modelInput=selector;
+  rod([75.8,8.05,49.03],[75.8,8.05,49.13],3.46,'ivory','selector-face').userData.modelInput=selector;
+  for(let i=0;i<3;i++){
+    const a=selector.start+i*selector.step;
+    rod([75.8+Math.cos(a)*2.75,8.05+Math.sin(a)*2.75,49.17],[75.8+Math.cos(a)*3.28,8.05+Math.sin(a)*3.28,49.17],.12,'enamel','selector-stop').userData.modelInput=selector;
+  }
+  const hand=add(turnedShaftGeometry([.2,0,0],[2.85,0,0],[[.31,0],[.49,.13],[.33,.64],[.17,1]]),'enamel','three-stop-pointer');
+  hand.position.set(...p([75.8,8.05,49.29]));hand.userData.modelInput=selector;
+  rod([75.8,8.05,49.17],[75.8,8.05,50.1],.67,'brass','selector-hub').userData.modelInput=selector;
   let state=evaluateHabitable(0),oldPhase=-1,oldSelection=-1;
   const bufferIds=owned.map(m=>m.geometry.attributes.position.array);
   return {
     update(phase,selection){
+      // Popout._surfaces restores depthWrite=true on every registered material,
+      // including in a stationary live frame. Restore this envelope's optical
+      // contract before the cached scientific-state early return; otherwise it
+      // writes an invisible front sphere that occludes land and cloud ribbons.
+      airMaterial.depthWrite=false;
       if(phase===oldPhase&&selection===oldSelection)return;oldPhase=phase;oldSelection=selection;state=evaluateHabitable(phase,selection);
       heatLines.forEach(m=>{m.visible=state.selected===0;m.userData.observationOnly=true;});
       waterLines.forEach(m=>{m.visible=state.selected===1;m.userData.liquidWaterOnGlobe=true;});
-      atmosphere.visible=state.selected===2;clouds.visible=true;
+      // Conditions coexist; selection changes the observation emphasis only.
+      atmosphere.visible=true; airMaterial.opacity=state.selected===2?.12:.055; clouds.visible=true;
       airMarkers.forEach((m,i)=>{m.visible=state.selected===2;const at=surface(-57+i*18,-18+i*9,radius*1.078);m.position.set(...p(at));});
-      pointer.position.set(...p([43+state.selected*11,4.22,43]));
+      pointer.position.set(...p([43+state.selected*11,4.8,52.4]));
+      pointer.userData.modelInput=selectors[state.selected].userData.modelInput;
+      hand.rotation.z=selector.start+state.selected*selector.step;
       selectors.forEach((m,i)=>m.userData.selected=state.selected===i);
     },
-    focusBounds:()=>({min:p([24,.05,9]),max:p([81,64,64])}),
-    describe:()=>({kind:'habitable-earth',...state,conditions:[...CONDITIONS],singleEarth:true,waterOnSameGlobe:true,atmosphereEnclosesSameGlobe:true,
+    focusBounds:()=>({min:p([22,0,5]),max:p([85,65,66])}),
+    describe:()=>({kind:'habitable-earth',...state,conditions:[...CONDITIONS],conditionsCoexist:true,singleEarth:true,waterOnSameGlobe:true,atmosphereEnclosesSameGlobe:true,
       directPartOperations:['temperature-surface','ocean-surface','atmosphere-envelope','fixed-condition-selectors'],
       supportingStructure:'one-open-meridian-with-polar-journals-and-bearing-neck',bitmapSurfaces:0,looseWaterDrop:false,floatingAtmosphereRings:0,
       progressMeaning:'not-applicable-static-condition-observation',timeAxis:false,oceanCurrentSimulation:false,heatBudget:false,
-      sameScientificScopeAsTextbook:true,buffersStable:owned.every((m,i)=>m.geometry.attributes.position.array===bufferIds[i]),parts:owned.length}),
+      coastlineSource:'Natural Earth 1:110m Land',terminatorSunward:sunward,selectorAngle:hand.rotation.z,sameScientificScopeAsTextbook:true,buffersStable:owned.every((m,i)=>m.geometry.attributes.position.array===bufferIds[i]),parts:owned.length}),
   };
 }

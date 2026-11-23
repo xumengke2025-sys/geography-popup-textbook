@@ -1,8 +1,11 @@
-import { createSpecimenMaterial } from './textbook-solid-materials';
+import type { MeshStandardMaterial } from 'three';
+import { mountFieldInstrument } from './textbook-field-instruments';
+import { applyEarthScan } from './textbook-earth-scan';
+import type { SolidMaterialRole } from './textbook-solid-materials';
 import { THREE as T } from './reference/engine.js';
 import { LIFT_MARGIN, type ModelMotion, type TextbookGeometry, type Vec3 } from './textbook-geometry';
 import { phaseTrackPoint, type PhaseTrack } from './textbook-model-input';
-import { COLD_WAVE_LABELS, COLD_WAVE_LAYOUT as L, COLD_WAVE_PARTS, COLD_WAVE_STOPS,
+import { COLD_WAVE_LAYOUT as L, COLD_WAVE_STOPS,
   coldAirDepthAt, evaluateColdWave, type ColdWaveMesh, type ColdWavePoint } from './textbook-cold-wave-model';
 
 /** The advancing cutaway and the fixed observation station share one XYZ
@@ -17,15 +20,6 @@ export function buildColdWaveWorld(b: TextbookGeometry): ModelMotion {
     mesh.userData.modelInput = { kind: 'select', selection, label: `观察${COLD_WAVE_STOPS[selection].label}` };
     return mesh;
   };
-  const materials = new Map<string, any>();
-  const paper = (color: string, hatch = .045) => {
-    const key = `${color}:${hatch}`;
-    if (!materials.has(key)) {
-      const material = createSpecimenMaterial(b.pop, { color, ink: '#6d7c71', hatch, shade: .075, spacing: 2.9, seed: 621 + materials.size });
-      material.side = T.DoubleSide; materials.set(key, material);
-    }
-    return materials.get(key);
-  };
   const geometryFrom = (data: ColdWaveMesh, dynamic = false) => {
     const positions: number[] = [];
     for (let i = 0; i < data.positions.length; i += 3) positions.push(...p(data.positions.slice(i, i + 3) as unknown as ColdWavePoint));
@@ -34,28 +28,41 @@ export function buildColdWaveWorld(b: TextbookGeometry): ModelMotion {
     geometry.setAttribute('position', position); geometry.setIndex(data.indices);
     geometry.computeVertexNormals(); geometry.computeBoundingSphere(); geometry.computeBoundingBox(); return geometry;
   };
-  const solid = (data: ColdWaveMesh, color: string, name: string, selection: number, dynamic = false, hatch = .045) => {
-    const mesh = select(role(b.mesh(geometryFrom(data, dynamic), color, false), name), selection);
-    mesh.material = paper(color, hatch); return mesh;
+  const solid = (data: ColdWaveMesh, color: string, name: string, selection: number, finish: SolidMaterialRole) => {
+    const mesh = select(role(b.mesh(geometryFrom(data, true), color, false, false, finish), name), selection);
+    mesh.material.side = T.DoubleSide;
+    return mesh;
   };
-  const fixedParts = COLD_WAVE_PARTS.map(part => ({ definition: part,
-    mesh: solid(part.mesh, part.color, part.id, part.id.startsWith('gauge') ? 3 : part.id === 'pole' ? 2 : 0) }));
+  const fixed = mountFieldInstrument(b, 'cold-wave', scale, [0,0,back]);
+  for (const [group, scan, span] of [['ground','turf',10], ['cut','loam',10], ['fields','loam',10]] as const) {
+    for (const mesh of fixed.get(group)!) if (!(mesh.material as MeshStandardMaterial).userData.earthScan) applyEarthScan(mesh.material, scan, span*scale);
+  }
+  for (const [group, name, selection] of [['ground','land-base',0],['fields','field-bed',0],['screen','house',0],
+    ['mast','pole',2],['thermometer','gauge-case',3]] as const) {
+    for (const mesh of fixed.get(group)!) select(role(mesh, name),selection);
+  }
+  for (let i=0; i<COLD_WAVE_STOPS.length; i++) for (const mesh of fixed.get('key'+i)!) select(role(mesh,'stage-key'),i);
   const initial = evaluateColdWave(0);
-  const wedge = solid(initial.geometry.wedge, '#a7c0cd', 'cold-air-wedge', 1, true, .015);
+  const wedge = solid(initial.geometry.wedge, '#659ba9', 'cold-air-wedge', 1, 'air');
   // A single-sided translucent volume exposes the common terrain, rather
   // than painting the air onto a second diagram plane.
   wedge.material.side = T.FrontSide; wedge.material.transparent = true;
   wedge.material.opacity = .25; wedge.material.depthWrite = false; wedge.renderOrder = 2;
-  const flag = solid(initial.geometry.flag, '#bc8a6a', 'wind-flag', 2, true, .035);
-  const plants = initial.plants.map(plant => solid(plant.mesh, '#7f9575', `plant-${plant.id}`, 2, true));
-  const gauge = solid(initial.geometry.gaugeFill, initial.observation.indicatorColor, 'relative-warmth', 3, true, .015);
-  const flows = initial.geometry.flows.map((mesh, index) => solid(mesh, '#739aa4', `flow-${index}`, 1, true, .015));
-  const labels = COLD_WAVE_LABELS.map(label => select(role(
-    b.label(label.text, p(label.at), label.width * scale, label.height * scale), 'process-label'), label.selection));
+  const flag = solid(initial.geometry.flag, '#bc8a6a', 'wind-flag', 2, 'enamel');
+  const plants = initial.plants.map(plant => solid(plant.mesh, '#7f9575', `plant-${plant.id}`, 2, 'plant'));
+  const gauge = solid(initial.geometry.gaugeFill, initial.observation.indicatorColor, 'relative-warmth', 3, 'enamel');
+  const flows = initial.geometry.flows.map((mesh, index) => solid(mesh, '#739aa4', `flow-${index}`, 1, 'enamel'));
   const track: PhaseTrack = { start: p(L.track.start), end: p(L.track.end) };
-  const handle = role(b.label('前缘', [0, 0, 0], 17 * scale, 7 * scale), 'front-pull-tab');
-  handle.userData.smallPointTarget = true;
-  handle.userData.modelInput = { kind: 'phase-track', track, label: '拖动冷空气前缘，比较同一地点的变化' };
+  const carriage = fixed.get('cursor')!;
+  const handle = carriage.find(mesh=>mesh.userData.blenderColor === '#467c89')!;
+  for (const mesh of carriage) {
+    mesh.geometry.translate(-track.start[0],-track.start[1],-track.start[2]);
+    mesh.userData.modelInput = { kind: 'phase-track', track, label: '推移冷锋游标，观察同一测站' };
+    role(mesh,mesh === handle ? 'front-pull-tab' : 'cursor');
+    mesh.userData.smallPointTarget = mesh === handle;
+  }
+  for (const mesh of b.meshes) mesh.geometry.computeBoundingBox();
+  const markWorld=(x:number,h:number,z:number):Vec3=>b.v(p([x,h,z])).applyMatrix4(b.root.matrixWorld).toArray() as Vec3;
   const fixedMeshCount = b.meshes.length;
   const buffers = b.meshes.map(mesh => ({ position: mesh.geometry.attributes.position.array,
     normal: mesh.geometry.attributes.normal?.array, index: mesh.geometry.index?.array }));
@@ -77,7 +84,7 @@ export function buildColdWaveWorld(b: TextbookGeometry): ModelMotion {
         gauge.material.color.set(state.observation.indicatorColor);
         state.plants.forEach((plant, i) => { write(plants[i], plant.mesh); plants[i].userData.coldWaveWind = plant.wind; });
         state.geometry.flows.forEach((data, i) => write(flows[i], data));
-        handle.position.set(...phaseTrackPoint(state.phase, track));
+        for (const mesh of carriage) mesh.position.set(...phaseTrackPoint(state.phase, track));
         flag.userData.coldWaveWind = state.observation.wind;
         wedge.userData.coldWaveFront = state.frontX;
       }
@@ -90,14 +97,6 @@ export function buildColdWaveWorld(b: TextbookGeometry): ModelMotion {
       });
       b.contour(profile, wedge.userData.modelHovered ? .58 : .34);
       b.contour([p([L.sourceX, L.ground + .12, L.nearZ]), p(state.front)], .24);
-      b.contour([p(state.front), [handle.position.x, handle.position.y - 3.5 * scale, handle.position.z]], .25);
-      b.contour([track.start, track.end], .22);
-      for (const stop of COLD_WAVE_STOPS) {
-        const at = phaseTrackPoint(stop.phase, track);
-        b.contour([[at[0], at[1] - .6 * scale, at[2]], [at[0], at[1] + .6 * scale, at[2]]], .25);
-      }
-      for (const { definition, mesh } of fixedParts) if (mesh.userData.modelHovered || ['land-base', 'roof', 'gauge-case'].includes(definition.id))
-        b.outline(mesh, mesh.userData.modelHovered ? .56 : .26);
       for (const plant of state.plants) b.contour(plant.points.map(p), .28);
       // Cloth contours use current vertices; cached EdgesGeometry would leave
       // the old drooping silhouette behind after the first drag.
@@ -108,7 +107,7 @@ export function buildColdWaveWorld(b: TextbookGeometry): ModelMotion {
         });
         b.contour(edge, flag.userData.modelHovered ? .5 : .25);
       }
-      b.outline(handle, handle.userData.modelHovered ? .55 : .3);
+      if (handle.userData.modelHovered) b.outline(handle,.46);
     },
     focusBounds: () => ({ min: p(L.bounds.min), max: p(L.bounds.max) }),
     describe: () => {
@@ -128,10 +127,14 @@ export function buildColdWaveWorld(b: TextbookGeometry): ModelMotion {
           return { role: mesh.userData.coldWaveRole, selection: mesh.userData.modelInput.selection,
             input: mesh.userData.modelInput.kind, point: center.toArray(), mesh: mesh.uuid };
         }),
-        labelWorld: labels.map((mesh, i) => ({ text: COLD_WAVE_LABELS[i].text,
-          point: mesh.getWorldPosition(new T.Vector3()).toArray() })),
-        fixedMeshCount, geometryBuffersReused: b.meshes.length === fixedMeshCount && b.meshes.every((mesh, i) =>
-          mesh.geometry.attributes.position.array === buffers[i].position && mesh.geometry.attributes.normal?.array === buffers[i].normal && mesh.geometry.index?.array === buffers[i].index),
+        labelWorld: [
+          {text:'冷',point:markWorld(65.36,7.6,68.51)},{text:'暖',point:markWorld(65.36,21.8,68.51)},
+          ...COLD_WAVE_STOPS.map((stop,i)=>({text:stop.label,point:markWorld(14.3+23.9*i,1.02,77.98)})),
+        ],
+        fixedMeshCount, geometryBuffersReused: buffers.every((buffer, i) =>
+          b.meshes[i]?.geometry.attributes.position.array === buffer.position &&
+          b.meshes[i]?.geometry.attributes.normal?.array === buffer.normal &&
+          b.meshes[i]?.geometry.index?.array === buffer.index),
       };
     },
   };

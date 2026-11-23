@@ -9,6 +9,9 @@ import { COLD_WAVE_LABELS, COLD_WAVE_LAYOUT as L, COLD_WAVE_PARTS, COLD_WAVE_PLA
 vi.mock('../src/reference/engine.js', async () => ({ THREE: await import('three') }));
 import { buildColdWaveWorld } from '../src/textbook-cold-wave-world';
 
+import { loadFieldInstrument } from '../src/textbook-field-instruments';
+await loadFieldInstrument('cold-wave');
+
 function fixture(width = 150) {
   const root = new Three.Group(), meshes: Three.Mesh[] = [], contours: Vec3[][] = [];
   const b = {
@@ -194,7 +197,10 @@ describe('raised cold-wave scene and direct manipulation', () => {
     const { root, meshes, motion } = fixture(); expect(root.position.y).toBeGreaterThan(0);
     const d = motion.describe!() as any;
     expect(d.kind).toBe('cold-wave'); expect(d.originalPagePreserved).toBe(true); expect(d.commonCoordinateField).toBe(true);
-    expect(d.fixedLandscape).toBe(true); expect(meshes.length).toBeLessThan(30);
+    expect(d.fixedLandscape).toBe(true); expect(meshes.length).toBeLessThan(65);
+    for (const [part,scan] of [['ground','turf'],['fields','loam'],['cut','loam']])
+      expect(meshes.find(m=>m.userData.blenderPart===part)!.material).toMatchObject({userData:{earthScan:scan}});
+    for (let i=0;i<4;i++) expect(meshes.find(m=>m.userData.blenderPart==='key'+i)!.userData.modelInput.selection).toBe(i);
     for (const mesh of meshes.filter(mesh => mesh.userData.kind !== 'text-label')) expect((mesh.material as Three.MeshBasicMaterial).map).toBeNull();
     for (const [role, selection] of [['house', 0], ['cold-air-wedge', 1], ['wind-flag', 2], ['relative-warmth', 3]] as const) {
       const mesh = meshes.find(mesh => mesh.userData.coldWaveRole === role)!;

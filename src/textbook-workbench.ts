@@ -58,7 +58,46 @@ export function createWorkbench(actions: WorkbenchActions) {
   const scroll = directory.querySelector<HTMLElement>('.contents-scroll')!;
   const existingFigures = directory.querySelector<HTMLDetailsElement>('.figure-index')!;
   const modelList = document.createElement('div'); modelList.id = 'model-contents';
-  modelList.append(...existingFigures.querySelectorAll('[data-figure]')); existingFigures.remove();
+  const chapterGroups = contents.map((chapter, index) => {
+    const section = document.createElement('section');
+    section.className = 'model-chapter';
+    section.dataset.chapterIndex = String(index);
+    const heading = document.createElement('h2');
+    heading.textContent = chapter.title;
+    section.append(heading);
+    return section;
+  });
+  const modelButtons = new Map([...existingFigures.querySelectorAll<HTMLButtonElement>('[data-figure]')]
+    .map(button => [button.dataset.figure, button]));
+  for (const figure of figures) {
+    const row = modelButtons.get(figure.id)!;
+    const title = row.firstElementChild!;
+    const page = row.lastElementChild!;
+    title.classList.add('specimen-title');
+    page.classList.add('specimen-page');
+    page.textContent = `第 ${figure.pdf - 5} 页`;
+    const number = figure.title.match(/^(图\d+(?:\.\d+)+)\s+/);
+    if (number) {
+      const reference = document.createElement('small');
+      reference.className = 'specimen-reference';
+      reference.textContent = number[1];
+      title.textContent = figure.title.slice(number[0].length);
+      title.prepend(reference, ' ');
+    }
+    const image = document.createElement('img');
+    image.src = `${import.meta.env.BASE_URL}textbook/specimens/${figure.id}.webp`;
+    image.alt = ''; image.width = 480; image.height = 300;
+    image.loading = 'lazy'; image.decoding = 'async';
+    const mount = document.createElement('span');
+    mount.className = 'specimen-mount';
+    mount.append(image);
+    row.prepend(mount);
+    const printed = figure.pdf - 5;
+    const chapter = contents.reduce((current, item, i) => item.page <= printed ? i : current, 0);
+    chapterGroups[chapter].append(row);
+  }
+  modelList.append(...chapterGroups.filter(section => section.childElementCount > 1));
+  existingFigures.remove();
   const chapterList = document.createElement('div'); chapterList.id = 'chapter-contents';
   chapterList.append(...scroll.childNodes); scroll.append(chapterList, modelList);
   for (const [panel, tab] of [[chapterList, 'contents-chapters'], [modelList, 'contents-models']] as const) {
@@ -68,23 +107,42 @@ export function createWorkbench(actions: WorkbenchActions) {
   scroll.insertAdjacentHTML('beforeend', '<p class="directory-empty" role="status" hidden>没有找到相关章节或演示</p>');
   directory.querySelector('.panel-heading')!.insertAdjacentHTML('afterend', `<div class="directory-tabs" role="tablist" aria-label="目录类型"><button id="contents-chapters" role="tab" aria-selected="true" aria-controls="chapter-contents">教材目录</button><button id="contents-models" role="tab" aria-selected="false" aria-controls="model-contents" tabindex="-1">立体演示 <span>${figures.length}</span></button></div><label class="directory-search">${icon('<circle cx="10" cy="10" r="6"/><path d="m15 15 5 5"/>')}<input id="contents-search" type="search" placeholder="查找章节或演示" aria-label="查找章节或演示"></label>`);
 
+  const search = $('.directory-search');
+  const filters = document.createElement('div');
+  filters.className = 'directory-filters';
+  search.before(filters);
+  const chapterFilter = document.createElement('select');
+  chapterFilter.setAttribute('aria-label', '按章节筛选立体演示');
+  chapterFilter.add(new Option('全部章节', ''));
+  chapterGroups.forEach((group, i) => {
+    if (group.childElementCount > 1) chapterFilter.add(new Option(contents[i].title, String(i)));
+  });
+  chapterFilter.hidden = true;
+  filters.append(search, chapterFilter);
+  chapterFilter.onchange = () => { filterDirectory(); scroll.scrollTop = 0; };
+
   function filterDirectory() {
     const value = $<HTMLInputElement>('#contents-search').value.trim().toLowerCase();
     const panel = directoryView === 'chapters' ? chapterList : modelList;
     for (const button of panel.querySelectorAll<HTMLElement>('.contents-row')) {
-      const chapter = button.closest('.chapter');
-      button.hidden = !!value && !(button.textContent + (chapter?.querySelector('.chapter-title')?.textContent ?? '')).toLowerCase().includes(value);
+      const chapter = button.closest('.chapter, .model-chapter');
+      const outsideChapter = directoryView === 'models' && chapterFilter.value !== '' &&
+        chapter?.getAttribute('data-chapter-index') !== chapterFilter.value;
+      button.hidden = outsideChapter || (!!value && !(button.textContent + (chapter?.querySelector('.chapter-title, h2')?.textContent ?? '')).toLowerCase().includes(value));
     }
-    for (const chapter of chapterList.querySelectorAll<HTMLElement>('.chapter'))
-      chapter.hidden = !!value && ![...chapter.querySelectorAll<HTMLElement>('.contents-row')].some(row => !row.hidden);
+    for (const chapter of panel.querySelectorAll<HTMLElement>('.chapter, .model-chapter'))
+      chapter.hidden = ![...chapter.querySelectorAll<HTMLElement>('.contents-row')].some(row => !row.hidden);
     $('.directory-empty').hidden = [...panel.querySelectorAll<HTMLElement>('.contents-row')].some(row => !row.hidden);
   }
   function setDirectoryView(view: typeof directoryView) {
     directoryView = view; chapterList.hidden = view !== 'chapters'; modelList.hidden = view !== 'models';
+    directory.dataset.view = view;
+    chapterFilter.hidden = view !== 'models';
     for (const [id, selected] of [['contents-chapters', view === 'chapters'], ['contents-models', view === 'models']] as const) {
       $('#' + id).setAttribute('aria-selected', String(selected)); $('#' + id).tabIndex = selected ? 0 : -1;
     }
     filterDirectory();
+    scroll.scrollTop = 0;
   }
   $('#contents-chapters').onclick = () => setDirectoryView('chapters');
   $('#contents-models').onclick = () => setDirectoryView('models');

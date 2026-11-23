@@ -1,3 +1,5 @@
+import { elevationDrive } from './textbook-insolation-elevation';
+import { geographicLand, paintSolarHemisphere } from './textbook-geographical-globes';
 import { THREE as T } from './reference/engine.js';
 import { LIFT_MARGIN, type ModelMotion, type TextbookGeometry, type Vec3 } from './textbook-geometry';
 import type { PhaseTrack } from './textbook-model-input';
@@ -39,6 +41,24 @@ export function buildInsolationWorld(b: TextbookGeometry): ModelMotion {
     L.center[0]+Math.cos(a)*26,L.center[1]+Math.sin(a)*26,L.center[2]]));});
   solid(new T.TubeGeometry(new T.CatmullRomCurve3(bowPoints),80,.65*scale,10,false),brass,'globe-open-bow',0,'brass');
   parts.bearing(p([L.center[0],54,L.center[2]]),[0,1,0],1.7*scale,2.8*scale);
+  // The quadrant's broad etched limb follows the equatorial light globe. Its
+  // small index marks are geometry on the brass, visible from the front.
+  const rimShape=new T.Shape();rimShape.absarc(0,0,27.10,-Math.PI/2,Math.PI/2,false);
+  rimShape.absarc(0,0,25.42,Math.PI/2,-Math.PI/2,true);rimShape.closePath();
+  const rimGeo=new T.ExtrudeGeometry(rimShape,{depth:.72,bevelEnabled:true,bevelThickness:.12,bevelSize:.10,bevelSegments:2,curveSegments:72});
+  rimGeo.scale(scale,scale,scale);rimGeo.translate(...p([L.center[0],L.center[1],L.center[2]-.36]));
+  solid(rimGeo,brass,'graduated-meridian-stock',0,'brass');
+  const marks:number[]=[];
+  for(let i=0;i<=72;i++){
+    const a=(i/72-.5)*Math.PI,c=Math.cos(a),h=Math.sin(a),a0=i%6===0?25.56:26.3,a1=26.92;
+    for(const [r,shift] of [[a0,-.055],[a1,-.055],[a0,.055],[a0,.055],[a1,-.055],[a1,.055]])
+      marks.push(...p([L.center[0]+r*c-shift*h,L.center[1]+r*h+shift*c,L.center[2]+.51]));
+  }
+  const engravings=new T.BufferGeometry();engravings.setAttribute('position',new T.Float32BufferAttribute(marks,3));engravings.computeVertexNormals();
+  solid(engravings,'#5e4a38','incised-latitude-divisions',0,'enamel');
+  for(const [along,y] of [[-8,.22],[55,.22]])for(const across of [-8,8]){
+    parts.column(p(opticalPoint(along,y,across)),p(opticalPoint(along,1.45,across)),1.43*scale);
+  }
   // Two real guide posts stand behind the source plane. The entire carrier
   // moves on them by the same height used to construct the exact light rays.
   const railAlong=L.sourceDistance+4.5,railHeight=L.center[1]+L.radius*Math.sin(65*Math.PI/180)+4;
@@ -57,11 +77,19 @@ export function buildInsolationWorld(b: TextbookGeometry): ModelMotion {
   slideParts.shaft([0,-2.2*scale,.7*scale],[0,-2.2*scale,4.5*scale],.65*scale,'brass');
   const sleeve=solid(turnedShaftGeometry([0,0,.22*scale],[0,0,3.7*scale],[[2.7*scale,0],[3.1*scale,.08],[3.1*scale,.24],[2.65*scale,.3],[2.65*scale,.9],[3*scale,1]]),enamel,'collimator-barrel',0,'enamel');
   slide.add(sleeve);
+  const rearBell=solid(turnedShaftGeometry([0,0,4.8*scale],[0,0,9.0*scale],[[2.38*scale,0],[2.64*scale,.10],[2.82*scale,.63],[2.63*scale,.74],[2.08*scale,.91],[1.47*scale,1]]),'#947447','collimator-lamphouse',0,'brass');slide.add(rearBell);
+  for(const z of [5.55,7.55])slideParts.bearing([0,0,z*scale],[0,0,1],2.91*scale,.35*scale);
   const select = (mesh: any, selection: number) => {
     mesh.userData.modelInput = { kind: 'select', selection, label: `查看${INSOLATION_STOPS[selection].label}的等宽光束` };
     mesh.userData.insolationSelection = selection; return mesh;
   };
-  const globe = solid(new T.SphereGeometry(L.radius * scale, 48, 28), '#b7ccc5', 'earth', .012, 'ivory');
+  const moveDrive=elevationDrive(b,scale,p);
+  const globe = solid(new T.SphereGeometry(L.radius*scale,96,64),'#ffffff','earth',0,'enamel');
+  paintSolarHemisphere(globe.geometry,L.sunward,'#65999a','#2c4b50');globe.material.vertexColors=true;
+  const continents=geographicLand((L.radius+.053)*scale,[0,0,0]);
+  paintSolarHemisphere(continents,L.sunward,'#c7b382','#766b52');
+  const inlays=solid(continents,'#ffffff','natural-earth-inlays',0,'land');
+  inlays.material.vertexColors=true;inlays.material.roughness=.55;inlays.position.set(...p(L.center));
   // This is a painted teaching globe, rather than a water material inferred
   // from its pale green hue. Keep its highlight broad and the hit area clear.
   globe.material.roughness = .62;
@@ -124,10 +152,10 @@ export function buildInsolationWorld(b: TextbookGeometry): ModelMotion {
     return { mesh, stop, surface: at };
   });
   const label = (text: string, at: InsolationPoint, width: number, height: number, name: string) => role(b.label(text, p(at), width * scale, height * scale), name);
-  const labelHeight=5.2;
-  label(L.labels.beam.text,[24,57,59],23,labelHeight,'beam-label');
-  label(L.labels.footprint.text,[83,56,46],23,labelHeight,'footprint-label');
-  const nodeLabels = INSOLATION_STOPS.map(stop => select(label(stop.label,[83,6.5,50],18,labelHeight,'latitude-label'), stop.selection));
+  const labelHeight=6.25;
+  label(L.labels.beam.text,[24,57,59],26,labelHeight,'beam-label');
+  label(L.labels.footprint.text,[83,56,46],26,labelHeight,'footprint-label');
+  const nodeLabels = INSOLATION_STOPS.map(stop => select(label(stop.label,[83,6.5,50],21,labelHeight,'latitude-label'), stop.selection));
   const from = new T.Vector3(), to = new T.Vector3(), axis = new T.Vector3(), up = new T.Vector3(0, 1, 0);
   const orientSegment = (mesh: any, a: InsolationPoint, c: InsolationPoint) => {
     from.set(...p(a)); to.set(...p(c)); axis.copy(to).sub(from);
@@ -164,6 +192,7 @@ export function buildInsolationWorld(b: TextbookGeometry): ModelMotion {
         frame.forEach((mesh, i) => orientSegment(mesh, corners[i], corners[(i + 1) % 4]));
         handle.position.set(...p(state.sourceCenter));
         slide.position.copy(handle.position);
+        moveDrive(state.phase);
         nodeLabels.forEach((mesh, i) => { mesh.visible = i === state.selection; });
         nodes.forEach(({ mesh }, i) => { mesh.material.color.copy(i === state.selection ? active : inactive); });
       }
@@ -196,7 +225,7 @@ export function buildInsolationWorld(b: TextbookGeometry): ModelMotion {
         originalPagePreserved: true, elevatedAbovePage: rise,
         opticalBench:{supportedSource:true,verticalGuides:2,apertureWidth:3.2,apertureHeight:3.2,
           carriageWorld:slide.getWorldPosition(new T.Vector3()).toArray(),sourceFrameWorld:handle.getWorldPosition(new T.Vector3()).toArray(),
-          phaseIsObservationLatitude:true,annualRadiationCalculated:false},
+          geographicReference:'Natural Earth 1:110m Land',terminatorSunward:L.sunward,rackTurns:state.phase,phaseIsObservationLatitude:true,annualRadiationCalculated:false},
         nodeStops: INSOLATION_STOPS, fixedMeshCount,
         geometryBuffersReused: b.meshes.length === fixedMeshCount && allMeshes.every((mesh, i) => mesh.geometry.attributes.position.array === arrays[i] && mesh.geometry.index?.array === allIndices[i]),
         globeWorld: { center: modelWorld(L.center), radius: L.radius * scale },
@@ -209,7 +238,7 @@ export function buildInsolationWorld(b: TextbookGeometry): ModelMotion {
         phaseTrackWorld: { start: world(track.start), end: world(track.end) },
         nodeWorld: nodes.map(({ mesh, stop, surface }) => ({ ...stop, point: mesh.getWorldPosition(new T.Vector3()).toArray(), surface: modelWorld(surface) })),
         nodeLabelWorld: nodeLabels.map((mesh, i) => ({ ...INSOLATION_STOPS[i], point: mesh.getWorldPosition(new T.Vector3()).toArray(),
-          visible: mesh.visible, width:18 * scale, height:labelHeight * scale })),
+          visible: mesh.visible, width:21 * scale, height:labelHeight * scale })),
         labelWorld: allMeshes.filter(mesh => mesh.userData.kind === 'text-label' && mesh.visible).map(mesh => ({
           text: mesh.userData.text, point: mesh.getWorldPosition(new T.Vector3()).toArray() })),
         meshRoles: allMeshes.map(mesh => ({ role: mesh.userData.insolationRole, selection: mesh.userData.insolationSelection,

@@ -1,7 +1,10 @@
-import { createSpecimenMaterial } from './textbook-solid-materials';
+import { surveyBench } from './textbook-survey-bench';
+import { buildCrownSurface } from './textbook-natural-form-geometry';
+import { applyEarthScan } from './textbook-earth-scan';
+import { chamferedPlateGeometry } from './textbook-instrument-parts';
+import type { SolidMaterialRole } from './textbook-solid-materials';
 import { THREE as T } from './reference/engine.js';
 import { LIFT_MARGIN, type TextbookGeometry, type ModelMotion, type Vec3 } from './textbook-geometry';
-import { phaseTrackPoint, type PhaseTrack } from './textbook-model-input';
 import { evaluateRemoteSensing, REMOTE_LAYOUT, REMOTE_PROCESS_REFERENCE, REMOTE_SAMPLE_COUNT,
   REMOTE_PROCESS_STOPS, type RemotePoint, type RemoteJourney } from './textbook-remote-model';
 
@@ -12,51 +15,61 @@ export function buildRemoteSensingWorld(b: TextbookGeometry): ModelMotion {
   const scale = b.width / 100, back = -LIFT_MARGIN - 72 * scale, rise = 43 * scale;
   const p = ([x, y, z]: RemotePoint): Vec3 => [x * scale, y * scale, back + z * scale];
   b.root.position.set(0, rise, -8 * scale);
+  const bench=surveyBench(b,scale,p);
+  const finishes: Record<string,[SolidMaterialRole,string]> = {
+    sensor:['enamel','#294138'],'solar-panel':['enamel','#284c58'],'solar-panel-frame':['brass','#b19459'],
+    'payload-cap':['brass','#9a7645'],receiver:['wood','#694734'],'received-data-tray':['enamel','#224139'],
+    processor:['wood','#6c4631'],'processing-screen':['enamel','#284039'],'screen-bezel':['brass','#b09764'],
+    'workstation-drive-slot':['steel','#534d43'],'workstation-vent':['brass','#9a8150'],
+    keyboard:['enamel','#30463e'],'paper-stand':['brass','#9a7a4a'],'paper-stand-foot':['enamel','#30463e'],
+    'output-paper-ledge':['brass','#9a7a4a'],'output-paper':['ivory','#e4d5b2']
+  };
   const structure: any[] = [];
-  const quietMaterials = new Map<string, any>();
   const mark = (mesh: any, role: string, selection?: number) => {
     mesh.userData.remoteRole = role;
-    if (mesh.userData.kind !== 'text-label') {
-      const color = `#${mesh.material.color.getHexString()}`;
-      if (!quietMaterials.has(color)) {
-        const material = createSpecimenMaterial(b.pop, { color, ink: '#6a776c', hatch: .045, spacing: 2.8, shade: .07, seed: 502 + quietMaterials.size });
-        material.side = T.DoubleSide; quietMaterials.set(color, material);
-      }
-      mesh.material = quietMaterials.get(color);
-    }
     if (selection !== undefined) mesh.userData.modelInput = { kind: 'select', selection,
       label: `查看${REMOTE_PROCESS_STOPS[selection].label}` };
     return mesh;
   };
   const box = (center: RemotePoint, size: RemotePoint, color: string, role: string, selection?: number, fixed = true) => {
-    let geometry: any;
-    if (['sensor', 'receiver', 'processor'].includes(role)) {
-      const [w, h, d] = size, c = .6, shape = new T.Shape();
-      [[-w / 2 + c, -h / 2], [w / 2 - c, -h / 2], [w / 2, -h / 2 + c], [w / 2, h / 2 - c],
-        [w / 2 - c, h / 2], [-w / 2 + c, h / 2], [-w / 2, h / 2 - c], [-w / 2, -h / 2 + c]]
-        .forEach(([x, y], i) => i ? shape.lineTo(x * scale, y * scale) : shape.moveTo(x * scale, y * scale));
-      shape.closePath(); geometry = new T.ExtrudeGeometry(shape, { depth: d * scale, bevelEnabled: false }); geometry.translate(0, 0, -d * scale / 2);
-    } else geometry = new T.BoxGeometry(...size.map(v => v * scale));
-    const mesh = b.mesh(geometry, color, false);
+    const finish=finishes[role], half=size.map(v=>v*scale/2) as Vec3;
+    const geo=chamferedPlateGeometry(half.map(v=>-v) as Vec3,half,Math.min(...half)*.16);
+    const mesh=b.mesh(geo,finish?.[1]??color,false,true,finish?.[0]);
     mesh.position.set(...p(center)); mark(mesh, role, selection); if (fixed) structure.push(mesh); return mesh;
   };
   const rod = (from: RemotePoint, to: RemotePoint, radius: number, color: string, selection?: number) => {
     const mesh = b.cylinder(p(from), p(to), radius * scale, color, false); mark(mesh, 'support', selection); structure.push(mesh); return mesh;
   };
-  box([50, .6, 36], [98, 1.2, 48], '#dfd6bd', 'ground-plinth');
-  // These trees identify the observed object without labelling an inferred
-  // land-cover class. The finite tones remain explicitly illustrative samples.
-  for (const [x, z, height] of [[7, 26, 9], [25, 27, 12], [30, 38, 8]]) {
-    rod([x, 1.3, z], [x, height * .75, z], .32, '#a89d7e', 0);
-    const crown = b.cylinder(p([x, height * .35, z]), p([x, height + 2, z]), 2.2 * scale, '#94a18b', false, 0);
-    mark(crown, 'observed-tree', 0); structure.push(crown);
+  bench.bed(.4,99.6,3.3,71);
+  // The adjustable saddle holds the optical head over the specimen drawer.
+  bench.column([31,.1,6.4],[31,51.4,6.4],3.15);
+  bench.shaft([31,51.4,6.4],[31,54,12],1.65);
+  bench.parts.bearing(p([31,53,10]),[1,0,0],2.12*scale,9.2*scale);
+  bench.column([6,.1,13.5],[6,54.1,13.5],1.95);
+  bench.curve([[6,52,13.5],[6,58,14],[5,61,18],[5,61,29]],.69,'brass','lamp swan neck');
+  bench.turning([5,61,23],[5,61,28.8],[[1.1,0],[1.55,.1],[1.6,.32],[2.6,.65],[3.8,.94],[3.82,1]],'brass','rolled lamp reflector');
+  const sun=b.sphere(p(REMOTE_LAYOUT.sun),2.67*scale,'#e1c28a',false);mark(sun,'sun');
+  bench.plate([2,.12,19],[35,1.2,47.8],'brass','specimen drawer rim');
+  const positions:number[]=[],colors:number[]=[],indices:number[]=[];
+  for(let j=0;j<=28;j++)for(let i=0;i<=38;i++){
+    const x=2.6+i*31.7/38,z=19.6+j*27.55/28;
+    const swale=Math.exp(-Math.pow((x-14-.41*(z-26)-3*Math.sin(z*.21))*.42,2));
+    const ridge=.48*Math.sin(x*.27+z*.17)+.26*Math.cos(z*.64-x*.31);
+    positions.push(...p([x,1.69+.38*ridge-.31*swale,z]));
+    const color=new T.Color('#596e4e').lerp(new T.Color('#a28a61'),.41+.30*ridge).lerp(new T.Color('#707b62'),swale*.6);
+    colors.push(color.r,color.g,color.b);
+    if(i<38&&j<28){const a=j*39+i;indices.push(a,a+39,a+1,a+1,a+39,a+40);}
   }
-  const sun = b.sphere(p(REMOTE_LAYOUT.sun), 2.7 * scale, '#cfb27a', false);
-  mark(sun, 'sun'); structure.push(sun);
-  for (let i = 0; i < 8; i++) {
-    const angle = i * Math.PI / 4;
-    b.stroke([4.1, 5.7].map(radius => p([REMOTE_LAYOUT.sun[0] + Math.cos(angle) * radius,
-      REMOTE_LAYOUT.sun[1] + Math.sin(angle) * radius, REMOTE_LAYOUT.sun[2]])) as Vec3[], .42);
+  const ground=new T.BufferGeometry();ground.setAttribute('position',new T.Float32BufferAttribute(positions,3));
+  ground.setAttribute('color',new T.Float32BufferAttribute(colors,3));ground.setIndex(indices);ground.computeVertexNormals();
+  const groundMesh=b.mesh(ground,'#ffffff',false,true,'land',{vertexColors:true});
+  applyEarthScan(groundMesh.material,'turf',8*scale);mark(groundMesh,'ground-plinth',0);
+  for (const [x,z,h] of [[6,25,8.8],[25,25,10],[30,38,7.5],[31.2,30.6,5.2],[4.8,42,5.1]]) {
+    rod([x,1.5,z],[x,h*.73,z],.27,'#624835',0);
+    const crown=buildCrownSurface('deciduous',x+z);
+    const geo=new T.BufferGeometry();geo.setAttribute('position',new T.Float32BufferAttribute(crown.positions,3));geo.setIndex(crown.indices);
+    geo.scale(h*.55*scale,h*.57*scale,h*.55*scale);geo.translate(...p([x,h*.7,z]));geo.computeVertexNormals();
+    mark(b.mesh(geo,'#556c4a',false,true,'plant'),'observed-tree',0);
   }
 
   // Compact satellite, solar panels and a downward-facing optical aperture.
@@ -70,7 +83,7 @@ export function buildRemoteSensingWorld(b: TextbookGeometry): ModelMotion {
   }
   rod([24, 54.5, 12], [38, 54.5, 12], .3, '#7d8c7e', 0);
   box([31, 58.15, 12], [7.1, .45, 4.8], '#d1c5a7', 'payload-cap', 0);
-  const lens = b.cylinder(p([31, 51, 14]), p([31, 48.5, 18]), 2.2 * scale, '#718981', false);
+  const lens = bench.turning([31,51,14],[31,48.5,18],[[2.32,0],[2.42,.12],[2.05,.22],[2.05,.52],[2.32,.58],[2.4,.84],[2.73,.9],[2.73,1]],'brass','camera objective');
   mark(lens, 'optical-aperture', 0); structure.push(lens);
   const lensGlass = b.cylinder(p([31, 48.5, 18]), p([31, 48.3, 18.3]), 1.65 * scale, '#a9c5c2', false);
   mark(lensGlass, 'passive-optical-sensor', 0); structure.push(lensGlass);
@@ -85,7 +98,7 @@ export function buildRemoteSensingWorld(b: TextbookGeometry): ModelMotion {
   const profile = [[0, -1], [1, -.9], [3, -.5], [5.8, .7], [5.8, 1], [5.4, .9], [3, -.15], [1, -.55], [0, -.6]];
   const dishGeometry = new T.LatheGeometry(profile.map(([r, y]) => new T.Vector2(r * scale, y * scale)), 28);
   dishGeometry.rotateX(.32); dishGeometry.rotateZ(-.38);
-  const dish = b.mesh(dishGeometry, '#e3e4d5', false); dish.position.set(...p(REMOTE_LAYOUT.dish));
+  const dish = b.mesh(dishGeometry, '#bea571', false,true,'brass'); dish.position.set(...p(REMOTE_LAYOUT.dish));
   mark(dish, 'receiving-dish', 1); structure.push(dish);
   const dishPoint = ([x, y, z]: RemotePoint): RemotePoint => {
     const v = new T.Vector3(x, y, z).applyAxisAngle(new T.Vector3(1, 0, 0), .32).applyAxisAngle(new T.Vector3(0, 0, 1), -.38);
@@ -93,7 +106,7 @@ export function buildRemoteSensingWorld(b: TextbookGeometry): ModelMotion {
   };
   const rimGeometry = new T.TorusGeometry(5.62 * scale, .16 * scale, 5, 40);
   rimGeometry.rotateX(Math.PI / 2 + .32); rimGeometry.rotateZ(-.38);
-  const rim = b.mesh(rimGeometry, '#bdc7b7', false); rim.position.set(...p(dishPoint([0, .85, 0])));
+  const rim = b.mesh(rimGeometry, '#ae894d', false,true,'brass'); rim.position.set(...p(dishPoint([0, .85, 0])));
   mark(rim, 'dish-rolled-rim', 1); structure.push(rim);
   // Back ribs converge on the mount; their direction belongs to the bowl,
   // rather than a decorative radial pattern floating in front of it.
@@ -106,6 +119,11 @@ export function buildRemoteSensingWorld(b: TextbookGeometry): ModelMotion {
   for (const side of [-1, 1]) rod([48 + side * 4.8, 18, 38], [49, 23, 35], .14, '#8f9885', 1);
   const feed = b.sphere(p([49, 23, 35]), .6 * scale, '#7b8f87', false); mark(feed, 'dish-feed', 1); structure.push(feed);
 
+  bench.parts.knob(p([35.5,54.7,12]),[1,0,0],1.52*scale,.9*scale);
+  bench.turning([60.9,11,43],[77.1,11,43],[[1.16,0],[1.22,.07],[.83,.12],[.83,.88],[1.22,.93],[1.16,1]],'brass','comparator roller');
+  bench.parts.knob(p([76.6,11,41]),[1,0,0],1.65*scale,1.2*scale);
+  for(const x of [82,96]) bench.column([x,.12,51.4],[x,9.2,51.4],1.45);
+  bench.turning([80.7,23.5,51.7],[97.3,23.5,51.7],[[.8,0],[.87,.07],[.59,.13],[.59,.87],[.87,.93],[.8,1]],'brass','print frame roller');
   // Screen and output contain separate solid tiles, never a canvas texture.
   box([69, 12, 40], [14, 20, 7], '#e5e0d1', 'processor', 2);
   box([69, 16.6, 44.1], [10.2, 7.3, .4], '#c6cec2', 'processing-screen', 2);
@@ -125,11 +143,8 @@ export function buildRemoteSensingWorld(b: TextbookGeometry): ModelMotion {
   corner.setAttribute('position', new T.Float32BufferAttribute(vertices, 3)); corner.setIndex([0, 1, 2]); corner.computeVertexNormals();
   const fold = b.mesh(corner, '#ded7c0', false, false); mark(fold, 'folded-paper-corner', 3); structure.push(fold);
 
-  const labelPositions: RemotePoint[] = [[23, 3, 61], [48, 3, 61], [70, 3, 61], [91, 3, 61]];
-  ['获取', '传输', '处理', '成果'].forEach((text, i) => {
-    const label = b.label(text, p(labelPositions[i]), 17 * scale, 7.9 * scale);
-    mark(label, 'node-label', i);
-  });
+  const labelPositions: RemotePoint[] = [[16,1.08,56.7],[43.2,1.08,56.7],[64.5,1.08,56.7],[87.6,1.08,58.6]];
+  ['获取','传输','处理','成果'].forEach((text,i)=>mark(bench.key(text,labelPositions[i],15.8,5.85,i,REMOTE_PROCESS_STOPS[i].label),'node-label',i));
 
   const first = evaluateRemoteSensing(0);
   const copyKinds = ['captured', 'received', 'processed', 'output'] as const;
@@ -153,13 +168,8 @@ export function buildRemoteSensingWorld(b: TextbookGeometry): ModelMotion {
     return { source, copies, packets };
   });
 
-  const track: PhaseTrack = { start: p(REMOTE_LAYOUT.trackStart), end: p(REMOTE_LAYOUT.trackEnd) };
-  const rail = rod(REMOTE_LAYOUT.trackStart, REMOTE_LAYOUT.trackEnd, .13, '#b5ac92'); mark(rail, 'phase-rail');
-  const handleGeometry = new T.BoxGeometry(4.4 * scale, 3.2 * scale, .7 * scale); handleGeometry.rotateZ(Math.PI / 4);
-  const handle = b.mesh(handleGeometry, '#e4d7ba', false);
-  handle.position.set(...phaseTrackPoint(0, track)); mark(handle, 'phase-handle');
-  handle.userData.smallPointTarget = true;
-  handle.userData.modelInput = { kind: 'phase-track', track, label: '拖动纸签，回看遥感信息链' };
+  const drive=bench.carriage(REMOTE_LAYOUT.trackStart,REMOTE_LAYOUT.trackEnd,'推拉木柄，回看同一组遥感样本的获取、传输、整理与成像');
+  const {grip:handle,track}=drive;mark(handle,'phase-handle');
 
   let state = first;
   const infoPath = (points: RemotePoint[], width = .35, warm = false) => {
@@ -169,10 +179,7 @@ export function buildRemoteSensingWorld(b: TextbookGeometry): ModelMotion {
   return {
     update(phase, _selection) {
       state = evaluateRemoteSensing(phase);
-      structure.forEach(mesh => {
-        const active = mesh.userData.modelInput?.selection === state.selection;
-        b.outline(mesh, mesh.userData.remoteRole === 'ground-plinth' ? .32 : mesh.userData.modelHovered ? .85 : active ? .66 : .32);
-      });
+      for(const mesh of structure) if(mesh.userData.modelHovered) b.outline(mesh,.63);
       if (state.illumination > 0) infoPath([REMOTE_LAYOUT.sun, REMOTE_LAYOUT.target], .35, true);
       if (state.phase >= .025) infoPath([REMOTE_LAYOUT.target, REMOTE_LAYOUT.sensor], .21, true);
       if (state.phase >= .245) infoPath([REMOTE_LAYOUT.downlink, REMOTE_LAYOUT.dish, REMOTE_LAYOUT.receiver], .29);
@@ -191,9 +198,10 @@ export function buildRemoteSensingWorld(b: TextbookGeometry): ModelMotion {
           if (mesh.visible) b.outline(mesh, .4);
         }
       });
-      handle.position.set(...phaseTrackPoint(state.phase, track)); b.outline(handle, .62);
+      drive.move(state.phase);
     },
-    focusBounds: () => ({ min: [-3 * scale, -2 * scale, back + 5 * scale], max: [103 * scale, 69 * scale, back + 71 * scale] }),
+    focusBounds: () => ({ min: p([0,-5.8,3]), max: p([100,64.5,71]) }),
+    framingPoints: () => [[0,3],[100,3],[100,71],[0,71]].flatMap(([x,z])=>[p([x,-5.8,z]),p([x,2,z])]).concat([p([5,64.5,29]),p([47,58.9,12])]),
     describe: () => {
       b.root.updateWorldMatrix(true, true);
       const world = (point: Vec3): Vec3 => b.v(point).applyMatrix4(b.root.matrixWorld).toArray() as Vec3;

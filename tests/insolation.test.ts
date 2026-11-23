@@ -181,7 +181,7 @@ describe('persistent raised Three.js paper geometry and direct manipulation', ()
       expect(nodes[stop.selection].userData.modelInput).toMatchObject({ kind: 'select', selection: stop.selection });
       const labels = meshes.filter(mesh => mesh.userData.kind === 'text-label' && mesh.visible);
       expect(labels).toHaveLength(3); expect(labels.map(mesh => mesh.userData.text)).toEqual(['等宽光束', '照射范围', stop.label]);
-      expect(labels.every(mesh => mesh.userData.labelSize[1] === 5.2 * 3)).toBe(true);
+      expect(labels.every(mesh => mesh.userData.labelSize[1] >= 6.25 * 3)).toBe(true);
       const d: any = motion.describe!(); expect(d.nodeWorld[stop.selection].latitudeDegrees).toBe(stop.latitudeDegrees);
       expect(d.nodeLabelWorld.filter((label: any) => label.visible)).toHaveLength(1);
     }

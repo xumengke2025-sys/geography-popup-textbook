@@ -144,7 +144,9 @@ describe('textbook fig.6.5: one idealized mature Northern Hemisphere typhoon', (
       expect(svg).not.toMatch(/<image|data:image|<animate|NaN|Infinity|undefined/);
       expect(JSON.parse(svg.match(/data-typhoon-state='([^']+)'/)![1])).toEqual(typhoonDiagnostics(state));
       expect(svg.match(/data-typhoon-node="\d"/g)).toHaveLength(4);
-      expect(svg.match(/tabindex="0"/g)).toHaveLength(5);
+      const focusable = svg.match(/<g\b[^>]*tabindex="0"[^>]*>/g) ?? [];
+      expect(focusable.filter(part => part.includes('data-model-selection='))).toHaveLength(5);
+      expect(focusable.filter(part => part.includes('data-phase-track=') && part.includes('role="slider"'))).toHaveLength(1);
       expect(svg).toContain('font-size="30"'); expect(svg).toContain('不是形成过程');
       const [x, y] = typhoonProject(state.labels[0].at);
       expect(x).toBeGreaterThan(0); expect(x).toBeLessThan(620);

@@ -38,6 +38,11 @@ describe('schematic river-mouth deposition', () => {
       const state = evaluateDeltaDeposition(i / 100);
       expect(state.deposition).toBeGreaterThanOrEqual(previous.deposition);
       state.branches.forEach((branch, j) => expect(branch.front).toBeGreaterThanOrEqual(previous.branches[j].front));
+      state.shoreline.forEach(([u,v], j) => {
+        const before = previous.shoreline[j];
+        expect(Math.hypot(u-DELTA_MOUTH[0],v-DELTA_MOUTH[1]) + 1e-12)
+          .toBeGreaterThanOrEqual(Math.hypot(before[0]-DELTA_MOUTH[0],before[1]-DELTA_MOUTH[1]));
+      });
       for (const grain of previous.grains.filter(g => g.stage === 'deposited')) expect(state.grains[grain.id].position).toEqual(grain.position);
       previous = state;
     }

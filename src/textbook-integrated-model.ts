@@ -228,10 +228,10 @@ export const QUAKE_FLAGS = { communication: 1, verified: 2, warehouseB: 4, layer
 export function quakeResponseActions(selection: number, phase = 1) {
   const value = selectionAt(selection, 15);
   return [
-    { id: 'send', label: value & 1 ? '位置已发送' : '发送定位信息', selection: value | 1, enabled: phase >= .49, pressed: !!(value & 1), replay: false },
+    { id: 'send', label: value & 1 ? '对照未发送位置的情景' : '发送定位信息', selection: value ^ 1, enabled: phase >= .49, pressed: !!(value & 1), replay: false },
     { id: 'verify', label: value & 2 ? '保留道路待确认' : '核验绕行线可通行', selection: value ^ 2, enabled: phase >= .62, pressed: !!(value & 2), replay: false },
-    { id: 'warehouse-a', label: '比较甲库方案', selection: value & ~4, enabled: true, pressed: !(value & 4), replay: true },
-    { id: 'warehouse-b', label: '比较乙库方案', selection: value | 4, enabled: true, pressed: !!(value & 4), replay: true },
+    { id: 'warehouse-a', label: '比较甲库方案', selection: value & ~4, enabled: true, pressed: !(value & 4), replay: false },
+    { id: 'warehouse-b', label: '比较乙库方案', selection: value | 4, enabled: true, pressed: !!(value & 4), replay: false },
     { id: 'layers', label: value & 8 ? '叠合信息层' : '分离信息层', selection: value ^ 8, enabled: true, pressed: !!(value & 8), replay: false },
   ];
 }
@@ -332,14 +332,15 @@ const escape = (value: string) => value.replaceAll('&', '&amp;').replaceAll('<',
 const svgInspect = (target: string, label: string, body: string) => `<g data-model-inspection="${target}" data-model-inspect="${target}" role="button" tabindex="0" aria-label="${escape(label)}">${body}</g>`;
 function svgText(text: string, at: IntegratedPoint, size = 15) { const [x, y] = svgPoint(at); return `<text x="${x}" y="${y}" font-size="${size}" text-anchor="middle" fill="${COLORS.ink}">${escape(text)}</text>`; }
 function svgShell(effect: string, title: string, body: string, metadata: object) {
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 500" role="img" aria-label="${escape(title)}" data-integrated-effect="${effect}" data-integrated-state='${escape(JSON.stringify(metadata))}'><style>text{font-family:FieldSans,"Microsoft YaHei",sans-serif} [role=button]{cursor:pointer;outline:none}[role=button]:focus{filter:drop-shadow(0 0 3px #b3925a)}</style><rect x="10" y="10" width="680" height="480" rx="12" fill="#faf7ee" stroke="#d0c7b3"/><g stroke-linejoin="round" stroke-linecap="round">${body}</g></svg>`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 600" class="flat-model-svg integrated-diagram" role="group" aria-label="${escape(title)}" data-integrated-effect="${effect}" data-integrated-state='${escape(JSON.stringify(metadata))}'><style>text{font-family:FieldSans,"Microsoft YaHei",sans-serif} [role=button]{cursor:pointer;outline:none}[role=button]:focus{filter:drop-shadow(0 0 3px #b3925a)}</style><rect x="10" y="10" width="680" height="580" rx="12" fill="#faf7ee" stroke="#d0c7b3"/><g stroke-linejoin="round" stroke-linecap="round">${body}</g></svg>`;
 }
 export function integratedSvg(effect: string, phase: number, selection = 0, inspection = 'overview'): string {
   if (effect === 'city-rain-system') {
     const open = inspection !== 'overview';
-    const polygon = [[6, 0, 63.7], [92, 0, 63.7], [92, 20.8, 63.7], [6, 20.8, 63.7]].map(point => urbanWaterProject(point as IntegratedPoint).join(',')).join(' ');
-    const panel = open ? '' : `<polygon data-underground-side="closed" points="${polygon}" fill="#cbbd99" stroke="#6c7c71"/>`;
-    const toggle = svgInspect(open ? 'overview' : 'underground', open ? '合上地下侧面' : '打开地下侧面', `<rect x="272" y="282" width="154" height="36" rx="3" fill="#faf7ee" stroke="#b3925a"/><text x="349" y="306" text-anchor="middle" font-size="20" fill="#273d40">${open ? '合上侧面' : '打开地下'}</text>`);
+    const face = (lo:number,hi:number) => [[6,lo,63.7],[92,lo,63.7],[92,hi,63.7],[6,hi,63.7]].map(point=>urbanWaterProject(point as IntegratedPoint).join(',')).join(' ');
+    const panel = open ? '' : `<g data-underground-side="closed" data-specimen-key="" data-model-inspection="underground" data-model-inspect="underground" role="button" tabindex="0" aria-label="打开铰接侧盖">${[[0,7,'#ad9880'],[7,14,'#ab8d72'],[14,20.8,'#967e64']].map(([lo,hi,color])=>`<polygon points="${face(Number(lo),Number(hi))}" fill="${color}" stroke="#796443"/><polygon points="${face(Number(lo),Number(hi))}" fill="url(#urban-earth)"/>`).join('')}<polygon points="${face(0,20.8)}" fill="none" stroke="#9a784a" stroke-width="3"/></g>`;
+    const edge = open ? urbanWaterProject([100,16,68]) : urbanWaterProject([19,16,64]);
+    const toggle = svgInspect(open ? 'overview' : 'underground', open ? '合上地下侧面' : '打开地下侧面', `<g transform="translate(${edge.join(' ')})"><rect x="-47" y="-16" width="94" height="32" rx="6" fill="#a18353" stroke="#745c3b"/><rect x="-41" y="-12" width="82" height="24" rx="5" fill="#e3d7b9"/><text y="5" text-anchor="middle" font-size="16" fill="#364d47">${open?'合上侧盖':'拉开侧盖'}</text></g>`).replace('role="button"','data-specimen-key="" role="button"');
     return urbanWaterSvg(phase, selection, inspection === 'underground' ? 'overview' : inspection)
       .replace('</svg>', `<g data-integrated-effect="city-rain-system" data-underground-open="${open}">${panel}${toggle}</g></svg>`);
   }
@@ -352,7 +353,13 @@ export function integratedSvg(effect: string, phase: number, selection = 0, insp
     const river = Array.from({ length: 70 }, (_, i) => basinRiverPoint(i / 69));
     const plateau = `<polygon points="${[[4, 0, 3], [99, 0, 3], [99, 0, 67], [4, 0, 67]].map(p => coords(p as IntegratedPoint)).join(' ')}" fill="${COLORS.grass}" stroke="${COLORS.ink}"/>`;
     const currentTrace = water[inspection === 'groundwater' ? 9 : 0].trace.map(coords).join(' ');
-    const body = plateau + lines + `<polyline points="${river.map(coords).join(' ')}" fill="none" stroke="${COLORS.water}" stroke-width="9"/>`
+    const open=inspection==='specimen-open'||inspection==='groundwater';
+    const lip=Array.from({length:30},(_,i):IntegratedPoint=>{const x=4+i*95/29;return [x,basinGround(x,63),63];});
+    const floor=lip.map(([x,,z]):IntegratedPoint=>[x,-5,z]);
+    const flap=svgInspect(open?'specimen-closed':'specimen-open',open?'合拢标本侧板':'展开标本侧板',
+      `<polygon points="${[...lip,...floor.slice().reverse()].map(coords).join(' ')}" fill="${open?'#b7a284':'#8d7960'}" stroke="#695943"/>`
+      +(open?`<polyline points="${[[17,16,62],[41,8,62],[78,5.3,62],[99,4.8,62]].map(p=>coords(p as IntegratedPoint)).join(' ')}" fill="none" stroke="#54858a" stroke-width="4"/><polygon points="${[floor[0],floor[29],[99,-7,72],[4,-7,72]].map(p=>coords(p as IntegratedPoint)).join(' ')}" fill="#ba9f78" stroke="#7f6a4c"/>`:''));
+    const body = plateau + lines + flap + `<polyline points="${river.map(coords).join(' ')}" fill="none" stroke="${COLORS.water}" stroke-width="9"/>`
       + (state.floodRise > 0 ? `<g data-terrain-clipped-flood="true" fill="${COLORS.water}" opacity=".48">${basinFloodTriangles(state.floodRise).map(triangle => `<polygon points="${triangle.map(coords).join(' ')}"/>`).join('')}</g>` : '')
       + (state.accumulation > 0 ? `<polygon data-long-term-deposit="${state.accumulation}" points="${[[103 - 7 * state.accumulation, 5.3, 29], [103 + 6 * state.accumulation, 5.3, 22], [103 + 6 * state.accumulation, 5.3, 36]].map(point => coords(point as IntegratedPoint)).join(' ')}" fill="${COLORS.soil}" stroke="${COLORS.gold}"/>` : '')
       + `<polyline points="${currentTrace}" fill="none" stroke="${COLORS.water}" stroke-width="1.5" stroke-dasharray="4 5"/>`
@@ -361,8 +368,8 @@ export function integratedSvg(effect: string, phase: number, selection = 0, insp
       + svgInspect('upper', '观察上游河谷', svgText('上游河谷', [21, 34, 17]))
       + svgInspect('bend', '观察凹岸与凸岸', svgText('河曲', [57, 17, 55]))
       + svgInspect('mouth', '观察河口沉积', svgText('河口', [99, 10, 50]))
-      + svgText(state.timeScale, [61, -13, 62], 14)
-      + INTEGRATED_CONTROLS['basin-system'].map((label, i) => `<g data-model-selection="${i}" data-model-replay="true" role="button" tabindex="0" aria-label="${label}"><rect x="${60 + i * 210}" y="451" width="195" height="30" rx="3" fill="${state.selection === i ? '#e6dfca' : '#faf7ee'}" stroke="#b3925a"/><text x="${157 + i * 210}" y="471" text-anchor="middle" fill="#273d40" font-size="14">${label}</text></g>`).join('');
+      + svgText(state.timeScale, [50, -12, 55], 30)
+      + INTEGRATED_CONTROLS['basin-system'].map((label, i) => `<g data-model-selection="${i}" data-model-replay="true" role="button" tabindex="0" aria-label="${label}"><rect x="${60 + i * 210}" y="500" width="195" height="78" rx="3" fill="${state.selection === i ? '#e6dfca' : '#faf7ee'}" stroke="#b3925a"/><text x="${157 + i * 210}" y="550" text-anchor="middle" fill="#273d40" font-size="14">${label}</text></g>`).join('');
     return svgShell(effect, '同一流域的水沙联系，示意模型', body, { phase: state.phase, selection: state.selection, water: water.map(v => ({ id: v.id, point: v.point, compartment: v.compartment })), sediment, floodRise: state.floodRise });
   }
   if (effect === 'quake-response-system') {
@@ -370,10 +377,10 @@ export function integratedSvg(effect: string, phase: number, selection = 0, insp
     const mapY = [0, 1, 2].map(i => state.layersSeparated ? 18 + i * 10 : 7 + i * .7);
     const roads = state.roads.map(edge => {
       const color = edge.status === 'passable' ? COLORS.water : edge.status === 'blocked' ? COLORS.pending : COLORS.gold;
-      const midpoint = mix(n[edge.a], n[edge.b], .5), status = edge.status === 'blocked' ? '中断' : edge.status === 'pending' ? '待确认' : '';
+      const status = edge.status === 'blocked' ? '中断' : edge.status === 'pending' ? '待确认' : '';
       const height = state.layersSeparated && phase >= .62 ? mapY[2] : 3;
       const a = [...n[edge.a]] as IntegratedPoint, b = [...n[edge.b]] as IntegratedPoint; a[1] = b[1] = height;
-      return svgInspect('roads', '查看道路核验状态', `<polyline points="${coords(a)} ${coords(b)}" stroke="${color}" stroke-width="3" fill="none" ${edge.status === 'pending' || edge.status === 'unobserved' ? 'stroke-dasharray="5 5"' : ''}/>${status && edge.role !== 'access' ? svgText(status, [midpoint[0], height + 3, midpoint[2]], 10) : ''}`);
+      return svgInspect('roads', '查看道路核验状态', `<polyline points="${coords(a)} ${coords(b)}" stroke="${color}" stroke-width="3" fill="none" ${edge.status === 'pending' || edge.status === 'unobserved' ? 'stroke-dasharray="5 5"' : ''}/>${status && edge.role !== 'access' ? `<title>${escape(status)}</title>` : ''}`);
     }).join('');
     const satellites = state.navigation.map(link => {
       const [x, y] = svgPoint(link.source);
@@ -382,24 +389,25 @@ export function integratedSvg(effect: string, phase: number, selection = 0, insp
     }).join('');
     const route = state.route ? `<polyline points="${state.routePoints.map(coords).join(' ')}" fill="none" stroke="${COLORS.water}" stroke-width="7" opacity=".65"/>` : '';
     const warehouses = ['a', 'b'].map((id, i) => { const [x, y] = svgPoint(n[id]); const action = quakeResponseActions(state.selection, state.phase).find(item => item.id === `warehouse-${id}`)!;
-      return `<g data-model-selection="${action.selection}" data-model-replay="true" role="button" tabindex="0" aria-label="${action.label}"><path d="M${x - 12} ${y}v-16h24v16Z M${x - 15} ${y - 16}l15-9 15 9" fill="${COLORS.soil}" stroke="${COLORS.ink}"/>${svgText(`${i ? '乙' : '甲'}库`, [n[id][0], 10, n[id][2]], 13)}</g>`;
+      return `<g data-model-selection="${action.selection}" data-specimen-key="" data-keep-phase="" role="button" tabindex="0" aria-label="${action.label}"><path d="M${x - 12} ${y}v-16h24v16Z M${x - 15} ${y - 16}l15-9 15 9" fill="${COLORS.soil}" stroke="${COLORS.ink}"/>${svgText(`${i ? '乙' : '甲'}库`, [n[id][0] + (i ? 7 : -5), i ? 16 : 6, n[id][2]], 30)}</g>`;
     }).join('');
     const [tx, ty] = svgPoint(n.town), [vx, vy] = svgPoint(state.vehicle);
     const layers = state.layersSeparated ? mapY.map((height, i) => {
       const available = i === 0 ? state.remoteObserved : i === 1 ? state.positionKnown : phase >= .62;
-      return available ? `<g data-map-layer="${i}" data-map-height="${height}"><polygon points="${[[2, height, 4], [106, height, 4], [106, height, 65], [2, height, 65]].map(p => coords(p as IntegratedPoint)).join(' ')}" fill="none" stroke="${COLORS.gold}" stroke-width=".9"/>${svgText(['影像', '位置', '道路'][i], [111, height, 38], 11)}</g>` : '';
+      return available ? `<g data-map-layer="${i}" data-map-height="${height}"><polygon points="${[[2, height, 4], [106, height, 4], [106, height, 65], [2, height, 65]].map(p => coords(p as IntegratedPoint)).join(' ')}" fill="none" stroke="${COLORS.gold}" stroke-width=".9"/>${svgText(['影像', '位置', '道路'][i], [115, 67 - i*13, 38], 30)}</g>` : '';
     }).join('') : '';
     const body = `<polygon points="${[[3, 0, 5], [106, 0, 5], [106, 0, 66], [3, 0, 66]].map(p => coords(p as IntegratedPoint)).join(' ')}" fill="#dce1cf" stroke="${COLORS.ink}"/>`
       + layers
+      + (state.remoteObserved ? '<g transform="translate(65 70)"><path d="M0 0h38" stroke="#a75541" stroke-width="5"/><text x="46" y="10">中断</text><path d="M160 0h38" stroke="#b3925a" stroke-dasharray="6 5" stroke-width="5"/><text x="207" y="10">待确认</text></g>' : '')
       + roads + route + warehouses + `<path d="M${tx - 10} ${ty}v-15h21v15Z M${tx - 14} ${ty - 15}l14-10 14 10" fill="#eee2ce" stroke="${COLORS.ink}"/>`
-      + satellites + svgInspect('position', '观察定位与独立通信', svgText(state.positionKnown ? '接收机已定位' : '目标村镇', [88, 20, 40], 13))
-      + (state.positionKnown ? svgText(state.communicationDelivered ? '位置已送达调度端' : '位置尚未送达调度端', [51, 18, 8], 12) : '')
+      + satellites + svgInspect('position', '观察定位与独立通信', svgText(state.positionKnown ? '接收机已定位' : '目标村镇', [88, 34, 40], 30))
+      + (state.positionKnown ? svgText(state.communicationDelivered ? '位置已送达调度端' : '位置尚未送达调度端', [50, 73, 8], 30) : '')
       + (state.remoteObserved ? svgInspect('remote', '影像变化不等于通行核验', `<polygon points="${[[43, mapY[0], 36], [57, mapY[0], 36], [57, mapY[0], 49], [43, mapY[0], 49]].map(p => coords(p as IntegratedPoint)).join(' ')}" fill="none" stroke="${COLORS.pending}" stroke-dasharray="4 4"/>`) : '')
       + `<rect x="${vx - 6}" y="${vy - 7}" width="12" height="7" rx="1" fill="${COLORS.gold}" stroke="${COLORS.ink}"/>`
       + svgText(state.route ? '已核验路线' : '通路待确认，原地等待', [58, -12, 65], 14)
-      + quakeResponseActions(state.selection, state.phase).filter(action => !action.replay).map((action, i) => {
-        const label = action.id === 'send' ? state.communicationDelivered ? '位置已送达' : '发送位置' : action.id === 'verify' ? state.selection & 2 ? '恢复待确认' : '核验绕行线' : state.layersSeparated ? '叠合信息层' : '分离信息层';
-        return `<g ${action.enabled ? `data-model-selection="${action.selection}"` : ''} role="button" tabindex="${action.enabled ? 0 : -1}" aria-disabled="${!action.enabled}" aria-label="${action.label}"><rect x="${68 + i * 211}" y="451" width="196" height="30" rx="3" fill="#faf7ee" stroke="#b3925a" opacity="${action.enabled ? 1 : .45}"/><text x="${166 + i * 211}" y="471" text-anchor="middle" fill="#273d40" font-size="14">${label}</text></g>`;
+      + quakeResponseActions(state.selection, state.phase).filter(action => !action.id.startsWith('warehouse-')).map((action, i) => {
+        const label = action.id === 'send' ? state.selection & 1 ? '未发对照' : '发送位置' : action.id === 'verify' ? state.selection & 2 ? '恢复待确认' : '核验绕行线' : state.layersSeparated ? '叠合信息层' : '分离信息层';
+        return `<g ${action.enabled ? `data-model-selection="${action.selection}" data-specimen-key="" data-keep-phase=""` : ''} role="button" tabindex="${action.enabled ? 0 : -1}" aria-disabled="${!action.enabled}" aria-label="${action.label}"><rect x="${68 + i * 211}" y="500" width="196" height="78" rx="3" fill="#faf7ee" stroke="#b3925a" opacity="${action.enabled ? 1 : .45}"/><text x="${166 + i * 211}" y="550" text-anchor="middle" fill="#273d40" font-size="14">${label}</text></g>`;
       }).join('');
     return svgShell(effect, '虚构震后地景：观测、核验与救援', body, { phase: state.phase, selection: state.selection, roads: state.roads, route: state.route, vehicle: state.vehicle, positionKnown: state.positionKnown, communicationDelivered: state.communicationDelivered });
   }

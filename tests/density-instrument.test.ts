@@ -1,10 +1,13 @@
-import { describe, expect, it, vi } from 'vitest';
+import { beforeAll, describe, expect, it, vi } from 'vitest';
 import * as Three from 'three';
 import type { TextbookGeometry } from '../src/textbook-geometry';
 import { evaluateDensityComparison } from '../src/textbook-ground-process-model';
 import { densityInstrumentPose, DENSITY_INSTRUMENT as D } from '../src/textbook-density-instrument';
 vi.mock('../src/reference/engine.js', async () => ({ THREE: await import('three') }));
 import { buildDensityInstrumentWorld } from '../src/textbook-density-world';
+import { loadFieldInstrument } from '../src/textbook-field-instruments';
+
+beforeAll(() => loadFieldInstrument('density'));
 
 function fixture() {
   const root = new Three.Group(), meshes: Three.Mesh[] = [], materials = new Map<string, Three.Material>();

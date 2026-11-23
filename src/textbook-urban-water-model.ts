@@ -1,3 +1,4 @@
+import { drawingGrip } from './textbook-drawing-grip';
 /** Printed pp.96–98, especially Fig.5.23 (rain-garden section) and Fig.5.24
  * (sponge city). The twelve marks below are permanent tracing symbols, not
  * measured volumes or runoff percentages. Phase is observation progress. */
@@ -218,26 +219,26 @@ const slab = (role: string, x0: number, x1: number, y0: number, y1: number, back
 export function urbanWaterSolids(inputSelection: number): UrbanWaterSolid[] {
   const selection = urbanWaterSelection(inputSelection);
   const solids = [slab('foundation', 6, 92, 0, 3, 14, 56, '#b9b3a1')];
-  if (selection !== 2) solids.push(slab('soil-section', 6, 92, 3, 19.8, 14, 56, '#cbbba0'));
-  if (selection === 0) solids.push(slab('impervious-pavement', 6, 92, 19.8, 20.8, 14, 56, '#b2b5ae'));
+  if (selection !== 2) solids.push(slab('soil-section', 6, 92, 3, 19.8, 14, 56, '#a98b6b'));
+  if (selection === 0) solids.push(slab('impervious-pavement', 6, 92, 19.8, 20.8, 14, 56, '#788082'));
   if (selection === 1) {
     // Physical joints make the alternative legible without recolouring an
     // impermeable slab or pretending the model resolves individual pores.
     for (let row = 0; row < 4; row++) for (let col = 0; col < 7; col++) {
       const x = 6.5 + col * 12.2, z = 14.5 + row * 10.3;
-      solids.push(slab('permeable-paver', x, x + 11.1, 19.8, 20.8, z, z + 9.3, '#c1c3b1'));
+      solids.push(slab('permeable-paver', x, x + 11.1, 19.8, 20.8, z, z + 9.3, '#aa9f8b'));
     }
   }
   if (selection === 2) {
-    solids.push(slab('garden-left-soil', 6, 36, 3, 19.8, 14, 56, '#cbbba0'),
-      slab('garden-right-soil', 64, 92, 3, 19.8, 14, 56, '#cbbba0'),
-      slab('garden-left-pavement', 6, 35.5, 19.8, 20.8, 14, 56, '#b2b5ae'),
-      slab('garden-right-pavement', 64.5, 92, 19.8, 20.8, 14, 56, '#b2b5ae'),
-      slab('garden-gravel', 36, 64, 3, 7.2, 14, 56, '#aeb7ac'),
-      slab('garden-sand', 36, 64, 7.2, 8.6, 14, 56, '#e4d9b5'),
-      slab('garden-fill', 36, 64, 8.6, 13, 14, 56, '#bdc0ac'),
-      slab('garden-planting-soil', 36, 64, 13, 16.3, 14, 56, '#b8a283'),
-      slab('garden-mulch', 36, 64, 16.3, 16.9, 14, 56, '#8d8567'));
+    solids.push(slab('garden-left-soil', 6, 36, 3, 19.8, 14, 56, '#a98b6b'),
+      slab('garden-right-soil', 64, 92, 3, 19.8, 14, 56, '#a98b6b'),
+      slab('garden-left-pavement', 6, 35.5, 19.8, 20.8, 14, 56, '#788082'),
+      slab('garden-right-pavement', 64.5, 92, 19.8, 20.8, 14, 56, '#788082'),
+      slab('garden-gravel', 36, 64, 3, 7.2, 14, 56, '#a89d8c'),
+      slab('garden-sand', 36, 64, 7.2, 8.6, 14, 56, '#c4ad80'),
+      slab('garden-fill', 36, 64, 8.6, 13, 14, 56, '#ac9579'),
+      slab('garden-planting-soil', 36, 64, 13, 16.3, 14, 56, '#92775c'),
+      slab('garden-mulch', 36, 64, 16.3, 16.9, 14, 56, '#78614a'));
   }
   // Cutaway drains are open towards the viewer, so markers remain visible
   // while moving through them instead of vanishing inside an opaque tube.
@@ -247,11 +248,11 @@ export function urbanWaterSolids(inputSelection: number): UrbanWaterSolid[] {
     slab('surface-inlet-back', 86.4, 89.6, 5, 20.8, 56.6, 57, '#a9b4ad'),
     slab('surface-inlet-left', 86.1, 86.5, 5, 20.8, 57, 59.6, '#92a39d'),
     slab('surface-inlet-right', 89.5, 89.9, 5, 20.8, 57, 59.6, '#92a39d'),
-    slab('collector-floor', 96, 113, 1.4, 2.4, 50, 65, '#c6c9b8'),
-    slab('collector-back', 96, 113, 2.4, 6.2, 50, 50.7, '#aebcaa'),
-    slab('collector-left', 95.7, 96.4, 2.4, 6.2, 50, 65, '#aebcaa'),
-    slab('collector-right', 112.6, 113.3, 2.4, 6.2, 50, 65, '#aebcaa'),
-    slab('collector-front-lip', 96, 113, 2.4, 3.25, 64.4, 65, '#9fb49e'));
+    slab('collector-floor', 96, 113, 1.4, 2.4, 50, 65, '#74928f'),
+    slab('collector-back', 96, 113, 2.4, 6.2, 50, 50.7, '#6d8279'),
+    slab('collector-left', 95.7, 96.4, 2.4, 6.2, 50, 65, '#6d8279'),
+    slab('collector-right', 112.6, 113.3, 2.4, 6.2, 50, 65, '#6d8279'),
+    slab('collector-front-lip', 96, 113, 2.4, 3.25, 64.4, 65, '#759286'));
   return solids;
 }
 
@@ -285,10 +286,11 @@ function solidSvg(solid: UrbanWaterSolid, inspection = 'overview') {
   const at = ([x, y]: [number, number], z: number): UrbanWaterPoint => [x, y, z];
   const target = /collector/.test(solid.role) ? 'collected' : /drain|inlet/.test(solid.role) ? 'drain' : null;
   const width = target !== null && target === inspection ? 2.2 : .8;
-  return `<g data-urban-solid="${solid.role}" ${target ? `data-model-inspect="${target}" role="button" tabindex="0" aria-label="观察${target === 'drain' ? '排水口' : '收集池'}"` : ''}>`
+  return `<g data-urban-solid="${solid.role}" ${target ? `data-model-inspection="${target}" data-model-inspect="${target}" data-specimen-key="" role="button" tabindex="0" aria-label="观察${target === 'drain' ? '排水口' : '收集池'}"` : ''}>`
     + polygon([at(d, solid.back), at(c, solid.back), at(c, solid.front), at(d, solid.front)], solid.color, width)
     + polygon([at(b, solid.back), at(b, solid.front), at(c, solid.front), at(c, solid.back)], solid.color, width)
-    + polygon(solid.profile.map(point => at(point, solid.front)), solid.color, width) + '</g>';
+    + polygon(solid.profile.map(point => at(point, solid.front)), solid.color, width)
+    + (/soil|mulch|sand|gravel|fill/.test(solid.role) ? `<polygon points="${solid.profile.map(point=>xy(at(point,solid.front))).join(' ')}" fill="url(#${solid.role==='garden-gravel'?'urban-gravel':'urban-earth'})"/>` : '') + '</g>';
 }
 
 /** Native SVG uses the identical finite state and section solids. There are
@@ -298,17 +300,33 @@ export function urbanWaterSvg(inputPhase: number, inputSelection: number, inspec
   const trackedIndex = /^packet-(?:[0-9]|1[01])$/.test(inspection) ? Number(inspection.slice(7)) : 0;
   const cutaway = solids.filter(solid => !/drain|collector|inlet/.test(solid.role));
   let body = cutaway.map(solid => solidSvg(solid, inspection)).join('');
-  for (const [x, y, z] of URBAN_WATER_LAYOUT.houses) {
-    body += polygon([[x - 5.5, y, z + 4.1], [x + 5.5, y, z + 4.1], [x + 5.5, y + 9.5, z + 4.1], [x - 5.5, y + 9.5, z + 4.1]], '#f4edda');
-    body += polygon([[x - 6.2, y + 9.5, z + 4.8], [x, y + 13, z + 4.8], [x + 6.2, y + 9.5, z + 4.8]], '#b8aa89');
-    body += polygon([[x + 5.5, y, z + 4.1], [x + 5.5, y, z - 4.1], [x + 5.5, y + 9.5, z - 4.1], [x + 5.5, y + 9.5, z + 4.1]], '#ddd9c5');
-    body += line([[x - 1.2, y, z + 4.2], [x - 1.2, y + 5.3, z + 4.2], [x + 1.2, y + 5.3, z + 4.2], [x + 1.2, y, z + 4.2]], '#7c8677', .8);
+  for (const [index,[x,y,z]] of URBAN_WATER_LAYOUT.houses.entries()) {
+    const halfX=index?10.2:9.5, halfZ=index?5.8:5.4, h=index?10.5:11.9, front=z+halfZ, ridge=y+h+3.7;
+    const facade = (lo:number,hi:number,bottom:number,top:number,depth:number,color:string) =>
+      polygon([[lo,bottom,depth],[hi,bottom,depth],[hi,top,depth],[lo,top,depth]],color,.48);
+    body += '<g data-street-building="'+(index?'pump-house':'terrace-house')+'">';
+    body += facade(x-halfX,x+halfX,y,y+h,front,index?'#cfbfa2':'#ac8169');
+    body += polygon([[x+halfX,y,front],[x+halfX,y,z-halfZ],[x+halfX,y+h,z-halfZ],[x+halfX,y+h,front]],'#a99981');
+    body += polygon([[x-halfX-.6,y+h,front+.6],[x+halfX+.6,y+h,front+.6],[x+halfX-3,ridge,z],[x-halfX+3,ridge,z]],'#65747a');
+    body += polygon([[x+halfX+.6,y+h,front+.6],[x+halfX+.6,y+h,z-halfZ-.6],[x+halfX-3,ridge,z]],'#53646a');
+    for(const t of [.23,.48,.73])body+=line([[x-halfX-.6+3.6*t,y+h+3.7*t,front+.6-(halfZ+.6)*t],[x+halfX+.6-3.6*t,y+h+3.7*t,front+.6-(halfZ+.6)*t]],'#8a9596',.55);
+    for(const off of [-.76,-.39,0,.39,.76])for(const upper of [false,true]){
+      const wx=x+off*halfX,door=!upper&&off===0, bottom=y+(door?.2:upper?h*.61:1.55),top=bottom+(door?5.1:upper?2.15:2.65);
+      body+=facade(wx-.86,wx+.86,bottom,top,front+.2,door?'#536658':'#425c64');
+      body+=line([[wx-1.16,top+.23,front+.28],[wx+1.16,top+.23,front+.28]],'#dfd1b6',1.1);
+      if(!door)body+=line([[wx,bottom,front+.3],[wx,top,front+.3]],'#c9bba0',.6);
+    }
+    for(const off of [-.53,.51])body+=facade(x+halfX*off-.7,x+halfX*off+.7,y+h+2.2,y+h+5.9,z-1.9,'#9b735f');
+    body+=line([[x-halfX,y+h,front+.6],[x+halfX,y+h,front+.6],[x+halfX,y+.38,front+.7],[x+halfX,y+.38,front+1.35]],'#557870',1.25);
+    body+='</g>';
   }
   if (state.selection === 2) {
-    for (const x of [41, 49, 58]) {
-      body += line([[x, 16.9, 31], [x + .6, 26, 31], [x - 1.5, 29, 31]], '#718775', 1.6);
-      body += polygon([[x + .4, 23, 31], [x + 4, 27, 31], [x + 1, 27, 31]], '#a7b59a');
-      body += polygon([[x, 21, 31], [x - 3.4, 25, 31], [x - .8, 25, 31]], '#a7b59a');
+    for(const [i,[x,z]] of [[39,23],[43,30],[51,28],[56,22],[59,33],[40,41],[54,43],[48,36]].entries()) {
+      for(let j=0;j<8;j++){
+        const dx=Math.sin(2.4*j+i)*(2+(j%3)*.55), h=3.7+(j*7+i*3)%5;
+        body+=polygon([[x,16.9,z],[x+dx*.43-.18,16.9+h*.62,z],[x+dx,16.9+h,z+.45],[x+dx*.43+.18,16.9+h*.62,z]],j%3?'#646f47':'#869363',.3);
+      }
+      body+=line([[x,16.9,z],[x+.36,24.2,z],[x+.48,25.1,z]],'#766849',.8);
     }
   }
   body += solids.filter(solid => /drain|collector|inlet/.test(solid.role)).map(solid => solidSvg(solid, inspection)).join('');
@@ -316,19 +334,19 @@ export function urbanWaterSvg(inputPhase: number, inputSelection: number, inspec
   for (const packet of state.packets) {
     const [x, y] = urbanWaterProject(packet.point);
     const focused = inspection === 'drain' ? packet.compartment === 'drain' : inspection === 'collected' ? packet.compartment === 'collected' : packet.index === trackedIndex;
-    body += `<g data-urban-packet="${packet.id}" data-compartment="${packet.compartment}" data-final-destination="${packet.finalDestination}" data-position='${JSON.stringify(packet.point)}' data-model-inspect="packet-${packet.index}" role="button" tabindex="0" aria-label="追踪这滴水，保留当前观察进度"><circle cx="${n(x)}" cy="${n(y)}" r="${focused ? 6 : 5.3}" fill="${packet.color}" stroke="#426e77" stroke-width="1"/>${focused ? `<circle cx="${n(x)}" cy="${n(y)}" r="8" fill="none" stroke="#b19462" stroke-width="1.5"/>` : ''}</g>`;
+    body += `<g data-urban-packet="${packet.id}" data-compartment="${packet.compartment}" data-final-destination="${packet.finalDestination}" data-position='${JSON.stringify(packet.point)}' data-model-inspection="packet-${packet.index}" data-model-inspect="packet-${packet.index}" data-specimen-key="" role="button" tabindex="0" aria-label="追踪这滴水，保留当前观察进度"><circle cx="${n(x)}" cy="${n(y)}" r="${focused ? 6 : 5.3}" fill="${packet.color}" stroke="#426e77" stroke-width="1"/>${focused ? `<circle cx="${n(x)}" cy="${n(y)}" r="8" fill="none" stroke="#b19462" stroke-width="1.5"/>` : ''}</g>`;
   }
   if (state.phase >= .3) body += text(state.selection === 2 ? '洼地暂存' : '地表余水', state.selection === 2 ? URBAN_WATER_LAYOUT.storageLabel : URBAN_WATER_LAYOUT.surfaceLabel);
   if (state.inventory.drain + state.inventory.collected > 0) body += text('排出', URBAN_WATER_LAYOUT.collectorLabel);
   URBAN_WATER_LABELS.forEach((label, selection) => {
     const [x, y] = urbanWaterProject(URBAN_WATER_LAYOUT.conditionLabels[selection]);
-    body += `<g data-urban-condition="${selection}" data-model-selection="${selection}" data-model-replay="true" role="button" tabindex="0" aria-label="重放${label}地面条件"><rect x="${n(x - 53)}" y="${n(y - 19)}" width="106" height="38" rx="2" fill="${selection === state.selection ? '#e6dfca' : '#f1ecdd'}" stroke="#9b9c83" stroke-width="${selection === state.selection ? 1.5 : .8}"/>${text(label, URBAN_WATER_LAYOUT.conditionLabels[selection], 25)}</g>`;
+    body += `<g data-urban-condition="${selection}" data-model-selection="${selection}" data-keep-phase="" data-specimen-key="" role="button" tabindex="0" aria-label="切换${label}，保留当前雨程"><rect x="${n(x - 53)}" y="${n(y - 19)}" width="106" height="38" rx="2" fill="${selection === state.selection ? '#e6dfca' : '#f1ecdd'}" stroke="#9b9c83" stroke-width="${selection === state.selection ? 1.5 : .8}"/>${text(label, URBAN_WATER_LAYOUT.conditionLabels[selection], 25)}</g>`;
   });
   body += line([URBAN_WATER_LAYOUT.track.start, URBAN_WATER_LAYOUT.track.end], '#a3987b', 1.5);
   const handle: UrbanWaterPoint = [12 + state.phase * 76, -20, 76], [hx, hy] = urbanWaterProject(handle);
-  body += `<path data-urban-handle="true" data-position='${JSON.stringify(handle)}' d="M${n(hx - 10)} ${n(hy)}l10-7 10 7-10 7Z" fill="#deceaa" stroke="#97805b" stroke-width="1.2"/>`;
+  body += `<path data-urban-handle="true" data-position='${JSON.stringify(handle)}' d="M${n(hx - 10)} ${n(hy)}l10-7 10 7-10 7Z" fill="#deceaa" stroke="#97805b" stroke-width="1.2"/>${drawingGrip('推拉雨水试验尺',urbanWaterProject([12,-20,76]),urbanWaterProject([88,-20,76]),state.phase)}`;
   const diagnostics = JSON.stringify({ phase: state.phase, selection: state.selection, stageIndex: state.stageIndex,
     inventory: state.inventory, packets: state.packets.map(({ id, point, compartment, finalDestination }) => ({ id, point, compartment, finalDestination })) });
   const safeInspection = ['overview', 'drain', 'collected'].includes(inspection) || /^packet-(?:[0-9]|1[01])$/.test(inspection) ? inspection : 'overview';
-  return `<svg xmlns="http://www.w3.org/2000/svg" class="flat-model-svg flat-explanation-svg" viewBox="0 0 720 610" role="group" data-inspection="${safeInspection}" data-urban-phase="${state.phase}" data-urban-state='${diagnostics}' aria-label="${state.caption} 同一组有限雨水标记；水量和时间均为教学示意。"><title>城市雨水：同一场雨的去向</title><g stroke-linejoin="round" stroke-linecap="round" font-family="FieldSerif,SimSun,serif">${body}</g></svg>`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" class="flat-model-svg flat-explanation-svg" viewBox="0 0 720 610" role="group" data-inspection="${safeInspection}" data-urban-phase="${state.phase}" data-urban-state='${diagnostics}' aria-label="${state.caption} 同一组有限雨水标记；水量和时间均为教学示意。"><title>城市雨水：同一场雨的去向</title><defs><pattern id="urban-gravel" width="19" height="11" patternUnits="userSpaceOnUse"><path d="M0 5 2 2 7 1 10 4 8 7 3 8ZM11 7 14 5 18 6 19 9 16 11 12 10Z" fill="#c3b9a5" stroke="#877d6c" stroke-width=".65"/></pattern><pattern id="urban-earth" width="17" height="13" patternUnits="userSpaceOnUse"><path d="m2 3 2-.4m8 5 1.6-1m-9 4 3 .6m8-9 1 .5" stroke="#5e503d" stroke-opacity=".32" stroke-width=".85"/></pattern></defs><g stroke-linejoin="round" stroke-linecap="round" font-family="FieldSerif,SimSun,serif">${body}</g></svg>`;
 }

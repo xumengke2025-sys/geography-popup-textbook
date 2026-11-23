@@ -187,9 +187,11 @@ describe('independent paper cases in the existing Three.js popout', () => {
     const { root, meshes, motion } = fixture(), handle = meshes.find(mesh => mesh.userData.recoveryRole === 'phase-handle')!;
     const track = handle.userData.modelInput.track; expect(handle.userData.modelInput.kind).toBe('phase-track');
     root.position.set(11, 9, -3); root.rotation.y = .17;
+    const latch=meshes.find(mesh=>mesh.userData.recoveryRole==='case-latch')!;
+    expect(latch.userData.modelInput).toMatchObject({kind:'select',selection:1,toggleTo:0,keepPhase:true});
     for (const selection of [0, 1]) for (const phase of [0, .2, .5, .8, 1, .42]) {
       motion.update(phase, selection, .016, false); const d = motion.describe!() as any;
-      for (const mesh of meshes.filter(mesh => mesh.visible && mesh.userData.modelInput?.kind === 'select')) expect(mesh.userData.modelInput.selection).toBe(selection);
+      for (const mesh of meshes.filter(mesh => mesh!==latch && mesh.visible && mesh.userData.modelInput?.kind === 'select')) expect(mesh.userData.modelInput.selection).toBe(selection);
       expect(phaseFromTrackPoint(handle.position.x, handle.position.y, track, 0)).toBeCloseTo(phase, 12);
       expect(d.handleWorld).toEqual(handle.getWorldPosition(new Three.Vector3()).toArray());
       const derived = d.phaseTrackWorld.start.map((n: number, i: number) => n + (d.phaseTrackWorld.end[i] - n) * phase);

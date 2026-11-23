@@ -1,9 +1,12 @@
-import { describe, expect, it, vi } from 'vitest';
+import { beforeAll, describe, expect, it, vi } from 'vitest';
 import * as Three from 'three';
 import type { TextbookGeometry } from '../src/textbook-geometry';
 import { evaluateSalinity, salinityPortionPoint, salinitySvg, SALINITY_REFERENCE } from '../src/textbook-salinity-model';
 vi.mock('../src/reference/engine.js', async () => ({ THREE: await import('three') }));
 import { buildSalinityWorld } from '../src/textbook-salinity-world';
+import { loadFieldInstrument } from '../src/textbook-field-instruments';
+
+beforeAll(() => loadFieldInstrument('salinity'));
 
 function fixture() {
   const root = new Three.Group(), meshes: Three.Mesh[] = [], materials = new Map<string, Three.Material>();
@@ -11,6 +14,10 @@ function fixture() {
     mesh(geometry: Three.BufferGeometry, color: string, _edges: boolean, _volume: boolean, role: string) {
       const key = role + color; if (!materials.has(key)) materials.set(key, new Three.MeshBasicMaterial({ color }));
       const object = new Three.Mesh(geometry, materials.get(key)); root.add(object); meshes.push(object); return object;
+    },
+    label(_text: string, at: number[], width: number, height: number) {
+      const label = this.mesh(new Three.PlaneGeometry(width, height), '#fff', false, false, 'paper');
+      label.position.set(at[0], at[1], at[2]); return label;
     },
   };
   const motion = buildSalinityWorld(b as unknown as TextbookGeometry);

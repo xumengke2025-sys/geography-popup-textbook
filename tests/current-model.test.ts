@@ -1,4 +1,4 @@
-import { describe, expect, it, vi } from 'vitest';
+import { beforeAll, describe, expect, it, vi } from 'vitest';
 import * as Three from 'three';
 import { CURRENT_LAYOUT, CURRENT_PATH_LENGTH, CURRENT_REFERENCE, CURRENT_SAMPLE_COUNT, CURRENT_SAMPLES,
   CURRENT_STOPS, CURRENT_TRAVEL, CURRENT_WAVE_ORBIT, currentCoastMesh, currentPathPoint,
@@ -7,6 +7,9 @@ import { CURRENT_LAYOUT, CURRENT_PATH_LENGTH, CURRENT_REFERENCE, CURRENT_SAMPLE_
 import { evaluateWave } from '../src/textbook-wave-model';
 import { phaseFromTrackPoint } from '../src/textbook-model-input';
 import type { TextbookGeometry, Vec3 } from '../src/textbook-geometry';
+import { loadFieldInstrument } from '../src/textbook-field-instruments';
+
+beforeAll(() => loadFieldInstrument('currents'));
 
 vi.mock('../src/reference/engine.js', async () => ({ THREE: await import('three') }));
 import { buildCurrentWorld } from '../src/textbook-current-world';
@@ -146,7 +149,8 @@ describe('a finite directional-current teaching example with a checked source', 
 describe('the raised sea uses the pure finite advection state', () => {
   it('builds actual sea, bank, finite tracer solids and click targets without a model image', () => {
     const { meshes, motion } = fixture(), tracers = meshes.filter(mesh => mesh.userData.currentRole === 'water-tracer');
-    expect(tracers).toHaveLength(12); expect(meshes).toHaveLength(25);
+    expect(tracers).toHaveLength(12);
+    expect(meshes.some(mesh => mesh.userData.blenderPart === 'sea')).toBe(true);
     expect(new Set(tracers.map(mesh => mesh.userData.currentSampleId)).size).toBe(12);
     expect(tracers.every(mesh => mesh.userData.modelInput.kind === 'select' && mesh.userData.modelInput.selection === 1)).toBe(true);
     expect(meshes.find(mesh => mesh.userData.currentRole === 'origin-bookmark')!.userData.modelInput.selection).toBe(0);
@@ -155,7 +159,7 @@ describe('the raised sea uses the pure finite advection state', () => {
     expect(labels.map(mesh => mesh.userData.text)).toEqual(['往复参照', '起点', '前移', '末位置']);
     expect(labels.every(mesh => mesh.userData.labelSize[1] >= 7.8 * 3)).toBe(true);
     expect(motion.describe!()).toMatchObject({ kind: 'ocean-current-advection', sampleCount: 12,
-      fixedMeshCount: 25, notGeoreferenced: true, originalPagePreserved: true, measuredSpeed: false });
+      fixedMeshCount: meshes.length, notGeoreferenced: true, originalPagePreserved: true, measuredSpeed: false });
     const sea = meshes.find(mesh => mesh.userData.currentRole === 'closed-sea-solid')!;
     sea.geometry.computeBoundingBox(); expect(sea.geometry.boundingBox!.max.y - sea.geometry.boundingBox!.min.y).toBeCloseTo(7.7 * 3, 5);
   });

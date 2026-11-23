@@ -1,10 +1,12 @@
 import { createSpecimenMaterial } from './textbook-solid-materials';
-import { chamferedPlateGeometry } from './textbook-instrument-parts';
+import { applyEarthScan, type EarthScan } from './textbook-earth-scan';
+import { fossilBed, impression } from './textbook-strata-specimens';
+import { chamferedPlateGeometry, createInstrumentParts, mergeInstrumentGeometry, turnedShaftGeometry } from './textbook-instrument-parts';
 import { THREE as T } from './reference/engine.js';
 import type { ModelMotion, TextbookGeometry, Vec3 } from './textbook-geometry';
 import { phaseTrackPoint } from './textbook-model-input';
 import { evaluateStrata, STRATA_FOSSIL_INK, STRATA_FOSSIL_NAMES, STRATA_LAYERS,
-  STRATA_REFERENCE, strataInputLabel, type StrataPoint } from './textbook-strata-model';
+  STRATA_REFERENCE, strataInputLabel } from './textbook-strata-model';
 
 /** Original figure 1.23, reconstructed as six closed stone prisms. Every
  * fossil body, its relief grooves and the specimen outline share one owner
@@ -12,70 +14,15 @@ import { evaluateStrata, STRATA_FOSSIL_INK, STRATA_FOSSIL_NAMES, STRATA_LAYERS,
 export function buildStrataWorld(b: TextbookGeometry): ModelMotion {
   const s = b.width / 100, frontZ = b.p(0, .94)[2];
   const point = ([x, y]: readonly number[], z = 0): Vec3 => [x * s, y * s, frontZ + z * s];
-  const shapeFrom = (points: readonly StrataPoint[]) => {
-    const shape = new T.Shape();
-    points.forEach(([x, y], i) => i ? shape.lineTo(x * s, y * s) : shape.moveTo(x * s, y * s));
-    shape.closePath(); return shape;
-  };
-  const quietPaper = (key: string, color: string, hatch = .12) => {
-    const cacheKey = `strata-${key}`;
-    let material = b.materials.get(cacheKey);
-    if (!material) {
-      material = createSpecimenMaterial(b.pop, { color, role: 'rock' });
-      // Sedimentary grain is attached to the specimen, not a screen overlay.
-      // Broad mottling and fine unaligned grains preserve the fossil silhouette.
-      const compile = material.onBeforeCompile;
-      material.onBeforeCompile = (shader: any) => {
-        compile?.(shader);
-        shader.vertexShader = shader.vertexShader.replace('#include <common>', '#include <common>\nvarying vec3 vStrataStone;')
-          .replace('#include <begin_vertex>', '#include <begin_vertex>\nvStrataStone = position;');
-        shader.fragmentShader = shader.fragmentShader.replace('#include <common>', `#include <common>
-          varying vec3 vStrataStone;
-          float strataHash(vec3 p) { return fract(sin(dot(p, vec3(127.1,311.7,74.7))) * 43758.5453); }
-          float strataNoise(vec3 p) {
-            vec3 i=floor(p),f=fract(p); f=f*f*(3.0-2.0*f);
-            return mix(mix(mix(strataHash(i),strataHash(i+vec3(1,0,0)),f.x),
-              mix(strataHash(i+vec3(0,1,0)),strataHash(i+vec3(1,1,0)),f.x),f.y),
-              mix(mix(strataHash(i+vec3(0,0,1)),strataHash(i+vec3(1,0,1)),f.x),
-              mix(strataHash(i+vec3(0,1,1)),strataHash(i+vec3(1,1,1)),f.x),f.y),f.z);
-          }`)
-          .replace('#include <color_fragment>', `#include <color_fragment>
-            vec3 specimenP = vStrataStone / ${s.toFixed(6)};
-            float stoneCloud = strataNoise(specimenP * vec3(.30,.46,.34));
-            float stoneGrain = strataNoise(specimenP * 2.5);
-            float grainFilter = 1.0-smoothstep(.6,2.5,length(fwidth(specimenP*2.5)));
-            diffuseColor.rgb *= .87 + .21*stoneCloud + ${hatch < .1 ? '.025' : '.16'}*(stoneGrain-.5)*grainFilter;
-          `);
-      };
-      material.customProgramCacheKey = () => `strata-grain-v1:${s}:${hatch < .1}`;
-      material.side = T.DoubleSide; b.materials.set(cacheKey, material);
+  const finish = (key: string, color: string, scan: EarthScan, span: number) => {
+    if (!b.materials.has(key)) {
+      const material = applyEarthScan(createSpecimenMaterial(b.pop, { role: 'rock', color }), scan, span*s);
+      material.vertexColors = true;
+      b.materials.set(key, material);
     }
-    return material;
+    return b.materials.get(key);
   };
-  // The six scientific profiles are unchanged. The interior cut face has a
-  // restrained physical relief, while each shared boundary remains exact.
-  const stoneGeometry = (profile: readonly StrataPoint[], seed: number) => {
-    const vertices: number[] = [], nx = 24, ny = 12;
-    const tri = (a: Vec3, c: Vec3, d: Vec3) => vertices.push(...a, ...c, ...d);
-    const v = (i: number, j: number, back = false): Vec3 => {
-      const u = i / nx, t = j / ny;
-      const left = profile[0][0] + (profile[3][0] - profile[0][0]) * t;
-      const right = profile[1][0] + (profile[2][0] - profile[1][0]) * t;
-      const x = left + (right - left) * u, y = profile[0][1] + 12 * t;
-      const edge = Math.sin(Math.PI*u) * Math.sin(Math.PI*t);
-      const relief = edge * (.055*Math.sin(x*1.21+y*.83+seed) + .035*Math.sin(x*3.3-y*1.9+seed));
-      return point([x,y], back ? -16 : relief);
-    };
-    for (let j=0;j<ny;j++) for(let i=0;i<nx;i++) {
-      tri(v(i,j),v(i+1,j),v(i+1,j+1)); tri(v(i,j),v(i+1,j+1),v(i,j+1));
-      tri(v(i,j,true),v(i+1,j+1,true),v(i+1,j,true)); tri(v(i,j,true),v(i,j+1,true),v(i+1,j+1,true));
-    }
-    const edge = (a: Vec3,c: Vec3,d: Vec3,e: Vec3) => {tri(a,c,d);tri(a,d,e);};
-    for(let i=0;i<nx;i++) {edge(v(i,0),v(i,0,true),v(i+1,0,true),v(i+1,0));edge(v(i,ny),v(i+1,ny),v(i+1,ny,true),v(i,ny,true));}
-    for(let j=0;j<ny;j++) {edge(v(0,j),v(0,j+1),v(0,j+1,true),v(0,j,true));edge(v(nx,j),v(nx,j,true),v(nx,j+1,true),v(nx,j+1));}
-    const geometry=new T.BufferGeometry();geometry.setAttribute('position',new T.Float32BufferAttribute(vertices,3));geometry.computeVertexNormals();return geometry;
-  };
-  const hardware = (geometry: any, role: 'brass'|'steel'|'enamel'|'ivory', color: string, name: string) => {
+  const hardware = (geometry: any, role: 'brass'|'steel'|'enamel'|'ivory'|'wood', color: string, name: string) => {
     const mesh=b.mesh(geometry,color,false); const key=`strata-hardware-${role}-${color}`;
     if(!b.materials.has(key)) b.materials.set(key,createSpecimenMaterial(b.pop,{role,color}));
     mesh.material=b.materials.get(key);mesh.userData.strataRole=name;return mesh;
@@ -88,6 +35,14 @@ export function buildStrataWorld(b: TextbookGeometry): ModelMotion {
     geometry.applyQuaternion(new T.Quaternion().setFromUnitVectors(new T.Vector3(0,1,0),d.normalize()));
     geometry.translate(...from.add(to).multiplyScalar(.5).toArray());return hardware(geometry,role,color,name);
   };
+  const parts = createInstrumentParts(b);
+  const world = (x: number, y: number, z: number) => point([x,y],z);
+  parts.plate(world(1,-5.3,-22),world(102.5,-1.5,6.5),'wood',.46*s);
+  parts.plate(world(1.7,-1.65,-21.3),world(101.8,-1.22,5.8),'brass',.13*s);
+  parts.plate(world(2.2,-1.22,-20.8),world(101.3,-.68,5.3),'wood',.2*s);
+  for (const x of [5,98.5]) for (const z of [-17.8,2.8])
+    parts.column(world(x,-8.2,z), world(x,-5.25,z),2.05*s,'brass');
+  parts.fasteners([world(4,-.62,-18.5),world(99,-.62,-18.5),world(4,-.62,3.1),world(99,-.62,3.1)],[0,1,0],.52*s);
   const columnRails = [[4],[98]];
   const railDepth=-4, sliders: {index:number;members:any[]}[]=[];
   const verticalGuides:any[]=[], guideHeads:any[]=[];
@@ -101,40 +56,38 @@ export function buildStrataWorld(b: TextbookGeometry): ModelMotion {
     }
   }
   const groups = STRATA_LAYERS.map((d, index) => {
-    const members: any[] = [], contours: { points: Vec3[]; width: number; fossil: boolean }[] = [];
+    const members: any[] = [];
     const input = { kind: 'select', selection: index + 2, toggleTo: 1, label: strataInputLabel(index) };
     const own = (mesh: any, role: string) => {
       mesh.userData.strataRole = role; mesh.userData.strataLayer = index; mesh.userData.strataLayerId = d.id;
       mesh.userData.modelInput = input; members.push(mesh); return mesh;
     };
-    const geometry = stoneGeometry(d.profile,index*1.7);
-    const body = own(b.mesh(geometry, d.color, false), 'layer');
-    body.material = quietPaper(d.id, d.color);
+    const body = own(b.mesh(fossilBed(d, point), d.color, false), 'layer');
+    const sandstone = d.correlation === 'paired-shells';
+    body.material = finish('strata-rock-'+d.id, d.color, sandstone ? 'alluvium' : 'outcrop', sandstone ? 10 : 13);
     body.userData.column = d.column; body.userData.level = d.level;
-    const front = d.profile.map(p => point(p, .025)), back = d.profile.map(p => point(p, -16));
-    contours.push({ points: [...front, front[0]], width: .48, fossil: false });
-    // A visible top and outer side make the exhibit a stone volume, rather
-    // than a stack of flat cutouts. Internal back seams remain quiet.
-    contours.push({ points: [front[2], back[2], back[3], front[3]], width: .32, fossil: false });
-    const outer = d.column === 'A' ? 0 : 1;
-    const outerTop = outer === 0 ? 3 : 2;
-    contours.push({ points: [front[outer], back[outer], back[outerTop], front[outerTop]], width: .30, fossil: false });
     const fossils = d.fossils.map(f => {
-      const ink = STRATA_FOSSIL_INK[f.kind];
-      const xy = ([x, y]: StrataPoint): StrataPoint => [f.x + x * f.width / 2, f.y + y * f.height / 2];
-      const surface = new T.ExtrudeGeometry(shapeFrom(ink.outline.map(xy)), { depth: .27 * s,
-        bevelEnabled: true, bevelSize: .045 * s, bevelThickness: .045 * s, bevelSegments: 1, curveSegments: 1 });
-      // The bulk of a fossil is inside the cut rock. Only its weathered ridge
-      // reaches the section surface; it is not a separate mounted medallion.
-      surface.translate(0, 0, frontZ - .23 * s);
-      const mesh = own(b.mesh(surface, '#9f795b', false), 'fossil');
-      mesh.material = quietPaper('fossil', '#9f795b', .055);
+      const shell = impression(f, point);
+      const color = d.correlation === 'cone' ? '#8c755a' : '#aa8561';
+      const mesh = own(b.mesh(shell.geometry, color, false), 'fossil');
+      mesh.material = finish('strata-shell-'+color,color,'outcrop',6.8);
       mesh.userData.strataFossilId = f.id; mesh.userData.fossilKind = f.kind;
       mesh.userData.fossilName = STRATA_FOSSIL_NAMES[f.kind];
-      mesh.userData.baseCenter = point([f.x, f.y], .32);
-      const path = (points: readonly StrataPoint[]) => points.map(p => point(xy(p), .105));
-      contours.push({ points: [...path(ink.outline), path(ink.outline)[0]], width: .34, fossil: true });
-      for (const rib of ink.ribs) contours.push({ points: path(rib), width: .22, fossil: true });
+      mesh.userData.baseCenter = shell.veinPoint([0,0]);
+      const ridges=STRATA_FOSSIL_INK[f.kind].ribs.map(rib=>{
+        const path:any[]=[];
+        for(let i=1;i<rib.length;i++){
+          const a=rib[i-1],e=rib[i],samples=Math.max(1,Math.ceil(Math.hypot(e[0]-a[0],e[1]-a[1])*12));
+          for(let j=0;j<samples;j++){
+            const t=j/samples,pt=shell.veinPoint([a[0]+(e[0]-a[0])*t,a[1]+(e[1]-a[1])*t]);
+            path.push(new T.Vector3(...pt));
+          }
+        }
+        path.push(new T.Vector3(...shell.veinPoint(rib[rib.length-1])));
+        return new T.TubeGeometry(new T.CatmullRomCurve3(path),Math.min(64,path.length),.105*s,6,false);
+      });
+      const ribbing=own(hardware(mergeInstrumentGeometry(ridges),'ivory','#c7ae87','calcite-ribs'),'calcite-ribs');
+      ribbing.userData.fossilKind=f.kind;
       return mesh;
     });
     const fixed: any[]=[];
@@ -155,7 +108,7 @@ export function buildStrataWorld(b: TextbookGeometry): ModelMotion {
         [isA?edge+3.5:edge+.55,y-.04,z+.65],'steel','#9c9d96','specimen-lower-fork'),'specimen-lower-fork');
     }
     sliders.push({index,members:fixed});
-    return { index, body, fossils, members, contours };
+    return { index, body, fossils, members };
   });
   const labels = (['A', 'B'] as const).map((column,i) => {
     const x=i?83:18,owner=groups[i?5:2];
@@ -169,27 +122,20 @@ export function buildStrataWorld(b: TextbookGeometry): ModelMotion {
   const railMounts=[plate([90,-1.25,-19],[101.8,-.5,6.3],'enamel','#304434','phase-rail-foot'),
     rod([100,-.5,5.2],[100,1,5.2],.7,'brass','#a88b50','phase-rail-bearing'),
     rod([100,54.2,5.2],[100,54.9,5.2],.48,'brass','#a88b50','phase-rail-end-stop')];
-  const tabShape = new T.Shape(); tabShape.moveTo(-2.0 * s, -2.6 * s); tabShape.lineTo(2 * s, -2.6 * s);
-  tabShape.lineTo(2 * s, 2.6 * s); tabShape.lineTo(-2 * s, 2.6 * s); tabShape.closePath();
-  const tabGeometry = new T.ExtrudeGeometry(tabShape, { depth: .45 * s, bevelEnabled: true, bevelSize:.13*s,bevelThickness:.13*s,bevelSegments:2 });
-  const tab = hardware(tabGeometry,'enamel','#304434','phase-handle');
-  tab.userData.strataRole = 'phase-handle'; tab.userData.strataHandle = true;
-  tab.userData.modelInput = { kind: 'phase-track', track, label: '上下拖动纸签，调节地层间距；间距不表示地质年代' };
-  const tabArrows=[-1,1].map(sign=>{
-    const shape=new T.Shape();[[-.85,.4],[0,1.3],[.85,.4],[.65,.18],[0,.86],[-.65,.18]].forEach(([x,y],i)=>
-      i?shape.lineTo(x*s,y*sign*s):shape.moveTo(x*s,y*sign*s));shape.closePath();
-    const geometry=new T.ExtrudeGeometry(shape,{depth:.09*s,bevelEnabled:false});geometry.translate(0,0,.56*s);
-    const arrow=hardware(geometry,'ivory','#f4f0e5','phase-handle-arrow');arrow.userData.modelInput=tab.userData.modelInput;return arrow;
-  });
+  const tab = hardware(turnedShaftGeometry([0,0,0],[0,0,3.2*s],
+    [[1.66*s,0],[1.72*s,.08],[1.2*s,.2],[1.02*s,.62],[1.72*s,.8],[1.78*s,.91],[1.45*s,1]]),'brass','#ae8543','phase-handle');
+  tab.userData.strataHandle = true;
+  tab.userData.smallPointTarget = true;
+  tab.userData.modelInput = { kind: 'phase-track', track, engage:{from:0,to:1}, label: '上下拖动铜钮，调节两组标本的层间距' };
+  rail.userData.modelInput = tab.userData.modelInput;
+  const knobCap = hardware(turnedShaftGeometry([0,0,2.94*s],[0,0,3.56*s],
+    [[1.35*s,0],[1.46*s,.35],[1.38*s,.7],[1.17*s,1]]),'wood','#654231','phase-grip-end');
+  knobCap.userData.modelInput=tab.userData.modelInput;
+  for(const mesh of railMounts) mesh.userData.modelInput={kind:'select',selection:1,toggleTo:0,keepPhase:true,label:'拨动轨座，切换分层与叠合'};
+  for(const label of labels) label.userData.modelInput={kind:'select',selection:0,keepPhase:true,label:'按下采样地标牌，合起地层'};
   let state = evaluateStrata(0);
-  const moveContour = (points: Vec3[], y: number, z: number) => points.map(([x, yy, zz]): Vec3 => [x, yy + y * s, zz + z * s]);
-  const dashConnection = (a: Vec3, c: Vec3, width: number) => {
-    const delta = c.map((n, i) => n - a[i]), length = Math.hypot(...delta), count = Math.max(3, Math.ceil(length / (2.8 * s)));
-    for (let i = 0; i < count; i++) {
-      const start = i / count, end = Math.min(1, (i + .57) / count);
-      b.contour([a.map((n, j) => n + delta[j] * start) as Vec3, a.map((n, j) => n + delta[j] * end) as Vec3], width);
-    }
-  };
+  const links=state.connections.map(()=>hardware(new T.CylinderGeometry(.11*s,.11*s,1,12),'brass','#b69b67','correlation-wire'));
+  const localUp=new T.Vector3(0,1,0);
   return {
     update(phase, selection) {
       state = evaluateStrata(phase, selection);
@@ -202,28 +148,28 @@ export function buildStrataWorld(b: TextbookGeometry): ModelMotion {
           mesh.position.set(0, layer.offsetY * s, layer.offsetZ * s);
           mesh.userData.highlighted = layer.highlighted;
         }
-        const hovered = group.members.some(mesh => mesh.userData.modelHovered === true);
-        for (const c of group.contours) b.contour(moveContour(c.points, layer.offsetY, layer.offsetZ),
-          c.width + (layer.highlighted ? (c.fossil ? .12 : .34) : 0) + (hovered && !c.fossil ? .10 : 0));
+        group.body.material.emissive.setHex(layer.highlighted ? 0x332210 : 0x000000);
       }
-      for (const c of state.connections.filter(c => c.visible))
-        dashConnection(point(c.from, c.from[2] + .9), point(c.to, c.to[2] + .9), c.highlighted ? .67 : .34);
+      state.connections.forEach((connection,i)=>{
+        const wire=links[i];
+        wire.visible=connection.visible;
+        if(!wire.visible)return;
+        const a=new T.Vector3(...point(connection.from,connection.from[2]+.65));
+        const e=new T.Vector3(...point(connection.to,connection.to[2]+.65));
+        const delta=e.clone().sub(a);
+        wire.position.copy(a).addScaledVector(delta,.5);
+        wire.scale.set(connection.highlighted?1.45:.78,delta.length(),connection.highlighted?1.45:.78);
+        wire.quaternion.setFromUnitVectors(localUp,delta.normalize());
+      });
       labels.forEach((label, i) => {const layer=state.layers[i?5:2];label.position.set(...point([i?83:18,41+layer.offsetY],layer.offsetZ));});
-      rail.visible = tab.visible = state.separated;
-      tabArrows.forEach(mesh=>mesh.visible=state.separated);
-      railMounts.forEach(mesh=>mesh.visible=state.separated);
-      if (state.separated) {
-        tab.position.set(...phaseTrackPoint(state.phase, track));
-        tabArrows.forEach(mesh=>mesh.position.copy(tab.position));
-        b.contour([[-2, -2.6], [2, -2.6], [2, 2.6], [-2, 2.6], [-2, -2.6]].map(([x, y]): Vec3 =>
-          [tab.position.x + x * s, tab.position.y + y * s, tab.position.z + .48 * s]), .38);
-      }
+      tab.position.set(...phaseTrackPoint(state.phase, track));
+      knobCap.position.copy(tab.position);
     },
     // Frame the whole separation, not its current pose: a moving camera would
     // shift the pull tab's screen-to-track mapping during the same grab.
     // Rocks span y=0..54; labels reach 59 plus their 4.5-unit half-diagonal.
     // The tab ends at x=102 and its forward ink is at z=6, ahead of the focus.
-    focusBounds: () => ({ min: point([2, -1.25], -20), max: point([102.2, 64], 6.3) }),
+    focusBounds: () => ({ min: point([1, -8.2], -22), max: point([102.5, 64], 9.2) }),
     describe: () => ({ kind: 'strata', mechanism: 'fossil-correlation', reference: STRATA_REFERENCE, columns: 2, layersPerColumn: 3,
       phase: state.phase, selection: state.selection, separated: state.separated, gap: state.gap, focused: state.focused,
       match: state.match, timeIsEquallySpaced: false, missingMatchMeansMissingAge: false,

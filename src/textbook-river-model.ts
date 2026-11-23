@@ -1,6 +1,8 @@
 /** A possible flood-triggered neck cutoff (textbook p.70), not a forecast or
  * a calibrated erosion simulation. Both renderers use these same paths. */
 export type RiverPoint = readonly [number, number];
+export const RIVER_RELIEF = { columns: 112, rows: 72 };
+export const RIVER_HEIGHT = { plateau: 6.1, bed: 2.0, water: 4.48 };
 const clamp = (n: number) => Math.min(1, Math.max(0, Number.isFinite(n) ? n : 0));
 const smooth = (a: number, b: number, n: number) => {
   const q = clamp((n - a) / (b - a)); return q * q * (3 - 2 * q);
@@ -57,6 +59,34 @@ export function distanceToRiver(point: RiverPoint, path: readonly RiverPoint[], 
   return Math.sqrt(best);
 }
 
+/** Normalized distance to the nearest channel on the relief grid. Floodplain
+ * beyond the bank tint has the same value everywhere, so a segment only
+ * contributes to vertices inside its expanded bounding rectangle. */
+export function sampleRiverBanks(state: RiverCutoffState, nx: number, nz: number, result: Float32Array) {
+  const reach = 2.4, du = .976 / nx, dv = .91 / nz, aspect = .62;
+  result.fill(reach * reach);
+  const sample = (path: readonly RiverPoint[], width: number) => {
+    if (width <= .0001) return;
+    const radius = width / 2, pad = reach * radius;
+    for (let n = 1; n < path.length; n++) {
+      const [x, z] = path[n-1], [xx, zz] = path[n];
+      const dx = xx-x, dz = (zz-z)*aspect, lengthSquared = dx*dx+dz*dz || 1;
+      const i0 = Math.max(0, Math.ceil((Math.min(x,xx)-pad-.012)/du));
+      const i1 = Math.min(nx, Math.floor((Math.max(x,xx)+pad-.012)/du));
+      const j0 = Math.max(0, Math.ceil((Math.min(z,zz)-pad/aspect-.045)/dv));
+      const j1 = Math.min(nz, Math.floor((Math.max(z,zz)+pad/aspect-.045)/dv));
+      for(let j=j0;j<=j1;j++) for(let i=i0;i<=i1;i++){
+        const px=.012+i*du-x, pz=(.045+j*dv-z)*aspect;
+        const t=Math.max(0,Math.min(1,(px*dx+pz*dz)/lengthSquared));
+        const ex=px-dx*t, ez=pz-dz*t, k=j*(nx+1)+i;
+        result[k]=Math.min(result[k],(ex*ex+ez*ez)/(radius*radius));
+      }
+    }
+  };
+  sample(state.upstream,state.riverWidth);sample(state.downstream,state.riverWidth);
+  sample(state.bend,state.bendWidth);sample(state.shortcut,state.shortcutWidth);
+  for(let k=0;k<result.length;k++) result[k]=Math.sqrt(result[k]);
+}
 export function riverCutoffSvg(phase: number) {
   const s = evaluateRiverCutoff(phase);
   const points = (path: readonly RiverPoint[]) => path.map(([u, v]) => `${u * 640},${v * 340}`).join(' ');

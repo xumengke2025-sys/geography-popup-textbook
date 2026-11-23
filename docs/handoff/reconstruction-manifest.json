@@ -1,0 +1,6798 @@
+{
+  "version": 1,
+  "generatedAt": "2026-11-11T07:37:34.470Z",
+  "purpose": "implementation plan, not acceptance evidence",
+  "sourceInventory": {
+    "path": "docs/handoff/catalog-branch-inventory.json",
+    "sha256": "2f1836ce30fdf332583c0d564d619aa43f217c5ceff46ab78ac2a139614ca71d",
+    "limitation": "Historical branch baseline; reconcile current UI, native selections, actions and source at each batch."
+  },
+  "counts": {
+    "scenes": 63,
+    "original": 60,
+    "extensions": 3,
+    "baselineBranches": 228
+  },
+  "scenes": [
+    {
+      "id": "forest",
+      "title": "图5.2　森林中的成层现象",
+      "printedPage": 83,
+      "extension": false,
+      "batch": "B1",
+      "family": "forest",
+      "subjectTarget": "冠干灌草根土共一片标本，观察面滑移不删除其他层",
+      "baselineControls": [
+        "乔木层",
+        "灌木层",
+        "草本层"
+      ],
+      "baselineSelectionLimit": 2,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "乔木层",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "灌木层",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 2,
+          "control": "草本层",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "vegetation",
+      "title": "植被与环境的适应",
+      "printedPage": 84,
+      "extension": false,
+      "batch": "B1",
+      "family": "forest",
+      "subjectTarget": "七类枝冠根叶轮廓分别构建，林下有层次，低矮植被独立取景",
+      "baselineControls": [
+        "热带雨林",
+        "常绿阔叶林",
+        "落叶阔叶林",
+        "亚寒带针叶林",
+        "热带草原",
+        "温带草原",
+        "荒漠植被"
+      ],
+      "baselineSelectionLimit": 6,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "热带雨林",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [
+            {
+              "target": "overview",
+              "label": "整体"
+            },
+            {
+              "target": "vine",
+              "label": "藤本"
+            },
+            {
+              "target": "buttress",
+              "label": "板根"
+            },
+            {
+              "target": "layers",
+              "label": "林内层次"
+            }
+          ],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "常绿阔叶林",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [
+            "overview",
+            "layers"
+          ],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 2,
+          "control": "落叶阔叶林",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [
+            "overview",
+            "layers"
+          ],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 3,
+          "control": "亚寒带针叶林",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [
+            "overview",
+            "layers"
+          ],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 4,
+          "control": "热带草原",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 5,
+          "control": "温带草原",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 6,
+          "control": "荒漠植被",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "soil-composition",
+      "title": "土壤的四种组成",
+      "printedPage": 88,
+      "extension": false,
+      "batch": "B1",
+      "family": "vessel",
+      "subjectTarget": "真实团聚体和互补孔隙，水气在同空间替换，去悬浮分项",
+      "baselineControls": [
+        "较干",
+        "适中",
+        "较湿"
+      ],
+      "baselineSelectionLimit": 2,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "较干",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "适中",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 2,
+          "control": "较湿",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "soil-texture",
+      "title": "砂土、壤土与黏土",
+      "printedPage": 89,
+      "extension": false,
+      "batch": "B1",
+      "family": "column",
+      "subjectTarget": "三柱统一入水与独立接收，颗粒/水保身份，质地差异可见",
+      "baselineControls": [
+        "砂土",
+        "壤土",
+        "黏土"
+      ],
+      "baselineSelectionLimit": 2,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "砂土",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "壤土",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 2,
+          "control": "黏土",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "soil",
+      "title": "图5.17　森林土壤剖面及各土层特点",
+      "printedPage": 89,
+      "extension": false,
+      "batch": "B1",
+      "family": "column",
+      "subjectTarget": "六层自然连续断面与低位夹持，抽层/标签/24物质同向且有留存",
+      "baselineControls": [
+        "有机层",
+        "腐殖质层",
+        "淋溶层",
+        "淀积层",
+        "母质层",
+        "母岩层"
+      ],
+      "baselineSelectionLimit": 5,
+      "branches": [
+        {
+          "selection": -1,
+          "control": null,
+          "phases": [
+            0,
+            0.2,
+            0.25,
+            0.5,
+            0.6,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [
+            {
+              "target": "overview",
+              "label": "合拢土柱"
+            },
+            {
+              "target": "section",
+              "label": "剖开半柱"
+            }
+          ],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 0,
+          "control": "有机层",
+          "phases": [
+            0,
+            0.2,
+            0.25,
+            0.5,
+            0.6,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [
+            {
+              "target": "overview",
+              "label": "合拢土柱"
+            },
+            {
+              "target": "section",
+              "label": "剖开半柱"
+            }
+          ],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "腐殖质层",
+          "phases": [
+            0,
+            0.2,
+            0.25,
+            0.5,
+            0.6,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [
+            {
+              "target": "overview",
+              "label": "合拢土柱"
+            },
+            {
+              "target": "section",
+              "label": "剖开半柱"
+            }
+          ],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 2,
+          "control": "淋溶层",
+          "phases": [
+            0,
+            0.2,
+            0.25,
+            0.5,
+            0.6,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [
+            {
+              "target": "overview",
+              "label": "合拢土柱"
+            },
+            {
+              "target": "section",
+              "label": "剖开半柱"
+            }
+          ],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 3,
+          "control": "淀积层",
+          "phases": [
+            0,
+            0.2,
+            0.25,
+            0.5,
+            0.6,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [
+            {
+              "target": "overview",
+              "label": "合拢土柱"
+            },
+            {
+              "target": "section",
+              "label": "剖开半柱"
+            }
+          ],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 4,
+          "control": "母质层",
+          "phases": [
+            0,
+            0.2,
+            0.25,
+            0.5,
+            0.6,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [
+            {
+              "target": "overview",
+              "label": "合拢土柱"
+            },
+            {
+              "target": "section",
+              "label": "剖开半柱"
+            }
+          ],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 5,
+          "control": "母岩层",
+          "phases": [
+            0,
+            0.2,
+            0.25,
+            0.5,
+            0.6,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [
+            {
+              "target": "overview",
+              "label": "合拢土柱"
+            },
+            {
+              "target": "section",
+              "label": "剖开半柱"
+            }
+          ],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "soil-factors",
+      "title": "土壤形成的因素",
+      "printedPage": 91,
+      "extension": false,
+      "batch": "B1",
+      "family": "column",
+      "subjectTarget": "岩土断口、根孔/枯落物与风化接触；0—3与分选4分别验",
+      "baselineControls": [
+        "成土母质",
+        "生物循环",
+        "气候作用",
+        "时间与土层",
+        "地貌与颗粒"
+      ],
+      "baselineSelectionLimit": 4,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "成土母质",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "生物循环",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 2,
+          "control": "气候作用",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 3,
+          "control": "时间与土层",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 4,
+          "control": "地貌与颗粒",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "soil-care",
+      "title": "土壤水盐运动与养护",
+      "printedPage": 94,
+      "extension": false,
+      "batch": "B1",
+      "family": "column",
+      "subjectTarget": "地下水/毛管/土面/排水口连续，返盐淋盐抑蒸各有去向",
+      "baselineControls": [
+        "蒸发返盐",
+        "引淡淋盐",
+        "覆盖抑蒸发"
+      ],
+      "baselineSelectionLimit": 2,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "蒸发返盐",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "引淡淋盐",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 2,
+          "control": "覆盖抑蒸发",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "cosmic-scale",
+      "title": "天体系统的层次",
+      "printedPage": 3,
+      "extension": false,
+      "batch": "B2",
+      "family": "orrery",
+      "subjectTarget": "四级常驻标本的所属联系与主体体积；连接退后，示意尺度明确",
+      "baselineControls": [
+        "地月系",
+        "太阳系",
+        "银河系",
+        "可观测宇宙"
+      ],
+      "baselineSelectionLimit": 3,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "地月系",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "太阳系",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 2,
+          "control": "银河系",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 3,
+          "control": "可观测宇宙",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "solar",
+      "title": "图1.4　太阳系结构",
+      "printedPage": 3,
+      "extension": false,
+      "batch": "B2",
+      "family": "orrery",
+      "subjectTarget": "行星与细轨道在同一轮系承托，手轮连同一进度；不伪装真实比例周期",
+      "baselineControls": [],
+      "baselineSelectionLimit": 8,
+      "branches": [
+        {
+          "selection": 0,
+          "control": null,
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": null,
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 2,
+          "control": null,
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 3,
+          "control": null,
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 4,
+          "control": null,
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 5,
+          "control": null,
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 6,
+          "control": null,
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 7,
+          "control": null,
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 8,
+          "control": null,
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "habitable",
+      "title": "地球存在生命的条件",
+      "printedPage": 6,
+      "extension": false,
+      "batch": "B2",
+      "family": "cutaway",
+      "subjectTarget": "一颗可见陆海的地球，温度/水/气共存；薄大气不遮陆，不模拟造生命",
+      "baselineControls": [
+        "适宜温度",
+        "液态水",
+        "大气条件"
+      ],
+      "baselineSelectionLimit": 2,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "适宜温度",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "液态水",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 2,
+          "control": "大气条件",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "solar-distribution",
+      "title": "太阳辐射的纬度差异",
+      "printedPage": 9,
+      "extension": false,
+      "batch": "B2",
+      "family": "cutaway",
+      "subjectTarget": "同束光入射真实曲面，光斑贴球；光阑和观察纬度共轴",
+      "baselineControls": [
+        "低纬度",
+        "中纬度",
+        "高纬度"
+      ],
+      "baselineSelectionLimit": 2,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "低纬度",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.7092376551108082,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "中纬度",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.7092376551108082,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 2,
+          "control": "高纬度",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.7092376551108082,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "earth",
+      "title": "图1.34　地球内部地震波传播速度与圈层结构",
+      "printedPage": 22,
+      "extension": false,
+      "batch": "B2",
+      "family": "cutaway",
+      "subjectTarget": "闭合球壳的真实切面与抽层路径，极轴承托，核层独立可见",
+      "baselineControls": [
+        "完整",
+        "地壳",
+        "地幔",
+        "地核"
+      ],
+      "baselineSelectionLimit": 3,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "完整",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [
+            {
+              "target": "overview",
+              "label": "剖面"
+            },
+            {
+              "target": "closed",
+              "label": "合拢外壳"
+            }
+          ],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "地壳",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [
+            {
+              "target": "overview",
+              "label": "剖面"
+            },
+            {
+              "target": "closed",
+              "label": "合拢外壳"
+            }
+          ],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 2,
+          "control": "地幔",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [
+            {
+              "target": "overview",
+              "label": "剖面"
+            },
+            {
+              "target": "closed",
+              "label": "合拢外壳"
+            }
+          ],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 3,
+          "control": "地核",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [
+            {
+              "target": "overview",
+              "label": "剖面"
+            },
+            {
+              "target": "closed",
+              "label": "合拢外壳"
+            }
+          ],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "sun",
+      "title": "图1.14　家庭太阳能供热系统",
+      "printedPage": 9,
+      "extension": false,
+      "batch": "B3",
+      "family": "vessel",
+      "subjectTarget": "集热器—水路—储水—室内接收闭合，房屋剖面避开观察线",
+      "baselineControls": [
+        "短波到达",
+        "吸收受热",
+        "水路循环",
+        "室内供热"
+      ],
+      "baselineSelectionLimit": 3,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "短波到达",
+          "phases": [
+            0,
+            0.22,
+            0.25,
+            0.44,
+            0.5,
+            0.72,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "吸收受热",
+          "phases": [
+            0,
+            0.22,
+            0.25,
+            0.44,
+            0.5,
+            0.72,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 2,
+          "control": "水路循环",
+          "phases": [
+            0,
+            0.22,
+            0.25,
+            0.44,
+            0.5,
+            0.72,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 3,
+          "control": "室内供热",
+          "phases": [
+            0,
+            0.22,
+            0.25,
+            0.44,
+            0.5,
+            0.72,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "solar-activity",
+      "title": "太阳活动与地球",
+      "printedPage": 11,
+      "extension": false,
+      "batch": "B3",
+      "family": "orrery",
+      "subjectTarget": "日地传播路径与极区接收，扰动有到达次序，不直喷地面",
+      "baselineControls": [
+        "较平静",
+        "活动增强"
+      ],
+      "baselineSelectionLimit": 1,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "较平静",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "活动增强",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "external-spheres",
+      "title": "地球外部圈层的联系",
+      "printedPage": 23,
+      "extension": false,
+      "batch": "B3",
+      "family": "terrain",
+      "subjectTarget": "同一岩土/水/植物/空气环境，跨圈层迁移留在实际接收端",
+      "baselineControls": [
+        "圈层联系",
+        "水的迁移",
+        "生物联系"
+      ],
+      "baselineSelectionLimit": 2,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "圈层联系",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "水的迁移",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 2,
+          "control": "生物联系",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "mars-base",
+      "title": "问题研究 · 火星基地",
+      "printedPage": 26,
+      "extension": false,
+      "batch": "B3",
+      "family": "vessel",
+      "subjectTarget": "统一厚壳剖开舱段、舱内设备与接头，取消整块矩形板主导；四回路边界保留",
+      "baselineControls": [
+        "基地整体",
+        "水的再生",
+        "植物与乘员",
+        "能源供给"
+      ],
+      "baselineSelectionLimit": 3,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "基地整体",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "水的再生",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 2,
+          "control": "植物与乘员",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 3,
+          "control": "能源供给",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "history",
+      "title": "图1.23　A、B两地地层对比",
+      "printedPage": 15,
+      "extension": false,
+      "batch": "B4",
+      "family": "strata",
+      "subjectTarget": "两柱连续自然断面、六层九化石对应，外导向避开连线与抽样",
+      "baselineControls": [
+        "同时代地层",
+        "分层查看"
+      ],
+      "baselineSelectionLimit": 7,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "同时代地层",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "分层查看",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 2,
+          "control": null,
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 3,
+          "control": null,
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 4,
+          "control": null,
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 5,
+          "control": null,
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 6,
+          "control": null,
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 7,
+          "control": null,
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "geo-time",
+      "title": "地质年代与生命演化",
+      "printedPage": 16,
+      "extension": false,
+      "batch": "B4",
+      "family": "strata",
+      "subjectTarget": "铰轴标本册的页厚/断口/代表生物；四时期不冒充等时长",
+      "baselineControls": [
+        "前寒武纪",
+        "古生代",
+        "中生代",
+        "新生代"
+      ],
+      "baselineSelectionLimit": 3,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "前寒武纪",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "古生代",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 2,
+          "control": "中生代",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 3,
+          "control": "新生代",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "seismic-waves",
+      "title": "地震波如何穿过不同介质",
+      "printedPage": 21,
+      "extension": false,
+      "batch": "B4",
+      "family": "vessel",
+      "subjectTarget": "P/S联接与介质共轴，追踪同一质点，液体无S传播",
+      "baselineControls": [
+        "固体与液体",
+        "两侧都是固体"
+      ],
+      "baselineSelectionLimit": 1,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "固体与液体",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "两侧都是固体",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "air-composition",
+      "title": "大气的组成",
+      "printedPage": 28,
+      "extension": false,
+      "batch": "B5",
+      "family": "vessel",
+      "subjectTarget": "开放百格体积分数立体教具，局部展开仍保留整体分母",
+      "baselineControls": [
+        "干洁空气",
+        "水汽与杂质"
+      ],
+      "baselineSelectionLimit": 1,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "干洁空气",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "水汽与杂质",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "atmosphere",
+      "title": "图2.5　大气的垂直分层",
+      "printedPage": 31,
+      "extension": false,
+      "batch": "B5",
+      "family": "air",
+      "subjectTarget": "开放垂直剖面与同源曲线探针，去玻璃砖，固定高度与观察焦点",
+      "baselineControls": [
+        "对流层",
+        "平流层",
+        "高层大气"
+      ],
+      "baselineSelectionLimit": 2,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "对流层",
+          "phases": [
+            0,
+            0.12,
+            0.25,
+            0.42,
+            0.5,
+            0.75,
+            0.82,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "平流层",
+          "phases": [
+            0,
+            0.12,
+            0.25,
+            0.42,
+            0.5,
+            0.75,
+            0.82,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 2,
+          "control": "高层大气",
+          "phases": [
+            0,
+            0.12,
+            0.25,
+            0.42,
+            0.5,
+            0.75,
+            0.82,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "heating",
+      "title": "图2.9　大气的受热过程",
+      "printedPage": 34,
+      "extension": false,
+      "batch": "B5",
+      "family": "air",
+      "subjectTarget": "短波—地表—长波—吸收分离但相接，接收体随实际到达响应",
+      "baselineControls": [
+        "太阳短波",
+        "地面增温",
+        "地面长波",
+        "大气吸收"
+      ],
+      "baselineSelectionLimit": 3,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "太阳短波",
+          "phases": [
+            0,
+            0.25,
+            0.28,
+            0.5,
+            0.52,
+            0.75,
+            0.82,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "地面增温",
+          "phases": [
+            0,
+            0.25,
+            0.28,
+            0.5,
+            0.52,
+            0.75,
+            0.82,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 2,
+          "control": "地面长波",
+          "phases": [
+            0,
+            0.25,
+            0.28,
+            0.5,
+            0.52,
+            0.75,
+            0.82,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 3,
+          "control": "大气吸收",
+          "phases": [
+            0,
+            0.25,
+            0.28,
+            0.5,
+            0.52,
+            0.75,
+            0.82,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "greenhouse",
+      "title": "大气的保温作用",
+      "printedPage": 35,
+      "extension": false,
+      "batch": "B5",
+      "family": "air",
+      "subjectTarget": "同地表三条件对照，低云/大气为开放层，不成密封玻璃盖",
+      "baselineControls": [
+        "无大气对照",
+        "有大气",
+        "有低云"
+      ],
+      "baselineSelectionLimit": 2,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "无大气对照",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "有大气",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 2,
+          "control": "有低云",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "thermal",
+      "title": "图2.11　大气热力环流的形成",
+      "printedPage": 36,
+      "extension": false,
+      "batch": "B5",
+      "family": "air",
+      "subjectTarget": "冷热标本与同高梁一体，垂直/水平闭环；控制接入同一机构",
+      "baselineControls": [
+        "受热均匀",
+        "冷热不均",
+        "垂直运动",
+        "同高气压",
+        "完整环流"
+      ],
+      "baselineSelectionLimit": 4,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "受热均匀",
+          "phases": [
+            0,
+            0.24,
+            0.25,
+            0.5,
+            0.74,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "冷热不均",
+          "phases": [
+            0,
+            0.24,
+            0.25,
+            0.5,
+            0.74,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 2,
+          "control": "垂直运动",
+          "phases": [
+            0,
+            0.24,
+            0.25,
+            0.5,
+            0.74,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 3,
+          "control": "同高气压",
+          "phases": [
+            0,
+            0.24,
+            0.25,
+            0.5,
+            0.74,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 4,
+          "control": "完整环流",
+          "phases": [
+            0,
+            0.24,
+            0.25,
+            0.5,
+            0.74,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "breeze",
+      "title": "海陆间的大气热力环流",
+      "printedPage": 38,
+      "extension": false,
+      "batch": "B5",
+      "family": "coast",
+      "subjectTarget": "海岸水下切面、风旗和日月柄整体，临界弱风与反向同源",
+      "baselineControls": [
+        "白天",
+        "夜晚"
+      ],
+      "baselineSelectionLimit": 1,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "白天",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "夜晚",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "pressure-wind",
+      "title": "大气的水平运动——风",
+      "printedPage": 38,
+      "extension": false,
+      "batch": "B5",
+      "family": "air",
+      "subjectTarget": "同高比较面与指示器共梁，差压输入对应风旗，零差压边界准确",
+      "baselineControls": [
+        "存在气压差",
+        "气压相同"
+      ],
+      "baselineSelectionLimit": 1,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "存在气压差",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "气压相同",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "wind-forces",
+      "title": "等压线与风向",
+      "printedPage": 39,
+      "extension": false,
+      "batch": "B5",
+      "family": "mapping",
+      "subjectTarget": "薄地图等压线与风/力向量，四条件独立比较，不强加时间演化",
+      "baselineControls": [
+        "只受气压梯度力",
+        "北半球高空",
+        "北半球近地面",
+        "南半球近地面"
+      ],
+      "baselineSelectionLimit": 3,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "只受气压梯度力",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "北半球高空",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 2,
+          "control": "北半球近地面",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 3,
+          "control": "南半球近地面",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "water",
+      "title": "图3.2　水循环示意",
+      "printedPage": 47,
+      "extension": false,
+      "batch": "B6",
+      "family": "coast",
+      "subjectTarget": "山海地下水连续切块，六示踪跨状态同身份，三循环独立",
+      "baselineControls": [
+        "海陆间循环",
+        "陆地内循环",
+        "海上内循环"
+      ],
+      "baselineSelectionLimit": 2,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "海陆间循环",
+          "phases": [
+            0,
+            0.18,
+            0.25,
+            0.34,
+            0.48,
+            0.5,
+            0.64,
+            0.75,
+            0.84,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "陆地内循环",
+          "phases": [
+            0,
+            0.25,
+            0.26,
+            0.5,
+            0.52,
+            0.75,
+            0.82,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 2,
+          "control": "海上内循环",
+          "phases": [
+            0,
+            0.25,
+            0.26,
+            0.5,
+            0.52,
+            0.75,
+            0.86,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "water-renewal",
+      "title": "水体更新与水资源短缺",
+      "printedPage": 48,
+      "extension": false,
+      "batch": "B6",
+      "family": "vessel",
+      "subjectTarget": "同储水体可见补给/取用/污染口，数量与可用性分开",
+      "baselineControls": [
+        "取用与补给相当",
+        "取用超过补给",
+        "水体污染"
+      ],
+      "baselineSelectionLimit": 2,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "取用与补给相当",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "取用超过补给",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 2,
+          "control": "水体污染",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "temperature",
+      "title": "图3.8　海水温度随深度的变化",
+      "printedPage": 50,
+      "extension": false,
+      "batch": "B6",
+      "family": "vessel",
+      "subjectTarget": "开放深水剖面、切片与探针同曲线，不将观测深度画成水位",
+      "baselineControls": [
+        "表层",
+        "约1000米",
+        "深层"
+      ],
+      "baselineSelectionLimit": 2,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "表层",
+          "phases": [
+            0,
+            0.2,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [
+            {
+              "target": "overview",
+              "label": "当前深度"
+            },
+            {
+              "target": "surface-compare",
+              "label": "表层对照"
+            }
+          ],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "约1000米",
+          "phases": [
+            0,
+            0.2,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [
+            {
+              "target": "overview",
+              "label": "当前深度"
+            },
+            {
+              "target": "surface-compare",
+              "label": "表层对照"
+            }
+          ],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 2,
+          "control": "深层",
+          "phases": [
+            0,
+            0.2,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [
+            {
+              "target": "overview",
+              "label": "当前深度"
+            },
+            {
+              "target": "surface-compare",
+              "label": "表层对照"
+            }
+          ],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "salinity",
+      "title": "哪些条件影响海水盐度",
+      "printedPage": 52,
+      "extension": false,
+      "batch": "B6",
+      "family": "vessel",
+      "subjectTarget": "开口槽与三输入/固定盐示踪/水位共状态，蒸发不带盐",
+      "baselineControls": [
+        "蒸发增强",
+        "降水增多",
+        "河流注入"
+      ],
+      "baselineSelectionLimit": 2,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "蒸发增强",
+          "phases": [
+            0,
+            0.25,
+            0.45,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "降水增多",
+          "phases": [
+            0,
+            0.25,
+            0.45,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 2,
+          "control": "河流注入",
+          "phases": [
+            0,
+            0.25,
+            0.45,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "density",
+      "title": "海水密度的条件对照",
+      "printedPage": 55,
+      "extension": false,
+      "batch": "B6",
+      "family": "vessel",
+      "subjectTarget": "等体积样本的质量比较，轴承/悬杯/指示同机构；不暗改体积",
+      "baselineControls": [
+        "相同条件",
+        "只降低温度",
+        "只增加盐度"
+      ],
+      "baselineSelectionLimit": 2,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "相同条件",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "只降低温度",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 2,
+          "control": "只增加盐度",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "desalination",
+      "title": "问题研究 · 海冰淡化",
+      "printedPage": 64,
+      "extension": false,
+      "batch": "B6",
+      "family": "vessel",
+      "subjectTarget": "冰体真盐水通道、有限收集端与离心同轴，残余盐水可见",
+      "baselineControls": [
+        "重力排盐",
+        "破碎离心"
+      ],
+      "baselineSelectionLimit": 1,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "重力排盐",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "破碎离心",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "waves",
+      "title": "图3.20　波浪要素示意",
+      "printedPage": 57,
+      "extension": false,
+      "batch": "B7",
+      "family": "coast",
+      "subjectTarget": "水槽剖面与表面波一体，同质点闭合往复，不随波峰迁走",
+      "baselineControls": [
+        "整体",
+        "追踪水质点"
+      ],
+      "baselineSelectionLimit": 1,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "整体",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [
+            {
+              "target": "overview",
+              "label": "整体"
+            },
+            {
+              "target": "displacement",
+              "label": "质点位移"
+            },
+            {
+              "target": "depth-pair",
+              "label": "水深对照"
+            }
+          ],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "追踪水质点",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [
+            {
+              "target": "overview",
+              "label": "整体"
+            },
+            {
+              "target": "displacement",
+              "label": "质点位移"
+            },
+            {
+              "target": "depth-pair",
+              "label": "水深对照"
+            }
+          ],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "tides",
+      "title": "图3.22—3.23　潮汐与人类活动",
+      "printedPage": 59,
+      "extension": false,
+      "batch": "B7",
+      "family": "coast",
+      "subjectTarget": "岸滩/水下地形/水位杆/浮舟同高度，潮间带可见",
+      "baselineControls": [
+        "低潮",
+        "涨潮",
+        "高潮",
+        "落潮"
+      ],
+      "baselineSelectionLimit": 3,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "低潮",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "涨潮",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 2,
+          "control": "高潮",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 3,
+          "control": "落潮",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "currents",
+      "title": "图3.26　海水运动",
+      "printedPage": 61,
+      "extension": false,
+      "batch": "B7",
+      "family": "coast",
+      "subjectTarget": "十二水体身份净迁移与原位往复参照，保留首末位置",
+      "baselineControls": [
+        "起点",
+        "前移",
+        "末位置"
+      ],
+      "baselineSelectionLimit": 2,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "起点",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "前移",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 2,
+          "control": "末位置",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "coastal-landform",
+      "title": "海岸侵蚀与堆积",
+      "printedPage": 74,
+      "extension": false,
+      "batch": "B7",
+      "family": "coast",
+      "subjectTarget": "岩壁真凹槽/平台/崩落体，拱桥柱滩分支独立，崩落不消失",
+      "baselineControls": [
+        "海蚀崖与平台",
+        "海蚀拱桥",
+        "海蚀柱",
+        "海滩堆积"
+      ],
+      "baselineSelectionLimit": 3,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "海蚀崖与平台",
+          "phases": [
+            0,
+            0.18,
+            0.25,
+            0.44,
+            0.5,
+            0.67,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "海蚀拱桥",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 2,
+          "control": "海蚀柱",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 3,
+          "control": "海滩堆积",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "karst",
+      "title": "图4.2　地表喀斯特地貌演变",
+      "printedPage": 67,
+      "extension": false,
+      "batch": "B8",
+      "family": "terrain",
+      "subjectTarget": "有闭合侧面与裂隙的可溶岩体，六形态独立，水进入真实表面",
+      "baselineControls": [
+        "溶沟",
+        "洼地",
+        "峰丛",
+        "峰林",
+        "孤峰",
+        "残丘"
+      ],
+      "baselineSelectionLimit": 5,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "溶沟",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "洼地",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 2,
+          "control": "峰丛",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 3,
+          "control": "峰林",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 4,
+          "control": "孤峰",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 5,
+          "control": "残丘",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "karst-cave",
+      "title": "地下喀斯特地貌",
+      "printedPage": 68,
+      "extension": false,
+      "batch": "B8",
+      "family": "terrain",
+      "subjectTarget": "剖壳后的真洞腔，顶底沉积与滴水接触，观察侧可开合",
+      "baselineControls": [
+        "溶洞",
+        "石钟乳与石笋"
+      ],
+      "baselineSelectionLimit": 1,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "溶洞",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "石钟乳与石笋",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "karst-livelihood",
+      "title": "问题研究 · 喀斯特峰丛山地",
+      "printedPage": 80,
+      "extension": false,
+      "batch": "B8",
+      "family": "terrain",
+      "subjectTarget": "峰丛薄土/地下通道/农业接触，雨涝晴旱与水土去向可追踪",
+      "baselineControls": [
+        "植被覆盖",
+        "破坏与侵蚀",
+        "雨涝晴旱",
+        "立体农业"
+      ],
+      "baselineSelectionLimit": 3,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "植被覆盖",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "破坏与侵蚀",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 2,
+          "control": "雨涝晴旱",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 3,
+          "control": "立体农业",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "aeolian",
+      "title": "风沙地貌",
+      "printedPage": 73,
+      "extension": false,
+      "batch": "B8",
+      "family": "terrain",
+      "subjectTarget": "风蚀岩、雅丹、沙丘与固沙分别造型，迎背风和堆积落点成立",
+      "baselineControls": [
+        "风蚀蘑菇",
+        "雅丹",
+        "新月形沙丘",
+        "植被固沙"
+      ],
+      "baselineSelectionLimit": 3,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "风蚀蘑菇",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "雅丹",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 2,
+          "control": "新月形沙丘",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 3,
+          "control": "植被固沙",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "river-valley",
+      "title": "河流地貌与河谷",
+      "printedPage": 69,
+      "extension": false,
+      "batch": "B9",
+      "family": "terrain",
+      "subjectTarget": "山地/平原两类自然河谷与河床连续，可比取景，非强制演化",
+      "baselineControls": [
+        "山地河谷",
+        "平原河谷"
+      ],
+      "baselineSelectionLimit": 1,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "山地河谷",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "平原河谷",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "river",
+      "title": "图4.8　河曲和牛轭湖",
+      "printedPage": 70,
+      "extension": false,
+      "batch": "B9",
+      "family": "terrain",
+      "subjectTarget": "同岸线/水/流路冲颈、接通、两端淤塞，牛轭湖结果保留",
+      "baselineControls": [
+        "河曲",
+        "洪水冲颈",
+        "牛轭湖"
+      ],
+      "baselineSelectionLimit": 2,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "河曲",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.6,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "洪水冲颈",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.6,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 2,
+          "control": "牛轭湖",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.6,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "delta",
+      "title": "冲积平原与河口三角洲",
+      "printedPage": 71,
+      "extension": false,
+      "batch": "B9",
+      "family": "terrain",
+      "subjectTarget": "水下基底与不对称分汊连通，有限泥沙落点改变沉积与岸线",
+      "baselineControls": [
+        "冲积平原",
+        "河口沉积",
+        "三角洲推进"
+      ],
+      "baselineSelectionLimit": 2,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "冲积平原",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "河口沉积",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 2,
+          "control": "三角洲推进",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "slope",
+      "title": "图4.22　黄土高原某地等高线地形",
+      "printedPage": 77,
+      "extension": false,
+      "batch": "B9",
+      "family": "terrain",
+      "subjectTarget": "同网格等高线连续抬升，甲乙点贴地；879.0/885.4/6.4关系保留",
+      "baselineControls": [
+        "平面",
+        "抬升",
+        "高差"
+      ],
+      "baselineSelectionLimit": 2,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "平面",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.65,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "抬升",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.65,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 2,
+          "control": "高差",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.65,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "terrain-observation",
+      "title": "地貌观察：高度、坡度与坡向",
+      "printedPage": 77,
+      "extension": false,
+      "batch": "B9",
+      "family": "terrain",
+      "subjectTarget": "同地形的高程基准/坡尺/方向，四观察量不改自然对象",
+      "baselineControls": [
+        "绝对高度",
+        "相对高度",
+        "坡度",
+        "坡向"
+      ],
+      "baselineSelectionLimit": 3,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "绝对高度",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "相对高度",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 2,
+          "control": "坡度",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 3,
+          "control": "坡向",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "haze",
+      "title": "问题研究 · 何时蓝天常在",
+      "printedPage": 43,
+      "extension": false,
+      "batch": "B10",
+      "family": "hazard",
+      "subjectTarget": "同城市排放—输送—滞留—迁出，污染存量不因减排瞬间清零",
+      "baselineControls": [
+        "排放积聚",
+        "通风扩散",
+        "减少排放"
+      ],
+      "baselineSelectionLimit": 2,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "排放积聚",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "通风扩散",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 2,
+          "control": "减少排放",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "flood",
+      "title": "洪涝与低地积水",
+      "printedPage": 100,
+      "extension": false,
+      "batch": "B10",
+      "family": "hazard",
+      "subjectTarget": "同河床低地建筑水位，积水随实际地形接触，不整片蓝面遮盖",
+      "baselineControls": [
+        "正常水位",
+        "连续强降水"
+      ],
+      "baselineSelectionLimit": 1,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "正常水位",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "连续强降水",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "drought",
+      "title": "干旱与水分不足",
+      "printedPage": 102,
+      "extension": false,
+      "batch": "B10",
+      "family": "hazard",
+      "subjectTarget": "水分亏缺—水体减少—植被响应共环境，不仅变黄加裂纹",
+      "baselineControls": [
+        "水分充足",
+        "持续少雨"
+      ],
+      "baselineSelectionLimit": 1,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "水分充足",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "持续少雨",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "typhoon",
+      "title": "图6.5　台风",
+      "printedPage": 103,
+      "extension": false,
+      "batch": "B10",
+      "family": "air",
+      "subjectTarget": "真实眼洞和眼墙层次，北半球四股运动为观察序列非形成史",
+      "baselineControls": [
+        "低层辐合",
+        "眼墙上升",
+        "高空辐散",
+        "眼内下沉"
+      ],
+      "baselineSelectionLimit": 3,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "低层辐合",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "眼墙上升",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 2,
+          "control": "高空辐散",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 3,
+          "control": "眼内下沉",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "cold-wave",
+      "title": "寒潮中的冷空气推进",
+      "printedPage": 104,
+      "extension": false,
+      "batch": "B10",
+      "family": "hazard",
+      "subjectTarget": "连续冷锋前缘与同测站风温响应，到达时刻一致",
+      "baselineControls": [
+        "到来前",
+        "接近观察点",
+        "到达观察点",
+        "推进后"
+      ],
+      "baselineSelectionLimit": 3,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "到来前",
+          "phases": [
+            0,
+            0.25,
+            0.35,
+            0.5,
+            0.62,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "接近观察点",
+          "phases": [
+            0,
+            0.25,
+            0.35,
+            0.5,
+            0.62,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 2,
+          "control": "到达观察点",
+          "phases": [
+            0,
+            0.25,
+            0.35,
+            0.5,
+            0.62,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 3,
+          "control": "推进后",
+          "phases": [
+            0,
+            0.25,
+            0.35,
+            0.5,
+            0.62,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "earthquake",
+      "title": "图6.11　地震构造示意",
+      "printedPage": 107,
+      "extension": false,
+      "batch": "B11",
+      "family": "hazard",
+      "subjectTarget": "断层/震源/监测与近远接收点，波到站后处理通信；震后预警",
+      "baselineControls": [
+        "震源与震中",
+        "震后预警",
+        "近场对照"
+      ],
+      "baselineSelectionLimit": 2,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "震源与震中",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "震后预警",
+          "phases": [
+            0,
+            0.09,
+            0.23700035612494963,
+            0.25,
+            0.30200035612494963,
+            0.5,
+            0.75,
+            0.9285089783957027,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 2,
+          "control": "近场对照",
+          "phases": [
+            0,
+            0.09,
+            0.23700035612494963,
+            0.25,
+            0.30200035612494963,
+            0.41296699996699693,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "slide",
+      "title": "图6.12—6.13　滑坡和泥石流",
+      "printedPage": 108,
+      "extension": false,
+      "batch": "B11",
+      "family": "hazard",
+      "subjectTarget": "可分滑体/母体与沟谷碎屑/堆积分别动作，有限物料留下",
+      "baselineControls": [
+        "滑坡",
+        "泥石流"
+      ],
+      "baselineSelectionLimit": 1,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "滑坡",
+          "phases": [
+            0,
+            0.25,
+            0.45,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "泥石流",
+          "phases": [
+            0,
+            0.25,
+            0.45,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "disaster-chain",
+      "title": "自然灾害的关联",
+      "printedPage": 109,
+      "extension": false,
+      "batch": "B11",
+      "family": "hazard",
+      "subjectTarget": "井—含水层—压密/盐界及滑坡—堵河—蓄湖—洪水两链独立",
+      "baselineControls": [
+        "旱灾关联",
+        "地震关联"
+      ],
+      "baselineSelectionLimit": 1,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "旱灾关联",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "地震关联",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "mitigation",
+      "title": "图6.16—6.17　救援与灾后恢复",
+      "printedPage": 111,
+      "extension": false,
+      "batch": "B11",
+      "family": "hazard",
+      "subjectTarget": "玉树搜救与北川恢复独立环境，阶段结果与设施接收端保留",
+      "baselineControls": [
+        "玉树搜救",
+        "北川恢复"
+      ],
+      "baselineSelectionLimit": 1,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "玉树搜救",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "北川恢复",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "urban-waterlogging",
+      "title": "问题研究 · 城市不再看海",
+      "printedPage": 97,
+      "extension": false,
+      "batch": "B11",
+      "family": "hazard",
+      "subjectTarget": "同街区三地面与有限雨水，下渗暂存排出接收区可见",
+      "baselineControls": [
+        "硬化地面",
+        "透水地面",
+        "雨水花园"
+      ],
+      "baselineSelectionLimit": 2,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "硬化地面",
+          "phases": [
+            0,
+            0.25,
+            0.3,
+            0.5,
+            0.7,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [
+            {
+              "target": "overview",
+              "label": "整体"
+            },
+            {
+              "target": "packet-0",
+              "label": "追踪水滴"
+            },
+            {
+              "target": "drain",
+              "label": "排水口"
+            },
+            {
+              "target": "collected",
+              "label": "收集池"
+            }
+          ],
+          "nativeAdditionalTargets": [
+            "packet-0",
+            "packet-1",
+            "packet-2",
+            "packet-3",
+            "packet-4",
+            "packet-5",
+            "packet-6",
+            "packet-7",
+            "packet-8",
+            "packet-9",
+            "packet-10",
+            "packet-11"
+          ],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "透水地面",
+          "phases": [
+            0,
+            0.25,
+            0.3,
+            0.5,
+            0.7,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [
+            {
+              "target": "overview",
+              "label": "整体"
+            },
+            {
+              "target": "packet-0",
+              "label": "追踪水滴"
+            },
+            {
+              "target": "drain",
+              "label": "排水口"
+            },
+            {
+              "target": "collected",
+              "label": "收集池"
+            }
+          ],
+          "nativeAdditionalTargets": [
+            "packet-0",
+            "packet-1",
+            "packet-2",
+            "packet-3",
+            "packet-4",
+            "packet-5",
+            "packet-6",
+            "packet-7",
+            "packet-8",
+            "packet-9",
+            "packet-10",
+            "packet-11"
+          ],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 2,
+          "control": "雨水花园",
+          "phases": [
+            0,
+            0.25,
+            0.3,
+            0.5,
+            0.7,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [
+            {
+              "target": "overview",
+              "label": "整体"
+            },
+            {
+              "target": "packet-0",
+              "label": "追踪水滴"
+            },
+            {
+              "target": "drain",
+              "label": "排水口"
+            },
+            {
+              "target": "collected",
+              "label": "收集池"
+            }
+          ],
+          "nativeAdditionalTargets": [
+            "packet-0",
+            "packet-1",
+            "packet-2",
+            "packet-3",
+            "packet-4",
+            "packet-5",
+            "packet-6",
+            "packet-7",
+            "packet-8",
+            "packet-9",
+            "packet-10",
+            "packet-11"
+          ],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "remote",
+      "title": "图6.21　遥感技术示意",
+      "printedPage": 114,
+      "extension": false,
+      "batch": "B12",
+      "family": "mapping",
+      "subjectTarget": "太阳—地物—传感—接收—处理—成果同十二样本身份",
+      "baselineControls": [
+        "获取信息",
+        "传输信息",
+        "处理分析",
+        "输出成果"
+      ],
+      "baselineSelectionLimit": 3,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "获取信息",
+          "phases": [
+            0,
+            0.22,
+            0.25,
+            0.45,
+            0.5,
+            0.69,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "传输信息",
+          "phases": [
+            0,
+            0.22,
+            0.25,
+            0.45,
+            0.5,
+            0.69,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 2,
+          "control": "处理分析",
+          "phases": [
+            0,
+            0.22,
+            0.25,
+            0.45,
+            0.5,
+            0.69,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 3,
+          "control": "输出成果",
+          "phases": [
+            0,
+            0.22,
+            0.25,
+            0.45,
+            0.5,
+            0.69,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "gnss",
+      "title": "全球卫星导航系统与救援",
+      "printedPage": 116,
+      "extension": false,
+      "batch": "B12",
+      "family": "mapping",
+      "subjectTarget": "空间/控制/用户与通信端分离，定位后经通信才发送",
+      "baselineControls": [
+        "卫星与地面",
+        "接收定位",
+        "定位助救援"
+      ],
+      "baselineSelectionLimit": 2,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "卫星与地面",
+          "phases": [
+            0,
+            0.25,
+            0.34,
+            0.5,
+            0.68,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [
+            {
+              "target": "overview",
+              "label": "整体"
+            },
+            {
+              "target": "sat-0",
+              "label": "卫星1链路"
+            },
+            {
+              "target": "sat-1",
+              "label": "卫星2链路"
+            },
+            {
+              "target": "sat-2",
+              "label": "卫星3链路"
+            },
+            {
+              "target": "sat-3",
+              "label": "卫星4链路"
+            }
+          ],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "接收定位",
+          "phases": [
+            0,
+            0.25,
+            0.34,
+            0.5,
+            0.68,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [
+            {
+              "target": "overview",
+              "label": "整体"
+            },
+            {
+              "target": "sat-0",
+              "label": "卫星1链路"
+            },
+            {
+              "target": "sat-1",
+              "label": "卫星2链路"
+            },
+            {
+              "target": "sat-2",
+              "label": "卫星3链路"
+            },
+            {
+              "target": "sat-3",
+              "label": "卫星4链路"
+            }
+          ],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 2,
+          "control": "定位助救援",
+          "phases": [
+            0,
+            0.25,
+            0.34,
+            0.5,
+            0.68,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [
+            {
+              "target": "overview",
+              "label": "整体"
+            },
+            {
+              "target": "sat-0",
+              "label": "卫星1链路"
+            },
+            {
+              "target": "sat-1",
+              "label": "卫星2链路"
+            },
+            {
+              "target": "sat-2",
+              "label": "卫星3链路"
+            },
+            {
+              "target": "sat-3",
+              "label": "卫星4链路"
+            }
+          ],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "gis",
+      "title": "图6.26　地理信息系统的空间叠合分析",
+      "printedPage": 117,
+      "extension": false,
+      "batch": "B12",
+      "family": "mapping",
+      "subjectTarget": "同坐标两信息源薄层对位及派生计数；33身份和5/15/13保留，字清楚",
+      "baselineControls": [
+        "图层分离",
+        "叠合统计"
+      ],
+      "baselineSelectionLimit": 1,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "图层分离",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [
+            {
+              "target": "overview",
+              "label": "整体"
+            },
+            {
+              "target": "region-0",
+              "label": "1区"
+            },
+            {
+              "target": "region-1",
+              "label": "2区"
+            },
+            {
+              "target": "region-2",
+              "label": "3区"
+            }
+          ],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "叠合统计",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [
+            {
+              "target": "overview",
+              "label": "整体"
+            },
+            {
+              "target": "region-0",
+              "label": "1区"
+            },
+            {
+              "target": "region-1",
+              "label": "2区"
+            },
+            {
+              "target": "region-2",
+              "label": "3区"
+            }
+          ],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "warehouse",
+      "title": "问题研究 · 救灾物资储备库",
+      "printedPage": 121,
+      "extension": false,
+      "batch": "B12",
+      "family": "mapping",
+      "subjectTarget": "同地形河道路网三库址，门口接路，受阻路段到服务终点连续",
+      "baselineControls": [
+        "近河低地",
+        "路网节点",
+        "偏远山地"
+      ],
+      "baselineSelectionLimit": 2,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "近河低地",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "路网节点",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 2,
+          "control": "偏远山地",
+          "phases": [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "basin-system",
+      "title": "综合观察　流域里的水与沙",
+      "printedPage": 47,
+      "extension": true,
+      "batch": "B13",
+      "family": "terrain",
+      "subjectTarget": "山地—河口共流域地形；本次水路与长期沉积不同时间尺度",
+      "baselineControls": [
+        "本次水路",
+        "长期累积",
+        "强降水对照"
+      ],
+      "baselineSelectionLimit": 2,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "本次水路",
+          "phases": [
+            0,
+            0.2,
+            0.25,
+            0.42,
+            0.5,
+            0.64,
+            0.75,
+            0.86,
+            1
+          ],
+          "inspectionTargets": [
+            {
+              "target": "overview",
+              "label": "整体流域"
+            },
+            {
+              "target": "water",
+              "label": "追踪水滴"
+            },
+            {
+              "target": "upper",
+              "label": "上游"
+            },
+            {
+              "target": "bend",
+              "label": "河曲"
+            },
+            {
+              "target": "mouth",
+              "label": "河口"
+            },
+            {
+              "target": "groundwater",
+              "label": "地下水"
+            },
+            {
+              "target": "sediment",
+              "label": "水沙去向"
+            },
+            {
+              "target": "specimen-open",
+              "label": "展开标本"
+            },
+            {
+              "target": "specimen-closed",
+              "label": "合拢标本"
+            }
+          ],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "长期累积",
+          "phases": [
+            0,
+            0.2,
+            0.25,
+            0.42,
+            0.5,
+            0.64,
+            0.75,
+            0.86,
+            1
+          ],
+          "inspectionTargets": [
+            {
+              "target": "overview",
+              "label": "整体流域"
+            },
+            {
+              "target": "water",
+              "label": "追踪水滴"
+            },
+            {
+              "target": "upper",
+              "label": "上游"
+            },
+            {
+              "target": "bend",
+              "label": "河曲"
+            },
+            {
+              "target": "mouth",
+              "label": "河口"
+            },
+            {
+              "target": "groundwater",
+              "label": "地下水"
+            },
+            {
+              "target": "sediment",
+              "label": "水沙去向"
+            },
+            {
+              "target": "specimen-open",
+              "label": "展开标本"
+            },
+            {
+              "target": "specimen-closed",
+              "label": "合拢标本"
+            }
+          ],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 2,
+          "control": "强降水对照",
+          "phases": [
+            0,
+            0.2,
+            0.25,
+            0.42,
+            0.5,
+            0.64,
+            0.75,
+            0.86,
+            1
+          ],
+          "inspectionTargets": [
+            {
+              "target": "overview",
+              "label": "整体流域"
+            },
+            {
+              "target": "water",
+              "label": "追踪水滴"
+            },
+            {
+              "target": "upper",
+              "label": "上游"
+            },
+            {
+              "target": "bend",
+              "label": "河曲"
+            },
+            {
+              "target": "mouth",
+              "label": "河口"
+            },
+            {
+              "target": "groundwater",
+              "label": "地下水"
+            },
+            {
+              "target": "sediment",
+              "label": "水沙去向"
+            },
+            {
+              "target": "specimen-open",
+              "label": "展开标本"
+            },
+            {
+              "target": "specimen-closed",
+              "label": "合拢标本"
+            }
+          ],
+          "nativeAdditionalTargets": [],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "city-rain-system",
+      "title": "综合实验　一场雨进入城市",
+      "printedPage": 97,
+      "extension": true,
+      "batch": "B13",
+      "family": "hazard",
+      "subjectTarget": "同街区可开地下剖面，有限雨水分配守恒，三条件相同布局",
+      "baselineControls": [
+        "硬化地面",
+        "透水地面",
+        "雨水花园"
+      ],
+      "baselineSelectionLimit": 2,
+      "branches": [
+        {
+          "selection": 0,
+          "control": "硬化地面",
+          "phases": [
+            0,
+            0.25,
+            0.3,
+            0.5,
+            0.7,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [
+            {
+              "target": "overview",
+              "label": "地表"
+            },
+            {
+              "target": "underground",
+              "label": "打开地下"
+            },
+            {
+              "target": "packet-0",
+              "label": "追踪水滴"
+            },
+            {
+              "target": "drain",
+              "label": "排水口"
+            },
+            {
+              "target": "collected",
+              "label": "出口"
+            }
+          ],
+          "nativeAdditionalTargets": [
+            "packet-0",
+            "packet-1",
+            "packet-2",
+            "packet-3",
+            "packet-4",
+            "packet-5",
+            "packet-6",
+            "packet-7",
+            "packet-8",
+            "packet-9",
+            "packet-10",
+            "packet-11"
+          ],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": "透水地面",
+          "phases": [
+            0,
+            0.25,
+            0.3,
+            0.5,
+            0.7,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [
+            {
+              "target": "overview",
+              "label": "地表"
+            },
+            {
+              "target": "underground",
+              "label": "打开地下"
+            },
+            {
+              "target": "packet-0",
+              "label": "追踪水滴"
+            },
+            {
+              "target": "drain",
+              "label": "排水口"
+            },
+            {
+              "target": "collected",
+              "label": "出口"
+            }
+          ],
+          "nativeAdditionalTargets": [
+            "packet-0",
+            "packet-1",
+            "packet-2",
+            "packet-3",
+            "packet-4",
+            "packet-5",
+            "packet-6",
+            "packet-7",
+            "packet-8",
+            "packet-9",
+            "packet-10",
+            "packet-11"
+          ],
+          "actions": [],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 2,
+          "control": "雨水花园",
+          "phases": [
+            0,
+            0.25,
+            0.3,
+            0.5,
+            0.7,
+            0.75,
+            1
+          ],
+          "inspectionTargets": [
+            {
+              "target": "overview",
+              "label": "地表"
+            },
+            {
+              "target": "underground",
+              "label": "打开地下"
+            },
+            {
+              "target": "packet-0",
+              "label": "追踪水滴"
+            },
+            {
+              "target": "drain",
+              "label": "排水口"
+            },
+            {
+              "target": "collected",
+              "label": "出口"
+            }
+          ],
+          "nativeAdditionalTargets": [
+            "packet-0",
+            "packet-1",
+            "packet-2",
+            "packet-3",
+            "packet-4",
+            "packet-5",
+            "packet-6",
+            "packet-7",
+            "packet-8",
+            "packet-9",
+            "packet-10",
+            "packet-11"
+          ],
+          "actions": [],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    },
+    {
+      "id": "quake-response-system",
+      "title": "综合推演　震后，先看清再抵达",
+      "printedPage": 120,
+      "extension": true,
+      "batch": "B13",
+      "family": "hazard",
+      "subjectTarget": "同灾后地形上影像/定位/通信/道路核验/方案分状态，未知路不提前通行",
+      "baselineControls": [],
+      "baselineSelectionLimit": 15,
+      "branches": [
+        {
+          "selection": 0,
+          "control": null,
+          "phases": [
+            0,
+            0.25,
+            0.28,
+            0.5,
+            0.54,
+            0.7,
+            0.75,
+            0.82,
+            1
+          ],
+          "inspectionTargets": [
+            {
+              "target": "overview",
+              "label": "整体地景"
+            },
+            {
+              "target": "remote",
+              "label": "影像证据"
+            },
+            {
+              "target": "position",
+              "label": "定位通信"
+            },
+            {
+              "target": "roads",
+              "label": "道路核验"
+            },
+            {
+              "target": "warehouses",
+              "label": "仓库比较"
+            }
+          ],
+          "nativeAdditionalTargets": [],
+          "actions": [
+            {
+              "id": "send",
+              "label": "发送定位信息",
+              "selection": 1,
+              "enabled": true,
+              "pressed": false,
+              "replay": false
+            },
+            {
+              "id": "verify",
+              "label": "核验绕行线可通行",
+              "selection": 2,
+              "enabled": true,
+              "pressed": false,
+              "replay": false
+            },
+            {
+              "id": "warehouse-a",
+              "label": "比较甲库方案",
+              "selection": 0,
+              "enabled": true,
+              "pressed": true,
+              "replay": true
+            },
+            {
+              "id": "warehouse-b",
+              "label": "比较乙库方案",
+              "selection": 4,
+              "enabled": true,
+              "pressed": false,
+              "replay": true
+            },
+            {
+              "id": "layers",
+              "label": "分离信息层",
+              "selection": 8,
+              "enabled": true,
+              "pressed": false,
+              "replay": false
+            }
+          ],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 1,
+          "control": null,
+          "phases": [
+            0,
+            0.25,
+            0.28,
+            0.5,
+            0.54,
+            0.7,
+            0.75,
+            0.82,
+            1
+          ],
+          "inspectionTargets": [
+            {
+              "target": "overview",
+              "label": "整体地景"
+            },
+            {
+              "target": "remote",
+              "label": "影像证据"
+            },
+            {
+              "target": "position",
+              "label": "定位通信"
+            },
+            {
+              "target": "roads",
+              "label": "道路核验"
+            },
+            {
+              "target": "warehouses",
+              "label": "仓库比较"
+            }
+          ],
+          "nativeAdditionalTargets": [],
+          "actions": [
+            {
+              "id": "send",
+              "label": "位置已发送",
+              "selection": 1,
+              "enabled": true,
+              "pressed": true,
+              "replay": false
+            },
+            {
+              "id": "verify",
+              "label": "核验绕行线可通行",
+              "selection": 3,
+              "enabled": true,
+              "pressed": false,
+              "replay": false
+            },
+            {
+              "id": "warehouse-a",
+              "label": "比较甲库方案",
+              "selection": 1,
+              "enabled": true,
+              "pressed": true,
+              "replay": true
+            },
+            {
+              "id": "warehouse-b",
+              "label": "比较乙库方案",
+              "selection": 5,
+              "enabled": true,
+              "pressed": false,
+              "replay": true
+            },
+            {
+              "id": "layers",
+              "label": "分离信息层",
+              "selection": 9,
+              "enabled": true,
+              "pressed": false,
+              "replay": false
+            }
+          ],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 2,
+          "control": null,
+          "phases": [
+            0,
+            0.25,
+            0.28,
+            0.5,
+            0.54,
+            0.7,
+            0.75,
+            0.82,
+            1
+          ],
+          "inspectionTargets": [
+            {
+              "target": "overview",
+              "label": "整体地景"
+            },
+            {
+              "target": "remote",
+              "label": "影像证据"
+            },
+            {
+              "target": "position",
+              "label": "定位通信"
+            },
+            {
+              "target": "roads",
+              "label": "道路核验"
+            },
+            {
+              "target": "warehouses",
+              "label": "仓库比较"
+            }
+          ],
+          "nativeAdditionalTargets": [],
+          "actions": [
+            {
+              "id": "send",
+              "label": "发送定位信息",
+              "selection": 3,
+              "enabled": true,
+              "pressed": false,
+              "replay": false
+            },
+            {
+              "id": "verify",
+              "label": "保留道路待确认",
+              "selection": 0,
+              "enabled": true,
+              "pressed": true,
+              "replay": false
+            },
+            {
+              "id": "warehouse-a",
+              "label": "比较甲库方案",
+              "selection": 2,
+              "enabled": true,
+              "pressed": true,
+              "replay": true
+            },
+            {
+              "id": "warehouse-b",
+              "label": "比较乙库方案",
+              "selection": 6,
+              "enabled": true,
+              "pressed": false,
+              "replay": true
+            },
+            {
+              "id": "layers",
+              "label": "分离信息层",
+              "selection": 10,
+              "enabled": true,
+              "pressed": false,
+              "replay": false
+            }
+          ],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 3,
+          "control": null,
+          "phases": [
+            0,
+            0.25,
+            0.28,
+            0.5,
+            0.54,
+            0.7,
+            0.75,
+            0.82,
+            1
+          ],
+          "inspectionTargets": [
+            {
+              "target": "overview",
+              "label": "整体地景"
+            },
+            {
+              "target": "remote",
+              "label": "影像证据"
+            },
+            {
+              "target": "position",
+              "label": "定位通信"
+            },
+            {
+              "target": "roads",
+              "label": "道路核验"
+            },
+            {
+              "target": "warehouses",
+              "label": "仓库比较"
+            }
+          ],
+          "nativeAdditionalTargets": [],
+          "actions": [
+            {
+              "id": "send",
+              "label": "位置已发送",
+              "selection": 3,
+              "enabled": true,
+              "pressed": true,
+              "replay": false
+            },
+            {
+              "id": "verify",
+              "label": "保留道路待确认",
+              "selection": 1,
+              "enabled": true,
+              "pressed": true,
+              "replay": false
+            },
+            {
+              "id": "warehouse-a",
+              "label": "比较甲库方案",
+              "selection": 3,
+              "enabled": true,
+              "pressed": true,
+              "replay": true
+            },
+            {
+              "id": "warehouse-b",
+              "label": "比较乙库方案",
+              "selection": 7,
+              "enabled": true,
+              "pressed": false,
+              "replay": true
+            },
+            {
+              "id": "layers",
+              "label": "分离信息层",
+              "selection": 11,
+              "enabled": true,
+              "pressed": false,
+              "replay": false
+            }
+          ],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 4,
+          "control": null,
+          "phases": [
+            0,
+            0.25,
+            0.28,
+            0.5,
+            0.54,
+            0.7,
+            0.75,
+            0.82,
+            1
+          ],
+          "inspectionTargets": [
+            {
+              "target": "overview",
+              "label": "整体地景"
+            },
+            {
+              "target": "remote",
+              "label": "影像证据"
+            },
+            {
+              "target": "position",
+              "label": "定位通信"
+            },
+            {
+              "target": "roads",
+              "label": "道路核验"
+            },
+            {
+              "target": "warehouses",
+              "label": "仓库比较"
+            }
+          ],
+          "nativeAdditionalTargets": [],
+          "actions": [
+            {
+              "id": "send",
+              "label": "发送定位信息",
+              "selection": 5,
+              "enabled": true,
+              "pressed": false,
+              "replay": false
+            },
+            {
+              "id": "verify",
+              "label": "核验绕行线可通行",
+              "selection": 6,
+              "enabled": true,
+              "pressed": false,
+              "replay": false
+            },
+            {
+              "id": "warehouse-a",
+              "label": "比较甲库方案",
+              "selection": 0,
+              "enabled": true,
+              "pressed": false,
+              "replay": true
+            },
+            {
+              "id": "warehouse-b",
+              "label": "比较乙库方案",
+              "selection": 4,
+              "enabled": true,
+              "pressed": true,
+              "replay": true
+            },
+            {
+              "id": "layers",
+              "label": "分离信息层",
+              "selection": 12,
+              "enabled": true,
+              "pressed": false,
+              "replay": false
+            }
+          ],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 5,
+          "control": null,
+          "phases": [
+            0,
+            0.25,
+            0.28,
+            0.5,
+            0.54,
+            0.7,
+            0.75,
+            0.82,
+            1
+          ],
+          "inspectionTargets": [
+            {
+              "target": "overview",
+              "label": "整体地景"
+            },
+            {
+              "target": "remote",
+              "label": "影像证据"
+            },
+            {
+              "target": "position",
+              "label": "定位通信"
+            },
+            {
+              "target": "roads",
+              "label": "道路核验"
+            },
+            {
+              "target": "warehouses",
+              "label": "仓库比较"
+            }
+          ],
+          "nativeAdditionalTargets": [],
+          "actions": [
+            {
+              "id": "send",
+              "label": "位置已发送",
+              "selection": 5,
+              "enabled": true,
+              "pressed": true,
+              "replay": false
+            },
+            {
+              "id": "verify",
+              "label": "核验绕行线可通行",
+              "selection": 7,
+              "enabled": true,
+              "pressed": false,
+              "replay": false
+            },
+            {
+              "id": "warehouse-a",
+              "label": "比较甲库方案",
+              "selection": 1,
+              "enabled": true,
+              "pressed": false,
+              "replay": true
+            },
+            {
+              "id": "warehouse-b",
+              "label": "比较乙库方案",
+              "selection": 5,
+              "enabled": true,
+              "pressed": true,
+              "replay": true
+            },
+            {
+              "id": "layers",
+              "label": "分离信息层",
+              "selection": 13,
+              "enabled": true,
+              "pressed": false,
+              "replay": false
+            }
+          ],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 6,
+          "control": null,
+          "phases": [
+            0,
+            0.25,
+            0.28,
+            0.5,
+            0.54,
+            0.7,
+            0.75,
+            0.82,
+            1
+          ],
+          "inspectionTargets": [
+            {
+              "target": "overview",
+              "label": "整体地景"
+            },
+            {
+              "target": "remote",
+              "label": "影像证据"
+            },
+            {
+              "target": "position",
+              "label": "定位通信"
+            },
+            {
+              "target": "roads",
+              "label": "道路核验"
+            },
+            {
+              "target": "warehouses",
+              "label": "仓库比较"
+            }
+          ],
+          "nativeAdditionalTargets": [],
+          "actions": [
+            {
+              "id": "send",
+              "label": "发送定位信息",
+              "selection": 7,
+              "enabled": true,
+              "pressed": false,
+              "replay": false
+            },
+            {
+              "id": "verify",
+              "label": "保留道路待确认",
+              "selection": 4,
+              "enabled": true,
+              "pressed": true,
+              "replay": false
+            },
+            {
+              "id": "warehouse-a",
+              "label": "比较甲库方案",
+              "selection": 2,
+              "enabled": true,
+              "pressed": false,
+              "replay": true
+            },
+            {
+              "id": "warehouse-b",
+              "label": "比较乙库方案",
+              "selection": 6,
+              "enabled": true,
+              "pressed": true,
+              "replay": true
+            },
+            {
+              "id": "layers",
+              "label": "分离信息层",
+              "selection": 14,
+              "enabled": true,
+              "pressed": false,
+              "replay": false
+            }
+          ],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 7,
+          "control": null,
+          "phases": [
+            0,
+            0.25,
+            0.28,
+            0.5,
+            0.54,
+            0.7,
+            0.75,
+            0.82,
+            1
+          ],
+          "inspectionTargets": [
+            {
+              "target": "overview",
+              "label": "整体地景"
+            },
+            {
+              "target": "remote",
+              "label": "影像证据"
+            },
+            {
+              "target": "position",
+              "label": "定位通信"
+            },
+            {
+              "target": "roads",
+              "label": "道路核验"
+            },
+            {
+              "target": "warehouses",
+              "label": "仓库比较"
+            }
+          ],
+          "nativeAdditionalTargets": [],
+          "actions": [
+            {
+              "id": "send",
+              "label": "位置已发送",
+              "selection": 7,
+              "enabled": true,
+              "pressed": true,
+              "replay": false
+            },
+            {
+              "id": "verify",
+              "label": "保留道路待确认",
+              "selection": 5,
+              "enabled": true,
+              "pressed": true,
+              "replay": false
+            },
+            {
+              "id": "warehouse-a",
+              "label": "比较甲库方案",
+              "selection": 3,
+              "enabled": true,
+              "pressed": false,
+              "replay": true
+            },
+            {
+              "id": "warehouse-b",
+              "label": "比较乙库方案",
+              "selection": 7,
+              "enabled": true,
+              "pressed": true,
+              "replay": true
+            },
+            {
+              "id": "layers",
+              "label": "分离信息层",
+              "selection": 15,
+              "enabled": true,
+              "pressed": false,
+              "replay": false
+            }
+          ],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 8,
+          "control": null,
+          "phases": [
+            0,
+            0.25,
+            0.28,
+            0.5,
+            0.54,
+            0.7,
+            0.75,
+            0.82,
+            1
+          ],
+          "inspectionTargets": [
+            {
+              "target": "overview",
+              "label": "整体地景"
+            },
+            {
+              "target": "remote",
+              "label": "影像证据"
+            },
+            {
+              "target": "position",
+              "label": "定位通信"
+            },
+            {
+              "target": "roads",
+              "label": "道路核验"
+            },
+            {
+              "target": "warehouses",
+              "label": "仓库比较"
+            }
+          ],
+          "nativeAdditionalTargets": [],
+          "actions": [
+            {
+              "id": "send",
+              "label": "发送定位信息",
+              "selection": 9,
+              "enabled": true,
+              "pressed": false,
+              "replay": false
+            },
+            {
+              "id": "verify",
+              "label": "核验绕行线可通行",
+              "selection": 10,
+              "enabled": true,
+              "pressed": false,
+              "replay": false
+            },
+            {
+              "id": "warehouse-a",
+              "label": "比较甲库方案",
+              "selection": 8,
+              "enabled": true,
+              "pressed": true,
+              "replay": true
+            },
+            {
+              "id": "warehouse-b",
+              "label": "比较乙库方案",
+              "selection": 12,
+              "enabled": true,
+              "pressed": false,
+              "replay": true
+            },
+            {
+              "id": "layers",
+              "label": "叠合信息层",
+              "selection": 0,
+              "enabled": true,
+              "pressed": true,
+              "replay": false
+            }
+          ],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 9,
+          "control": null,
+          "phases": [
+            0,
+            0.25,
+            0.28,
+            0.5,
+            0.54,
+            0.7,
+            0.75,
+            0.82,
+            1
+          ],
+          "inspectionTargets": [
+            {
+              "target": "overview",
+              "label": "整体地景"
+            },
+            {
+              "target": "remote",
+              "label": "影像证据"
+            },
+            {
+              "target": "position",
+              "label": "定位通信"
+            },
+            {
+              "target": "roads",
+              "label": "道路核验"
+            },
+            {
+              "target": "warehouses",
+              "label": "仓库比较"
+            }
+          ],
+          "nativeAdditionalTargets": [],
+          "actions": [
+            {
+              "id": "send",
+              "label": "位置已发送",
+              "selection": 9,
+              "enabled": true,
+              "pressed": true,
+              "replay": false
+            },
+            {
+              "id": "verify",
+              "label": "核验绕行线可通行",
+              "selection": 11,
+              "enabled": true,
+              "pressed": false,
+              "replay": false
+            },
+            {
+              "id": "warehouse-a",
+              "label": "比较甲库方案",
+              "selection": 9,
+              "enabled": true,
+              "pressed": true,
+              "replay": true
+            },
+            {
+              "id": "warehouse-b",
+              "label": "比较乙库方案",
+              "selection": 13,
+              "enabled": true,
+              "pressed": false,
+              "replay": true
+            },
+            {
+              "id": "layers",
+              "label": "叠合信息层",
+              "selection": 1,
+              "enabled": true,
+              "pressed": true,
+              "replay": false
+            }
+          ],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 10,
+          "control": null,
+          "phases": [
+            0,
+            0.25,
+            0.28,
+            0.5,
+            0.54,
+            0.7,
+            0.75,
+            0.82,
+            1
+          ],
+          "inspectionTargets": [
+            {
+              "target": "overview",
+              "label": "整体地景"
+            },
+            {
+              "target": "remote",
+              "label": "影像证据"
+            },
+            {
+              "target": "position",
+              "label": "定位通信"
+            },
+            {
+              "target": "roads",
+              "label": "道路核验"
+            },
+            {
+              "target": "warehouses",
+              "label": "仓库比较"
+            }
+          ],
+          "nativeAdditionalTargets": [],
+          "actions": [
+            {
+              "id": "send",
+              "label": "发送定位信息",
+              "selection": 11,
+              "enabled": true,
+              "pressed": false,
+              "replay": false
+            },
+            {
+              "id": "verify",
+              "label": "保留道路待确认",
+              "selection": 8,
+              "enabled": true,
+              "pressed": true,
+              "replay": false
+            },
+            {
+              "id": "warehouse-a",
+              "label": "比较甲库方案",
+              "selection": 10,
+              "enabled": true,
+              "pressed": true,
+              "replay": true
+            },
+            {
+              "id": "warehouse-b",
+              "label": "比较乙库方案",
+              "selection": 14,
+              "enabled": true,
+              "pressed": false,
+              "replay": true
+            },
+            {
+              "id": "layers",
+              "label": "叠合信息层",
+              "selection": 2,
+              "enabled": true,
+              "pressed": true,
+              "replay": false
+            }
+          ],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 11,
+          "control": null,
+          "phases": [
+            0,
+            0.25,
+            0.28,
+            0.5,
+            0.54,
+            0.7,
+            0.75,
+            0.82,
+            1
+          ],
+          "inspectionTargets": [
+            {
+              "target": "overview",
+              "label": "整体地景"
+            },
+            {
+              "target": "remote",
+              "label": "影像证据"
+            },
+            {
+              "target": "position",
+              "label": "定位通信"
+            },
+            {
+              "target": "roads",
+              "label": "道路核验"
+            },
+            {
+              "target": "warehouses",
+              "label": "仓库比较"
+            }
+          ],
+          "nativeAdditionalTargets": [],
+          "actions": [
+            {
+              "id": "send",
+              "label": "位置已发送",
+              "selection": 11,
+              "enabled": true,
+              "pressed": true,
+              "replay": false
+            },
+            {
+              "id": "verify",
+              "label": "保留道路待确认",
+              "selection": 9,
+              "enabled": true,
+              "pressed": true,
+              "replay": false
+            },
+            {
+              "id": "warehouse-a",
+              "label": "比较甲库方案",
+              "selection": 11,
+              "enabled": true,
+              "pressed": true,
+              "replay": true
+            },
+            {
+              "id": "warehouse-b",
+              "label": "比较乙库方案",
+              "selection": 15,
+              "enabled": true,
+              "pressed": false,
+              "replay": true
+            },
+            {
+              "id": "layers",
+              "label": "叠合信息层",
+              "selection": 3,
+              "enabled": true,
+              "pressed": true,
+              "replay": false
+            }
+          ],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 12,
+          "control": null,
+          "phases": [
+            0,
+            0.25,
+            0.28,
+            0.5,
+            0.54,
+            0.7,
+            0.75,
+            0.82,
+            1
+          ],
+          "inspectionTargets": [
+            {
+              "target": "overview",
+              "label": "整体地景"
+            },
+            {
+              "target": "remote",
+              "label": "影像证据"
+            },
+            {
+              "target": "position",
+              "label": "定位通信"
+            },
+            {
+              "target": "roads",
+              "label": "道路核验"
+            },
+            {
+              "target": "warehouses",
+              "label": "仓库比较"
+            }
+          ],
+          "nativeAdditionalTargets": [],
+          "actions": [
+            {
+              "id": "send",
+              "label": "发送定位信息",
+              "selection": 13,
+              "enabled": true,
+              "pressed": false,
+              "replay": false
+            },
+            {
+              "id": "verify",
+              "label": "核验绕行线可通行",
+              "selection": 14,
+              "enabled": true,
+              "pressed": false,
+              "replay": false
+            },
+            {
+              "id": "warehouse-a",
+              "label": "比较甲库方案",
+              "selection": 8,
+              "enabled": true,
+              "pressed": false,
+              "replay": true
+            },
+            {
+              "id": "warehouse-b",
+              "label": "比较乙库方案",
+              "selection": 12,
+              "enabled": true,
+              "pressed": true,
+              "replay": true
+            },
+            {
+              "id": "layers",
+              "label": "叠合信息层",
+              "selection": 4,
+              "enabled": true,
+              "pressed": true,
+              "replay": false
+            }
+          ],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 13,
+          "control": null,
+          "phases": [
+            0,
+            0.25,
+            0.28,
+            0.5,
+            0.54,
+            0.7,
+            0.75,
+            0.82,
+            1
+          ],
+          "inspectionTargets": [
+            {
+              "target": "overview",
+              "label": "整体地景"
+            },
+            {
+              "target": "remote",
+              "label": "影像证据"
+            },
+            {
+              "target": "position",
+              "label": "定位通信"
+            },
+            {
+              "target": "roads",
+              "label": "道路核验"
+            },
+            {
+              "target": "warehouses",
+              "label": "仓库比较"
+            }
+          ],
+          "nativeAdditionalTargets": [],
+          "actions": [
+            {
+              "id": "send",
+              "label": "位置已发送",
+              "selection": 13,
+              "enabled": true,
+              "pressed": true,
+              "replay": false
+            },
+            {
+              "id": "verify",
+              "label": "核验绕行线可通行",
+              "selection": 15,
+              "enabled": true,
+              "pressed": false,
+              "replay": false
+            },
+            {
+              "id": "warehouse-a",
+              "label": "比较甲库方案",
+              "selection": 9,
+              "enabled": true,
+              "pressed": false,
+              "replay": true
+            },
+            {
+              "id": "warehouse-b",
+              "label": "比较乙库方案",
+              "selection": 13,
+              "enabled": true,
+              "pressed": true,
+              "replay": true
+            },
+            {
+              "id": "layers",
+              "label": "叠合信息层",
+              "selection": 5,
+              "enabled": true,
+              "pressed": true,
+              "replay": false
+            }
+          ],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 14,
+          "control": null,
+          "phases": [
+            0,
+            0.25,
+            0.28,
+            0.5,
+            0.54,
+            0.7,
+            0.75,
+            0.82,
+            1
+          ],
+          "inspectionTargets": [
+            {
+              "target": "overview",
+              "label": "整体地景"
+            },
+            {
+              "target": "remote",
+              "label": "影像证据"
+            },
+            {
+              "target": "position",
+              "label": "定位通信"
+            },
+            {
+              "target": "roads",
+              "label": "道路核验"
+            },
+            {
+              "target": "warehouses",
+              "label": "仓库比较"
+            }
+          ],
+          "nativeAdditionalTargets": [],
+          "actions": [
+            {
+              "id": "send",
+              "label": "发送定位信息",
+              "selection": 15,
+              "enabled": true,
+              "pressed": false,
+              "replay": false
+            },
+            {
+              "id": "verify",
+              "label": "保留道路待确认",
+              "selection": 12,
+              "enabled": true,
+              "pressed": true,
+              "replay": false
+            },
+            {
+              "id": "warehouse-a",
+              "label": "比较甲库方案",
+              "selection": 10,
+              "enabled": true,
+              "pressed": false,
+              "replay": true
+            },
+            {
+              "id": "warehouse-b",
+              "label": "比较乙库方案",
+              "selection": 14,
+              "enabled": true,
+              "pressed": true,
+              "replay": true
+            },
+            {
+              "id": "layers",
+              "label": "叠合信息层",
+              "selection": 6,
+              "enabled": true,
+              "pressed": true,
+              "replay": false
+            }
+          ],
+          "verification": "unverified-current-build"
+        },
+        {
+          "selection": 15,
+          "control": null,
+          "phases": [
+            0,
+            0.25,
+            0.28,
+            0.5,
+            0.54,
+            0.7,
+            0.75,
+            0.82,
+            1
+          ],
+          "inspectionTargets": [
+            {
+              "target": "overview",
+              "label": "整体地景"
+            },
+            {
+              "target": "remote",
+              "label": "影像证据"
+            },
+            {
+              "target": "position",
+              "label": "定位通信"
+            },
+            {
+              "target": "roads",
+              "label": "道路核验"
+            },
+            {
+              "target": "warehouses",
+              "label": "仓库比较"
+            }
+          ],
+          "nativeAdditionalTargets": [],
+          "actions": [
+            {
+              "id": "send",
+              "label": "位置已发送",
+              "selection": 15,
+              "enabled": true,
+              "pressed": true,
+              "replay": false
+            },
+            {
+              "id": "verify",
+              "label": "保留道路待确认",
+              "selection": 13,
+              "enabled": true,
+              "pressed": true,
+              "replay": false
+            },
+            {
+              "id": "warehouse-a",
+              "label": "比较甲库方案",
+              "selection": 11,
+              "enabled": true,
+              "pressed": false,
+              "replay": true
+            },
+            {
+              "id": "warehouse-b",
+              "label": "比较乙库方案",
+              "selection": 15,
+              "enabled": true,
+              "pressed": true,
+              "replay": true
+            },
+            {
+              "id": "layers",
+              "label": "叠合信息层",
+              "selection": 7,
+              "enabled": true,
+              "pressed": true,
+              "replay": false
+            }
+          ],
+          "verification": "unverified-current-build"
+        }
+      ],
+      "evidence": {
+        "implementation": "existing-needs-current-source-audit",
+        "subjectReconstruction": "pending-review",
+        "tests": "not-inherited-from-history",
+        "visuallyInspected": [],
+        "userApproval": "pending",
+        "productionEntry": null
+      }
+    }
+  ]
+}

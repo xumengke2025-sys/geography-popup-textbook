@@ -103,13 +103,30 @@ describe('textbook p.15 figure 1.23 fossil evidence and layer ownership', () => 
     for (const phase of [0, .35, 1]) for (const selection of [0, 1, 2, 4, 7]) {
       const svg = strataSvg(phase, selection), state = evaluateStrata(phase, selection);
       expect(svg).not.toContain('<image'); expect(svg).not.toMatch(/NaN|Infinity/);
-      expect(svg.match(/data-strata-fossil=/g)).toHaveLength(9); expect(svg.match(/data-model-selection=/g)).toHaveLength(6);
-      expect(svg.match(/role="button" tabindex="0"/g)).toHaveLength(6);
+      expect(svg.match(/data-strata-fossil=/g)).toHaveLength(9);
+      const buttons = (svg.match(/<g\b[^>]+>/g) ?? []).filter(node => node.includes('role="button"') && node.includes('tabindex="0"'));
+      expect(buttons.filter(node => node.includes('data-strata-layer=') && node.includes('data-model-selection='))).toHaveLength(6);
+      expect(buttons.filter(node => node.includes('data-specimen-key')).map(node => node.match(/data-model-selection="(\d)"/)?.[1])).toEqual(['0','1']);
       expect(svg.match(/data-strata-correlation=/g) ?? []).toHaveLength(state.connections.filter(c => c.visible).length);
       for (const layer of state.layers) for (const f of layer.fossils)
         expect(svg).toContain(`data-strata-fossil="${f.id}" data-fossil-kind="${f.kind}" data-owner="${layer.id}" data-x="${f.x}" data-y="${Number(f.y.toFixed(4))}"`);
-      expect(svg.includes('data-strata-handle="true"')).toBe(state.separated);
+      expect(svg).toContain('data-phase-track="调节层间距"');
+      expect(svg.includes('data-track-selection="1"')).toBe(!state.separated);
     }
+  });
+  it('mounts calcite ribs on each scanned specimen and connects only the represented fossil pair', () => {
+    const {b,motion}=fixture();
+    const beds=b.meshes.filter(mesh=>mesh.userData.strataRole==='layer');
+    expect(beds.map(mesh=>(mesh.material as Three.Material).userData.earthScan)).toEqual(['alluvium','outcrop','outcrop','outcrop','alluvium','outcrop']);
+    const ribs=b.meshes.filter(mesh=>mesh.userData.strataRole==='calcite-ribs');
+    expect(ribs).toHaveLength(9);
+    expect(ribs.every(mesh=>mesh.geometry.attributes.position.count>80)).toBe(true);
+    const links=b.meshes.filter(mesh=>mesh.userData.strataRole==='correlation-wire');
+    for(const [selection,count] of [[1,2],[2,1],[4,0],[1,2]]){
+      motion.update(.74,selection,0,true);expect(links.filter(link=>link.visible)).toHaveLength(count);
+    }
+    const handle=b.meshes.find(mesh=>mesh.userData.strataHandle)!;
+    motion.update(0,0,0,true);expect(handle.position.toArray()).toEqual(handle.userData.modelInput.track.start);
   });
   it('builds six closed 3D beds and nine real relief fossils, all with the matching owner selection', () => {
     const { b, motion } = fixture(); motion.update(.5, 2, 0, false);

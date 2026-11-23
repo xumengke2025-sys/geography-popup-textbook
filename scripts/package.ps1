@@ -74,13 +74,18 @@ $verificationSource = Join-Path $projectRoot 'docs/verification'
 if (Test-Path -LiteralPath $verificationSource) {
   Copy-Item -LiteralPath $verificationSource -Destination (Join-Path $offlineRoot 'docs') -Recurse -Force
 }
+$visualReviews = @(Get-ChildItem -LiteralPath (Join-Path $projectRoot 'docs/handoff') -Directory -Filter 'visual-*')
+foreach ($review in $visualReviews) {
+  Copy-Item -LiteralPath $review.FullName -Destination (Join-Path $offlineRoot 'docs') -Recurse -Force
+}
 if ($stageOnly) {
   Write-Output "Offline directory staged: $offlineRoot"
   exit 0
 }
 Compress-SharedArchive -Sources @($offlineRoot) -DestinationPath (Join-Path $releaseRoot '地球现场_离线版.zip')
 $sourcePaths = @('src','public','scripts','tests','docs','index.html','package.json','package-lock.json','tsconfig.json','vite.config.ts','playwright.config.ts','README.md','CHECKPOINT.md') | ForEach-Object { Join-Path $projectRoot $_ }
-Compress-SharedArchive -Sources $sourcePaths -DestinationPath (Join-Path $releaseRoot '人教版地理必修一_源工程_20261106.zip')
+$editionDate = Get-Date -Format 'yyyyMMdd'
+Compress-SharedArchive -Sources $sourcePaths -DestinationPath (Join-Path $releaseRoot "人教版地理必修一_源工程_$editionDate.zip")
 Compress-SharedArchive -Sources @((Join-Path $projectRoot 'dist')) -DestinationPath (Join-Path $releaseRoot '地球现场_静态网站.zip')
 Get-ChildItem -LiteralPath $releaseRoot -Filter '*.zip' | Select-Object Name,Length
 

@@ -1,3 +1,6 @@
+import { floodSectionDrawing } from './textbook-flood-basin-drawing';
+import { hydrologyDrawing } from './textbook-recorder-drawings';
+import { WAREHOUSE_SITES, WAREHOUSE_TOWNS, WAREHOUSE_WATER_LEVEL, warehouseHeight, warehouseRiverX, warehouseRoutes } from './textbook-warehouse-relief';
 import type { Figure } from './textbook-catalog';
 import { disasterChainSvg } from './textbook-disaster-chain-model';
 import { salinitySvg } from './textbook-salinity-model';
@@ -50,8 +53,8 @@ function plants(t: number, x0: number, y0: number, nx = 6, nz = 2, k = 1) {
     return `<g stroke="${t > .38 ? P.dry : '#718973'}" stroke-width="${2.4 * k}" fill="none" stroke-linecap="round"><path d="M${x},${y}Q${x + bend},${y - h / 2} ${x + bend},${y - h}"/><path d="M${x + bend / 2},${y - h / 2}q${-11 * k},${-12 * k + t * 12 * k} ${-13 * k},${-5 * k + t * 12 * k}M${x + bend / 2},${y - h / 2}q${12 * k},${-11 * k + t * 12 * k} ${14 * k},${-4 * k + t * 11 * k}"/></g>`;
   }).join('');
 }
-function wrap(title: string, body: string, id: string) {
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 390" class="flat-model-svg flat-explanation-svg" role="img" aria-label="${escaped(title)}"><defs><marker id="${id}-flow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4.2" markerHeight="4.2" orient="auto"><path d="M0,0L10,5L0,10Z" fill="${P.water}"/></marker><marker id="${id}-red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4.2" markerHeight="4.2" orient="auto"><path d="M0,0L10,5L0,10Z" fill="${P.red}"/></marker></defs><rect width="640" height="390" fill="${P.paper}"/>${body}</svg>`;
+function wrap(title: string, body: string, id: string, height = 390) {
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 ${height}" class="flat-model-svg flat-explanation-svg" role="${height===390?'img':'group'}" aria-label="${escaped(title)}"><defs><marker id="${id}-flow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4.2" markerHeight="4.2" orient="auto"><path d="M0,0L10,5L0,10Z" fill="${P.water}"/></marker><marker id="${id}-red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4.2" markerHeight="4.2" orient="auto"><path d="M0,0L10,5L0,10Z" fill="${P.red}"/></marker></defs><rect width="640" height="390" fill="${P.paper}"/>${body}</svg>`;
 }
 
 function density(_t: number, mode: number) {
@@ -59,6 +62,12 @@ function density(_t: number, mode: number) {
   let body = rect(266, 328, 108, 12, P.land) + shape([[293, 329], [312, 142], [328, 142], [347, 329]], P.paper);
   const ends: Pt[] = [-1, 1].map(side => [320 + side * 177 * Math.cos(angle), 144 + side * 177 * Math.sin(angle)]);
   body += line(ends[0], ends[1], P.rock, 10) + circle(320, 144, 8, P.ink);
+  const dialPoint = (a:number,r:number):Pt => [320-Math.sin(a)*r,144+Math.cos(a)*r];
+  const arc = (r:number) => Array.from({length:25},(_,i)=>dialPoint((i-12)*.045,r));
+  body += shape([...arc(103),...arc(73).reverse()],'#aa8149');
+  body += shape([...arc(99),...arc(77).reverse()],'#ebe1c9');
+  for(let i=-4;i<=4;i++) body+=line(dialPoint(i*.105,i%2?88:82),dialPoint(i*.105,97),P.ink,i?1.1:2);
+  body+=shape([[317,144],dialPoint(angle,94),[323,144]],P.ink)+circle(320,144,5,'#ad8448');
   ends.forEach(([x, y], i) => {
     body += line([x, y], [x - 53, y + 114]) + line([x, y], [x + 53, y + 114]);
     body += rect(x - 57, y + 114, 114, 7, P.paper);
@@ -98,20 +107,6 @@ function desalination(t: number, mode: number, id: string) {
     body += trace([[270, 185], [173, 221], [166, 303]], t, id, P.water, 2) + trace([[370, 185], [468, 221], [475, 303]], t, id, P.water, 2);
   }
   return body + label('海冰', 107, 155) + label('盐水收集', 485, 378) + label(mode ? '破碎离心' : '重力排盐', 485, 60);
-}
-
-function flood(t: number, mode: number, id: string) {
-  const state = evaluateFloodSequence(t, mode), waterY = 338 - (state.waterLevel - 2) * 12;
-  let body = shape([[48, 312], [55, 182], [104, 111], [163, 177], [204, 159], [253, 247], [325, 275], [592, 277], [592, 339], [48, 339]], P.green);
-  body += `<path d="M250,162Q298,219 312,265Q336,286 324,338" fill="none" stroke="${P.water}" stroke-width="26"/>`;
-  body += rect(347, 307, 227, 8, P.rock);
-  body += house(401, 299, .82) + house(479, 300, .9) + house(547, 300, .72);
-  if (state.rise > 0) body += rect(283, waterY, 299, 339 - waterY, P.sea, 'none');
-  body += cloud(186, 75, .86) + cloud(329, 71, .88);
-  if (state.heavyRain) body += rain(138, 364, 106, 207, t, 15);
-  if (state.runoff > 0) body += `<g opacity="${state.runoff}">${trace([[176, 165], [232, 231], [305, 274], [326, 322]], t, id, P.water, 4)}</g>`;
-  body += trace([[257, 190], [291, 243], [313, 286], [324, 329]], t, id, P.water, mode ? 5 : 3);
-  return body + label('河道', 271, 369) + label('低洼聚落', 486, 369) + (mode ? label('连续强降水', 307, 52) : '');
 }
 
 function drought(t: number, mode: number) {
@@ -163,21 +158,55 @@ function gnss(t: number, mode: number, id: string) {
   return body + label('卫星星座', 307, 52) + label('地面监控', 151, 346) + label('用户接收', 503, 315) + (mode === 2 ? label('定位助救援', 469, 378) : '');
 }
 
-function warehouse(t: number, mode: number, id: string) {
-  const sites: Pt[] = [[152, 171], [320, 240], [481, 134]], towns: Pt[] = [[137, 311], [472, 315], [537, 237]], junction: Pt = [321, 277];
-  let body = shape([[51, 310], [69, 113], [214, 79], [365, 112], [480, 68], [573, 163], [591, 329], [57, 329]], P.green);
-  body += shape([[402, 169], [480, 71], [547, 148], [572, 195], [485, 189]], P.land);
-  body += `<path d="M139,102Q171,164 141,219T160,328" fill="none" stroke="${P.water}" stroke-width="15"/>`;
-  const routes = sites.map((site, i) => towns.map(town => i === 1 ? [site, junction, town] : [site, i === 0 ? [242, 218] as Pt : [439, 212] as Pt, junction, town]));
-  for (const route of routes[1]) body += `<polyline points="${points(route)}" fill="none" stroke="${P.rock}" stroke-width="7"/>`;
-  for (const i of [0, 2]) body += `<polyline points="${points(routes[i][0].slice(0, 3))}" fill="none" stroke="${P.rock}" stroke-width="7"/>`;
-  sites.forEach((site, i) => { body += house(...site, .7) + (i === mode ? circle(site[0], site[1] + 3, 29, 'none', P.warm) : ''); });
-  towns.forEach(town => { body += house(...town, .47) + house(town[0] + 18, town[1] - 7, .34); });
-  routes[mode].forEach((route, i) => { const at = along(route, t); body += trace(route, t + i * .1, id, P.water, 3) + rect(at[0] - 5, at[1] - 7, 10, 10, P.warm); });
-  if (mode === 0) body += `<ellipse cx="152" cy="174" rx="48" ry="19" fill="none" stroke="${P.red}" stroke-width="1.8" stroke-dasharray="5 5"/>`;
-  return body + label('近河低地', 143, 99) + label('路网节点', 320, 197) + label('偏远山地', 486, 61) + label('受灾聚落', 482, 368);
+function warehouse(mode: number) {
+  const project = ([x,z]: Pt): Pt => [28 + x * 5.9, 53 + z * 4.55];
+  const routes = [0,1,2].map(warehouseRoutes);
+  const road = (path: Pt[], color: string, width: number) =>
+    `<polyline points="${points(path.map(project))}" fill="none" stroke="${color}" stroke-width="${width}" stroke-linejoin="round" stroke-linecap="round"/>`;
+  let body = rect(45.7,80.3,554.6,282.1,'#bdc7a6',P.rock,3);
+  // Intersect the illustrated high-water level with the same incised relief as the 3D map.
+  const bank = (side: number): Pt[] => Array.from({length:63},(_,i)=>{
+    const z=6+i, center=warehouseRiverX(z);
+    let wet=center, dry=center+side*15;
+    for(let step=0;step<9;step++){
+      const mid=(wet+dry)/2;
+      if(warehouseHeight(mid,z)<=WAREHOUSE_WATER_LEVEL) wet=mid;
+      else dry=mid;
+    }
+    return project([wet,z]);
+  });
+  const contour=(elevation:number):Pt[]=>Array.from({length:80},(_,i)=>{
+    const angle=2*Math.PI*i/80, dx=Math.cos(angle), dz=Math.sin(angle);
+    let inside=0, outside=48;
+    for(let step=0;step<10;step++){
+      const r=(inside+outside)/2;
+      if(warehouseHeight(83+r*dx,12+r*dz)>elevation) inside=r;
+      else outside=r;
+    }
+    return project([83+inside*dx,12+inside*dz]);
+  });
+  body+='<defs><clipPath id="warehouse-relief-bounds"><rect x="45.7" y="80.3" width="554.6" height="282.1"/></clipPath></defs><g clip-path="url(#warehouse-relief-bounds)">';
+  for(const [i,elevation] of [7,10,13,16].entries()){
+    body+=shape(contour(elevation),['#bdbea0','#c2b99a','#ccbd9d','#d7c7ab'][i],'#92997d',.85);
+  }
+  body+='</g>';
+  for(const row of routes) for(const route of row) body+=road(route,'#ede0bf',7);
+  for(const route of routes[mode]) body+=road(route,'#964d36',3.4);
+  body+=shape([...bank(-1),...bank(1).reverse()],'#94bfc1','#688e91',1);
+  WAREHOUSE_TOWNS.forEach(([x,z])=>{
+    const town=project([x,z]);
+    body+=house(town[0]-12,town[1]-5,.33)+house(town[0]+8,town[1]-10,.30)+house(town[0]+19,town[1]+3,.23)+house(town[0]-5,town[1]+5,.29);
+  });
+  WAREHOUSE_SITES.forEach((site,index)=>{
+    const [x,y]=project(site);
+    const roof=index===mode?'#964d36':'#52675f';
+    body+=`<g data-model-selection="${index}" data-specimen-key="" data-keep-phase="" role="button" tabindex="0" aria-label="比较${['近河低地','路网节点','偏远山地'][index]}库址" aria-pressed="${mode===index}"><rect x="${x-40}" y="${y-45}" width="80" height="75" fill="transparent"/><g transform="translate(${x} ${y})">`+rect(-20,-7,40,25,'#d8c8a9')
+      +shape([[-23,-6],[-17,-21],[16,-21],[23,-6]],roof)
+      +rect(-6,1,12,17,'#42554c')+shape([[-6,18],[6,18],[8,26],[-8,26]],'#b7b3a1')+'</g>';
+    body+=label(['甲 · 近河','乙 · 路口','丙 · 山地'][index],x,y-28)+'</g>';
+  });
+  return body+label('受灾聚落',489,377);
 }
-
 export function flatWaterRiskExtra(f: Figure, phase: number, selection: number): string | null {
   const effect = String(f.effect), t = q01(phase), id = `water-risk-${effect}`;
   const mode = Math.max(0, Math.min(['desalination', 'flood', 'drought', 'disaster-chain'].includes(effect) ? 1 : 2, Math.trunc(Number.isFinite(selection) ? selection : 0)));
@@ -186,13 +215,14 @@ export function flatWaterRiskExtra(f: Figure, phase: number, selection: number):
     case 'salinity': return salinitySvg(t, mode);
     case 'density': body = density(t, mode); break;
     case 'desalination': body = desalination(t, mode, id); break;
-    case 'flood': body = flood(t, mode, id); break;
+    case 'flood': body = floodSectionDrawing(t, mode); break;
     case 'drought': body = drought(t, mode); break;
     case 'urban-waterlogging': body = urban(t, mode, id); break;
     case 'gnss': body = gnss(t, mode, id); break;
-    case 'warehouse': body = warehouse(t, mode, id); break;
+    case 'warehouse': body = warehouse(mode); break;
     case 'disaster-chain': return disasterChainSvg(t, mode);
     default: return null;
   }
+  if(effect==='flood'||effect==='drought') return wrap(f.title,body+hydrologyDrawing(t,mode,effect==='flood'),id,518);
   return wrap(f.title, body, id);
 }

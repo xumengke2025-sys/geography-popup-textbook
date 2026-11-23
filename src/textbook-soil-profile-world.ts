@@ -1,4 +1,6 @@
 import { createSpecimenMaterial } from './textbook-solid-materials';
+import { mineralChip, specimenLeaf, specimenSeed, taperRoot } from './textbook-agricultural-specimens';
+import { noise } from './textbook-soil-cut-surface';
 import { createSoilSpecimenFinish } from './textbook-soil-specimen-finish';
 import { createInstrumentParts, mergeInstrumentGeometry, turnedSleeveGeometry, turnedShaftGeometry } from './textbook-instrument-parts';
 import { THREE as T } from './reference/engine.js';
@@ -17,12 +19,16 @@ export function buildSoilProfileWorld(b: TextbookGeometry): ModelMotion {
   // surface only, never horizon depth, marker identity or scientific progress.
   const point = (u: number, d: number, v = 1, offset = 0): Vec3 => {
     const cut = Math.pow(Math.max(0,(v-.88)/.12),2);
-    const relief = (.25*Math.sin(u*37+d*19)+.12*Math.sin(u*91-d*47))*s;
+    const relief = ((noise(u*24,d*38)-.5)*.61+(noise(u*63+3,d*101)-.5)*.27)*s;
     const edge = (Math.exp(-u*30)-Math.exp(-(1-u)*30))*.26*s*Math.sin(d*41+v*7);
-    return [x0+(u+offset)*width+edge,height*(1-d),z0+v*depth+cut*relief];
+    // One exposed flank retains the broken outline of the excavated sample.
+    // Both halves and neighbouring horizons evaluate the same fracture field.
+    const flank = Math.pow(u, 7) * Math.sin(Math.PI * v);
+    const fracture = 1.7 + .83 * Math.sin(22*d + 9*v) + .49 * Math.cos(41*d - 14*v);
+    return [x0+(u+offset)*width+edge-flank*fracture*s,height*(1-d),z0+v*depth+cut*relief];
   };
   const input = (i: number) => ({ kind: 'select', selection: i, toggleTo: -1, label: `查看${SOIL_PROFILE_LAYERS[i].name}，再次选择复原` });
-  const nx = 20, nz = 6;
+  const nx = 48, nz = 12;
   let inspection = 'overview', viewDirty = true;
   const frontShift = () => soilProfileInspection(inspection).frontOffset * width;
   const viewPoint = (u: number, d: number, v = 1, offset = 0): Vec3 => {
@@ -30,10 +36,28 @@ export function buildSoilProfileWorld(b: TextbookGeometry): ModelMotion {
   };
   const layers = SOIL_PROFILE_LAYERS.map((layer, index) => {
     const buildHalf = (v0: number, v1: number, front: boolean) => {
-    const vertices: number[] = [], indices: number[] = [];
+    const vertices: number[] = [], indices: number[] = [], pigments: number[] = [];
+    const base = new T.Color(layer.color), upper = new T.Color(SOIL_PROFILE_LAYERS[Math.max(0,index-1)].color);
+    const lower = new T.Color(SOIL_PROFILE_LAYERS[Math.min(5,index+1)].color);
+    const stain=new T.Color(index===3?'#a48a62':index===0?'#55442e':'#4d392b');
     const grid=(cols:number,rows:number,at:(u:number,v:number)=>Vec3,reverse=false)=>{
       const start=vertices.length/3;
-      for(let j=0;j<=rows;j++)for(let i=0;i<=cols;i++)vertices.push(...at(i/cols,j/rows));
+      for(let j=0;j<=rows;j++)for(let i=0;i<=cols;i++){
+        const pos=at(i/cols,j/rows);vertices.push(...pos);
+        const u=(pos[0]-x0)/width, v=(pos[2]-z0)/depth, d=1-pos[1]/height;
+        const top=soilProfileBoundary(index,u,v),bottom=soilProfileBoundary(index+1,u,v);
+        const mottling=noise(u*8.4+v*.6,d*18+index*.67);
+        const contact=.010+.022*mottling;
+        const up=.43*Math.max(0,1-Math.max(0,d-top)/contact);
+        const down=.43*Math.max(0,1-Math.max(0,bottom-d)/contact);
+        const tint=base.clone().lerp(upper,up).lerp(lower,down);
+        const fleck=.78+.32*mottling+.17*noise(u*37+v*5,d*71);
+        // Iron-rich lens mottles the illuvial cut while paler eluviated silt
+        // remains distinct from the finite set of mobile constituent markers.
+        if(index===3)tint.lerp(stain,Math.max(0,noise(u*17,v*3+d*37)-.50)*.84);
+        if(index<2)tint.lerp(stain,.31+.24*mottling);
+        pigments.push(tint.r*fleck,tint.g*fleck,tint.b*fleck);
+      }
       for(let j=0;j<rows;j++)for(let i=0;i<cols;i++){
         const a=start+j*(cols+1)+i,c=a+cols+1;
         if(reverse)indices.push(a,c,a+1,a+1,c,c+1);else indices.push(a,a+1,c,a+1,c+1,c);
@@ -42,18 +66,21 @@ export function buildSoilProfileWorld(b: TextbookGeometry): ModelMotion {
     for(const face of [index,index+1])grid(nx,nz,(u,t)=>{
       const v=v0+(v1-v0)*t;return point(u,soilProfileBoundary(face,u,v),v);
     },face===index);
-    for(const v of [v0,v1])grid(nx,8,(u,t)=>{
+    for(const v of [v0,v1])grid(nx,18,(u,t)=>{
       const a=soilProfileBoundary(index,u,v),c=soilProfileBoundary(index+1,u,v);
       return point(u,a+(c-a)*t,v);
     },v===v1);
-    for(const u of [0,1])grid(nz,8,(t,f)=>{
+    for(const u of [0,1])grid(nz,18,(t,f)=>{
       const v=v0+(v1-v0)*t,a=soilProfileBoundary(index,u,v),c=soilProfileBoundary(index+1,u,v);
       return point(u,a+(c-a)*f,v);
     },u===0);
     const geometry = new T.BufferGeometry();
     geometry.setAttribute('position', new T.Float32BufferAttribute(vertices, 3)); geometry.setIndex(indices); geometry.computeVertexNormals();
+    geometry.setAttribute('color',new T.Float32BufferAttribute(pigments,3));
     const mesh = b.mesh(geometry, layer.color, false);
-    mesh.material = createSoilSpecimenFinish(b.pop, layer.color, index === 5 ? 0 : index + 1, s);
+    mesh.material = createSoilSpecimenFinish(b.pop, '#ffffff', index === 5 ? 0 : index + 1, s,
+      (['turf', 'loam', 'alluvium', 'loam', 'alluvium', 'outcrop'] as const)[index]);
+    mesh.material.vertexColors = true;
     mesh.material.side = T.DoubleSide;
     mesh.userData.soilProfileRole = front ? 'front-half' : 'layer'; mesh.userData.soilProfileLayer = index; mesh.userData.layerName = layer.name;
     mesh.userData.sectionRange = [v0, v1];
@@ -71,35 +98,30 @@ export function buildSoilProfileWorld(b: TextbookGeometry): ModelMotion {
     return mesh;
   });
   // Larger, stationary weathering fragments distinguish the parent material.
-  const fragments = Array.from({ length: 11 }, (_, i) => {
-    const u = .08 + i % 6 * .16, d = .724 + Math.floor(i / 6) * .069 + (i % 3) * .003;
-    const mesh = b.mesh(grainGeometry, i % 2 ? '#b39f7d' : '#d1c0a2', false);
-    mesh.scale.set((1.6 + i % 3 * .35) * s, (.9 + i % 2 * .25) * s, .32 * s);
-    mesh.rotation.z = i * .73; mesh.userData.soilProfileRole = 'parent-fragment';
-    mesh.userData.modelInput = input(4);
-    return { mesh, u, d };
+  const parentPigments=['#9b8e76','#baa885','#796f60','#b2a690'];
+  const chipFinishes=parentPigments.map(tint=>createSoilSpecimenFinish(b.pop,tint,0,.38*s,'outcrop'));
+  const fragments = Array.from({length:37},(_,i)=>{
+    const u=.05+specimenSeed(i,23)*.89,d=.711+specimenSeed(i,41)*.115;
+    const mesh=b.mesh(mineralChip(i),parentPigments[i%4],false,true,'rock');
+    const r=.32+.99*specimenSeed(i,28)**1.3;
+    mesh.scale.set(r*(1.05+.71*specimenSeed(i,14))*s,r*.81*s,r*.85*s);
+    mesh.material=chipFinishes[i%4];mesh.rotation.z=(specimenSeed(i,27)-.5)*1.36;
+    mesh.userData.soilProfileRole='parent-fragment';mesh.userData.modelInput=input(4);
+    mesh.userData.agriculturalSpecimen='weathered-parent-chip';return {mesh,u,d};
   });
-  const leafGeometry = (()=>{
-    const positions:number[]=[],indices:number[]=[];
-    for(let i=0;i<=8;i++){
-      const t=i/8,x=t*2-1,w=Math.sin(t*Math.PI)*.55;
-      for(const side of [-1,1])positions.push(x,.12*Math.sin(t*Math.PI)+side*.08,side*w);
-      if(i<8){const a=i*2;indices.push(a,a+2,a+1,a+1,a+2,a+3);}
-    }
-    const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(positions,3));g.setIndex(indices);g.computeVertexNormals();return g;
-  })();
   const leaves=[0,1].flatMap(shade=>[false,true].map(front=>{
     const pieces=[];
-    for(let i=shade;i<18;i+=2){
-      const u=.06+i%9*.105,v=.14+(Math.sin(i*17.3)*.5+.5)*.74;
+    for(let i=shade;i<41;i+=2){
+      const u=.055+(i*.61803399%1)*.89,v=.10+(i*.41421356%1)*.80;
       if((v>=.55)!==front)continue;
-      const geometry=leafGeometry.clone();geometry.scale((1.8+i%3*.3)*s,s,.9*s);geometry.rotateY(i*1.39);
+      const geometry=specimenLeaf(i),r=(.64+2.15*specimenSeed(i,17))*s;
+      geometry.scale(r,r*(.78+.34*specimenSeed(i,18)),r);geometry.rotateX(-Math.PI/2+.16*specimenSeed(i,19));geometry.rotateY(i*1.39);
       const at=point(u,soilProfileBoundary(0,u,v),v);at[1]+=.17*s;geometry.translate(...at);pieces.push(geometry);
     }
-    const mesh=b.mesh(mergeInstrumentGeometry(pieces),shade?'#8e7750':'#b29c69',false,true,'plant');
+    const mesh=b.mesh(mergeInstrumentGeometry(pieces),shade?'#7c6545':'#928157',false,true,'plant');
     mesh.userData.soilProfileRole='leaf-litter';mesh.userData.sampleFront=front;mesh.userData.modelInput=input(0);return mesh;
   }));
-  leafGeometry.dispose();
+
 
   const waterMaterial = createSpecimenMaterial(b.pop, { color: '#88a6aa', ink: '#567c82', hatch: .025, shade: .02, spacing: 3, seed: 107 });
   waterMaterial.side = T.DoubleSide;
@@ -114,7 +136,7 @@ export function buildSoilProfileWorld(b: TextbookGeometry): ModelMotion {
 
   const labels = SOIL_PROFILE_LAYERS.map((layer, i) => {
     const d = (layer.top + layer.bottom) / 2;
-    const label = b.label(layer.name, [80 * s, height * (1 - d), z1 + 2 * s], (layer.name.length * 6.8 + 1) * s, 7.2 * s,{appearance:'engraved'});
+    const label = b.label(layer.name, [80 * s, height * (1 - d), z1 + 2 * s], (layer.name.length * 8.9 + 1) * s, 9.4 * s,{appearance:'engraved'});
     label.userData.soilProfileRole = 'layer-label'; label.userData.soilProfileLayer = i; label.userData.modelInput = input(i);
     label.userData.labelMount='surface';
     return label;
@@ -125,21 +147,33 @@ export function buildSoilProfileWorld(b: TextbookGeometry): ModelMotion {
   const tagged = (mesh: any, name: string) => { mesh.name = name; mesh.userData.soilProfileRig = name; return mesh; };
   const plate = (a: Vec3, c: Vec3, role: 'wood'|'brass'|'steel'|'ivory', name: string) => tagged(parts.plate(a, c, role), name);
   const metal = (geometry: any, role: 'brass'|'steel', name: string) => tagged(b.mesh(geometry, role === 'brass' ? '#a88b50' : '#929b98', false, true, role), name);
+  // Fibres enter the humic horizon from its upper contact, then split and
+  // taper. Burying their tips in the cut preserves the separation of layers.
   const rootPaths:any[]=[];
-  for(let i=0;i<4;i++){
-    const u=.14+i*.23;
-    const path=(start:number,end:number,bend:number)=>Array.from({length:12},(_,j)=>{
-      const t=j/11,d=start+(end-start)*t,p=point(u+Math.sin(t*3+i)*.018+bend*t,d,1);p[2]+=.22*s;return new T.Vector3(...p);
-    });
-    rootPaths.push(new T.TubeGeometry(new T.CatmullRomCurve3(path(.104,.231,0)),18,.15*s,5,false));
-    for(const bend of [-.045,.048])rootPaths.push(new T.TubeGeometry(new T.CatmullRomCurve3(path(.16,.226,bend)),12,.075*s,5,false));
+  for(let i=0;i<9;i++){
+    const u=.065+.109*i+.039*(specimenSeed(i,5)-.5),length=.059+.073*specimenSeed(i,8);
+    const start=soilProfileBoundary(1,u,1)+.002;
+    const sample=(t:number)=>{
+      const x=u+.012*Math.sin(8*t+i)-.012*Math.sin(i)+(.046*specimenSeed(i,11)-.023)*t;
+      const at=point(x,start+length*t,1);at[2]+=(.13+.11*Math.sin(9*t+i))*s;return new T.Vector3(...at);
+    };
+    const primary=new T.CatmullRomCurve3(Array.from({length:9},(_,j)=>sample(j/8)));
+    rootPaths.push(taperRoot(primary,(.24+.13*specimenSeed(i,13))*s));
+    for(let j=0;j<5;j++){
+      const t=.22+j*.14,join=sample(t),side=(j+i)%2?1:-1,d=start+length*t;
+      const at=(du:number,dd:number,relief:number)=>{const q=point((join.x-x0)/width+du,d+dd,1);q[2]+=relief*s;return new T.Vector3(...q);};
+      const dx=(.018+.030*specimenSeed(i,j+32))*side,dy=.008+.010*specimenSeed(i,j+21);
+      const m=at(dx*.42,dy*.36,.14),end=at(dx,dy,.025);
+      rootPaths.push(taperRoot(new T.CatmullRomCurve3([join,m,end]),(.075+.074*specimenSeed(j,i+1))*s,10));
+    }
   }
-  const roots=b.mesh(mergeInstrumentGeometry(rootPaths),'#75664c',false,true,'plant');roots.name='retained-humus-root-network';
+  const roots=b.mesh(mergeInstrumentGeometry(rootPaths),'#9b8057',false,true,'land');
+  roots.name='retained-humus-root-network';roots.userData.agriculturalSpecimen='retained-fibrous-humus';
   const labelCarriages=labels.map((label,i)=>{
-    const layer=SOIL_PROFILE_LAYERS[i],y=height*(1-(layer.top+layer.bottom)/2),half=(layer.name.length*6.8+1)*s/2;
+    const layer=SOIL_PROFILE_LAYERS[i],y=height*(1-(layer.top+layer.bottom)/2),half=(layer.name.length*8.9+1)*s/2;
     const node=new T.Group();b.root.add(node);node.name=`layer-attached-caption-${i}`;node.add(label);
-    node.add(plate([80*s-half-.25*s,y-3.85*s,z1+1.15*s],[80*s+half+.25*s,y+3.85*s,z1+1.55*s],'brass','caption-rim'));
-    node.add(plate([80*s-half,y-3.6*s,z1+1.55*s],[80*s+half,y+3.6*s,z1+1.95*s],'ivory','caption-ceramic-face'));
+    node.add(plate([80*s-half-.25*s,y-4.95*s,z1+1.15*s],[80*s+half+.25*s,y+4.95*s,z1+1.55*s],'brass','caption-rim'));
+    node.add(plate([80*s-half,y-4.7*s,z1+1.55*s],[80*s+half,y+4.7*s,z1+1.95*s],'ivory','caption-ceramic-face'));
     node.add(metal(turnedShaftGeometry([x0+width-.2*s,y,z1+.6*s],[80*s-half+.5*s,y,z1+1.4*s],[[.25*s,0],[.25*s,1]]),'brass','caption-side-stem'));
     return node;
   });
@@ -214,7 +248,7 @@ export function buildSoilProfileWorld(b: TextbookGeometry): ModelMotion {
           mesh.position.set(...at); mesh.rotation.z = i * .6 + material.travel * .8;
           Object.assign(mesh.userData, { u: material.u, depth: material.depth, offset: material.offsetX, travel: material.travel, status: material.status });
         });
-        fragments.forEach(({ mesh, u, d }) => { const at = viewPoint(u, d, 1, soilProfileLayerOffset(state.selection, 4)); at[2] += .4 * s; mesh.position.set(...at); });
+        fragments.forEach(({ mesh, u, d }) => { const at = viewPoint(u, d, 1, soilProfileLayerOffset(state.selection, 4)); at[2] += .015 * s; mesh.position.set(...at); });
         leaves.forEach(mesh=>{mesh.position.x=soilProfileLayerOffset(state.selection,0)*width+(mesh.userData.sampleFront?frontShift():0);});
         waters.forEach(({ lane, position, geometry }) => {
           for (let i = 0; i <= 44; i++) {
@@ -251,22 +285,6 @@ export function buildSoilProfileWorld(b: TextbookGeometry): ModelMotion {
           }
         }
         b.contour([point(1, soilProfileBoundary(i, 1, 0), 0, offset), point(1, soilProfileBoundary(i + 1, 1, 0), 0, offset)], .38);
-        // Stationary matrix texture makes it clear that only a portion moves.
-        const layer = SOIL_PROFILE_LAYERS[i];
-        for (let j = 0; j < (i === 5 ? 12 : 20); j++) {
-          const q = Math.sin((i * 31 + j) * 12.9) * .5 + .5, u = .04 + (j * .618 % 1) * .92;
-          const d = layer.top + .016 + q * (layer.bottom - layer.top - .032), len = i === 5 ? .085 : .014;
-          const a = viewPoint(u - len / 2, d, 1, offset), z = viewPoint(u + len / 2, d + (i === 5 ? .005 : .001), 1, offset);
-          a[2] += .09 * s; z[2] += .09 * s; b.contour([a, z], i === 5 ? .25 : .16);
-        }
-      }
-      const rootOffset = soilProfileLayerOffset(state.selection, 1);
-      for (let i = 0; i < 5; i++) {
-        const root = Array.from({ length: 15 }, (_, j) => {
-          const p = viewPoint(.10 + i * .18 + Math.sin(j * .5 + i) * .023, .105 + j / 14 * .127, 1, rootOffset);
-          p[2] += .12 * s; return p;
-        });
-        b.contour(root, .30);
       }
       b.contour([track.start, track.end], .25); b.outline(handle, .36);
       if (state.water.active) {

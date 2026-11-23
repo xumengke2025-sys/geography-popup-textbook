@@ -1,3 +1,6 @@
+import hemispheres from './assets/solar-instrument/observation-hemispheres.json';
+import { recorderWheel } from './textbook-recorder-drawings';
+import { drawingGrip } from './textbook-drawing-grip';
 /** A geometric supplement to textbook p.9, not a 3-D reconstruction of
  * Fig.1.12 (annual radiation above the atmosphere). The Sun is fixed over
  * the equator. We compare local-noon incidence at 0–65° north, isolating
@@ -110,14 +113,20 @@ export function insolationProject([x, y, z]: InsolationPoint): [number, number] 
 }
 const visible = (p: InsolationPoint) => dot(sub(p, L.center), [Math.sin(-.36) * Math.cos(.16), Math.sin(.16), Math.cos(-.36) * Math.cos(.16)]) > -.1;
 const path = (points: InsolationPoint[]) => points.map((p, i) => `${i ? 'L' : 'M'}${insolationProject(p).map(v => +v.toFixed(3)).join(',')}`).join('');
-const action = (selection: number, label: string) => `data-model-selection="${selection}" role="button" tabindex="0" aria-label="${label}"`;
+const action = (selection: number, label: string) => `data-model-selection="${selection}" role="button" tabindex="0" data-specimen-key="" aria-label="${label}"`;
 const txt = (at: InsolationPoint, label: string) => {
   const [x, y] = insolationProject(at);
   return `<text x="${x}" y="${y}" text-anchor="middle" dominant-baseline="central" font-family="FieldSerif,SimSun,serif" font-size="36" fill="#3e4947" stroke="#f7f1e3" stroke-width="7" paint-order="stroke">${label}</text>`;
 };
 export function insolationSvg(phase: number): string {
   const state = evaluateInsolation(phase), [cx, cy] = insolationProject(L.center);
-  let body = `<circle data-insolation-earth="true" cx="${cx}" cy="${cy}" r="${L.radius * 5.5}" fill="#b9cdca" stroke="#52645e" stroke-width="1.8"/>`;
+  const sourceLow=insolationSource(0),[sx,sy]=insolationProject(sourceLow);
+  const bottom=insolationProject([sourceLow[0],3,sourceLow[2]])[1];
+  let body=`<path d="M${sx-31} ${bottom}L${cx+24} ${cy+124}l32 9L${sx-10} ${bottom+17}Z" fill="#68503b" stroke="#51422f" stroke-width="2"/>
+    <path d="M${sx-24} ${bottom-2}L${cx+23} ${cy+123}" stroke="#ae925b" stroke-width="4"/>
+    <path d="M${sx-11} ${bottom-2}V${sy-134}m20 130V${sy-130}" fill="none" stroke="#69756c" stroke-width="4"/>
+    <path d="M${cx} ${cy-139}a139 139 0 0 1 0 278" fill="none" stroke="#ae905a" stroke-width="8"/>`;
+  body+=`<circle data-insolation-earth="true" cx="${cx}" cy="${cy}" r="${L.radius * 5.5}" fill="#70999a" stroke="#52645e" stroke-width="1.8"/><g transform="translate(${cx} ${cy}) scale(${L.radius*5.5/100})"><path d="${hemispheres.insolation.land}" fill="#cbb88e" fill-rule="evenodd" stroke="#988961" stroke-width=".45"/><path d="${hemispheres.insolation.night}" fill="#15363d" opacity=".45"/></g>`;
   // Only the visible hemisphere is inked; three sparse latitude lines keep
   // the illumination patch readable, without an opaque grid on the globe.
   for (const latitude of [-40, 0, 40]) {
@@ -144,7 +153,9 @@ export function insolationSvg(phase: number): string {
   const start = insolationSource(0), end = insolationSource(L.radius * Math.sin(65 * rad));
   body += `<path data-insolation-height-track="true" d="${path([start, end])}" fill="none" stroke="#958d78" stroke-width="1.4"/>`;
   const [hx, hy] = insolationProject(state.sourceCenter);
-  body += `<path data-insolation-height-handle="true" d="M${hx - 7},${hy - 6}h14v12h-14Z" fill="#dbc38c" stroke="#8d784b" stroke-width="1.5"/>`;
+  body+=`<g transform="translate(${hx} ${hy})"><rect x="-15" y="-11" width="27" height="22" rx="3" fill="#997e50" stroke="#60513a" stroke-width="2"/><path d="M4 -8h13v16H4" fill="#5a6860" stroke="#625640"/></g>`;
+  body+=recorderWheel(sx-27,bottom-30,18,state.phase,'转动升降手轮');
+  body += `<path data-insolation-height-handle="true" d="M${hx - 7},${hy - 6}h14v12h-14Z" fill="#dbc38c" stroke="#8d784b" stroke-width="1.5"/>${drawingGrip('升降平行光源',insolationProject(start),insolationProject(end),state.phase)}`;
   body += txt(L.labels.beam.at, L.labels.beam.text) + txt(L.labels.footprint.at, L.labels.footprint.text)
     + `<g ${action(state.selection, `${state.label}节点`)}>${txt(L.labels.latitude.at, state.label)}</g>`;
   return `<svg class="flat-model-svg flat-explanation-svg" viewBox="0 0 720 480" role="img" aria-label="等宽太阳光在不同纬度的照射范围" data-insolation-phase="${state.phase}" data-insolation-latitude="${state.latitudeDegrees}" data-insolation-selection="${state.selection}"><title>${INSOLATION_REFERENCE.note}滑动改变观察纬度，不表示时间。</title>${body}</svg>`;

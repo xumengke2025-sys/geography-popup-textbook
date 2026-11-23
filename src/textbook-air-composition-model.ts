@@ -20,12 +20,10 @@ const periodic = (phase: number) => Number.isFinite(phase) ? ((phase % 1) + 1) %
 
 export function evaluateAirComposition(phase: number, selection = 0) {
   const t = periodic(phase), selected = Number.isFinite(selection) && Math.round(selection) > 0 ? 1 : 0;
-  // Slight closed drift only separates schematic marks spatially. It does
-  // not simulate condensation, settling, weather or a change in abundance.
+  // Static sample cards preserve identity and separation. Only manually
+  // withdrawing the aspirator makes their symbolic inventory visible.
   const marks = (sites: readonly (readonly [number, number])[], kind: 'vapor' | 'impurity') =>
-    selected ? sites.map(([x, y], index) => ({ id: `${kind}-${index}`, kind,
-      x: x + Math.sin(t * Math.PI * 2 + index * 1.7) * .035,
-      y: y + Math.cos(t * Math.PI * 2 + index * 1.3) * .035 })) : [];
+    selected ? sites.map(([x, y], index) => ({ id: `${kind}-${index}`, kind, x, y })) : [];
   return { phase: t, selected, vapor: marks(vaporSites, 'vapor'), impurities: marks(impuritySites, 'impurity'),
     reference: AIR_COMPOSITION_REFERENCE };
 }
@@ -48,6 +46,6 @@ export function airCompositionExtraSvg(phase: number, selection: number,
     const x = 535 + mark.x * 18, y = 278 - mark.y * 16;
     body += `<rect data-composition-symbol="impurity-grain" data-symbol-id="${mark.id}" x="${n(x - 2.2)}" y="${n(y - 2.2)}" width="4.4" height="4.4" fill="${palette.rock}" stroke="${palette.ink}" stroke-width=".7"/>`;
   }
-  const label = (value: string, x: number) => `<text x="${x}" y="344" text-anchor="middle" fill="${palette.ink}" font-family="FieldSerif,SimSun,serif" font-size="22">${value}</text>`;
-  return `<g data-composition-extras="symbols" role="img" aria-label="空心符号仅为不可见水汽的示踪；实心小粒表示杂质。数量和大小均为示意，不是云滴。">${body}${label(AIR_COMPOSITION_LABELS.vapor, 409)}${label(AIR_COMPOSITION_LABELS.impurity, 535)}</g>`;
+  const label = (value: string, x: number) => `<text x="${x}" y="369" text-anchor="middle" fill="${palette.ink}" font-family="FieldSerif,SimSun,serif" font-size="22">${value}</text>`;
+  return `<g data-composition-extras="symbols" role="img" aria-label="空心符号仅为不可见水汽的示踪；实心小粒表示杂质。数量和大小均为示意，不是云滴。">${body}${label(AIR_COMPOSITION_LABELS.vapor, 395)}${label(AIR_COMPOSITION_LABELS.impurity, 545)}</g>`;
 }

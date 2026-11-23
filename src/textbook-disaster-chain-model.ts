@@ -1,3 +1,4 @@
+import { chainTalusStock } from './textbook-disaster-chain-stock';
 /** Two selected, conditional chains from textbook pp.108–109 and 115.
  * The phase is an explanatory sequence, not elapsed time or a forecast.
  * No water-flow, slope-failure or aquifer equation is numerically solved. */
@@ -96,12 +97,17 @@ export function disasterChainSvg(phase: number, selection = 0): string {
     const v = (a: number, h: number, z: number) => `${x(a)},${y(h, z)}`;
     const land = `${v(6, 5, 7)} ${v(96, 5, 7)} ${v(96, 5, 52)} ${v(6, 5, 52)}`;
     const lakeHalf = chainRiverHalfWidth(q.lakeLevel);
-    const stones = Array.from({ length: 12 }, (_, i) => {
-      const row = Math.floor(i / 4), col = i % 4, central = row === 1;
-      const xx = 55 + (col - 1.5) * 2 + (central ? 7 * q.breach : 0);
-      const zz = 15 + row * 2 + (20 + (row - 1) * 2 - row * 2) * q.slide;
-      const yy = 28 - row + (8 + (col % 2) - (28 - row)) * q.slide - (central ? 3 * q.breach : 0);
-      return `<path d="M-10 5-5-9 8-7 13 4 3 10Z" transform="translate(${x(xx)} ${y(yy, zz)}) rotate(${n(i * 17 + q.slide * 60)})" fill="${i % 2 ? '#b7a288' : '#c8b79c'}" stroke="#706e5c"/>`;
+    const stones=chainTalusStock().map(piece=>{
+      const pose=piece.pose(q),cos=Math.cos(pose.pitch),sin=Math.sin(pose.pitch);
+      const projected=(index:number)=>{
+        const [dx,dy,dz]=piece.positions.slice(index*3,index*3+3);
+        return v(pose.x+dx,pose.y+dy*cos-dz*sin,pose.z+dy*sin+dz*cos);
+      };
+      const top=piece.edge.map(projected).join(' '),walls=piece.edge.map((a,i)=>{
+        const e=piece.edge[(i+1)%piece.edge.length];
+        return `<polygon points="${[a,e,e+piece.layer,a+piece.layer].map(projected).join(' ')}" fill="#a48b68"/>`;
+      }).join('');
+      return `<g data-talus-id="${piece.id}" data-talus-volume="${n(piece.nominalVolume)}">${walls}<polygon points="${top}" fill="#c2b391" stroke="#79735c" stroke-width=".7"/></g>`;
     }).join('');
     const village = [79, 86].map(xx => {
       // Keep roofs above the flood, clipping only the submerged wall. The

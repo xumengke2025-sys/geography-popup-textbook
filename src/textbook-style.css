@@ -99,4 +99,35 @@ body:has(#page-reader[open]) #book-ui,body:has(#page-reader[open]) #hotspots{vis
 /* SVG user units also shrink on a phone. Keep essential model labels legible
    at the actual displayed size, rather than quoting the unscaled font size. */
 @media(max-width:480px){.flat-explanation-svg text{font-size:36px}}
+.flat-concept .integrated-diagram text{font-size:30px;fill:#273d40}
+@media(max-width:480px){.flat-concept .integrated-diagram text{font-size:34px}}
 @media(max-width:359px){.flat-explanation-svg text{font-size:40px}}
+
+.orrery-hand-controls [data-orrery-control]{touch-action:none;cursor:grab}
+.orrery-hand-controls [data-orrery-control]:active{cursor:grabbing}
+.orrery-hand-controls [data-orrery-control]:focus-visible{outline:2px solid #795731;outline-offset:3px}
+
+.flat-concept:has(.orrery-hand-controls){touch-action:pinch-zoom}
+
+.flat-concept:has([data-phase-track]){touch-action:pinch-zoom}
+.valley-drawing text{text-anchor:middle;font-family:FieldSerif,SimSun,serif;font-size:30px;fill:#353b34}
+.valley-drawing [data-model-selection]{cursor:pointer}
+.flat-concept [data-phase-track]{cursor:grab;touch-action:none}
+.flat-concept [data-phase-track]:active{cursor:grabbing}
+.valley-drawing [tabindex]:focus-visible{outline:2px solid #795731;outline-offset:2px}
+@media(max-width:480px){.valley-drawing text{font-size:34px}}
+
+.flat-concept:has([data-model-crank]){touch-action:pinch-zoom}
+[data-model-crank]{touch-action:none;cursor:grab}
+[data-model-crank]:active{cursor:grabbing}
+.aeolian-hand-panel [role=button]{cursor:pointer}
+.aeolian-hand-panel [tabindex]:focus-visible{outline:2px solid #795731;outline-offset:2px}
+
+.valley-drawing .valley-observation{fill:#f2e5c7;font-size:30px}
+
+@media(max-width:600px){
+  body.two-d .flat-demonstration .flat-model-svg:has(>.flat-instrument-controls){max-height:none}
+}
+.flat-instrument-controls [role=button]{cursor:pointer}
+.flat-instrument-controls [role=slider]:focus:not(:focus-visible),
+.flat-instrument-controls [role=button]:focus:not(:focus-visible){outline:none}

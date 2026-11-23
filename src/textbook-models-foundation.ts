@@ -1,3 +1,4 @@
+import { buildKarstObserver } from './textbook-karst-observer';
 import { buildWaterRenewalWorld } from './textbook-water-renewal-world';
 import { THREE as T } from './reference/engine.js';
 import { PALETTE as C, type TextbookGeometry, type ModelMotion, type Vec3 } from './textbook-geometry';
@@ -5,7 +6,7 @@ import { buildSoilTextureWorld } from './textbook-soil-texture-world';
 import { buildSoilCareWorld } from './textbook-soil-care-world';
 import { buildSeismicInstrumentWorld } from './textbook-seismic-instrument-world';
 import { buildInsolationWorld } from './textbook-insolation-world';
-import { buildCaveDepositionWorld, buildSoilPoreWorld } from './textbook-foundation-process-world';
+import { buildSoilPoreWorld } from './textbook-foundation-process-world';
 
 /** Additional explanations are derived from the textbook prose, never from a
  * cropped illustration. All dimensions and rates below are teaching choices. */
@@ -14,7 +15,7 @@ export function buildFoundation(b: TextbookGeometry, effect: string): ModelMotio
   if (effect === 'solar-distribution') return buildInsolationWorld(b);
   if (effect === 'seismic-waves') return buildSeismicInstrumentWorld(b);
   if (effect === 'water-renewal') return buildWaterRenewalWorld(b);
-  if (effect === 'karst-cave') return buildCaveDepositionWorld(b);
+  if (effect === 'karst-cave') return buildKarstObserver(b,'karst-cave');
   if (effect === 'soil-composition') return buildSoilPoreWorld(b);
   if (effect === 'soil-texture') return buildSoilTextureWorld(b);
   if (effect === 'soil-care') return buildSoilCareWorld(b);

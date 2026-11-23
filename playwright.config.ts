@@ -17,7 +17,7 @@ export default defineConfig({
   use: {
     baseURL: reviewBaseURL || localBaseURL,
     viewport: { width: 1366, height: 900 },
-    channel: "chrome",
+    channel: process.env.REVIEW_BROWSER || "chrome",
     actionTimeout: 15000,
     navigationTimeout: 30000,
     trace: "retain-on-failure",

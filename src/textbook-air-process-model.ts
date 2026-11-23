@@ -1,3 +1,4 @@
+import { drawingGrip } from './textbook-drawing-grip';
 /** Textbook p.34 fig.2.9 and p.36 fig.2.11, checked against the local pages.
  * Progress is a teaching reveal, not meteorological time or an energy budget.
  * The original textbook remains on the page below this spatial explanation. */
@@ -113,19 +114,19 @@ function circulationState(phase: number): CirculationProcessState {
   const pressure = smooth(.5, .74, phase), horizontal = smooth(.74, 1, phase);
   const z = 49, q = (x: number, y: number): AirPoint => [x, y, z];
   const arrows = [
-    arrow('warm-ascent', [q(50, 20), q(50, 43)], vertical, 1.65, '#517f83'),
-    arrow('left-descent', [q(18, 43), q(18, 20)], vertical, 1.65, '#517f83'),
-    arrow('right-descent', [q(82, 43), q(82, 20)], vertical, 1.65, '#517f83'),
+    arrow('warm-ascent', [q(50, 29), q(50, 43)], vertical, 1.65, '#517f83'),
+    arrow('left-descent', [q(18, 43), q(18, 29)], vertical, 1.65, '#517f83'),
+    arrow('right-descent', [q(82, 43), q(82, 29)], vertical, 1.65, '#517f83'),
     arrow('upper-left', [q(46, 45), q(22, 45)], horizontal, 1.45, '#517f83'),
     arrow('upper-right', [q(54, 45), q(78, 45)], horizontal, 1.45, '#517f83'),
-    arrow('lower-left', [q(22, 18), q(46, 18)], horizontal, 1.45, '#517f83'),
-    arrow('lower-right', [q(78, 18), q(54, 18)], horizontal, 1.45, '#517f83'),
+    arrow('lower-left', [q(22, 27), q(46, 27)], horizontal, 1.45, '#517f83'),
+    arrow('lower-right', [q(78, 27), q(54, 27)], horizontal, 1.45, '#517f83'),
   ];
   const loop = (side: -1 | 1): AirPoint[] => {
     // Rounded cells meet exactly at the same centre-up segment.
     const corners = side === -1
-      ? [[50, 20], [50, 43], [48, 45], [20, 45], [18, 43], [18, 20], [20, 18], [48, 18], [50, 20]]
-      : [[50, 20], [50, 43], [52, 45], [80, 45], [82, 43], [82, 20], [80, 18], [52, 18], [50, 20]];
+      ? [[50, 29], [50, 43], [48, 45], [20, 45], [18, 43], [18, 29], [20, 27], [48, 27], [50, 29]]
+      : [[50, 29], [50, 43], [52, 45], [80, 45], [82, 43], [82, 29], [80, 27], [52, 27], [50, 29]];
     return corners.map(([x, y]) => q(x, y));
   };
   const columns = (['B', 'A', 'C'] as const).map((id, i): AirColumn => ({ id, x: [18, 50, 82][i],
@@ -207,6 +208,13 @@ const colorBlend = (from: string, to: string, t: number) => {
   const a = from.match(/[a-f\d]{2}/gi)!.map(s => parseInt(s, 16)), b = to.match(/[a-f\d]{2}/gi)!.map(s => parseInt(s, 16));
   return `#${a.map((n, i) => Math.round(n + (b[i] - n) * clamp(t)).toString(16).padStart(2, '0')).join('')}`;
 };
+function bathEngraving(warm: boolean) {
+  const bowl = warm
+    ? '<path d="M-39 -24Q0 -13 39 -24L34 -18Q0 -8 -34 -18Z" fill="#a96945"/><path d="M-32 -22Q0 -17 32 -22" fill="none" stroke="#ead1a1"/><path d="M-24 -17l-5 24m53-24 5 24" fill="none" stroke-width="3"/><path d="M-10 6Q-15 1 -8 -3H8Q15 1 10 6Z" fill="#6c847b"/><path d="M-3 -3Q-6 -9 1 -16Q0 -11 4 -9Q6 -5 2 -3Z" fill="#df9e47" stroke="none"/>'
+    : '<path d="M-35 -11Q0 -18 35 -11L31 2Q0 11 -31 2Z" fill="#ac8351"/><ellipse cy="-11" rx="35" ry="6.5" fill="#83aeb0"/><path d="M-22 -12l1 -8 11 -4 8 4 -1 10 -11 2Z M3 -11l-2 -10 9 -6 13 4 2 10 -10 4Z" fill="#d2e5df" stroke="#759d9c"/><path d="M-20 -19l8 3 10 -4m-10 4 -1 8m15 -12 11 4 11 -6m-11 6 2 7" fill="none" stroke="#9ebdb8"/>';
+  return '<g stroke="#725c40" stroke-width="1.5">' + bowl + '</g>';
+}
+
 export function airProcessSvg(effect: AirProcessEffect, phase: number): string {
   const s = evaluateAirProcess(effect, phase), x = (n: number) => num(30 + n * 5.65), y = (n: number) => num(374 - n * 4.7);
   const points = (path: readonly AirPoint[]) => path.map(p => `${x(p[0])},${y(p[1])}`).join(' ');
@@ -223,18 +231,36 @@ export function airProcessSvg(effect: AirProcessEffect, phase: number): string {
       const px = x(69 + i % 3 * 4.3), py = y(16 + Math.floor(i / 3) * 7.3);
       scene += `<path d="M${px} ${py - 3.4}l3.4 3.4-3.4 3.4-3.4-3.4Z" fill="${colorBlend('#afc2bd', '#bf916f', s.visibility.airWarmth)}"/>`;
     }
-    scene += `<circle cx="${x(12)}" cy="${y(59)}" r="19" fill="#d3b875" stroke="#95855c" stroke-width="1.3"/>`;
-    scene += text('太阳短波', [28, 62, 0]);
-    if (s.visibility.groundWarmth > 0) scene += text('地面增温', [43, -5, 0]);
-    if (s.visibility.longwave > 0) scene += text('地面长波', [76, 60, 0]);
-    if (s.visibility.airWarmth > 0) scene += text('大气吸收', [91, 25, 0]);
+    scene += `<path d="M${x(8)} ${y(0)}V${y(57)}H${x(12)}" fill="none" stroke="#55635a" stroke-width="5"/>
+      <g transform="translate(${x(16)} ${y(54)}) rotate(58)"><path d="M-53 -11H-27L-5 -24H0V24H-5L-27 11H-53Z" fill="#41534c" stroke="#765f40" stroke-width="2"/><path d="M-53 -12V12M-31 -12V12M-6 -23V23" stroke="#c0a168" stroke-width="3"/><ellipse rx="5.8" ry="22" fill="#c4b9a2" stroke="#8b734c"/><ellipse rx="2.3" ry="10" fill="#d6a15b"/></g>`;
+    for(const [column,response] of [[34,s.visibility.groundWarmth],[83,s.visibility.airWarmth]]) {
+      const cx=x(column),cy=y(column===34?11:27);
+      scene+=`<circle cx="${cx}" cy="${cy}" r="15" fill="#ad8a53" stroke="#675d46" stroke-width="1.3"/><circle cx="${cx}" cy="${cy}" r="12" fill="#e4d7b7"/><path d="M${cx-9} ${cy-4}l2 1m7-7v3m9 2-2 1" stroke="#796c54"/><path transform="rotate(${-25+response*62} ${cx} ${cy})" d="M${cx} ${cy+3}v-12" stroke="#47524b" stroke-width="1.7"/>`;
+    }
+    scene+=`<rect x="${x(5)}" y="${y(.05)}" width="${x(95)-x(5)}" height="40" rx="4" fill="#654a34" stroke="#906f47"/>`;
+    for(const [i,caption] of ['短波','地面','长波','大气'].entries()){
+      const cx=x(18+i*21.33);
+      scene+=`<g data-model-selection="${i}" data-specimen-key="" role="button" tabindex="0" aria-label="定位到${AIR_PROCESS_STOPS.heat[i].label}"><rect x="${cx-44}" y="${y(-.65)}" width="88" height="31" rx="3" fill="${s.stageIndex===i?'#d8c59c':'#ebdec0'}" stroke="#a98b58" stroke-width="2"/><text x="${cx}" y="${y(-5.32)}" text-anchor="middle" font-size="21">${caption}</text></g>`;
+    }
   } else {
     scene += `<rect x="${x(4)}" y="${y(3)}" width="${x(96) - x(4)}" height="${y(0) - y(3)}" fill="#bdb5a0" stroke="#7b7a69"/>`;
     s.columns.forEach((c, i) => {
-      scene += `<rect x="${x([5, 35, 70][i])}" y="${y(3)}" width="${[25, 30, 25][i] * 5.65}" height="${y(0) - y(3)}" fill="${colorBlend('#c7bba3', i === 1 ? '#c28b61' : '#a0babc', s.visibility.thermalContrast)}"/>`;
+      if (s.visibility.thermalContrast > 0) {
+        scene += `<g data-air-bath="${i === 1 ? 'warm' : 'cold'}" transform="translate(${x(c.x)},${y(3.5)})" opacity="${num(s.visibility.thermalContrast)}">${bathEngraving(i === 1)}</g>`;
+      }
       scene += text(s.visibility.thermalContrast > 0 ? `${c.id} · ${i === 1 ? '暖' : '冷'}` : c.id, [c.x, -4, 0]);
     });
     for (const path of [s.isobars.lower, s.isobars.upper]) scene += `<polyline points="${points(path)}" fill="none" stroke="#9eb9ba" stroke-width="2"/>`;
+    for (const a of s.arrows) {
+      if (a.reveal < .001) continue;
+      const start = a.path[0], end = a.path[a.path.length - 1];
+      const dx = end[0] - start[0], dy = end[1] - start[1], length = Math.hypot(dx, dy);
+      const path = Array.from({ length: 29 }, (_, i): AirPoint => {
+        const t = i / 28, wave = .85 * Math.sin(t * 10 - s.phase * 9) + 2.9;
+        return [start[0] + dx * t - dy / length * wave, start[1] + dy * t + dx / length * wave, 0];
+      });
+      scene += `<polyline data-air-tracer="${a.id}" points="${points(path)}" fill="none" stroke="#7e9186" stroke-width="2.3" opacity="${num(.8 * a.reveal)}" stroke-dasharray="8 4 2 4" stroke-dashoffset="${num(-55 * s.phase)}"/>`;
+    }
     if (s.visibility.pressure > 0) {
       for (const h of s.comparisonHeights) scene += `<path d="M${x(8)} ${y(h)}H${x(92)}" stroke="#9c9f91" stroke-width="1" stroke-dasharray="5 7"/>`;
       s.columns.forEach(c => {
@@ -249,10 +275,10 @@ export function airProcessSvg(effect: AirProcessEffect, phase: number): string {
     scene += `<polygon data-air-arrow="${a.id}" data-reveal="${a.reveal}" data-tip='${JSON.stringify(a.tip)}' points="${points(mesh.outline)}" fill="${a.color}" stroke="#566c68" stroke-width=".8"/>`;
   }
   const handle = airHandlePoint(s.phase), diagnostics = JSON.stringify(airProcessDiagnostics(s)).replace(/&/g, '&amp;').replace(/'/g, '&#39;');
-  return `<svg class="flat-model-svg flat-explanation-svg" viewBox="0 0 660 510" role="img" aria-label="${s.caption}，进度表示讲解顺序" data-air-effect="${s.effect}" data-air-phase="${s.phase}" data-air-stage="${s.stage}" data-air-state='${diagnostics}'>
+  return `<svg class="flat-model-svg flat-explanation-svg" viewBox="0 0 660 534" role="group" aria-label="${s.caption}，进度表示讲解顺序" data-air-effect="${s.effect}" data-air-phase="${s.phase}" data-air-stage="${s.stage}" data-air-state='${diagnostics}'>
     <g font-family="FieldSerif,SimSun,serif" fill="#303a40" stroke-linecap="round" stroke-linejoin="round">${scene}
     <path d="M${x(12)} ${y(-12)}H${x(88)}" fill="none" stroke="#a59b82" stroke-width="2"/>
-    <ellipse data-air-role="phase-handle" cx="${x(handle[0])}" cy="${y(handle[1])}" rx="9" ry="7" fill="#e8d9b8" stroke="#7c806c"/>
-    <text x="330" text-anchor="middle" font-size="30"><tspan x="330" y="458">${effect === 'heat' ? '两类辐射的主路径示意' : '分步显示是讲解顺序'}</tspan><tspan x="330" y="497">${effect === 'heat' ? '不表示能量比例' : '气压只在同一高度比较'}</tspan></text>
+    <ellipse data-air-role="phase-handle" cx="${x(handle[0])}" cy="${y(handle[1])}" rx="9" ry="7" fill="#e8d9b8" stroke="#7c806c"/>${drawingGrip('推拉热力过程标尺',[x(12),y(-12)],[x(88),y(-12)],s.phase)}
+    <text x="330" text-anchor="middle" font-size="30" pointer-events="none"><tspan x="330" y="479">${effect === 'heat' ? '两类辐射的主路径示意' : '分步显示是讲解顺序'}</tspan><tspan x="330" y="518">${effect === 'heat' ? '不表示能量比例' : '气压只在同一高度比较'}</tspan></text>
     </g></svg>`;
 }

@@ -1,5 +1,17 @@
 # 整册场景造型与验收台账 · 当前源码复核 2026-11-11
 
+## 2026-11-20 水实验组 · index-Xd90qJ0J.js
+
+| 场景 | 主体改造 | 当前检查与主看 | 用户认可 |
+| --- | --- | --- | --- |
+| density | 原生 Blender 镂空称重横梁、同体积瓷盏和三点铅直吊架 | 三分支两种视口及实体选择，主看只降温和形成帧 | 待反馈 |
+| salinity | 原生 Blender 共用瓷衬剖槽、三种进出水件、独立水位读数和进度导柱 | 三分支关键状态、实体正反拖动，主看降水、河流和形成帧 | 待反馈 |
+| desalination | 原生 Blender 双分支，冰体格栅与带实际开孔的转篮共用集液槽 | 两种方法、手柄点击和终点保留量，主看离心、重力与形成帧 | 待反馈 |
+
+见 [实拍与原生渲染](visual-Xd90qJ0J/本版复核.md)。其余 B6 场景（water、water-renewal、temperature）继续逐件核对主体。其余批次保持原有范围和逐分支要求。
+
+> 当前接续入口：`../整册接续执行计划_20261111.md`、`reconstruction-index.md`、`reconstruction-manifest.json`。下方行表为历史源审，部分入口已漂移：cosmic-scale现为独立cosmic-instrument-world；habitable现为独立habitable-world；vegetation现为独立vegetation-world；mars-base现为独立mars-base-world＋mars-cabin。新清单为63项唯一批次归属与228历史分支基线，不继承验收。当前火星纵向厚壳首轮、生命条件遮陆修复、灾害链新生产复验的四级证据见style-review顶部与verification/reconstruction-20261111.json；三项都没有用户审美认可。
+
 任务仍是**先修改整个项目，最后录屏**。本台账只更新证据口径，不修改 src、不构建、不启动全册浏览器截图。目录、profile 与历史清单交叉核对为 **63 个场景：60 个原有内容＋3 个综合拓展**，ID集合与原页位置一致。教材封面和原页底子保留，模型在书页上方形成。
 
 ## 判定口径

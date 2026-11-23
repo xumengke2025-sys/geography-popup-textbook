@@ -10,6 +10,15 @@ import {
 const distance = (a: readonly number[], b: readonly number[]) => Math.hypot(...a.map((n, i) => n - b[i]));
 
 describe('finite solar-thermal collection and room-heating demonstration', () => {
+  it('launches parallel shortwave paths at the three outward points on the model Sun',()=>{
+    const source=SOLAR_HEATING_LAYOUT.sun;
+    const vectors=SOLAR_HEATING_RAYS.map(ray=>{
+      expect(Math.hypot(...ray.source.map((v,i)=>v-source[i]))).toBeCloseTo(SOLAR_HEATING_LAYOUT.sunRadius,10);
+      const d=ray.destination.map((v,i)=>v-ray.source[i]),len=Math.hypot(...d);
+      return d.map(v=>v/len);
+    });
+    vectors.forEach(v=>v.forEach((value,i)=>expect(value).toBeCloseTo(vectors[0][i],10)));
+  });
   it('preserves the distinction between three radiation marks and six existing water marks', () => {
     const rays = SOLAR_HEATING_RAYS.map(ray => ray.id);
     const water = SOLAR_HEATING_WATER_MARKS.map(mark => mark.id);

@@ -45,8 +45,10 @@ test('翻页、正文跳转和放大原页使用同一教材页码', async ({ pa
   await expect(reader.getByRole('img', { name: '教材原页 38', exact: true })).toBeVisible();
   await expect(page.locator('#reader-image')).toHaveAttribute('src', /textbook\/page-043\.webp$/);
   await expect.poll(() => page.locator('#reader-image').evaluate((image: HTMLImageElement) => image.complete && image.naturalWidth > 0)).toBe(true);
+  const scale = reader.locator('#reader-scale');
+  const fittedPercent = Number.parseInt(await scale.innerText(), 10);
   await reader.getByRole('button', { name: '放大原页', exact: true }).click();
-  await expect(page.locator('#reader-scale')).toHaveText('115%');
+  await expect(scale).toHaveText(`${Math.min(300, fittedPercent + 15)}%`);
   await reader.getByRole('button', { name: '下一页', exact: true }).click();
   await expect(page.locator('#reader-title')).toHaveText('第 39 页');
   await page.keyboard.press('Escape');

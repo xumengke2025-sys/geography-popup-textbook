@@ -1,4 +1,4 @@
-import { describe, expect, it, vi } from 'vitest';
+import { beforeAll, describe, expect, it, vi } from 'vitest';
 import * as Three from 'three';
 import type { ModelMotion, TextbookGeometry, Vec3 } from '../src/textbook-geometry';
 import { inspectionTargets } from '../src/textbook-inspection';
@@ -13,6 +13,9 @@ import { buildTemperatureWorld } from '../src/textbook-temperature-world';
 import { buildSoilProfileWorld } from '../src/textbook-soil-profile-world';
 import { buildGnssWorld } from '../src/textbook-gnss-world';
 import { buildAstronomy } from '../src/textbook-models-astronomy';
+import { loadFieldInstrument } from '../src/textbook-field-instruments';
+
+beforeAll(() => loadFieldInstrument('waves'));
 
 function fixture(build: (b: TextbookGeometry) => ModelMotion) {
   const meshes: Three.Mesh[] = [], root = new Three.Group(), contours: Vec3[][] = [];

@@ -229,13 +229,23 @@
         "tickMarks": false
       }
     },
-    "controls": [],
+    "controls": [
+      "整体",
+      "水星",
+      "金星",
+      "地球",
+      "火星",
+      "木星",
+      "土星",
+      "天王星",
+      "海王星"
+    ],
     "controlPhases": null,
     "selectionLimit": 8,
     "branches": [
       {
         "selection": 0,
-        "publicControl": null,
+        "publicControl": "整体",
         "playback": {
           "enabled": true,
           "autoplay": true,
@@ -265,7 +275,7 @@
       },
       {
         "selection": 1,
-        "publicControl": null,
+        "publicControl": "水星",
         "playback": {
           "enabled": true,
           "autoplay": true,
@@ -295,7 +305,7 @@
       },
       {
         "selection": 2,
-        "publicControl": null,
+        "publicControl": "金星",
         "playback": {
           "enabled": true,
           "autoplay": true,
@@ -325,7 +335,7 @@
       },
       {
         "selection": 3,
-        "publicControl": null,
+        "publicControl": "地球",
         "playback": {
           "enabled": true,
           "autoplay": true,
@@ -355,7 +365,7 @@
       },
       {
         "selection": 4,
-        "publicControl": null,
+        "publicControl": "火星",
         "playback": {
           "enabled": true,
           "autoplay": true,
@@ -385,7 +395,7 @@
       },
       {
         "selection": 5,
-        "publicControl": null,
+        "publicControl": "木星",
         "playback": {
           "enabled": true,
           "autoplay": true,
@@ -415,7 +425,7 @@
       },
       {
         "selection": 6,
-        "publicControl": null,
+        "publicControl": "土星",
         "playback": {
           "enabled": true,
           "autoplay": true,
@@ -445,7 +455,7 @@
       },
       {
         "selection": 7,
-        "publicControl": null,
+        "publicControl": "天王星",
         "playback": {
           "enabled": true,
           "autoplay": true,
@@ -475,7 +485,7 @@
       },
       {
         "selection": 8,
-        "publicControl": null,
+        "publicControl": "海王星",
         "playback": {
           "enabled": true,
           "autoplay": true,
@@ -6474,7 +6484,7 @@
         "order": "base-to-detail"
       },
       "support": {
-        "strategy": "section-feet",
+        "strategy": "none",
         "attachment": "underside",
         "motionClearance": "preserve",
         "tickMarks": false
@@ -6571,8 +6581,8 @@
       },
       "observe": "山地与平原河谷横断面和作用差异",
       "operations": [
-        "选择河谷条件",
-        "连续回看"
+        "按瓷键更换标本",
+        "沿导轨推拉测架"
       ],
       "materials": {
         "brass": "下角承托",
@@ -6585,14 +6595,14 @@
         "type": "landscape",
         "parts": [
           "河谷切块",
-          "河槽",
-          "流动水体"
+          "测量滑架",
+          "黄铜垂锤"
         ],
         "rigid": true,
         "order": "base-to-detail"
       },
       "support": {
-        "strategy": "corner-shoes",
+        "strategy": "none",
         "attachment": "underside",
         "motionClearance": "preserve",
         "tickMarks": false
@@ -6711,7 +6721,7 @@
         "order": "base-to-detail"
       },
       "support": {
-        "strategy": "corner-shoes",
+        "strategy": "none",
         "attachment": "underside",
         "motionClearance": "preserve",
         "tickMarks": false
@@ -6894,8 +6904,8 @@
       },
       "observe": "搬运物减速沉积与河口向海推进",
       "operations": [
-        "定位沉积阶段",
-        "观察保留结果"
+        "推拉给沙齿条",
+        "按瓷键观察沉积与岸线"
       ],
       "materials": {
         "brass": "下角承托",
@@ -6907,7 +6917,7 @@
       "reveal": {
         "type": "landscape",
         "parts": [
-          "河口底形",
+          "给沙料斗",
           "沉积体",
           "分汊水流"
         ],
@@ -6915,7 +6925,7 @@
         "order": "base-to-detail"
       },
       "support": {
-        "strategy": "corner-shoes",
+        "strategy": "none",
         "attachment": "underside",
         "motionClearance": "preserve",
         "tickMarks": false
@@ -7043,8 +7053,9 @@
       },
       "observe": "风蚀形态、堆积形态与植被固沙对照",
       "operations": [
-        "选择独立地貌",
-        "重放风沙"
+        "按瓷键换标本",
+        "摇动风机",
+        "比较同一进度"
       ],
       "materials": {
         "brass": "下角承托",
@@ -7056,16 +7067,16 @@
       "reveal": {
         "type": "landscape",
         "parts": [
-          "岩体",
-          "沙粒",
-          "沙丘",
-          "植被"
+          "离心风机",
+          "风沙标本",
+          "导风嘴",
+          "沙粒"
         ],
         "rigid": true,
         "order": "base-to-detail"
       },
       "support": {
-        "strategy": "corner-shoes",
+        "strategy": "none",
         "attachment": "underside",
         "motionClearance": "preserve",
         "tickMarks": false
@@ -7835,7 +7846,7 @@
         "order": "base-to-detail"
       },
       "support": {
-        "strategy": "corner-shoes",
+        "strategy": "none",
         "attachment": "underside",
         "motionClearance": "preserve",
         "tickMarks": false
@@ -10303,8 +10314,8 @@
       },
       "observe": "持续强降水、汇流与低地淹没的联系",
       "operations": [
-        "选择降雨条件",
-        "观察低地"
+        "按键对照降雨",
+        "推移水位记录游标"
       ],
       "materials": {
         "brass": "地景下缘承托",
@@ -10325,7 +10336,7 @@
         "order": "base-to-detail"
       },
       "support": {
-        "strategy": "corner-shoes",
+        "strategy": "none",
         "attachment": "underside",
         "motionClearance": "preserve",
         "tickMarks": false
@@ -10422,8 +10433,8 @@
       },
       "observe": "持续少雨与土壤、水源及作物的变化",
       "operations": [
-        "选择供水条件",
-        "观察保留后果"
+        "按键对照降水",
+        "正反转动记录轮"
       ],
       "materials": {
         "brass": "地景下缘承托",
@@ -10444,7 +10455,7 @@
         "order": "base-to-detail"
       },
       "support": {
-        "strategy": "corner-shoes",
+        "strategy": "none",
         "attachment": "underside",
         "motionClearance": "preserve",
         "tickMarks": false

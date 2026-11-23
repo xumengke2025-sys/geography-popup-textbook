@@ -72,25 +72,40 @@ export function waveProject(x: number, v: number, height: number): [number, numb
 const fmt = (n: number) => Number(n.toFixed(6));
 const pair = (point: [number, number]) => point.map(fmt).join(',');
 export function waveSvg(phase: number, selection = 0, target = 'overview'): string {
-  const state = evaluateWave(phase, selection), observation = evaluateWaveInspection(phase, target), nx = 128, nz = 9;
+  const state = evaluateWave(phase, selection), observation = evaluateWaveInspection(phase, target), nx = 128;
   // One inversion per X sample, shared by all depth strips and cut faces.
   // SVG mode can therefore play continuously without re-solving each cell.
   const heights = Array.from({ length: nx + 1 }, (_, i) => waveHeightAt(state, i / nx * 100));
   const colors = Array.from({ length: nx }, (_, i) => {
-    const shade = Math.max(.87, Math.min(1.035, .97 - (heights[i + 1] - heights[i]) * .075));
-    return `rgb(${[173, 206, 210].map(c => Math.round(c * shade)).join(',')})`;
+    const shade = Math.max(.76, Math.min(1.14, .99 - (heights[i + 1] - heights[i]) * .13));
+    return `rgb(${[160, 202, 201].map(c => Math.round(c * shade)).join(',')})`;
   });
   const at = (x: number, v: number, height = heights[Math.round(x / 100 * nx)]) => waveProject(x, v, height);
   const front = Array.from({ length: nx + 1 }, (_, i) => at(i / nx * 100, 1));
   const back = Array.from({ length: nx + 1 }, (_, i) => at(i / nx * 100, 0));
   const right = [at(100, 0), at(100, 1), at(100, 1, 0), at(100, 0, 0)];
-  let body = `<path d="M${right.map(pair).join('L')}Z" fill="#89afb8" stroke="#435f67" stroke-width="1"/>`;
-  body += `<path d="M${front.map(pair).join('L')}L${pair(at(100, 1, 0))}L${pair(at(0, 1, 0))}Z" fill="#a0c1c7" stroke="#435f67" stroke-width="1.1"/>`;
-  for (const h of [4, 8, 12]) body += `<path d="M${pair(at(0, 1, h))}L${pair(at(100, 1, h))}" fill="none" stroke="#5e8c97" stroke-width=".7" opacity=".45"/>`;
-  for (let j = 0; j < nz; j++) for (let i = 0; i < nx; i++) {
-    const x = i / nx * 100, next = (i + 1) / nx * 100, v = j / nz, v1 = (j + 1) / nz;
-    const color = colors[i];
-    body += `<polygon points="${[at(x, v), at(next, v), at(next, v1), at(x, v1)].map(pair).join(' ')}" fill="${color}" stroke="${color}" stroke-width=".3"/>`;
+  const face = `M${front.map(pair).join('L')}L${pair(at(100,1,0))}L${pair(at(0,1,0))}Z`;
+  let body = `<defs><linearGradient id="wave-cut" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#c0dcd4"/><stop offset=".42" stop-color="#8cb8b7"/><stop offset="1" stop-color="#537e86"/></linearGradient>
+    <linearGradient id="wave-base" x2="0" y2="1"><stop stop-color="#d6c38d"/><stop offset=".26" stop-color="#ac9460"/><stop offset=".57" stop-color="#786544"/><stop offset="1" stop-color="#bda77c"/></linearGradient>
+    <clipPath id="wave-cut-face"><path d="${face}"/></clipPath></defs>
+    <path d="M48 274h470l65-44v5l-65 45H48Z" fill="url(#wave-base)" stroke="#77694e"/>
+    <path d="M${right.map(pair).join('L')}Z" fill="#648e94" stroke="#435f67" stroke-width="1"/>
+    <path d="${face}" fill="url(#wave-cut)" stroke="#435f67" stroke-width="1.1"/> `;
+  // Material rows are photographed at the same phase as the marked particle.
+  // The deeper rows flatten because their orbital excursions are smaller.
+  body += '<g clip-path="url(#wave-cut-face)" fill="none">';
+  for(const depth of [3,6,10,15]){
+    const row=Array.from({length:91},(_,i)=>{
+      const q=waveParticleAt(state,-8+i*1.3,depth);
+      return pair(waveProject(q.x,1,q.height));
+    });
+    body+=`<path d="M${row.join('L')}" stroke="#d9e7da" opacity=".48" stroke-width=".95"/>`;
+  }
+  body+='</g>';
+  // Projection is affine in depth. One strip for each X interval exactly
+  // covers the former nine coplanar tiles and removes their raster seams.
+  for(let i=0;i<nx;i++){
+    body+=`<polygon points="${[back[i],back[i+1],front[i+1],front[i]].map(pair).join(' ')}" fill="${colors[i]}" stroke="${colors[i]}" stroke-width=".4"/>`;
   }
   for (const v of [0, .5, 1]) body += `<path d="M${(v === 0 ? back : v === 1 ? front : Array.from({ length: nx + 1 }, (_, i) => at(i / nx * 100, v))).map(pair).join('L')}" fill="none" stroke="#416b76" stroke-width="${v === 1 ? 1.6 : .8}"/>`;
   const rest = WAVE_GEOMETRY.particleRestX, marker = waveProject(state.particle.x, 1.008, state.particle.height);

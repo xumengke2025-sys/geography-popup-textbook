@@ -41,6 +41,17 @@ describe('trunnion-supported air counting instrument',()=>{
       expect(motion.describe!()).toMatchObject({cellsAreMolecules:false,waterVaporVisible:false,cloudRepresented:false,markerCountsAreQuantities:false,sharedFlatState:true});
     }
   });
+  it('draws the independent sampling piston only on request and holds every symbolic specimen still',()=>{
+    const {meshes,motion}=fixture(),grip=meshes.find(m=>m.name==='wooden-sample-grip')!;
+    expect(grip.userData.modelInput).toMatchObject({kind:'select',selection:1,toggleTo:0,keepPhase:true});
+    const jars=meshes.filter(m=>m.name==='glass-observation-vessel');
+    expect(jars).toHaveLength(2);expect(jars.every(m=>(m.material as T.MeshStandardMaterial).opacity<.2)).toBe(true);
+    const marks=meshes.filter(m=>m.userData.compositionSymbol);
+    motion.update(0,1,0,true);const pose=marks.map(m=>m.position.toArray());
+    motion.update(.85,1,0,true);expect(grip.position.x).toBeCloseTo(8.2);
+    expect(marks.map(m=>m.position.toArray())).toEqual(pose);
+    motion.update(.85,0,0,true);expect(grip.position.x).toBe(0);expect(marks.every(m=>!m.visible)).toBe(true);
+  });
   it('tilts all inlays as one rigid panel about its real hinge and restores exactly',()=>{
     const {meshes,motion}=fixture(),cells=meshes.filter(m=>m.userData.dryAirSpecies),labels=meshes.filter(m=>m.userData.kind==='text-label');
     motion.update(.4,1,0,true);const first=cells.map(m=>[...m.position.toArray(),...m.quaternion.toArray()]);

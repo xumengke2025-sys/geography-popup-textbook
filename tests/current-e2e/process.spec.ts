@@ -87,3 +87,21 @@ test('教师演示的进度、翻页和临时笔记不覆盖个人状态', async
   await page.getByRole('button', { name: '关闭笔记', exact: true }).click();
   expect(await readBookmark(page)).toEqual(saved);
 });
+
+
+test('手动切换水循环类型后从起点等待，播放中切换时继续演示', async ({ page }) => {
+  await gotoBook(page, '/?2d&figure=water');
+  const controls = page.locator('#figure-controls');
+  const condition = async (index: number) => {
+    const compact = controls.locator('#condition-choice');
+    if (await compact.isVisible()) await compact.selectOption(String(index));
+    else await controls.locator(`#selections [data-selection="${index}"]`).click();
+  };
+  await condition(1);
+  await expect(page.locator('#cPause')).toHaveAttribute('aria-label', '继续演示');
+  await expect(page.locator('#phase')).toHaveValue('0');
+  await page.getByRole('button', { name: '继续演示', exact: true }).click();
+  await condition(2);
+  await expect(page.locator('#cPause')).toHaveAttribute('aria-label', '暂停演示');
+  await expect.poll(() => page.locator('#phase').inputValue()).not.toBe('0');
+});

@@ -1,8 +1,14 @@
+import { mountEstuarySpecimen, mountRadiationReceiver } from './textbook-atmosphere-specimens';
+import { applyEarthScan } from './textbook-earth-scan';
+import { mountSpecimenDial } from './textbook-specimen-dial';
 import { THREE as T } from './reference/engine.js';
 import { createSpecimenMaterial } from './textbook-solid-materials';
 import { PALETTE as C, type TextbookGeometry, type ModelMotion, type Vec3 } from './textbook-geometry';
 import { phaseTrackPoint } from './textbook-model-input';
+import { buildSolarInstrument } from './textbook-solar-instrument';
+import { mountFieldInstrument } from './textbook-field-instruments';
 import { buildMarsCabin } from './textbook-mars-cabin';
+import { createInstrumentParts, chamferedPlateGeometry, turnedShaftGeometry, turnedSleeveGeometry, mergeInstrumentGeometry } from './textbook-instrument-parts';
 import { evaluateSolarDisturbance, evaluateSphereExchange, evaluateMarsTransfer, evaluateGreenhouseResponse,
   evaluateWindForces, skyClamp, skyProgress, skyEase } from './textbook-sky-causality-model';
 
@@ -56,8 +62,7 @@ function ringPath(at: Vec3, r: number, plane: 'xy' | 'xz' = 'xz', aspect = 1): V
  * responds. The permanent field is a thin context; the active event is solid. */
 export function buildSolarDisturbanceWorld(b: TextbookGeometry): ModelMotion {
   const { s, p } = world(b), sun = p(.16, .80, 23), earth = p(.79, .80, 23);
-  const sunMesh = ball(b, 12 * s, C.gold, sun), earthParts = globe(b, earth, 11 * s);
-  input([sunMesh], 1, '从太阳活动出发，回看同一扰动'); input(earthParts, 1, '查看扰动到达磁层后的极区响应');
+  const setInstrumentPhase = buildSolarInstrument(b, s, sun[2]);
   for (const [x, y] of [[-3, 4], [2, -2], [1, 7]]) ball(b, 1.1 * s, C.rock, [sun[0] + x * s, sun[1] + y * s, sun[2] + 11 * s], [1, .65, .25]);
   const flareG = new T.TorusGeometry(5 * s, .65 * s, 6, 28, Math.PI); flareG.rotateZ(-Math.PI / 2);
   const flare = b.mesh(flareG, C.warm, false); flare.position.set(sun[0] + 10 * s, sun[1], sun[2]); input([flare], 1, '重看太阳扰动的传播');
@@ -83,7 +88,7 @@ export function buildSolarDisturbanceWorld(b: TextbookGeometry): ModelMotion {
   });
   label(b, '太阳活动', p(.15, .71, 43), s); label(b, '地球磁场', p(.74, .69, 47), s);
   const polarLabel = label(b, '极区响应', p(.88, .94, 11), s);
-  const drag = handle(b, s, p, '拖动纸签，回看太阳扰动出发、到达与极区响应');
+
   let state = evaluateSolarDisturbance(0);
   return { update(phase, selection) {
     state = evaluateSolarDisturbance(phase, selection); flare.visible = state.enhanced;
@@ -98,7 +103,7 @@ export function buildSolarDisturbanceWorld(b: TextbookGeometry): ModelMotion {
       if (state.enhanced) { partial(b, outbound[i], state.outbound, 'accent', 1.1); if (state.arrived) partial(b, deflected[i], state.deflected, 'accent', 1.2); }
     });
     auroras.forEach(mesh => { mesh.visible = state.auroraResponse > .001; mesh.scale.y = Math.max(.015, state.auroraResponse); if (mesh.visible) b.outline(mesh, .85); });
-    polarLabel.visible = state.polarReceived; drag(phase);
+    polarLabel.visible = state.polarReceived; setInstrumentPhase(phase);
   }, focusBounds: () => ({ min: p(.01, .59, 0), max: p(1.01, 1.19, 53) }),
     describe: () => ({ kind: 'solar-activity', ...state, causalChain: ['departure', 'magnetosphere-arrival', 'polar-reception'], eventIdentityPreserved: true, polarResult: 'attached-finite-paper-curtain', receivingGeometryRetainsEndState: true, phaseMeaning: 'explanation-order', solarWindReachesGround: false }) };
 }
@@ -114,42 +119,37 @@ function waterSymbol(b: TextbookGeometry, s: number, id: string) {
 /** A single water identity changes state as it crosses sphere boundaries.
  * Vapor is an open tracer, never a visible liquid droplet floating upward. */
 export function buildSphereExchangeWorld(b: TextbookGeometry): ModelMotion {
-  const { s, p } = world(b), z0 = p(0, .59)[2], z1 = p(0, 1)[2];
-  const height = (x: number) => (2 + 11 * Math.exp(-((x / b.width - .25) ** 2) / .027)) * s;
-  const ground = b.terrain(.05 * b.width, .65 * b.width, z0, z1, height, C.rock, 28, 12);
-  const sea = b.box(p(.65, .59, .3), p(.96, 1, 2), C.sea);
-  const cloudAt = p(.49, .70, 36), clouds = [[-.28, 0, .24], [0, .07, .31], [.30, -.02, .22]].map(([x, y, r]) => ball(b, r * 18 * s, C.paper, [cloudAt[0] + x * 18 * s, cloudAt[1] + y * 18 * s, cloudAt[2]], [1, .64, .63]));
-  const treeAt = p(.36, .89, height(.36 * b.width) / s), leaves: any[] = [];
-  b.cylinder(treeAt, [treeAt[0], treeAt[1] + 16 * s, treeAt[2]], .45 * s, C.rock);
-  for (const [dx, dy, r] of [[-3, 13, 4.8], [2, 16, 5.5], [5, 12, 3.7]]) { const m = ball(b, r * s, C.green, [treeAt[0] + dx * s, treeAt[1] + dy * s, treeAt[2]], [1, .84, .8]); uniqueMaterial(b, m); leaves.push(m); }
-  const river: Vec3[] = [.18, .30, .42, .54, .69].map((u, i) => [u * b.width, height(u * b.width) + .35 * s, z0 + (z1 - z0) * (.2 + i * .16)]);
-  b.tube(river, .75 * s, C.water);
-  const soilAt = p(.36, 1.015, 5), wet = b.mesh(new T.BoxGeometry(15 * s, 2.6 * s, .5 * s), '#799b9c', false); wet.position.set(...soilAt);
-  const roots = [[soilAt, p(.34, .97, 10), treeAt], [p(.41, 1.01, 4), p(.39, .96, 8), treeAt]];
-  roots.forEach(path => b.tube(path, .28 * s, C.darkGreen));
-  const waterPaths = [curve(b, [p(.81, .85, 3), p(.78, .81, 22), cloudAt]), curve(b, [cloudAt, p(.42, .72, 34), p(.29, .73, 15)]), curve(b, [p(.29, .73, 15), ...river.slice(1), p(.82, .88, 3)])];
-  const biologyPaths = [curve(b, [soilAt, p(.35, .97, 9), treeAt, p(.37, .89, treeAt[1] / s + 17)]), curve(b, [p(.37, .89, treeAt[1] / s + 17), p(.40, .81, 30), cloudAt])];
+  const { s,p }=world(b),landscape=mountEstuarySpecimen(b,s);
+  const {cloudAt,river,soilAt,treeAt,canopy}=landscape;
+  const pore=new T.Shape();
+  pore.moveTo(-5.8,-.23);pore.bezierCurveTo(-3.9,-1.15,-.9,-1.12,1.85,-.95);
+  pore.bezierCurveTo(4.1,-.9,5.85,-.35,6,.29);pore.bezierCurveTo(1.8,.93,-3.13,.72,-5.8,-.23);
+  const wetGeom=new T.ExtrudeGeometry(pore,{depth:.12,bevelEnabled:false});wetGeom.scale(s,s,s);
+  const wet=b.mesh(wetGeom,'#74908a',false,true,'land');wet.position.set(...soilAt);wet.userData.causalRole='root-zone-water-section';
+  const rainLanding=river[18];
+  const waterPaths=[curve(b,[p(.81,.85,3),p(.78,.81,22),cloudAt]),curve(b,[cloudAt,p(.42,.72,34),rainLanding]),
+    curve(b,[...river.slice(18),p(.82,.88,3)])];
+  const biologyPaths=[curve(b,[soilAt,p(.35,.97,9),treeAt,canopy]),curve(b,[canopy,p(.40,.81,30),cloudAt])];
   const symbols = ['water-a', 'water-b', 'water-c'].map(id => waterSymbol(b, s, id));
-  const tags = [label(b, '大气圈', p(.55, .57, 45), s), label(b, '水圈', p(.85, 1.06, 6), s), label(b, '生物圈', p(.27, .91, 29), s), label(b, '岩石圈', p(.16, 1.04, 2), s)];
-  input([sea, clouds[0], tags[1], tags[0]], 1, '追踪同一批水在圈层之间的迁移'); input([...leaves, tags[2]], 2, '追踪根吸水、叶片接收与蒸腾'); input([ground, tags[3]], 0, '查看同一地景中的圈层联系');
-  const drag = handle(b, s, p, '拖动纸签，回看同一批水的交换与接收'); let state = evaluateSphereExchange(0);
+  let state=evaluateSphereExchange(0);
   return { update(phase, selection) {
     state = evaluateSphereExchange(phase, selection); wet.scale.x = .5 + .5 * state.soilResponse;
-    leaves.forEach(mesh => { mesh.material.color.copy(new T.Color(C.green).lerp(new T.Color(C.darkGreen), state.leafResponse * .55)); b.outline(mesh, .35 + state.leafResponse * .25); });
+    landscape.update(phase,state.selected,state.cloudResponse,state.leafResponse);
     symbols.forEach(({ drop, frame }, i) => {
       const t = skyClamp(phase - i * .018), bio = state.biological;
       const vapor = bio ? t >= .63 : t < .22;
       const point = bio ? t < .42 ? biologyPaths[0].getPoint(skyProgress(.06, .42, t)) : t < .63 ? biologyPaths[0].getPoint(1) : biologyPaths[1].getPoint(skyProgress(.63, .95, t))
         : t < .22 ? waterPaths[0].getPoint(skyProgress(.03, .22, t)) : t < .50 ? waterPaths[1].getPoint(skyProgress(.30, .50, t)) : waterPaths[2].getPoint(skyProgress(.50, .98, t));
       drop.visible = !vapor; frame.visible = vapor; drop.position.copy(point); frame.position.copy(point);
-      const mesh = vapor ? frame : drop; mesh.position.x += (i - 1) * 1.6 * s; b.outline(mesh, .6);
+      const mesh = vapor ? frame : drop;
+      // In the channel the three identities share its finite width. The old
+      // decorative spread put the outside drops on dry land beside the river.
+      mesh.position.x += (i - 1) * (vapor ? 1.6 : .35) * s; b.outline(mesh, .6);
     });
-    clouds.forEach(mesh => { mesh.scale.setScalar(.80 + .2 * state.cloudResponse); b.outline(mesh, .35); });
     if (state.biological) { partial(b, biologyPaths[0], skyProgress(.06, .42, phase)); if (phase >= .63) partial(b, biologyPaths[1], skyProgress(.63, .95, phase)); }
     else { partial(b, waterPaths[0], skyProgress(.03, .22, phase)); if (phase >= .30) partial(b, waterPaths[1], skyProgress(.30, .50, phase)); if (phase >= .50) partial(b, waterPaths[2], skyProgress(.50, .98, phase)); }
-    drag(phase);
-  }, focusBounds: () => ({ min: p(.02, .54, -2), max: p(.99, 1.19, 49) }),
-    describe: () => ({ kind: 'external-spheres', ...state, vaporSymbol: 'open-frame', liquidSymbol: 'drop', spheresAlwaysPresent: true, identitySurvivesPhaseChange: true, phaseMeaning: 'exchange-explanation-order' }) };
+  }, focusBounds: () => ({ min: p(.02, .54, -2), max: p(1.01, 1.21, 43) }),
+    describe: () => ({ kind: 'external-spheres', ...state, rainLanding,riverEntry:waterPaths[2].getPoint(0).toArray(),rootZone:soilAt,treeContact:treeAt,vaporSymbol: 'open-frame', liquidSymbol: 'drop', spheresAlwaysPresent: true, identitySurvivesPhaseChange: true, phaseMeaning: 'exchange-explanation-order' }) };
 }
 
 /** Four different modules remain present. Only the chosen connection is active;
@@ -253,40 +253,140 @@ export function buildMarsTransferWorld(b: TextbookGeometry): ModelMotion {
 /** One ground slab receives identical shortwave input in every condition.
  * Its quiet front inlay records relative heat retained after longwave exchange. */
 export function buildGreenhouseResponseWorld(b: TextbookGeometry): ModelMotion {
-  const { s, p } = world(b), ground = b.box(p(.09, .65, 0), p(.93, 1, 3), C.land);
-  const scaleStart = p(.145, 1.017, 1.75), scaleLength = 73 * s;
-  const scaleTrack = b.mesh(new T.BoxGeometry(scaleLength, 2.5 * s, .55 * s), '#d0cab9', false); scaleTrack.position.set(scaleStart[0] + scaleLength / 2, scaleStart[1], scaleStart[2]);
-  const inlay = b.mesh(new T.BoxGeometry(scaleLength, 2.1 * s, .65 * s), C.warm, false); uniqueMaterial(b, inlay); inlay.userData.causalRole = 'relative-ground-heat-fill';
-  const heatNeedle = b.mesh(new T.BoxGeometry(.65 * s, 3.5 * s, .7 * s), C.ink, false); heatNeedle.userData.causalRole = 'relative-ground-heat-position';
-  const receiving = b.mesh(new T.PlaneGeometry(22 * s, 12 * s), C.land, false, false); receiving.rotation.x = -Math.PI / 2; receiving.position.set(...p(.63, .84, 3.12)); uniqueMaterial(b, receiving);
+  const { s, p } = world(b);
+  const hardware=createInstrumentParts(b);
+  const setRadiationReceiver=mountRadiationReceiver(b,s);
+  hardware.casting(p(.055,.584,-3),p(1.08,1.22,-1),'wood',.55*s);
+  hardware.plate(p(.062,.592,-1.03),p(1.074,1.21,-.68),'brass',.16*s);
+  const inset=b.mesh(chamferedPlateGeometry(p(.072,.608,-.72),p(1.063,1.184,-.55),.14*s),'#394e43',false,true,'enamel');
+  inset.userData.causalRole='recessed-instrument-worktop';
+  for(const x of [.095,1.03])for(const z of [.64,1.16])hardware.column(p(x,z,-4.4),p(x,z,-3),1.48*s);
+  // A trunnion-mounted source collimates the same shortwave path in every
+  // atmosphere trial. Its aperture lies at the exact first ray coordinate.
+  const source=b.v(p(.10,.75,49)),axis=b.v(p(.29,.83,3.78)).sub(source).normalize();
+  const axial=(n:number):Vec3=>source.clone().addScaledVector(axis,n*s).toArray() as Vec3;
+  const pivot=axial(-4.3), foot=p(.075,.667,-.68);
+  hardware.plate([foot[0]-2.3*s,foot[1],foot[2]-2.4*s],[foot[0]+2.3*s,foot[1]+1.1*s,foot[2]+2.4*s],'brass',.25*s);
+  hardware.column([foot[0],foot[1]+1.1*s,foot[2]],[foot[0],pivot[1],foot[2]],1.32*s);
+  hardware.shaft([foot[0],pivot[1],foot[2]],pivot,.61*s,'steel');
+  b.mesh(turnedSleeveGeometry(axial(-8.1),axial(-.14),[[2.6*s,0],[3.2*s,.06],[3.2*s,.16],[2.82*s,.24],[2.68*s,.78],[3.5*s,.87],[3.5*s,1]],2.16*s),'#a6834c',false,true,'brass');
+  b.mesh(turnedShaftGeometry(axial(-.41),axial(0),[[2.10*s,0],[2.05*s,1]]),'#edd396',false,true,'ivory');
+  const ground = b.mesh(chamferedPlateGeometry(p(.09,.65,-.8),p(.93,1,3),.45*s), '#aa9370', false,true,'land');
+  const scaleStart = p(.145,1.025,1.75), scaleLength = 73*s;
+  // Local y runs up the inclined dial. The fill, graduations and moving
+  // index all occupy parallel planes on this same physical front face.
+  const faceAngle=-Math.PI*.28;
+  const dialPoint=(x:number,y:number,z:number):Vec3=>[
+    scaleStart[0]+x*s,scaleStart[1]+(y*Math.cos(faceAngle)-z*Math.sin(faceAngle))*s,
+    scaleStart[2]+(y*Math.sin(faceAngle)+z*Math.cos(faceAngle))*s];
+  const block=(x:number,y:number,z:number,w:number,h:number,d:number,bevel:number)=>{
+    const geometry=chamferedPlateGeometry([-w*s/2,-h*s/2,-d*s/2],[w*s/2,h*s/2,d*s/2],bevel*s);
+    geometry.rotateX(faceAngle);geometry.translate(...dialPoint(x,y,z));return geometry;
+  };
+  b.mesh(block(36.5,0,0,82,8.2,2.6,.65),'#3c524a',false,true,'enamel');
+  b.mesh(block(36.5,0,1.26,78,6.8,.52,.23),'#aa8551',false,true,'brass');
+  b.mesh(block(36.5,0,1.52,76.7,5.8,.26,.10),'#e5dcc4',false,true,'ivory');
+  b.mesh(block(36.5,.62,1.68,73,1.4,.14,.05),'#817961',false,true,'enamel');
+  const ticks=Array.from({length:21},(_,i)=>{
+    const height=i%5===0?1.25:.65;
+    return block(73*i/20,-1.92+height/2,1.72,.22,height,.10,.035);
+  });
+  b.mesh(mergeInstrumentGeometry(ticks),'#4a4940',false,true,'enamel');
+  const inlay = b.mesh(new T.BoxGeometry(scaleLength,1.25*s,.16*s), '#ab5335',false,true,'enamel');
+  inlay.rotation.x=faceAngle;inlay.userData.causalRole='relative-ground-heat-fill';
+  const pointer=new T.Shape();
+  pointer.moveTo(-1.35,2.6);pointer.lineTo(1.35,2.6);pointer.lineTo(1.35,1.7);pointer.lineTo(0,-1.65);pointer.lineTo(-1.35,1.7);pointer.closePath();
+  const indexGeometry=new T.ExtrudeGeometry(pointer,{depth:.25,bevelEnabled:true,bevelThickness:.08,bevelSize:.08,bevelSegments:1});
+  indexGeometry.scale(s,s,s);indexGeometry.rotateX(faceAngle);
+  const heatNeedle=b.mesh(indexGeometry,'#39463f',false,true,'enamel');
+  heatNeedle.userData.causalRole='relative-ground-heat-position';
+  uniqueMaterial(b,ground);
+  applyEarthScan(ground.material,'loam',10*s);
   const air: any[] = [];
-  for (const depth of [.69, .96]) {
-    const points = Array.from({ length: 49 }, (_, i): Vec3 => { const u = i / 48; return p(.12 + u * .77, depth, 29 + 5 * Math.sin(u * Math.PI)); }); air.push(b.tube(points, .22 * s, C.cool));
+  const airHeight=29+5*Math.sin(Math.PI*(.55-.12)/.77);
+  const veilGeometry=new T.CircleGeometry(1,56);veilGeometry.rotateX(-Math.PI/2);
+  veilGeometry.scale(10.56*s,1,10.56*b.height/100);veilGeometry.translate(...p(.554,.83,airHeight-.12));
+  const veil=b.mesh(veilGeometry,'#a6c7c6',false,false,'air');
+  veil.material=createSpecimenMaterial(b.pop,{role:'air',color:'#a6c7c6'});
+  veil.material.opacity=.19;veil.material.depthWrite=false;veil.castShadow=false;veil.userData.castShadow=false;
+  air.push(veil);
+  const cloudAt=p(.554,.83,35.3), cloudVertices:number[]=[],cloudIndices:number[]=[];
+  const sides=24, slices=36;
+  cloudVertices.push(cloudAt[0]-12*s,cloudAt[1],cloudAt[2]);
+  for(let i=1;i<slices;i++){
+    const u=i/slices,x=24*u-12;
+    for(let j=0;j<sides;j++){
+      const angle=2*Math.PI*j/sides, upper=Math.sin(angle);
+      const edge=Math.pow(Math.sin(Math.PI*u),.55);
+      const lobes=1+.20*Math.sin(4.7*Math.PI*u+.65*Math.cos(angle))+.11*Math.cos(8*Math.PI*u-angle);
+      const y=edge*lobes*upper*(upper>0?4.8:1.55);
+      const z=edge*(4.5*lobes*Math.cos(angle)+.8*Math.sin(5*u));
+      cloudVertices.push(cloudAt[0]+x*s,cloudAt[1]+y*s,cloudAt[2]+z*s);
+      const k=1+(i-1)*sides+j,next=1+(i-1)*sides+(j+1)%sides;
+      if(i===1)cloudIndices.push(0,k,next);
+      if(i<slices-1)cloudIndices.push(k,k+sides,next,next,k+sides,next+sides);
+      else cloudIndices.push(k,1+(slices-1)*sides,next);
+    }
   }
-  const cloudAt = p(.61, .80, 32), clouds = [[-.27, 0, .24], [0, .07, .31], [.30, -.02, .22]].map(([x, y, r]) => ball(b, r * 19 * s, C.paper, [cloudAt[0] + x * 19 * s, cloudAt[1] + y * 19 * s, cloudAt[2]], [1, .64, .63]));
-  const short = curve(b, [p(.10, .75, 49), p(.29, .82, 3.3)]);
+  cloudVertices.push(cloudAt[0]+12*s,cloudAt[1],cloudAt[2]);
+  const cloudGeometry=new T.BufferGeometry();
+  cloudGeometry.setAttribute('position',new T.Float32BufferAttribute(cloudVertices,3));
+  cloudGeometry.setIndex(cloudIndices);cloudGeometry.computeVertexNormals();
+  const cloud=b.mesh(cloudGeometry,'#ece9da',false,true,'air');
+  const short = curve(b, [p(.10, .75, 49), p(.29, .83, 3.78)]);
   const longSpace = curve(b, [p(.46, .83, 3.3), p(.49, .83, 20), p(.53, .83, 49)]);
-  const longAir = curve(b, [p(.46, .83, 3.3), p(.49, .83, 17), p(.55, .83, 31)]);
-  const down = curve(b, [p(.55, .83, 31), p(.67, .83, 19), p(.68, .83, 3.3)]), up = curve(b, [p(.55, .83, 31), p(.73, .83, 40), p(.83, .83, 49)]);
-  const photons = [ball(b, 1.25 * s, C.gold), ball(b, 1.15 * s, C.warm), ball(b, 1.15 * s, C.warm), ball(b, 1.15 * s, C.warm)];
-  const tags = [label(b, '太阳短波', p(.13, .66, 48), s), label(b, '地面长波', p(.36, 1.02, 14), s), label(b, '大气逆辐射', p(.81, .98, 22), s)];
-  input([ground, inlay], 0, '比较没有大气时的长波损失'); input(air, 1, '比较有大气时向上、向下的长波辐射'); input(clouds, 2, '比较低云条件下的长波交换');
-  const drag = handle(b, s, p, '拖动纸签，回看地面吸收、长波传递与接收响应'); let state = evaluateGreenhouseResponse(0);
+  const airContact=p(.55,.83,29+5*Math.sin(Math.PI*(.55-.12)/.77));
+  const longAir = curve(b, [p(.46, .83, 3.3), p(.49, .83, 17), airContact]);
+  const down = curve(b, [airContact, p(.67, .83, 19), p(.68, .83, 3.78)]), up = curve(b, [airContact, p(.73, .83, 40), p(.83, .83, 49)]);
+  // Each ray retains its direction at rest. Advancing only the draw range
+  // keeps the same path buffers through a complete forward or reverse seek.
+  const ray=(path:any,tint:string)=>{
+    const steps=64,sides=8;
+    const geometry=new T.TubeGeometry(path,steps,.34*s,sides,false);
+    const trail=b.mesh(geometry,tint,false,true,'enamel');
+    const head=b.mesh(new T.ConeGeometry(1.34*s,3.3*s,12),tint,false,true,'enamel');
+    const axis=new T.Vector3(0,1,0);
+    return (q:number)=>{
+      trail.visible=head.visible=q>.004;
+      if(!head.visible)return;
+      geometry.setDrawRange(0,Math.floor(steps*q)*sides*6);
+      const tangent=path.getTangentAt(q);
+      const size=Math.min(1,path.getLength()*q/(3.3*s));
+      head.scale.setScalar(size);
+      head.position.copy(path.getPointAt(q)).addScaledVector(tangent,-1.65*s*size);
+      head.quaternion.setFromUnitVectors(axis,tangent);
+    };
+  };
+  const sunlight=ray(short,'#c6953c'), escape=ray(longSpace,'#b25e45'), absorption=ray(longAir,'#b25e45');
+  const backRadiation=ray(down,'#b25e45'),spaceRadiation=ray(up,'#b25e45');
+  const receivers=[.29,.68].map(x=>{
+    const at=p(x,.83,3.16);
+    return b.mesh(turnedShaftGeometry(at,[at[0],at[1]+.48*s,at[2]],[[3.8*s,0],[4*s,.22],[3.8*s,.7],[3.4*s,1]]),'#a68049',false,true,'brass');
+  });
+  const disks=receivers.map((_,i)=>{
+    const at=p(i===0?.29:.68,.83,3.66);
+    const disk=b.mesh(turnedShaftGeometry(at,[at[0],at[1]+.1*s,at[2]],[[3.23*s,0],[3.23*s,1]]),'#685f52',false,true,'rock');
+    uniqueMaterial(b,disk);return disk;
+  });
+  const tags = [label(b, '太阳短波', p(.09,.68,62), s), label(b, '地面长波', p(.36, .69, 18), s), label(b, '大气逆辐射', p(.83, .84, 22), s)];
+  input([ground, inlay,...disks,...receivers], 0, '比较没有大气时的长波损失'); input(air, 1, '比较有大气时向上、向下的长波辐射'); input([cloud], 2, '比较低云条件下的长波交换');
+  for(const m of [ground,inlay,...disks,...receivers,...air,cloud])m.userData.modelInput.keepPhase=true;
+  const covers=mountSpecimenDial(b,p(1.012,1.12,5.95),6.3*s,{label:'拨动试验盘，换大气条件',choices:['无大气','有大气','低云']});
+  let state=evaluateGreenhouseResponse(0);
   return { update(phase, selection) {
-    state = evaluateGreenhouseResponse(phase, selection); air.forEach(mesh => { mesh.visible = state.atmosphere; }); clouds.forEach(mesh => { mesh.visible = state.cloud; if (mesh.visible) b.outline(mesh, .35); });
+    covers(phase,selection);setRadiationReceiver(phase,selection);
+    state = evaluateGreenhouseResponse(phase, selection); air.forEach(mesh => { mesh.visible = state.atmosphere; }); cloud.visible=state.cloud;
     tags[1].visible = phase >= .33; tags[2].visible = state.atmosphere && phase >= .6;
-    inlay.scale.x = state.groundHeat; inlay.position.set(scaleStart[0] + scaleLength * state.groundHeat / 2, scaleStart[1], scaleStart[2] + .45 * s);
-    heatNeedle.position.set(scaleStart[0] + scaleLength * state.groundHeat, scaleStart[1], scaleStart[2] + .8 * s);
-    for (const mark of [0, .25, .5, .75, 1]) b.contour([[scaleStart[0] + scaleLength * mark, scaleStart[1] - 1.6 * s, scaleStart[2] + .9 * s], [scaleStart[0] + scaleLength * mark, scaleStart[1] - 1.1 * s, scaleStart[2] + .9 * s]], .45);
-    receiving.material.color.copy(new T.Color(C.land).lerp(new T.Color(C.warm), state.returnReceived * .7));
-    photons[0].visible = phase >= .02 && phase < .18; photons[0].position.copy(short.getPoint(state.shortwave)); partial(b, short, state.shortwave, 'accent', 1.1);
-    const outgoing = state.atmosphere ? longAir : longSpace; photons[1].visible = phase >= .33 && phase < .52; photons[1].position.copy(outgoing.getPoint(state.emitted)); partial(b, outgoing, state.emitted, 'accent', 1.25);
-    photons[2].visible = state.atmosphere && phase >= .60 && phase < .78; photons[2].position.copy(down.getPoint(state.returned));
-    photons[3].visible = state.atmosphere && phase >= .60 && phase < .9; photons[3].position.copy(up.getPoint(state.spaceEmission));
-    if (state.atmosphere && phase >= .60) { partial(b, down, state.returned, 'accent', state.cloud ? 1.5 : 1.15); partial(b, up, state.spaceEmission, 'accent', .8); }
+    inlay.scale.x = state.groundHeat; inlay.position.set(...dialPoint(36.5*state.groundHeat,.62,1.83));
+    heatNeedle.position.set(...dialPoint(73*state.groundHeat,0,2.08));
+    ground.material.color.set('#aa9370').lerp(new T.Color('#b88157'),state.returnReceived*.45);
+    sunlight(state.shortwave);escape(state.atmosphere?0:state.emitted);absorption(state.atmosphere?state.emitted:0);
+    backRadiation(state.returned);spaceRadiation(state.atmosphere?state.spaceEmission:0);
+    disks[0].material.color.set('#685f52').lerp(new T.Color('#d49d4e'),state.solarArrival);
+    disks[1].material.color.set('#685f52').lerp(new T.Color('#c5684c'),state.returnReceived);
     if (state.returnReceived > 0) b.contour(ringPath(p(.68, .84, 3.25), (3 + state.returnReceived * 3) * s, 'xz', .55), .65);
-    b.outline(ground, .4); drag(phase);
-  }, focusBounds: () => ({ min: p(.04, .58, -1), max: p(.99, 1.19, 55) }),
+    b.outline(ground, .26);
+  }, focusBounds: () => ({ min:p(.013,.56,-4.4),max:p(1.108,1.26,65) }),
     describe: () => ({ kind: 'greenhouse', ...state, groundHeatIndicator: { relativeOnly: true, fixedTrack: true, position: state.groundHeat, resultRetained: true }, sameGroundAndSolarInput: true, receiverResponseAfterArrival: true, atmosphereAbsorbsLongwave: state.atmosphere, upwardAndDownwardEmission: state.atmosphere, enhancedCloudBackRadiation: state.cloud, phaseMeaning: 'explanation-order' }) };
 }
 
@@ -294,16 +394,31 @@ export function buildGreenhouseResponseWorld(b: TextbookGeometry): ModelMotion {
  * equilibrium conditions are compared directly, without a false chronology. */
 export function buildWindForceParcelWorld(b: TextbookGeometry): ModelMotion {
   const { s, p } = world(b), origin = p(.52, .77, 5.4);
-  b.box(p(.04, .34, 0), p(.96, 1.08, 1.2), C.paper);
-  for (let i = 0; i < 6; i++) b.stroke([p(.12 + i * .15, .41, 1.4), p(.12 + i * .15, 1.01, 1.4)], .3);
-  label(b, '高压', p(.11, 1.02, 7), s); label(b, '低压', p(.88, 1.02, 7), s);
-  const parcel = ball(b, 3 * s, '#dce3d4', origin, [1, .7, 1]);
-  parcel.userData.modelInput = { kind: 'select', selection: 1, label: '比较同一个空气对象所受的力' };
-  const tags = [label(b, '气压梯度力', p(.84, .75, 29), s, 28), label(b, '偏向力', p(.24, .52, 14), s, 23), label(b, '摩擦力', p(.39, 1.02, 14), s, 23), label(b, '风向', p(.58, .55, 18), s, 17)];
+  const at=(x:number,y:number,z:number):Vec3=>[origin[0]+x*s,y*s,origin[2]+z*s];
+  const pivot = at(0, 0, 0);
+  const parts = mountFieldInstrument(b, 'wind-forces', s, pivot);
+  const windDial=mountSpecimenDial(b,at(1,4.2,30),4.9*s,{label:'拨动条件盘，比较同一气团的受力',choices:['只受气压梯度力','北半球高空','北半球近地面','南半球近地面']});
+  const vanes = parts.get('vane')!;
+  const parcel = parts.get('pivot')![0];
+  const selectParcel = { kind: 'select', selection: 1, label: '比较同一气团所受的力' };
+  for (const mesh of [...vanes, parcel]) mesh.userData.modelInput = selectParcel;
+  for (const mesh of vanes) {
+    mesh.geometry.translate(-pivot[0], -pivot[1], -pivot[2]);
+    mesh.position.set(...pivot);
+  }
+  for (const [x, text] of [[-38, '高压'], [38, '低压']] as const) {
+    const plaque = b.label(text, at(x, 2.69, 22.43), 12.6 * s, 8.15 * s,
+      { appearance: 'engraved', ink: '#423a2d' });
+    plaque.rotation.x = .43 - Math.PI / 2;
+    plaque.userData.labelMount = 'surface';
+  }
+  const tags = [label(b, '气压梯度力', p(.84, .75, 29), s, 28),
+    b.label('偏向力', p(.24, .52, 14), 23 * s, 6.48 * s),
+    label(b, '摩擦力', p(.39, 1.02, 14), s, 23), label(b, '风向', p(.58, .55, 18), s, 17)];
   const shapeArrow = (color: string, radius: number) => {
     const shaft = b.mesh(new T.CylinderGeometry(radius, radius, 1, 10), color, false), tip = b.mesh(new T.ConeGeometry(radius * 2.6, radius * 4.6, 10), color, false); return { shaft, tip };
   };
-  const vectors = [shapeArrow(C.warm, .40 * s), shapeArrow(C.cool, .40 * s), shapeArrow(C.rock, .40 * s), shapeArrow(C.water, .65 * s)];
+  const vectors = [shapeArrow('#aa5640', .57 * s), shapeArrow('#667fa3', .57 * s), shapeArrow('#726750', .57 * s)];
   const pose = ({ shaft, tip }: ReturnType<typeof shapeArrow>, vector: readonly number[], length: number, height: number) => {
     const direction = new T.Vector3(vector[0], 0, vector[1]), magnitude = direction.length(); shaft.visible = tip.visible = magnitude > .001;
     if (!shaft.visible) return; direction.normalize(); const len = magnitude * length * s, head = Math.min(3.8 * s, len * .27), from = b.v(origin).add(new T.Vector3(0, height * s, 0));
@@ -313,21 +428,35 @@ export function buildWindForceParcelWorld(b: TextbookGeometry): ModelMotion {
   };
   let state = evaluateWindForces(0), previousWind: readonly number[] = state.wind, previousSelection = 0;
   return { update(_phase, selection) {
+    windDial(0,selection);
     const next = evaluateWindForces(selection); if (next.selected !== previousSelection) { previousWind = state.wind; previousSelection = next.selected; } state = next;
-    pose(vectors[0], state.gradient, 24, 0); pose(vectors[1], state.coriolis, 24, 0); pose(vectors[2], state.friction, 24, 0); pose(vectors[3], state.wind, 30, 1.8);
+    pose(vectors[0], state.gradient, 24, 0); pose(vectors[1], state.coriolis, 24, 0); pose(vectors[2], state.friction, 24, 0);
+    const bearing = -Math.atan2(state.wind[1], state.wind[0]);
+    for (const mesh of vanes) mesh.rotation.y = bearing;
     for (let i = 0; i < 8; i++) {
       const a = (i + .15) / 8 * 28, c = (i + .62) / 8 * 28;
       b.contour([[origin[0] + previousWind[0] * a * s, origin[1] + 1.7 * s, origin[2] + previousWind[1] * a * s], [origin[0] + previousWind[0] * c * s, origin[1] + 1.7 * s, origin[2] + previousWind[1] * c * s]], .25);
     }
     tags[1].visible = state.selected > 0; tags[2].visible = state.selected > 1;
     b.contour(ringPath(origin, 3.1 * s, 'xz'), parcel.userData.modelHovered ? .85 : .5);
-    const windTip = b.v(origin).add(new T.Vector3(state.wind[0] * 33 * s, 6 * s, state.wind[1] * 33 * s)); tags[3].position.copy(windTip);
+    const windTip = b.v(at(state.wind[0]*29.8,7.76,state.wind[1]*29.8));
+    tags[3].position.set(...at(state.wind[0]*39+3,12,state.wind[1]*37+2));
+    tags[0].position.set(...at(32,14,-12));
+    if(state.selected>0){
+      tags[1].position.set(...at(-31,11,state.selected===1?-8:state.selected===2?21:-24));
+      const end=at(state.coriolis[0]*24,5.4,state.coriolis[1]*24);
+      b.contour([end,tags[1].position.toArray() as Vec3],.35);
+    }
+    if(state.selected>1){
+      tags[2].position.set(...at(-12,11,state.selected===2?-23:25));
+      b.contour([at(state.friction[0]*24,5.4,state.friction[1]*24),tags[2].position.toArray() as Vec3],.35);
+    }
     const relative = tags[3].position.clone().sub(tags[0].position).applyQuaternion(tags[0].quaternion.clone().invert());
     if (Math.abs(relative.x) < 28 * s && Math.abs(relative.y) < 13 * s) {
       const up = new T.Vector3(0, 1, 0).applyQuaternion(tags[0].quaternion);
       tags[3].position.addScaledVector(up, 13 * s - relative.y);
-      b.contour([windTip.toArray() as Vec3, tags[3].position.clone().addScaledVector(up, -3.5 * s).toArray() as Vec3], .3);
     }
-  }, focusBounds: () => ({ min: p(.01, .26, 0), max: p(1.01, 1.13, 34) }),
+    b.contour([windTip.toArray() as Vec3,tags[3].position.toArray() as Vec3],.3);
+  }, focusBounds: () => ({ min: at(-49,-4,-39), max: at(49,34,39) }),
     describe: () => ({ kind: 'wind-forces', ...state, windXZ: state.wind, pressureGradientXZ: state.gradient, previousWindXZ: previousWind, sameAirParcel: true, previousWindIsComparisonOnly: true, phaseMeaning: 'static-condition', coriolisPerpendicularToWind: true, frictionOppositeToWind: state.selected > 1, nearSurfaceCrossIsobars: state.selected > 1, forceScaleIsMeasured: false }) };
 }

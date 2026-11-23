@@ -1,4 +1,5 @@
 import { THREE as T } from './reference/engine.js';
+import { scanUniform } from './textbook-earth-scan';
 
 // The observation camera must collect this light layer. Layer membership is
 // evaluated per camera by Three.js, not per receiving object.
@@ -51,7 +52,7 @@ export function createSolidMaterial(pop: any, role: Exclude<SolidMaterialRole, '
   material.userData.visualTheme = 'physical-field-instruments-v2';
   if (pop.instrumentEnvironment && ['brass', 'steel', 'enamel'].includes(role)) {
     material.envMap = pop.instrumentEnvironment;
-    material.envMapIntensity = role === 'enamel' ? .4 : .9;
+    material.envMapIntensity = role === 'enamel' ? .48 : 1.07;
   }
   const surfaceAlpha=pop.u?.uSurfAlpha??{value:1};
   material.userData.uniforms = { uSurfAlpha: surfaceAlpha };
@@ -62,33 +63,55 @@ export function createSolidMaterial(pop: any, role: Exclude<SolidMaterialRole, '
     // section meshes without UVs, and stay still while the instrument moves.
     const finished = role === 'brass' || role === 'steel' || role === 'wood';
     if (finished) {
+      const wood = role === 'wood';
+      if (wood) shader.uniforms.walnutScan = scanUniform('walnut');
       shader.vertexShader = shader.vertexShader
-        .replace('#include <common>', '#include <common>\nvarying vec3 vInstrumentFinish;')
-        .replace('#include <begin_vertex>', '#include <begin_vertex>\nvInstrumentFinish = position;');
+        .replace('#include <common>', '#include <common>\nvarying vec3 vInstrumentFinish;' + (wood ? 'varying vec3 vStockNormal;' : ''))
+        .replace('#include <begin_vertex>', '#include <begin_vertex>\nvInstrumentFinish = position;' + (wood ? 'vStockNormal = normal;' : ''));
       shader.fragmentShader = shader.fragmentShader
-        .replace('#include <common>', '#include <common>\nvarying vec3 vInstrumentFinish;')
+        .replace('#include <common>', '#include <common>\nvarying vec3 vInstrumentFinish;' + (wood ? 'varying vec3 vStockNormal; uniform sampler2D walnutScan;' : ''))
         .replace('#include <color_fragment>', `#include <color_fragment>
           float finishCloud = (sin(vInstrumentFinish.x * 0.21 + sin(vInstrumentFinish.z * 0.13))
             + sin(vInstrumentFinish.z * 0.31 + vInstrumentFinish.y * 0.07)) * 0.5;
           ${role === 'wood' ? `
-          float timberWarp = vInstrumentFinish.z + sin(vInstrumentFinish.x * 0.16) * 0.8;
-          float timber = sin(timberWarp * 2.7 + sin(timberWarp * 0.27) * 2.1);
-          float timberFine = sin(timberWarp * 15.3 + vInstrumentFinish.x * 0.03);
-          diffuseColor.rgb *= vec3(1.035, 0.89, 0.76)
-            * (0.97 + 0.065 * timber + 0.018 * timberFine + 0.022 * finishCloud);` : `
-          diffuseColor.rgb *= ${role === 'brass' ? 'vec3(1.0, 0.87, 0.71)' : 'vec3(1.0)'} * (0.98 + 0.022 * finishCloud);`}`)
+          // The grain runs along the stock. A wavering ring cut opens into
+          // broad curls on the face and short ray flecks along its edges.
+          vec3 p = vInstrumentFinish;
+          float lengthwise = p.x * .080;
+          float rings = 1.65 * length(vec2(p.z*.72 + 2.9*sin(lengthwise*.73), p.y*.78 + 3.6*cos(lengthwise*.54)));
+          rings += .47*sin(p.z*.69 + lengthwise) + .34*sin(lengthwise*2.1);
+          float filterRing = 1.0 - smoothstep(.65, 2.9, fwidth(rings));
+          float latewood = pow(.5 + .5*cos(rings), 5.5) * filterRing;
+          vec3 grainWeights = pow(abs(vStockNormal), vec3(6.));
+          grainWeights /= max(.00001,dot(grainWeights,vec3(1.)));
+          vec3 board = p / 57.;
+          vec3 walnut = texture2D(walnutScan,board.zy).rgb*grainWeights.x
+            + texture2D(walnutScan,board.xz).rgb*grainWeights.y
+            + texture2D(walnutScan,board.xy).rgb*grainWeights.z;
+          diffuseColor.rgb *= mix(vec3(1.18,1.09,.97),vec3(.69,.60,.54),latewood);
+          diffuseColor.rgb *= .48 + 1.04*walnut.r;` : `
+          diffuseColor.rgb *= ${role === 'brass' ? 'vec3(1.0, 0.95, 0.86)' : 'vec3(1.0)'} * (0.98 + 0.022 * finishCloud);`}`)
         .replace('#include <roughnessmap_fragment>', `#include <roughnessmap_fragment>
           float toolMark = sin(vInstrumentFinish.y * 32.0 + vInstrumentFinish.z * 0.3);
           // Filter the fine tool marks rather than letting subpixel machining
           // lines crawl on columns when the book camera moves.
           float toolFilter = 1.0 - smoothstep(0.6, 2.8, fwidth(vInstrumentFinish.y * 32.0));
+          ${wood ? 'roughnessFactor += .14*(walnut.b-.5)+.055*(.5-walnut.g);' : ''}
           roughnessFactor = clamp(roughnessFactor + 0.018 * toolMark * toolFilter, 0.12, 1.0);`);
+    }
+    if (role === 'brass') {
+      // Oxidised patches scatter a broader highlight. The cleaner parts
+      // retain the narrow reflection of the studio strip as the object turns.
+      shader.fragmentShader = shader.fragmentShader.replace('#include <roughnessmap_fragment>', `#include <roughnessmap_fragment>
+        float oxidation = smoothstep(-.52,.60,finishCloud + .13*sin(dot(vInstrumentFinish,vec3(.83,.19,.65))));
+        diffuseColor.rgb *= mix(vec3(1.10,1.04,.95),vec3(.78,.74,.65),oxidation);
+        roughnessFactor += mix(-.095,.105,oxidation);`);
     }
     shader.fragmentShader = shader.fragmentShader
       .replace('#include <common>', '#include <common>\nuniform float uSurfAlpha;')
       .replace('#include <opaque_fragment>', 'diffuseColor.a *= uSurfAlpha;\n#include <opaque_fragment>');
   };
-  material.customProgramCacheKey = () => `field-solid-popout-v4:${role}`;
+  material.customProgramCacheKey = () => `field-solid-popout-v8:${role}`;
   pop.paperMats?.push(material);
   return material;
 }

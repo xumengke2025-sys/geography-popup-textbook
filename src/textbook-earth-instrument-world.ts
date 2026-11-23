@@ -2,6 +2,7 @@ import { THREE as T } from './reference/engine.js';
 import { TextbookGeometry, type ModelMotion, type Vec3 } from './textbook-geometry';
 import { EARTH_RADII, EARTH_COLORS, EARTH_LAYER_NAMES, evaluateEarthLayers, earthLayerInspection, EARTH_REFERENCE } from './textbook-astronomy-model';
 import { turnedShaftGeometry } from './textbook-instrument-parts';
+import type { IndexedDial } from './textbook-model-input';
 export function buildEarthInstrumentWorld(b: TextbookGeometry): ModelMotion {
 const s=b.width/100,p=(u:number,v:number,h=0)=>b.p(u,v,h*s);
   // A cutaway with one real, closed paper shell per layer. The removed front
@@ -76,17 +77,27 @@ const s=b.width/100,p=(u:number,v:number,h=0)=>b.p(u,v,h*s);
     const spoke=rod([0,0,0],[0,Math.sin(a)*3.4*s,Math.cos(a)*3.4*s],.25,'brass',brass,'handwheel-spoke');
     spoke.position.set(...q(73,6.8));spoke.userData.modelInput=wheel.userData.modelInput;wheelParts.push(spoke);
   }
-  const grip=rod([0,0,3.4*s],[3*s,0,3.4*s],.6,'enamel',enamel,'handwheel-grip');grip.position.set(...q(73,6.8));wheelParts.push(grip);
-  rod(q(-12,5.1,2.5),q(-12,5.7,2.5),4.3,'brass',brass,'selector-case');
-  rod(q(-12,5.7,2.5),q(-12,5.85,2.5),3.65,'ivory',ivory,'ivory-selector');
+  const grip=rod([0,0,3.4*s],[3*s,0,3.4*s],.6,'wood','#604631','handwheel-grip');grip.position.set(...q(73,6.8));grip.userData.modelInput=wheel.userData.modelInput;wheelParts.push(grip);
+  const dialCenter=q(53,10,10.85), dialRadius=4.1*s;
+  const selector: IndexedDial={kind:'indexed-dial',dial:{center:dialCenter,radiusX:dialRadius,radiusY:dialRadius},
+    start:Math.PI/2,step:-Math.PI/2,stops:[0,1,2,3].map(selection=>({selection})),advanceAtHub:true,label:'转动四档拨柄，依次观察整体、地壳、地幔和地核'};
+  rounded(53,4.9,8.3,9.8,3.4,1.1,.65,'#634932','wood','selector-foot');
+  rod(q(53,5.5,8.3),q(53,9.5,8.3),1.12,'brass',brass,'selector-pillar');
+  const dialCase=rod(q(53,10,8.1),q(53,10,10.35),5,'brass',brass,'selector-case');
+  const face=rod(q(53,10,10.35),q(53,10,10.65),4.52,'ivory',ivory,'ivory-selector');
+  dialCase.userData.modelInput=face.userData.modelInput=selector;
   for(let i=0;i<4;i++){
-    const a=i/4*Math.PI*2;const mark=rod(q(-12+Math.sin(a)*2.8,5.88,2.5+Math.cos(a)*2.8),q(-12+Math.sin(a)*3.35,5.88,2.5+Math.cos(a)*3.35),.14,'steel',steel,'selector-detent');
-    mark.userData.modelInput={kind:'select',selection:i,label:['整体复原','抽出地壳','抽出地幔','观察地核'][i]};
+    const a=selector.start+i*selector.step, at=(r:number)=>q(53+r*Math.cos(a),10+r*Math.sin(a),10.75);
+    const mark=rod(at(3.56),at(4.24),.16,'enamel',enamel,'selector-detent');mark.userData.modelInput=selector;
   }
-  const pointer=rod([0,0,0],[0,0,2.7*s],.2,'brass',brass,'selector-pointer');pointer.position.set(...q(-12,6,2.5));
+  const pointer=rod([0,0,0],[3.5*s,0,0],.32,'steel','#45595a','selector-pointer');
+  const dialGrip=rod([3.45*s,0,0],[3.45*s,0,1.12*s],.65,'wood','#724931','selector-grip');
+  for(const part of [pointer,dialGrip]){part.position.set(...dialCenter);part.userData.modelInput=selector;part.userData.smallPointTarget=true;}
   const latch=rod(q(0,58.6),q(0,60.8),1.8,'brass',brass,'section-latch');
   latch.userData.modelInput={kind:'inspect',target:'closed',toggleTo:'overview',label:'合拢或打开地球剖面'};
   const names = EARTH_LAYER_NAMES;
+  const globeMap = typeof document === 'undefined' ? null : new T.TextureLoader().load(import.meta.env.BASE_URL+'textbook/materials/sectional-globe.webp');
+  if(globeMap){globeMap.colorSpace=T.SRGBColorSpace;globeMap.wrapS=T.RepeatWrapping;globeMap.anisotropy=8;}
   const layers = radii.map((r, i) => {
     const inner = (radii[i + 1] ?? 0) * s, outer = r * s;
     const members: any[] = [];
@@ -107,6 +118,16 @@ const s=b.width/100,p=(u:number,v:number,h=0)=>b.p(u,v,h*s);
       const g = new T.SphereGeometry(radius, 16, 24, Math.PI / 2, Math.PI / 2); g.translate(...center); return g;
     };
     const cover = addPart(coverGeometry(outer), 'observation-cover'); cover.userData.modelInput = shell.userData.modelInput;
+    if(i===0){
+      const printed = new T.MeshStandardMaterial({color:globeMap?'#ffffff':'#9cafa2',map:globeMap,roughness:.52,metalness:.035});
+      printed.userData.materialRole='enamel';
+      for(const [part,start,span] of [[shell,Math.PI,Math.PI*1.5],[cover,Math.PI/2,Math.PI/2]] as const){
+        const uv=part.geometry.attributes.uv;
+        for(let n=0;n<uv.count;n++)uv.setX(n,(start+uv.getX(n)*span)/(2*Math.PI)+.25);
+        part.material=printed;
+      }
+      shell.geometry.addEventListener('dispose',()=>{globeMap?.dispose();printed.dispose();});
+    }
     // The inner surface closes a shell when it is lifted away from its nested
     // neighbour; it stays hidden when both coincident surfaces are assembled.
     const lining = inner ? addPart(curved(inner), 'inner') : null;
@@ -121,7 +142,7 @@ const s=b.width/100,p=(u:number,v:number,h=0)=>b.p(u,v,h*s);
       }
       const q = new T.BufferGeometry(); q.setAttribute('position', new T.Float32BufferAttribute(vs, 3)); q.setIndex(is); q.computeVertexNormals(); addPart(q, axis ? 'section-x' : 'section-z');
     }
-    const label = b.label(names[i], [center[0] + 36 * s, center[1] + (16 - i * 10) * s, center[2]], 12 * s, 4.8 * s);
+    const label = b.label(names[i], [center[0] + 36 * s, center[1] + (16 - i * 10) * s, center[2]], 14 * s, 5.55 * s);
     label.userData.labelForLayer = i;
     label.userData.modelInput = modelInput;
     return { shell, cover, lining, coverLining, members, label, outer, inner, offset: new T.Vector3(), visible: true };
@@ -187,7 +208,7 @@ const s=b.width/100,p=(u:number,v:number,h=0)=>b.p(u,v,h*s);
     carriage[1].position.set(travel,lift+(extracted?(21-extracted.outer/s)*s:0),0);
     carriage[2].position.set(travel,0,0);
     for(const part of wheelParts)part.rotation.x=travel/s*.33;
-    pointer.rotation.y=-selected*Math.PI/2;
+    pointer.rotation.z=dialGrip.rotation.z=selector.start+selected*selector.step;
   }, inspect(target) { inspection = earthLayerInspection(target).inspection; }, focusBounds: () => {
     const bounds = new T.Box3();
     for(const mesh of hardware){
@@ -211,6 +232,6 @@ const s=b.width/100,p=(u:number,v:number,h=0)=>b.p(u,v,h*s);
     groupedSections: true, crustThicknessUnchanged: true,
     instrument:{kind:'sectional-globe',openMeridian:true,polarBearing:true,dualGuideRails:true,
       originalScientificDisplacements:true,carriageTravel:carriage[0].position.x/s,
-      handwheelAngle:wheel.rotation.x,selectorAngle:pointer.rotation.y,parts:hardware.length},
+      handwheelAngle:wheel.rotation.x,selectorAngle:pointer.rotation.z,parts:hardware.length},
     layerGroups: layers.map((layer, i) => ({ layer: i, visible: layer.visible, offset: layer.offset.toArray(), parts: layer.members.length, labelVisible: layer.label.visible })) }) };
 }

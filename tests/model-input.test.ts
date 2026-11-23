@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { phaseDialPoint, phaseFromDialPoint, phaseTrackPoint, phaseFromTrackPoint, type PhaseDial, type PhaseTrack } from '../src/textbook-model-input';
+import { phaseDialPoint, phaseFromDialPoint, phaseFromSpatialDialPoint, phaseTrackPoint, phaseFromTrackPoint, type PhaseDial, type PhaseTrack } from '../src/textbook-model-input';
 import { evaluateSeaBreeze } from '../src/model';
 
 const dial: PhaseDial = { center: [70, 90, -120], radiusX: 42, radiusY: 7 };
@@ -42,6 +42,15 @@ describe('direct day/night control', () => {
   });
 });
 
+it('recovers the angular reading on a lateral centrifuge shaft through either direction', () => {
+  const dial: PhaseDial={center:[85,10.45,39],radiusX:6.56,radiusY:6.56,plane:'yz'};
+  for(const phase of [0,.25,.5,.75,.8,.45,.05]){
+    const point=phaseDialPoint(phase,dial);
+    expect(point[0]).toBe(85);
+    expect(phaseFromSpatialDialPoint(point,dial,.3)).toBeCloseTo(phase,12);
+  }
+});
+
 describe('direct process pull tab', () => {
   const track: PhaseTrack = { start: [10, 5, -90], end: [90, 25, -90] };
 
@@ -70,6 +79,14 @@ describe('direct process pull tab', () => {
     const offset = { x: x - grab.x, y: y - grab.y };
     expect(phaseFromTrackPoint(grab.x + offset.x, grab.y + offset.y, track, 0)).toBeCloseTo(.38, 12);
     expect(phaseFromTrackPoint(grab.x + 20 + offset.x, grab.y + 5 + offset.y, track, 0)).toBeCloseTo(.63, 12);
+  });
+
+  it('measures reversible travel along a depth rail, ignoring sideways motion', () => {
+    const rail: PhaseTrack = { start: [105, 5.7, -96], end: [105, 5.7, -57] };
+    for (const phase of [.03, .72, .94, .23, 0]) {
+      const [x, y, z] = phaseTrackPoint(phase, rail);
+      expect(phaseFromTrackPoint(x + 7, y - 3, rail, .4, z)).toBeCloseTo(phase, 12);
+    }
   });
 
   it('retains the last valid process for a collapsed rail or invalid ray point', () => {

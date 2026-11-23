@@ -1,3 +1,6 @@
+import { bindFlatCranks } from './textbook-flat-crank';
+import { bindDrawingTracks } from './textbook-drawing-track';
+import { bindOrreryDrawing } from './textbook-orrery-controls';
 import './textbook-style.css';
 import { createCapsule, capsuleCSS } from './reference/engine.js';
 import { TextbookBook } from './textbook-book';
@@ -19,10 +22,11 @@ type PlaybackSpeed=typeof PLAYBACK_SPEEDS[number];
 // A strata layer can be the active evidence while the two reading modes stay
 // unchanged. Values 2–7 identify six physical layers, rather than extra tabs.
 const selectionLimit=(f:Figure)=>f.selectionLimit??(f.effect==='strata'?7:f.effect==='orbit'?8:(f.controls?.length??1)-1);
-interface Bookmark {version:2;spread:number;figures:Record<string,{phase:number;selection:number}>;notes:Record<string,string>;quality:string;reduced:boolean;playbackSpeed:PlaybackSpeed}
-const fresh=():Bookmark=>({version:2,spread:0,figures:{},notes:{},quality:'中',reduced:matchMedia('(prefers-reduced-motion: reduce)').matches,playbackSpeed:2});
+interface Bookmark {version:2;spread:number;figures:Record<string,{phase:number;selection:number}>;notes:Record<string,string>;quality:string;specimenLighting:boolean;reduced:boolean;playbackSpeed:PlaybackSpeed}
+const fresh=():Bookmark=>({version:2,spread:0,figures:{},notes:{},quality:'中',specimenLighting:true,reduced:matchMedia('(prefers-reduced-motion: reduce)').matches,playbackSpeed:2});
 let student=fresh(),storage=true;
 try{const p=JSON.parse(localStorage.getItem(KEY)??'null');if(p?.version===2){student.spread=Number.isInteger(p.spread)?Math.min(SPREADS,Math.max(0,p.spread)):0;student.quality=['高','中','低'].includes(p.quality)?p.quality:'中';student.reduced=typeof p.reduced==='boolean'?p.reduced:student.reduced;
+  student.specimenLighting=p.specimenLighting!==false;
   if(PLAYBACK_SPEEDS.includes(p.playbackSpeed))student.playbackSpeed=p.playbackSpeed;
   for(const f of figures){const item=p.figures?.[f.id];if(item)student.figures[f.id]={phase:Number.isFinite(item.phase)?Math.min(1,Math.max(0,item.phase)):0,selection:Number.isInteger(item.selection)?Math.min(selectionLimit(f),Math.max(f.effect==='soil'?-1:0,item.selection)):f.effect==='soil'?-1:0}}
   if(p.notes&&typeof p.notes==='object')for(const[k,v]of Object.entries(p.notes))if(typeof v==='string'&&v.length<=20000)student.notes[k]=v;
@@ -51,7 +55,7 @@ ${contents.map(c=>`<section class="chapter"><button class="chapter-title" data-p
 <details class="figure-index"><summary>立体演示</summary>${figures.map(f=>`<button class="contents-row" data-figure="${f.id}"><span>${f.title}</span><span>${f.pdf-5}</span></button>`).join('')}</details></div>
 <form id="page-jump"><label for="page-number">页码</label><input id="page-number" type="number" min="1" max="${LAST_PRINTED_PAGE}" inputmode="numeric" required><button>前往</button></form><div class="menu-tools"><button id="read-left">放大左页</button><button id="read-right">放大右页</button><button id="read-whole">整本</button><button id="mode">二维阅读</button><button id="settings-button">设置</button><button id="notes-button">笔记</button><button id="sources-button">来源</button></div></aside>
 <section id="figure-controls" aria-label="插图控制" hidden><div id="selections"></div><label id="compact-selection" hidden><span class="sr-only">实验条件或类型</span><select id="condition-choice" aria-label="实验条件或类型"></select><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m4 6 4 4 4-4"/></svg></label><div id="process-stops" aria-label="形成过程快捷节点" hidden></div><div class="figure-timeline"><div class="process-range"><label class="sr-only" for="phase">演示进度</label><input id="phase" type="range" min="0" max="1000" value="0"><div id="process-ticks" aria-hidden="true"></div></div><button id="model-inspect" aria-controls="model-inspections" aria-expanded="false" hidden>部位</button><div id="model-inspections" role="group" aria-label="局部观察" hidden></div><button id="scene-view" aria-label="近看立体场景" aria-pressed="false">近看</button><button id="restart">重放</button><button id="fold">收回</button><button id="figure-note" class="icon" aria-label="模型说明"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M12 11v6m0-10v1" stroke="currentColor" stroke-width="1.6"/></svg></button></div></section>
-<dialog id="settings-dialog"><div class="panel-heading"><h2>设置</h2><button class="icon" data-close aria-label="关闭设置">${closeIcon}</button></div><label class="setting">画质<select id="quality"><option>高</option><option>中</option><option>低</option></select></label><label class="setting">减少动态效果<input type="checkbox" id="reduced"></label><button id="clear-bookmark">清除本书记录</button><p id="storage-state"></p></dialog>
+<dialog id="settings-dialog"><div class="panel-heading"><h2>设置</h2><button class="icon" data-close aria-label="关闭设置">${closeIcon}</button></div><label class="setting">画质<select id="quality"><option>高</option><option>中</option><option>低</option></select></label><label class="setting">近看时使用实验台衬底<input type="checkbox" id="specimen-lighting"></label><label class="setting">减少动态效果<input type="checkbox" id="reduced"></label><button id="clear-bookmark">清除本书记录</button><p id="storage-state"></p></dialog>
 <dialog id="notes-dialog"><div class="panel-heading"><h2 id="notes-title">笔记</h2><button class="icon" data-close aria-label="关闭笔记">${closeIcon}</button></div><label class="sr-only" for="notes-text">本页笔记</label><textarea id="notes-text" rows="10" maxlength="20000"></textarea><button id="print-pages">打印原页与笔记</button></dialog>
 <dialog id="sources-dialog"><div class="panel-heading"><h2>来源</h2><button class="icon" data-close aria-label="关闭来源">${closeIcon}</button></div><p>人教版普通高中教科书《地理 必修 第一册》。内页直接使用本地核验 PDF 第2—133页，含印刷页1—124页、扉页、版权页、目录及4张书末留白；文字、插图和版式保持原页。</p><p>书本、纸张、翻页、笔触、立体展开和底栏改编自 <a href="https://github.com/iamtechartist/every-joule-lesson1/tree/48591ddc5f0a22e6eb2a5a41c424a426599061ca" target="_blank" rel="noreferrer">Every Joule · 48591dd</a>。</p><p><a href="https://github.com/TapXWorld/ChinaTextbook/blob/master/高中/地理/人教版-人民教育出版社/普通高中教科书·地理必修%20第一册.pdf" target="_blank" rel="noreferrer">教材 PDF 来源</a>。教材与原项目的权利归原权利人；本地改编记录见交付文档。</p><p>立体解释由独立三维几何构成，在原教材页上方展开。每个模型的条件可在展开后打开“模型说明”。</p></dialog>
 <dialog id="figure-dialog"><div class="panel-heading"><h2 id="figure-dialog-title"></h2><button class="icon" data-close aria-label="关闭说明">${closeIcon}</button></div><p id="figure-dialog-text"></p></dialog>
@@ -137,6 +141,7 @@ function refreshCapsule(){
  document.title=TITLE;document.body.classList.toggle('teacher-mode',teacher);$('#cTeach').setAttribute('aria-pressed',String(teacher));
  $('#cRead').hidden=!opened;$('#cWatch').hidden=!!active||!opened||!figuresAt(spread).length;
  $('#cPause').hidden=!active||!playbackPolicy(active,item().selection).enabled;capsule.dirty=true;
+ $<HTMLInputElement>('#specimen-lighting').checked=data.specimenLighting;
  $<HTMLSelectElement>('#quality').value=data.quality;$<HTMLInputElement>('#reduced').checked=data.reduced;
  $<HTMLButtonElement>('#clear-bookmark').disabled=teacher;$('#clear-bookmark').textContent=teacher?'个人记录在授课中受保护':'清除本书记录';
  syncWorkbench();
@@ -150,14 +155,18 @@ function renderFlat(){
  bindOriginalPageImages();
  flat.querySelectorAll<HTMLElement>('[data-figure]').forEach(b=>b.onclick=()=>{const f=figureById(b.dataset.figure!);if(f)showFigure(f)});
 }
-const flatControlSelector='[data-model-selection],[data-model-replay],[data-model-inspection]';
+const flatControlSelector='[data-model-crank],[data-model-selection],[data-model-replay],[data-model-inspection],[data-orrery-control],[data-phase-track]';
 function restoreFlatFocus(previous:SVGElement|null,index:number){
  if(!previous)return;
  const controls=[...document.querySelectorAll<SVGElement>('.flat-concept '+flatControlSelector.split(',').join(',.flat-concept '))];
- // A cutaway may insert new controls before the one being operated. Match
- // the physical object's identity before falling back to its former index.
- const identity=previous.dataset.modelInspection!==undefined?'data-model-inspection':previous.dataset.modelSelection!==undefined?'data-model-selection':null;
- const same=identity?controls.find(control=>control.getAttribute(identity)===previous.getAttribute(identity)):undefined;
+ // Selection alone is not an object identity: a soil layer's rear half and
+ // its label intentionally activate the same selection. Keep the operated
+ // part after renderFlat replaces the SVG, before the legacy fallback.
+ const identity=previous.hasAttribute('data-model-crank')?'data-model-crank':previous.dataset.phaseTrack?'data-phase-track':previous.dataset.orreryControl?'data-orrery-control':previous.dataset.modelInspection!==undefined?'data-model-inspection':previous.dataset.modelSelection!==undefined?'data-model-selection':previous.dataset.modelReplay!==undefined?'data-model-replay':null;
+ const sameIdentity=identity?controls.filter(control=>control.getAttribute(identity)===previous.getAttribute(identity)):[];
+ const partAttributes=[...previous.attributes].filter(attribute=>/^data-.+-part$/.test(attribute.name));
+ const samePart=partAttributes.length?sameIdentity.filter(control=>partAttributes.every(attribute=>control.getAttribute(attribute.name)===attribute.value)):[];
+ const same=samePart.includes(controls[index])?controls[index]:samePart[0]??sameIdentity[0];
  (same??controls[index])?.focus({preventScroll:true});
 }
 function navigate(n:number,request?:number):Promise<void>{
@@ -183,13 +192,10 @@ async function showFigure(f:Figure){
   if(spread!==destination||turning)await navigate(destination,request);
   if(!current())return;
   await closeCurrentFigure();if(!current())return;
-  // Reopening is a return to an observation: hold its saved condition until
-  // the reader presses Play. Only a first visit starts playing automatically.
-  const returning=Object.hasOwn(data.figures,f.id);
+  // Seat the instrument at its saved reading until the first hand movement or explicit playback.
   active=f;playing=false;const s=item();
   if(book&&!twoD)await book.openFigure(f,s.phase,s.selection,current);
   if(!current())return;
-  playing=!data.reduced&&!returning&&playbackPolicy(f,s.selection).autoplay;
   $('#scene-view').textContent='整本';$('#scene-view').setAttribute('aria-pressed','true');$('#scene-view').setAttribute('aria-label','回到立体书全景');
   closeContents();renderFlat();refreshControls();refreshCapsule();updateHotspots();
   if(twoD){positionProcessNote(true);window.scrollTo({top:0,behavior:'instant'})}
@@ -270,14 +276,19 @@ function refreshControls(){
  refreshSelectionPressed();
  updateProcessInfo();refreshCapsule();
 }
-function chooseSelection(next:number){
+function chooseSelection(next:number,keepPhase=false){
  if(!active)return;
  const state=item(),selected=Math.max(active.effect==='soil'?-1:0,Math.min(selectionLimit(active),Math.round(next))),previous=state.selection;
  state.selection=selected;
- if(previous!==selected){inspection='overview';book?.inspect(inspection);closeInspections();}
+ if(previous!==selected && !(active.effect==='orbit' && inspection==='train')){inspection='overview';book?.inspect(inspection);closeInspections();}
  const stop=active.controlPhases?.[selected];
  if(stop!==undefined){state.phase=stop;playing=false}
- else if(restartForSelection(active,previous,selected)){state.phase=0;playing=!data.reduced&&playbackPolicy(active,selected).autoplay}
+ else if(!keepPhase&&restartForSelection(active,previous,selected)){
+  state.phase=0;
+  // A hand-operated trial waits at its new starting position. An explicitly
+  // playing demonstration can continue with the newly selected condition.
+  playing=playing&&!data.reduced&&playbackPolicy(active,selected).autoplay;
+ }
  if(active.effect==='breeze'){state.phase=selected===0?AFTERNOON:NIGHT;playing=false}
  if(!playbackPolicy(active,selected).enabled)playing=false;
 }
@@ -292,7 +303,7 @@ function updateModel(){if(active){const s=item(),timeline=processTimeline(active
   holder.innerHTML=flatModelSvg(active,s.phase,s.selection,inspection);
   if(focusIndex>=0)restoreFlatFocus(focused,focusIndex);
  }}}}
-function hideProcessNote(){ document.body.classList.remove('has-process-note');$('#process-note').hidden=true;processInfo=null;processKey='';processLayoutKey='';processNoteMeasureKey='';$('#process-note').style.removeProperty('min-height');if(book)book.processNoteInset=0;
+function hideProcessNote(){ document.body.classList.remove('has-process-note');$('#process-note').hidden=true;processInfo=null;processKey='';processLayoutKey='';processNoteMeasureKey='';$('#process-note').style.removeProperty('min-height');if(book){book.processNoteInset=0;book.processNoteLeftInset=0}
  const demo=document.querySelector<HTMLElement>('.flat-demonstration');if(demo)for(const property of ['margin-top','scroll-margin-top','--process-svg-max-height'])demo.style.removeProperty(property);
 }
 function updateProcessInfo(){
@@ -300,6 +311,7 @@ function updateProcessInfo(){
  const s=item();processInfo=processTimeline(active,s.phase,s.selection);
  const range=$<HTMLInputElement>('#phase');range.value=String(Math.round(s.phase*1000));
  range.style.setProperty('--process-progress',`${s.phase*100}%`);
+ range.style.setProperty('--index-angle',`${-120+s.phase*240}deg`);
  const progressLabel=processInfo?.progressLabel??playbackPolicy(active,s.selection).label;
  if($('label[for="phase"]').textContent!==progressLabel)$('label[for="phase"]').textContent=progressLabel;
  range.setAttribute('aria-label',`拖动${progressLabel}，暂停并回看`);
@@ -351,7 +363,7 @@ function positionProcessNote(allowOpening=false){
  if(!active||!processInfo||turning||(figureBusy&&!allowOpening)||!$('#contents').hidden||!$('#folio').hidden){note.hidden=true;return}
  const topNote=()=>{note.hidden=false;note.dataset.position='top';note.style.removeProperty('left');note.style.removeProperty('top');reserveProcessNoteSpace();
   const clearance=note.offsetTop+note.offsetHeight+20;
-  if(book)book.processNoteInset=twoD?0:Math.max(0,clearance-innerHeight*.06);
+  if(book){book.processNoteInset=twoD?0:Math.max(0,clearance-innerHeight*.06);book.processNoteLeftInset=0}
   if(twoD){const demo=document.querySelector<HTMLElement>('.flat-demonstration');if(demo){
    // The reading-mode note scrolls with the document. Its reserved space
    // belongs to normal page flow; changing a caption never scrolls the book.
@@ -361,18 +373,27 @@ function positionProcessNote(allowOpening=false){
   }}
  };
  const layoutKey=`${active.id}-${innerWidth}-${innerHeight}-${$('#scene-view').getAttribute('aria-pressed')}`;
- if(layoutKey!==processLayoutKey){processLayoutKey=layoutKey;processBoundsReadyAt=0;note.removeAttribute('data-position')}
+ if(layoutKey!==processLayoutKey){processLayoutKey=layoutKey;processBoundsReadyAt=0;if(book)book.processNoteLeftInset=0;note.removeAttribute('data-position')}
  if(twoD||innerWidth<680||note.dataset.position==='top'){topNote();return}
  const box=book?.processBounds;
  if(!box){note.hidden=true;return}
  if(!processBoundsReadyAt)processBoundsReadyAt=performance.now();
  if(performance.now()-processBoundsReadyAt<550){note.hidden=true;if(book)book.processNoteInset=0;return}
  const width=innerWidth<900?152:innerWidth<1100?184:220,gap=innerWidth<1100?16:24,left=box.left-width-gap,right=box.right+gap;
- const canLeft=left>=(innerWidth<900?12:72),canRight=right+width<=innerWidth-(innerWidth<900?12:110);
- if(!canLeft&&!canRight){topNote();return}
+ const canLeft=left>=12,canRight=right+width<=innerWidth-(innerWidth<900?12:110);
+ // A wide model can share a tablet spread with its caption if the
+ // observation camera centres it in the remaining column.
+ const needsColumn=book?.viewingDetail&&innerWidth>=900&&(book.processNoteLeftInset>0||(!canLeft&&!canRight));
+ if(!canLeft&&!canRight&&!needsColumn){topNote();return}
  note.dataset.position='side';note.hidden=false;reserveProcessNoteSpace();
- if(book)book.processNoteInset=0;
- const x=canLeft?Math.min(left,innerWidth*.21):right,y=Math.max(innerWidth<900?198:112,Math.min(box.top+box.height*.32,dock.getBoundingClientRect().top-note.offsetHeight-18));
+ const x=needsColumn?12:canLeft?Math.min(left,innerWidth*.21):right;
+ const bookmark=$('#cContents').getBoundingClientRect();
+ const belowBookmark=x<bookmark.right+8&&x+width>bookmark.left-8;
+ const minY=Math.max(innerWidth<900?198:112,belowBookmark?bookmark.bottom+12:0);
+ const maxY=dock.getBoundingClientRect().top-note.offsetHeight-18;
+ if(maxY<minY){topNote();return}
+ if(book){book.processNoteInset=0;book.processNoteLeftInset=needsColumn?x+width+gap:0}
+ const y=Math.max(minY,Math.min(box.top+box.height*.32,maxY));
  note.style.left=`${Math.round(x)}px`;note.style.top=`${Math.round(y)}px`;
 }
 function seekProcess(stop:number){
@@ -399,7 +420,7 @@ function interactWithModel(change:import('./textbook-model-input').ModelInputCha
   // Picking a physical object seeks this same playhead just like its DOM
   // shortcut. Independent conditions and layer selections keep their meaning.
   if(node!==undefined&&node>=0&&change.phase===undefined&&!change.replay){seekProcess(node);return}
-  chooseSelection(change.selection);
+  chooseSelection(change.selection,change.keepPhase);
  }
  if(change.replay)restartPlayback();
  updateModel();refreshControls();refreshCapsule();
@@ -457,7 +478,7 @@ async function toggleTeacher(){
    const figure=restore?.figure?figureById(restore.figure):null;if(figure)await showFigure(figure);
    studentView=null;
   }
-  playing=false;if(book){book.setAutoOrbit(false);book.reduced=data.reduced;book.setQuality(data.quality)}refreshControls();refreshCapsule();updateModel();message(teacher?'教师演示':'已返回个人书签');
+  playing=false;if(book){book.setAutoOrbit(false);book.reduced=data.reduced;book.setQuality(data.quality);book.specimenLighting=data.specimenLighting}refreshControls();refreshCapsule();updateModel();message(teacher?'教师演示':'已返回个人书签');
  }finally{switchingTeacher=false}
 }
 let readingPdf=2,readScale=1,readFit:'width'|'page'|'custom'='width';
@@ -493,7 +514,7 @@ async function readPage(pdf:number){
  if(readFit!=='custom')fitReader(readFit);else scaleReader(readScale);$('#reader-scroll').scrollTo(0,0);
 }
 async function initBook(){
-  try{book=new TextbookBook($('#scene'));book.reduced=data.reduced;book.setQuality(data.quality);book.onFigure=showFigure;book.onNavigate=navigate;book.onOpen=()=>navigate(data.spread||1);book.onRead=readPage;book.onHover=f=>{$('#hover-title').textContent=active?'':f?.title??''};book.onModelInput=interactWithModel;book.onLost=()=>{modeRequest++;playing=false;processSeek=null;twoD=true;readingReason='context';document.body.classList.add('two-d');$('#scene').hidden=true;renderFlat();refreshControls();refreshCapsule();updateHotspots();save()};
+  try{book=new TextbookBook($('#scene'));book.reduced=data.reduced;book.setQuality(data.quality);book.specimenLighting=data.specimenLighting;book.onFigure=showFigure;book.onNavigate=navigate;book.onOpen=()=>navigate(data.spread||1);book.onRead=readPage;book.onHover=f=>{$('#hover-title').textContent=active?'':f?.title??''};book.onModelInput=interactWithModel;book.onLost=()=>{modeRequest++;playing=false;processSeek=null;twoD=true;readingReason='context';document.body.classList.add('two-d');$('#scene').hidden=true;renderFlat();refreshControls();refreshCapsule();updateHotspots();save()};
   invalidateGlass();await book.prepare(data.spread||1);readingReason=null;renderFailure=null;syncRenderingMode();
  }catch(e){fallBackToReading(e)}
 }
@@ -527,15 +548,19 @@ function closeReader(){ $<HTMLDialogElement>('#page-reader').close();if(spreadAt
 $('#reader-close').onclick=closeReader;
 $('#page-reader').addEventListener('cancel',e=>{e.preventDefault();closeReader()});
 $('#flat-reader').addEventListener('dblclick',e=>{const el=(e.target as HTMLElement).closest<HTMLElement>('[data-original-pdf]');if(el)readPage(Number(el.dataset.originalPdf))});
+bindDrawingTracks($('#flat-reader'),()=>twoD&&active?item().phase:null,interactWithModel);
+bindFlatCranks($('#flat-reader'),()=>twoD&&active?item().phase:null,interactWithModel);
+bindOrreryDrawing($('#flat-reader'),()=>twoD&&active?.effect==='orbit'?{...item(),inspection}:null,interactWithModel);
 const flatModelAction=(event:Event)=>{
  const controls=flatControlSelector;
  const target=(event.target as Element).closest<SVGElement>(controls);
- if(!target||!twoD||!active)return;
+ if(!target||target.hasAttribute('data-model-crank')||target.dataset.orreryControl||target.dataset.phaseTrack||!twoD||!active)return;
  event.preventDefault();event.stopPropagation();
  const focusIndex=[...document.querySelectorAll<SVGElement>('.flat-concept '+controls.split(',').join(',.flat-concept '))].indexOf(target);
  const nextInspection=target.dataset.modelInspection;
  if(nextInspection!==undefined){
-  if(!inspectionTargets(active.effect,item().selection).some(option=>option.target===nextInspection))return;
+  const rainPacket = ['urban-waterlogging','city-rain-system'].includes(active.effect) && /^packet-(?:[0-9]|1[01])$/.test(nextInspection);
+  if(!rainPacket&&!inspectionTargets(active.effect,item().selection).some(option=>option.target===nextInspection))return;
   interactWithModel({inspection:inspection===nextInspection?(target.dataset.modelInspectionToggle??'overview'):nextInspection,commit:true});
   if(event instanceof KeyboardEvent)restoreFlatFocus(target,focusIndex);
   return;
@@ -543,12 +568,40 @@ const flatModelAction=(event:Event)=>{
  const selection=target.dataset.modelSelection===undefined?undefined:Number(target.dataset.modelSelection),toggle=Number(target.dataset.modelToggle??selection);
  const replay=target.hasAttribute('data-model-replay');
  const focus=event instanceof KeyboardEvent;
- interactWithModel({selection:selection===undefined?undefined:!replay&&item().selection===selection?toggle:selection,replay,commit:true});
+ interactWithModel({selection:selection===undefined?undefined:!replay&&item().selection===selection?toggle:selection,replay,keepPhase:target.hasAttribute('data-keep-phase'),commit:true});
  // The SVG is regenerated from model state. Keep a keyboard reader on the
  // same physical control instead of losing focus to the page after one tap.
  if(focus)restoreFlatFocus(target,focusIndex);
 };
-$('#flat-reader').addEventListener('click',flatModelAction);
+// On a touch display the browser may suppress a compatibility click just after
+// a drag. Positive-action specimen keys operate on release inside the same key.
+let heldSpecimenKey:{id:number;key:Element}|null=null;
+let releasedSpecimenKey:{x:number;y:number;at:number}|null=null;
+$('#flat-reader').addEventListener('pointerdown',event=>{
+ releasedSpecimenKey=null;
+ const key=(event.target as Element).closest('[data-specimen-key]');
+ if(event.pointerType!=='touch'||!key||heldSpecimenKey)return;
+ heldSpecimenKey={id:event.pointerId,key};event.preventDefault();
+});
+$('#flat-reader').addEventListener('pointerup',event=>{
+ const held=heldSpecimenKey;if(held?.id!==event.pointerId)return;
+ heldSpecimenKey=null;
+ if(document.elementFromPoint(event.clientX,event.clientY)?.closest('[data-specimen-key]')===held.key){
+  releasedSpecimenKey={x:event.clientX,y:event.clientY,at:performance.now()};
+  flatModelAction(event);
+ }
+});
+$('#flat-reader').addEventListener('pointercancel',event=>{if(heldSpecimenKey?.id===event.pointerId)heldSpecimenKey=null;});
+$('#flat-reader').addEventListener('click',event=>{
+ // A touch release already operated this control. The compatibility click
+ // can hit the opposite face after the SVG rerenders, undoing a toggle.
+ const done=releasedSpecimenKey;
+ releasedSpecimenKey=null;
+ if(done&&event.detail>0&&performance.now()-done.at<800&&Math.hypot(event.clientX-done.x,event.clientY-done.y)<12){
+  event.preventDefault();event.stopPropagation();return;
+ }
+ flatModelAction(event);
+});
 $('#flat-reader').addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' ')flatModelAction(event)});
 $('#mode').onclick=()=>setMode(!twoD);
 $('#retry-3d').onclick=async()=>{if(retrying3D||turning||figureBusy)return;retrying3D=true;syncRenderingMode();try{await setMode(false)}finally{retrying3D=false;syncRenderingMode()}};
@@ -599,6 +652,11 @@ $('#print-pages').onclick=()=>{
 };
 $<HTMLSelectElement>('#quality').value=data.quality;$('#quality').onchange=()=>{data.quality=$<HTMLSelectElement>('#quality').value;book?.setQuality(data.quality);invalidateGlass();save()};
 $<HTMLInputElement>('#reduced').checked=data.reduced;$('#reduced').onchange=()=>{data.reduced=$<HTMLInputElement>('#reduced').checked;finishProcessSeek();if(book)book.reduced=data.reduced;playing=false;refreshControls();refreshCapsule();save()};
+$('#specimen-lighting').onchange=()=>{
+ data.specimenLighting=$<HTMLInputElement>('#specimen-lighting').checked;
+ if(book) book.specimenLighting=data.specimenLighting;
+ save();
+};
 $('#clear-bookmark').onclick=()=>{if(teacher||!confirm('清除这本书的书签、插图进度和笔记？'))return;student=fresh();data=student;try{localStorage.removeItem(KEY)}catch{}navigate(0);message('本书记录已清除。')};
 document.addEventListener('keydown',e=>{
  if(e.defaultPrevented||document.querySelector('dialog[open]'))return;

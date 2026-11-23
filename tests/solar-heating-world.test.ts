@@ -52,6 +52,18 @@ describe('assembled thermal house keeps the original closed heat circuit', () =>
     }
   });
 
+  it('raises the three mounted thermometers only as their own receiver warms, and restores their readings on rewind',()=>{
+    const {motion,role}=fixture(),stems=role('thermometer-column');expect(stems).toHaveLength(3);
+    for(const phase of [0,.44,.71,.89,1,.71,0]){
+      motion.update(phase,0,0,true);const state=evaluateSolarHeating(phase);
+      for(const m of stems){
+        const room=m.userData.solarRoomReading as 'lower'|'upper'|'storage';
+        expect(m.scale.y).toBeCloseTo(.15+.85*(room==='storage'?state.storageWarmth:state.roomWarmth[room]));
+      }
+    }
+    expect(role('arched-room-partition')).toHaveLength(1);expect(role('floor-and-stairwell')).toHaveLength(1);
+  });
+
   it('leaves every device clickable, seats the single legend on the apron, and shares one reversible physical slider', () => {
     const { motion, role } = fixture();
     for (const [name, selection] of [['solar-source', 0], ['thermal-collector', 1], ['water-pump', 2], ['receiver-fins', 3]] as const)

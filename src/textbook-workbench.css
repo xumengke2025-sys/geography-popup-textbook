@@ -245,7 +245,13 @@ dialog:not(#page-reader) button:not(.icon){min-height:44px;border-color:#b7b99f;
 #figure-controls #selections button[aria-pressed=true],#figure-controls #scene-view[aria-pressed=true],#figure-controls #scene-orbit[aria-pressed=true]{color:#853e2e;border-color:#bba17a66;background:#e7dbc455;box-shadow:inset 0 -2px 0 #a15a3f;border-radius:3px}
 #figure-controls #phase{height:44px}
 #phase::-webkit-slider-runnable-track{height:4px;border-color:#b6a582;background:#c8b996;box-shadow:inset 0 1px 1px #4c38251a}
-#phase::-webkit-slider-thumb{width:16px;height:16px;margin-top:-7px;border:2px solid #f1e7d0;background:#9a7850;box-shadow:0 1px 2px #4e382850}
+#phase{
+ --index-face:conic-gradient(from var(--index-angle,0deg),#49321c 0deg 12deg,transparent 14deg) center/62% 62% no-repeat,
+ radial-gradient(circle,transparent 47%,#f8e6ae 49%,#735132 56%,transparent 59%),
+ conic-gradient(from 32deg,#aa7943,#f1d18f 54deg,#ac8347 95deg,#7e5b34 145deg,#dbb778 215deg,#f6dc9c 260deg,#936635 305deg,#aa7943);
+}
+#phase::-webkit-slider-thumb{width:21px;height:21px;margin-top:-9px;border:1px solid #755536;background:var(--index-face);box-shadow:inset 0 1px 0 #fff0c6,0 2px 3px #4e38285c}
+#phase::-moz-range-thumb{width:19px;height:19px;border:1px solid #755536;background:var(--index-face);box-shadow:inset 0 1px 0 #fff0c6,0 2px 3px #4e38285c}
 #phase:hover::-webkit-slider-thumb{box-shadow:0 0 0 4px #ac8b4d1a,0 1px 3px #4e382850}
 #phase::-moz-range-track{height:3px;border-color:#b6a582;background:#c8b996}
 #phase::-moz-range-thumb{width:14px;height:14px;border:2px solid #f1e7d0;background:#9a7850}
@@ -309,4 +315,73 @@ dialog input[type=checkbox]{accent-color:#976346;width:20px;height:20px}
  #contents #model-contents .contents-row{font-size:14px}
  #contents .menu-tools button{font-size:13px;min-height:44px}
  #contents #page-jump input,#folio-page{min-height:38px}
+}
+
+.directory-filters {
+  display: flex; align-items: center; gap: 8px; flex-shrink: 0;
+}
+.directory-filters { margin: 12px 0 4px }
+.directory-filters .directory-search { flex: 1; min-width: 0; margin: 0 }
+.specimen-reference { font: 12px/1.4 FieldSans, sans-serif; color: #78654e }
+.directory-filters select {
+  width: 31%; max-width: 180px; min-height: 46px; flex-shrink: 0;
+  padding: 0 6px; border: 1px solid #af9c78; border-radius: 3px;
+  background: #f5efdf; color: #4d5142; font: 14px FieldSans, sans-serif;
+}
+.directory-filters select:focus-visible { outline: 2px solid #806538; outline-offset: 2px }
+#model-contents .model-chapter { margin: 0 0 20px }
+#model-contents .model-chapter h2 {
+  display: flex; align-items: center; gap: 12px; grid-column: 1/-1;
+  margin: 0; padding: 9px 0; color: #634c36;
+  font: 500 17px/1.4 FieldSerif, SimSun, serif;
+}
+#model-contents .model-chapter h2::after {
+  content: ''; flex: 1; height: 1px;
+  background: linear-gradient(90deg,#a38b61a8,#a38b6120);
+}
+#contents #model-contents .contents-row:not([hidden]) {
+  display: grid; grid-template-columns: 82px minmax(0,1fr) auto; align-items: center;
+  gap: 9px; padding: 5px 0; min-height: 67px; text-align: left;
+  border-bottom: 1px solid #b8a78766; border-radius: 2px;
+}
+#model-contents .specimen-mount {
+  display: grid; place-items: center; align-self: stretch;
+  background: radial-gradient(ellipse at 50% 80%,#cfb89642,transparent 72%);
+}
+#model-contents .specimen-mount img { width: 100%; height: 58px; object-fit: contain }
+#contents #model-contents .specimen-title { font: 500 15px/1.45 FieldSerif, SimSun, serif; color: #332f26 }
+#contents #model-contents .specimen-page { white-space: nowrap; font: 12px/1.4 FieldSans, sans-serif; color: #746449 }
+#model-contents .contents-row:focus-visible { outline: 2px solid #846138; outline-offset: -2px }
+
+@media(min-width:760px) {
+  #contents[data-view="models"] { width: min(830px, calc(100vw - 160px)); padding-inline: 24px }
+  #contents[data-view="models"] .directory-tabs { max-width: 400px }
+  #model-contents .model-chapter:not([hidden]) {
+    display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 9px 12px;
+  }
+  #contents #model-contents .contents-row:not([hidden]) {
+    position: relative; grid-template-columns: 1fr; grid-template-rows: 108px 1fr auto;
+    align-items: baseline; gap: 0 6px; padding: 0 10px 9px;
+    border: 1px solid #cbbd9f; background: #fcf8ed;
+  }
+  #model-contents .specimen-mount {
+    grid-column: 1/-1; margin: 0 -10px 8px; border-bottom: 1px solid #c6b58f69;
+    background: radial-gradient(ellipse at 50% 95%,#d3c5a9 0%,#eae2cf 54%,#f2ebdb 100%);
+  }
+  #model-contents .specimen-title { padding-bottom: 4px }
+  #model-contents .specimen-page { justify-self: end }
+  #model-contents .specimen-reference { position: absolute; left: 10px; bottom: 9px }
+  #model-contents .specimen-mount img {
+    width: calc(100% - 18px); height: 100px; object-fit: contain;
+  }
+  #contents #model-contents .contents-row:is(:hover,:focus-visible,[aria-current]) {
+    border-color: #8b754e; box-shadow: inset 0 -2px #927543; background: #f7eedb;
+  }
+  #contents #model-contents .contents-row[aria-current] .specimen-mount {
+    background: radial-gradient(ellipse at 50% 95%,#bfc5ae,#e2e5d5 72%);
+  }
+}
+@media(max-width:759px) {
+  #contents[data-view="models"] { left: 10px; width: calc(100vw - 20px); max-width: 540px }
+  .directory-filters select { font-size: 13px; min-height: 44px }
 }

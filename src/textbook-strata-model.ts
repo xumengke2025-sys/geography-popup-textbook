@@ -1,3 +1,4 @@
+import { drawingGrip } from './textbook-drawing-grip';
 /** Textbook p.15, figure 1.23. Fossils are redrawn by visible morphology;
  * these names do not assign a species or a numerical geological age. */
 export type StrataPoint = readonly [number, number];
@@ -156,9 +157,13 @@ export function strataSvg(phase: number, selection = 0): string {
     const at = project([column === 'A' ? 18 : 83, 41 + top.offsetY]);
     body += `<text x="${at[0]}" y="${at[1]}" fill="#6d4b35" font-size="25" text-anchor="middle" font-family="FieldSerif,SimSun,serif">${column}</text>`;
   }
-  if (state.separated) {
+  for (const [i,x] of [145,460].entries()) {
+    const label=i?'分层':'合拢';
+    body+=`<g data-specimen-key data-model-selection="${i}" data-keep-phase tabindex="0" role="button" aria-label="${label}两柱地层"><rect x="${x-92}" y="356" width="184" height="43" fill="transparent"/><path d="M${x-78} 356h156l8 9v22h-172v-22Z" fill="#826948" stroke="#534735"/><rect x="${x-54}" y="360" width="108" height="25" rx="3" fill="${i===Number(state.separated)?'#d5c9a9':'#f2e8cf'}"/><text x="${x}" y="382" font-size="23" text-anchor="middle" fill="#403b30">${label}</text></g>`;
+  }
+  {
     const x = 596, y = 351 - state.phase * 240;
-    body += `<path d="M596 111V351" stroke="#b7aa90" stroke-width="2"/><path data-strata-handle="true" d="M${x - 11} ${y - 13}h22v26h-22Z" fill="#f5eedf" stroke="#6e6a58" stroke-width="1.3"/><path d="M${x - 4} ${y - 3}l4-4 4 4m-8 6 4 4 4-4" fill="none" stroke="#6e6a58" stroke-width="1.4"/>`;
+    body += `<path d="M596 111V351" stroke="#b7aa90" stroke-width="2"/><path data-strata-handle="true" d="M${x - 11} ${y - 13}h22v26h-22Z" fill="#f5eedf" stroke="#6e6a58" stroke-width="1.3"/>${drawingGrip('调节层间距',[596,351],[596,111],state.phase,state.separated?undefined:1)}<path d="M${x - 4} ${y - 3}l4-4 4 4m-8 6 4 4 4-4" fill="none" pointer-events="none" stroke="#6e6a58" stroke-width="1.4"/>`;
   }
   return `<svg xmlns="http://www.w3.org/2000/svg" class="flat-model-svg flat-explanation-svg" viewBox="0 0 640 400" role="group" data-strata-phase="${number(state.phase)}" data-strata-selection="${state.selection}" aria-label="图1.23地层与化石对比；点击层体或化石查看另一柱的对应层，分层模式可用进度条调节间距。层间距不是年代长短。"><title>A、B两地地层对比</title><desc>扇形与卷曲壳印痕组合对应A下层与B中层；长锥形印痕对应A中层与B上层。另两层不强行配对，不据此推断该时代不存在。</desc><g stroke-linecap="round" stroke-linejoin="round">${body}</g></svg>`;
 }

@@ -1,0 +1,166 @@
+{
+  "base": "http://127.0.0.1:4173",
+  "states": [
+    {
+      "id": "solar",
+      "selection": 1,
+      "phase": 0
+    },
+    {
+      "id": "solar",
+      "selection": 2,
+      "phase": 0
+    },
+    {
+      "id": "solar",
+      "selection": 3,
+      "phase": 0
+    },
+    {
+      "id": "solar",
+      "selection": 4,
+      "phase": 0
+    },
+    {
+      "id": "solar",
+      "selection": 5,
+      "phase": 0
+    },
+    {
+      "id": "solar",
+      "selection": 6,
+      "phase": 0
+    },
+    {
+      "id": "solar",
+      "selection": 7,
+      "phase": 0
+    },
+    {
+      "id": "solar",
+      "selection": 8,
+      "phase": 0
+    },
+    {
+      "id": "history",
+      "selection": 2,
+      "phase": 0
+    },
+    {
+      "id": "history",
+      "selection": 3,
+      "phase": 0
+    },
+    {
+      "id": "history",
+      "selection": 4,
+      "phase": 0
+    },
+    {
+      "id": "history",
+      "selection": 5,
+      "phase": 0
+    },
+    {
+      "id": "history",
+      "selection": 6,
+      "phase": 0
+    },
+    {
+      "id": "history",
+      "selection": 7,
+      "phase": 0
+    },
+    {
+      "id": "soil",
+      "selection": 1,
+      "phase": 0
+    },
+    {
+      "id": "soil",
+      "selection": -1,
+      "phase": 0
+    },
+    {
+      "id": "quake-response-system",
+      "selection": 0,
+      "phase": 1
+    },
+    {
+      "id": "quake-response-system",
+      "selection": 1,
+      "phase": 1
+    },
+    {
+      "id": "quake-response-system",
+      "selection": 2,
+      "phase": 1
+    },
+    {
+      "id": "quake-response-system",
+      "selection": 3,
+      "phase": 1
+    },
+    {
+      "id": "quake-response-system",
+      "selection": 4,
+      "phase": 1
+    },
+    {
+      "id": "quake-response-system",
+      "selection": 5,
+      "phase": 1
+    },
+    {
+      "id": "quake-response-system",
+      "selection": 6,
+      "phase": 1
+    },
+    {
+      "id": "quake-response-system",
+      "selection": 7,
+      "phase": 1
+    },
+    {
+      "id": "quake-response-system",
+      "selection": 8,
+      "phase": 1
+    },
+    {
+      "id": "quake-response-system",
+      "selection": 9,
+      "phase": 1
+    },
+    {
+      "id": "quake-response-system",
+      "selection": 10,
+      "phase": 1
+    },
+    {
+      "id": "quake-response-system",
+      "selection": 11,
+      "phase": 1
+    },
+    {
+      "id": "quake-response-system",
+      "selection": 12,
+      "phase": 1
+    },
+    {
+      "id": "quake-response-system",
+      "selection": 13,
+      "phase": 1
+    },
+    {
+      "id": "quake-response-system",
+      "selection": 14,
+      "phase": 1
+    },
+    {
+      "id": "quake-response-system",
+      "selection": 15,
+      "phase": 1
+    }
+  ],
+  "errors": []
+}

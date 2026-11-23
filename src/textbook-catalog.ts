@@ -1,3 +1,4 @@
+import { PLANET_NAMES } from './textbook-astronomy-model';
 import { additionalFigures, type AdditionalEffect } from './textbook-catalog-additions';
 import { REMOTE_PROCESS_STOPS } from './textbook-remote-model';
 import { AIR_PROCESS_STOPS } from './textbook-air-process-model';
@@ -78,13 +79,13 @@ export interface Figure {
   note:string;
 }
 export const figures:Figure[] = [
- {id:'solar',pdf:8,title:'图1.4　太阳系结构',effect:'orbit',rect:[.122,.548,.57,.285],photo:true,note:'按教材中的轨道关系演示公转。轨道大小、天体大小和运行速度均为示意，不按真实比例。'},
+ {id:'solar',pdf:8,title:'图1.4　太阳系结构',effect:'orbit',rect:[.122,.548,.57,.285],photo:true,controls:['整体',...PLANET_NAMES],note:'摇动木柄带动八颗行星，松手停住，反摇回看。拨动选星盘，从 1 到 8 依次选中水星至海王星，0 位回到整体。扳开红柄可观察所选支臂的轮副，再扳合可看全貌。从太阳系北侧看，八颗行星均逆时针公转。模型的大小、距离和转速均为示意。'},
  {id:'sun',pdf:14,title:'图1.14　家庭太阳能供热系统',effect:'radiation',rect:[.122,.506,.267,.163],controls:SOLAR_HEATING_STOPS.map(s=>s.label),controlPhases:SOLAR_HEATING_STOPS.map(s=>s.phase),playback:'once',note:'依正文9页图1.14，在同一剖面房屋中连续观察太阳短波到达、集热器吸收、水路循环和室内供热。点击太阳、集热器、水泵或散热器定位，也可拖动前缘纸签回看。辐射示踪与水体示踪分别保留身份，不把光变成水；共享储存池与水路为教学简化，不增加光伏板或换热设备。进度表示讲解顺序，不是实测水温、流速、效率或设备安装方案。'},
  {id:'history',pdf:20,title:'图1.23　A、B两地地层对比',effect:'strata',rect:[.17,.089,.477,.151],photo:true,controls:['同时代地层','分层查看'],note:'保留原图A、B两柱的六层与可辨化石形态。点层体、化石或短标签查看对应组合；另一柱未画出对应组合时不虚配。拖动间距手柄展开地层，层间距不表示地质时间等距；印痕不作物种鉴定。'},
  {id:'earth',pdf:27,title:'图1.34　地球内部地震波传播速度与圈层结构',effect:'spheres',rect:[.347,.087,.642,.283],controls:['完整','地壳','地幔','地核'],note:'以原图的圈层顺序展示地球内部结构，不把模型宽度当作真实厚度比例。'},
  {id:'atmosphere',pdf:36,title:'图2.5　大气的垂直分层',effect:'atmosphere',rect:[.12,.205,.544,.595],photo:true,controls:ATMOSPHERE_STOPS.map(s=>s.label),controlPhases:ATMOSPHERE_STOPS.map(s=>s.phase),playback:'once',note:'依教材31—32页图2.5，在同一个三层剖面中上下拖动探针，观察位置、温度曲线读点和旁注一起变化；点层体或标签定位观察高度。三层始终保留，进度是观察高度，不是气象时间。温度曲线只保留定性趋势，高层大气先降后升，顶部是教学窗口而不是大气边缘；不显示未标定的高度和气温。对流层以垂直运动为主、平流层以水平运动为主，不把“为主”理解为排除其他运动。'},
  {id:'heating',pdf:39,title:'图2.9　大气的受热过程',effect:'heat',rect:[.11,.58,.51,.244],controls:AIR_PROCESS_STOPS.heat.map(s=>s.label),controlPhases:AIR_PROCESS_STOPS.heat.map(s=>s.phase),playback:'once',note:'依教材34页图2.9，同一地面剖面依次显现太阳短波到达、地面增温、地面长波与近地面大气吸收，前一步结果保留。进度是讲解显现顺序，不是气象时间或定量能量收支；没有按比例量化太阳辐射的吸收与反射。大气逆辐射在下一图讨论，不在本图增加箭头。可点太阳、地面、长波箭带和空气层定位，也可拖动前缘手柄回看。'},
- {id:'thermal',pdf:41,title:'图2.11　大气热力环流的形成',effect:'circulation',rect:[.108,.414,.405,.412],controls:AIR_PROCESS_STOPS.circulation.map(s=>s.label),controlPhases:AIR_PROCESS_STOPS.circulation.map(s=>s.phase),playback:'once',note:'依教材36页图2.11，在同一个B冷—A暖—C冷剖面中连续显现冷热差、垂直运动、同高相对气压与完整环流。仅在同一高度比较相对气压；垂直运动依据冷热与浮力解释。分步显现是讲解顺序，不表示真实大气分成互不重叠的时段。可点对象定位或拖动前缘手柄回看。'},
+ {id:'thermal',pdf:41,title:'图2.11　大气热力环流的形成',effect:'circulation',rect:[.108,.414,.405,.412],controls:AIR_PROCESS_STOPS.circulation.map(s=>s.label),controlPhases:AIR_PROCESS_STOPS.circulation.map(s=>s.phase),playback:'once',note:'中央铜盘由酒精灯加热，两侧为冰水槽。白色烟迹示意空气的运动方向。依教材36页图2.11，在同一个B冷—A暖—C冷剖面中连续显现冷热差、垂直运动、同高相对气压与完整环流。仅在同一高度比较相对气压；垂直运动依据冷热与浮力解释。分步显现是讲解顺序，不表示真实大气分成互不重叠的时段。可点对象定位或拖动前缘手柄回看。'},
  {id:'breeze',pdf:43,title:'海陆间的大气热力环流',effect:'breeze',rect:[.12,.443,.65,.125],controls:['白天','夜晚'],note:'依据本页活动和热力环流原理展开完整海岸场景，陆地在左、海洋在右。昼夜滑块连续改变冷热关系；气压、空中环流和风旗读取同一模型。高低压只在同一高度比较。地形、建筑、空气箭带都是三维几何。晴朗且背景风较弱时的示意，不表示实测气温、风速或精确转向时刻。'},
  {id:'pressure-wind',pdf:43,title:'大气的水平运动——风',effect:'pressure',origin:'text',marker:[.86,.73],rect:[.14,.69,.59,.17],controls:['存在气压差','气压相同'],note:'依据本页“大气的水平运动——风”正文建立空间演示，不替换或改写原文。气压只在同一高度比较；在仅受水平气压梯度力的理想条件下，空气由高压区流向低压区。气压相同表示这个理想分量为零，并非真实大气一定无风。地转偏向力与摩擦力在下一页继续学习。'},
  {id:'water',pdf:52,title:'图3.2　水循环示意',effect:'water',rect:[0,.475,1,.415],keepOnPage:[[.119,.853,.155,.045]],controls:['海陆间循环','陆地内循环','海上内循环'],playback:'once',restartOnSelection:true,note:'依教材46—47页图3.2，拖动前缘纸签追踪同一批水的蒸发、输送、降水与返回。三种循环是独立类型，选项用于切换对照，各类型内部的节点用于定位进度；它们不表示先后演变。示踪数量、分流和时间均为教学示意，不表示水量比例、实际流速或完整水量收支。陆地内循环不将水送入海洋，海上内循环不越过海岸；完成后示踪留在接收水体。'},

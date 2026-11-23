@@ -1,3 +1,5 @@
+import { applyEarthScan } from './textbook-earth-scan';
+import { mountSpecimenDial } from './textbook-specimen-dial';
 import { createSpecimenMaterial } from './textbook-solid-materials';
 import { THREE as T } from './reference/engine.js';
 import { LIFT_MARGIN, type ModelMotion, type TextbookGeometry, type Vec3 } from './textbook-geometry';
@@ -29,6 +31,8 @@ export function buildSoilSortingWorld(b: TextbookGeometry): ModelMotion {
   const land = b.mesh(terrain, '#d0c3a6', false);
   land.material = createSpecimenMaterial(b.pop, { color: '#d0c3a6', ink: '#72745d', spacing: 2.8, hatch: .15, shade: .08, seed: 53 }); land.material.side = T.DoubleSide;
   land.userData.soilSortingRole = 'slope';
+  applyEarthScan(land.material,'alluvium',13*s);
+  const releaseWheel=mountSpecimenDial(b,p(.16,1.06,4.5),4.5*s,{label:'转动冲刷记录轮，追踪粗细颗粒',turns:1});
   const grainGeometry = new T.IcosahedronGeometry(1, 0);
   const particles = evaluateSoilSorting(0).grains.map(grain => {
     const mesh = b.mesh(grainGeometry, SOIL_GRAIN_COLORS[grain.size], false);
@@ -54,7 +58,7 @@ export function buildSoilSortingWorld(b: TextbookGeometry): ModelMotion {
       const active = Math.round(selection) === 4;
       for (const mesh of owned) mesh.visible = active;
       if (!active) return;
-      state = evaluateSoilSorting(phase);
+      state = evaluateSoilSorting(phase); releaseWheel(phase,0);
       const boundary = border.map(([u, v]) => p(u, v, soilSortingHeight(u, v) + .035));
       b.contour(boundary.concat([boundary[0]]), .58);
       for (const u of [0, .13, .26, .39, .52, .65, .78, 1]) {

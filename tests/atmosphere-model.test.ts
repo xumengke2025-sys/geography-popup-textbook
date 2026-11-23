@@ -209,6 +209,18 @@ describe('guided atmospheric comparator and direct vertical probe', () => {
     }
   });
 
+  it('winds the reel through one revolution and seats its model basket at the same height as the curve follower',()=>{
+    const {b,meshes,motion}=fixture(),basket=meshes.find(m=>m.name==='探空仪器吊篮')!,rim=meshes.find(m=>m.name==='探空绞盘手轮')!;
+    const cable=meshes.find(m=>m.name==='升降钢索')!,probe=meshes.find(m=>m.userData.atmosphereRole==='temperature-probe')!;
+    expect(rim.userData.modelInput.kind).toBe('phase-dial');expect(basket.userData.modelInput.kind).toBe('phase-track');
+    for(const phase of [.1,.7,1,.31,0,.7]){
+      motion.update(phase,0,0,true);const height=evaluateAtmosphere(phase).handle[1];
+      expect(basket.parent!.position.y).toBeCloseTo(probe.position.y);
+      expect(rim.parent!.rotation.z).toBeCloseTo(phase*2*Math.PI);
+      expect(cable.position.y/(b.width/100)).toBeCloseTo(height+14.39);
+      expect(cable.scale.y).toBeGreaterThan(0);
+    }
+  });
   it('keeps fixed camera bounds around every rendered mesh throughout the complete probe journey', () => {
     const { meshes, motion } = fixture(), bounds = motion.focusBounds!();
     const box = new Three.Box3(new Three.Vector3(...bounds.min), new Three.Vector3(...bounds.max));

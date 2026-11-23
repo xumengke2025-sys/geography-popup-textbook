@@ -10,6 +10,9 @@ import { buildBreeze } from '../src/textbook-coastal-world';
 import { evaluateSeaBreeze } from '../src/model';
 import { instrumentProfile } from '../src/textbook-instrument-profiles';
 
+import { loadFieldInstrument } from '../src/textbook-field-instruments';
+await loadFieldInstrument('breeze');
+
 function fixture(){
   const pop={group:new T.Group(),paperMats:[] as T.Material[],surfaces:[] as T.Mesh[],u:{uSurfAlpha:{value:1}},
     paper(){const m=new T.MeshBasicMaterial();this.paperMats.push(m);return m},

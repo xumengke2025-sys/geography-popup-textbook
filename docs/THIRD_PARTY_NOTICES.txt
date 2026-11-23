@@ -34,3 +34,7 @@ Every Joule, Techartist / iamtechartist.
 当前 public/textbook/ 包含由PDF转换的页面与封面影像，静态构建和离线包包含这些影像。
 未附原PDF文件不等于未包含教材内容。教材版权归原权利人；来源记录不授予公开再分发许可。
 本项目名称不表示出版社或 Every Joule 作者授权的官方版本。
+
+日地扰动演示仪的大洲金属嵌片和地球剖面仪的着色球面采用 Natural Earth 1:110m Land 公共领域海岸线，经过简化和球面投影。来源 https://www.naturalearthdata.com/downloads/110m-physical-vectors/110m-land/
+
+土壤、裸岩、河床砂砾、风积与海岸细沙、地表覆盖和仪器胡桃木使用 Poly Haven 的 CC0 扫描。离线贴图的逐项来源见 dist/textbook/materials/SOURCES.md。https://polyhaven.com/license

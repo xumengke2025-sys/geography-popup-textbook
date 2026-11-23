@@ -1,16 +1,21 @@
 import { THREE as T } from './reference/engine.js';
-import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
+import { HDRLoader } from 'three/examples/jsm/loaders/HDRLoader.js';
+import probeUrl from './assets/studio/instrument-room.hdr?inline';
 
-/** The mechanical reference uses RoomEnvironment for broad reflected light.
- * Keep that reflection on instruments only: the printed book and desk retain
- * their own window, paper shaders and existing illumination. One target belongs
- * to one book, and survives lesson changes without another PMREM allocation. */
-export function createInstrumentStudio(renderer: any) {
-  const room = new RoomEnvironment();
-  const generator = new T.PMREMGenerator(renderer);
-  let target: any;
-  try { target = generator.fromScene(room, .04, .1, 100); }
-  finally { room.dispose(); generator.dispose(); }
-  target.texture.name = 'mechanical-reference-room-reflection';
-  return { texture: target.texture, dispose: () => target.dispose() };
+/** A linear-light Blender studio shared by all instrument finishes in this book.
+ * Decode locally so the opening frame and offline classroom use the same light. */
+export function createInstrumentStudio(renderer:any){
+  const binary=atob(probeUrl.slice(probeUrl.indexOf(',')+1));
+  const bytes=Uint8Array.from(binary,c=>c.charCodeAt(0));
+  const hdr=new HDRLoader().parse(bytes.buffer);
+  const probe=new T.DataTexture(hdr.data,hdr.width,hdr.height,T.RGBAFormat,hdr.type);
+  probe.mapping=T.EquirectangularReflectionMapping;
+  probe.colorSpace=T.LinearSRGBColorSpace;probe.flipY=true;
+  probe.minFilter=T.LinearFilter;probe.magFilter=T.LinearFilter;probe.needsUpdate=true;
+  const generator=new T.PMREMGenerator(renderer);
+  try{
+    const target=generator.fromEquirectangular(probe);
+    target.texture.name='Blender instrument studio';
+    return {texture:target.texture,dispose:()=>target.dispose()};
+  }finally{generator.dispose();probe.dispose()}
 }

@@ -3,7 +3,10 @@ import * as T from 'three';
 vi.mock('../src/reference/engine.js', async () => ({ THREE: await import('three') }));
 import { buildOrreryWorld } from '../src/textbook-orrery-world';
 import { evaluateSolarSystem } from '../src/textbook-astronomy-model';
+import { loadFieldInstrument } from '../src/textbook-field-instruments';
 import { phaseFromDialPoint, type PhaseDial } from '../src/textbook-model-input';
+
+await loadFieldInstrument('solar');
 
 function fixture() {
   const root = new T.Group(), meshes: T.Mesh[] = [];
@@ -50,18 +53,41 @@ describe('the orrery carries the scientific state without independent prop anima
       expect(grip.userData.modelInput.kind).toBe('phase-dial');
     }
   });
+  it('isolates the selected pair and preserves meshing and forward orbital direction on every drive', () => {
+    const { root, motion } = fixture();
+    motion.inspect!('train');
+    for (const phase of [.27, .96, .09]) {
+      const positions = evaluateSolarSystem(phase).bodies;
+      const next = evaluateSolarSystem(phase + .0001).bodies;
+      for (let selection = 1; selection <= 8; selection++) {
+        motion.update(phase, selection, 0, true);
+        const model = motion.describe!() as any;
+        for (let i = 0; i < 8; i++) {
+          const [driving, driven] = model.gearTeeth[i];
+          expect(model.driverAngle * driving + model.outputAngles[i] * driven).toBeCloseTo(0, 9);
+          for (const group of ['input', 'pinion', 'arm']) expect(root.getObjectByName(group + i)?.visible).toBe(i === selection - 1);
+          expect(model.planetPositions[i].local).toEqual(positions[i].point);
+          const [x,,z] = positions[i].point, [xx,,zz] = next[i].point;
+          expect(z * xx - x * zz).toBeGreaterThan(0);
+        }
+      }
+    }
+  });
   it('rests its levelling pads at the local page plane and keeps focus bounds around all construction', () => {
     const { motion, meshes, root } = fixture();
     motion.update(.371, 0, 0, true); root.updateMatrixWorld(true);
     const bounds = motion.focusBounds!();
     const focus = new T.Box3(new T.Vector3(...bounds.min), new T.Vector3(...bounds.max));
+    let underside = Infinity;
     for (const mesh of meshes.filter(m => m.userData.orreryPart)) {
       mesh.geometry.computeBoundingBox();
       const box = mesh.geometry.boundingBox!.clone().applyMatrix4(mesh.matrixWorld);
       expect(focus.clone().expandByScalar(.001).containsBox(box), mesh.name).toBe(true);
-      if (mesh.userData.orreryPart === 'three-small-levelling-pads') expect(box.min.y).toBeCloseTo(0);
+      if (['bezel', 'frame'].includes(mesh.userData.orreryPart)) underside = Math.min(underside, box.min.y);
     }
+    expect(underside).toBeCloseTo(0, 2);
     expect((motion.describe!() as any).source.periodsToScale).toBe(false);
     expect((motion.describe!() as any).instrumentMechanismIsAstronomicalCause).toBe(false);
   });
 });
+

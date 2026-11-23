@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { distanceToRiver, evaluateRiverCutoff, riverCutoffSvg } from '../src/textbook-river-model';
+import { distanceToRiver, evaluateRiverCutoff, sampleRiverBanks, riverCutoffSvg } from '../src/textbook-river-model';
 
 describe('A possible flood-triggered meander cutoff', () => {
   it('starts with a connected bend and no shortcut', () => {
@@ -38,5 +38,19 @@ describe('A possible flood-triggered meander cutoff', () => {
     }
     expect(riverCutoffSvg(1)).toContain('牛轭湖');
     expect(riverCutoffSvg(1)).not.toContain('<image');
+  });
+  it('matches the distance to the changing river bed on a reusable grid',()=>{
+    const nx=32,nz=24,grid=new Float32Array((nx+1)*(nz+1));
+    for(const phase of [0,.43,.56,.87,1,.31]){
+      const state=evaluateRiverCutoff(phase);
+      sampleRiverBanks(state,nx,nz,grid);
+      for(let j=0;j<=nz;j++)for(let i=0;i<=nx;i++){
+        const point=[.012+.976*i/nx,.045+.91*j/nz] as const;
+        const distance=(path:typeof state.bend,width:number)=>distanceToRiver(point,path,.62)/(width/2);
+        const expected=Math.min(2.4,distance(state.upstream,state.riverWidth),distance(state.downstream,state.riverWidth),
+          distance(state.bend,state.bendWidth),state.shortcutWidth>.0001?distance(state.shortcut,state.shortcutWidth):Infinity);
+        expect(grid[j*(nx+1)+i]).toBeCloseTo(expected,5);
+      }
+    }
   });
 });

@@ -20,4 +20,14 @@ describe('model framing respects usable screen space', () => {
     expect(fitModelViewport(small,1366,900,35,86,170).distance)
       .toBeLessThan(fitModelViewport(corners,1366,900,35,86,170).distance*.4);
   });
+  it('keeps the entire model between a left caption and the chapter tabs',()=>{
+    const width=1024,height=768,leftInset=212,tan=Math.tan(35*Math.PI/360);
+    const fit=fitModelViewport(corners,width,height,35,86,170,leftInset);
+    for(const [x,,z] of corners){
+      const ndc=(x+fit.shiftX)/((fit.distance-z)*tan*width/height);
+      const screen=(1+ndc)*width/2;
+      expect(screen).toBeGreaterThanOrEqual(leftInset);
+      expect(screen).toBeLessThanOrEqual(width-110);
+    }
+  });
 });

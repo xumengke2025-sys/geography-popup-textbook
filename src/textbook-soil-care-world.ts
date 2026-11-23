@@ -1,5 +1,8 @@
+import { handValve, hydrologyCore, hydrologyTopRelief, specimenNoise, meniscusGeometry, wetGlassFill } from './textbook-hydrology-cutaway';
+import { applyEarthScan } from './textbook-earth-scan';
 import { THREE as T } from './reference/engine.js';
 import { LIFT_MARGIN, type TextbookGeometry, type ModelMotion, type Vec3 } from './textbook-geometry';
+import { mountCareSection } from './textbook-soil-care-section';
 import { evaluateSoilCare } from './textbook-soil-care-model';
 import { createSoilInstrument } from './textbook-soil-instrument-parts';
 import { mergeInstrumentGeometry } from './textbook-instrument-parts';
@@ -16,8 +19,8 @@ export function buildSoilCareWorld(b: TextbookGeometry): ModelMotion {
   const { parts, solid, plate, pipe, bearing, finish, openBox, nozzle } = createSoilInstrument(b, s);
   const role = (mesh: any, name: string) => { mesh.userData.soilCareRole = name; return mesh; };
   const input = (mesh: any, selection: number) => {
-    mesh.userData.modelInput = { kind: 'replay', selection,
-      label: `从同一土壤开始，${['观察蒸发返盐', '观察引淡淋盐', '观察覆盖抑蒸发'][selection]}` };
+    mesh.userData.modelInput = { kind: 'select', selection, keepPhase: true,
+      label: `在当前进度比较，${['观察蒸发返盐', '观察引淡淋盐', '观察覆盖抑蒸发'][selection]}` };
     mesh.userData.interactionFeedback = false; return mesh;
   };
   const inspectionPane = (a: Vec3, c: Vec3) => {
@@ -43,8 +46,18 @@ export function buildSoilCareWorld(b: TextbookGeometry): ModelMotion {
   basalWalls[3].visible = false;
   plate(p(82.8, 12, -10), p(83.4, 17.2, 8.6), '#d8d3bb', 'ivory', 'groundwater-right-retained-wall');
   plate(p(82.8, 12, 8.6), p(83.4, 14.5, 17.3), '#d8d3bb', 'ivory', 'groundwater-open-exit-sill');
-  const groundwater = role(solid(new T.BoxGeometry(68.4 * s, 5.2 * s, 25.7 * s), '#78a1a6', 'water', 'retained-groundwater'), 'groundwater');
+  const groundwater = role(solid(meniscusGeometry(68.4 * s, 5.2 * s, 25.7 * s), '#78a1a6', 'water', 'retained-groundwater'), 'groundwater');
   groundwater.position.set(...p(48.5, 14.6, 3.35)); groundwater.userData.castShadow = false; input(groundwater, 1);
+  wetGlassFill(groundwater,b,.38);
+  const gravels:any[]=[];
+  for(let i=0;i<155;i++){
+    const x=15.2+specimenNoise(i,7)*66.7,z=-8.6+specimenNoise(i,49)*24.6,r=.39+specimenNoise(i,60)*.78;
+    const stone=new T.IcosahedronGeometry(1,1);
+    stone.scale(r*s,.45*r*s,.68*r*s);stone.rotateY(specimenNoise(i,23)*6.28);
+    stone.translate(...p(x,12.23+r*.26+(z>12?.21:0),z));gravels.push(stone);
+  }
+  const gravel=role(solid(mergeInstrumentGeometry(gravels),'#81745e','rock','submerged-gravel-bed'),'wet-gravel');
+  applyEarthScan(gravel.material,'alluvium',7*s);
   // An actual empty channel connects the groundwater cutaway to the cup.
   // Its sliding gate visibly opens only in the drainage condition.
   plate(p(82.6, 13.8, 8), p(90.6, 14.5, 17.3), '#d8d3bb', 'ivory', 'drain-bridge-floor');
@@ -61,58 +74,48 @@ export function buildSoilCareWorld(b: TextbookGeometry): ModelMotion {
   receivingWalls[2].visible = false;
   plate(p(90, 10.6, 8), p(90.5, 14.5, 18.8), '#d8d3bb', 'ivory', 'receiver-open-inlet-sill');
   plate(p(90, 14.5, 8), p(90.5, 18.8, 8.6), '#d8d3bb', 'ivory', 'receiver-inlet-back-jamb');
-  const receiver = role(solid(new T.BoxGeometry(7.9 * s, 5.5 * s, 9.1 * s), '#91b2b5', 'water', 'receiver-inspection-water'), 'receiver-water');
+  const receiver = role(solid(meniscusGeometry(7.9 * s, 5.5 * s, 9.1 * s), '#91b2b5', 'water', 'receiver-inspection-water'), 'receiver-water');
+  wetGlassFill(receiver,b,.51);
   receiver.position.set(...p(94.5, 13.85, 13.35)); receiver.userData.castShadow = false;
   // One continuous natural cut face. Flow lanes belong to the schematic
   // tracers, never to eight vertical trenches cut through the soil specimen.
   const lanes = Array.from({ length: 8 }, (_, i) => 21 + i * 7.8);
-  const cols = 116, rows = 28, vertices: number[] = [], colors: number[] = [], indices: number[] = [];
-  const topAt = (x: number) => 43.6 + .55 * Math.sin(x * .21) + .32 * Math.sin(x * .73 + .7);
-  // Stable value noise for the exposed natural specimen. Independent lattice
-  // samples avoid diagonal sine waves reading as a manufactured corrugation.
-  const grainAt = (x: number, y: number) => {
-    const ix = Math.floor(x), iy = Math.floor(y), u = x - ix, v = y - iy;
-    const sx = u * u * (3 - 2 * u), sy = v * v * (3 - 2 * v);
-    const hash = (a: number, c: number) => { const h = Math.sin(a * 127.1 + c * 311.7 + 19.3) * 43758.5453; return h - Math.floor(h); };
-    const a = hash(ix, iy), c = hash(ix + 1, iy), d = hash(ix, iy + 1), e = hash(ix + 1, iy + 1);
-    return (a + (c - a) * sx) * (1 - sy) + (d + (e - d) * sx) * sy;
-  };
-  const soilColor = new T.Color('#8e7959');
-  for (let side = 0; side < 2; side++) for (let row = 0; row <= rows; row++) for (let col = 0; col <= cols; col++) {
-    const u = col / cols, v = row / rows, xx = 14.3 + u * 68.5;
-    const x = xx + (Math.exp(-u * 35) - Math.exp(-(1 - u) * 35)) * Math.sin(v * 14.7) * .48;
-    const yy = 17.2 + v * (topAt(xx) - 17.2);
-    // Several incommensurate directions avoid the old repeated diagonal
-    // corrugation. Isolated shallow pores never divide the whole monolith.
-    const relief = .55 * (grainAt(xx * .45, yy * .45) - .5)
-      + .22 * (grainAt(xx * 1.09 + 17, yy * 1.09) - .5);
-    let recess = 0;
-    for (let k = 0; k < 21; k++) {
-      const px = 17.5 + (k * .61803398875 % 1) * 62, py = 19 + (k * .41421356237 % 1) * 22;
-      const dx = (xx - px) / (.55 + k % 3 * .15), dy = (yy - py) / (.7 + k % 4 * .13);
-      recess += .38 * Math.exp(-(dx * dx + dy * dy) * 1.6);
+  const topAt = (x:number)=>43.6+.55*Math.sin(x*.21)+.32*Math.sin(x*.73+.7);
+  const surfaceAt=(x:number,z:number)=>topAt(x)+hydrologyTopRelief((x-14.3)/68.5,(11.57-z)/19.57,68.5/42,42);
+  const soilGeometry=hydrologyCore(p(14.3,17.16,-8),p(82.8,44,11.57),x=>topAt(x/s)*s,'profile');
+  const soil=role(solid(soilGeometry,'#ffffff','land','single-irregular-porous-soil-monolith'),'soil-aggregate');
+  soil.material=b.materialFor('land','#8e7959');soil.material.color.set('#ffffff');soil.material.vertexColors=true;
+  applyEarthScan(soil.material,'loam',10*s);
+  // Broken surface efflorescence lies above the matrix. Its exposed area
+  // tracks the surface salt independently of the twenty dissolved tracers.
+  const filmPositions:number[]=[],filmColors:number[]=[];
+  const saltTint=new T.Color();
+  for(let i=0;i<144;i++){
+    const x=16.4+64.2*specimenNoise(i,18),z=-6.5+16.7*specimenNoise(i,36);
+    const spread=.32+specimenNoise(i,62)*1.07;
+    for(let island=0;island<6;island++){
+      const xx=x+(specimenNoise(i,island+32)-.5)*spread*2.4,zz=z+(specimenNoise(i,island+44)-.5)*spread*1.5;
+      const radius=spread*(.18+.39*specimenNoise(i,island+61)),ring:Vec3[]=[];
+      for(let k=0;k<7;k++){
+        const angle=k*Math.PI*2/7,edge=.64+.5*specimenNoise(i+island,k+91);
+        const px=xx+Math.cos(angle)*radius*edge,pz=zz+Math.sin(angle)*radius*edge*.76;
+        ring.push(p(px,surfaceAt(px,pz)+.105,pz));
+      }
+      for(let k=0;k<7;k++){
+        filmPositions.push(...p(xx,surfaceAt(xx,zz)+.16,zz),...ring[(k+1)%7],...ring[k]);
+        for(const hex of ['#dfd8bd','#aa9a7e','#c3b599']){
+          saltTint.set(hex).multiplyScalar(.85+.17*specimenNoise(i+island,k));filmColors.push(saltTint.r,saltTint.g,saltTint.b);
+        }
+      }
     }
-    const z = side ? -8 : 11.65 + relief - recess;
-    vertices.push(...p(x, yy, z));
-    const darkTop = 1 - .16 * Math.exp(-(1 - v) * 9), grain = .95 + .09 * grainAt(xx * 1.17, yy * 1.17);
-    colors.push(soilColor.r * darkTop * grain, soilColor.g * darkTop * grain, soilColor.b * darkTop * grain);
   }
-  const count = (cols + 1) * (rows + 1), at = (row: number, col: number) => row * (cols + 1) + col;
-  for (let row = 0; row < rows; row++) for (let col = 0; col < cols; col++) {
-    const a = at(row, col), c = a + 1, d = at(row + 1, col), e = d + 1;
-    indices.push(a,c,d,c,e,d,a+count,d+count,c+count,c+count,d+count,e+count);
-  }
-  const edge = [...Array.from({length:cols+1},(_,col)=>at(0,col)),
-    ...Array.from({length:rows},(_,row)=>at(row+1,cols)),
-    ...Array.from({length:cols},(_,col)=>at(rows,cols-1-col)),
-    ...Array.from({length:rows-1},(_,row)=>at(rows-1-row,0))];
-  edge.forEach((a,i)=>{const c=edge[(i+1)%edge.length];indices.push(a,a+count,c,c,a+count,c+count);});
-  const soilGeometry = new T.BufferGeometry();soilGeometry.setAttribute('position',new T.Float32BufferAttribute(vertices,3));
-  soilGeometry.setAttribute('color',new T.Float32BufferAttribute(colors,3));soilGeometry.setIndex(indices);soilGeometry.computeVertexNormals();
-  const soil = role(solid(soilGeometry, '#ffffff', 'land', 'single-irregular-porous-soil-monolith'),'soil-aggregate');
-  // A dedicated colour avoids changing other white materials in the book.
-  soil.material = b.materialFor('land', '#8e7959');soil.material.color.set('#ffffff');soil.material.vertexColors = true;
+  const filmGeometry=new T.BufferGeometry();
+  filmGeometry.setAttribute('position',new T.Float32BufferAttribute(filmPositions,3));
+  filmGeometry.setAttribute('color',new T.Float32BufferAttribute(filmColors,3));filmGeometry.computeVertexNormals();
+  const film=role(solid(filmGeometry,'#f3eeea','rock','broken-surface-efflorescence'),'surface-crust');
+  film.material.vertexColors=true;applyEarthScan(film.material,'alluvium',3.5*s);input(film,0);
   soil.userData.singleContinuousSoil = true;soil.userData.schematicFlowLanes = lanes;input(soil,0);
+  const section=mountCareSection(b,soil,p,s,z0,lanes,topAt);
   for (const x of [12.1, 84.8]) {
     plate(p(x - 1.2, 5.25, -7), p(x + 1.2, 7.1, -2), '#2c443d', 'enamel', 'header-upright-foot');
     pipe(p(x, 7.1, -4.5), p(x, 52.5, -4.5), .58 * s);
@@ -131,7 +134,8 @@ export function buildSoilCareWorld(b: TextbookGeometry): ModelMotion {
   const floorGeometry = new T.ExtrudeGeometry(floor, { depth: .45 * s, bevelEnabled: false, curveSegments: 16 });
   floorGeometry.rotateX(-Math.PI / 2); floorGeometry.translate(0, 52.05 * s, 0);
   input(role(solid(floorGeometry, '#a88b50', 'brass', 'open-perforated-freshwater-floor'), 'freshwater-floor'), 1);
-  const freshwater = role(solid(new T.BoxGeometry(66.9 * s, 2.7 * s, 17.2 * s), '#a5c4c8', 'water', 'freshwater-surface'), 'freshwater');
+  const freshwater = role(solid(meniscusGeometry(66.9 * s, 2.7 * s, 17.2 * s), '#a5c4c8', 'water', 'freshwater-surface'), 'freshwater');
+  wetGlassFill(freshwater,b,.56);
   freshwater.position.set(...p(48.25, 53.85, 4.2)); freshwater.userData.castShadow = false; input(freshwater, 1);
   // The natural cover rests on the SAME soil. Short irregular stems and curled
   // leaf ribbons form an open mulch mat; no long green rods substitute for it.
@@ -139,8 +143,8 @@ export function buildSoilCareWorld(b: TextbookGeometry): ModelMotion {
   for (let i = 0; i < 90; i++) {
     const x = 15.5 + (i * .61803398875 % 1) * 65, z = -6.5 + (i * .41421356237 % 1) * 19;
     const angle = i * 2.39996, length = 2.3 + (i % 7) * .52, ax = x - Math.cos(angle) * length / 2, cx = x + Math.cos(angle) * length / 2;
-    const a = new T.Vector3(...p(ax, topAt(ax) + .2 + i % 4 * .13, z - Math.sin(angle) * length / 2));
-    const c = new T.Vector3(...p(cx, topAt(cx) + .2 + i % 4 * .13, z + Math.sin(angle) * length / 2));
+    const a = new T.Vector3(...p(ax, surfaceAt(ax,z - Math.sin(angle)*length/2) + .2 + i % 4 * .13, z - Math.sin(angle) * length / 2));
+    const c = new T.Vector3(...p(cx, surfaceAt(cx,z + Math.sin(angle)*length/2) + .2 + i % 4 * .13, z + Math.sin(angle) * length / 2));
     const g = new T.CylinderGeometry(.105 * s, .16 * s, a.distanceTo(c), 5);
     g.applyQuaternion(new T.Quaternion().setFromUnitVectors(new T.Vector3(0, 1, 0), c.clone().sub(a).normalize())); g.translate(...a.add(c).multiplyScalar(.5).toArray()); straw.push(g);
   }
@@ -155,6 +159,10 @@ export function buildSoilCareWorld(b: TextbookGeometry): ModelMotion {
   const cover = [role(solid(mergeInstrumentGeometry(straw), '#a28d51', 'plant', 'short-natural-straw-mulch'), 'mulch-stems'),
     role(solid(mergeInstrumentGeometry(leaf), '#777445', 'plant', 'curled-organic-mulch'), 'mulch-leaves')];
   cover.forEach(m => input(m, 2));
+  const roll=role(solid(new T.CylinderGeometry(1.52*s,1.6*s,11.2*s,24),'#9a8055','plant','mulch-roll'),'stored-mulch');
+  roll.rotation.z=Math.PI/2;roll.position.set(...p(71,topAt(71)+1.41,-4.2));
+  roll.userData.modelInput={kind:'select',selection:2,toggleTo:0,keepPhase:true,label:'铺开或收卷覆盖物，比较相同进度的土壤'};
+
   const salts = evaluateSoilCare(0, 0).packets.map(packet => {
     const mesh = role(solid(new T.SphereGeometry(.59 * s, 10, 6), '#b48943', 'rock', 'retained-salt-marker'), 'salt-packet');
     mesh.userData.soilCareSaltId = packet.id; mesh.userData.castShadow = false; return mesh;
@@ -171,6 +179,27 @@ export function buildSoilCareWorld(b: TextbookGeometry): ModelMotion {
   }
   const rider = role(solid(new T.SphereGeometry(1.45 * s, 20, 12), '#e3ddc9', 'ivory', 'migration-observation-rider'), 'observation-slider');
   rider.scale.set(1, 1.3, .8); rider.userData.modelInput = { kind: 'phase-track', track, label: '拖动观察水盐迁移，倒拖回看同一批盐的去向' }; rider.userData.interactionFeedback = false;
+  const valveAt=p(92,33.3,17.8);
+  plate(p(90.4,5.25,9.2),p(93.6,33.8,11.8),'#374b3c','enamel','salt-tracer-bearing-post');
+  pipe(p(92,33.3,10.4),valveAt,.7*s,'#8e774f','brass');
+  bearing(p(92,33.3,13.4),[0,0,1],1.45*s,3.1*s);
+  const turnValve=handValve(b,s,valveAt,5.25,'转动水盐示踪轮，观察这一批水盐的迁移和去向');
+  const conditionKeys=[25,48,71].map((x,index)=>{
+    plate(p(x-7.2,4.7,16.4),p(x+7.2,7.55,20.5),'#8d7348','brass','condition-key-brass-seat');
+    const key=role(plate(p(x-6.7,5.1,20.4),p(x+6.7,7.15,21.15),'#dbd1ae','ivory','soil-care-condition-key'),'condition-key');
+    input(key,index);
+    // Marks on each key reproduce the sun, water and mulch used in the experiment.
+    const marks:any[]=[],line=(ax:number,ay:number,bx:number,by:number)=>{
+      const a=new T.Vector3(...p(x+ax,6.1+ay,21.24)),b=new T.Vector3(...p(x+bx,6.1+by,21.24));
+      const g=new T.CylinderGeometry(.105*s,.105*s,a.distanceTo(b),7);
+      g.applyQuaternion(new T.Quaternion().setFromUnitVectors(new T.Vector3(0,1,0),b.clone().sub(a).normalize()));g.translate(...a.add(b).multiplyScalar(.5).toArray());marks.push(g);};
+    if(index===0){const ring=new T.TorusGeometry(.47*s,.12*s,7,20);ring.translate(...p(x,6.1,21.24));marks.push(ring);
+      for(let k=0;k<8;k++){const a=k*Math.PI/4;line(.68*Math.cos(a),.68*Math.sin(a),.97*Math.cos(a),.97*Math.sin(a));}}
+    else if(index===1){for(const dx of [-1,0,1]){line(dx,.73,dx,-.66);line(dx,-.66,dx+.22,-.34);}}
+    else{for(const dx of [-1.12,0,1.12]){line(dx-.65,-.56,dx+.6,.56);line(dx+.6,.56,dx+.04,.53);}}
+    input(solid(mergeInstrumentGeometry(marks),'#715a37','brass','condition-key-pictogram'),index);
+    return key;
+  });
   const waterSource = new T.IcosahedronGeometry(1, 0), waterVertices = new Float32Array(waterSource.attributes.position.array), stride = waterSource.attributes.position.count;
   const waterGeometry = new T.BufferGeometry(); waterGeometry.setAttribute('position', new T.Float32BufferAttribute(new Float32Array(8 * 4 * stride * 3), 3));
   const water = role(solid(waterGeometry, '#76a6af', 'water', 'schematic-water-migration'), 'water-flow'); water.userData.castShadow = false; waterSource.dispose();
@@ -180,6 +209,9 @@ export function buildSoilCareWorld(b: TextbookGeometry): ModelMotion {
     const key = `${state.phase}:${state.selection}`;
     if (key !== previous) {
       const washing = state.freshwaterWithDrainage, covered = state.protectedFromEvaporation;
+      turnValve(state.phase);section.wet(state.phase,washing,covered);
+      filmGeometry.setDrawRange(0,Math.round(144*state.surfaceSalt)*6*7*3);
+      conditionKeys.forEach((key,i)=>{key.position.z=i===state.selection?-.13*s:0;});
       for (const m of cover) m.visible = covered;
       freshwater.visible = washing; receiver.visible = washing;
       gate.position.y = washing ? 6 * s : 0;
@@ -189,7 +221,7 @@ export function buildSoilCareWorld(b: TextbookGeometry): ModelMotion {
       for (let lane = 0; lane < 8; lane++) for (let j = 0; j < 4; j++) {
         const visible = state.phase > .08 && state.phase < .98 && (!covered || j < 1), fraction = (state.phase * 2 + j / 4) % 1;
         const yy = washing ? 51.0 - fraction * 34.6 : 17.2 + fraction * 29.5;
-        const radius = visible ? (covered ? .31 : .42) * s : 0, center = p(lanes[lane], yy, 12.8);
+        const radius = visible ? (covered ? .31 : .42) * s : 0, center = section.trace(lane,yy);
         for (let k = 0; k < stride; k++) { const base = k * 3, vertex = (lane * 4 + j) * stride + k;
           a.setXYZ(vertex, center[0] + waterVertices[base] * radius, center[1] + waterVertices[base + 1] * radius * 1.45, center[2] + waterVertices[base + 2] * radius); }
       }

@@ -20,10 +20,29 @@ export function landslideGrade(x: number): number {
   return 6.68 - .46 * 16 * (q - q ** 3 + .5 * q ** 4);
 }
 export function debrisChannelZ(x: number): number { return 35 + 2.6 * Math.sin((x - 17) / 60 * Math.PI); }
+export function landslideScarp(x:number,z:number) {
+  const across=Math.abs(z-LANDSLIDE_LAYOUT.centerZ);
+  const rim=Math.min(15.7,15.7-.025*across*across+.75*Math.sin(.56*z)+.31*Math.cos(.81*z));
+  const depth=Math.hypot(Math.max(0,rim-x),Math.max(0,across-9.84));
+  const extent=(1-smooth((x-23)/11))*(1-smooth((across-10.4)/8.5));
+  const face=smooth(depth/1.14)*(1-smooth((depth-1.13)/4.1))*extent;
+  const joint=.5+.5*Math.cos(z*1.72+x*.46+.51*Math.sin(.88*z));
+  const relief=face*(4.1+.82*Math.sin(.29*z)-.9*joint**5);
+  return {face,relief};
+}
 export function landslideGround(x: number, z: number, mode: LandslideMode): number {
-  if (mode === 'landslide') return landslideGrade(x);
+  // The coherent specimen runs on its original slip surface. Beyond its
+  // footprint, resistant spurs border the runout and taper into the foot.
+  const side = smooth((Math.abs(z-LANDSLIDE_LAYOUT.centerZ)-10)/10);
+  const spur = 10.6*Math.exp(-(((x-23+.32*z)/18)**2+((z-14)/9)**2))
+    + 6.7*Math.exp(-(((x-43-.17*z)/17)**2+((z-54)/10)**2))
+    + 4.3*Math.exp(-(((x-63)/13)**2+((z-16)/10)**2));
+  const relief = side*(spur+1.15*(1+Math.sin(.19*x+.29*z))*(1-interval(x,45,79)));
+  if (mode === 'landslide') {
+    return landslideGrade(x)+relief+landslideScarp(x,z).relief;
+  }
   const offset = Math.abs(z - debrisChannelZ(x)), bank = smooth((offset - 4.7) / 11);
-  return landslideGrade(x) + 6.2 * bank * (1 - interval(x, 57, 78));
+  return landslideGrade(x) + relief + 6.2 * bank * (1 - interval(x, 57, 78));
 }
 const footprint: readonly (readonly [number, number])[] = [
   [-8.5, -4], [-8, -8], [3.2, -9.5], [8.5, -6], [7.8, 7.8], [2.5, 9.3], [-7, 8.2], [-8.5, 2.5],
@@ -32,6 +51,18 @@ const polygonArea = (p: readonly (readonly [number, number])[]) => Math.abs(p.re
   const r = p[(i + 1) % p.length]; return a + q[0] * r[1] - r[0] * q[1];
 }, 0)) / 2;
 export const SLIDE_BODY_VOLUME = polygonArea(footprint) * 3.2;
+
+// Small rooted tufts are landmarks on the coherent piece. Both views use
+// the same leaf midribs and the same rigid pose as the upper slip material.
+export const slideLeaves = [[-4,-3,2.1],[.8,-4.7,1.55],[3.7,2.9,1.85],[-3.4,5.1,1.25]].flatMap(([x,z,h],i)=>
+  Array.from({length:7},(_,j)=>{
+    const angle=i*.73+j*2.4,dx=Math.cos(angle),dz=Math.sin(angle),length=h*(.81+.18*Math.cos(j+i));
+    const halfWidth=.13*h;
+    return [[x,3.2,z],[x+length*.42*dx-halfWidth*dz,3.2+length*.68,z+length*.42*dz+halfWidth*dx],
+      [x+length*dx,3.2+length*(.83+.16*Math.sin(j)),z+length*dz],
+      [x+length*.42*dx+halfWidth*dz,3.2+length*.68,z+length*.42*dz-halfWidth*dx],
+      [x+length*.42*dx,3.2+length*.77,z+length*.42*dz]] as LandslidePoint[];
+  }));
 
 function slideBody(phase: number) {
   const travel = interval(phase, .06, .84), x = 24 + 54 * travel;
@@ -51,6 +82,9 @@ function slideBody(phase: number) {
   };
 }
 
+const clastCells=[[1,2],[1,6],[2,8],[3,1],[3,4],[3,7],[4,8],[5,2],[5,7],[6,3],[6,6],[7,1],
+      [7,4],[7,9],[8,6],[8,8],[9,2],[9,5],[10,1],[10,7],[11,3],[11,8],[12,2],[12,6]];
+
 interface FlowVertex { x: number; z: number; bottom: number; profile: number }
 const triangleArea = (a: FlowVertex, b: FlowVertex, c: FlowVertex) =>
   Math.abs((b.x - a.x) * (c.z - a.z) - (c.x - a.x) * (b.z - a.z)) / 2;
@@ -67,8 +101,12 @@ function debrisBody(phase: number) {
     return { u, q, x, spread, width, center: debrisChannelZ(x) };
   });
   for (const row of rowStates) for (let j = 0; j <= columns; j++) {
-    const v = j / columns, x = row.x + .5 * Math.sin(v * Math.PI * 2) * row.spread;
-    const z = row.center + (v - .5) * row.width;
+    const v=j/columns, edge=Math.abs(2*v-1), tip=smooth((row.u-.44)/.56);
+    const x=row.x+row.spread*(.54*Math.sin(2*Math.PI*v)-3.45*edge**1.45*tip);
+    const neck=(.49+.51*Math.sin(Math.PI*(.09+.78*row.u)))*(1+.08*Math.sin(row.u*15.7));
+    const taper=neck+(1-neck)*tip;
+    const z=row.center+(v-.5)*row.width*(1-row.spread+row.spread*taper)
+      +row.spread*.76*edge*Math.sin(row.u*9.7+2*Math.PI*v);
     raw.push({ x, z, bottom: landslideGround(x, z, 'debris-flow') + .045,
       profile: .32 + .68 * Math.sin(Math.PI * v) * (.62 + .38 * Math.sin(Math.PI * row.u)) });
   }
@@ -93,7 +131,7 @@ function debrisBody(phase: number) {
   // Fixed surface-grid occupants put every stone on the actual mud surface
   // used by both renderers, not on a separate animated trajectory.
   const coarse = Array.from({ length: LANDSLIDE_LAYOUT.coarseCount }, (_, id) => {
-    const row = 1 + Math.floor(id / 4) * 2, col = 1 + id % 4 * 2;
+    const [row,col]=clastCells[id];
     const at = top[row * (columns + 1) + col];
     return { id, center: [at[0], at[1] + .12, at[2]] as LandslidePoint,
       radius: .62 + id % 3 * .14, angle: .31 * id, embedded: true };
@@ -143,8 +181,12 @@ export function landslideSvg(phase: number, selection = 0): string {
   }
   for (let j = 0; j < 18; j++) for (let i = 0; i < 30; i++) {
     const x = 6 + 90 * i / 30, z = 8 + 54 * j / 18, at = (xx: number, zz: number) => [xx, landslideGround(xx, zz, s.mode), zz];
-    terrain += poly([at(x, z), at(x + 3, z), at(x + 3, z + 3), at(x, z + 3)],
-      s.mode === 'debris-flow' && Math.abs(z - debrisChannelZ(x)) < 7 ? '#c7b99d' : '#b8b69b', 'none');
+    const across=landslideGround(x+3,z,s.mode)-landslideGround(x,z,s.mode);
+    const along=landslideGround(x,z+3,s.mode)-landslideGround(x,z,s.mode);
+    const light=Math.max(.78,Math.min(1.11,.97-.047*across-.043*along));
+    const outer=smooth((Math.abs(z-35)-5)/15);
+    const fill=[197-27*outer,184-7*outer,156-21*outer].map(c=>Math.round(c*light));
+    terrain += poly([at(x, z), at(x + 3, z), at(x + 3, z + 3), at(x, z + 3)],`rgb(${fill.join(',')})`, 'none');
   }
   const scar = footprint.map(([u, v]) => [24 + u, landslideGrade(24 + u) + .055, 35 + v]);
   let material = '', labels = '';
@@ -156,6 +198,10 @@ export function landslideSvg(phase: number, selection = 0): string {
       material += poly([lower[i], lower[j], upper[j], upper[i]], '#ae9e82', '#6e7263', 1);
     }
     material += poly(upper, '#c6b694', '#626e5f', 1.25);
+    const {x,y,z,pitch}=s.slide,c=Math.cos(pitch),sn=Math.sin(pitch);
+    for(const leaf of slideLeaves){
+      material+=poly(leaf.slice(0,4).map(([u,h,v])=>[x+u*c-h*sn,y+u*sn+h*c,z+v]),'#77805d','none');
+    }
     for (const seam of s.slide.seams) material += `<polyline points="${seam.map(pt).join(' ')}" fill="none" stroke="#807d68" stroke-width="1.2"/>`;
     const at = project([s.slide.x, s.slide.y + 11, 35]);
     labels = `<text x="${at[0]}" y="${at[1]}" text-anchor="middle">滑体</text>`;

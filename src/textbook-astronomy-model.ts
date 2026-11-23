@@ -1,3 +1,5 @@
+import { orreryControlDrawing } from './textbook-orrery-controls';
+import mechanism from './assets/orrery-mechanism.json';
 /** Shared schematic coordinates for the raised objects and their SVG fallback.
  * Neither a displayed orbit radius nor a layer radius is a measured scale. */
 export const SOLAR_REFERENCE = {
@@ -5,17 +7,17 @@ export const SOLAR_REFERENCE = {
   orbitalDistancesToScale: false, bodySizesToScale: false, periodsToScale: false,
   phaseMeaning: 'schematic-orbital-progress', cycleBoundaryContinuous: true,
 } as const;
-export const ORBIT_RADII = [8, 12, 17, 22, 29, 35, 41, 47] as const;
-export const ORBIT_TURNS = [8, 7, 6, 5, 4, 3, 2, 1] as const;
+export const ORBIT_RADII = mechanism.orbitRadii;
+export const ORBIT_TURNS = mechanism.gearTeeth.map(([driver, driven]) => driver / driven);
 export const PLANET_NAMES = ['水星', '金星', '地球', '火星', '木星', '土星', '天王星', '海王星'] as const;
-export const PLANET_RADII = [1, 1.3, 1.45, 1.1, 2.8, 2.3, 1.8, 1.8] as const;
+export const PLANET_RADII = mechanism.bodyRadii;
 const clamp = (n: number) => Math.max(0, Math.min(1, Number.isFinite(n) ? n : 0));
 export function evaluateSolarSystem(input: number) {
   const phase = clamp(input);
   return { phase, source: SOLAR_REFERENCE, bodies: PLANET_NAMES.map((name, i) => {
-    const angle = phase * Math.PI * 2 * ORBIT_TURNS[i] + i * 1.58;
-    return { name, radius: ORBIT_RADII[i], bodyRadius: PLANET_RADII[i], turns: ORBIT_TURNS[i],
-      point: [Math.cos(angle) * ORBIT_RADII[i], 0, Math.sin(angle) * ORBIT_RADII[i] * .58] as [number, number, number] };
+    const angle = i * mechanism.initialAngleStep - phase * Math.PI * 2 * ORBIT_TURNS[i];
+    return { name, angle, radius: ORBIT_RADII[i], bodyRadius: PLANET_RADII[i], turns: ORBIT_TURNS[i],
+      point: [Math.cos(angle) * ORBIT_RADII[i], 0, Math.sin(angle) * ORBIT_RADII[i]] as [number, number, number] };
   }) };
 }
 
@@ -50,16 +52,49 @@ export function earthLayerInspection(target = 'overview') {
 const label = (x: number, y: number, value: string, size = 28) =>
   `<text x="${x}" y="${y}" font-size="${size}" text-anchor="middle" fill="#303a40" font-family="FieldSerif,SimSun,serif">${value}</text>`;
 
-export function solarSystemSvg(phase: number, selection = 0) {
+function gearElevation(teeth: number, pitch: number, cx: number, degrees: number, fill: string) {
+  const unit = 2 * pitch / teeth;
+  const outline: string[] = [];
+  for (let tooth = 0; tooth < teeth; tooth++) {
+    for (const [offset, r] of [[-.5, pitch - unit], [-.31, pitch - unit], [-.17, pitch + unit],
+                              [.17, pitch + unit], [.31, pitch - unit]]) {
+      const angle = (tooth + offset) / teeth * Math.PI * 2;
+      outline.push((r * Math.cos(angle)).toFixed(2) + ',' + (r * Math.sin(angle)).toFixed(2));
+    }
+  }
+  const bore = pitch * .74;
+  return `<g transform="translate(${cx},163) rotate(${degrees})" fill="${fill}" stroke="#705537" stroke-width="1">
+    <path fill-rule="evenodd" d="M${outline.join('L')}ZM${-bore} 0a${bore} ${bore} 0 1 0 ${2*bore} 0a${bore} ${bore} 0 1 0 -${2*bore} 0Z"/>
+    ${[0, 72, 144, 216, 288].map(a=>`<path transform="rotate(${a})" d="M-2 -5Q${pitch*.49} -10 ${bore+2} -2L${bore+2} 3Q${pitch*.49} -2 1 5Z"/>`).join('')}
+    <circle r="${Math.max(4,pitch*.16)}"/><circle r="2.5" fill="#554938"/></g>`;
+}
+
+function gearTrainSvg(phase: number, index: number, selection: number) {
+  const [input, output] = mechanism.gearTeeth[index];
+  const turns = input / output;
+  const spacing = 128, r = spacing * input / (input + output);
+  const left = 320 - spacing / 2 - (r - (spacing-r)) / 2, right = left + spacing;
+  return `<svg class="flat-model-svg flat-explanation-svg" viewBox="0 0 640 530" role="group" data-inspection="train"
+    aria-label="${PLANET_NAMES[index]}轮系剖视，手柄一转，行星支臂转${turns}圈">
+    ${label(320,34,PLANET_NAMES[index]+'轮系剖视',28)}
+    ${gearElevation(output,spacing-r,left,-phase*360*turns+180/output,'#c7a367')}
+    ${gearElevation(input,r,right,phase*360+180,'#af8247')}
+    ${label(320,316,'主动轮 '+input+' 齿 · 从动轮 '+output+' 齿',28)}
+    ${label(320,351,'手柄转一圈，模型支臂转 '+turns+' 圈',28)}
+    ${orreryControlDrawing({phase,selection,inspection:'train'})}</svg>`;
+}
+
+export function solarSystemSvg(phase: number, selection = 0, inspection = 'overview') {
   const selected = Math.max(0, Math.min(8, Math.round(selection)));
   const s = evaluateSolarSystem(phase), scale = 5.5, cx = 320, cy = 175;
-  const projected = s.bodies.map(b => ({ ...b, x: cx + b.point[0] * scale, y: cy + b.point[2] * scale * .72 }));
+  if (inspection === 'train') return gearTrainSvg(s.phase, selected ? selected - 1 : 2, selected);
+  const projected = s.bodies.map(b => ({ ...b, x: cx + b.point[0] * scale, y: cy + b.point[2] * scale * .58 * .72 }));
   const earth = projected[selected ? selected - 1 : 2];
   // Two name slips suffice; the page itself contains the full planet list.
   // Keep Earth's slip away from the stationary Sun slip on close approaches.
   let ex = earth.x, ey = earth.y - 17;
-  if (Math.abs(ex - cx) < 70 && Math.abs(ey - (cy - 29)) < 33) ey = cy + 62;
-  return `<svg class="flat-model-svg flat-explanation-svg" viewBox="0 0 640 390" role="img"
+  if (Math.abs(ex - cx) < 128 && Math.abs(ey - (cy - 29)) < 64) ey = cy + 62;
+  return `<svg class="flat-model-svg flat-explanation-svg" viewBox="0 0 640 530" role="group"
     data-solar-system-state='${JSON.stringify({ phase: s.phase, bodyCount: 8, units: 'schematic', selected })}'
     aria-label="太阳系八颗行星连续公转示意；距离、大小与速度不按真实比例">
     <g fill="none" stroke="#a79e83" stroke-width="1.1">${ORBIT_RADII.map((r, i) =>
@@ -70,6 +105,7 @@ export function solarSystemSvg(phase: number, selection = 0) {
     <path d="M${earth.x} ${earth.y - 7}L${ex} ${ey + 5}" fill="none" stroke="#7e9390"/>
     ${label(ex, ey, earth.name)}
     ${label(320, 349, '轨道、天体大小和速度均为示意')}
+    ${orreryControlDrawing({phase:s.phase,selection:selected,inspection})}
     </svg>`;
 }
 
@@ -108,3 +144,4 @@ export function earthLayersSvg(selection: number, target = 'overview') {
       ${l.index === layers[0].index ? 'data-model-inspection="closed" data-model-inspection-toggle="overview"' : `data-model-selection="${l.selection}" data-model-toggle="0"`} role="button" tabindex="0" aria-label="${l.index === layers[0].index ? '合拢外壳，对照外观与剖面' : `查看${l.name}`}"/>`).join('')}
     ${slips}${label(320, 353, observation.coverVisible ? '合拢外壳，圈层选择保持' : '圈层次序不变，抬出只为观察')}</svg>`;
 }
+

@@ -93,6 +93,16 @@ describe('rigid parts form without changing the scientific pose or shape', () =>
     formation.setProgress(1); sphere.parent.updateMatrix(); expect(sphere.parent.matrix.equals(new Three.Matrix4())).toBe(true);
     formation.dispose();
   });
+  it('raises authored relief as a solid without rebuilding its mesh seams as ink on each frame', () => {
+    const {g}=fixture();
+    const specimen=g.mesh(new Three.BoxGeometry(4,6,8),'#ad9f82',false);
+    specimen.userData.blenderPart='rock';
+    specimen.userData.formationProgress=.8;
+    const outline=vi.spyOn(g,'outline');
+    g.beginFrame();g.endFrame(false,true);
+    expect(outline).not.toHaveBeenCalledWith(specimen,expect.anything());
+    expect(specimen.visible).toBe(true);
+  });
   it('makes bounds and contours agree with deeply nested, rotated pivots', () => {
     const { g } = fixture(); g.root.position.set(10, 45, -8); g.root.rotation.y = .3;
     const box = g.mesh(new Three.BoxGeometry(4, 6, 8), '#b5a58a', false);

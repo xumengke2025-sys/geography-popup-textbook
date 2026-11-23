@@ -1,3 +1,4 @@
+import { drawingGrip } from './textbook-drawing-grip';
 /** Textbook printed p.111 / PDF p.116, figures 6.16 and 6.17, visually checked.
  * These are independent places and events. Progress is an observation order;
  * no Yushu rubble is turned into the new Beichuan county town. */
@@ -137,15 +138,19 @@ function createParts(which: RecoveryCase): RecoveryPart[] {
   const pieces: RecoveryPart[] = [];
   const add = (role: string, color: string, stage: number, mesh: RecoveryMeshData) => pieces.push({ id: `${which}-${role}-${pieces.length}`, role, color, stage, mesh });
   const box = (role: string, color: string, stage: number, at: RecoveryPoint, size: RecoveryPoint, rotation?: RecoveryPoint) => add(role, color, stage, recoveryBox(at, size, rotation));
-  add('ground-base', which ? '#c7c5ad' : '#c5bda8', -1, recoveryPrism(RECOVERY_LAYOUT.baseOutline, 0, 2));
+  add('ground-base', which ? '#93977a' : '#95856f', -1, recoveryPrism(RECOVERY_LAYOUT.baseOutline, 0, 2));
   if (which === 0) {
     // The ruin remains throughout. Sloping slabs and irregular remnants are
     // physical solids; no crane, crane cable, disappearing rubble or rebuild.
     for (const [at, size, rotation] of [
-      [[12, 15, 25], [3.5, 26, 5], [0, .06, -.08]], [[29, 11, 18], [3.2, 18, 4], [0, -.12, .05]],
-      [[21, 23, 23], [20, 2.2, 5], [.04, .05, .19]], [[21, 7, 40], [28, 2.1, 9], [.12, -.22, .28]],
+      [[12, 11, 25], [3.5, 18, 5], [0, .06, -.12]], [[29, 8.8, 18], [3.2, 13, 4], [0, -.12, .15]],
+      [[18.4, 16, 24], [15.4, 2.2, 5], [.04, .05, -.37]], [[21, 7, 40], [28, 2.1, 9], [.12, -.22, .28]],
       [[30, 5.5, 27], [21, 1.8, 8], [-.23, .35, -.16]], [[14, 4, 55], [13, 2, 8], [.07, .38, .20]],
-    ] as [RecoveryPoint, RecoveryPoint, RecoveryPoint][]) box('concrete-remnant', '#b6b4a7', 0, at, size, rotation);
+    ] as [RecoveryPoint, RecoveryPoint, RecoveryPoint][]) {
+      const w=size[0]/2,d=size[2]/2;
+      const outline:[number,number][]=[[-w,-d*.67],[-w*.72,-d],[w*.63,-d],[w,-d*.57],[w*.91,d*.27],[w*.50,d*.82],[w*.18,d],[-w*.84,d*.88]];
+      add('concrete-remnant','#9c9788',0,recoveryTransform(recoveryPrism(outline,-size[1]/2,size[1]/2),at,rotation));
+    }
     for (let i = 0; i < 10; i++) {
       const at: RecoveryPoint = [13 + (i % 4) * 7, 3.8 + (i % 3) * .65, 25 + Math.floor(i / 4) * 12];
       box('masonry-fragments', i % 3 ? '#a9aca0' : '#b79a7f', 0, at, [3 + i % 3, 2.3, 3.6], [.1, i * .43, .08 * (i % 3)]);
@@ -155,16 +160,21 @@ function createParts(which: RecoveryCase): RecoveryPart[] {
     for (const [id, at, turn, crouch] of [
       ['searcher-a', [43, 2, 37], -.4, true], ['searcher-b', [51, 2, 48], -.6, false], ['support-worker', [59, 2, 23], .55, false],
     ] as [string, RecoveryPoint, number, boolean][]) {
-      const local = (mesh: RecoveryMeshData) => recoveryTransform(mesh, at, [0, turn, 0]);
+      const local = (mesh: RecoveryMeshData) => recoveryTransform({indices:mesh.indices,positions:mesh.positions.map(v=>v*.81)},at,[0,turn,0]);
       const hip = crouch ? 4.4 : 6.8, shoulder = hip + 4.1;
       const legs = crouch
         ? [recoveryRod([-1.15, hip, 0], [-1.4, 2.7, 2.1], .75), recoveryRod([-1.4, 2.7, 2.1], [-1.4, 1, -.1], .66), recoveryRod([1.15, hip, 0], [1.4, 1.2, 1.9], .75)]
         : [recoveryRod([-1, hip, 0], [-1.15, .9, 0], .78), recoveryRod([1, hip, 0], [1.15, .9, .35], .78)];
-      const sleeves = [recoveryRod([-2.1, shoulder - .6, 0], [-3.25, hip + 1.1, .6], .62), recoveryRod([2.1, shoulder - .6, 0], [3.5, hip + 2, -1.3], .62)];
-      add(id, '#b97650', 0, local(recoveryMerge([recoveryBox([0, hip + 2, 0], [4, 4.5, 2.5]), ...legs, ...sleeves])));
+      const sleeves=[recoveryRod([-1.73,shoulder-.72,0],[-2.55,hip+2.3,.36],.76),recoveryRod([-2.55,hip+2.3,.36],[-3.25,hip+1.1,.64],.60),
+        recoveryRod([1.73,shoulder-.72,0],[2.77,hip+2.56,.02],.76),recoveryRod([2.77,hip+2.56,.02],[3.5,hip+2,-1.3],.60)];
+      add('responder-trousers','#5c655a',0,local(recoveryMerge(legs)));
+      add('responder-pack','#7c7152',0,local(recoveryMerge([oval([0,hip+2.3,-1.14],[1.43,1.68,.85],4,9),recoveryBox([0,hip+.81,.06],[3.15,.39,2.5])])));
+      add(id, '#b85432', 0, local(recoveryMerge([oval([0,hip+2.3,0],[2.06,2.57,1.28],5,10),...sleeves])));
+      add('responder-uniform-trim','#bfb295',0,local(recoveryMerge([oval([0,hip+1,0],[1.95,.26,1.32],4,10),
+        recoveryBox([-.99,hip+2.91,1.16],[.94,.8,.20]),recoveryBox([.99,hip+2.91,1.16],[.94,.8,.20])])));
       add('responder-boots', '#586159', 0, local(recoveryMerge([recoveryBox([-1.2, .7, .45], [1.7, 1.2, 2.6]), recoveryBox([1.25, .7, .7], [1.7, 1.2, 2.6])])));
       add('responder-head-hands', '#d2ae8e', 0, local(recoveryMerge([oval([0, shoulder + 1.4, 0], [1.4, 1.65, 1.25]), oval([-3.35, hip + .9, .65], [.65, .7, .65]), oval([3.65, hip + 1.8, -1.35], [.65, .7, .65])])));
-      add('responder-helmet', '#d0ac65', 0, local(recoveryMerge([oval([0, shoulder + 2.15, -.05], [1.68, 1.15, 1.6]), recoveryBox([0, shoulder + 1.85, .25], [3.6, .35, 3.7])])));
+      add('responder-helmet', '#bb8048', 0, local(recoveryMerge([oval([0, shoulder + 2.15, -.05], [1.68, 1.15, 1.6]), oval([0,shoulder+1.91,.19],[1.91,.26,1.85],4,12)])));
     }
     // A small open aid shelter and a supply table illustrate textbook concepts,
     // without claiming to reconstruct the photographed on-site arrangement.
@@ -193,12 +203,12 @@ function createParts(which: RecoveryCase): RecoveryPart[] {
     for (const [i, x, z] of [[0, 22, 20], [1, 38, 20], [2, 22, 48], [3, 38, 48], [4, 77, 47], [5, 78, 59]]) {
       const h = i % 2 ? 11.8 : 13.2;
       box('housing-walls', '#e2dac6', 1, [x, 2 + h / 2, z], [11, h, 9]);
-      add('housing-roofs', '#b28b70', 1, roof([x, 2 + h, z], 12.4, 10.4, 3.6));
+      add('housing-roofs', '#97684f', 1, roof([x, 2 + h, z], 12.4, 10.4, 3.6));
       for (const dx of [-3, 1.8]) for (const y of [6, 10.6]) box('housing-windows', '#8da49c', 1, [x + dx, y, z + 4.56], [1.9, 2, .15]);
       box('housing-doors', '#a99e85', 1, [x + .2, 4, z + 4.6], [1.9, 3.6, .2]);
     }
     box('life-service-walls', '#d6d1bb', 1, [73, 10.3, 20], [25, 16.6, 17]);
-    add('life-service-roof', '#8e9f96', 1, roof([73, 18.6, 20], 27, 19, 3.2));
+    add('life-service-roof', '#697b71', 1, roof([73, 18.6, 20], 27, 19, 3.2));
     box('life-service-step', '#bcbba7', 1, [73, 3.2, 30.4], [21, 1.1, 4.2]);
     for (const x of [63.5, 69.8, 76.1, 82.5]) {
       box('life-service-windows', '#8fa69d', 1, [x, 13, 28.58], [3.4, 3.3, .18]);
@@ -207,7 +217,12 @@ function createParts(which: RecoveryCase): RecoveryPart[] {
     box('life-service-entry', '#8a9a8e', 1, [73, 5.8, 28.65], [3.6, 5.8, .22]);
     for (const [x, z] of [[7, 16], [7, 31], [7, 51], [49, 66], [62, 66], [94, 25], [94, 52], [49, 43], [64, 43]]) {
       add('planted-trunks', '#8c8f72', 2, recoveryRod([x, 2.5, z], [x, 10, z], .4));
-      add('planted-crowns', '#91a384', 2, oval([x, 11.3, z], [2.7, 3.5, 2.5]));
+      const seed=x*.43+z*.19;
+      for(let j=0;j<4;j++){
+        const a=j*2.4+seed,r=j===3?.23:1.28,xx=x+Math.cos(a)*r,zz=z+Math.sin(a)*r,yy=j===3?11.8:10.15+.49*Math.cos(seed+j);
+        add('planted-trunks','#8c8f72',2,recoveryRod([x,7.5,z],[xx,yy-.21,zz],.24,7));
+        add('planted-crowns','#728663',2,oval([xx,yy,zz],[2.02,2.42,1.93],4,8));
+      }
     }
   }
   // Parts sharing a role/colour/stage become one draw call, but all sub-solids
@@ -299,14 +314,17 @@ export function recoverySvg(phase: number, selected: number = 0): string {
   for (const link of state.links) if (link.reveal > .003) add(recoveryLinkMesh(link, link.reveal), link.color, 'support-relationship', link.id);
   let scene = faces.sort((a, b) => a.depth - b.depth).map(face =>
     `<polygon data-recovery-part="${face.id}" data-recovery-role="${face.role}" points="${face.points.map(p => recoveryProject(p).join(',')).join(' ')}" fill="${face.color}" stroke="${face.color}" stroke-width=".18"/>`).join('');
+  const apron=recoveryProject([3,-6.8,73]),right=recoveryProject([97,-6.8,73]);
+  scene=`<path d="M${apron[0]} ${apron[1]-11}H${right[0]}v12l-5 3H${apron[0]+4}Z" fill="#765b42" stroke="#5f5240" stroke-width="1.4"/>`+scene;
   for (const node of state.nodes) {
     const [x, y] = recoveryProject(node.point), active = node.stageIndex === state.stageIndex;
-    scene += `<g data-recovery-node="${node.id}" data-recovery-node-stage="${node.stageIndex}" data-model-selection="${state.selection}" role="button" tabindex="0" aria-label="暂停查看${state.title}：${RECOVERY_STOPS[state.selection][node.stageIndex].label}" style="cursor:pointer"><circle cx="${x}" cy="${y}" r="${active ? 15 : 19}" fill="transparent" stroke="${active ? '#b1925a' : 'none'}" stroke-width="1.6"/></g>`;
+    scene += `<g data-recovery-node="${node.id}" data-recovery-node-stage="${node.stageIndex}" data-specimen-key="" data-keep-phase="" data-model-selection="${state.selection}" role="button" tabindex="0" aria-label="暂停查看${state.title}：${RECOVERY_STOPS[state.selection][node.stageIndex].label}" style="cursor:pointer"><circle cx="${x}" cy="${y}" r="${active ? 15 : 19}" fill="transparent" stroke="${active ? '#b1925a' : 'none'}" stroke-width="1.6"/></g>`;
   }
   const [lx, ly] = recoveryProject(state.label.at), labelWidth = state.label.width * 5.7;
-  scene += `<g data-recovery-label="${state.stageIndex}" aria-hidden="true"><rect x="${n(lx - labelWidth / 2)}" y="${n(ly - 22)}" width="${labelWidth}" height="42" rx="2" fill="#f7f1e3"/><text x="${lx}" y="${n(ly + 8)}" text-anchor="middle" font-size="30">${state.label.text}</text></g>`;
+  scene += `<g data-recovery-label="${state.stageIndex}" aria-hidden="true"><rect x="${n(lx - labelWidth / 2)}" y="${n(ly - 22)}" width="${labelWidth}" height="42" rx="2" fill="#e8ddbe" stroke="#947b50" stroke-width="1.5"/><text x="${lx}" y="${n(ly + 8)}" text-anchor="middle" font-size="30">${state.label.text}</text></g>`;
   const a = recoveryProject(RECOVERY_LAYOUT.track.start), b = recoveryProject(RECOVERY_LAYOUT.track.end), handle = recoveryProject(state.handle);
-  scene += `<path d="M${a.join(' ')}L${b.join(' ')}" fill="none" stroke="#a29578" stroke-width="1.6"/><path data-recovery-handle="true" d="M${n(handle[0] - 9)} ${n(handle[1] - 6)}h18v8l-9 6-9-6Z" fill="#d6c18e" stroke="#93825e" stroke-width="1.1"/>`;
+  scene += `<path d="M${a.join(' ')}L${b.join(' ')}" fill="none" stroke="#a29578" stroke-width="1.6"/><path data-recovery-handle="true" d="M${n(handle[0] - 9)} ${n(handle[1] - 6)}h18v8l-9 6-9-6Z" fill="#d6c18e" stroke="#93825e" stroke-width="1.1"/>${drawingGrip('推移观察指针',a,b,state.phase)}`;
+  scene+=`<g transform="translate(63 363)" data-model-crank="1" data-radius="24" tabindex="0" role="slider" aria-label="转动观察轮" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${Math.round(state.phase*100)}"><circle r="31" fill="transparent"/><circle r="24" fill="none" stroke="#6f5d40" stroke-width="6"/><circle r="24" fill="none" stroke="#c6a269" stroke-width="3"/><g transform="rotate(${-state.phase*360})"><path d="M0 24V0L-20 -12M0 0L20 -12" fill="none" stroke="#927347" stroke-width="3.4"/><circle cy="24" r="4.7" fill="#805d3c" stroke="#5b4b36"/></g><circle r="4.2" fill="#a68f63"/></g>`;
   const data = JSON.stringify(recoveryDiagnostics(state)).replace(/&/g, '&amp;').replace(/'/g, '&#39;');
   return `<svg xmlns="http://www.w3.org/2000/svg" class="flat-model-svg flat-explanation-svg" viewBox="0 0 650 430" role="group" data-recovery-phase="${state.phase}" data-recovery-selection="${state.selection}" data-recovery-case="${state.caseId}" data-recovery-stage="${state.stage}" data-recovery-state='${data}' aria-label="${state.title}，${state.caption}。两个独立案例，进度是观察顺序，不是灾后恢复时间。"><title>${state.title} · ${state.caption}</title><g fill="#34413d" stroke-linejoin="round" stroke-linecap="round" font-family="FieldSerif,SimSun,serif">${scene}</g></svg>`;
 }

@@ -1,3 +1,4 @@
+import { hazeChamberDrawing } from './textbook-pneumatic-drawings';
 /** Textbook pp.42–44: source emissions and meteorological conditions both
  * matter. Every coordinate/rate is a teaching setting, not a measured plume,
  * AQI, emission inventory, health threshold or clearance time. Three trials
@@ -60,6 +61,7 @@ export function evaluateHaze(phase: number, selection: number) {
     kind: 'air-pollution-stock' as const, phase: t, mode, initialStock: EXISTING,
     emittedNew: emitted - EXISTING, removed, stock: emitted - removed,
     existingRemaining: particles.filter(p => p.cohort === 'existing' && !p.exited).length,
+    fanAngle: -2.2*t - (mode === 1 ? 14.2*windIntegral(t) : 0),
     sourceRate: sourceRate(t, mode), windStrength: mode === 1 ? smooth((t - START) / (END - START)) : 0,
     particles, units: 'dimensionless-teaching-only' as const,
     particlesAreMeasured: false, aqiComputed: false, instantCleanupClaimed: false,
@@ -68,20 +70,5 @@ export function evaluateHaze(phase: number, selection: number) {
 
 /** No-WebGL mode shares the same parcels, source schedule and wind integral. */
 export function hazeSvg(phase: number, selection: number) {
-  const state = evaluateHaze(phase, selection);
-  const ink = '#303a40', paper = '#f7f1e3';
-  let body = `<path d="M40 306H596V342H40Z" fill="#c6b69a" stroke="${ink}" stroke-width="1.2"/>`;
-  for (const [x, h] of [[215, 62], [288, 92], [365, 72], [442, 110], [523, 80]]) {
-    body += `<path d="M${x} 306v-${h}h42v${h}Z" fill="${paper}" stroke="${ink}" stroke-width="1.2"/>`;
-    for (let row = 0; row < 3; row++) body += `<path d="M${x + 10} ${292 - row * 18}h22" stroke="#9b9f93" stroke-width="1.2"/>`;
-  }
-  body += `<g role="button" tabindex="0" data-model-selection="2" data-model-toggle="0" aria-label="点烟囱，比较减少排放与原排放"><path d="M79 306v-44h91v44M124 262v-69h16v69" fill="#c0b09a" stroke="${ink}" stroke-width="1.4"/><circle cx="133" cy="251" r="9" fill="${state.mode === 2 ? '#a8b197' : '#c18358'}" stroke="${ink}"/></g>`;
-  body += state.particles.filter(p => p.visible).map(p => `<circle data-particle="${p.id}" data-cohort="${p.cohort}" cx="${(48 + p.x * 4.7).toFixed(2)}" cy="${(306 - p.y * 5.45 + (p.z - 40) * .22).toFixed(2)}" r="${(p.size * 2.7).toFixed(2)}" fill="#7f897f"/>`).join('');
-  const angle = .12 + state.windStrength * .88, drop = (1 - angle) * 32;
-  body += `<g role="button" tabindex="0" data-model-selection="1" data-model-toggle="0" aria-label="点风旗，比较通风与微风"><path d="M560 268V148" fill="none" stroke="${ink}" stroke-width="2"/><path d="M560 149q${24 * angle} ${drop * .7 - 3 * state.windStrength} ${31 * angle} ${drop + 2 * state.windStrength}l-${30 * angle} 9Z" fill="#669da9" stroke="${ink}" stroke-width="1.2"/><rect x="532" y="262" width="73" height="42" fill="${paper}"/><text x="568" y="292" text-anchor="middle" font-family="FieldSerif,SimSun,serif" font-size="32" fill="${ink}">通风</text></g>`;
-  if (state.windStrength > .03) for (const [i, y] of [80, 122].entries()) {
-    const x = 60 + ((phase * 1.8 + i * .3) % 1) * 500;
-    body += `<path d="M${x - 23} ${y}h46m-8-5 8 5-8 5" fill="none" stroke="#669da9" stroke-width="${1 + state.windStrength}"/>`;
-  }
-  return body + `<text x="132" y="373" text-anchor="middle" font-family="FieldSerif,SimSun,serif" font-size="32" fill="${ink}">排放</text>`;
+  return hazeChamberDrawing(evaluateHaze(phase,selection));
 }

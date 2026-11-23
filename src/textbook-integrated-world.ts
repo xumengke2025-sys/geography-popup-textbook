@@ -1,11 +1,15 @@
+import { mountResponseBench,observerHeads,opticalHead } from './textbook-response-bench';
+import { buildResponseLandscape } from './textbook-response-landscape';
 import { THREE as T } from './reference/engine.js';
 import { LIFT_MARGIN, PALETTE as C, type TextbookGeometry, type ModelMotion, type Vec3 } from './textbook-geometry';
 import { phaseTrackPoint, type ModelInput, type PhaseTrack } from './textbook-model-input';
+import { applyEarthScan } from './textbook-earth-scan';
 import { buildUrbanWaterWorld } from './textbook-urban-water-world';
 import { type SolidMaterialRole } from './textbook-solid-materials';
-import { createInstrumentParts } from './textbook-instrument-parts';
+import { createInstrumentParts, mergeInstrumentGeometry } from './textbook-instrument-parts';
 import { buildBasinSpecimen } from './textbook-basin-specimen';
 import { basinSpecimenGround } from './textbook-basin-detail';
+import { createSoilSpecimenFinish } from './textbook-soil-specimen-finish';
 import { basinGround, basinFloodTriangles, basinRiverPoint, evaluateBasin, evaluateCityRain,
   evaluateQuakeResponse, integratedRoutePoint, QUAKE_LAYOUT, quakeResponseActions,
   INTEGRATED_CONTROLS, INTEGRATED_REFERENCES, INTEGRATED_INSPECTIONS, type IntegratedPoint } from './textbook-integrated-model';
@@ -13,7 +17,7 @@ export { INTEGRATED_INSPECTIONS } from './textbook-integrated-model';
 
 /** Functional fixtures remain small; water, rock and plants keep geographic
  * colours. Role tags let the shared material system give metal its own BRDF. */
-function kit(b: TextbookGeometry, back = 72) {
+function kit(b: TextbookGeometry, back = 72, railY = -16, railZ = 80) {
   const s = b.width / 100, z0 = -LIFT_MARGIN - back * s;
   const p = ([x, y, z]: readonly number[]): Vec3 => [x * s, y * s, z0 + z * s];
   b.root.position.set(0, 43 * s, -8 * s);
@@ -40,18 +44,18 @@ function kit(b: TextbookGeometry, back = 72) {
   const tube = (points: IntegratedPoint[], r: number, color: string, name: string, materialRole?: SolidMaterialRole) => {
     const mesh = b.tube(points.map(p), r * s, color, false); return role(mesh, name, materialRole);
   };
-  const track: PhaseTrack = { start: p([13, -16, 80]), end: p([94, -16, 80]) };
-  const rail = box([53.5, -16, 80], [83, .45, .7], C.gold, 'process-rail', 'brass');
+  const track: PhaseTrack = { start: p([13, railY, railZ]), end: p([94, railY, railZ]) };
+  const rail = box([53.5, railY, railZ], [83, .45, .7], C.gold, 'process-rail', 'brass');
   input(rail, { kind: 'phase-track', track, label: '拖动过程纸签，暂停并回看同一过程' });
-  const handle = solid(new T.OctahedronGeometry(1.8, 0), C.gold, 'process-handle', [13, -16, 80], 'brass');
+  const handle = solid(new T.OctahedronGeometry(1.8, 0), C.gold, 'process-handle', [13, railY, railZ], 'brass');
   handle.scale.set(1, .65, .5); handle.userData.smallPointTarget = true;
   input(handle, { kind: 'phase-track', track, label: '拖动过程前缘' });
   // Engraved stops belong to the real slider; there is no decorative machine
   // underneath the geography and no second set of giant physical UI labels.
-  for (let i = 0; i <= 20; i++) box([13 + i * 4.05, -15.69, 80], [.11, .12, i % 5 ? 1.15 : 2.1], C.ink, 'engraved-process-stop', 'steel');
+  for (let i = 0; i <= 20; i++) box([13 + i * 4.05, railY+.31, railZ], [.11, .12, i % 5 ? 1.15 : 2.1], C.ink, 'engraved-process-stop', 'steel');
   for (const x of [11.3, 95.7]) {
-    box([x, -16.1, 80], [1.7, .8, 3.2], C.ink, 'process-rail-foot', 'steel');
-    solid(new T.CylinderGeometry(.45, .45, .18, 12), C.gold, 'process-fastener', [x, -15.6, 80], 'brass');
+    box([x, railY-.1, railZ], [1.7, .8, 3.2], C.ink, 'process-rail-foot', 'steel');
+    solid(new T.CylinderGeometry(.45, .45, .18, 12), C.gold, 'process-fastener', [x, railY+.4, railZ], 'brass');
   }
   return { s, p, role, solid, box, label, input, inspect, ball, tube, track, handle,
     phase(phase: number) { handle.position.set(...phaseTrackPoint(phase, track)); b.outline(handle, .55); },
@@ -96,17 +100,38 @@ function buildBasin(b: TextbookGeometry): ModelMotion {
   const riverPoints = Array.from({ length: 90 }, (_, i): IntegratedPoint => {
     const a = basinRiverPoint(i / 89); return [a[0], a[1] + .12, a[2]];
   });
-  const river = k.tube(riverPoints, 1.35, C.water, 'connected-river', 'water');
+  const waterVertices: number[] = [], waterColors: number[] = [], waterIndices: number[] = [];
+  const shallows = new T.Color('#9aab86'), channel = new T.Color('#507a73');
+  for (let j = 0; j < riverPoints.length; j++) {
+    const [x, y, z] = riverPoints[j], sideWidth = 3.05 + 1.48 * j / (riverPoints.length - 1);
+    for (let i = 0; i <= 10; i++) {
+      const u = (i - 5) / 5, middle = 1 - u*u;
+      waterVertices.push(...p([x,y+middle*.048*Math.sin(x*2.1+u*3.4),z+sideWidth*u]));
+      const tint = shallows.clone().lerp(channel,middle*(.92+.07*Math.sin(x*.55+u)));
+      waterColors.push(tint.r,tint.g,tint.b);
+      if (i < 10 && j < riverPoints.length-1) {
+        const a = j*11+i; waterIndices.push(a,a+1,a+11,a+1,a+12,a+11);
+      }
+    }
+  }
+  const waterGeometry = new T.BufferGeometry();
+  waterGeometry.setAttribute('position',new T.Float32BufferAttribute(waterVertices,3));
+  waterGeometry.setAttribute('color',new T.Float32BufferAttribute(waterColors,3));
+  waterGeometry.setIndex(waterIndices); waterGeometry.computeVertexNormals();
+  const river = k.role(b.mesh(waterGeometry, '#fffffd', false, true, 'water'), 'connected-river');
+  river.material.vertexColors = true;
   k.inspect(river, 'bend', '观察上中下游连续相连的河道');
   // Existing delta lobes leave a real opening for the river mouth.
   for (const footprint of [[[92, 30], [104, 23], [102, 31]], [[93, 40], [105, 48], [102, 39]]]) {
     const mesh = b.prism(footprint.map(([x, z]) => [x * s, p([0, 0, z])[2]]), 3.8 * s, 5.5 * s, C.land, false);
     k.role(mesh, 'existing-delta-lobe'); k.inspect(mesh, 'mouth', '观察已有河口与沉积接收端');
+    mesh.material = createSoilSpecimenFinish(b.pop, '#ad9c7c', 1, s, 'alluvium');
   }
   const accumulated = k.solid(new T.ConeGeometry(8, 1.8, 5), C.land, 'long-term-deposition', [103, 5.6, 29]);
   accumulated.rotation.y = .5; k.inspect(accumulated, 'mouth', '长期沉积累积，采用独立时间尺度');
   for (const at of [[14, 49, 31], [24, 52, 34], [18, 51, 39]] as IntegratedPoint[]) {
     const cloud = k.ball(at, 6, C.paper, 'cloud'); cloud.scale.set(1.4, .55, 1);
+    k.inspect(cloud,'upper','观察上游来水与支沟');
   }
   for (const at of [[10, 37, 10], [18, 32, 15], [47, 18, 12]] as IntegratedPoint[])
     b.tree(p([at[0], basinSpecimenGround(at[0], at[2]), at[2]]), 4.5 * s, 'pine');
@@ -117,8 +142,20 @@ function buildBasin(b: TextbookGeometry): ModelMotion {
   });
   const sand = state.sediment.map(packet => {
     const mesh = k.solid(new T.IcosahedronGeometry(.7, 0), C.gold, 'sediment-grain', packet.point, 'rock');
-    mesh.userData.tracerId = packet.id; return k.inspect(mesh, 'mouth', '查看有限泥沙的接收端');
+    mesh.userData.tracerId = packet.id; return k.inspect(mesh, 'sediment', '追踪有限泥沙的去向');
   });
+  // A split sediment core seated on the receiving sea's front wall remains
+  // accessible even while all moving grains are still in the headwaters.
+  const coreAt: IntegratedPoint = [108, 2, 64];
+  const coreInput = (mesh: any) => k.inspect(mesh, 'sediment', '检视河口取样芯与泥沙去向，再按返回全景');
+  coreInput(k.box([108, .2, 62], [13.6, 2.1, 6.5], '#514332', 'sample-core-holder', 'wood'));
+  const core = coreInput(k.solid(new T.CylinderGeometry(2.05, 2.05, 10.8, 32), '#af9572', 'sediment-reference-core', coreAt, 'land'));
+  core.rotation.z = Math.PI / 2;
+  core.material = createSoilSpecimenFinish(b.pop, '#b49b76', 1, .42 * s, 'alluvium');
+  for (const x of [102.6, 113.4]) {
+    const collar = coreInput(k.solid(new T.CylinderGeometry(2.3, 2.3, .8, 40), '#a98b50', 'sample-core-end-collar', [x, 2, 64], 'brass'));
+    collar.rotation.z = Math.PI / 2;
+  }
   const flood = floodSurface(b, k);
   const locationSpecs = [
     ['上游', [22, 38, 19], 'upper'], ['河曲', [57, 16, 52], 'bend'], ['河口', [102, 15, 47], 'mouth'],
@@ -172,7 +209,7 @@ function buildBasin(b: TextbookGeometry): ModelMotion {
     },
     describe: () => ({ ...state, ...specimen.describe(), inspection, originalPagePreserved: true, integrated: true,
       floodSurfaceVisible: flood.mesh.visible, floodComparisonClosesSpecimen: true,
-      fixedMeshCount: count, geometryBuffersReused: b.meshes.length === count && b.meshes.every((mesh, i) => mesh.geometry.attributes.position.array === buffers[i]),
+      fixedMeshCount: count, geometryBuffersReused: buffers.every((buffer, i) => b.meshes[i]?.geometry.attributes.position.array === buffer),
       waterWorld: water.map((mesh, i) => ({ id: state.packets[i].id, point: mesh.getWorldPosition(new T.Vector3()).toArray() })),
       sedimentWorld: sand.map((mesh, i) => ({ id: state.sediment[i].id, point: mesh.getWorldPosition(new T.Vector3()).toArray() })),
       handleWorld: k.world(k.handle.position.toArray()), phaseTrackWorld: { start: k.world(k.track.start), end: k.world(k.track.end) },
@@ -194,12 +231,6 @@ function buildCity(b: TextbookGeometry): ModelMotion {
   // opaque face at the same location. Side returns connect leaf and specimen.
   for(const x of [6.25,91.75])parts.plate(p([x-.25,0,50.8]),p([x+.25,20.8,63.8]),'steel');
   parts.plate(p([6,-.7,51]),p([92,0,64]),'steel');
-  parts.plate(p([11,-7.5,68]),p([89,-6.8,72]),'steel');
-  const conditionKnobs=[20,50,80].map((x,selection)=>{
-    const knob=parts.knob(p([x,-6.1,70]),[0,1,0],2.1*s,1.2*s);
-    knob.traverse((mesh:any)=>{if(mesh.isMesh){mesh.userData.modelInput={kind:'replay',selection,label:`重放${INTEGRATED_CONTROLS['city-rain-system'][selection]}`};mesh.userData.urbanSelection=selection}});
-    return knob;
-  });
   const pivot = p([6, 0, 63.7]);
   const leaf=new T.Group();leaf.position.set(...pivot);b.root.add(leaf);
   const leafParts=createInstrumentParts(b,leaf);
@@ -211,10 +242,11 @@ function buildCity(b: TextbookGeometry): ModelMotion {
   for(const y of [7,14])leafParts.plate(lp([.7,y-.1,.39]),lp([85.3,y+.1,.5]),'steel');
   leafParts.fasteners([lp([.35,.5,1.1]),lp([85.65,.5,1.1]),lp([.35,20.8,1.1]),lp([85.65,20.8,1.1])],[0,0,1],.23*s);
   leaf.traverse((mesh:any)=>{if(mesh.isMesh)mesh.userData.modelInput={kind:'inspect',target:'underground',toggleTo:'overview',label:'开合地下侧剖面'}});
-  const panels = [[0, 7, C.rock], [7, 7, C.land], [14, 6.8, C.green]].map(([bottom, height, color]) => {
+  const panels = ([[0,7,'#a39074','alluvium'],[7,7,'#a18567','outcrop'],[14,6.8,'#8f765a','loam']] as const).map(([bottom,height,color,scan]) => {
     const g = new T.BoxGeometry(86 * s, Number(height) * s, .75 * s);
     g.translate(43 * s, (Number(bottom) + Number(height) / 2) * s, 0);
     const mesh = b.mesh(g, String(color), false, true, 'rock'); mesh.position.set(...pivot);
+    if (!mesh.material.userData.earthScan) applyEarthScan(mesh.material, scan, (scan==='alluvium' ? 8 : 12)*s);
     mesh.userData.integratedRole = 'hinged-underground-side';
     mesh.userData.modelInput = { kind: 'inspect', target: 'underground', toggleTo: 'overview', label: '打开地下侧剖面' }; return mesh;
   });
@@ -229,9 +261,16 @@ function buildCity(b: TextbookGeometry): ModelMotion {
       ring.userData.integratedRole = 'hinge-collar';
     }
   }
-  const latchGeometry = new T.BoxGeometry(6 * s, 1 * s, 2.7 * s);
+  const latchGeometry = mergeInstrumentGeometry([
+    new T.CylinderGeometry(.58*s,.58*s,6.9*s,24).rotateZ(Math.PI/2).translate(0,1.45*s,.52*s),
+    ...[-3.1,3.1].flatMap(x=>[
+      new T.CylinderGeometry(.42*s,.42*s,2.2*s,20).translate(x*s,.55*s,.52*s),
+      new T.CylinderGeometry(.78*s,.78*s,.41*s,20).rotateX(Math.PI/2).translate(x*s,.08*s,-.08*s),
+    ]),
+  ]);
   const latch = b.mesh(latchGeometry, C.gold, false, true, 'brass'); latch.position.set(...p([49, 22, 65.2]));
   latch.userData.integratedRole = 'underground-side-latch';
+  latch.userData.smallPointTarget = true;
   latch.userData.modelInput = { kind: 'inspect', target: 'underground', toggleTo: 'overview', label: '开合地下侧剖面' };
   // Telescopic stays connect tray to opening leaf, visibly supporting it.
   // They respond only to the hinge angle and never drive the water state.
@@ -255,7 +294,6 @@ function buildCity(b: TextbookGeometry): ModelMotion {
     inspectTargets: () => [...INTEGRATED_INSPECTIONS['city-rain-system']],
     update(phase, selection, dt, reduced) {
       state = evaluateCityRain(phase, selection); inner.update(phase, selection, dt, reduced);
-      conditionKnobs.forEach((knob,i)=>{knob.position.y=(i===state.selection ? .3 : 0)*s});
       const t = reduced ? 1 : Math.min(1, (performance.now() - started) / 650), ease = t * t * (3 - 2 * t);
       shown = from + ((open ? 1 : 0) - from) * ease;
       panels.forEach(mesh => { mesh.rotation.x = shown * Math.PI / 2; b.outline(mesh, .35); });
@@ -280,7 +318,7 @@ function buildCity(b: TextbookGeometry): ModelMotion {
     describe: () => ({ ...inner.describe?.(), ...state, inspection, undergroundOpen: open,
       sideOpening: shown, undergroundPanelRotation: shown * Math.PI / 2,
       reusedOriginalRainWorld: true, repeatedCityCount: 1, sameCityGeometry: true,
-      fixedMeshCount: count, geometryBuffersReused: b.meshes.length === count && b.meshes.every((mesh, i) => mesh.geometry.attributes.position.array === buffers[i]),
+      fixedMeshCount: count, geometryBuffersReused: buffers.every((buffer, i) => b.meshes[i]?.geometry.attributes.position.array === buffer),
       integrated: true, source: INTEGRATED_REFERENCES['city-rain-system'],
     }),
   };
@@ -288,19 +326,28 @@ function buildCity(b: TextbookGeometry): ModelMotion {
 }
 
 function buildQuakeResponse(b: TextbookGeometry): ModelMotion {
-  const k = kit(b), { s, p } = k;
+  const k = kit(b,72,-1.45,71.4), { s, p } = k;
+  mountResponseBench(b,s,p);
   let state = evaluateQuakeResponse(0), inspection = 'overview';
-  const ground = k.role(b.terrain(2 * s, 108 * s, p([0, 0, 3])[2], p([0, 0, 65])[2],
-    (x, z) => { const xx = x / s, zz = (z - p([0, 0, 0])[2]) / s;
-      return (2 - 1.45 * Math.exp(-(((xx - 50) / 4) ** 2)) + 14 * Math.exp(-(((zz - 1) / 5.2) ** 2))) * s;
-    }, C.land, 58, 32, -3 * s), 'fictional-response-terrain', 'land');
-  ground.userData.interactionFeedback = false;
+  buildResponseLandscape(b, s, p);
   for (const z of [2.85, 65.15]) {
     k.tube([[2, -2.7, z], [108, -2.7, z]], .2, C.gold, 'map-datum-edge', 'brass');
     for (let i = 0; i <= 10; i++) k.box([3 + i * 10.4, -2.45, z], [.1, .12, i % 5 ? 1 : 1.8], C.ink, 'map-registration-tick', 'steel');
   }
-  k.tube([[50, .9, 3], [50, .9, 25], [49, .9, 44], [51, .9, 65]], .85, C.water, 'river-in-fictional-map', 'water');
-  const roadMeshes = QUAKE_LAYOUT.roads.map(edge => k.inspect(k.tube([QUAKE_LAYOUT.nodes[edge.a], QUAKE_LAYOUT.nodes[edge.b]], .75, C.rock, `road-${edge.id}`), 'roads', '道路是否可通，须另行核验'));
+  const roadMeshes = QUAKE_LAYOUT.roads.map(edge => {
+    const a = QUAKE_LAYOUT.nodes[edge.a], c = QUAKE_LAYOUT.nodes[edge.b];
+    const start = new T.Vector3(...a), end = new T.Vector3(...c);
+    const direction = end.clone().sub(start).normalize();
+    // The deck spans a real opening in the centre route.
+    if (edge.b === 'bridge') end.addScaledVector(direction, -4.4);
+    if (edge.a === 'bridge') start.addScaledVector(direction, 5.4);
+    const mid = start.clone().lerp(end, .5);
+    const geometry = new T.BoxGeometry(start.distanceTo(end), .46, 2.25);
+    geometry.rotateZ(Math.asin(direction.y));
+    geometry.rotateY(Math.atan2(-direction.z, direction.x));
+    return k.inspect(k.solid(geometry, '#9e9484', 'road-' + edge.id, mid.toArray() as IntegratedPoint, 'rock'),
+      'roads', '道路是否可通，须另行核验');
+  });
   for (const at of Object.values(QUAKE_LAYOUT.nodes)) {
     k.solid(new T.CylinderGeometry(1.35, 1.35, .22, 24), '#475457', 'road-node-seat', [at[0], at[1] + .12, at[2]], 'steel');
     k.solid(new T.CylinderGeometry(.65, .65, .28, 20), C.gold, 'road-node-registration', [at[0], at[1] + .35, at[2]], 'brass');
@@ -309,28 +356,95 @@ function buildQuakeResponse(b: TextbookGeometry): ModelMotion {
   // remains unknown until the observation/verification stages.
   const bridge = k.box([49.5, 3.5, 43], [10, .9, 4], C.paper, 'damaged-bridge-leaf');
   k.inspect(bridge, 'remote', '桥梁变化先作为线索，不能等同道路通行判断');
+  const truss: any[] = [];
+  const beam = (a: Vec3, c: Vec3, thick: number) => {
+    const from = new T.Vector3(...a), to = new T.Vector3(...c), delta = to.clone().sub(from);
+    const g = new T.BoxGeometry(thick, delta.length(), thick);
+    g.applyQuaternion(new T.Quaternion().setFromUnitVectors(new T.Vector3(0,1,0),delta.normalize()));
+    const mid = from.lerp(to,.5);
+    g.translate(mid.x,mid.y,mid.z); truss.push(g);
+  };
+  for (const z of [-1.92, 1.92]) {
+    beam([-5,.56,z],[5,.56,z],.27);
+    beam([-4.1,2.6,z],[4.1,2.6,z],.28);
+    const lower: Vec3[] = [[-5,.56,z],[-2.5,.56,z],[0,.56,z],[2.5,.56,z],[5,.56,z]];
+    for (let i=0;i<4;i++) {
+      const apex: Vec3 = [(lower[i][0]+lower[i+1][0])/2,2.6,z];
+      beam(lower[i],apex,.19); beam(apex,lower[i+1],.19);
+    }
+  }
+  const rails = k.solid(mergeInstrumentGeometry(truss),'#536c66','bridge-side-trusses',[0,0,0],'enamel');
+  bridge.add(rails); rails.position.set(0,0,0);
+  k.inspect(rails,'remote','观察桥面与桥台的错位');
   for (const x of [44.5, 54.5]) k.box([x, 1.9, 43], [1.1, 3.8, 4.3], C.rock, 'bridge-abutment');
   const warehouseMeshes = ['a', 'b'].map((id, i) => {
-    const at = QUAKE_LAYOUT.nodes[id], body = k.box([at[0], at[1] + 3, at[2]], [9, 6, 7], C.paper, `warehouse-${id}`);
-    const roof = k.solid(new T.ConeGeometry(6.5, 3, 4), C.darkGreen, `warehouse-${id}-roof`, [at[0], at[1] + 7.1, at[2]]); roof.rotation.y = Math.PI / 4;
-    for (const dx of [-2.5, 0, 2.5]) k.box([at[0] + dx, at[1] + 3.2, at[2] + 3.53], [.3, 5, .14], C.gold, 'warehouse-front-division', 'brass');
-    const label = k.label(`${i ? '乙' : '甲'}库`, [at[0], 12, at[2] + 4], 7, 3.1);
-    return { id, body, roof, label };
+    const node = QUAKE_LAYOUT.nodes[id];
+    const at:IntegratedPoint=[node[0],node[1],node[2]-6.5];
+    const body = k.box([at[0],5.85,at[2]], [11,6.8,8.6], '#decfb2', 'warehouse-'+id,'ivory');
+    const pieces = [body];
+    // An industrial sawtooth roof gives the stores a different silhouette
+    // from the pitched houses at the receiving settlement.
+    const bays = i ? 2 : 3, span=11.6/bays, sections: any[]=[];
+    for (let j=0;j<bays;j++) {
+      const shape = new T.Shape();
+      const x=-5.8+j*span;
+      shape.moveTo(x,0); shape.lineTo(x+span*.78,2.1); shape.lineTo(x+span,.36);
+      shape.lineTo(x+span,-.25); shape.lineTo(x,-.25); shape.closePath();
+      sections.push(new T.ExtrudeGeometry(shape,{depth:9.15,bevelEnabled:false}));
+    }
+    const roof=k.solid(mergeInstrumentGeometry(sections),'#526e65','warehouse-'+id+'-roof',
+      [at[0],9.28,at[2]-4.57],'enamel');
+    const dock=k.box([at[0],2.95,at[2]+5],[10.7,.95,2.6],'#9d9381','loading-platform','rock');
+    pieces.push(roof,dock);
+    for(const dx of [-2.65,2.65]) {
+      pieces.push(k.box([at[0]+dx,5.53,at[2]+4.33],[3.1,4.2,.24],'#485e5c','freight-door','enamel'));
+      pieces.push(k.box([at[0]+dx,7.02,at[2]+4.48],[2.6,.74,.11],'#a6c6c0','freight-door-light','ivory'));
+    }
+    pieces.push(k.box([at[0],7.94,at[2]+4.92],[10.6,.28,1.75],'#a88b50','loading-canopy','brass'));
+    const post = k.box([at[0], 7.4, at[2]+4.85], [10.1, 2.95, .34], '#a88b50', 'warehouse-signpost', 'brass');
+    k.inspect(post,'warehouses','查看两座物资库的服务路线');
+    post.userData.smallPointTarget=true;
+    const label=b.label(i?'乙库':'甲库',p([at[0],7.42,at[2]+5.05]),9.7*s,3.20*s,{appearance:'engraved'});
+    label.userData.labelMount='surface';label.userData.integratedRole='depot-nameplate';pieces.push(post);
+    return { id, body, roof, label, post, pieces };
   });
-  const town = [[84, 40], [91, 36], [91, 46]].map(([x, z]) => {
-    const body = k.box([x, 5.5, z], [4.2, 5, 4], C.paper, 'town-house');
-    const roof = k.solid(new T.ConeGeometry(3.3, 1.9, 4), C.darkGreen, 'town-roof', [x, 8.5, z]); roof.rotation.y = Math.PI / 4;
-    return { body, roof };
+  const town = [[82,38],[93,34],[94,47]].map(([x,z]) => {
+    const before = b.meshes.length;
+    const pivot = new T.Group();
+    pivot.position.set(...p([x,2.4,z])); b.root.add(pivot);
+    b.house([0,0,0],6.8*s,4.9*s,'#e2d4b9');
+    for(const part of b.meshes.slice(before)) {
+      pivot.add(part);part.userData.integratedRole='town-house';k.inspect(part,'position','查看村镇定位接收端');
+    }
+    return pivot;
   });
-  const receiver = k.box([88, 9, 40], [2.2, 3, 1.5], C.paper, 'position-receiver');
+  const receiver = k.box([88, 9, 40], [3.3, 3.7, 2.2], C.paper, 'position-receiver');
   k.inspect(receiver, 'position', '定位接收机；发送位置由独立通信端完成');
-  k.box([88, 9.3, 40.8], [1.5, 1.4, .15], C.cool, 'receiver-screen');
+  k.inspect(k.box([88,9.4,41.15],[2.4,1.9,.20],C.cool,'receiver-screen'),'position','查看接收位置');
+  receiver.userData.smallPointTarget=true;
   k.solid(new T.CylinderGeometry(.13, .13, 3, 8), C.gold, 'receiver-antenna', [88, 12, 40], 'brass');
   const sender = k.box([91, 9, 40], [1.7, 3.1, 1.3], C.warm, 'independent-communication-terminal');
+  // A small instrument station occupies the surveyed communication point on the bank.
+  k.box([50,2.04,7],[8.7,.58,6.3],'#92948a','dispatch-platform','rock');
+  for(const x of [46.7,53.3]) k.box([x,.85,7],[.65,1.9,5.4],'#757b74','platform-pier','rock');
   const dispatch = k.box([50, 5.4, 7], [7, 6.8, 5], C.paper, 'dispatch-receiver');
+  k.box([50,8.98,7],[7.7,.45,5.6],'#526b64','dispatch-roof','enamel');
+  k.box([50,6.55,9.55],[5.5,1.6,.20],'#566e71','dispatch-observation-window','steel');
+  k.box([50,7.61,9.74],[6.2,.18,.82],'#a88b50','dispatch-window-hood','brass');
   k.inspect(dispatch, 'position', '调度端只有在独立通信到达后收到位置');
   k.solid(new T.CylinderGeometry(.15, .15, 6, 8), C.gold, 'dispatch-antenna', [50, 11.8, 7], 'brass');
   const sendLabel = k.label('通信', [91, 13.4, 42], 7.5, 3.2);
+  // A bench telegraph key compares the sent and unsent trials at the same
+  // instant, independently of the map's verify, layers and depot settings.
+  const telegraph=createInstrumentParts(b),point=(x:number,y:number,z:number)=>p([x,y,z]);
+  telegraph.casting(point(21,1.9,58),point(37,3.6,65.5),'wood',.4*s);
+  telegraph.plate(point(21.55,3.58,58.55),point(36.45,3.91,64.95),'brass',.13*s);
+  telegraph.shaft(point(26,4.85,59.9),point(26,4.85,63.5),.48*s,'steel');
+  for(const z of [59.9,63.15])telegraph.plate(point(25.1,3.9,z-.25),point(26.9,5.13,z+.25),'brass',.18*s);
+  const lever=telegraph.shaft(point(23.4,4.5,61.5),point(34.3,5.63,61.5),.48*s,'brass');
+  const finger=telegraph.knob(point(34.4,5.98,61.5),[0,1,0],1.86*s,.94*s);
+  const sendKeyMeshes=[lever,...finger.children];
+  for(const mesh of sendKeyMeshes)mesh.userData.smallPointTarget=true;
   const deliveredLabel = k.label('已送达', [51, 13, 7], 10, 3.5);
   const verifyControl = k.solid(new T.CylinderGeometry(1.8, 2.1, 1.2, 24), C.gold, 'road-verification-switch', [55, 5, 63], 'brass');
   const verifyLabel = k.label('核验', [55, 8.3, 66], 7.5, 3.2);
@@ -341,7 +455,8 @@ function buildQuakeResponse(b: TextbookGeometry): ModelMotion {
     k.box([x, 4.1, 63], [5.5, .6, 5.5], '#475457', 'map-action-socket', 'steel');
     k.box([x, 5.75, 63], [.2, .12, 2.2], C.ink, 'map-action-index', 'steel');
   }
-  const satellites = QUAKE_LAYOUT.satellites.map((at, i) => {
+  const satellites = observerHeads.map((at, i) => {
+    const first=b.meshes.length;
     const body = k.box(at, [2.7, 2.8, 2.6], C.gold, 'navigation-satellite', 'brass');
     k.inspect(body, 'position', `观察第${i + 1}条接收链路，四星仅为示意`);
     for (const side of [-1, 1]) {
@@ -351,17 +466,19 @@ function buildQuakeResponse(b: TextbookGeometry): ModelMotion {
     }
     const dish = k.solid(new T.ConeGeometry(.95, .5, 20, 1, true), C.paper, 'navigation-antenna-dish', [at[0], at[1] - 1.65, at[2]], 'ivory');
     dish.rotation.z = Math.PI;
+    for(const part of b.meshes.slice(first)){k.inspect(part,'position','查看定位卫星与接收机');part.userData.smallPointTarget=true;}
     return body;
   });
   const navigation = satellites.map(() => k.ball([0, 0, 0], .45, C.cool, 'navigation-signal', 'water'));
   const receiveLights = satellites.map((_, i) => k.ball([87.2 + i * .55, 8.5, 40.9], .18, C.green, 'received-signal-light'));
   const communication = k.ball([0, 0, 0], .52, C.warm, 'communication-message');
   const positionPin = k.solid(new T.ConeGeometry(.9, 2.6, 12), C.red, 'located-point', [88, 15.5, 40]); positionPin.rotation.z = Math.PI;
-  const remoteSatellite = k.box([12, 57, 8], [3.5, 3, 3.5], C.gold, 'remote-sensor', 'brass');
-  k.inspect(remoteSatellite, 'remote', '查看影像变化证据的来源');
-  k.box([12, 57, 8], [14, .6, 3], C.cool, 'remote-sensor-panels', 'steel');
-  k.solid(new T.CylinderGeometry(.95, 1.2, 1.8, 24), '#475457', 'remote-optical-barrel', [12, 54.8, 8], 'steel');
-  k.solid(new T.CylinderGeometry(.75, .75, .12, 24), C.water, 'remote-optical-lens', [12, 53.86, 8], 'water');
+  const [rx,ry,rz]=opticalHead,remoteStart=b.meshes.length;
+  const remoteSatellite=k.box(opticalHead,[3.7,3.2,3.6],C.gold,'remote-sensor','brass');
+  for(const side of [-1,1])k.box([rx+side*4.4,ry,rz],[5.5,.60,3.15],'#586d69','remote-sensor-panels','enamel');
+  k.solid(new T.CylinderGeometry(1.05,1.35,1.9,24),'#485357','remote-optical-barrel',[rx,ry-2.2,rz],'steel');
+  k.solid(new T.CylinderGeometry(.86,.86,.16,24),C.water,'remote-optical-lens',[rx,ry-3.16,rz],'water');
+  for(const part of b.meshes.slice(remoteStart)){k.inspect(part,'remote','查看桥面变化的影像来源');part.userData.smallPointTarget=true;}
   const remoteSample = k.ball([0, 0, 0], .55, C.gold, 'remote-evidence-signal');
   // Three thin, open map carriers share EXACT horizontal coordinates with
   // the terrain. Only their observation height separates; no new landscape.
@@ -377,28 +494,42 @@ function buildQuakeResponse(b: TextbookGeometry): ModelMotion {
     return { edges, label };
   });
   const truck = [
-    { mesh: k.box([0, 0, 0], [4.6, 1.8, 2.8], C.warm, 'rescue-truck'), offset: [0, 1.7, 0] as IntegratedPoint },
-    { mesh: k.box([0, 0, 0], [1.8, 1.2, 2.5], C.paper, 'truck-cabin'), offset: [1.1, 3.1, 0] as IntegratedPoint },
-    ...[-1.4, 1.4].flatMap(x => [-1.4, 1.4].map(z => {
-      const g = new T.CylinderGeometry(.62, .62, .45, 12); g.rotateX(Math.PI / 2);
+    {mesh:k.box([0,0,0],[3.4,1.6,3.25],'#a1734c','canvas-covered-supply-bed','enamel'),offset:[-.95,3.15,0] as IntegratedPoint},
+    ...[-2,-.9,.15].map(x=>({mesh:k.box([0,0,0],[.17,.16,3.40],'#73624e','tarpaulin-batten','steel'),offset:[x,4.00,0] as IntegratedPoint})),
+    {mesh:k.box([0,0,0],[.16,1.02,2.55],'#45686e','truck-windshield','enamel'),offset:[2.56,3.4,0] as IntegratedPoint},
+    {mesh:k.box([0,0,0],[2.05,.23,3.1],'#8d694c','truck-cab-roof','enamel'),offset:[1.63,4.03,0] as IntegratedPoint},
+    ...[-1.23,1.23].map(z=>({mesh:k.ball([0,0,0],.28,'#d9be82','truck-headlamp','brass'),offset:[2.61,2.08,z] as IntegratedPoint})),
+    { mesh: k.box([0, 0, 0], [5.7, 1.8, 3.3], C.warm, 'rescue-truck'), offset: [0, 1.7, 0] as IntegratedPoint },
+    { mesh: k.box([0, 0, 0], [1.95, 1.65, 2.98], C.paper, 'truck-cabin'), offset: [1.65, 3.1, 0] as IntegratedPoint },
+    ...[-1.9, 1.85].flatMap(x => [-1.56, 1.56].map(z => {
+      const g = new T.CylinderGeometry(.73,.73,.52,18); g.rotateX(Math.PI / 2);
       return { mesh: k.solid(g, C.ink, 'truck-wheel'), offset: [x, .65, z] as IntegratedPoint };
     })),
   ];
   truck.forEach(({ mesh }) => k.inspect(mesh, 'roads', '只沿已核验的完整通路前进'));
-  const actionMeshes: Record<string, any[]> = { send: [sender, sendLabel], verify: [verifyControl, verifyLabel],
-    'warehouse-a': [warehouseMeshes[0].body, warehouseMeshes[0].label],
-    'warehouse-b': [warehouseMeshes[1].body, warehouseMeshes[1].label], layers: [layerControl] };
+  const actionMeshes: Record<string, any[]> = { send: [sender, sendLabel,...sendKeyMeshes], verify: [verifyControl, verifyLabel],
+    'warehouse-a': [...warehouseMeshes[0].pieces, warehouseMeshes[0].label],
+    'warehouse-b': [...warehouseMeshes[1].pieces, warehouseMeshes[1].label], layers: [layerControl] };
+  const depotLens=k.solid(new T.TorusGeometry(3.25,.49,10,42),C.gold,'depot-comparison-lens',[11.3,8.8,63.1],'brass');
+  const lensCentre=k.solid(new T.CircleGeometry(2.87,40),'#769999','depot-comparison-glass',[11.3,8.8,63.1],'water');
+  k.box([11.3,4.1,63],[1.21,3.25,1.38],C.gold,'depot-lens-stand','brass');
+  k.box([11.3,2.62,63],[5.2,.78,3.9],'#465e57','depot-lens-foot','enamel');
+  for(const m of [depotLens,lensCentre]){k.inspect(m,'warehouses','翻看甲乙两库的服务范围；再点返回整体');m.userData.smallPointTarget=true;}
+  const selectRoadTint=roadMeshes.map(m=>({base:m.material,pass:b.materialFor?.('enamel','#53766c'),blocked:b.materialFor?.('rock','#a16c54'),pending:b.materialFor?.('rock','#968368')}));
   const count = b.meshes.length, buffers = b.meshes.map(mesh => mesh.geometry.attributes.position.array);
   const motion: ModelMotion = {
     inspect(target) { if (INTEGRATED_INSPECTIONS['quake-response-system'].some(item => item.target === target)) inspection = target; },
     inspectTargets: () => [...INTEGRATED_INSPECTIONS['quake-response-system']],
     update(phase, selection) {
       state = evaluateQuakeResponse(phase, selection);
+      const pressed=!!(state.selection&1);
+      finger.position.y=(pressed?-.58:0)*s;
+      lever.position.y=(pressed?-.26:0)*s;
       bridge.rotation.z = -state.damage * .18; bridge.position.y = (3.5 - state.damage * 1.2) * s;
-      town[1].body.rotation.z = state.damage * .065; town[1].roof.rotation.z = state.damage * .065;
+      town[1].rotation.z = state.damage * .065;
       quakeResponseActions(state.selection, state.phase).forEach(action => {
         for (const mesh of actionMeshes[action.id]) {
-          if (action.enabled) k.input(mesh, { kind: action.replay ? 'replay' : 'select', selection: action.selection, label: action.label } as ModelInput);
+          if (action.enabled) k.input(mesh, { kind: action.replay ? 'replay' : 'select', selection: action.selection, keepPhase:true, label: action.label } as ModelInput);
           else delete mesh.userData.modelInput;
           mesh.userData.actionId = action.id; mesh.userData.actionEnabled = action.enabled; mesh.userData.actionPressed = action.pressed;
         }
@@ -410,20 +541,22 @@ function buildQuakeResponse(b: TextbookGeometry): ModelMotion {
       blockedLabel.visible = state.phase >= .62 && ['roads', 'remote'].includes(inspection);
       positionPin.visible = state.positionKnown;
       navigation.forEach((mesh, i) => {
-        const link = state.navigation[i]; mesh.position.set(...p(link.point)); mesh.visible = link.progress > 0 && !link.arrived;
+        const link=state.navigation[i],source=observerHeads[i],target=QUAKE_LAYOUT.receiver;
+        const at=source.map((v,j)=>v+(target[j]-v)*link.progress) as IntegratedPoint;
+        mesh.position.set(...p(at));mesh.visible=link.progress>0&&!link.arrived;
         receiveLights[i].visible = link.arrived;
-        if (inspection === 'position' && link.progress > 0) b.contour([p(link.source), p(link.point)], .4);
+        if(link.progress>0&&(inspection==='position'||!link.arrived))b.contour([p(source),p(at)],.48);
       });
       const comm = state.communication;
       communication.visible = comm.progress > 0 && comm.progress < 1;
       communication.position.set(...p(comm.source.map((value, axis) => value + (comm.target[axis] - value) * comm.progress) as IntegratedPoint));
-      if (inspection === 'position' && comm.progress > 0) b.contour([p(comm.source), p(comm.target)], .7);
+      if(comm.progress>0&&(inspection==='position'||comm.progress<1)) b.contour([p(comm.source), p(comm.target)], .7);
       // Optical observation is separate from navigation and radio messaging.
       const reflected = Math.max(0, Math.min(1, (state.phase - .2) / .07));
-      const sampleSource: IntegratedPoint = [50, 4, 43], sampleTarget: IntegratedPoint = [12, 57, 8];
+      const sampleSource: IntegratedPoint = [50, 4, 43], sampleTarget: IntegratedPoint = opticalHead;
       remoteSample.visible = reflected > 0 && reflected < 1;
       remoteSample.position.set(...p(sampleSource.map((value, axis) => value + (sampleTarget[axis] - value) * reflected) as IntegratedPoint));
-      if (inspection === 'remote' && reflected > 0) b.contour([p(sampleSource), p(sampleTarget)], .6);
+      if(reflected>0&&(inspection==='remote'||reflected<1)) b.contour([p(sampleSource), p(sampleTarget)], .6);
       const mapY = [0, 1, 2].map(i => state.layersSeparated ? 18 + i * 10 : 7 + i * .7);
       mapLayers.forEach((layer, i) => {
         const available = i === 0 ? state.remoteObserved : i === 1 ? state.positionKnown : state.phase >= .62;
@@ -434,13 +567,15 @@ function buildQuakeResponse(b: TextbookGeometry): ModelMotion {
       if (state.positionKnown) b.ring(p([88, mapY[1], 40]), 2.2 * s, 'xz');
       state.roads.forEach((road, i) => {
         const a = QUAKE_LAYOUT.nodes[road.a], c = QUAKE_LAYOUT.nodes[road.b];
-        roadMeshes[i].userData.roadStatus = road.status;
+        roadMeshes[i].userData.roadStatus=road.status;
+        const tint=selectRoadTint[i],current=road.status==='passable'?tint.pass:road.status==='blocked'?tint.blocked:road.status==='pending'?tint.pending:tint.base;
+        roadMeshes[i].material=current??tint.base;
         if (state.phase < .28) return;
-        const yy = state.layersSeparated ? mapY[2] : 4.7;
+        const yy = state.layersSeparated ? mapY[2] : road.status === 'blocked' ? 6.8 : 4.7;
         if (road.status === 'passable') b.contour([p([a[0], yy, a[2]]), p([c[0], yy, c[2]])], .75);
         else if (road.status !== 'blocked') for (let j = 0; j < 12; j += 2) b.contour([j, j + 1].map(q => p([a[0] + (c[0] - a[0]) * q / 12, yy, a[2] + (c[2] - a[2]) * q / 12])), .32);
         else {
-          const xx = (a[0] + c[0]) / 2, zz = (a[2] + c[2]) / 2;
+          const [xx, , zz] = QUAKE_LAYOUT.nodes.bridge;
           b.contour([p([xx - 2, yy, zz - 2]), p([xx + 2, yy, zz + 2])], .85);
           b.contour([p([xx - 2, yy, zz + 2]), p([xx + 2, yy, zz - 2])], .85);
         }
@@ -455,22 +590,35 @@ function buildQuakeResponse(b: TextbookGeometry): ModelMotion {
           state.vehicle[2] - x * Math.sin(yaw) + z * Math.cos(yaw)]));
         mesh.rotation.y = yaw; b.outline(mesh, .28);
       });
-      warehouseMeshes.forEach(({ id, body, roof, label }) => {
+      warehouseMeshes.forEach(({ id, body, roof, label, post }) => {
         body.userData.selectedWarehouse = id === state.origin; b.outline(body, id === state.origin ? .65 : .25); b.outline(roof, .25);
-        label.visible = inspection === 'warehouses' || id === state.origin;
+        post.visible=label.visible=true;
       });
       b.outline(sender, state.selection & 1 ? .6 : .3); b.outline(receiver, .3); k.phase(state.phase);
     },
+    framingPoints(){
+      if(inspection!=='overview')return null;
+      const lamp=observerHeads.map(([x,y,z])=>[x,y+1.6,z] as IntegratedPoint);
+      const corners:IntegratedPoint[]=[];
+      for(const x of [1,109])for(const z of [1,75])corners.push([x,-6.5,z]);
+      const folds:IntegratedPoint[]=state.layersSeparated?[[2,38,4],[106,38,4],[2,38,65],[106,38,65],[115,38,38]]:[];
+      const points=[...corners,...lamp,opticalHead,...folds,[2,17,2],[106,17,2]] as IntegratedPoint[];
+      // The rear optical bar and the low front rail form a wedge. The
+      // upper front corners of a rectangular box do not contain a specimen.
+      const frame=state.layersSeparated?.88:.78;
+      return points.map(([x,y,z])=>p([55.0+(x-55)*frame,9+(y-9)*frame,39+(z-39)*frame]));
+    },
     focusBounds() {
-      if (inspection === 'remote') return { min: p([5, 0, 2]), max: p([68, 65, 56]) };
-      if (inspection === 'position') return { min: p([15, 0, 1]), max: p([111, 80, 65]) };
-      if (inspection === 'roads') return { min: p([3, 0, 5]), max: p([110, 48, 68]) };
+      if(inspection==='remote')return {min:p([1,-3,2]),max:p([64,28,53])};
+      if(inspection==='position')return {min:p([23,-3,1]),max:p([109,31,61])};
+      if(inspection==='roads')return {min:p([4,-4,6]),max:p([105,state.layersSeparated?41:19,67])};
       if (inspection === 'warehouses') return { min: p([3, 0, 7]), max: p([99, 29, 65]) };
-      return { min: p([0, -20, 0]), max: p([123, 81, 84]) };
+      return {min:p([.5,-6.5,.2]),max:p([state.layersSeparated?116:109.5,state.layersSeparated?41:28,75])};
     },
     describe: () => ({ ...state, inspection, integrated: true, originalPagePreserved: true,
-      fixedMeshCount: count, geometryBuffersReused: b.meshes.length === count && b.meshes.every((mesh, i) => mesh.geometry.attributes.position.array === buffers[i]),
+      fixedMeshCount: count, geometryBuffersReused: buffers.every((buffer, i) => b.meshes[i]?.geometry.attributes.position.array === buffer),
       mapLayerHeights: mapLayers.map(layer => layer.edges[0].position.y / s), sameGeographicCoordinatesAcrossLayers: true,
+      tabletopNavigation:observerHeads,tabletopOpticalSource:opticalHead,physicalBench:'linked-observation-bridge',
       vehicleWorld: k.world(p(state.vehicle)), receiverWorld: k.world(p(QUAKE_LAYOUT.receiver)),
       roadWorld: state.roads.map(edge => ({ ...edge, a: k.world(p(QUAKE_LAYOUT.nodes[edge.a])), b: k.world(p(QUAKE_LAYOUT.nodes[edge.b])) })),
       handleWorld: k.world(k.handle.position.toArray()), phaseTrackWorld: { start: k.world(k.track.start), end: k.world(k.track.end) },

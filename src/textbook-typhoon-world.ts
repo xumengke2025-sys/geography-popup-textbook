@@ -1,16 +1,20 @@
+import cloud from './assets/typhoon/cloud.json';
 import { createSpecimenMaterial } from './textbook-solid-materials';
 import { THREE as T } from './reference/engine.js';
 import { LIFT_MARGIN, type ModelMotion, type TextbookGeometry, type Vec3 } from './textbook-geometry';
 import { phaseTrackPoint, type PhaseTrack } from './textbook-model-input';
-import { evaluateTyphoon, typhoonArrowMeshData, typhoonCloudMesh, typhoonDiagnostics, typhoonPolar, typhoonPrismMesh,
+import { chamferedPlateGeometry, mergeInstrumentGeometry, turnedShaftGeometry } from './textbook-instrument-parts';
+import { evaluateTyphoon, typhoonArrowMeshData, typhoonDiagnostics, typhoonPrismMesh,
   TYPHOON_BASE_OUTLINE, TYPHOON_EYE_OUTLINE, TYPHOON_LABELS, TYPHOON_LAYOUT as L, TYPHOON_STOPS,
-  TYPHOON_WALL_PROFILE, type TyphoonMesh, type TyphoonPoint } from './textbook-typhoon-model';
+  type TyphoonMesh, type TyphoonPoint } from './textbook-typhoon-model';
 
 /** One raised, front-cut paper typhoon. Its eye is the actual open space inside
  * the cloud annulus; map inflow and section arrows inhabit the same XYZ field. */
 export function buildTyphoonWorld(b: TextbookGeometry): ModelMotion {
   const scale = b.width / 100, back = -LIFT_MARGIN - 72 * scale, rise = 32 * scale;
-  const p = ([x, y, z]: TyphoonPoint): Vec3 => [x * scale, y * scale, back + z * scale];
+  // Keep the ocean tray at full depth. Cloud, arrows and their observation
+  // points share the same shallow vertical section above the water surface.
+  const p = ([x, y, z]: TyphoonPoint): Vec3 => [x * scale, (y - .30 * Math.max(0, y - 2)) * scale, back + z * scale];
   b.root.position.set(0, rise, -8 * scale);
   const role = (mesh: any, value: string) => { mesh.userData.typhoonRole = value; return mesh; };
   const select = (mesh: any, selection: number) => {
@@ -37,59 +41,38 @@ export function buildTyphoonWorld(b: TextbookGeometry): ModelMotion {
     const mesh = role(b.mesh(geometryFrom(data, dynamic), color, false), name); mesh.material = paper(color, hatch);
     return selection === undefined ? mesh : select(mesh, selection);
   };
-  // The cloud remains one continuous annular volume. Broad, unequal lobes
-  // soften the schematic funnel into a cloud wall without filling the eye,
-  // scattering cloud balls, or moving the scientific flow paths.
-  const cloudRadius = (radius: number, y: number, angle: number, inner: boolean) => {
-    const t = Math.max(0, Math.min(1, (y - 4) / 44));
-    const shoulder = Math.sin(Math.PI * t) * .75 + .25;
-    const folds = inner ? .25 * Math.cos(angle * 10 + t * 2)
-      : shoulder * (1.35 * Math.cos(angle * 9 + t * 1.1) + .65 * Math.sin(angle * 15 - t * 2));
-    return radius + (inner ? 0 : .5 * Math.cos(angle * 12)) + folds;
+  // The ocean insert sits in a stepped brass tray on a dark enamel plinth.
+  const tray = (factor: number, low: number, high: number, color: string, substance: 'enamel' | 'brass') => {
+    const outline = TYPHOON_BASE_OUTLINE.map(([x, z]): [number, number] =>
+      [50 + (x - 50) * factor, 42 + (z - 42) * factor]);
+    return b.mesh(geometryFrom(typhoonPrismMesh(outline, low, high)), color, false, true, substance);
   };
-  const cloudBody = (profiles: readonly { y: number; inner: number; outer: number }[]) => {
-    const levels: { y: number; inner: number; outer: number }[] = [];
-    profiles.slice(0, -1).forEach((a, index) => {
-      const z = profiles[index + 1], n = Math.ceil((z.y - a.y) / 3);
-      for (let j = 0; j < n; j++) levels.push({ y: a.y + (z.y - a.y) * j / n,
-        inner: a.inner + (z.inner - a.inner) * j / n, outer: a.outer + (z.outer - a.outer) * j / n });
-    });
-    levels.push(profiles[profiles.length - 1]);
-    const segments = 72, data = typhoonCloudMesh(segments, levels);
-    levels.forEach((profile, row) => {
-      for (let i = 0; i <= segments; i++) for (const inner of [false, true]) {
-        const angle = L.cutStart + (L.cutEnd - L.cutStart) * i / segments;
-        const q = typhoonPolar(cloudRadius(inner ? profile.inner : profile.outer, profile.y, angle, inner), angle, profile.y);
-        const offset = (row * (segments + 1) * 2 + i * 2 + Number(inner)) * 3;
-        data.positions.splice(offset, 3, ...q);
-      }
-    });
-    return data;
-  };
+  tray(1.044, -3.1, -2.5, '#a88b50', 'brass');
+  tray(1.037, -2.5, -.7, '#364e48', 'enamel');
+  tray(1.025, -.7, .7, '#b3925a', 'brass');
   const base = solid(typhoonPrismMesh(TYPHOON_BASE_OUTLINE, 0, 2), '#a9c7c8', 'sea-base', 0, .055);
   // Two closed pieces share the same profile at y=35; this makes the cloud top
   // a real selectable part without a second detached top-view diagram.
-  const wall = solid(cloudBody(TYPHOON_WALL_PROFILE.slice(0, 4)), '#dce0d4', 'cloud-eyewall', 1, .055);
-  const canopy = solid(cloudBody(TYPHOON_WALL_PROFILE.slice(3)), '#e5e7dc', 'upper-cloud-canopy', 2, .035);
+  const cloudBody = (data: TyphoonMesh & {tones: number[]}, color: string, name: string, selection: number) => {
+    const geometry = geometryFrom(data);
+    geometry.setAttribute('color', new T.BufferAttribute(new Uint8Array(data.tones), 3, true));
+    const mesh = b.mesh(geometry, color, false, true, 'air');
+    mesh.material.vertexColors = true;
+    mesh.material.roughness = .88;
+    return select(role(mesh, name), selection);
+  };
+  const wall = cloudBody(cloud.parts.wall, '#e2e7e8', 'cloud-eyewall', 1);
+  const canopy = cloudBody(cloud.parts.crown, '#f8f4e7', 'upper-cloud-canopy', 2);
   const eye = solid(typhoonPrismMesh(TYPHOON_EYE_OUTLINE, 2.05, 2.32), '#d8cead', 'eye-footprint', 3, .035);
   base.userData.northernHemisphere = true; wall.userData.trueEyeOpening = true; canopy.userData.trueEyeOpening = true;
   eye.userData.cloudFreeObservation = true;
 
-  const arc = (radius: number, height: number, inner: boolean, count = 72) => Array.from({ length: count + 1 }, (_, i) => {
-    const angle = L.cutStart + (L.cutEnd - L.cutStart) * i / count;
-    return p(typhoonPolar(cloudRadius(radius, height, angle, inner), angle, height));
-  });
-  for (const profile of [TYPHOON_WALL_PROFILE[0], TYPHOON_WALL_PROFILE[3], TYPHOON_WALL_PROFILE[5]]) {
-    b.stroke(arc(profile.inner, profile.y, true), .27);
-    b.stroke(arc(profile.outer, profile.y, false), .25);
+  for (const band of [cloud.parts.band0, cloud.parts.band1, cloud.parts.band2]) {
+    cloudBody(band, '#cedae0', 'spiral-rainband', 0);
   }
-  for (const angle of [L.cutStart, L.cutEnd]) {
-    b.stroke(TYPHOON_WALL_PROFILE.map(profile => p(typhoonPolar(cloudRadius(profile.inner, profile.y, angle, true), angle, profile.y))), .42);
-    b.stroke(TYPHOON_WALL_PROFILE.map(profile => p(typhoonPolar(cloudRadius(profile.outer, profile.y, angle, false), angle, profile.y))), .42);
-    for (const profile of [TYPHOON_WALL_PROFILE[0], TYPHOON_WALL_PROFILE[5]]) b.stroke([
-      p(typhoonPolar(cloudRadius(profile.inner, profile.y, angle, true), angle, profile.y)), p(typhoonPolar(cloudRadius(profile.outer, profile.y, angle, false), angle, profile.y)),
-    ], .37);
-  }
+  const line = (points: number[][]) => points.map(([x, y, z]) => p([x, y, z]));
+  for (const rim of [...cloud.edges.wallrim, ...cloud.edges.crownrim]) b.stroke(line(rim), .24);
+  for (const face of [...cloud.edges.wall, ...cloud.edges.crown]) b.stroke(line(face), .38);
   b.stroke([...TYPHOON_BASE_OUTLINE, TYPHOON_BASE_OUTLINE[0]].map(([x, z]) => p([x, 2.03, z])), .38);
 
   const initial = evaluateTyphoon(1), arrows = initial.arrows.map(arrow => {
@@ -100,17 +83,43 @@ export function buildTyphoonWorld(b: TextbookGeometry): ModelMotion {
   const labels = TYPHOON_LABELS.map(label => ({ definition: label,
     mesh: select(role(b.label(label.text, p(label.at), label.width * scale, label.height * scale), 'process-label'), label.selection) }));
   const track: PhaseTrack = { start: p(L.track.start), end: p(L.track.end) };
-  const rail = solid(typhoonPrismMesh([[13, 87.8], [87, 87.8], [87, 88.2], [13, 88.2]], -10.14, -9.86), '#afa184', 'phase-rail', undefined, .035);
-  rail.userData.modelInput = { kind: 'phase-track', track, label: '沿纸轨拖动，逐步观察同一台风的立体结构' };
+  // A bent pair of feet carries the lower slide back to the front of the tray.
+  for (const x of [14, 86]) {
+    const profile = new T.Shape();
+    const section = [[77, -1.4], [80.4, -1.4], [86.3, -8.9], [89, -8.9],
+      [89, -10.5], [85.3, -10.5], [79.5, -3.1], [77, -3.1]];
+    section.forEach(([z, y], i) => i ? profile.lineTo(-z * scale, y * scale) : profile.moveTo(-z * scale, y * scale));
+    profile.closePath();
+    const foot = new T.ExtrudeGeometry(profile, { depth: 1.6 * scale, bevelEnabled: true,
+      bevelThickness: .12 * scale, bevelSize: .12 * scale, bevelSegments: 1 });
+    foot.rotateY(Math.PI / 2);
+    foot.translate((x - .8) * scale, 0, back);
+    role(b.mesh(foot, '#a88b50', false), 'rail-bracket');
+  }
+  const rail = role(b.mesh(geometryFrom(typhoonPrismMesh([[13, 87.35], [87, 87.35], [87, 88.65], [13, 88.65]], -10.36, -9.64)), '#a88b50', false), 'phase-rail');
+  rail.userData.modelInput = { kind: 'phase-track', track, label: '沿铜轨拖动，逐步观察同一台风的立体结构' };
+  const indexPlate = chamferedPlateGeometry(p([11.4,-15.2,86.2]),p([88.6,-9.9,87.3]),.32*scale);
+  const scaleFace = role(b.mesh(indexPlate, '#d9d0b5', false, true, 'ivory'), 'stage-scale');
+  scaleFace.userData.modelInput = rail.userData.modelInput;
+  const ticks = Array.from({length:17},(_,i) => {
+    const x=13+74*i/16;
+    return chamferedPlateGeometry(p([x-.09,-14.65,87.35]),p([x+.09,i%4===0?-11.6:-13.35,87.43]),.02*scale);
+  });
+  const graduations = b.mesh(mergeInstrumentGeometry(ticks),'#665c48',false,true,'steel');
+  graduations.userData.modelInput=rail.userData.modelInput;
   const tab = new T.Shape();
   [[-3.4, 2.1], [3.4, 2.1], [3.4, -.8], [0, -3.1], [-3.4, -.8]].forEach(([x, y], i) =>
     i ? tab.lineTo(x * scale, y * scale) : tab.moveTo(x * scale, y * scale));
   tab.closePath();
-  const tabGeometry = new T.ExtrudeGeometry(tab, { depth: .7 * scale, bevelEnabled: false }); tabGeometry.translate(0, 0, -.35 * scale);
-  const handle = role(b.mesh(tabGeometry, '#d4bd8b', false), 'phase-handle'); handle.material = paper('#d4bd8b', .035);
+  const tabGeometry = new T.ExtrudeGeometry(tab, { depth: .7 * scale, bevelEnabled: true, bevelSize: .2 * scale, bevelThickness: .18 * scale, bevelSegments: 2 }); tabGeometry.translate(0, 0, -.35 * scale);
+  const pull=turnedShaftGeometry([0,0,.29*scale],[0,0,3.10*scale],
+    [[1.34*scale,0],[1.52*scale,.12],[.72*scale,.32],[.74*scale,.50],[1.92*scale,.68],[2.02*scale,.86],[1.58*scale,1]]);
+  const handle = role(b.mesh(mergeInstrumentGeometry([tabGeometry,pull]), '#b3925a', false,true,'brass'), 'phase-handle');
   handle.userData.smallPointTarget = true;
-  handle.userData.modelInput = { kind: 'phase-track', track, label: '拖动纸签，暂停回看低层、眼墙、高空和台风眼' };
-  const fixedMeshCount = b.meshes.length, buffers = b.meshes.map(mesh => mesh.geometry.attributes.position.array);
+  handle.userData.modelInput = { kind: 'phase-track', track, label: '拖动铜游标，暂停回看低层、眼墙、高空和台风眼' };
+  const fixedMeshCount = b.meshes.length;
+  // The book mounts additional fittings after the model constructor returns.
+  const buffers = b.meshes.map(mesh => ({ mesh, positions: mesh.geometry.attributes.position.array }));
   let state = evaluateTyphoon(0), previous = -1;
   const motion: ModelMotion = {
     update(phase) {
@@ -135,9 +144,8 @@ export function buildTyphoonWorld(b: TextbookGeometry): ModelMotion {
       // recolouring shared paper materials or adding another floating panel.
       const selectedCloud = state.selection === 1 ? wall : state.selection === 2 ? canopy : null;
       if (selectedCloud) {
-        const profiles = state.selection === 1 ? TYPHOON_WALL_PROFILE.slice(0, 4) : TYPHOON_WALL_PROFILE.slice(3);
-        for (const angle of [L.cutStart, L.cutEnd]) for (const side of ['inner', 'outer'] as const)
-          b.contour(profiles.map(profile => p(typhoonPolar(cloudRadius(profile[side], profile.y, angle, side === 'inner'), angle, profile.y))), .86);
+        const faces = state.selection === 1 ? cloud.edges.wall : cloud.edges.crown;
+        for (const face of faces) b.contour(line(face), .86);
       }
       if (state.selection === 3) b.contour([...TYPHOON_EYE_OUTLINE, TYPHOON_EYE_OUTLINE[0]].map(([x, z]) => p([x, 2.4, z])), .85);
       b.contour([track.start, track.end], .28); b.outline(handle, handle.userData.modelHovered ? .63 : .38);
@@ -168,7 +176,7 @@ export function buildTyphoonWorld(b: TextbookGeometry): ModelMotion {
         handleWorld: handle.getWorldPosition(new T.Vector3()).toArray(), phaseTrack: track,
         phaseTrackWorld: { start: world(track.start), end: world(track.end) },
         directInteraction: 'actual-cloud-and-flow-select-and-phase-track', fixedMeshCount,
-        geometryBuffersReused: b.meshes.length === fixedMeshCount && b.meshes.every((mesh, i) => mesh.geometry.attributes.position.array === buffers[i]),
+        geometryBuffersReused: buffers.every(({ mesh, positions }, i) => b.meshes[i] === mesh && mesh.geometry.attributes.position.array === positions),
         fixedFocusBounds: true, measuredWindSpeed: false, forecast: false };
     },
   };

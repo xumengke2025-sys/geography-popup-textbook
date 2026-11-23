@@ -1,0 +1,135 @@
+{
+  "base": "http://127.0.0.1:4173",
+  "browser": "157.0.4341.60",
+  "scope": "Headless Edge, live lesson, 90 frame intervals after warm-up; CSS viewport simulation.",
+  "samples": [
+    {
+      "id": "vegetation",
+      "quality": "中",
+      "renderFps": 152.129817444219,
+      "rafFps": 152.129817444219,
+      "p95Ms": 8.399999999999636,
+      "frames": 90,
+      "render": 91,
+      "triangles": 49837,
+      "device": "ANGLE (Intel, Intel(R) Graphics (0x00007D67) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "viewport": [
+        1440,
+        960
+      ],
+      "pixelRatio": 1
+    },
+    {
+      "id": "vegetation",
+      "quality": "低",
+      "renderFps": 154.347453267021,
+      "rafFps": 154.347453267021,
+      "p95Ms": 8.399999999999636,
+      "frames": 90,
+      "render": 91,
+      "triangles": 49837,
+      "device": "ANGLE (Intel, Intel(R) Graphics (0x00007D67) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "viewport": [
+        1440,
+        960
+      ],
+      "pixelRatio": 1
+    },
+    {
+      "id": "soil",
+      "quality": "中",
+      "renderFps": 123.45679012345678,
+      "rafFps": 123.45679012345678,
+      "p95Ms": 12.5,
+      "frames": 90,
+      "render": 97,
+      "triangles": 29603,
+      "device": "ANGLE (Intel, Intel(R) Graphics (0x00007D67) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "viewport": [
+        1440,
+        960
+      ],
+      "pixelRatio": 1
+    },
+    {
+      "id": "soil",
+      "quality": "低",
+      "renderFps": 130.17066820942986,
+      "rafFps": 130.17066820942986,
+      "p95Ms": 8.400000000001455,
+      "frames": 90,
+      "render": 97,
+      "triangles": 29603,
+      "device": "ANGLE (Intel, Intel(R) Graphics (0x00007D67) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "viewport": [
+        1440,
+        960
+      ],
+      "pixelRatio": 1
+    },
+    {
+      "id": "mars-base",
+      "quality": "中",
+      "renderFps": 161.23253314224297,
+      "rafFps": 161.23253314224297,
+      "p95Ms": 8.400000000000546,
+      "frames": 90,
+      "render": 267,
+      "triangles": 76403,
+      "device": "ANGLE (Intel, Intel(R) Graphics (0x00007D67) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "viewport": [
+        1440,
+        960
+      ],
+      "pixelRatio": 1
+    },
+    {
+      "id": "mars-base",
+      "quality": "低",
+      "renderFps": 155.44041450777203,
+      "rafFps": 155.44041450777203,
+      "p95Ms": 8.400000000000546,
+      "frames": 90,
+      "render": 267,
+      "triangles": 76403,
+      "device": "ANGLE (Intel, Intel(R) Graphics (0x00007D67) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "viewport": [
+        1440,
+        960
+      ],
+      "pixelRatio": 1
+    },
+    {
+      "id": "basin-system",
+      "quality": "中",
+      "renderFps": 162.4548736462094,
+      "rafFps": 162.4548736462094,
+      "p95Ms": 8.400000000000546,
+      "frames": 90,
+      "render": 232,
+      "triangles": 75723,
+      "device": "ANGLE (Intel, Intel(R) Graphics (0x00007D67) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "viewport": [
+        1440,
+        960
+      ],
+      "pixelRatio": 1
+    },
+    {
+      "id": "basin-system",
+      "quality": "低",
+      "renderFps": 163.66612111292974,
+      "rafFps": 163.66612111292974,
+      "p95Ms": 8.399999999999636,
+      "frames": 90,
+      "render": 232,
+      "triangles": 75723,
+      "device": "ANGLE (Intel, Intel(R) Graphics (0x00007D67) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "viewport": [
+        1440,
+        960
+      ],
+      "pixelRatio": 1
+    }
+  ]
+}

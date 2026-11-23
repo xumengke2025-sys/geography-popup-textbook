@@ -1,3 +1,4 @@
+import { drawingGrip } from './textbook-drawing-grip';
 /** PEP Geography I, printed p.9 / PDF p.14 / fig.1.14, visually checked.
  * The drawing and adjacent text identify rooftop heat collection, storage,
  * a pump, pipes and room heating. These are thermal collectors, not the
@@ -88,11 +89,23 @@ export const SOLAR_HEATING_WATER_PATHS: readonly SolarWaterPath[] = [
     [91, 10.5, 52], [91, 7, 52], [33, 7, 52], [33, 18, 52],
   ] },
 ];
-export const SOLAR_HEATING_RAYS = [
-  { id: 'shortwave-01', source: [6, 73, 44] as SolarPoint, destination: [32, 56.5, 44] as SolarPoint },
-  { id: 'shortwave-02', source: [9, 76, 37] as SolarPoint, destination: [40, 60, 37] as SolarPoint },
-  { id: 'shortwave-03', source: [12, 79, 29] as SolarPoint, destination: [48, 63.5, 29] as SolarPoint },
-] as const;
+// Draw a parallel bundle from the surface of the model Sun to the absorber.
+// Ray starts are the outward intersections with the sphere, so returning the
+// apparatus to its starting position actually returns the light marks to it.
+const absorberY=(x:number)=>54.3+(x-27.3)*(65.1-54.3)/(52-27.3)+.24;
+const solarSource=SOLAR_HEATING_LAYOUT.sun;
+const centralRay:SolarPoint=[40-solarSource[0],absorberY(40)-solarSource[1],0];
+const centralLength=Math.hypot(...centralRay);
+const direction=centralRay.map(v=>v/centralLength) as SolarPoint;
+export const SOLAR_HEATING_RAYS = [[37.5,35.9],[40,39],[42.5,42.1]].map(([x,z],i)=>{
+  const destination:SolarPoint=[x,absorberY(x),z];
+  const d=destination.map((v,j)=>v-solarSource[j]);
+  const along=d.reduce((sum,v,j)=>sum+v*direction[j],0);
+  const transverse=d.map((v,j)=>v-along*direction[j]);
+  const exit=Math.sqrt(Math.max(0,SOLAR_HEATING_LAYOUT.sunRadius**2-transverse.reduce((sum,v)=>sum+v*v,0)));
+  const source=solarSource.map((v,j)=>v+transverse[j]+direction[j]*exit) as SolarPoint;
+  return {id:`shortwave-0${i+1}`,source,destination};
+});
 
 const clamp = (n: number) => Math.max(0, Math.min(1, Number.isFinite(n) ? n : 0));
 const smooth = (a: number, b: number, value: number) => { const q = clamp((value - a) / (b - a)); return q * q * (3 - 2 * q); };
@@ -199,6 +212,15 @@ export function solarHeatingSvg(input: number): string {
   }
   const tank = SOLAR_HEATING_LAYOUT.tank, [tx, ty] = project(tank.center);
   scene += selectable(2, `<g data-solar-equipment="storage"><rect x="${n(tx - 23)}" y="${n(ty - 27)}" width="46" height="54" rx="9" fill="${color('#a9b5aa', '#b88d69', state.storageWarmth)}" stroke="#6e7968" stroke-width="1.4"/><ellipse cx="${tx}" cy="${n(ty - 23)}" rx="23" ry="7" fill="#ded8c0" stroke="#6e7968" stroke-width="1"/></g>`);
+  for(const [pos,warmth,stage] of [
+    [[34,7.6,52.62] as SolarPoint,state.storageWarmth,2],
+    [[73.2,9.2,49] as SolarPoint,state.roomWarmth.lower,3],
+    [[73.2,32,49] as SolarPoint,state.roomWarmth.upper,3]
+  ] as const){
+    const [x,y]=project(pos),h=28*(.15+.85*warmth);
+    scene+=selectable(stage,`<g data-solar-thermometer><rect x="${x-4}" y="${y-31}" width="9" height="36" rx="2" fill="#e7d9b9" stroke="#9a8052"/>
+      <path d="M${x+1} ${y-7}h2m-2-7h2m-2-7h2" stroke="#867652"/><path d="M${x-1} ${y}v${n(-h)}" stroke="#a44931" stroke-width="2"/><circle cx="${x-1}" cy="${y}" r="2" fill="#a44931"/></g>`);
+  }
   const [px, py] = project(SOLAR_HEATING_LAYOUT.pump.center);
   scene += selectable(2, `<circle data-solar-equipment="pump" cx="${px}" cy="${py}" r="12" fill="#a2ae9a" stroke="#687760" stroke-width="1.4"/><path d="M-7 0h14M0-7v14" transform="translate(${px} ${py}) rotate(${n(state.pumpTurning * 125)})" stroke="#ece4cf" stroke-width="2.3"/>`);
   const [sx, sy] = project(SOLAR_HEATING_LAYOUT.sun);
@@ -221,6 +243,6 @@ export function solarHeatingSvg(input: number): string {
   return `<svg class="flat-model-svg flat-explanation-svg" viewBox="0 0 660 520" role="group" aria-label="家庭太阳能供热：${state.caption}；光与水分别示踪" data-solar-heating-phase="${state.phase}" data-solar-heating-stage="${state.stage}" data-solar-heating-state='${diagnostics}'>
   <g font-family="FieldSerif,SimSun,serif" fill="#303a40" stroke-linecap="round" stroke-linejoin="round">${scene}
   <path d="M${start.join(' ')}L${end.join(' ')}" stroke="#a99b7d" stroke-width="2"/>
-  <ellipse data-solar-role="phase-handle" cx="${handle[0]}" cy="${handle[1]}" rx="10" ry="8" fill="#dfc795" stroke="#7e8069"/>
+  <ellipse data-solar-role="phase-handle" cx="${handle[0]}" cy="${handle[1]}" rx="10" ry="8" fill="#dfc795" stroke="#7e8069"/>${drawingGrip('推拉供热过程标尺',start,end,state.phase)}
   </g></svg>`;
 }

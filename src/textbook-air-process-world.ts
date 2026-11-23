@@ -2,9 +2,12 @@ import { createSpecimenMaterial } from './textbook-solid-materials';
 import { THREE as T } from './reference/engine.js';
 import { LIFT_MARGIN, type ModelMotion, type TextbookGeometry, type Vec3 } from './textbook-geometry';
 import { phaseTrackPoint, type PhaseTrack } from './textbook-model-input';
+import { createConvectionSmoke } from './textbook-convection-smoke';
+import { mountFieldInstrument } from './textbook-field-instruments';
+import { mountHeatingBench } from './textbook-atmosphere-specimens';
 import { createAirInstrumentRig } from './textbook-air-instrument-rig';
 import { AIR_PROCESS_BOUNDS, AIR_PROCESS_REFERENCE, AIR_PROCESS_STOPS, AIR_PROCESS_TRACK,
-  airArrowMeshData, airGroundHeight, airProcessDiagnostics, evaluateAirProcess,
+  airArrowMeshData, airProcessDiagnostics, evaluateAirProcess,
   type AirArrow, type AirPoint, type AirProcessEffect } from './textbook-air-process-model';
 
 /** Raised paper solids share the original Popout material and ink machinery.
@@ -121,36 +124,24 @@ export function buildAirProcessWorld(b: TextbookGeometry, effect: AirProcessEffe
     : { min: point(AIR_PROCESS_BOUNDS.min), max: point(AIR_PROCESS_BOUNDS.max) };
 
   if (effect === 'heat') {
-    const profile = Array.from({ length: 65 }, (_, i): AirPoint => { const x = 4 + 92 * i / 64; return [x, airGroundHeight(x), 0]; });
-    const data = sectionData(profile, 14, 52, 0), ground = input(shape(data.positions, data.indices, '#c7bba3', 'ground-volume', .18), 1);
-    rig.specimenBed(4, 96, 14, 52);
-    // A slim side carriage carries the solar symbol and leaves its authored
-    // shortwave path unobstructed. The stand has no atmospheric meaning.
-    rig.plate([3, -1.5, 15], [11, 0, 23], 'enamel', 'source-stand-foot', .3);
-    rig.fasteners([[4.5, .05, 16.5], [9.5, .05, 21.5]], .38);
-    rig.stepped([7, 0, 19], [7, 55.5, 19], [[1.6, 0], [1.6, .07], [.78, .15], [.78, .95], [1.1, 1]], 'steel', 'solar-symbol-support');
-    rig.rod([7, 55.5, 19], [12, 55.5, 49], .44, 'steel', 'solar-symbol-cantilever');
-    rig.stepped([12, 55, 49], [12, 57.2, 49], [[1.1, 0], [.65, .5], [.65, 1]], 'brass', 'solar-symbol-yoke');
-    rig.ring([12, 59, 49], 4.25, .18, 'brass', 'solar-symbol-retaining-ring');
-    const sunGeometry = new T.SphereGeometry(3.8 * scale, 24, 16); sunGeometry.translate(...p(12, 59, 49));
-    const sun = input(solid(sunGeometry, '#d3b875', 'solar-source', .12), 0);
+    const {ground,setHeatingStage}=mountHeatingBench(b,scale,p(0,0,0));
     // The ground and receiving air remain natural objects. The small probes
     // indicate relative warming only and share exactly the existing state.
     const groundGauge = rig.gauge([34, 9.7, 23], 3.4, 'ground-warmth');
-    rig.rod([34, 0, 20], [34, 9.7, 20], .38, 'steel', 'ground-warmth-probe-stem');
+    rig.rod([34, -2.5, 20], [34, 9.7, 20], .38, 'steel', 'ground-warmth-probe-stem');
     rig.rod([34, 9.7, 20], [34, 9.7, 22], .38, 'steel', 'ground-warmth-probe-coupling');
     const airGauge = rig.gauge([83, 27, 23], 3.4, 'air-warmth');
-    rig.rod([91, 0, 19], [91, 27, 19], .38, 'steel', 'air-warmth-probe-stem');
+    rig.rod([91, -2.5, 19], [91, 27, 19], .38, 'steel', 'air-warmth-probe-stem');
     rig.rod([91, 27, 19], [83, 27, 19], .32, 'steel', 'air-warmth-probe-arm');
     rig.rod([83, 27, 19], [83, 27, 22], .32, 'steel', 'air-warmth-probe-coupling');
     groundGauge.body.userData.modelInput = { kind: 'select', selection: 1, label: '查看地面增温' };
     airGauge.body.userData.modelInput = { kind: 'select', selection: 3, label: '查看大气吸收' };
     // Sparse open ribs locate the atmospheric space without making an opaque
     // dome or a glass container. Their geometry remains fixed as the air warms.
-    const atmosphere = [18, 30, 42].map(h => {
+    [21, 37].forEach(h => {
       const path = Array.from({ length: 49 }, (_, i): AirPoint => [6 + 88 * i / 48, h + 3.5 * Math.sin(i / 48 * Math.PI), 0]);
-      const data = sectionData(path, 17, 19.2, 'ribbon');
-      return { mesh: shape(data.positions, data.indices, '#d9e2d8', 'atmosphere-rib', .035), path };
+      const data = sectionData(path, 17.7, 18.17, 'ribbon');
+      shape(data.positions, data.indices, '#a1b5ab', 'atmosphere-rib', .035);
     });
     // Stationary qualitative air markers change colour where terrestrial
     // longwave is absorbed. Their count has no energetic or molecular scale.
@@ -159,39 +150,41 @@ export function buildAirProcessWorld(b: TextbookGeometry, effect: AirProcessEffe
       g.translate(...p(69 + i % 3 * 4.3, 16 + Math.floor(i / 3) * 7.3, 35 + i % 2 * 3));
       return input(solid(g, '#afc2bd', 'absorbing-air', .06), 3);
     });
-    const shortTag = tag('太阳短波', [30, 64, 56], 26, 6.5, 'shortwave-label', 0);
-    const groundTag = tag('地面增温', [43, -5, 59], 26, 6.5, 'ground-label', 1);
-    const longTag = tag('地面长波', [77, 59, 56], 27, 6.5, 'longwave-label', 2);
-    const airTag = tag('大气吸收', [94, 26, 56], 24, 6.2, 'absorption-label', 3);
     return {
       update(phase) {
         if (phase !== lastPhase) {
           const next = evaluateAirProcess('heat', phase); state = next; lastPhase = phase;
-          updateArrows(next.arrows); tint(ground, '#c7bba3', '#bd8960', next.visibility.groundWarmth);
+          updateArrows(next.arrows); tint(ground, '#ac8f6b', '#a77751', next.visibility.groundWarmth);
           groundGauge.set(next.visibility.groundWarmth); airGauge.set(next.visibility.airWarmth);
           airMarks.forEach(mesh => tint(mesh, '#afc2bd', '#bf916f', next.visibility.airWarmth));
-          groundTag.visible = next.visibility.groundWarmth > .01;
-          longTag.visible = next.visibility.longwave > .01; airTag.visible = next.visibility.airWarmth > .01;
+          setHeatingStage(next.stageIndex);
           handle.position.set(...phaseTrackPoint(next.phase, track));
         }
-        shortTag.visible = true;
-        for (const z of [14, 52]) b.contour(profile.map(([x, y]) => p(x, y, z)), .45);
-        b.contour([p(4, airGroundHeight(4), 52), p(4, 0, 52), p(96, 0, 52), p(96, airGroundHeight(96), 52)], .45);
-        for (const z of [23, 35, 45]) b.contour(profile.map(([x, y]) => p(x, y + .015, z)), .17);
-        for (const rib of atmosphere) b.contour(rib.path.map(([x, y]) => p(x, y + .17, 19.25)), .22);
-        // A simple engraved solar edge preserves the pen-and-paper character.
-        b.contour(Array.from({ length: 49 }, (_, i): Vec3 => {
-          const a = i / 48 * Math.PI * 2; return p(12 + Math.cos(a) * 3.8, 59 + Math.sin(a) * 3.8, 49.1);
-        }), .35);
-        if (sun.userData.modelHovered) b.outline(sun, .65);
         inkArrows(); inkRail();
       }, focusBounds: bounds, describe: diagnostics,
     };
   }
 
   const base = input(box([4, 0, 14], [96, 2.8, 52], '#bdb5a0', 'ground-base'), 0);
-  const tiles = [[5, 30], [35, 65], [70, 95]].map(([a, c], i) =>
-    input(box([a, 2.8, 15], [c, 3.3, 51], '#c7bba3', i === 1 ? 'warm-ground' : 'cold-ground'), 1));
+  const baths = mountFieldInstrument(b, 'thermal', scale, p(0, 0, 0));
+  const thermalSources = ['left-ice', 'fire', 'right-ice'].map((group, i) => {
+    const origin = p([18, 50, 82][i], i === 1 ? 7.04 : 4.44, i === 1 ? 45.25 : 43);
+    const pivot = new T.Group();
+    b.root.add(pivot);
+    pivot.position.set(...origin);
+    for (const mesh of baths.get(group)!) {
+      mesh.geometry.translate(-origin[0], -origin[1], -origin[2]);
+      pivot.add(mesh);
+      input(mesh, 1);
+      const finish = mesh.material as InstanceType<typeof T.MeshStandardMaterial>;
+      if (group === 'fire') finish.emissive?.setRGB(.21, .046, .006);
+    }
+    return pivot;
+  });
+  for (const group of ['left', 'warm', 'right', 'hotplate']) {
+    for (const mesh of baths.get(group)!) input(role(mesh, group === 'hotplate' ? 'warm-ground' : 'thermal-bath'), 1);
+  }
+  const traceAir = createConvectionSmoke(b, scale, p);
   const columns = ['B', 'A', 'C'];
   const uniformTags = columns.map((id, i) => tag(id, [[18, 50, 82][i], -5.8, 58], 10, 5.1, 'uniform-column-label', 0,true));
   const thermalTags = columns.map((id, i) => tag(`${id} · ${i === 1 ? '暖' : '冷'}`, [[18, 50, 82][i], -5.8, 58], 17, 5.1, 'thermal-column-label', 1,true));
@@ -206,25 +199,29 @@ export function buildAirProcessWorld(b: TextbookGeometry, effect: AirProcessEffe
   // Separate transparent glyph carriers were visibly sparkling over the face.
   const pressureTags = [12, 51].flatMap((height, layer) => [18, 50, 82].map((x, i) =>
     input(role(b.label((layer === 0 ? i !== 1 : i === 1) ? '高' : '低', point([x, height, 27.11]),
-      6.6 * 1.65 * scale, 6.6 * 1.65 * scale, { appearance: 'dial' }), 'pressure-label'), 3)));
+      8.6 * 1.65 * scale, 8.6 * 1.65 * scale, { appearance: 'dial' }), 'pressure-label'), 3)));
   pressureTags.forEach(label => { label.userData.labelMount = 'surface'; });
   // Two distinct comparison rails, both horizontal. Vertical posts are only
   // mounting supports; they never join a high/low pair as a wind direction.
   const pressureGauges = [12, 51].flatMap((height, layer) => [18, 50, 82].map((x, i) => {
-    const gauge = rig.gauge([x, height, 27], 6.6, `layer-${layer}-column-${i}`);
+    const gauge = rig.gauge([x, height, 27], 8.6, `layer-${layer}-column-${i}`);
     gauge.body.userData.modelInput = { kind: 'select', selection: 3, label: '在同一高度比较气压' };
     return { gauge, layer, column: i };
   }));
   const initial = evaluateAirProcess('circulation', 0);
   const isobars = [initial.isobars.lower, initial.isobars.upper].map(path => {
-    const data = sectionData(path, 4, 12, 'ribbon'); return input(shape(data.positions, data.indices, '#d9e2d8', 'isobaric-surface', .035), 3);
+    const data = sectionData(path, 4, 12, 'ribbon'); return input(shape(data.positions, data.indices, '#a0b6ad', 'isobaric-surface', .035), 3);
   });
   return {
     update(phase) {
       if (phase !== lastPhase) {
         const next = evaluateAirProcess('circulation', phase); state = next; lastPhase = phase;
         updateArrows(next.arrows); handle.position.set(...phaseTrackPoint(next.phase, track));
-        tiles.forEach((mesh, i) => tint(mesh, '#c7bba3', i === 1 ? '#c28b61' : '#a0babc', next.visibility.thermalContrast));
+        thermalSources.forEach(source => {
+          source.visible = next.visibility.thermalContrast > .005;
+          source.scale.setScalar(Math.max(.001, next.visibility.thermalContrast));
+        });
+        traceAir(next);
         uniformTags.forEach(mesh => { mesh.visible = next.visibility.thermalContrast < .01; });
         thermalTags.forEach(mesh => { mesh.visible = next.visibility.thermalContrast >= .01; });
         pressureTags.forEach(mesh => { mesh.visible = next.visibility.pressure > .01; });
@@ -242,8 +239,10 @@ export function buildAirProcessWorld(b: TextbookGeometry, effect: AirProcessEffe
       }
       // Fine natural section boundaries keep the substrate readable; the
       // physical mounts get their edge definition from lighting, not ink.
-      b.outline(base, .25); tiles.forEach(mesh => b.outline(mesh, .18));
+      b.outline(base, .25);
       inkArrows(); inkRail();
     }, focusBounds: bounds, describe: diagnostics,
   };
 }
+
+

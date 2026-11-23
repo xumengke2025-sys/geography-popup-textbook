@@ -1,3 +1,4 @@
+import { surveyRailDrawing } from './textbook-survey-rail-drawing';
 /** Textbook pp.114/116: system segments, positioning, then communication
  * assisted rescue. All lengths and timing below are teaching coordinates.
  * The staged explanation is not a receiver algorithm or an actual orbit. */
@@ -33,12 +34,50 @@ export const GNSS_LAYOUT = {
   rescueBase: surface([.98, .12, .10]),
   track: { start: [9, 3, 70] as GnssPoint, end: [91, 3, 70] as GnssPoint },
   labels: [
-    { text: '卫星星座', position: [47, 84, 59] as GnssPoint, width: 39, selection: 0 },
+    { text: '卫星星座', position: [47, 89, 59] as GnssPoint, width: 39, selection: 0 },
     { text: '地面监控', position: [10, 44, 54] as GnssPoint, width: 39, selection: 0 },
-    { text: '用户接收', position: [84, 44, 54] as GnssPoint, width: 39, selection: 1 },
+    { text: '用户接收', position: [95, 35, 54] as GnssPoint, width: 39, selection: 1 },
     { text: '通信助援', position: [85, 16, 55] as GnssPoint, width: 39, selection: 2 },
   ],
 };
+/** Small relief models in a local spacecraft frame. The antenna is on the
+ * Earth-facing end. The arrays share a single transverse hinge axis. */
+export function gnssSpacecraft(at:GnssPoint){
+  const up=norm(add(at,mul(EARTH,-1))), right=norm(cross(up,[0,0,1])), front=cross(right,up);
+  const point=(x:number,y:number,z:number)=>add(at,add(mul(right,x),add(mul(up,y),mul(front,z))));
+  const panelPoint=(x:number,y:number,z:number)=>point(x,y*.8+z*.6,z*.8-y*.6);
+  const shell=(role:string,color:string,x:number,y:number,w:number,h:number,d:number,cut:number)=>{
+    const a=w/2,b=h/2;
+    const rim=[[-a+cut,-b],[a-cut,-b],[a,-b+cut],[a,b-cut],[a-cut,b],[-a+cut,b],[-a,b-cut],[-a,-b+cut]];
+    const transform=role==='satellite-panel'?panelPoint:point;
+    const vertices=[-1,1].flatMap(side=>rim.map(([u,v])=>transform(x+u,y+v,side*d/2)));
+    const faces=[Array.from({length:8},(_,i)=>7-i),Array.from({length:8},(_,i)=>8+i),
+      ...rim.map((_,i)=>[i,(i+1)%8,(i+1)%8+8,i+8])];
+    return {role,color,vertices,faces};
+  };
+  const parts=[shell('satellite-body','#c7a366',0,0,4.6,4.6,3.7,.85),
+    shell('array-hinge','#938575',0,.1,8.9,.65,.72,.16),
+    shell('satellite-antenna','#e8e1cb',0,-2.7,3.5,1.2,2.9,.36)];
+  const cells:GnssPoint[][]=[];
+  for(const sign of [-1,1]){
+    const x=sign*7.1;
+    parts.push(shell('satellite-panel','#568095',x,.1,7.5,4.15,.46,.30));
+    for(const u of [-1.85,0,1.85]) cells.push([panelPoint(x+u,-1.89,.25),panelPoint(x+u,2.09,.25)]);
+    cells.push([panelPoint(x-3.6,.1,.25),panelPoint(x+3.6,.1,.25)]);
+  }
+  return {parts,cells};
+}
+export function gnssMonitorDish(){
+  const feed=add(GNSS_LAYOUT.monitor,[0,4.2,0]);
+  const axis=norm(add(GNSS_LAYOUT.satellites[1],mul(feed,-1)));
+  const right=norm(cross(axis,[0,0,1])), face=cross(right,axis);
+  const bowlPoint=(angle:number,r:number)=>{
+    const depth=1.95-r*r/(4*1.95);
+    return add(feed,add(mul(axis,-depth),add(mul(right,r*Math.cos(angle)),mul(face,r*Math.sin(angle)))));
+  };
+  const rings=[.18,1.2,2,2.7].map(r=>Array.from({length:32},(_,i)=>bowlPoint(i*Math.PI/16,r)));
+  return {feed,rings,foot:bowlPoint(0,0),legs:[0,11,21].map(i=>[rings[3][i],feed])};
+}
 export interface GnssSignal {
   id: string;
   kind: 'monitor-down' | 'monitor-up' | 'navigation' | 'communication';
@@ -147,9 +186,30 @@ function svgBox(center: GnssPoint, size: GnssPoint, color: string, pose?: GnssVe
   return [[1, 5, 7, 3], [2, 3, 7, 6], [4, 6, 7, 5]].map((face, i) => `<path d="${projectedPath(face.map(j => corners[j]))}Z" fill="${color}" fill-opacity="${[1, .92, .77][i]}" stroke="${P.ink}" stroke-width="1.1"/>`).join('');
 }
 const action = (selection: number, label: string) => `data-model-selection="${selection}" role="button" tabindex="0" aria-label="${esc(label)}"`;
+const satelliteDrawings=GNSS_LAYOUT.satellites.map(at=>{
+  const {parts,cells}=gnssSpacecraft(at);
+  const faces=parts.flatMap(part=>part.faces.map(indices=>{
+    const points=indices.map(i=>part.vertices[i]);
+    const xy=points.map(gnssProject);
+    const area=xy.reduce((sum,[x,y],i)=>{const [nx,ny]=xy[(i+1)%xy.length];return sum+x*ny-y*nx},0);
+    const depth=points.reduce((sum,[x,y,z])=>sum+Math.sin(.16)*Math.cos(.20)*x+Math.sin(.20)*y+Math.cos(.16)*Math.cos(.20)*z,0)/points.length;
+    return {area,depth,path:projectedPath(points),color:part.color};
+  })).filter(face=>face.area<0).sort((a,b)=>a.depth-b.depth);
+  return faces.map(f=>`<path d="${f.path}Z" fill="${f.color}" stroke="#56564a" stroke-width=".8"/>`).join('')
+    +cells.map(cell=>`<path d="${projectedPath(cell)}" stroke="#afc0be" stroke-width=".85"/>`).join('');
+});
 export function gnssSvg(phase: number, _selection?: number, target = 'overview'): string {
   const state = evaluateGnss(phase), observation = evaluateGnssInspection(phase, target), [cx, cy] = gnssProject(EARTH);
-  let body = `<circle cx="${cx}" cy="${cy}" r="${RADIUS * 5.6}" fill="${P.sea}" stroke="${P.ink}" stroke-width="1.6"/>`;
+  const gallery=GNSS_LAYOUT.satellites.map(([x,y,z]):GnssPoint=>[x,y-4.4,z-6.3]);
+  let body=svgBox([46,-1.7,36],[103,3.35,70],'#79563c')+svgBox([46,.18,36],[102,.65,69],'#9b885d');
+  for(const i of [0,3]){
+    const [x,y,z]=gallery[i];
+    body+=`<path d="${projectedPath([[x,.2,42],[x,y-5,z-3],gallery[i]])}" fill="none" stroke="#81673f" stroke-width="7"/>`;
+  }
+  body+=`<path d="${projectedPath(gallery)}" fill="none" stroke="#937341" stroke-width="7"/>`;
+  for(const [i,point] of gallery.entries())body+=`<path d="${projectedPath([point,GNSS_LAYOUT.satellites[i]])}" stroke="#987a49" stroke-width="4"/>`;
+  body+=`<circle cx="${cx}" cy="${cy}" r="${RADIUS * 5.6}" fill="${P.sea}" stroke="${P.ink}" stroke-width="1.6"/>`;
+  body+=`<path d="M${cx-131} ${cy}a131 131 0 1 1 262 0" fill="none" stroke="#ae8d54" stroke-width="5"/>`;
   body += gnssGlobeLines().map(points => `<path d="${projectedPath(points)}" fill="none" stroke="#748e8e" stroke-width=".85"/>`).join('');
   body += `<path d="${projectedPath(state.road)}" fill="none" stroke="#f0e8d8" stroke-width="8"/><path d="${projectedPath(state.road)}" fill="none" stroke="#938c74" stroke-width="1.1" stroke-dasharray="4 6"/>`;
   if (observation.signal) body += `<path data-gnss-observed-link="${observation.signal.id}" d="${projectedPath([observation.signal.source, observation.signal.target])}" fill="none" stroke="#9e9279" stroke-width="1.4" stroke-dasharray="4 5"/>`;
@@ -158,14 +218,15 @@ export function gnssSvg(phase: number, _selection?: number, target = 'overview')
     if (signal.path.length) body += `<path data-gnss-link="${signal.id}" d="${projectedPath(signal.path)}" fill="none" stroke="${color}" stroke-width="${observation.signal?.id === signal.id ? 3.6 : signal.kind === 'communication' ? 2.8 : 1.7}" opacity="${observation.signal && observation.signal.id !== signal.id ? .27 : 1}"/>`;
     if (signal.status === 'moving') { const [x, y] = gnssProject(signal.point); body += `<circle data-gnss-tracer="${signal.id}" cx="${x}" cy="${y}" r="4" fill="${color}" stroke="${P.paper}" stroke-width="1"/>`; }
   }
-  GNSS_LAYOUT.satellites.forEach((point, i) => {
+  GNSS_LAYOUT.satellites.forEach((_, i) => {
     body += `<g data-gnss-satellite="${i}" data-model-inspection="sat-${i}" data-model-inspection-toggle="overview" role="button" tabindex="0" aria-label="独立查看卫星${i + 1}到用户的接收链路，保持过程时刻" aria-pressed="${observation.satellite === i}">`
-      + svgBox(add(point, [-5.3, 0, 0]), [6, .6, 3.5], P.blue) + svgBox(add(point, [5.3, 0, 0]), [6, .6, 3.5], P.blue)
-      + svgBox(point, [3.3, 3.2, 3.2], P.paper) + '</g>';
+      + satelliteDrawings[i] + '</g>';
   });
   const control = GNSS_LAYOUT.monitor, receiver = GNSS_LAYOUT.receiver, rescue = GNSS_LAYOUT.rescueBase;
+  const dish=gnssMonitorDish();
   body += `<g ${action(0, '查看地面监控部分')}>${svgBox(add(control, [0, 1.1, 0]), [5, 2.2, 4], '#ddd3bc')}`
-    + `<path d="${projectedPath([add(control, [0, 2, 0]), add(control, [0, 4.2, 0])])}" fill="none" stroke="${P.ink}" stroke-width="2"/></g>`;
+    +`<path d="${projectedPath(dish.rings[3])}Z" fill="#ede5d0" stroke="#756f5e" stroke-width="1.2"/>`
+    +dish.legs.map(leg=>`<path d="${projectedPath(leg)}" fill="none" stroke="#8e744b" stroke-width="1.4"/>`).join('')+'</g>';
   body += `<g ${action(1, '查看用户接收与定位')}>${svgBox(add(receiver, [0, 1.4, 0]), [2.5, 2.8, 1.5], P.paper)}${svgBox(add(receiver, [0, 1.7, .8]), [1.6, 1.3, .1], P.blue)}`
     + `<path d="${projectedPath([add(receiver, [0, 2.5, 0]), add(receiver, [0, 4, 0])])}" stroke="${P.ink}" stroke-width="2"/></g>`;
   body += `<g ${action(2, '查看定位信息通过独立通信设备助救援')}>`
@@ -182,9 +243,7 @@ export function gnssSvg(phase: number, _selection?: number, target = 'overview')
     const [x, y] = gnssProject(label.position), selected = label.selection === state.selection;
     body += `<g data-gnss-node="${label.selection}" ${action(label.selection, GNSS_STOPS[label.selection].label)}><rect x="${x - 84}" y="${y - 23}" width="168" height="46" rx="2" fill="${P.paper}" stroke="${selected ? '#8b997b' : '#bdb298'}" stroke-width="${selected ? 1.8 : .7}"/><text x="${x}" y="${y + 9}" text-anchor="middle" font-size="27" fill="${P.ink}" font-family="FieldSerif,SimSun,serif">${label.text}</text></g>`;
   }
-  const [fx, fy] = gnssProject(state.front);
-  body += `<path d="${projectedPath([GNSS_LAYOUT.track.start, GNSS_LAYOUT.track.end])}" fill="none" stroke="#c5b89a" stroke-width="3"/>`
-    + `<path d="${projectedPath([GNSS_LAYOUT.track.start, state.front])}" fill="none" stroke="${P.warm}" stroke-width="4"/>`
-    + `<circle data-gnss-process-front="true" cx="${fx}" cy="${fy}" r="6" fill="${P.warm}" stroke="${P.paper}" stroke-width="2"/>`;
-  return `<svg xmlns="http://www.w3.org/2000/svg" class="flat-model-svg flat-explanation-svg" viewBox="0 0 720 550" role="group" data-inspection="${observation.inspection}" data-gnss-observation='${JSON.stringify(observation)}' aria-label="全球卫星导航系统三部分与通信助救援的连续示意"><title>${esc(state.caption)} 定位接收与求救通信分开；卫星数量、距离和时间为示意。虚线是所选链路的固定观察线，不表示信号已经抵达。</title><g data-gnss-phase="${state.phase}" data-gnss-stage="${state.stage}" data-gnss-selection="${state.selection}" stroke-linecap="round" stroke-linejoin="round">${body}</g></svg>`;
+  body+=surveyRailDrawing(gnssProject(GNSS_LAYOUT.track.start),gnssProject(GNSS_LAYOUT.track.end),state.phase,
+    GNSS_LAYOUT.track.end[0]-GNSS_LAYOUT.track.start[0],'推移信号前缘','data-gnss-process-front="true"');
+  return `<svg xmlns="http://www.w3.org/2000/svg" class="flat-model-svg flat-explanation-svg" viewBox="0 0 720 578" role="group" data-inspection="${observation.inspection}" data-gnss-observation='${JSON.stringify(observation)}' aria-label="全球卫星导航系统三部分与通信助救援的连续示意"><title>${esc(state.caption)} 定位接收与求救通信分开；卫星数量、距离和时间为示意。虚线是所选链路的固定观察线，不表示信号已经抵达。</title><g data-gnss-phase="${state.phase}" data-gnss-stage="${state.stage}" data-gnss-selection="${state.selection}" stroke-linecap="round" stroke-linejoin="round">${body}</g></svg>`;
 }

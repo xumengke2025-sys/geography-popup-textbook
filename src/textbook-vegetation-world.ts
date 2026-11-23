@@ -1,7 +1,11 @@
+import { botanicalBark, botanicalFloor, botanicalCabinet } from './textbook-botanical-specimens';
+import { applyEarthScan } from './textbook-earth-scan';
+import { chamferedPlateGeometry, turnedShaftGeometry } from './textbook-instrument-parts';
+import { mountSpecimenDial } from './textbook-specimen-dial';
 import { THREE as T } from './reference/engine.js';
 import { LIFT_MARGIN, type TextbookGeometry, type ModelMotion, type Vec3 } from './textbook-geometry';
 import { createSpecimenMaterial } from './textbook-solid-materials';
-import { buildFernSurface, buildLeafBladeSurface, buildReliefCutSurface, type CrownHabit, type NaturalSurface } from './textbook-natural-form-geometry';
+import { buildFernSurface, buildLeafBladeSurface, type CrownHabit, type NaturalSurface } from './textbook-natural-form-geometry';
 import { vegetationCrown, vegetationStem } from './textbook-vegetation-form';
 const clamp = (n: number, a = 0, c = 1) => Math.max(a, Math.min(c, n));
 const smooth = (a: number, c: number, n: number) => { const q = clamp((n - a) / (c - a)); return q * q * (3 - 2 * q); };
@@ -19,7 +23,12 @@ function frame(b: TextbookGeometry) {
 
 type LabelSpec = [string, number, number, number, number?];
 function labelSets(b: TextbookGeometry, f: ReturnType<typeof frame>, sets: LabelSpec[][]) {
-  return sets.map(set => set.map(([text, u, v, h, width = 22]) => b.label(text, f.p(u, v, h), width * f.s, 6 * f.s)));
+  const tilt=-Math.PI*.31;
+  return sets.map(set=>set.map(([text],i)=>{
+    const at=f.p([.5,.2,.8][i],1.214,1.65);at[1]-=Math.sin(tilt)*.72*f.s;at[2]+=Math.cos(tilt)*.72*f.s;
+    const m=b.label(text,at,(i===0?28.1:24.8)*f.s,5.1*f.s,{appearance:'engraved',ink:'#3e3c2c'});
+    m.rotation.x=tilt;m.userData.labelMount='surface';return m;
+  }));
 }
 function showLabels(sets: any[][], index: number) { sets.forEach((set, i) => set.forEach(label => { label.visible = i === index; })); }
 
@@ -36,12 +45,34 @@ export function buildVegetationWorld(b: TextbookGeometry): ModelMotion {
   const featuredTree = 4;
   // The full forest floor belongs to the overview. A close observation uses a
   // small piece of that same ground instead of magnifying the whole plinth.
-  const floorA = p(.02, .1), floorC = p(.98, .98);
-  const forestFloor = b.mesh(naturalGeometry(buildReliefCutSurface(floorA[0], floorC[0], floorA[2], floorC[2], () => 1.8 * s, 24, 14, 0, .46)), '#c7c3ab', false);
-  forestFloor.material = createSpecimenMaterial(b.pop, { color: '#b4b193', role: 'land' });
+  const soil=botanicalFloor(b,p(.02,.1,1.8),p(.98,.98,1.8),s),forestFloor=soil.ground;
+  const cabinet=botanicalCabinet(b,p,s);
+  const dialStart=b.meshes.length;
+  const specimenDial=mountSpecimenDial(b,p(.78,1.05,6),5.5*s,{label:'旋转标本盘，更换植被',choices:['热带雨林','常绿阔叶林','落叶阔叶林','针叶林','热带草原','温带草原','荒漠']});
+  const selectorParts=b.meshes.slice(dialStart);
+  const seasonalStart=b.meshes.length;
+  const seasonDial=mountSpecimenDial(b,p(.22,1.05,6),5.5*s,{label:'转动季节盘，观察叶和草的变化',turns:1});
+  const seasonParts=b.meshes.slice(seasonalStart);
   const habits: CrownHabit[] = ['rainforest', 'evergreen', 'deciduous', 'conifer', 'savanna', 'shrub'];
-  const bark = createSpecimenMaterial(b.pop, { color: '#847158', role: 'land' });
+  const bark = botanicalBark(b,.028,'#817059');
   const places = [[.13, .31], [.39, .23], [.67, .28], [.88, .4], [.26, .65], [.55, .58], [.76, .77], [.12, .84]];
+  // Mottled litter and shade sit in the same coordinates as their trees.
+  // The dryland and grassland branches keep their own open ground.
+  const rainFloor = createSpecimenMaterial(b.pop, { color: '#958b68', role: 'land' });
+  applyEarthScan(rainFloor,'turf',14*s);
+  const openGround = forestFloor.material;
+  const arid = createSpecimenMaterial(b.pop,{color:'#baa27d',role:'land'});applyEarthScan(arid,'alluvium',8*s);
+  const groundPoints = forestFloor.geometry.attributes.position;
+  const groundColors = new Float32Array(groundPoints.count * 3);
+  for (let i=0; i<groundPoints.count; i++) {
+    const u=groundPoints.getX(i)/b.width, v=(groundPoints.getZ(i)-f.z0)/f.depth;
+    let shade=0;
+    for(const [tu,tv] of places) shade=Math.max(shade,Math.exp(-48*((tu-u)**2+(tv-v)**2)));
+    const light=1-.38*shade+.08*Math.sin(u*25+v*14)*Math.cos(v*23);
+    groundColors.set([light,light*(1.03-.09*shade),light*.81],i*3);
+  }
+  forestFloor.geometry.setAttribute('color',new T.Float32BufferAttribute(groundColors,3));
+  rainFloor.vertexColors=true;
   const trees = places.map(([u, v], i) => {
     const stems = habits.map(habit => {
       const mesh = b.mesh(naturalGeometry(vegetationStem(habit, i + 1, i === featuredTree)), '#796d53', false); mesh.material = bark;
@@ -52,6 +83,17 @@ export function buildVegetationWorld(b: TextbookGeometry): ModelMotion {
     const crowns = habits.map(habit => {
       const mesh = b.mesh(naturalGeometry(vegetationCrown(habit, i + 1)), '#819575', false);
       mesh.material = createSpecimenMaterial(b.pop, { color: '#75875f', role: 'plant' });
+      if (habit === 'rainforest') {
+        const positions = mesh.geometry.attributes.position;
+        const colors = new Float32Array(positions.count * 3);
+        for (let k = 0; k < positions.count; k++) {
+          const x = positions.getX(k), y = positions.getY(k), z = positions.getZ(k);
+          const exposure = clamp(.44 + y*.88 + .13*Math.sin(7*x+3*z+i) + .08*Math.cos(9*z-x));
+          colors.set([.60+.57*exposure, .72+.42*exposure, .62+.28*exposure], k*3);
+        }
+        mesh.geometry.setAttribute('color', new T.Float32BufferAttribute(colors, 3));
+        mesh.material.vertexColors = true;
+      }
       mesh.userData.vegetationPart = 'crown'; mesh.userData.vegetationHabit = habit; mesh.userData.vegetationTree = i;
       mesh.userData.modelInput = { kind: 'inspect', target: 'layers', toggleTo: 'overview', label: '查看树冠与林内层次' };
       return { habit, mesh };
@@ -78,7 +120,7 @@ export function buildVegetationWorld(b: TextbookGeometry): ModelMotion {
   const understory = Array.from({ length: 9 }, (_, i) => {
     const m = b.mesh(naturalGeometry(buildFernSurface(i + 1)), '#94a67c', false);
     m.material = createSpecimenMaterial(b.pop, { color: '#82946a', role: 'plant' });
-    m.position.set(...p(.09 + i * .1, .86 - (i % 3) * .16, 1.8)); m.scale.setScalar((5.8 + i % 3 * 1.15) * s); m.userData.vegetationPart = 'understory-fronds'; return m;
+    m.position.set(...p(.09 + i * .1, .86 - (i % 3) * .16, 1.8)); m.scale.setScalar((8.0 + i % 3 * 1.2) * s); m.userData.vegetationPart = 'understory-fronds'; return m;
   });
   // A rooted woody climber follows the trunk in continuous three-dimensional
   // turns. Its few broad leaves make the form readable without another label.
@@ -116,7 +158,14 @@ export function buildVegetationWorld(b: TextbookGeometry): ModelMotion {
   const litterShape = naturalGeometry(buildLeafBladeSurface());
   const fallen = Array.from({ length: 12 }, (_, i) => {
     const m = b.mesh(litterShape, i % 2 ? '#b48b57' : '#b7a471', false);
-    m.scale.set(2.8 * s, 1.1 * s, 2.8 * s); m.userData.vegetationPart = 'retained-fallen-leaf'; return m;
+    m.scale.set(2.8 * s, 1.1 * s, 2.8 * s); m.userData.vegetationPart = 'retained-fallen-leaf';
+    // Anchor the leaf to its own crown at release, instead of a fixed height.
+    const source = trees[i % trees.length].crowns[2].mesh;
+    const attribute = source.geometry.attributes.position;
+    const vertex = 1 + (3 + i % 4) * 26 + (i * 7) % 26;
+    m.userData.sourceTree = i % trees.length; m.userData.sourceCrownVertex = vertex;
+    m.userData.sourceCrownPoint = [attribute.getX(vertex), attribute.getY(vertex), attribute.getZ(vertex)];
+    return m;
   });
   const sets: LabelSpec[][] = [
     [['热带雨林', .5, 1.12, 3, 27], ['层次丰富', .2, .3, 44], ['藤本、板根', .77, .57, 35, 26]],
@@ -138,9 +187,19 @@ export function buildVegetationWorld(b: TextbookGeometry): ModelMotion {
   const patchGeometry = new T.ExtrudeGeometry(patchShape, { depth: .9 * s, bevelEnabled: false });
   patchGeometry.rotateX(-Math.PI / 2); patchGeometry.translate(...p(tree.u, tree.v, .9));
   const localFloor = b.mesh(patchGeometry, '#c7c3ab', false);
-  localFloor.material = createSpecimenMaterial(b.pop, { color: '#b2aa87', role: 'land' });
-  const vineTag = b.label('藤本', p(tree.u + .18, tree.v + .025, 20.5), 8 * s, 3.4 * s);
-  const rootTag = b.label('板根', p(tree.u + .19, tree.v + .015, 11.5), 7.2 * s, 3.1 * s);
+  localFloor.material = createSpecimenMaterial(b.pop, { color: '#928466', role: 'land' });applyEarthScan(localFloor.material,'loam',7*s);
+  const localParts=[localFloor],tagCenter=p(tree.u+.092,tree.v+.11,7.4);
+  const tagAt=(dx:number,dy:number,dz:number):Vec3=>[tagCenter[0]+s*dx,tagCenter[1]+s*dy,tagCenter[2]+s*dz];
+  const foot=p(tree.u,tree.v,0);
+  const barrel=b.mesh(turnedShaftGeometry([foot[0],-.84*s,foot[2]],[foot[0],1.28*s,foot[2]],[[12.7*s,0],[12.93*s,.18],[12.79*s,.30],[12.66*s,.87],[12.72*s,1]]),'#976f46',false,true,'brass');
+  barrel.geometry.scale(1,1,.85);barrel.geometry.translate(0,0,foot[2]*.15);localParts.push(barrel);
+  localParts.push(b.mesh(turnedShaftGeometry(tagAt(0,-5.52,-.29),tagAt(0,-.13,-.29),[[.21*s,0],[.21*s,1]]),'#9e8c5e',false,true,'brass'));
+  localParts.push(b.mesh(chamferedPlateGeometry(tagAt(-3.9,-1.85,-.34),tagAt(3.9,1.85,.0),.12*s),'#ac915e',false,true,'brass'));
+  localParts.push(b.mesh(chamferedPlateGeometry(tagAt(-3.71,-1.65,.01),tagAt(3.71,1.65,.13),.09*s),'#e5dcc1',false,true,'ivory'));
+  const vineTag=b.label('藤本',tagAt(0,0,.17),6.85*s,3.1*s,{appearance:'engraved'});
+  const rootTag=b.label('板根',tagAt(0,0,.17),6.85*s,3.1*s,{appearance:'engraved'});
+  for(const m of [vineTag,rootTag])m.userData.labelMount='surface';
+  const rootBark=botanicalBark(b,.33*s,'#887655'),litRootBark=botanicalBark(b,.33*s,'#a08a62');
   const targets = [{ id: 'overview', label: '整体' }, { id: 'vine', label: '藤本' }, { id: 'buttress', label: '板根' }, { id: 'layers', label: '林内层次' }];
   labels[0][0].userData.modelInput = { kind: 'inspect', target: 'overview', label: '返回雨林整体' };
   labels[0][1].userData.modelInput = { kind: 'inspect', target: 'layers', toggleTo: 'overview', label: '看清林内高低层次' };
@@ -150,17 +209,18 @@ export function buildVegetationWorld(b: TextbookGeometry): ModelMotion {
   understory.forEach(mesh => { mesh.userData.modelInput = { kind: 'inspect', target: 'layers', toggleTo: 'overview', label: '查看乔木下的林内层次' }; });
   let selected = 0, previousType = 0, inspection = 'overview';
   return { update(t, n) {
-    selected = stage(n, 6); if (selected !== previousType) { inspection = 'overview'; previousType = selected; }
+    selected = stage(n, 6);
+    specimenDial(t,selected);seasonDial(t,selected);
+    for(const mesh of seasonParts)mesh.visible=[2,4,5].includes(selected);
+    if (selected !== previousType) { inspection = 'overview'; previousType = selected; }
     showLabels(labels, selected); const partView = inspection === 'vine' || inspection === 'buttress';
-    forestFloor.visible = !partView; localFloor.visible = partView;
-    
-    
-    if (partView) labels[selected].forEach(tag => { tag.visible = false; });
-    if (selected === 0) {
-      labels[0][1].position.set(...(inspection === 'layers' ? p(.5, .22, 44) : p(.2, .3, 44)));
-      labels[0][1].scale.setScalar(inspection === 'layers' ? .78 : 1);
-      if (inspection === 'layers') { labels[0][0].visible = false; labels[0][2].visible = false; }
-    }
+    cabinet.update(selected,partView);selectorParts.forEach(m=>m.visible=!partView);
+    for(const m of localParts)m.visible=partView;
+    const foldingSupport=b.root.children.find((m:any)=>m.userData.instrumentAssembly);if(foldingSupport)foldingSupport.visible=!partView;
+    forestFloor.visible=!partView; localFloor.visible=partView;soil.cut.visible=!partView;
+    soil.litter.visible=!partView&&selected<4;forestFloor.material=selected===0?rainFloor:selected===6?arid:openGround;
+    openGround.color.set(selected===3?'#8c8064':selected<4?'#968765':selected===4?'#ad9e68':'#9e9c71');
+    if (partView) labels[selected].forEach(tag=>{tag.visible=false;});
     vineTag.visible = selected === 0 && inspection === 'vine'; rootTag.visible = selected === 0 && inspection === 'buttress';
     const forest = selected < 4, autumn = smooth(.28, .82, clamp(t));
     trees.forEach(tree => {
@@ -191,7 +251,7 @@ export function buildVegetationWorld(b: TextbookGeometry): ModelMotion {
     grass.visible = selected === 4 || selected === 5; sparseGrass.visible = selected === 6;
     grass.scale.y = selected === 5 ? .66 : 1;
     grass.position.y = selected === 5 ? .34 * 1.8 * s : 0;
-    grass.material.color.setRGB(.59 + .15 * autumn, .64 - .02 * autumn, .48 - .08 * autumn);
+    grass.material.color.set('#798c57').lerp(new T.Color(selected===5?'#c0ac79':'#c7a95e'),autumn);
     understory.forEach((m, i) => { m.visible = !partView && (selected === 0 || selected === 1 && i % 3 === 0);  });
     vines.forEach(v => {
       const visible = selected === 0 && inspection !== 'buttress' && (!partView || v.index === featuredTree); v.mesh.visible = visible;
@@ -199,12 +259,20 @@ export function buildVegetationWorld(b: TextbookGeometry): ModelMotion {
       v.leaves.forEach(leaf => { leaf.visible = visible;  });
       
     });
-    buttresses.forEach(({ index, mesh }) => { mesh.visible = selected === 0 && (!partView || index === featuredTree); mesh.material = b.materialFor ? b.materialFor('wood',inspection === 'buttress' ? '#a18a60' : '#8c805d') : b.material('#8c805d');  });
+    buttresses.forEach(({ index, mesh }) => { mesh.visible = selected === 0 && (!partView || index === featuredTree); mesh.material=inspection==='buttress'?litRootBark:rootBark;  });
     fallen.forEach((m, i) => {
       const release = .29 + i / 12 * .37, q = smooth(release, Math.min(.97,release+.31),t);
       const sourceTree = trees[i % trees.length], at = p(sourceTree.u, sourceTree.v, 1.8);
       m.visible = selected === 2 && t >= release;
-      m.position.set(at[0] + Math.sin(q * 7 + i) * 3 * s, at[1] + .08 * s + (1 - q) * 24 * s, at[2] + q * 4 * s);
+      const height = (25 + sourceTree.index % 3 * 2) * s;
+      const leafinessAtRelease = 1 - .95 * smooth(.28, .82, release);
+      const radius = height * .3 * (.48 + .52 * leafinessAtRelease);
+      const anchor = m.userData.sourceCrownPoint as Vec3;
+      const source: Vec3 = [at[0] + anchor[0] * radius,
+        at[1] + height * .70 + anchor[1] * height * .31 * (.66 + .34 * leafinessAtRelease),
+        at[2] + anchor[2] * radius];
+      m.position.set(source[0] + Math.sin(q * 7 + i) * q * 3 * s,
+        at[1] + .08 * s + (1 - q) * (source[1] - at[1] - .08 * s), source[2] + q * 4 * s);
       m.rotation.set((1-q)*.8, i*.71, (1-q)*q*3);
     });
   }, inspect(target) {
@@ -213,6 +281,6 @@ export function buildVegetationWorld(b: TextbookGeometry): ModelMotion {
     ? { min: p(tree.u - .19, tree.v - .26, 0), max: p(tree.u + .29, tree.v + .26, 25) }
     : inspection === 'vine' ? { min: p(tree.u - .17, tree.v - .25, 0), max: p(tree.u + .29, tree.v + .25, 39) }
       : inspection === 'layers' && selected === 0 ? { min: p(.12, .26, 0), max: p(.86, 1.01, 35) }
-        : f.bounds([50,42,42,45,24,17,17][selected]), describe: () => ({ kind: 'vegetation-types', inspection, inspectTargets: selected === 0 ? targets : selected < 4 ? targets.filter(target => ['overview', 'layers'].includes(target.id)) : targets.slice(0, 1), type: ['rainforest', 'evergreen-broadleaf', 'deciduous-broadleaf', 'boreal-conifer', 'tropical-grassland', 'temperate-grassland', 'desert'][selected], featuredTree, closedButtressGeometry: true, allTreesRetainedDuringLayerInspection: true, habitSpecificBranchSkeletons: true, fallenLeavesRetainedAtSeasonEnd: true, continuousRootedVines: true, climateQuantitiesAreMeasured: false, speciesAreStructuralRepresentations: true, phaseMeaning: selected === 2 ? 'leaf-season' : selected === 4 ? 'wet-to-dry-season' : selected === 5 ? 'summer-to-winter' : 'static-traits', buffersStable: true }) };
+        : {min:p(-.025,.03,-6),max:p(1.26,1.34,[50,42,42,45,35,35,35][selected])}, describe: () => ({ kind: 'vegetation-types', inspection, inspectTargets: selected === 0 ? targets : selected < 4 ? targets.filter(target => ['overview', 'layers'].includes(target.id)) : targets.slice(0, 1), type: ['rainforest', 'evergreen-broadleaf', 'deciduous-broadleaf', 'boreal-conifer', 'tropical-grassland', 'temperate-grassland', 'desert'][selected], featuredTree, closedButtressGeometry: true, allTreesRetainedDuringLayerInspection: true, habitSpecificBranchSkeletons: true, fallenLeavesRetainedAtSeasonEnd: true, continuousRootedVines: true, climateQuantitiesAreMeasured: false, speciesAreStructuralRepresentations: true, phaseMeaning: selected === 2 ? 'leaf-season' : selected === 4 ? 'wet-to-dry-season' : selected === 5 ? 'summer-to-winter' : 'static-traits', buffersStable: true }) };
 }
 

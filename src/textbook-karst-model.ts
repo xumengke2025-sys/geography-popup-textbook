@@ -61,37 +61,55 @@ function jointMask(u: number, v: number, width: number): number {
 function peakField(selection: number, u: number, v: number): number {
   let peak = 0;
   for (const [x, z, height, radius, power] of PEAKS[selection]) {
-    const distance = Math.hypot(u - x, (v - z) * .86) / radius;
-    peak = Math.max(peak, height * Math.exp(-Math.pow(distance, power)));
+    const a=(u-x)/radius, b=(v-z)*.86/radius;
+    const skewX=a+.14*b+.14*Math.sin(2.9*b+11*x);
+    const skewZ=b-.10*a+.12*Math.sin(2.4*a+13*z);
+    const distance=Math.sqrt(skewX*skewX+skewZ*skewZ);
+    if(distance>3.8) continue;
+    const aspect=Math.atan2(skewZ,skewX), shoulder=Math.min(1,distance*1.8);
+    // Steep residual towers retain joint-controlled faces. Their rain flutes
+    // follow each face downhill and broaden toward its foot.
+    const facets=.095*Math.cos(aspect*3+17*x)+.087*Math.cos(aspect*5+12*z);
+    const hollow=Math.max(0,Math.cos(aspect*9+.7*Math.sin(aspect*4)+14*x))**4;
+    const radiusAtAzimuth=1+shoulder*(facets-.087*hollow);
+    const profile=selection===3||selection===4 ? power+.78 : power+.22;
+    peak=Math.max(peak,height*Math.exp(-Math.pow(distance/radiusAtAzimuth,profile)));
   }
   return peak;
 }
-/** Height is evaluated directly, never integrated frame by frame. Every
- * time-dependent subtraction is nonnegative and nondecreasing. Wider joints
- * can therefore expose residual peaks without ever making their tops rise. */
-export function karstHeight(state: Pick<KarstState, 'selection' | 'erosion' | 'jointWidth'>, u: number, v: number): number {
-  const k = state.selection, e = state.erosion;
-  const initialJoint = jointMask(u, v, .012), joint = jointMask(u, v, state.jointWidth);
-  const ripple = .33 * Math.sin(u * 17 + v * 4) * Math.sin(v * 11);
-  if (k === 0) {
-    const initial = 26 - v * 3.4 + ripple * 1.7 + .65 * Math.sin(u * 9 + v * 3) - initialJoint * .9;
-    return Math.max(3.2, initial - e * .6 - e * 9.4 * joint);
+/** The initial rock and its lithological response are fixed for each sample.
+ * The WebGL mesh can prepare them once when a different specimen is fitted. */
+export function karstSource(k:number,u:number,v:number) {
+  const initialJoint=jointMask(u,v,.012);
+  const ripple=.33*Math.sin(u*17+v*4)*Math.sin(v*11);
+  if(k===0) {
+    const run=u+.020*Math.sin(7*v+6*u)+.008*Math.sin(22*v-6*u);
+    const runnel=Math.max(0,Math.cos(79*run+1.06*Math.sin(17*run)))**5;
+    const persistence=.33+.67*Math.sin(v*3.2+.8*u)**2;
+    const initial=26-v*3.4+ripple*1.7+.65*Math.sin(u*9+v*3)-initialJoint*.9-1.38*runnel*persistence;
+    return { initial, loss:.6, fracture:9.4, bowlRadius:0 };
   }
-  if (k === 1) {
-    const radius = Math.hypot((u - .52) * .95, (v - .64) * .90);
-    const initialBowl = Math.exp(-Math.pow(radius / .255, 4));
-    const wideningBowl = Math.exp(-Math.pow(radius / (.255 + e * .145), 4));
-    const initial = 25 - v * 2.4 + ripple - 9 * initialBowl - .6 * initialJoint;
-    return Math.max(3.2, initial - e * .6 - e * 12.6 * wideningBowl - e * 3.7 * joint);
+  if(k===1) {
+    const radius=Math.hypot((u-.52)*.95,(v-.64)*.90);
+    const bowl=Math.exp(-Math.pow(radius/.255,4));
+    return { initial:25-v*2.4+ripple-9*bowl-.6*initialJoint,loss:.6,fracture:3.7,bowlRadius:radius };
   }
-  const peak = peakField(k, u, v), maximum = k === 2 ? 27 : k === 3 || k === 4 ? 32 : 10;
-  const valley = Math.exp(-peak / (maximum * .35));
-  const base = (k === 2 ? 8.6 : k === 3 ? 5.7 : k === 4 ? 4.7 : 3.6) - 1.3 * v;
-  const initial = base + peak + ripple * .45 - initialJoint * (k === 2 ? 1.1 : .45);
-  const uniformLoss = e * (k === 5 ? .34 : .65);
-  const valleyLoss = e * (k === 2 ? 5.4 : k === 3 ? 3.8 : k === 4 ? 2.3 : 1.35) * valley;
-  const fractureLoss = e * (k === 2 ? 6.8 : k === 3 ? 5.5 : k === 4 ? 4.2 : 2.5) * joint;
-  return Math.max(1.8, initial - uniformLoss - valleyLoss - fractureLoss);
+  const peak=peakField(k,u,v), maximum=k===2?27:k===5?10:32;
+  const valley=Math.exp(-peak/(maximum*.35));
+  const base=(k===2?8.6:k===3?5.7:k===4?4.7:3.6)-1.3*v;
+  const initial=base+peak+ripple*.45-initialJoint*(k===2?1.1:.45);
+  const loss=(k===5?.34:.65)+(k===2?5.4:k===3?3.8:k===4?2.3:1.35)*valley;
+  return {initial,loss,fracture:k===2?6.8:k===3?5.5:k===4?4.2:2.5,bowlRadius:0};
+}
+
+/** The same cut is recovered at every seek. All time-dependent losses grow
+ * monotonically, so a residual summit never rises as its valley dissolves. */
+export function karstHeight(state: Pick<KarstState,'selection'|'erosion'|'jointWidth'>,u:number,v:number,
+  source=karstSource(state.selection,u,v)) {
+  const e=state.erosion;
+  const bowl=state.selection===1 ? 12.6*Math.exp(-Math.pow(source.bowlRadius/(.255+e*.145),4)) : 0;
+  const joint=jointMask(u,v,state.jointWidth);
+  return Math.max(state.selection<2?3.2:1.8,source.initial-e*(source.loss+bowl+source.fracture*joint));
 }
 function waterPath(state: KarstState, lane: number): KarstWaterPath {
   // Starting on an exposed shoulder makes the connection visible. Each next

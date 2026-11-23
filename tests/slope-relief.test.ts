@@ -151,6 +151,23 @@ describe('raised paper terrain with fixed real Three.js geometry', () => {
       expect(actual.nodeWorld).toHaveLength(3);
     }
   });
+  it('cuts the two sighting profiles from the mapped transects and follows their exaggerated geometry in both directions', () => {
+    const {motion,meshes}=fixture();
+    expect(meshes.filter(m=>m.userData.slopeRole==='gully-profile-specimen')).toHaveLength(2);
+    expect(meshes.filter(m=>m.userData.slopeRole==='transect-inlay')).toHaveLength(2);
+    for (const phase of [0,.65,1,.21,0]) {
+      motion.update(phase,0,0,true);
+      const read=(motion.describe!() as any).mechanicalProfileComparator;
+      expect(read.surveyedAngle).toBe(false);
+      const angles=read.sections.map((section:any)=>{
+        const [a,b]=section.endElevationsM, [x,z]=section.start, [xx,zz]=section.end;
+        expect(a).toBeCloseTo(slopeTerrainElevationAt(x,z));expect(b).toBeCloseTo(slopeTerrainElevationAt(xx,zz));
+        expect(section.armRadians).toBeCloseTo(Math.atan2(slopeDisplayY(b,phase)-slopeDisplayY(a,phase),Math.hypot(xx-x,zz-z)),9);
+        return section.armRadians;
+      });
+      if (phase) expect(angles[0]).toBeGreaterThan(angles[1]);
+    }
+  });
   it('uses an XY-plane pull track and exposes stable world coordinates for reverse dragging', () => {
     const { meshes, motion } = fixture(), handle = meshes.find(mesh => mesh.userData.slopeRole === 'phase-handle')!;
     const { kind, track } = handle.userData.modelInput; expect(kind).toBe('phase-track'); expect(track.start[2]).toBe(track.end[2]);

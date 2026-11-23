@@ -4,6 +4,8 @@ import { basinRiverPoint } from './textbook-integrated-model';
 import { createInstrumentParts } from './textbook-instrument-parts';
 import type { SolidMaterialRole } from './textbook-solid-materials';
 import { basinSpecimenGround, basinSpecimenBedding, basinSurfaceTreatment } from './textbook-basin-detail';
+import { applyEarthScan } from './textbook-earth-scan';
+import { buildCrownSurface } from './textbook-natural-form-geometry';
 
 type Point = [number, number, number];
 type Frame = { s: number; p(at: readonly number[]): Vec3 };
@@ -31,9 +33,9 @@ export function buildBasinSpecimen(b: TextbookGeometry, frame: Frame) {
     : band === 'bed' ? bankZ(x) + (far ? 4.6 : -4.6) : far ? 60 : bankZ(x) + 4.6;
   const makeSection = (x0: number, x1: number, band: 'back' | 'bed' | 'front', parent = b.root) => {
     const nx = Math.ceil((x1 - x0) * .95), nz = band === 'bed' ? 12 : 16;
-    const vertices: number[] = [], indices: number[] = [], colors: number[] = [];
+    const vertices: number[] = [], indices: number[] = [], colors: number[] = [], facies: number[] = [];
     const top = (x: number, z: number): Point => [x, basinSpecimenGround(x, z), z];
-    const meadow = new T.Color('#849778'), scree = new T.Color('#aaa68f'), gravel = new T.Color('#c9bea3');
+    const meadow = new T.Color('#74835b'), scree = new T.Color('#a5997c'), gravel = new T.Color('#b4a382');
     const highRock = new T.Color('#9b9c92');
     for (let ix = 0; ix <= nx; ix++) {
       const x = x0 + (x1 - x0) * ix / nx, a = edge(x, band, false), c = edge(x, band, true);
@@ -43,6 +45,9 @@ export function buildBasinSpecimen(b: TextbookGeometry, frame: Frame) {
         const color = meadow.clone().lerp(scree, Math.min(.88, treatment.slope * .38))
           .lerp(highRock, treatment.highRock * .8).lerp(gravel, treatment.gravel);
         colors.push(color.r, color.g, color.b);
+        const stone = Math.min(.92, treatment.highRock + .27 * treatment.slope) * (1 - treatment.gravel);
+        const turf = (1 - stone - treatment.gravel) * .84;
+        facies.push(stone, treatment.gravel, turf);
       }
       if (ix < nx) for (let iz = 0; iz < nz; iz++) {
         const a = ix * (nz + 1) + iz, c = a + nz + 1;
@@ -51,8 +56,10 @@ export function buildBasinSpecimen(b: TextbookGeometry, frame: Frame) {
     }
     const topGeometry = geometry(vertices, indices);
     topGeometry.setAttribute('color', new T.Float32BufferAttribute(colors, 3));
+    topGeometry.setAttribute('facies', new T.Float32BufferAttribute(facies, 3));
     const surface = mount(topGeometry, '#fffffe', 'land', `basin-${band}-surface`, parent);
     surface.material.vertexColors = true; surface.material.needsUpdate = true;
+    if (!surface.material.userData.earthScan) applyEarthScan(surface.material, 'valley', 11 * s);
     surface.userData.heightField = 'basinGround'; surface.userData.specimenBand = band;
     surface.userData.dryShoulderRelief = 'basinSpecimenGround';
     const outline: Point[] = [];
@@ -86,6 +93,7 @@ export function buildBasinSpecimen(b: TextbookGeometry, frame: Frame) {
     wallGeometry.setAttribute('color', new T.Float32BufferAttribute(wallColors, 3));
     const wall = mount(wallGeometry, '#fffefd', 'rock', 'basin-specimen-cut-stratum', parent);
     wall.material.vertexColors = true; wall.material.needsUpdate = true;
+    if (!wall.material.userData.earthScan) applyEarthScan(wall.material, 'outcrop', 13 * s);
     wall.userData.diagrammaticBedding = true; sectionMeshes.push(wall);
     // A real closed bottom connects every cut wall. Visible front pieces are
     // movable solids, rather than a top sheet suspended over empty space.
@@ -147,13 +155,28 @@ export function buildBasinSpecimen(b: TextbookGeometry, frame: Frame) {
     // A metal spine mechanically connects the moving slice to its datum.
     const piston = mount(new T.CylinderGeometry(.26 * s, .26 * s, 1, 16), '#879493', 'steel', 'basin-telescopic-slide');
     slides.push({ piston, from: new T.Vector3(...p([tip, -7, 53])), index: i });
-    // Sparse vegetation stays rooted in this exact piece as it is withdrawn.
-    for (const [x, z] of [[x0 + 3, 55], [x1 - 4, 51]]) {
-      const trunk = mount(new T.CylinderGeometry(.13 * s, .18 * s, 1.7 * s, 8), '#807e72', 'rock', 'specimen-tree-trunk', group);
-      trunk.position.set(...p([x, basinSpecimenGround(x, z) + .85, z]));
-      const crown = mount(new T.ConeGeometry(1.2 * s, 3.5 * s, 9), C.darkGreen, 'plant', 'specimen-tree-crown', group);
-      crown.position.set(...p([x, basinSpecimenGround(x, z) + 2.6, z]));
+    // Each copse shares one mesh and moves with its own sample carriage.
+    const copseVertices: number[] = [], copseIndices: number[] = [], copseTint: number[] = [];
+    const needle = new T.Color('#41593d'), tips = new T.Color('#809065');
+    for (let tree = 0; tree < 15; tree++) {
+      const seed = i * 15 + tree, spread = Math.sqrt((tree % 8) / 8);
+      const angle = tree * 2.4 + i, x = (tree < 8 ? x0+6 : x1-7) + spread * 4 * Math.cos(angle);
+      const z = (tree < 8 ? 55 : 50) + spread * 3 * Math.sin(angle);
+      const h = 1.4 + .75 * (1 + Math.sin(seed*2.71));
+      const ground = basinSpecimenGround(x,z), crown = buildCrownSurface('conifer', seed);
+      const start = copseVertices.length / 3;
+      for(let k=0;k<crown.positions.length;k+=3) {
+        const [dx,dy,dz] = crown.positions.slice(k,k+3);
+        copseVertices.push(...p([x+dx*h*.34, ground+(dy+.64)*h, z+dz*h*.34]));
+        const color = needle.clone().lerp(tips,.28+.18*dy+.10*Math.sin(seed+dy*25+dx));
+        copseTint.push(color.r,color.g,color.b);
+      }
+      for(const index of crown.indices)copseIndices.push(start+index);
     }
+    const groveGeometry=geometry(copseVertices,copseIndices);
+    groveGeometry.setAttribute('color',new T.Float32BufferAttribute(copseTint,3));
+    const grove=mount(groveGeometry,'#fffffc','plant','specimen-slope-grove',group);
+    grove.material.vertexColors=true;
   }
   // Independent specimen actuator, not a scientific input or a time control.
   const handwheel = parts.knob(p([104, -4, 70]), [0, 0, 1], 2.3 * s, 1.4 * s);

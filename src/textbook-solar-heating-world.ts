@@ -1,3 +1,4 @@
+import { solarHeatingCutaway } from './textbook-solar-heating-cutaway';
 import { createSpecimenMaterial } from './textbook-solid-materials';
 import { THREE as T } from './reference/engine.js';
 import { LIFT_MARGIN, type ModelMotion, type TextbookGeometry, type Vec3 } from './textbook-geometry';
@@ -85,7 +86,7 @@ export function buildSolarHeatingWorld(b: TextbookGeometry): ModelMotion {
       part.id === 'foundation' ? 'wood' : part.id.includes('radiator') ? 'enamel' : 'ivory');
     // A pierced back wall replaces the solid block. Window openings remain
     // on the unoccupied service side, clear of both room heat receivers.
-    if (part.id === 'back-wall') mesh.visible = false;
+    if (['back-wall','middle-wall','upper-floor'].includes(part.id)) mesh.visible = false;
     if (part.selection !== undefined) select(mesh, part.selection); return { definition: part, mesh };
   });
   // The back is a plaster shell with two actual apertures, not a painted
@@ -223,13 +224,13 @@ export function buildSolarHeatingWorld(b: TextbookGeometry): ModelMotion {
   });
   // The active legend is a single inset in the actual front apron, never a
   // floating board across the room or in front of the collector.
-  plate([22, -4, 49.6], [97, 3.9, 50.8], 'wood', '#65513c', .35);
+  plate([22, -7.3, 49.6], [97, 6.9, 50.8], 'wood', '#65513c', .35);
   const plaqueAt: SolarPoint = [62, -.2, 50.94];
   const labels = SOLAR_HEATING_LABELS.map(label => {
-    const mesh = select(role(b.label(label.text, p(plaqueAt), 27 * scale, 6.1 * scale), 'process-label'), label.selection);
+    const mesh = select(role(b.label(label.text, p(plaqueAt), 47 * scale, 11.4 * scale), 'process-label'), label.selection);
     mesh.userData.labelMount = 'surface'; return mesh;
   });
-  for (const x of [47.4, 76.6]) screw([x, -.2, 51.05], true);
+  for (const x of [36.5, 87.5]) screw([x, -.2, 51.05], true);
   const track: PhaseTrack = { start: p(L.trackStart), end: p(L.trackEnd) };
   const rail = solid(centeredGeometry(chamferedPlateGeometry([11, -13, 65], [93, -9, 65.75], .22), [0, 0, 0]), ivory, 'phase-rail', false, .02, 'ivory');
   rail.userData.modelInput = { kind: 'phase-track', track, label: '拖动太阳能供热过程滑座' };
@@ -251,13 +252,14 @@ export function buildSolarHeatingWorld(b: TextbookGeometry): ModelMotion {
   thumb.userData.smallPointTarget = true; thumb.userData.modelInput = handle.userData.modelInput;
   for (const entry of fittings.values()) solid(centeredGeometry(mergeInstrumentGeometry(entry.geometries), [0, 0, 0]),
     entry.color, 'connected-fittings-' + entry.materialRole, false, .02, entry.materialRole);
+  const updateThermometers=solarHeatingCutaway(scale,p,solid);
   const meshes = [...b.meshes], buffers = meshes.map(mesh => mesh.geometry.attributes.position.array), fixedMeshCount = meshes.length;
 
   const motion: ModelMotion = {
     update(phase) {
       const next = evaluateSolarHeating(phase);
       if (next.phase !== previous) {
-        state = next; previous = next.phase;
+        state = next; previous = next.phase;updateThermometers(state);
         color(collector, '#354c49', '#9c7950', state.collectorWarmth);
         color(tank, '#90a9a0', '#b08c64', state.storageWarmth);
         for (const part of parts) if (part.definition.warmth) color(part.mesh, part.definition.color,

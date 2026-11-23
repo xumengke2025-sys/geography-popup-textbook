@@ -27,3 +27,16 @@ export function evaluateDesalination(input: number, selection = 0) {
 export function desalinationPocketProjection([x, y, z]: readonly number[]) {
   return [320 + (x - 50) * 6, 300 + (z - 43) * 1.2 - (y - 6) * 6] as const;
 }
+
+/** Solid specimens stay seated in the observation basket. Four small
+ * fragments surround the retained pockets and rotate with those markers. */
+export function desalinationFragmentPose(state: ReturnType<typeof evaluateDesalination>, index: number): [number, number, number] {
+  const rotation = state.phase * 4 * Math.PI;
+  if (state.mode === 1 && index < 4) {
+    const [x, , z] = state.pockets[index].point;
+    return [x, z, rotation + index * Math.PI * 2 / 9];
+  }
+  const angle = rotation + Math.PI * (.60 + (index - 4) * .245);
+  const radius = index % 2 ? 10.7 : 8.1;
+  return [50 + Math.cos(angle) * radius, 39 + Math.sin(angle) * radius, angle];
+}

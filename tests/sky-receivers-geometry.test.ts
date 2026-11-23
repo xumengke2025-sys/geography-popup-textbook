@@ -1,9 +1,14 @@
-import { describe, expect, it, vi } from 'vitest';
+import { beforeAll, describe, expect, it, vi } from 'vitest';
 import * as Three from 'three';
 import type { TextbookGeometry, Vec3 } from '../src/textbook-geometry';
 import { evaluateGreenhouseResponse } from '../src/textbook-sky-causality-model';
 vi.mock('../src/reference/engine.js', async () => ({ THREE: await import('three') }));
-import { buildSolarDisturbanceWorld, buildMarsTransferWorld, buildGreenhouseResponseWorld } from '../src/textbook-sky-causality-world';
+import { buildSolarDisturbanceWorld, buildSphereExchangeWorld, buildGreenhouseResponseWorld } from '../src/textbook-sky-causality-world';
+import { buildMarsTransferWorld } from '../src/textbook-mars-base-world';
+
+import { loadSolarInstrument } from '../src/textbook-solar-instrument';
+import { loadFieldInstrument } from '../src/textbook-field-instruments';
+beforeAll(async()=>{await Promise.all([loadSolarInstrument(),loadFieldInstrument('greenhouse'),loadFieldInstrument('external-spheres')]);});
 
 function fixture(build: (b: TextbookGeometry) => ReturnType<typeof buildMarsTransferWorld>) {
   const meshes: Three.Mesh[] = [], root = new Three.Group();
@@ -22,10 +27,132 @@ function fixture(build: (b: TextbookGeometry) => ReturnType<typeof buildMarsTran
   };
   const motion = build(b as unknown as TextbookGeometry); motion.update(0, 0, 1 / 60, false);
   const role = (value: string) => meshes.find(mesh => mesh.userData.causalRole === value)!;
-  return { motion, meshes, role };
+  return { motion, meshes, role, b };
 }
 
 describe('visible receiving geometry follows the same causal phase', () => {
+  it('seats both solar specimens on their stems and keeps the scientific field open', () => {
+    const {meshes}=fixture(buildSolarDisturbanceWorld);
+    const stems=meshes.filter(mesh=>mesh.userData.causalRole==='solar-specimen-support');
+    expect(stems).toHaveLength(2);
+    for(const stem of stems){
+      stem.geometry.computeBoundingBox();
+      expect(stem.geometry.boundingBox!.max.y).toBeCloseTo(stem.userData.specimenContact[1],5);
+      expect(stem.geometry.boundingBox!.min.y).toBeCloseTo(4.2,5);
+    }
+  });
+
+  it('keeps the nut on the turning screw and the dial on the same reading after reversing', () => {
+    const { motion, meshes, b } = fixture(buildSolarDisturbanceWorld);
+    const part = (group: string) => meshes.find(mesh => mesh.userData.instrumentPart === group)!;
+    for (const phase of [0, .84, .22, 1, 0]) {
+      motion.update(phase, 1, 0, false);
+      const travel = part('slide').position.x / (b.width / 100);
+      const turns = -part('drive').rotation.x / (2 * Math.PI);
+      expect(travel).toBeCloseTo(turns * 4.375, 7);
+      expect(travel).toBeCloseTo(phase * 70, 7);
+      expect(part('pointer').rotation.z).toBeCloseTo(-phase * 4 * Math.PI / 3, 7);
+    }
+  });
+
+  it('lands precipitation on the actual river and preserves water identity at the runoff handoff', () => {
+    const {motion,meshes}=fixture(buildSphereExchangeWorld);
+    const drop=meshes.find(mesh=>mesh.userData.waterId==='water-a'&&mesh.geometry.type==='SphereGeometry')!;
+    motion.update(.5,1,1/60,true);
+    const state=motion.describe!() as any;
+    expect(state.rainLanding).toEqual(state.riverEntry);
+    expect(Math.abs(drop.position.x-state.rainLanding[0])).toBeLessThan(.75*3);
+    expect(drop.position.y).toBe(state.rainLanding[1]);expect(drop.position.z).toBe(state.rainLanding[2]);
+    const at=drop.position.clone();
+    motion.update(.500001,1,1/60,true);expect(drop.position.distanceTo(at)).toBeLessThan(.01);
+    motion.update(.499999,1,1/60,true);expect(drop.position.distanceTo(at)).toBeLessThan(.01);
+    expect(new Set(meshes.filter(mesh=>mesh.userData.waterId).map(mesh=>mesh.userData.waterId))).toEqual(new Set(['water-a','water-b','water-c']));
+    const soil=meshes.find(mesh=>mesh.userData.causalRole==='root-zone-water-section')!;
+    expect(soil.position.y).toBeLessThan(state.treeContact[1]);
+  });
+
+  it('opens all four production cabin shells through their physical pulls without changing the transfer state', () => {
+    const {motion,meshes}=fixture(buildMarsTransferWorld);
+    const handles=meshes.filter(mesh=>mesh.userData.cabinPart==='shell-opening-pull');
+    expect(handles).toHaveLength(8);
+    motion.update(.5,0,1/60,true);
+    for(let index=0;index<4;index++){
+      const handle=handles[index*2];
+      expect(handle.userData.modelInput).toMatchObject({kind:'inspect',target:`mars-shell-${index}`});
+      const oldAngle=handle.parent!.rotation.z;
+      motion.inspect!(`mars-shell-${index}`);motion.update(.5,0,1/60,true);
+      expect(handle.parent!.rotation.z).not.toBe(oldAngle);
+      expect((motion.describe!() as any).selected).toBe(0);
+    }
+    // Choosing a circuit restores its deliberate observation opening rather
+    // than carrying an unrelated manually closed shell into the next lesson.
+    motion.update(.5,1,1/60,true);
+    expect((motion.describe!() as any).shellOpening).toEqual([1,.18,1,1]);
+  });
+
+  it('keeps Mars route fittings attached to the selected circuit through every mode', () => {
+    const {motion,meshes}=fixture(buildMarsTransferWorld);
+    for(const selection of [0,1,2,3,1,0]){
+      motion.update(.7,selection,1/60,true);
+      const routes=meshes.filter(mesh=>mesh.userData.transferRoute);
+      expect(routes).toHaveLength(5);
+      for(const route of routes){
+        const fittings=meshes.filter(mesh=>mesh.userData.routeKind===route.userData.transferRoute.kind);
+        expect(fittings.length).toBeGreaterThan(0);
+        fittings.forEach(fitting=>expect(fitting.visible).toBe(route.visible));
+      }
+    }
+  });
+
+  it('keeps the Mars observation shells watertight with an inner and outer cut surface', () => {
+    const {meshes}=fixture(buildMarsTransferWorld);
+    const shells=meshes.filter(mesh=>mesh.userData.cabinPart==='hinged-longitudinal-observation-shell');
+    expect(shells).toHaveLength(8);
+    for(const shell of shells){
+      const g=shell.geometry,a=g.attributes.position,ix=g.index!,edges=new Map<string,number>();
+      const point=(index:number)=>[a.getX(index),a.getY(index),a.getZ(index)].map(n=>n.toFixed(4)).join(',');
+      for(let i=0;i<ix.count;i+=3)for(const [from,to]of[[0,1],[1,2],[2,0]]){
+        const key=[point(ix.getX(i+from)),point(ix.getX(i+to))].sort().join('|');edges.set(key,(edges.get(key)??0)+1);
+      }
+      expect([...edges.values()].every(count=>count===2)).toBe(true);
+      expect([...a.array].every(Number.isFinite)).toBe(true);
+    }
+  });
+
+  it('rests the cabin pads on prepared contacts in a natural cut piece with upward top normals', () => {
+    const {meshes}=fixture(buildMarsTransferWorld);
+    const ground=meshes.find(mesh=>mesh.userData.causalRole==='continuous-natural-regolith')!;
+    const a=ground.geometry.attributes.position,n=ground.geometry.attributes.normal;
+    expect(n.getY(0)).toBeGreaterThan(.99);
+    const corners=new Set<string>();
+    for(let i=1+6*96;i<=7*96;i++)corners.add([a.getX(i),a.getZ(i)].map(v=>v.toFixed(2)).join(','));
+    expect(corners.size).toBeGreaterThan(80);
+    for(const pad of meshes.filter(mesh=>mesh.userData.cabinPart==='cabin-ground-pad')){
+      pad.geometry.computeBoundingBox();expect(pad.geometry.boundingBox!.min.y).toBeCloseTo(ground.userData.preparedContactHeight,5);
+    }
+    const floors=meshes.filter(mesh=>mesh.userData.cabinPart==='continuous-longitudinal-cabin-floor');
+    expect(floors).toHaveLength(4);
+    for(const floor of floors){
+      const p=floor.geometry.attributes.position,n=floor.geometry.attributes.normal;
+      let top=0,bottom=0;
+      for(let i=0;i<p.count;i++){if(n.getY(i)>.99)top++;if(n.getY(i)<-.99)bottom++;}
+      expect(top).toBeGreaterThan(0);expect(bottom).toBeGreaterThan(0);
+    }
+  });
+
+  it('brings the water highlight to the same filter and reservoir as the arriving packets', () => {
+    const {motion,b}=fixture(buildMarsTransferWorld);
+    for(const [phase,receiver] of [[.31,0],[.62,1]] as const){
+      b.flow.length=0;
+      motion.update(phase,1,1/60,true);
+      const state=motion.describe!() as any;
+      const expected=state.waterLegJoints[receiver].end as number[];
+      const ends=b.flow.map((stroke:any)=>stroke.points.at(-1) as Three.Vector3);
+      expect(ends.some(point=>point.distanceTo(new Three.Vector3(...expected))<1e-6)).toBe(true);
+    }
+    b.flow.length=0;motion.update(.01,1,1/60,true);expect(b.flow).toHaveLength(0);
+  });
+
   it('keeps polar curtains attached and closed until arrival, then retains their opened result', () => {
     const { motion, meshes } = fixture(buildSolarDisturbanceWorld);
     const curtains = meshes.filter(mesh => mesh.userData.causalRole === 'polar-receiving-curtain');

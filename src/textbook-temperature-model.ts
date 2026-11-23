@@ -1,3 +1,4 @@
+import { drawingGrip } from './textbook-drawing-grip';
 /** PEP Geography I, printed p.50 / PDF p.55, fig.3.8, visually checked.
  * The original is one low-latitude Pacific station at 170°W. The anchors
  * below are an approximate manual reading of its printed curve, not a new
@@ -80,7 +81,7 @@ export const TEMPERATURE_PROFILE_CURVE: readonly TemperaturePoint[] =
   Array.from({ length: 201 }, (_, i) => temperatureProfilePoint(i / 200));
 export const temperatureWaterColor = (depthKm: number): [number, number, number] => {
   const warmth = clamp(approximateTemperatureAtDepth(depthKm) / 27);
-  return [(.63 + .17 * warmth), (.75 + .005 * warmth), (.77 - .14 * warmth)];
+  return [.34 + .48 * warmth, .63 + .16 * warmth, .68 - .12 * warmth];
 };
 export function evaluateTemperatureProfile(input: number) {
   const phase = clamp(input), depthKm = phase * TEMPERATURE_REFERENCE.curveMaxDepthKm;
@@ -198,7 +199,7 @@ export function temperatureProfileSvg(input: number, target = 'overview'): strin
   scene += `<g data-temperature-current-label="true"><rect x="${labelX - 222}" y="${labelY - 25}" width="444" height="50" rx="2" fill="#f7f1e3"/>${text(observation.active ? '固定表层参照' : state.note, TEMPERATURE_LAYOUT.currentLabel.at, 32)}</g>`;
   scene += `<polyline points="${pathPoints([TEMPERATURE_LAYOUT.track.start, TEMPERATURE_LAYOUT.track.end])}" fill="none" stroke="#a79b7f" stroke-width="1.8"/>`;
   const [hx, hy] = svgPoint(state.handle);
-  scene += `<path data-temperature-handle="depth" d="M${hx - 10} ${hy}l10-7 10 7-10 7Z" fill="#ddc797" stroke="#887d62" stroke-width="1.2"/>`;
+  scene += `<path data-temperature-handle="depth" d="M${hx - 10} ${hy}l10-7 10 7-10 7Z" fill="#ddc797" stroke="#887d62" stroke-width="1.2"/>${drawingGrip('推拉测深索',svgPoint(TEMPERATURE_LAYOUT.track.start),svgPoint(TEMPERATURE_LAYOUT.track.end),state.phase)}`;
   TEMPERATURE_STOPS.forEach((stop, index) => {
     scene += selectable(index, text(stop.label, TEMPERATURE_LAYOUT.nodeLabels[index], 30), `观察${stop.label}，进度表示深度`);
   });

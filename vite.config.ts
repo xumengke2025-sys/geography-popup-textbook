@@ -1,6 +1,7 @@
 import { defineConfig } from "vitest/config";
 export default defineConfig({
   base: "./",
+  assetsInclude: ["**/*.hdr"],
   // Generated reviews and source backups are not application modules. Watching
   // them reloads the book during native input checks and wastes watcher work.
   server: {

@@ -46,30 +46,46 @@ const n = (value: number) => Number(value.toFixed(3));
  * boat draft as the paper model. No added measurements or current arrows. */
 export function tideSvg(phase: number, selection?: number): string {
   const s = evaluateTide(phase, selection), z = TIDE_LAYOUT.front;
-  const x = (u: number) => n(25 + u * 6), y = (h: number) => n(352 - h * 6), pt = (u: number, h: number) => `${x(u)},${y(h)}`;
+  const x = (u: number) => n(25 + u * 6), y = (h: number) => n(350 - h * 8.1), pt = (u: number, h: number) => `${x(u)},${y(h)}`;
   const ground = Array.from({ length: 81 }, (_, i) => { const u = 6 + 91 * i / 80; return pt(u, tideGround(u, z)); }).join(' ');
   const floor = Array.from({ length: 49 }, (_, i) => { const u = s.shorelineFront + (6 - s.shorelineFront) * i / 48; return pt(u, tideGround(u, z)); }).join(' ');
   const band = Array.from({ length: 31 }, (_, i) => { const u = s.intertidal.lowEdge + (s.intertidal.highEdge - s.intertidal.lowEdge) * i / 30; return pt(u, tideGround(u, z)); }).join(' ');
   const gaugeX = x(s.gauge.x), waterY = y(s.waterLevel), gauge = `<path d="M${gaugeX} ${y(2.6)}V${y(24)}" stroke="#63746b" stroke-width="6"/>
-    ${Array.from({ length: 7 }, (_, i) => `<path d="M${gaugeX} ${y(3.1 + i * 2.8)}v${n(-2.5 * 6)}" stroke="${i % 2 ? '#a8755c' : '#f7f1e3'}" stroke-width="8"/><path d="M${gaugeX} ${y(3.1 + i * 2.8)}h12" stroke="#4e605b" stroke-width="1.4"/>`).join('')}`;
+    ${Array.from({ length: 7 }, (_, i) => `<path d="M${gaugeX} ${y(3.1 + i * 2.8)}v${n(-2.5 * 8.1)}" stroke="${i % 2 ? '#a8755c' : '#f7f1e3'}" stroke-width="8"/><path d="M${gaugeX} ${y(3.1 + i * 2.8)}h12" stroke="#4e605b" stroke-width="1.4"/>`).join('')}`;
+  const lowX=x(s.intertidal.lowEdge),highX=x(s.intertidal.highEdge),shoreX=x(s.shorelineFront);
+  const strata=[1.2,2.6,4.1].map((depth,i)=>{
+    const points=Array.from({length:61},(_,j)=>{
+      const u=6+91*j/60;
+      return pt(u,tideGround(u,z)-depth+.17*Math.sin(u*.38+i));
+    });
+    return `<path d="M${points.join('L')}" fill="none" stroke="${i===1?'#927e61':'#e6d5b2'}" stroke-width="${i===1?1.15:2}"/>`;
+  }).join('');
   return `<svg class="flat-model-svg flat-explanation-svg" viewBox="0 0 660 400" role="img" aria-label="${s.caption}：海水沿同一坡岸进退，轻舟随潮位升降，固定潮尺提供参照" data-tide-stage="${s.stage}" data-tide-phase="${s.phase}" data-tide-level="${s.waterLevel}" data-tide-shore="${s.shorelineFront}" data-tide-boat="${s.boat.waterline}" data-tide-gauge-mark="${s.gauge.waterMark}">
-    <defs><clipPath id="tide-gauge-above-water"><rect x="0" y="0" width="660" height="${waterY}"/></clipPath></defs>
+    <defs><linearGradient id="tide-water" x2=".12" y2="1"><stop stop-color="#b8d9d1"/><stop offset=".52" stop-color="#8bb5b4"/><stop offset="1" stop-color="#678e96"/></linearGradient>
+    <linearGradient id="tide-wood" x2=".2" y2="1"><stop stop-color="#dbb483"/><stop offset="1" stop-color="#926e51"/></linearGradient>
+    <clipPath id="tide-bed"><path d="M${pt(6,0)} ${ground} ${pt(97,0)}Z"/></clipPath>
+    <clipPath id="tide-gauge-above-water"><rect x="0" y="0" width="660" height="${waterY}"/></clipPath></defs>
     <g font-family="FieldSerif,SimSun,serif" stroke-linejoin="round" stroke-linecap="round" fill="#303a40">
     <text x="330" y="43" text-anchor="middle" font-size="29">${s.caption}</text>
     <path d="M${pt(6, 0)} ${ground} ${pt(97, 0)}Z" fill="#cbbb9e" stroke="#858571" stroke-width="1.2"/>
+    <g clip-path="url(#tide-bed)">${strata}</g>
     <polyline points="${band}" fill="none" stroke="#daceb0" stroke-width="9"/>
     ${gauge}
-    <path d="M${pt(6, s.waterLevel)} ${pt(s.shorelineFront, s.waterLevel)} ${floor}Z" fill="#9abfc6" stroke="#62858a" stroke-width="1.2"/>
+    <path d="M${pt(6, s.waterLevel)} ${pt(s.shorelineFront, s.waterLevel)} ${floor}Z" fill="url(#tide-water)" stroke="#62858a" stroke-width="1.2"/>
     <path d="M${pt(6, s.waterLevel)}H${x(s.shorelineFront)}" fill="none" stroke="#447c88" stroke-width="1.7"/>
     <path d="M${pt(s.shorelineFront - .7, s.waterLevel + .05)}H${x(s.shorelineFront + .15)}" stroke="#f8f3e6" stroke-width="3.5"/>
     <g clip-path="url(#tide-gauge-above-water)">${gauge}</g>
     <path d="M${gaugeX - 9} ${waterY}h22" stroke="#3f7680" stroke-width="2.7"/>
     <g data-tide-role="boat" transform="translate(${x(s.boat.x)} ${y(s.boat.waterline)})">
-      <path d="M-37-6-25 7 21 7 37-6 24 0-24 0Z" fill="#b19b77" stroke="#5e685c" stroke-width="1.8"/>
-      <path d="M-32-4-22-9 21-9 32-4 21 0-22 0Z" fill="#e2d5b7" stroke="#6e7766" stroke-width="1.3"/>
-      <path d="M-13-8v7M12-8v7" stroke="#7c816a" stroke-width="3"/>
+      <path d="M-45 -9Q-20 -4 6 -5Q30 -6 44 -13Q39 -1 23 6Q2 11 -24 6Q-38 1 -45 -9Z" fill="url(#tide-wood)" stroke="#524a3d" stroke-width="1.6"/>
+      <path d="M-44 -9Q-14 -17 19 -14L44 -13Q22 -3 -7 -4Q-26 -4 -44 -9Z" fill="#e8d9b4" stroke="#635947" stroke-width="1.3"/>
+      <path d="M-33 -8Q-13 -13 18 -12L32 -12Q10 -6 -4 -6Q-20 -5 -33 -8Z" fill="#908370"/>
+      <path d="M-19 -11l5 6m13 -8 5 6m12 -7 4 5" fill="none" stroke="#dac7a0" stroke-width="3"/>
+      <path d="M-34 -3Q-4 9 30 -.5" fill="none" stroke="#f1d7a8" stroke-width="1.1"/>
     </g>
-    <text x="${gaugeX}" y="185" text-anchor="middle" font-size="25">固定潮尺</text>
-    <text x="476" y="166" text-anchor="middle" font-size="25">潮间带</text>
+    <text x="${gaugeX}" y="134" text-anchor="middle" font-size="25">固定潮尺</text>
+    <path d="M${lowX} 353v9H${highX}v-9" fill="none" stroke="#8c754a" stroke-width="1.6"/>
+    <circle cx="${shoreX}" cy="362" r="3.2" fill="#986749"/>
+    <text x="${(lowX+highX)/2}" y="391" text-anchor="middle" font-size="25">潮间带</text>
     </g></svg>`;
 }

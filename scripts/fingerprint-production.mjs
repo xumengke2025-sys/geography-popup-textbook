@@ -1,0 +1,12 @@
+import fs from 'node:fs/promises';
+import crypto from 'node:crypto';
+import path from 'node:path';
+const hash = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
+const walk = async dir => (await Promise.all((await fs.readdir(dir,{withFileTypes:true})).map(e => e.isDirectory() ? walk(path.join(dir,e.name)) : path.join(dir,e.name)))).flat();
+const sourceFiles = [...await walk('src'), 'index.html', 'package.json', 'package-lock.json', 'tsconfig.json', 'vite.config.ts'].sort();
+const sources = await Promise.all(sourceFiles.map(async file => ({path:file.replaceAll('\\','/'),sha256:hash(await fs.readFile(file))})));
+const files = await Promise.all((await walk('dist')).filter(file=> /\.(js|css|html)$/.test(file)).sort().map(async file => ({path:file.replaceAll('\\','/'),sha256:hash(await fs.readFile(file))})));
+const report={capturedAt:new Date().toISOString(),scope:'source tree and production code hashes; not device or visual acceptance',sourceTreeSHA256:hash(JSON.stringify(sources)),sources,production:files};
+const output=process.argv[2]??'output/playwright/production-fingerprint.json';
+await fs.mkdir(path.dirname(output),{recursive:true});await fs.writeFile(output,JSON.stringify(report,null,2)+'\n');
+console.log(JSON.stringify({sourceTreeSHA256:report.sourceTreeSHA256,production:files}));

@@ -1,4 +1,6 @@
-import { buildCrownSurface } from './textbook-natural-form-geometry';
+import { drawingGrip } from './textbook-drawing-grip';
+import { botanicalBlade } from './textbook-botanical-blade';
+const broadBlade=botanicalBlade(false);
 
 /** Textbook p.83 / PDF p.88, fig.5.2 was checked against the local page.
  * This is one forest, viewed from its crown towards the ground. The slider
@@ -25,7 +27,7 @@ export type ForestPart = PartBase & (
   | { kind: 'crown'; role: 'crown'; center: ForestPoint; radii: ForestPoint; seed: number }
   | { kind: 'leaf'; role: 'leaf'; points: ForestPoint[]; thickness: number }
 );
-export interface ForestMeshData { positions: number[]; indices: number[]; }
+export interface ForestMeshData { positions: number[]; indices: number[]; sprayEnds?: number[]; }
 
 export const FOREST_LAYOUT = {
   ground: { min: [3, 0, 18] as ForestPoint, max: [84, 1.4, 57] as ForestPoint },
@@ -58,23 +60,38 @@ function makeForestParts(): ForestPart[] {
       id: `${plantId}-crown-${variant}`, center, radii, seed: seed + variant * .7,
       color: (layer === 0 ? ['#71866e', '#829777', '#99a780'] : ['#899a71', '#a1ad80', '#93a378'])[variant % 3] });
     if (layer === 0) {
-      rod('trunk', [x, ground, z], [x + .5, ground + h * .77, z], h * .022, h * .009);
-      for (const side of [-1, 1]) rod('branch', [x + .2, ground + h * .48, z],
-        [x + side * h * .12, ground + h * .76, z + side * h * .045], h * .009);
-      crown([x, ground + h * .8, z], [h * .185, h * .205, h * .15], 0);
-      crown([x - h * .115, ground + h * .72, z + h * .035], [h * .135, h * .14, h * .12], 1);
-      crown([x + h * .125, ground + h * .755, z - h * .02], [h * .12, h * .155, h * .115], 2);
+      rod('trunk', [x, ground, z], [x + .5, ground + h * .88, z], h * .022, h * .006);
+      // A rising series of forked boughs leaves windows through the canopy.
+      // Each terminal mass is supported by the fork that locates it.
+      for (let j = 0; j < 9; j++) {
+        const level = j / 8, angle = seed + j * 2.39996 + .34*Math.sin(seed*.8+3.7*j);
+        const reach = h * (.213 - .102 * level)*(.93+.15*Math.cos(seed+j*1.87));
+        const root: ForestPoint = [x + .5 * level, ground + h * (.48 + .38 * level), z];
+        const elbow: ForestPoint = [root[0]+Math.cos(angle)*reach*.54,root[1]+h*.09,root[2]+Math.sin(angle)*reach*.54];
+        rod('branch',root,elbow,h*(.011-.005*level));
+        for (const side of [-1,1]) {
+          const yaw = angle + side * .52;
+          const tip: ForestPoint = [elbow[0]+Math.cos(yaw)*reach*.64, elbow[1]+h*(.046+.018*side), elbow[2]+Math.sin(yaw)*reach*.64];
+          rod('branch',elbow,tip,h*.0045,h*.0017);
+          crown(tip,[h*(.119+.013*Math.cos(seed+j)),h*(.066+.011*Math.sin(j+seed)),h*(.104+.013*Math.cos(3*j+seed))],2*j+(side+1)/2);
+        }
+      }
     } else if (layer === 1) {
       for (let j = 0; j < 3; j++) {
         const dx = (j - 1) * h * .16, dz = j === 1 ? -.7 : .5;
         rod('stem', [x + dx * .25, ground, z], [x + dx, ground + h * (.72 + j * .025), z + dz], h * .018);
-        crown([x + dx, ground + h * (.66 + j * .045), z + dz], [h * .245, h * .28, h * .22], j);
+        for (const sign of [-1,1]) {
+          const yaw=seed+j*2.13+sign*.82,root:ForestPoint=[x+dx*.66,ground+h*(.39+.068*j),z+dz*.68];
+          const tip:ForestPoint=[x+dx+h*.18*Math.cos(yaw),ground+h*(.66+.05*j+.036*sign),z+dz+h*.21*Math.sin(yaw)];
+          rod('branch',root,tip,h*.012,h*.0022);
+          crown(tip,[h*(.168+.022*Math.cos(seed)),h*.165,h*.17],(j*2+(sign+1)/2));
+        }
       }
     } else {
       rod('stem', [x, ground, z], [x + .1, ground + h, z], .105, .045);
-      for (let j = 0; j < 4; j++) {
+      for (let j = 0; j < 6; j++) {
         const angle = j * 2.399 + seed * .3, dx = Math.cos(angle), dz = Math.sin(angle);
-        const spread = h * (.48 + (j % 2) * .08), y = ground + h * (.2 + j * .12);
+        const spread = h * (.48 + (j % 2) * .08), y = ground + h * (.14 + j * .10);
         const start: ForestPoint = [x, y, z], tip: ForestPoint = [x + dx * spread, y + h * .51, z + dz * spread];
         const mid: ForestPoint = [(start[0] + tip[0]) / 2, y + h * .38, (start[2] + tip[2]) / 2];
         const w = h * .14;
@@ -92,16 +109,30 @@ export const FOREST_PARTS: readonly ForestPart[] = makeForestParts();
 export function forestPartMeshData(part: ForestPart): ForestMeshData {
   const positions: number[] = [], indices: number[] = [];
   if (part.kind === 'crown') {
-    // Botanical lobes share the atlas's natural-form vocabulary. The plant
-    // identities, centres and stratum assignments remain unchanged.
-    const surface = buildCrownSurface(part.layer === 0 ? 'deciduous' : 'shrub', part.seed);
-    const low = part.layer === 0 ? -.44 : -.40, high = part.layer === 0 ? .60 : .48;
-    for (let i = 0; i < surface.positions.length; i += 3) {
-      positions.push(part.center[0] + surface.positions[i] * part.radii[0],
-        part.center[1] + ((surface.positions[i + 1] - low) / (high - low) * 2 - 1) * part.radii[1],
-        part.center[2] + surface.positions[i + 2] * part.radii[2]);
+    const blade = broadBlade;
+    const sprayEnds: number[] = [];
+    const [cx,cy,cz] = part.center, [rx,ry,rz] = part.radii;
+    for(let twig=0;twig<8;twig++){
+      const yaw=part.seed+twig*2.39996+.31*Math.sin(2.13*twig+part.seed), level=twig/7;
+      const span=(.95-.40*level)*(.89+.14*Math.cos(twig+part.seed)), lift=-.36+1.19*level;
+      const tip: ForestPoint=[cx+rx*span*Math.cos(yaw),cy+ry*lift,cz+rz*span*Math.sin(yaw)];
+      const stem=forestPartMeshData({...part,kind:'rod',role:'branch',start:part.center,end:tip,radius:rx*.029,topRadius:rx*.012});
+      const offset=positions.length/3;
+      positions.push(...stem.positions);indices.push(...stem.indices.map(k=>k+offset));
+      for(let pair=0;pair<3;pair++)for(const side of [-1,1]){
+        const q=.25+pair*.34, dir=yaw+side*(1.10-.21*pair), length=.51+.08*Math.sin(twig+part.seed);
+        const alongX=Math.cos(dir), alongZ=Math.sin(dir), start=positions.length/3;
+        for(let i=0;i<blade.positions.length;i+=3){
+          const t=blade.positions[i],along=t*length,across=blade.positions[i+2]*.93;
+          positions.push(cx+(tip[0]-cx)*q+rx*(along*alongX-across*alongZ),
+            cy+(tip[1]-cy)*q+ry*(blade.positions[i+1]*1.7+.17*Math.sin(t*Math.PI)+(.16*Math.cos(twig*2.36+pair+part.seed)-.09)*t+across*.53*Math.sin(dir+part.seed)),
+            cz+(tip[2]-cz)*q+rz*(along*alongZ+across*alongX));
+        }
+        indices.push(...blade.indices.map(k=>k+start));
+      }
+      sprayEnds.push(positions.length);
     }
-    indices.push(...surface.indices);
+    return {positions, indices, sprayEnds};
   } else if (part.kind === 'rod') {
     const d = part.end.map((v, i) => v - part.start[i]), length = Math.hypot(...d);
     const axis = d.map(v => v / length), helper = Math.abs(axis[1]) > .8 ? [1, 0, 0] : [0, 1, 0];
@@ -166,32 +197,54 @@ function hull(points: [number, number][]) {
 
 /** Native vector fallback: the same plant identities, solid-part coordinates,
  * height and probe state, rather than an image of the textbook illustration. */
-export function forestSvg(phase: number): string {
-  const state = evaluateForest(phase), y = state.observationHeight;
-  let body = polygon([[3, 1.4, 18], [84, 1.4, 18], [84, 1.4, 57], [3, 1.4, 57]], '#c4c5a6')
+function forestSpecimenSvg(): string {
+  let body = '<path d="M35 355L469 360 506 345 503 369 464 383 38 375Z" fill="#725940" stroke="#5c4b38"/><path d="M36 361l428 9 39-17" fill="none" stroke="#bd9e66" stroke-width="3"/>'
+    + polygon([[3, 1.4, 18], [84, 1.4, 18], [84, 1.4, 57], [3, 1.4, 57]], '#c4c5a6')
     + polygon([[3, 0, 57], [84, 0, 57], [84, 1.4, 57], [3, 1.4, 57]], '#d3c5a9');
+  for(let j=0;j<90;j++){
+    const u=(j*.618034)%1,v=(j*.41793)%1,x=4+u*78,z=19+v*36;
+    body+=polygon([[x,1.55,z],[x+.25,1.64,z+.20],[x+.71,1.58,z+.11],[x+.22,1.55,z-.15]],j%2?'#aa9a72':'#8b8066',.15);
+  }
   for (const plant of FOREST_PLANTS.slice().sort((a, b) => a.z - b.z)) {
     let plantBody = '';
     for (const part of FOREST_PARTS.filter(p => p.plantId === plant.id)) {
       if (part.kind === 'rod') plantBody += `<polyline points="${xy(part.start)} ${xy(part.end)}" fill="none" stroke="${part.color}" stroke-width="${n(Math.max(.9, part.radius * 7.8))}"/>`;
       else if (part.kind === 'leaf') plantBody += polygon(part.points, part.color, .55);
       else {
-        const data = forestPartMeshData(part), points: [number, number][] = [];
-        for (let i = 0; i < data.positions.length; i += 3) points.push(forestProject(data.positions.slice(i, i + 3) as ForestPoint));
-        plantBody += `<polygon points="${hull(points).map(p => p.map(n).join(',')).join(' ')}" fill="${part.color}" stroke="#6c7663" stroke-width=".85"/>`;
+        const data = forestPartMeshData(part);
+        let start = 0;
+        const sprays: string[] = [];
+        for (const end of data.sprayEnds ?? [data.positions.length]){
+          const points: [number,number][] = [];
+          for(let i=start;i<end;i+=3)points.push(forestProject(data.positions.slice(i,i+3) as ForestPoint));
+          sprays.push('M'+hull(points).map(p=>p.map(n).join(',')).join('L')+'Z');
+          start=end;
+        }
+        plantBody += `<path d="${sprays.join('')}" fill="${part.color}" stroke="#6c7663" stroke-width=".36"/>`;
       }
     }
     body += `<g data-forest-plant="${plant.id}" data-forest-layer="${plant.layer}" data-model-selection="${plant.layer}" role="button" tabindex="0" aria-label="查看${FOREST_STOPS[plant.layer].label}" style="cursor:pointer">${plantBody}</g>`;
   }
+  return body;
+}
+
+let specimenSvg: string | undefined;
+export function forestSvg(phase: number): string {
+  const state = evaluateForest(phase), y = state.observationHeight;
+  let body = specimenSvg ??= forestSpecimenSvg();
   const { minX, maxX, minZ, maxZ } = FOREST_LAYOUT.observation;
   const plane: ForestPoint[] = [[minX, y, minZ], [maxX, y, minZ], [maxX, y, maxZ], [minX, y, maxZ]];
   body += `<polygon data-forest-observation-plane="true" data-height="${n(y)}" points="${plane.map(xy).join(' ')}" fill="#bfa66d" fill-opacity=".055" stroke="#b29963" stroke-width="1"/>`;
   const [hx, hy] = forestProject(state.handle);
-  body += `<polyline points="${xy(FOREST_LAYOUT.track.start)} ${xy(FOREST_LAYOUT.track.end)}" fill="none" stroke="#a99b7c" stroke-width="1.2"/>`
-    + `<path data-forest-handle="true" d="M${n(hx - 9)} ${n(hy)}l9-6 9 6-9 6Z" fill="#d4bd88" stroke="#8f805f" stroke-width="1"/>`;
+  const [gx,gy]=forestProject([0,42,63]),[gx2,gy2]=forestProject([0,3,63]);
+  body+=`<path d="M${gx} ${gy}L${gx2} ${gy2}" stroke="#8e7958" stroke-width="7"/>`;
+  for(let i=0;i<12;i++){const t=i/11,Y=gy+(gy2-gy)*t;body+=`<path d="M${gx-1} ${Y}h4" stroke="rgb(${196-86*t},${183-76*t},${123-33*t})" stroke-width="11"/>`;}
+  body+=`<path d="M${gx-7} ${gy+(gy2-gy)*state.phase}h14" stroke="#ded8b9" stroke-width="5"/>`;
+  body += `<polyline points="${xy(FOREST_LAYOUT.track.start)} ${xy(FOREST_LAYOUT.track.end)}" fill="none" stroke="#a58b61" stroke-width="4"/>`
+    + `<path data-forest-handle="true" d="M${n(hx-8)} ${n(hy-6)}h16l4 6-4 6h-16l-4-6Z" fill="#b29967" stroke="#796a52" stroke-width="1.3"/>${drawingGrip('升降林层测架',forestProject(FOREST_LAYOUT.track.start),forestProject(FOREST_LAYOUT.track.end),state.phase)}`;
   FOREST_STOPS.forEach((stop, i) => {
     const [x, labelY] = forestProject(FOREST_LAYOUT.labels[i]);
-    body += `<g data-forest-node="${i}" data-model-selection="${i}" role="button" tabindex="0" aria-label="观察${stop.label}" style="cursor:pointer"><text x="${n(x)}" y="${n(labelY)}" font-size="22" text-anchor="middle" fill="#374138" paint-order="stroke" stroke="#f7f1e3" stroke-width="4">${stop.label}</text></g>`;
+    body += `<g data-forest-node="${i}" data-model-selection="${i}" role="button" tabindex="0" aria-label="观察${stop.label}" style="cursor:pointer"><rect x="${n(x-44)}" y="${n(labelY-18)}" width="88" height="29" rx="2" fill="#e5dbc1" stroke="#9d865c" stroke-width="2"/><text x="${n(x)}" y="${n(labelY+3)}" font-size="21" text-anchor="middle" fill="#374138" >${stop.label}</text></g>`;
   });
-  return `<svg xmlns="http://www.w3.org/2000/svg" class="flat-model-svg flat-explanation-svg" viewBox="0 0 680 420" role="group" data-forest-phase="${n(state.phase)}" data-forest-stage="${state.stage}" data-forest-selection="${state.selection}" data-forest-height="${n(y)}" data-forest-light="${n(state.relativeLight)}" aria-label="${state.caption} 同一片森林始终保留；滑动只改变观察位置，光照为相对示意。"><title>森林中的成层现象</title><g stroke-linejoin="round" stroke-linecap="round" font-family="FieldSerif,SimSun,serif">${body}</g></svg>`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" class="flat-model-svg forest-comparator-drawing" viewBox="0 0 680 420" role="group" data-forest-phase="${n(state.phase)}" data-forest-stage="${state.stage}" data-forest-selection="${state.selection}" data-forest-height="${n(y)}" data-forest-light="${n(state.relativeLight)}" aria-label="${state.caption} 同一片森林始终保留；滑动只改变观察位置，光照为相对示意。"><title>森林中的成层现象</title><style>@media(max-width:480px){.forest-comparator-drawing text{font-size:29px}}</style><g stroke-linejoin="round" stroke-linecap="round" font-family="FieldSerif,SimSun,serif">${body}</g></svg>`;
 }

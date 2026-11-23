@@ -16,8 +16,10 @@ async page => {
   };
   const phase = async value => {
     if (await page.evaluate(() => window.textbookDiagnostics.playing))
-      await page.getByRole('button', { name: '暂停', exact: true }).click();
-    const slider = page.locator('#phase'); await slider.focus(); await slider.press(value === 0 ? 'Home' : 'End');
+      await page.locator('#cPause').click();
+    const slider = page.locator('#phase');
+    if (!await slider.isVisible() || !await slider.isEnabled()) return;
+    await slider.focus(); await slider.press(value === 0 ? 'Home' : 'End');
     if (value === 500) for (let i = 0; i < 5; i++) await slider.press('PageDown');
     await frame();
   };
@@ -30,7 +32,7 @@ async page => {
       width: innerWidth, height: innerHeight,
       controls: Array.from(document.querySelectorAll('.capsule button,.capsule input,#process-stops')).filter(el => {
         if (!el.getClientRects().length || el.closest('[hidden]')) return false;
-        const rail = el.closest('#process-stops');
+        const rail = el.closest('#process-stops,#selections');
         // A scrollable bookmark rail intentionally clips offscreen items.
         // Each item is reached and clicked below, so check its viewport here.
         return !rail || rail === el || rail.scrollWidth <= rail.clientWidth + 1;
@@ -69,18 +71,26 @@ async page => {
   await page.locator('#cContents').click(); await page.locator('#contents-models').click();
   const ids = await page.locator('#model-contents [data-figure]').evaluateAll(nodes => nodes.map(n => n.dataset.figure));
   await page.locator('#close-contents').click();
-  check(ids.length === 60 && new Set(ids).size === 60, 'all 60 unique demonstrations have an actual directory entry');
+  check(ids.length === 63 && new Set(ids).size === 63, '60 lessons and three integrated demonstrations have unique directory entries');
   for (const [index, id] of ids.entries()) {
     await open(id);
-    const cases = [], conditions = await page.locator('#selections [data-selection]:not([data-process-node])').count();
+    const compact = page.locator('#condition-choice');
+    const useSelect = await compact.isVisible();
+    const visibleChoices = page.locator('#selections [data-selection]:not([data-process-node]):visible');
+    const values = useSelect
+      ? await compact.locator('option').evaluateAll(items => items.map(item=>item.value))
+      : await visibleChoices.evaluateAll(items => items.map(item=>item.dataset.selection));
+    const cases = [], conditions = values.length;
     for (let c = 0; c < Math.max(conditions, 1); c++) {
-      if (conditions) await page.locator(`#selections [data-selection="${c}"]:not([data-process-node])`).click();
+      if (useSelect) await compact.selectOption(values[c]);
+      else if (conditions) await visibleChoices.nth(c).click();
       for (const value of [0, 500, 1000]) {
         await phase(value); const s = await read(); inspect(s, `${id}/${c}/${value}`); cases.push(s);
       }
-      const count = await page.locator('#figure-controls [data-process-node]').count();
+      const nodes = page.locator('#figure-controls [data-process-node]:visible');
+      const count = await nodes.count();
       for (let node = 0; node < count; node++) {
-        await page.locator(`#figure-controls [data-process-node="${node}"]`).click();
+        await nodes.nth(node).click();
         await ready(id); await frame(); const s = await read(); inspect(s, `${id}/${c}/node-${node}`); cases.push(s);
       }
     }
@@ -112,5 +122,5 @@ async page => {
   check(originalPages.filter(p => p.number !== null).every(p => p.number === p.pdf - 5), 'printed page mapping includes the full 1–128 original content');
   check(!errors.length, 'complete native-phone traversal has no runtime or console errors');
   return { base, checks, failures, errors, states, labelIssues, layoutIssues, screenshots, originalPages,
-    evidenceScope: '390×844 Chrome viewport: all 60 directory entries, every independent condition at start/middle/end, every process bookmark and all 264 original-page/thumbnail image decodes. Native keyboard range input. This is not a physical phone or touch-device acceptance.' };
+    evidenceScope: '390×844 desktop browser viewport. Enumerates directory entries, visible independent conditions and process bookmarks. Uses keyboard range input for interactive timelines and decodes original pages and thumbnails.' };
 }

@@ -219,10 +219,10 @@ export function processTimeline(f: Figure, phase: number, selection: number): Pr
       const s = evaluateAirProcess('circulation', phase);
       const text = [
         '先看同一个剖面。相同高度的气压分布均匀，还没有局地热力环流。',
-        '中部A受热较多，两侧B、C相对较冷。颜色只表示相对冷热。',
-        '暖处空气膨胀上升，冷处空气下沉；前一步的冷热关系保留。',
-        '分别在近地面和高空作水平比较：A近地面相对低压，高空相对高压。',
-        '近地面流向A，高空向两侧返回，与升降气流连接成环流。分步只为讲解。',
+        '中央的铜盘受热，两侧的冰水槽保持较冷，对应地面 A 暖、B 和 C 冷。',
+        '烟迹标出空气的路径。暖处空气膨胀上升，两侧较冷的空气下沉。',
+        '分别在近地面和高空比较同一排的三个表盘。暖处 A 下排为相对低压，上排为相对高压。',
+        '沿烟迹追一圈。空气在 A 上升，高空流向两侧，在冷处下沉，再沿近地面回到 A。',
       ][s.stageIndex];
       return { key: `circulation-${s.stage}`, stage: '热力环流的形成', title: s.caption, text,
         stops: circulationStops, activeStop: s.stageIndex, replacesChoices: true, cyclic: false };

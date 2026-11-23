@@ -72,6 +72,9 @@ export class TextbookIllustration {
   get bounds() {
     return this.observationBounds(this.motion.overviewBounds?.() ?? this.motion.focusBounds?.());
   }
+  get framingPoints() {
+    return this.motion.framingPoints?.()?.map(p => this.geometry.v(p).add(this.restPosition)) ?? null;
+  }
   get focusBounds() {
     return this.observationBounds(this.motion.focusBounds?.());
   }

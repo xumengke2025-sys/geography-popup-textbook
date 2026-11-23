@@ -1,3 +1,5 @@
+import { soundingBalloon, soundingFrame } from './textbook-sounding-drawing';
+import { drawingGrip } from './textbook-drawing-grip';
 /** Textbook p.31–32, fig.2.5: one continuous vertical observation window.
  * Height and the horizontal temperature coordinate are teaching coordinates,
  * not kilometres, degrees or a global standard atmospheric profile. */
@@ -116,11 +118,12 @@ export function atmosphereSvg(phase: number): string {
   const text = (value: string, px: number, py: number, size = 32) =>
     `<text x="${x(px)}" y="${y(py)}" font-size="${size}" text-anchor="middle">${value}</text>`;
   const points = (path: readonly AtmospherePoint[]) => path.map(p => `${x(p[0])},${y(p[1])}`).join(' ');
-  let scene = '';
+  let scene = soundingFrame(phase);
   for (let index = 0; index < ATMOSPHERE_LAYERS.length; index++) {
     const layer = ATMOSPHERE_LAYERS[index], low = atmosphereHeight(layer.bottom), high = atmosphereHeight(layer.top);
     scene += `<g data-atmosphere-layer="${layer.id}" data-selected="${state.selection === index}" data-model-selection="${index}" role="button" tabindex="0" aria-label="观察${layer.label}高度" style="cursor:pointer">
-      <path d="M${x(18)} ${y(low)}H${x(77)}V${y(high)}H${x(18)}Z" fill="${layer.color}" fill-opacity="${state.selection === index ? .78 : .40}" stroke="#9cae9f" stroke-width="1.1"/>
+      <path d="M${x(18)} ${y(low)}H${x(38)}V${y(high)}H${x(18)}Z" fill="${layer.color}" fill-opacity="${state.selection === index ? .78 : .40}" stroke="#9cae9f" stroke-width="1.1"/>
+      <rect x="${x(80)}" y="${y((low+high)/2)-19}" width="153" height="37" rx="4" fill="${state.selection===index?'#d9ca9e':'#eadfc7'}" stroke="#967c50" stroke-width="2"/>
       ${text(layer.label, 94, (low + high) / 2 - 1)}
       <path d="M${x(79)} ${y((low + high) / 2)}H${x(82)}" stroke="#8c9b8d" stroke-width="1.3"/>
     </g>`;
@@ -136,15 +139,16 @@ export function atmosphereSvg(phase: number): string {
   scene += `<path d="M${x(24)} ${y(78)}Q${x(29)} ${y(84)} ${x(33)} ${y(79)}T${x(40)} ${y(82)}" fill="none" stroke="#8fa895" stroke-width="5"/>
     <path d="M${x(16)} ${y(8)}H${x(77)}V${y(3)}H${x(16)}Z" fill="#bdb297" stroke="#8d8e79" stroke-width="1.2"/>
     <path d="M${x(20)} ${y(8)}l${x(26) - x(20)} ${y(13) - y(8)} ${x(32) - x(26)} ${y(8) - y(13)}" fill="#c8c7ad" stroke="#8c9988" stroke-width="1"/>
+    ${soundingBalloon(x(30),y(state.probe[1]),phase)}
     <polyline data-atmosphere-profile="temperature" points="${points(ATMOSPHERE_PROFILE)}" fill="none" stroke="#ad7155" stroke-width="3.5"/>
     <path d="M${x(12)} ${y(9)}V${y(91)}" stroke="#a59b80" stroke-width="2"/>
     <path data-atmosphere-probe="height" d="M${x(13)} ${y(state.probe[1])}H${x(state.probe[0])}" stroke="#7d8d78" stroke-width="1.8"/>
-    <ellipse data-atmosphere-handle="height" cx="${x(state.handle[0])}" cy="${y(state.handle[1])}" rx="9" ry="7" fill="#e5d6b2" stroke="#78856e" stroke-width="1.5"/>
+    <ellipse data-atmosphere-handle="height" cx="${x(state.handle[0])}" cy="${y(state.handle[1])}" rx="9" ry="7" fill="#e5d6b2" stroke="#78856e" stroke-width="1.5"/>${drawingGrip('升降气温探针',[x(12),y(9)],[x(12),y(91)],state.phase)}
     <circle data-atmosphere-probe="temperature" cx="${x(state.probe[0])}" cy="${y(state.probe[1])}" r="7" fill="#b27c5c" stroke="#faf6e9" stroke-width="2"/>
-    ${text('气温变化示意', 50, 101, 30)}${text('较冷', 43, -3, 30)}${text('较暖', 70, -3, 30)}
-    <text x="340" y="562" text-anchor="middle" font-size="30">高度和温度未按实际数值标定</text>`;
+    <rect x="224" y="35" width="202" height="37" rx="3" fill="#e9dfc8" stroke="#957a51" stroke-width="2"/>${text('探空气温示意',54,100.5,30)}${text('较冷',43,-7.1,30)}${text('较暖',70,-7.1,30)}
+    <text x="340" y="595" text-anchor="middle" font-size="30">高度和温度未按实际数值标定</text>`;
   const diagnostics = JSON.stringify(atmosphereDiagnostics(state)).replace(/&/g, '&amp;').replace(/'/g, '&#39;');
-  return `<svg class="flat-model-svg flat-explanation-svg" viewBox="0 0 680 580" role="group"
+  return `<svg class="flat-model-svg flat-explanation-svg" viewBox="0 0 680 615" role="group"
     aria-label="${state.layerLabel}，${state.feature}高度和温度均为示意。"
     data-atmosphere-phase="${state.phase}" data-atmosphere-layer="${state.selectedLayer}" data-atmosphere-state='${diagnostics}'>
     <g fill="#303a40" font-family="FieldSerif,SimSun,serif">${scene}</g></svg>`;

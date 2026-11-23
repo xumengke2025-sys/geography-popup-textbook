@@ -25,7 +25,8 @@ export function evaluateSeismicParticles(input: number, selection = 0) {
 }
 
 export function caveRoofHeight(u: number) {
-  return 10 + 27 * Math.sqrt(Math.max(0, 1 - ((u - .5) / .4) ** 2));
+  const arch=Math.sqrt(Math.max(0,1-((u-.5)/.4)**2));
+  return 10 + arch*(25+2.5*Math.sin(19*u)+1.4*Math.cos(43*u)-1.3*Math.abs(Math.sin(31*u)));
 }
 export function evaluateCaveDeposition(input: number, selection = 0) {
   const phase = clamp(input), deposition = selection === 1;
